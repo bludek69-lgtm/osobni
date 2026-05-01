@@ -1,0 +1,22 @@
+# Build artifacts
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Local-only photos staging (originals stay in C:\PROJEK_WEB\DATA)
+photos/_staging/
+photos/_NEZARAZENO/
+
+# Temp / drafts
+*.tmp
+*.bak
+*.draft.html
