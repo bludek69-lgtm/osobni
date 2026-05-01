@@ -85,14 +85,109 @@
     </div>
   </section>
 
-  <section>
-    <h2>YouTube</h2>
-    <p>
-      Sdílím i krátké video momentky z cest. Sleduj kanál
-      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener" class="link">
-        @cestovatel69 na YouTube
-      </a>.
-    </p>
+  <!-- =====================================================
+       YouTube sekce — Cestovatel69
+       TODO: doplnit reálná video IDs (TODO_VIDEO_ID_*) + titulky/popisy
+       Připraveno pro budoucí YouTube Data API integraci (data-channel-id)
+       ===================================================== -->
+  <section class="youtube-section" data-channel-id="@cestovatel69">
+    <div class="section-header">
+      <p class="eyebrow">Video z cest</p>
+      <h2>Cestovatel69 na YouTube</h2>
+      <p>Vybraná videa z cest, Itálie, zájezdů a míst, která stojí za vidění.
+         Klik na kartu přehraje video v hlavním přehrávači.</p>
+    </div>
+
+    <!-- Hlavní video — klik na cover spustí přehrávání -->
+    <div class="featured-video"
+         data-video-id="TODO_VIDEO_ID_1"
+         data-title="TODO_VIDEO_TITLE_1"
+         data-description="TODO_VIDEO_DESCRIPTION_1">
+      <div class="thumb-cover" style="background-image: url('https://img.youtube.com/vi/TODO_VIDEO_ID_1/maxresdefault.jpg');"></div>
+      <div class="meta">
+        <h3>TODO_VIDEO_TITLE_1</h3>
+        <p>TODO_VIDEO_DESCRIPTION_1</p>
+      </div>
+    </div>
+
+    <!-- Grid dalších videí — 4 placeholder karty -->
+    <div class="video-grid">
+
+      <article class="video-card"
+               data-video-id="TODO_VIDEO_ID_2"
+               data-title="TODO_VIDEO_TITLE_2"
+               data-description="TODO_VIDEO_DESCRIPTION_2">
+        <div class="thumb" style="background-image: url('https://img.youtube.com/vi/TODO_VIDEO_ID_2/mqdefault.jpg');"></div>
+        <div class="body">
+          <h4>TODO_VIDEO_TITLE_2</h4>
+          <p>TODO_VIDEO_DESCRIPTION_2</p>
+          <div class="actions">
+            <button type="button" class="btn-mini btn-play">▶ Přehrát</button>
+            <a class="btn-mini secondary" href="https://www.youtube.com/watch?v=TODO_VIDEO_ID_2"
+               target="_blank" rel="noopener">YouTube ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="video-card"
+               data-video-id="TODO_VIDEO_ID_3"
+               data-title="TODO_VIDEO_TITLE_3"
+               data-description="TODO_VIDEO_DESCRIPTION_3">
+        <div class="thumb" style="background-image: url('https://img.youtube.com/vi/TODO_VIDEO_ID_3/mqdefault.jpg');"></div>
+        <div class="body">
+          <h4>TODO_VIDEO_TITLE_3</h4>
+          <p>TODO_VIDEO_DESCRIPTION_3</p>
+          <div class="actions">
+            <button type="button" class="btn-mini btn-play">▶ Přehrát</button>
+            <a class="btn-mini secondary" href="https://www.youtube.com/watch?v=TODO_VIDEO_ID_3"
+               target="_blank" rel="noopener">YouTube ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="video-card"
+               data-video-id="TODO_VIDEO_ID_4"
+               data-title="TODO_VIDEO_TITLE_4"
+               data-description="TODO_VIDEO_DESCRIPTION_4">
+        <div class="thumb" style="background-image: url('https://img.youtube.com/vi/TODO_VIDEO_ID_4/mqdefault.jpg');"></div>
+        <div class="body">
+          <h4>TODO_VIDEO_TITLE_4</h4>
+          <p>TODO_VIDEO_DESCRIPTION_4</p>
+          <div class="actions">
+            <button type="button" class="btn-mini btn-play">▶ Přehrát</button>
+            <a class="btn-mini secondary" href="https://www.youtube.com/watch?v=TODO_VIDEO_ID_4"
+               target="_blank" rel="noopener">YouTube ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="video-card"
+               data-video-id="TODO_VIDEO_ID_5"
+               data-title="TODO_VIDEO_TITLE_5"
+               data-description="TODO_VIDEO_DESCRIPTION_5">
+        <div class="thumb" style="background-image: url('https://img.youtube.com/vi/TODO_VIDEO_ID_5/mqdefault.jpg');"></div>
+        <div class="body">
+          <h4>TODO_VIDEO_TITLE_5</h4>
+          <p>TODO_VIDEO_DESCRIPTION_5</p>
+          <div class="actions">
+            <button type="button" class="btn-mini btn-play">▶ Přehrát</button>
+            <a class="btn-mini secondary" href="https://www.youtube.com/watch?v=TODO_VIDEO_ID_5"
+               target="_blank" rel="noopener">YouTube ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Subscribe CTA -->
+    <div class="youtube-subscribe">
+      <div class="yt-logo">▶</div>
+      <h3>Sleduj nová videa z cest</h3>
+      <p>Záběry z autobusů, Itálie, zájezdů, míst, kterým bych chtěl věnovat víc než jen text.</p>
+      <a class="btn-youtube" href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">
+        Odebírat kanál Cestovatel69
+      </a>
+    </div>
   </section>
 
   <section>
