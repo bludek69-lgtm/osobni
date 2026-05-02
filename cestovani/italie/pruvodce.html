@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praktický průvodce Itálií — Luděk</title>
+  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+</head>
+<body class="theme-italy">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+    <a href="../../">Domů</a>
+    <a href="../../finance/">Finance</a>
+    <a href="../../cestovani/">Cestování</a>
+    <a href="../../cestovani/italie/" aria-current="page">Itálie</a>
+    <a href="../../smart-home/">Smart Home</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="italy-flag-bar">
+    <span></span><span></span><span></span>
+  </div>
+
+  <section class="hero">
+    <span class="hero-accent">Průvodce</span>
+    <h1>Praktický průvodce Itálií</h1>
+    <p class="hero-sub">
+      Mafia, zvyky, mýty, jazyk, káva, bezpečnost. Šest stručných sekcí
+      psaných jako pro kamaráda — bez marketingu, bez idealizace, s odkazy
+      na zdroje, ať si to čtenář může sám ověřit.
+    </p>
+    <p style="margin-top:1rem; font-size:0.9rem; opacity:0.7;">
+      Aktualizace: květen 2026 · Stav zákonů a sankcí se mění, vždy si před
+      cestou ověř aktuální verzi.
+    </p>
+  </section>
+
+  <!-- Quick nav -->
+  <section>
+    <div class="cards-grid">
+      <a href="#mafia" class="card card-link">
+        <div class="card-icon">🕵️</div>
+        <h3>Mafie</h3>
+        <p>Skupiny, území, riziko pro turisty.</p>
+      </a>
+      <a href="#zvyky" class="card card-link">
+        <div class="card-icon">🤝</div>
+        <h3>Zvyky</h3>
+        <p>Stolování, oblečení, pláž, sankce.</p>
+      </a>
+      <a href="#myty" class="card card-link">
+        <div class="card-icon">🧐</div>
+        <h3>Mýty</h3>
+        <p>Co je pravda a co se říká nadarmo.</p>
+      </a>
+      <a href="#jazyk" class="card card-link">
+        <div class="card-icon">🗣️</div>
+        <h3>Jazyk</h3>
+        <p>Fráze, čísla, dny, zdvořilost.</p>
+      </a>
+      <a href="#kava" class="card card-link">
+        <div class="card-icon">☕</div>
+        <h3>Káva</h3>
+        <p>Druhy a jak je správně objednat.</p>
+      </a>
+      <a href="#bezpecnost" class="card card-link">
+        <div class="card-icon">🛡️</div>
+        <h3>Bezpečnost</h3>
+        <p>Kapsáři, podvody, jak se chránit.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 1. MAFIE                                                    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="mafia" class="prose">
+    <h2>1. Mafie — kdo, kde a co to znamená pro turistu</h2>
+
+    <p>
+      V Itálii působí čtyři historické mafiánské organizace. Každá má
+      vlastní území, strukturu a metody. Tady je jejich aktuální mapa
+      a — důležité — co z toho reálně plyne pro běžného turistu.
+    </p>
+
+    <h3>Hlavní skupiny a území</h3>
+
+    <div class="cards-grid">
+      <div class="card">
+        <h3>'Ndrangheta</h3>
+        <p><strong>Původ:</strong> Kalábrie (jih, "špička boty").</p>
+        <p><strong>Síla:</strong> dnes nejbohatší a nejmocnější ze všech.
+           Globálně dominuje obchodu s kokainem do Evropy.</p>
+        <p><strong>Expanze:</strong> aktivní v severozápadní Itálii (Lombardie,
+           Piemonte) i mimo Itálii (Německo, Nizozemsko, Austrálie, Kanada).</p>
+      </div>
+      <div class="card">
+        <h3>Cosa Nostra</h3>
+        <p><strong>Původ:</strong> Sicílie.</p>
+        <p><strong>Síla:</strong> historicky nejznámější, dnes oslabená
+           tlakem státu. V únoru 2025 proběhla největší razie od roku
+           1984 — zatčeno téměř 150 lidí.</p>
+        <p><strong>Pole:</strong> protekce, veřejné zakázky, drogy.</p>
+      </div>
+      <div class="card">
+        <h3>Camorra</h3>
+        <p><strong>Původ:</strong> Kampánie (kolem Neapole).</p>
+        <p><strong>Struktura:</strong> ne jednotná — asi 180 nezávislých
+           klanů, mezi sebou často soupeří.</p>
+        <p><strong>Pole:</strong> drogy, padělky, odpadové hospodářství,
+           protekce restaurací a obchodů.</p>
+      </div>
+      <div class="card">
+        <h3>Sacra Corona Unita</h3>
+        <p><strong>Původ:</strong> Apulie ("podpatek").</p>
+        <p><strong>Síla:</strong> nejmladší a nejmenší ze čtyř.</p>
+        <p><strong>Pole:</strong> pašování (hraničí s Albánií), drogy.</p>
+      </div>
+    </div>
+
+    <h3>Riziko pro turisty — upřímně</h3>
+
+    <p>
+      <strong>Pro běžného turistu je riziko prakticky nulové.</strong> Mafie
+      se nezajímá o jednotlivé návštěvníky — cílí na byznys: hotely, restaurace,
+      veřejné zakázky, infrastruktura. Podle dat italské asociace Confcommercio
+      mafie z turistického sektoru vytahuje přibližně <strong>3,3 miliardy eur
+      ročně</strong>, ale formou protekčních plateb od majitelů podniků, ne
+      okrádáním turistů.
+    </p>
+
+    <p>
+      To znamená:
+    </p>
+
+    <ul>
+      <li><strong>V restauraci, kterou si vybereš jako turista, mafii ucítíš
+          maximálně přes ceny.</strong> Pokud je restaurace v dlouhodobé fixní
+          ceně poblíž turistických památek a obsluha tě láká dovnitř, místní
+          to často vědí a nechodí tam.</li>
+      <li><strong>Násilí mezi mafií a státem ano, mafií a turistou ne.</strong>
+          Případy útoků na turisty v souvislosti s organizovaným zločinem jsou
+          extrémně vzácné.</li>
+      <li><strong>Co skutečně řešíš jako turista:</strong> drobní kapsáři,
+          podvodníci u památek, nečtení účtu před zaplacením. To NENÍ mafie —
+          to jsou jednotliví zlodějíčci. Viz sekce <a href="#bezpecnost">Bezpečnost</a>.</li>
+    </ul>
+
+    <p>
+      <strong>Kde si dát pozor jako řidič / průvodce:</strong> v Kalábrii
+      a některých částech Neapole a Apulie vědí místní, kterým restauracím
+      / dodavatelům je lepší se vyhnout (kvůli pravděpodobné protekci).
+      Pokud cestuješ s místním průvodcem, vyplatí se ho poslechnout.
+    </p>
+
+    <p style="font-size:0.9rem; opacity:0.8;">
+      <strong>Zdroje:</strong>
+      <a href="https://en.wikipedia.org/wiki/Organized_crime_in_Italy" target="_blank" rel="noopener">Organized crime in Italy (Wikipedia)</a> ·
+      <a href="https://fortune.com/europe/2024/12/11/mafia-tourism-italy-2026-winter-olympics/" target="_blank" rel="noopener">Fortune — Mafia &amp; tourism (12/2024)</a> ·
+      <a href="https://www.europol.europa.eu/sites/default/files/documents/italian_organised_crime_threat_assessment_0.pdf" target="_blank" rel="noopener">Europol Threat Assessment (PDF)</a>
+    </p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 2. ZVYKY                                                    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="zvyky" class="prose">
+    <h2>2. Zvyky Italů — co se sluší a co tě může stát pokutu</h2>
+
+    <h3>U stolu</h3>
+
+    <ul>
+      <li><strong>Pasta se nekrájí nožem.</strong> Točí se vidličkou.</li>
+      <li><strong>Parmezán na rybí pastu se NEDÁVÁ.</strong> Italové to
+          považují za chybu. Sýr přebije jemnou rybí chuť. Také ne na
+          mušle a mořské plody.</li>
+      <li><strong>Cappuccino se pije jen ráno</strong> (zhruba do 11:00,
+          maximálně do 12:00). Po jídle ani po obědě. Italové věří, že
+          mléko po jídle ruší trávení. <em>Macchiato</em> je OK kdykoli.</li>
+      <li><strong>"Fare la scarpetta"</strong> — vytřít zbytek omáčky chlebem.
+          V neformálním prostředí naprosto v pohodě, často i očekávané.</li>
+      <li><strong>Coperto:</strong> v restauraci se obvykle účtuje 2–4 € na
+          osobu jako "servis" / poplatek za chleba a místo. Není to spropitné,
+          je to standardní položka v účtu.</li>
+      <li><strong>Spropitné:</strong> není povinné. Pokud je v účtu
+          <em>servizio</em> 10 %, nedáváš nic. Jinak zaokrouhli nahoru, max
+          5–10 %. Nikdy 15–20 % jako v USA.</li>
+    </ul>
+
+    <h3>Pozdravy a oslovení</h3>
+
+    <ul>
+      <li><strong>Buongiorno</strong> — dobrý den (do cca 14:00–15:00)</li>
+      <li><strong>Buonasera</strong> — dobré odpoledne / dobrý večer</li>
+      <li><strong>Salve</strong> — neutrální "zdravím" (formálnější než ciao)</li>
+      <li><strong>Ciao</strong> — ahoj (jen mezi známými, NE v obchodě / restauraci)</li>
+      <li>Mezi přáteli (zvlášť ženy) <strong>polibek na obě tváře</strong>
+          (nejdřív pravá, pak levá). Mezi muži obvykle podání ruky.</li>
+    </ul>
+
+    <h3>Oblečení</h3>
+
+    <ul>
+      <li><strong>Kostely a baziliky:</strong> ramena a kolena zakrytá. Bez
+          výjimek. U sv. Petra ve Vatikánu vypouštějí, kdo není slušně
+          oblečen.</li>
+      <li><strong>V centrech některých měst</strong> (Capri, Sorrento, Portofino)
+          jsou platné <strong>zákazy plavek a holého trupu mimo pláž</strong>.
+          Pokuta až 500 €.</li>
+    </ul>
+
+    <h3>Pláž — pravidla a sankce 2025–2026</h3>
+
+    <p>
+      Itálie zpřísnila pravidla zejména na <strong>Sardinii</strong>.
+      Pozor na:
+    </p>
+
+    <ul>
+      <li><strong>Vzít si písek nebo kamínky jako suvenýr ze Sardinie:</strong>
+          ilegální. Pokuty <strong>500–3 000 €</strong>, v extrémních
+          případech krádež veřejného majetku — riziko vězení. Cla na
+          letištích Cagliari a Olbia kontrolují zavazadla.</li>
+      <li><strong>La Pelosa (Sardinie):</strong> osuška PŘÍMO na písku
+          zakázána. Musíš mít rohož (slámu / bambus), na ni osušku. Pokuta
+          100 € na místě. Vstup omezen na 1500 lidí denně, rezervace přes
+          aplikaci.</li>
+      <li><strong>Hluboké jámy a velké hrady z písku</strong> (Sardinie):
+          zakázáno. Pokuta až 3 000 €. Ekologická ochrana pobřeží.</li>
+      <li><strong>Capri 2026:</strong> nové předpisy proti přetížení turismem,
+          rezervace na některých plážích povinná.</li>
+    </ul>
+
+    <h3>Auto a doprava</h3>
+
+    <ul>
+      <li><strong>ZTL (Zona a Traffico Limitato):</strong> v centrech většiny
+          historických měst je vjezd autem zakázán. Brány s kamerami fotí
+          SPZ — pokuty 80–300 €, často přijdou domů půl roku po cestě.
+          Pokud máš hotel uvnitř ZTL, hotel ti vyřídí povolení dopředu.</li>
+      <li><strong>Nikdy neřiď do centra Florencie, Říma, Boloni, Milána ani
+          Neapole bez přesné navigace a kontroly ZTL.</strong></li>
+      <li><strong>Vinětka:</strong> v Itálii NENÍ. Dálnice se platí mýtným
+          (tickety na vstupu, platba na výjezdu).</li>
+    </ul>
+
+    <h3>Co ne</h3>
+
+    <ul>
+      <li>Sednout si na schody Trinità dei Monti v Římě (pokuta 250 €).</li>
+      <li>Koupat se v fontánách (Trevi, Quattro Fiumi…) — pokuta až 450 €.</li>
+      <li>Konzumace jídla a pití na schodech historických památek
+          (Florencie, Benátky).</li>
+      <li>Zámky lásky na mosty v Benátkách, Florencii, Veroně — pokuty
+          50–3 000 €.</li>
+      <li>Dotýkat se sloupů a soch v muzeích (jasné, ale strážci jsou
+          přísní).</li>
+    </ul>
+
+    <p style="font-size:0.9rem; opacity:0.8;">
+      <strong>Zdroje:</strong>
+      <a href="https://www.travelandtourworld.com/news/article/italys-2026-tourism-laws-major-fines-and-new-restrictions-for-tourists-in-capri-venice-florence-rome-and-the-dolomites/" target="_blank" rel="noopener">Italy 2026 tourism laws</a> ·
+      <a href="https://www.lonelyplanet.com/news/italy-new-beach-rules" target="_blank" rel="noopener">Lonely Planet — beach rules</a> ·
+      <a href="https://radicalstorage.com/travel/do-you-tip-in-italy/" target="_blank" rel="noopener">Tipping in Italy 2025</a>
+    </p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 3. MÝTY                                                     -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="myty" class="prose">
+    <h2>3. Mýty — co je pravda a co ne</h2>
+
+    <h3>"Piccolo" = espresso ❌</h3>
+    <p>
+      Pokud objednáš v baru "un piccolo", číšník nepochopí. <strong>Espresso
+      se v Itálii říká jednoduše caffè.</strong> Když řekneš "un caffè,
+      per favore", dostaneš espresso. <em>Piccolo</em> doslova znamená
+      "malý" a v ČR se to ujalo jako pojem, v Itálii to není kávový termín.
+    </p>
+
+    <h3>"Cappuccino se nepije po 11. hodině" ✓ (z většiny)</h3>
+    <p>
+      <strong>Pravda</strong>, ale ne železné pravidlo. Italové cappuccino
+      pijí jako snídani, nikdy ne po obědě nebo večeři (mléko ruší trávení).
+      Pokud si dáš cappuccino v 15:00, číšník nic neřekne, ale prozradíš
+      se jako turista. Přijatelný kompromis: <strong>caffè macchiato</strong>
+      — espresso s kapkou mléka, kdykoli.
+    </p>
+
+    <h3>"Italové dávají hodně spropitné" ❌</h3>
+    <p>
+      <strong>Naopak.</strong> V Itálii se dává minimální nebo žádné spropitné.
+      Číšníci jsou placeni standardní mzdou, ne jako v USA. Pokud máš
+      v účtu <em>servizio 10 %</em>, nedáváš už nic. Jinak zaokrouhli
+      nahoru, maximum 10 %. <strong>Nikdy ne 15–20 %.</strong>
+    </p>
+
+    <h3>"Hawaiian pizza (s ananasem) je italská" ❌</h3>
+    <p>
+      <strong>Mýtus.</strong> Hawaiian pizzu vymyslel řecký pizzař v Kanadě
+      v roce 1962. V Itálii ji považují za vtip nebo provokaci, v autentické
+      pizzerii ji nedostaneš.
+    </p>
+
+    <h3>"Italové jedí pastu zalitou v omáčce" ❌</h3>
+    <p>
+      <strong>Naopak.</strong> Omáčky se dává tak akorát, aby pastu jen
+      lehce obalila. Hluboké talíře omáčky jsou americký zvyk. Italská
+      pasta má být hustá, "kostrbatá", omáčka se k ní přilepí — ne plave.
+    </p>
+
+    <h3>"Olej a balsamico do chleba před jídlem" ❌</h3>
+    <p>
+      <strong>Mýtus z amerických italských restaurací.</strong> V Itálii
+      se chléb na stůl dává s olejem na pastu, ne před jídlem na máčení.
+      Občas dostaneš grissini (tyčinky). Olivový olej s octem k chlebu jako
+      předkrm se v Itálii nestane.</p>
+
+    <h3>"Italové pijí espresso vsedě" ❌</h3>
+    <p>
+      <strong>Většinou ne.</strong> Většina Italů si dá espresso ve stoje
+      u baru, vypije za 30 vteřin, odejde. <strong>Vsedě je 2–3× dražší</strong>
+      (servisní poplatek). Je to zvláštnost, která se hodí znát: stejné
+      espresso u baru za 1 € může na terase stát 3–4 €.
+    </p>
+
+    <h3>"Spaghetti Bolognese je italská" ❌</h3>
+    <p>
+      <strong>V Boloni neexistují.</strong> Klasické italské jméno je
+      <em>tagliatelle al ragù</em> (ragú podávané s tagliatelle, ne se
+      špagetami). "Spaghetti Bolognese" je britsko-americká adaptace.
+      V Boloni si toho jména můžeš v restauraci vyžádat — místní se zasmějí.
+    </p>
+
+    <p style="font-size:0.9rem; opacity:0.8;">
+      <strong>Zdroje:</strong>
+      <a href="https://learnamo.com/en/myths-about-italian-cuisine/" target="_blank" rel="noopener">LearnAmo — Italian cuisine myths</a> ·
+      <a href="https://www.visititaly.eu/food-and-flavours/italian-food-myths" target="_blank" rel="noopener">Visit Italy — food myths</a> ·
+      <a href="https://www.walksofitaly.com/blog/food-and-wine/drink-coffee-in-italy" target="_blank" rel="noopener">Walks of Italy — coffee culture</a>
+    </p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 4. JAZYK                                                    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="jazyk" class="prose">
+    <h2>4. Jazykový koutek — minimum, které ti otevře dveře</h2>
+
+    <p>
+      Italové si váží i základního pokusu mluvit jejich jazykem. <strong>Pět
+      slov stačí na to, aby se k tobě začali chovat o stupeň líp.</strong>
+    </p>
+
+    <h3>Pozdravy a zdvořilost</h3>
+
+    <table style="width:100%; border-collapse: collapse;">
+      <tr><th style="text-align:left;">Italsky</th><th style="text-align:left;">Česky</th><th style="text-align:left;">Výslovnost</th></tr>
+      <tr><td>Buongiorno</td><td>Dobrý den</td><td>buon-džorno</td></tr>
+      <tr><td>Buonasera</td><td>Dobré odpoledne / večer</td><td>buona-séra</td></tr>
+      <tr><td>Buonanotte</td><td>Dobrou noc</td><td>buona-notte</td></tr>
+      <tr><td>Salve</td><td>Zdravím (neutrální)</td><td>salve</td></tr>
+      <tr><td>Ciao</td><td>Ahoj (jen mezi známými)</td><td>čao</td></tr>
+      <tr><td>Per favore</td><td>Prosím</td><td>per favóre</td></tr>
+      <tr><td>Grazie</td><td>Děkuji</td><td>gracie</td></tr>
+      <tr><td>Grazie mille</td><td>Mockrát děkuji</td><td>gracie mile</td></tr>
+      <tr><td>Prego</td><td>Není zač / Prosím</td><td>prego</td></tr>
+      <tr><td>Scusi</td><td>Promiňte (formálně)</td><td>skuzi</td></tr>
+      <tr><td>Mi scusi</td><td>Omluvte mě</td><td>mi skuzi</td></tr>
+      <tr><td>Permesso</td><td>S dovolením (procházím)</td><td>permeso</td></tr>
+      <tr><td>Sì / No</td><td>Ano / Ne</td><td>sí / no</td></tr>
+      <tr><td>Va bene</td><td>OK / V pořádku</td><td>va béne</td></tr>
+      <tr><td>Arrivederci</td><td>Na shledanou</td><td>ariveděrči</td></tr>
+    </table>
+
+    <h3>Praktické fráze</h3>
+
+    <table style="width:100%; border-collapse: collapse;">
+      <tr><th style="text-align:left;">Italsky</th><th style="text-align:left;">Česky</th></tr>
+      <tr><td>Parla inglese?</td><td>Mluvíte anglicky?</td></tr>
+      <tr><td>Non parlo italiano</td><td>Nemluvím italsky</td></tr>
+      <tr><td>Non capisco</td><td>Nerozumím</td></tr>
+      <tr><td>Quanto costa?</td><td>Kolik to stojí?</td></tr>
+      <tr><td>Il conto, per favore</td><td>Účet, prosím</td></tr>
+      <tr><td>Dov'è il bagno?</td><td>Kde je toaleta?</td></tr>
+      <tr><td>Dov'è la stazione?</td><td>Kde je nádraží?</td></tr>
+      <tr><td>Vorrei…</td><td>Chtěl bych…</td></tr>
+      <tr><td>Un caffè, per favore</td><td>Espresso, prosím</td></tr>
+      <tr><td>Un'acqua naturale / frizzante</td><td>Neperlivá / perlivá voda</td></tr>
+      <tr><td>Posso pagare con la carta?</td><td>Mohu platit kartou?</td></tr>
+      <tr><td>Aiuto!</td><td>Pomoc!</td></tr>
+      <tr><td>Mi sono perso/a</td><td>Ztratil jsem se</td></tr>
+      <tr><td>Chiamate la polizia</td><td>Zavolejte policii</td></tr>
+    </table>
+
+    <h3>Čísla</h3>
+
+    <p>
+      0 zero · 1 uno · 2 due · 3 tre · 4 quattro · 5 cinque · 6 sei · 7 sette ·
+      8 otto · 9 nove · 10 dieci · 11 undici · 12 dodici · 13 tredici · 14 quattordici ·
+      15 quindici · 20 venti · 30 trenta · 50 cinquanta · 100 cento · 1000 mille
+    </p>
+
+    <h3>Dny v týdnu</h3>
+    <p>
+      lunedì (po) · martedì (út) · mercoledì (st) · giovedì (čt) · venerdì (pá) ·
+      sabato (so) · domenica (ne)
+    </p>
+
+    <h3>Nouzová čísla</h3>
+    <ul>
+      <li><strong>112</strong> — jednotná nouzová linka EU (policie / hasiči / sanitka)</li>
+      <li><strong>113</strong> — Polizia di Stato (státní policie)</li>
+      <li><strong>118</strong> — sanitka</li>
+      <li><strong>1530</strong> — Pobřežní stráž (na moři)</li>
+    </ul>
+
+    <p style="font-size:0.9rem; opacity:0.8;">
+      Tip: nainstaluj si <strong>Google Translate</strong> a stáhni offline
+      slovník italštiny — funguje bez internetu, kamera překládá menu v reálném čase.
+    </p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 5. KÁVY                                                     -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="kava" class="prose">
+    <h2>5. Druhy kávy — kompletní přehled</h2>
+
+    <p>
+      <strong>"Caffè" v Itálii = espresso.</strong> Tečka. Pokud chceš
+      cokoli jiného, musíš to specifikovat.
+    </p>
+
+    <div class="cards-grid">
+      <div class="card">
+        <h3>Caffè (Espresso)</h3>
+        <p>Silný, koncentrovaný, 25–30 ml. Základ všeho. Vypije se za 30 vteřin u baru.</p>
+      </div>
+      <div class="card">
+        <h3>Caffè doppio</h3>
+        <p>Dvojité espresso. 50–60 ml. Pro silnější ranní start.</p>
+      </div>
+      <div class="card">
+        <h3>Caffè ristretto</h3>
+        <p>"Stažené" espresso — ještě méně vody, ještě silnější. 15–20 ml.</p>
+      </div>
+      <div class="card">
+        <h3>Caffè lungo</h3>
+        <p>"Dlouhé" espresso — víc vody, slabší. 50 ml. Bližší filtrované kávě.</p>
+      </div>
+      <div class="card">
+        <h3>Caffè macchiato</h3>
+        <p>Espresso "poskvrněné" mlékem. Kapka mléka navrch. Lze kdykoli.</p>
+      </div>
+      <div class="card">
+        <h3>Latte macchiato</h3>
+        <p>Naopak — sklenice teplého mléka, "poskvrněná" espressem. Vrstvené.</p>
+      </div>
+      <div class="card">
+        <h3>Cappuccino</h3>
+        <p>Espresso + vyšlehané mléko + pěna (cca 1:1:1). Jen RÁNO. Po 11:00 už ne.</p>
+      </div>
+      <div class="card">
+        <h3>Caffè americano</h3>
+        <p>Espresso doplněné horkou vodou. Slabší, podobné filtrované kávě.</p>
+      </div>
+      <div class="card">
+        <h3>Caffè corretto</h3>
+        <p>Espresso "vylepšené" panákem grappy nebo sambuky. Po obědě / večeři.</p>
+      </div>
+      <div class="card">
+        <h3>Marocchino</h3>
+        <p>Z Piemonte. Espresso + kakao + pěna + ještě kakao navrch. Chuťově lehčí.</p>
+      </div>
+      <div class="card">
+        <h3>Caffè shakerato</h3>
+        <p>Letní verze. Espresso protřepané s ledem v shakeru, ledové, pěnivé.</p>
+      </div>
+      <div class="card">
+        <h3>Caffè freddo</h3>
+        <p>Studené espresso, často slazené. V termosce v baru, dolije se do sklenice.</p>
+      </div>
+      <div class="card">
+        <h3>Caffè decaffeinato</h3>
+        <p>Bez kofeinu. V hovorové italštině "deca". Existuje od každého typu výše.</p>
+      </div>
+      <div class="card">
+        <h3>Caffè ginseng</h3>
+        <p>Espresso ochucené ženšenem. Naturálně sladké. Energizující.</p>
+      </div>
+    </div>
+
+    <h3>Jak objednat — praktický průchod</h3>
+
+    <ol>
+      <li><strong>Vejdi do baru.</strong> "Buongiorno!" obsluze.</li>
+      <li><strong>Rozhodni se: stůl, nebo bar?</strong> U baru je kafe levnější
+          (1–1,50 € espresso). U stolu 2–4× tolik.</li>
+      <li><strong>Objednej:</strong> "Un caffè, per favore" (= espresso).
+          Nebo "Un cappuccino e un cornetto, per favore" (= cappuccino a croissant).</li>
+      <li><strong>Plať:</strong> u baru často nejdřív zaplatíš u kasy, dostaneš
+          účtenku (scontrino), s tou jdeš k baristovi.</li>
+      <li><strong>Vypij.</strong> Italové to dají za 30–60 vteřin.
+          "Grazie, arrivederci!" a jdeš.</li>
+    </ol>
+
+    <p style="font-size:0.9rem; opacity:0.8;">
+      <strong>Zdroje:</strong>
+      <a href="https://theromanguy.com/italy-travel-blog/italy/italian-coffee-drinks/" target="_blank" rel="noopener">The Roman Guy — Italian coffee drinks</a> ·
+      <a href="https://discovernorthernitaly.com/coffee-culture-in-italy/" target="_blank" rel="noopener">Discover Northern Italy — coffee rules</a>
+    </p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 6. BEZPEČNOST                                               -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="bezpecnost" class="prose">
+    <h2>6. Bezpečnost — kapsáři, podvody, jak se chránit</h2>
+
+    <p>
+      Itálie je celkově bezpečná země. <strong>Hlavní riziko pro turisty
+      jsou drobní zlodějíčci a podvodníci</strong>, ne násilná kriminalita.
+      Tady je seznam toho, co reálně potkáš.
+    </p>
+
+    <h3>Místa s nejvyšším rizikem kapsářů</h3>
+
+    <ul>
+      <li><strong>Řím:</strong> Termini (hlavní nádraží), metro linky A a B,
+          Koloseum, Forum Romanum, Trevi, Piazza Navona, Španělské schody,
+          fronta do Vatikánu, autobusy <strong>40 a 64</strong> (Termini → Vatikán)
+          jsou pověstné.</li>
+      <li><strong>Florencie:</strong> Ponte Vecchio, vlakové nádraží Santa
+          Maria Novella, San Lorenzo trh, Duomo.</li>
+      <li><strong>Benátky:</strong> San Marco za sezóny, vaporetto linky 1 a 2,
+          úzké uličky bez výhledu.</li>
+      <li><strong>Neapol:</strong> stanice metra Garibaldi, oblast okolo Spaccanapoli,
+          pobřežní promenády. Pozor na motorky — známé "zlodějské scippo"
+          (vytrhne kabelku za jízdy).</li>
+      <li><strong>Milán:</strong> Duomo + okolí, metro linka 1 (zvlášť do San Babily).</li>
+    </ul>
+
+    <h3>Nejčastější podvody — jak fungují</h3>
+
+    <h4>Falešní "pomocníci" u automatů na lístky</h4>
+    <p>
+      Termini, Milán Centrale, kdekoli. Někdo ti ochotně nabídne "pomoc"
+      s automatem na lístky, zatáhne tě do nákupu zbytečného připoplatku,
+      okopíruje kartu, nebo tě zaměstná, zatímco kolega ti čistí kapsy.
+      <strong>2025: nosí dokonce uniformy s falešnými odznaky.</strong>
+    </p>
+    <p>
+      <strong>Bránění:</strong> oficiální zaměstnanci nikdy nepřistoupí
+      k automatu sami od sebe. Použij automat sám nebo jdi k pokladně.
+    </p>
+
+    <h4>Růžička / přátelský náramek</h4>
+    <p>
+      Někdo (často migrant na Piazza Navona, u Trevi, u Duomo) ti "daruje"
+      růži nebo nasadí na ruku náramek. <strong>Pak chce 10–20 € "za dárek".</strong>
+      Když odmítneš, dělá scénu.
+    </p>
+    <p>
+      <strong>Bránění:</strong> nedotýkej se. Když ti něco nabízejí, ruce
+      v kapsách, "no, grazie" a jdeš dál.
+    </p>
+
+    <h4>Petice / mapa</h4>
+    <p>
+      Žena nebo dítě ti přijde s petičním archem nebo rozloženou mapou
+      ("Help me!"). <strong>Mapa kryje výhled na tvou tašku</strong>, kolega
+      vykrádá zezadu. Děti využívají, protože policie je nesmí zatknout.
+    </p>
+    <p>
+      <strong>Bránění:</strong> ostře "no!", odejdi, neotvírej kabelku.
+    </p>
+
+    <h4>Tlačenice u dveří metra</h4>
+    <p>
+      Když se zavírají dveře metra, několik lidí tě "shodou okolností"
+      přimáčkne k východu. V chaosu ti vykradou kapsy.
+    </p>
+    <p>
+      <strong>Bránění:</strong> tašku <strong>před tělo</strong>, ruce na zipech.
+      Pokud cítíš tlak, hlasitě řekni "ATTENTO!" — místní pochopí, podvodníci
+      se stáhnou.
+    </p>
+
+    <h4>Restaurace — nepředaný účet, falešné položky</h4>
+    <p>
+      U turistických památek: po jídle ti přinesou "menu fisso" účet bez
+      detailu. Nebo přidají "víno", které sis neobjednal. Nebo počítají ceny
+      z neaktualizovaného listu.
+    </p>
+    <p>
+      <strong>Bránění:</strong> vždycky si <strong>vyžádej účet ("il conto, per
+      favore")</strong> a zkontroluj řádky. <strong>Coperto 2–4 € a servizio
+      10 % jsou OK</strong>, ostatní položky musí odpovídat objednávce.
+    </p>
+
+    <h4>Taxi z letiště — "neplatný taxametr"</h4>
+    <p>
+      "Taxi" před letištěm Fiumicino nebo Capodichino říká "taxametr nefunguje,
+      cena 80 € do centra". Reálná taxikářská tarifa Fiumicino → Řím je
+      <strong>fixních 50 €</strong> (v rámci Aurelian walls).
+    </p>
+    <p>
+      <strong>Bránění:</strong> jen <strong>oficiální bílá taxi</strong> s číslem
+      a logem města (TAXI ROMA / TAXI MILANO atd.). Stojí ve frontě v určeném
+      stání. <strong>Před nástupem řekni "tariffa fissa, per favore"</strong>
+      — pevná tarifa.
+    </p>
+
+    <h4>Falešní policisté</h4>
+    <p>
+      Někdo ti ukáže "odznak" a žádá kontrolu pasu nebo peněženky kvůli
+      "padělaným penězům v okolí". Vrátí ti všechno, ale chybí pár bankovek.
+    </p>
+    <p>
+      <strong>Bránění:</strong> Italská policie nikdy nekontroluje cizince
+      na ulici takhle. Řekni "andiamo alla stazione" (jdeme na stanici) —
+      podvodník zmizí.
+    </p>
+
+    <h3>Praktické chování — checklist</h3>
+
+    <ul>
+      <li>✅ Tašku <strong>před tělem</strong>, popruh přes hlavu, zip vepředu.</li>
+      <li>✅ Peněženku <strong>NIKDY do zadní kapsy.</strong> Vnitřní kapsa,
+          ledvinka pod košilí, money belt.</li>
+      <li>✅ <strong>Telefon nedávej na stůl</strong> v restauraci u ulice.
+          V Neapoli ti ho schvátí motorkář při jízdě.</li>
+      <li>✅ Dvě peněženky: jedna "operativní" (málo peněz, případná oběť),
+          druhá hlavní (skrytě).</li>
+      <li>✅ <strong>Kopie dokladů</strong> v emailu / cloudu. Vlastní pas
+          v hotelu v sejfu, na sebe foto + číslo.</li>
+      <li>✅ Pojištění do zahraničí — řešte u banky / pojišťovny.</li>
+      <li>✅ <strong>112</strong> — funguje všude v Itálii i bez SIM karty.</li>
+      <li>❌ Nikdy nepouštěj cizí lidi do hotelového pokoje "z údržby".
+          Ověř recepcí.</li>
+      <li>❌ ATM <strong>jen uvnitř banky</strong> nebo na veřejně sledovaných
+          místech. Nikdy v opuštěné uličce — riziko skimmeru.</li>
+    </ul>
+
+    <h3>Když se to stane</h3>
+
+    <ol>
+      <li><strong>112</strong> — okamžitá nouzová linka.</li>
+      <li><strong>Nahlas oznámení (denuncia)</strong> na nejbližší stanici
+          policie. Bez něj ti pojišťovna nic neproplatí. Stanice se hovoří
+          <em>questura</em> (státní) nebo <em>caserma dei carabinieri</em>
+          (četníci). Karabiniéři jsou často přívětivější k cizincům.</li>
+      <li><strong>Konzulát ČR v Římě</strong>: Via dei Gracchi 322, 00192 Roma.
+          Tel: <strong>+39 06 360 95 700</strong>.
+          <a href="https://www.mzv.cz/rome/cz" target="_blank" rel="noopener">mzv.cz/rome</a></li>
+      <li><strong>Konzulát ČR v Miláně</strong> (zástup pro sever): Via
+          G.B. Morgagni 20, 20129 Milano. Tel: <strong>+39 02 36 768 920</strong>.</li>
+    </ol>
+
+    <p style="font-size:0.9rem; opacity:0.8;">
+      <strong>Zdroje:</strong>
+      <a href="https://www.novatrek.app/en/blog/italy-travel-scams-2025" target="_blank" rel="noopener">Italy travel scams 2025</a> ·
+      <a href="https://radicalstorage.com/travel/is-rome-safe/" target="_blank" rel="noopener">Is Rome safe — 2025 guide</a> ·
+      <a href="https://www.mzv.cz/rome/cz" target="_blank" rel="noopener">Velvyslanectví ČR Řím</a> ·
+      <a href="https://italianwithantonio.com/p/is-italy-safe-25-safety-tips-for" target="_blank" rel="noopener">Italy safety 2026</a>
+    </p>
+  </section>
+
+  <section class="prose">
+    <p style="font-style: italic; text-align: center; color: var(--text-mut); margin-top:3rem;">
+      „Itálie odměňuje zvědavé a trestá lhostejné. Připrav se trochu —
+      a dostaneš zemi, která si tě bude pamatovat."
+    </p>
+    <p style="text-align:center; margin-top:2rem;">
+      <a href="./" class="card-cta">← Zpět na hlavní stránku Itálie</a>
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://bludek69-lgtm.github.io/smart-home-website/" target="_blank" rel="noopener">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

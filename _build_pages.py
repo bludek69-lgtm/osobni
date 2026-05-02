@@ -54,6 +54,12 @@ PAGES = [
         'depth':     2,
     },
     {
+        'rel':       'cestovani/italie/pruvodce.html',
+        'theme':     'italy',
+        'title':     'Praktický průvodce Itálií — Luděk',
+        'depth':     2,
+    },
+    {
         'rel':       'smart-home/index.html',
         'theme':     'smart-home',
         'title':     'Smart Home — Luděk',
