@@ -72,6 +72,12 @@ PAGES = [
         'depth':     2,
     },
     {
+        'rel':       'cestovani/norsko/index.html',
+        'theme':     'travel',
+        'title':     'Norsko — Cestování — Luděk',
+        'depth':     2,
+    },
+    {
         'rel':       'cestovani/rusko/index.html',
         'theme':     'travel',
         'title':     'Rusko — Cestování — Luděk',
