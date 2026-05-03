@@ -69,14 +69,44 @@
 | `cestovani/pracovni-cesty/assets/data/work-travel-gallery.json` | 6 publikovaných položek |
 | `cestovani/pracovni-cesty/assets/data/work-travel-map.json` | 17 míst pro budoucí mapu |
 
-## 7. TODO (k vizuální kontrole)
+## 7. NO_GPS vision audit (2026-05-04)
 
-- [ ] **18 NO_GPS fotek** (2016–2017) — postupně projít a zařadit nebo nechat v _staging
+Vizuální kontrola všech 18 NO_GPS fotek dokončena (Read tool):
+
+| Akce | Počet | Detail |
+|---|---|---|
+| ✅ SAFE → publikováno v archivu | 7 | viz tabulka níže |
+| ❌ EXCLUDE → `_excluded/` | 9 | SPZ nebo identifikovatelné osoby |
+| ⏭️ SKIP video | 1 | `20190513_115521.mp4` |
+| Total | 17 jpg + 1 mp4 | |
+
+**Publikováno v archivu sekci** (`autobusy/index.html` "Z archivu 2016–2018"):
+- IMG_20160725_175734.jpg — BusLine detail (HIGH)
+- IMG_20160913_085335.jpg — "Mezinárodní doprava Semily" (MEDIUM)
+- IMG_20160914_182910.jpg — "Autobusy Semily" Jadran (MEDIUM)
+- IMG_20170214_125240.jpg — BusLine pracovní (HIGH)
+- IMG_20171006_114434.jpg — pauza s deštníkem (MEDIUM)
+- IMG_20171011_051733.jpg — noční BusLine + vlek (HIGH)
+- 20180908_095656.jpg — Semily náměstí (HIGH)
+
+**Vyloučeno** (přesunuto do `photos/_excluded/`, nepublikováno):
+- IMG_20160720_182510.jpg — SPZ 2L3 3251
+- IMG_20160908_212014.jpg — SPZ ULL prefix
+- IMG_20170209_215848.jpg — SPZ 3L7 2631
+- IMG_20170920_072934.jpg — SPZ 3L7 2631
+- IMG_20171004_191829.jpg — interní depot (mytí vozu)
+- IMG_20180228_151835.jpg — Dolomity, viditelná SPZ na zádi
+- 20180908_125247.jpg — SPZ 3L9 4662 + dítě v záběru
+- 20190107_142619.jpg — SPZ na bumperu
+- 20201101_224100.jpg — noční scéna, osoba ve dveřích
+
+## 8. TODO (zbylé)
+
 - [ ] **Fotky s SPZ** — pokud user chce publikovat, doporučuji blur SPZ přes [photopea.com](https://photopea.com) nebo pomocí Pythonu + Pillow
 - [ ] **Mapa** — JSON je připraven, zatím bez interaktivní mapy (zatím seznam)
 - [ ] **Per-country galerie** — momentálně jen 1-2 fotky per země vybrané, kompletní galerie s lazy-load grid by mohla přijít později
 
-## 8. Pravidla z promptu — kontrola
+## 9. Pravidla z promptu — kontrola
 
 | Pravidlo | Stav |
 |---|---|
@@ -89,7 +119,7 @@
 | Privacy flag systém | ✅ `BLUR_SPZ`, `BLUR_FACES` v JSON |
 | Zachování stylu webu | ✅ theme-travel + .card komponenty |
 
-## 9. Zdroje (verifikace dopravců)
+## 10. Zdroje (verifikace dopravců)
 
 - **Vega Tour** — [vegatour.cz](https://www.vegatour.cz/) (registrovaný český dopravce, poznávací zájezdy)
 - **BusLine** — [busline.cz](https://www.busline.cz/) (Liberec, autobusová doprava)
