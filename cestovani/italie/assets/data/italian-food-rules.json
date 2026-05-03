@@ -1,0 +1,146 @@
+[
+  {
+    "id": "pasta-quality-semola",
+    "title": "Semola di grano duro",
+    "category": "kvalita těstovin",
+    "text": "Kvalitní suché těstoviny se tradičně vyrábějí ze semoliny z tvrdé pšenice (durum). Pasta di Gragnano IGP a obecně italské STG/IGP specifikace to vyžadují jako základní surovinu.",
+    "sourceName": "Pasta di Gragnano IGP — disciplinare",
+    "sourceUrl": "https://www.pastadigragnanoigp.org/",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "bronze-drawn-surface",
+    "title": "Trafilata al bronzo — drsnější povrch drží omáčku",
+    "category": "struktura těstovin",
+    "text": "Těstoviny tažené přes bronzovou matrici mají drsnější, matnější povrch. Drsnost lépe zachytí omáčku. Hladké teflonem-tažené nejsou špatné, ale nedrží sugo tak dobře.",
+    "sourceName": "Unione Italiana Food / WeLovePasta",
+    "sourceUrl": "https://www.welovepasta.it/",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "slow-drying",
+    "title": "Essiccazione lenta — pomalé sušení",
+    "category": "kvalita těstovin",
+    "text": "Pomalé sušení (24–60 hodin při 40–50 °C) zachová strukturu lepku a chuť. Industriální rychlosušení při 90 °C+ těstovinu „pálí“ a zhoršuje chování při vaření.",
+    "sourceName": "Pasta di Gragnano IGP",
+    "sourceUrl": "https://www.pastadigragnanoigp.org/",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "color-yellow",
+    "title": "Přirozeně žlutavá barva",
+    "category": "kvalita těstovin",
+    "text": "Přirozeně žlutavá barva pochází ze semoliny tvrdé pšenice. Příliš zlatá / příliš bílá může signalizovat nižší kvalitu mouky nebo příměs měkké pšenice.",
+    "sourceName": "PastaItaliani.it",
+    "sourceUrl": "https://www.pastaitaliani.it/",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "al-dente",
+    "title": "Al dente — pevné na skus",
+    "category": "vaření",
+    "text": "Al dente neznamená nedovařené. Znamená pevné na skus. Pevná struktura pomůže těstovinám se v pánvi spojit s omáčkou (mantecare) a nerozpadnout se. Pravidlo: o 1–2 minuty méně než říká balení.",
+    "sourceName": "GialloZafferano · technika",
+    "sourceUrl": "https://www.giallozafferano.it/",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "salt-water",
+    "title": "10 g soli na 1 litr vody",
+    "category": "vaření",
+    "text": "Italské pravidlo: 10 g soli na 1 l vody na 100 g těstovin. Nedostatečně slaná voda = mdlé těstoviny. Sůl se přidává až když voda vře.",
+    "sourceName": "GialloZafferano",
+    "sourceUrl": "https://www.giallozafferano.it/",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "shape-sauce-pairing",
+    "title": "Tvar těstovin určuje, jaká omáčka se uchytí",
+    "category": "tvar a omáčka",
+    "text": "„Sugo grasso, pasta liscia. Sugo secco, pasta rigata.“ Mastná omáčka — hladká pasta. Suchá omáčka — rýhovaná pasta. Tvar těstoviny není dekorace, je funkční.",
+    "sourceName": "Italia.it / Unione Italiana Food",
+    "sourceUrl": "https://www.welovepasta.it/",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "ketchup-not-sugo",
+    "title": "Kečup není tradiční italská sugo",
+    "category": "časté náhražky",
+    "text": "Kečup obsahuje cukr, ocet a koření — patří na hranolky nebo do rychlé domácí improvizace, ale ne jako základ tradiční italské rajčatové omáčky. Místo toho passata, pelati nebo čerstvá rajčata podle receptu.",
+    "sourceName": "Accademia Italiana della Cucina (princip jednoduchosti receptů) + GialloZafferano",
+    "sourceUrl": "https://www.giallozafferano.it/ricette/Pasta-al-pomodoro.html",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "edam-not-italian",
+    "title": "Eidam není tradiční italský sýr",
+    "category": "časté náhražky",
+    "text": "Eidam je v české kuchyni v pořádku, ale v tradičních italských receptech obvykle nenahrazuje Pecorino Romano, Parmigiano Reggiano nebo Grana Padano. Tyto sýry mají jinou slanost, strukturu a funkci v omáčce.",
+    "sourceName": "Consorzio Parmigiano Reggiano DOP / Consorzio Pecorino Romano DOP",
+    "sourceUrl": "https://www.parmigianoreggiano.com/",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "cream-not-carbonara",
+    "title": "Smetana se v tradiční carbonaře nepoužívá",
+    "category": "časté náhražky",
+    "text": "Tradiční římská carbonara má krémovost ze žloutku, sýra a škrobové vody z těstovin. U penne alla panna je smetana legitimní; u carbonary podle Accademia Italiana della Cucina ne.",
+    "sourceName": "Accademia Italiana della Cucina + GialloZafferano",
+    "sourceUrl": "https://www.giallozafferano.it/ricette/Pasta-alla-carbonara.html",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "guanciale-not-ham",
+    "title": "Guanciale (vepřové tváře), ne šunka",
+    "category": "časté náhražky",
+    "text": "U carbonary, amatriciany a gricia je guanciale základ. Pancetta se akceptuje jako náhrada, šunka už ne — jiná chuť, jiná textura, jiný tuk. STG specifikace amatriciany tradiční verzi vyžaduje.",
+    "sourceName": "STG specifikace EU 2020 (amatriciana) + Accademia Italiana della Cucina",
+    "sourceUrl": "https://www.giallozafferano.it/ricette/Bucatini-all-amatriciana.html",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "ricotta-not-lasagne",
+    "title": "Ricotta v lasagne = americká adaptace",
+    "category": "časté náhražky",
+    "text": "Tradiční Bologna lasagne mají besciamellu (mléčný roux). Ricotta v lasagne je americká adaptace, ne původní italský recept podle Accademia Italiana della Cucina.",
+    "sourceName": "Accademia Italiana della Cucina",
+    "sourceUrl": "https://www.accademiaitalianadellacucina.it/",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "no-garlic-roman-classics",
+    "title": "Římské klasiky nejsou s česnekem",
+    "category": "časté náhražky",
+    "text": "Carbonara, cacio e pepe, amatriciana podle tradičních zdrojů česnek nemají. Strohé recepty se neměly by „doplňovat pro chuť“. Aglio e olio, vongole, marinara naopak česnek vyžadují.",
+    "sourceName": "Accademia Italiana della Cucina",
+    "sourceUrl": "https://www.accademiaitalianadellacucina.it/",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "olive-oil-role",
+    "title": "Extra panenský olivový olej v italské kuchyni",
+    "category": "kvalita surovin",
+    "text": "Extra panenský olivový olej má v italské kuchyni jinou roli než neutrální slunečnicový olej. Hlavně tam, kde olej zůstává surový (pesto, finiš talíře, salát), je rozdíl výrazný.",
+    "sourceName": "Italia.it / oficiální turistický portál",
+    "sourceUrl": "https://italia.it",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "dop-igp-stg-protection",
+    "title": "DOP / IGP / STG — chráněná označení",
+    "category": "kvalita surovin",
+    "text": "DOP (Denominazione di Origine Protetta), IGP (Indicazione Geografica Protetta) a STG (Specialità Tradizionale Garantita) jsou EU označení chráněné metody výroby. „Sýr typu parmezán“ není totéž jako Parmigiano Reggiano DOP.",
+    "sourceName": "Qualigeo.eu + Ministero del Turismo",
+    "sourceUrl": "https://www.qualigeo.eu",
+    "status": "OVĚŘENO"
+  },
+  {
+    "id": "tradition-vs-home",
+    "title": "Tradiční recept vs. domácí verze",
+    "category": "filosofie kuchyně",
+    "text": "Domácí úprava není hřích. Pravidlo: pokud nahradíme hlavní surovinu, je to domácí verze nebo „inspirace Itálií“, ne tradiční italský recept. Charakter receptu se mění s každou náhradou.",
+    "sourceName": "Princip respektovaný italskými kulinárními autoritami",
+    "sourceUrl": "https://www.accademiaitalianadellacucina.it/",
+    "status": "OVĚŘENO"
+  }
+]
