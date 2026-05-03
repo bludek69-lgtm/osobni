@@ -72,6 +72,18 @@ PAGES = [
         'depth':     2,
     },
     {
+        'rel':       'cestovani/finsko/index.html',
+        'theme':     'travel',
+        'title':     'Finsko — Cestování — Luděk',
+        'depth':     2,
+    },
+    {
+        'rel':       'cestovani/uk/index.html',
+        'theme':     'travel',
+        'title':     'Velká Británie — Cestování — Luděk',
+        'depth':     2,
+    },
+    {
         'rel':       'cestovani/norsko/index.html',
         'theme':     'travel',
         'title':     'Norsko — Cestování — Luděk',
