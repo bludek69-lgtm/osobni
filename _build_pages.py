@@ -66,6 +66,12 @@ PAGES = [
         'depth':     2,
     },
     {
+        'rel':       'cestovani/rusko/index.html',
+        'theme':     'travel',
+        'title':     'Rusko — Cestování — Luděk',
+        'depth':     2,
+    },
+    {
         'rel':       'cestovani/pracovni-cesty/index.html',
         'theme':     'travel',
         'title':     'Pracovní cesty řidiče — Cestování — Luděk',
