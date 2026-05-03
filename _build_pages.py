@@ -66,6 +66,12 @@ PAGES = [
         'depth':     2,
     },
     {
+        'rel':       'cestovani/bosna/index.html',
+        'theme':     'travel',
+        'title':     'Bosna a Hercegovina — Cestování — Luděk',
+        'depth':     2,
+    },
+    {
         'rel':       'cestovani/rusko/index.html',
         'theme':     'travel',
         'title':     'Rusko — Cestování — Luděk',
