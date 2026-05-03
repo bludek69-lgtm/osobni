@@ -66,6 +66,18 @@ PAGES = [
         'depth':     2,
     },
     {
+        'rel':       'cestovani/pracovni-cesty/index.html',
+        'theme':     'travel',
+        'title':     'Pracovní cesty řidiče — Cestování — Luděk',
+        'depth':     2,
+    },
+    {
+        'rel':       'cestovani/pracovni-cesty/autobusy/index.html',
+        'theme':     'travel',
+        'title':     'Autobusy, se kterými jsem jezdil — Luděk',
+        'depth':     3,
+    },
+    {
         'rel':       'smart-home/index.html',
         'theme':     'smart-home',
         'title':     'Smart Home — Luděk',

@@ -1,0 +1,19 @@
+[
+  {"id":"vienna-2019-04","country":"Rakousko","city":"Vídeň","lat":48.205,"lng":16.362,"date":"2019-04","photoCount":2,"category":"pracovni-cesty","note":"Pracovní cesta — Maria Theresien Platz, Vega Tour"},
+  {"id":"mestre-2019-05","country":"Itálie","city":"Mestre","lat":45.475,"lng":12.211,"date":"2019-05","photoCount":1,"category":"pracovni-cesty","note":"Parkoviště u Benátek — Vega Tour"},
+  {"id":"venezia-2019-05","country":"Itálie","city":"Benátky","lat":45.441,"lng":12.310,"date":"2019-05","photoCount":2,"category":"pracovni-cesty","note":"Pracovní cesta — Piazzale Roma"},
+  {"id":"firenze-2019-05","country":"Itálie","city":"Florencie","lat":43.704,"lng":11.463,"date":"2019-05","photoCount":1,"category":"pracovni-cesty","note":"Toskánská cesta"},
+  {"id":"toscana-2019-05","country":"Itálie","city":"Toskánsko","lat":43.85,"lng":11.353,"date":"2019-05","photoCount":2,"category":"pracovni-cesty","note":"Toskánsko vnitrozemí"},
+  {"id":"alps-2019-07","country":"Švýcarsko/Itálie","city":"Alpský průsmyk","lat":46.577,"lng":8.388,"date":"2019-07","photoCount":1,"category":"pracovni-cesty","note":"Alpský přejezd"},
+  {"id":"frankfurt-2019-05","country":"Německo","city":"Frankfurt am Main","lat":50.054,"lng":8.591,"date":"2019-05","photoCount":2,"category":"pracovni-cesty","note":"Tranzit přes Frankfurt"},
+  {"id":"koln-2019-06","country":"Německo","city":"Köln am Rhein","lat":50.952,"lng":6.969,"date":"2019-06","photoCount":3,"category":"pracovni-cesty","note":"Viking bus, Köln centrum"},
+  {"id":"mosel-2019-06","country":"Německo","city":"Mosel / Hunsrück","lat":50.137,"lng":7.727,"date":"2019-06","photoCount":1,"category":"pracovni-cesty","note":"Pracovní zastávka"},
+  {"id":"heidelberg-2019-06","country":"Německo","city":"Heidelberg oblast","lat":49.414,"lng":8.764,"date":"2019-06","photoCount":1,"category":"pracovni-cesty","note":"Trasa Heidelberg"},
+  {"id":"stuttgart-2019-06","country":"Německo","city":"Stuttgart oblast","lat":49.144,"lng":9.212,"date":"2019-06","photoCount":1,"category":"pracovni-cesty","note":"Trasa Stuttgart"},
+  {"id":"frankfurt-airport-2019-07","country":"Německo","city":"Frankfurt FRA","lat":50.109,"lng":8.679,"date":"2019-07","photoCount":3,"category":"pracovni-cesty","note":"Frankfurt letiště / okolí"},
+  {"id":"bayern-2019-04","country":"Německo","city":"Bavorsko","lat":47.792,"lng":12.993,"date":"2019-04","photoCount":1,"category":"pracovni-cesty","note":"Chiemgau oblast"},
+  {"id":"konstanz-2019-06","country":"Německo","city":"Bodensee oblast","lat":47.696,"lng":9.258,"date":"2019-06","photoCount":1,"category":"pracovni-cesty","note":"Bodamské jezero"},
+  {"id":"drazdany-2019-06","country":"Německo","city":"Drážďany","lat":51.054,"lng":13.736,"date":"2019-06","photoCount":1,"category":"pracovni-cesty","note":"Sasko"},
+  {"id":"liberec-2018-05","country":"Česko","city":"Liberecko / Krkonoše","lat":50.638,"lng":15.216,"date":"2018-05","photoCount":2,"category":"pracovni-cesty","note":"Domovský region"},
+  {"id":"semily-2021-08","country":"Česko","city":"Semilsko","lat":50.316,"lng":15.379,"date":"2021-08","photoCount":1,"category":"pracovni-cesty","note":"Místní"}
+]
