@@ -60,6 +60,12 @@ PAGES = [
         'depth':     2,
     },
     {
+        'rel':       'cestovani/italie/jih/index.html',
+        'theme':     'italy',
+        'title':     'Itálie — Jih — Cestování — Luděk',
+        'depth':     3,
+    },
+    {
         'rel':       'cestovani/italie/kuchyne.html',
         'theme':     'italy',
         'title':     'Italská kuchyně — Itálie — Luděk',
