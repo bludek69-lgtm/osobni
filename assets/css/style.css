@@ -724,12 +724,22 @@ body.theme-italy .youtube-subscribe::before {
 .pasta-guide { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; margin: 1.5rem 0; }
 @media (max-width: 1024px) { .pasta-guide { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 @media (max-width: 640px) { .pasta-guide { grid-template-columns: 1fr; } }
-.pasta-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(0,140,69,0.18); border-radius: 10px; padding: 1rem; }
-.pasta-card .pasta-icon {
+.pasta-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(0,140,69,0.18); border-radius: 10px; padding: 1rem; overflow: hidden; }
+.pasta-card div.pasta-icon {
+  /* Emoji-text fallback (jen fusilli) */
   display: flex; align-items: center; justify-content: center;
-  height: 64px; margin-bottom: 0.5rem;
+  height: 140px; margin: -1rem -1rem 0.75rem -1rem;
   background: linear-gradient(135deg, rgba(0,140,69,0.08), rgba(206,17,38,0.05));
-  border-radius: 6px; font-size: 2.5rem;
+  font-size: 3rem;
+}
+img.pasta-icon {
+  /* Realna foto z Wikipedia */
+  display: block;
+  width: calc(100% + 2rem);
+  height: 140px;
+  object-fit: cover;
+  margin: -1rem -1rem 0.75rem -1rem;
+  background: #1a1814;
 }
 .pasta-card h4 { margin: 0 0 0.3rem; color: #ce1126; }
 .pasta-card p { font-size: 0.85rem; margin: 0.3rem 0; }
