@@ -72,6 +72,12 @@ PAGES = [
         'depth':     2,
     },
     {
+        'rel':       'cestovani/irsko/index.html',
+        'theme':     'travel',
+        'title':     'Irsko — Cestování — Luděk',
+        'depth':     2,
+    },
+    {
         'rel':       'cestovani/finsko/index.html',
         'theme':     'travel',
         'title':     'Finsko — Cestování — Luděk',
