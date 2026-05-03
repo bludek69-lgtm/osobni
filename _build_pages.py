@@ -60,6 +60,12 @@ PAGES = [
         'depth':     2,
     },
     {
+        'rel':       'cestovani/italie/kuchyne.html',
+        'theme':     'italy',
+        'title':     'Italská kuchyně — Itálie — Luděk',
+        'depth':     2,
+    },
+    {
         'rel':       'smart-home/index.html',
         'theme':     'smart-home',
         'title':     'Smart Home — Luděk',

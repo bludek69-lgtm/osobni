@@ -1,0 +1,132 @@
+[
+  {
+    "id": "spaghetti",
+    "name": "Spaghetti",
+    "type": "dlouhé těstoviny",
+    "region": "celá Itálie / Lazio / Campania",
+    "bestWith": ["rajčatové omáčky", "olejové omáčky (aglio e olio)", "ryby a mořské plody (vongole)", "carbonara"],
+    "exampleDish": "Spaghetti alla carbonara",
+    "sourceName": "Italia.it / Unione Italiana Food",
+    "sourceUrl": "https://www.welovepasta.it"
+  },
+  {
+    "id": "bucatini",
+    "name": "Bucatini",
+    "type": "dlouhé těstoviny s otvorem uvnitř",
+    "region": "Lazio",
+    "bestWith": ["amatriciana", "cacio e pepe", "rajčatové omáčky"],
+    "exampleDish": "Bucatini all'amatriciana",
+    "sourceName": "Unione Italiana Food",
+    "sourceUrl": "https://www.welovepasta.it"
+  },
+  {
+    "id": "rigatoni",
+    "name": "Rigatoni",
+    "type": "krátké široké rýhované",
+    "region": "Lazio / Campania",
+    "bestWith": ["hutné masové ragù", "carbonara (římská preference)", "amatriciana"],
+    "exampleDish": "Rigatoni alla carbonara",
+    "sourceName": "Unione Italiana Food",
+    "sourceUrl": "https://www.welovepasta.it"
+  },
+  {
+    "id": "penne",
+    "name": "Penne",
+    "type": "krátké šikmo zaříznuté",
+    "region": "celá Itálie",
+    "bestWith": ["arrabbiata", "alla vodka", "pomodoro", "alla panna", "salát"],
+    "exampleDish": "Penne all'arrabbiata",
+    "sourceName": "Unione Italiana Food",
+    "sourceUrl": "https://www.welovepasta.it"
+  },
+  {
+    "id": "fusilli",
+    "name": "Fusilli",
+    "type": "krátké spirálovité",
+    "region": "celá Itálie / Campania",
+    "bestWith": ["studené saláty", "rajčatové omáčky", "pesto", "ricotta"],
+    "exampleDish": "Fusilli al pesto",
+    "sourceName": "Unione Italiana Food",
+    "sourceUrl": "https://www.welovepasta.it"
+  },
+  {
+    "id": "farfalle",
+    "name": "Farfalle (motýlky)",
+    "type": "krátké tvarované",
+    "region": "Emilia-Romagna / Lombardia",
+    "bestWith": ["lehké smetanové", "salát", "pesto", "lososové"],
+    "exampleDish": "Farfalle al salmone",
+    "sourceName": "Unione Italiana Food",
+    "sourceUrl": "https://www.welovepasta.it"
+  },
+  {
+    "id": "lasagne",
+    "name": "Lasagne",
+    "type": "široké pláty na zapékání",
+    "region": "Emilia-Romagna",
+    "bestWith": ["ragù alla bolognese + besciamella"],
+    "exampleDish": "Lasagne al forno alla bolognese",
+    "sourceName": "Accademia Italiana della Cucina",
+    "sourceUrl": "https://www.accademiaitalianadellacucina.it"
+  },
+  {
+    "id": "tagliatelle",
+    "name": "Tagliatelle",
+    "type": "dlouhé ploché vaječné",
+    "region": "Emilia-Romagna",
+    "bestWith": ["ragù alla bolognese", "funghi porcini", "tartufo"],
+    "exampleDish": "Tagliatelle al ragù",
+    "sourceName": "Accademia Italiana della Cucina",
+    "sourceUrl": "https://www.accademiaitalianadellacucina.it"
+  },
+  {
+    "id": "pappardelle",
+    "name": "Pappardelle",
+    "type": "dlouhé široké vaječné",
+    "region": "Toskánsko",
+    "bestWith": ["zvěřinové ragù (cinghiale, lepre, hovězí)", "houby"],
+    "exampleDish": "Pappardelle al cinghiale",
+    "sourceName": "Italia.it",
+    "sourceUrl": "https://italia.it"
+  },
+  {
+    "id": "orecchiette",
+    "name": "Orecchiette (malé uši)",
+    "type": "krátké tvarované",
+    "region": "Apulie / Puglia",
+    "bestWith": ["broccoli rabe (cima di rapa)", "ragù z koňského masa", "paradajková omáčka"],
+    "exampleDish": "Orecchiette alle cime di rapa",
+    "sourceName": "Italia.it",
+    "sourceUrl": "https://italia.it"
+  },
+  {
+    "id": "trofie",
+    "name": "Trofie",
+    "type": "krátké kroucené",
+    "region": "Liguria",
+    "bestWith": ["pesto alla genovese (klasický pár)", "+ brambory + zelené fazolky"],
+    "exampleDish": "Trofie al pesto",
+    "sourceName": "Italia.it",
+    "sourceUrl": "https://italia.it"
+  },
+  {
+    "id": "paccheri",
+    "name": "Paccheri",
+    "type": "velké duté trubky",
+    "region": "Campania",
+    "bestWith": ["mořské plody", "ragù", "sýrová náplň"],
+    "exampleDish": "Paccheri ai frutti di mare",
+    "sourceName": "Italia.it",
+    "sourceUrl": "https://italia.it"
+  },
+  {
+    "id": "gnocchi",
+    "name": "Gnocchi",
+    "type": "bramborové knedlíčky",
+    "region": "Liguria / Lazio / sever",
+    "bestWith": ["pesto (Liguria)", "sugo / amatriciana (Lazio)", "gorgonzola", "burro e salvia"],
+    "exampleDish": "Gnocchi al pesto",
+    "sourceName": "Italia.it",
+    "sourceUrl": "https://italia.it"
+  }
+]
