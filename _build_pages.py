@@ -83,6 +83,12 @@ PAGES = [
         'title':     'Smart Home — Luděk',
         'depth':     1,
     },
+    {
+        'rel':       'zaliby/rybareni/index.html',
+        'theme':     'travel',
+        'title':     'Rybaření — Luděk',
+        'depth':     2,
+    },
 ]
 
 # ─── NAV ITEMS (single nav for all pages) ────────────────────
@@ -92,6 +98,7 @@ NAV = [
     ('Finance',    'finance/'),
     ('Cestování',  'cestovani/'),
     ('Itálie',     'cestovani/italie/'),
+    ('Rybaření',   'zaliby/rybareni/'),
     ('Smart Home', 'smart-home/'),
 ]
 
