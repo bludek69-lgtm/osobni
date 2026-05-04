@@ -60,6 +60,12 @@ PAGES = [
         'depth':     2,
     },
     {
+        'rel':       'cestovani/italie/toskansko/index.html',
+        'theme':     'italy',
+        'title':     'Itálie — Toskánsko — Cestování — Luděk',
+        'depth':     3,
+    },
+    {
         'rel':       'cestovani/italie/jih/index.html',
         'theme':     'italy',
         'title':     'Itálie — Jih — Cestování — Luděk',
