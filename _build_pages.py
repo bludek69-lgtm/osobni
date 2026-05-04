@@ -84,6 +84,12 @@ PAGES = [
         'depth':     2,
     },
     {
+        'rel':       'cestovani/francie/index.html',
+        'theme':     'travel',
+        'title':     'Francie — Cestování — Luděk',
+        'depth':     2,
+    },
+    {
         'rel':       'cestovani/nemecko/index.html',
         'theme':     'travel',
         'title':     'Německo — Cestování — Luděk',
