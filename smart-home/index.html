@@ -31,68 +31,89 @@
 <main id="main">
   <section class="hero">
     <span class="hero-accent">Smart Home</span>
-    <h1>Vlastní systém na Homey Pro 2026</h1>
+    <h1>Dům, který si rozumí sám se sebou</h1>
     <p class="hero-sub">
-      Roky budovaný systém, který sám rozhoduje, šetří energii a respektuje rytmy domu.
-      Žádná univerzální appka — vlastní logika, AI vrstvy a stovky scriptů.
+      Roky stavím systém, který se sám stará o topení, světla, kávu a rytmus dne.
+      Žádná univerzální appka — domácnost, která zná moje zvyky a sama si všímá, když je něco divně.
     </p>
   </section>
 
   <section class="prose">
-    <h2>O čem to je</h2>
+    <h2>Co to umí v praxi</h2>
     <p>
-      Můj smart home není „zapnu světlo aplikací". Je to systém, který poznává, jestli jsem doma,
-      jestli spím, kdy se vracím, jaké je počasí — a podle toho sám reaguje. Topení, světla,
-      audio, kamery, senzory. Všechno propojené přes vlastní logiku, ne přes cizí cloud.
+      Domácnost nečeká, až sáhnu po telefonu. Sleduje víc signálů najednou — jestli jsem doma,
+      jestli spím, jestli je ráno, kde se hýbu — a podle toho rozhoduje sama. Pár příkladů:
     </p>
+    <ul style="line-height:1.9;">
+      <li>🌅 <strong>Ráno v 3:15</strong> — když budík zazvoní a já se hnu z postele, spustí se rádio
+        v kuchyni, jemně rozsvítí ložnice, připraví kávu. Kde nejsem, tam svítit nezačne.</li>
+      <li>🛏 <strong>Noc</strong> — když si zajdu na záchod, nezapne se „celá ranní rutina".
+        Systém pozná, že jen procházím, a po pár minutách zase utlumí.</li>
+      <li>🔥 <strong>Topení</strong> — každá zóna má vlastní rozvrh. Když jsem pryč, sníží teplotu.
+        Když přijdu domů, zahřeje koupelnu. Šetrnější než celodenní 24°C.</li>
+      <li>🚪 <strong>Příchod domů</strong> — telefon přijde do dosahu, dům přepne do „doma" módu,
+        nahodí audio podle denní doby, zkontroluje rolety a okna.</li>
+      <li>🤖 <strong>Anomálie</strong> — když se něco děje divně (alarm v 3 ráno + nikde žádný pohyb,
+        nebo světla zůstávají svítit když jsem pryč), systém si toho všimne a pošle mi push.</li>
+    </ul>
     <p>
-      Postavený na <strong>Homey Pro 2026</strong>, doplněný vrstvou vlastních HomeyScript skriptů
-      a AI brain, který detekuje anomálie, předvídá stavy a odhaluje regrese. Reálná data
-      tečou do Google Sheets — pro audit, learning a long-term tuning.
+      Cíl: méně klikání po vypínačích, víc klidu. Dům si rozumí sám se sebou.
     </p>
   </section>
 
   <section>
-    <h2>Co tam najdeš</h2>
+    <h2>Co všechno řídí</h2>
     <div class="cards-grid">
       <div class="card">
-        <div class="card-icon">🏠</div>
-        <h3>Architektura</h3>
-        <p>Request-first pipeline, device map, sleep state, scéna engine. Jak je to navržené.</p>
-      </div>
-      <div class="card">
         <div class="card-icon">🔥</div>
-        <h3>Topení</h3>
-        <p>4-zónový systém s vlastním rozvrhem, anti-cycling, AI vrstvy, runtime-based kWh.</p>
+        <h3>Topení &amp; klima</h3>
+        <p>4 zóny s vlastním rozvrhem. Tři režimy (Auto / Manuál / Off). Šetrnější než celodenní jedno tlačítko.</p>
       </div>
       <div class="card">
         <div class="card-icon">💡</div>
         <h3>Světla</h3>
-        <p>Dual-sensor open space, lux-driven automatika, privacy guard. 4-vrstvá pipeline.</p>
+        <p>Stmívají se podle denní doby a venkovního světla. Když jsem pryč nebo spím, samy se vypnou.</p>
       </div>
       <div class="card">
-        <div class="card-icon">🧠</div>
-        <h3>AI Brain</h3>
-        <p>Brain Guardian, anomaly detection, multi-signal wake/sleep, predikce stavů.</p>
+        <div class="card-icon">🔊</div>
+        <h3>Audio &amp; ranní rutina</h3>
+        <p>Rádio v kuchyni, jemný briefing, hudba podle scény. Nikdy nezačne hrát, když spím.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛡</div>
+        <h3>Bezpečnost</h3>
+        <p>Pohyb, dveře, okna, kamery. Když je něco mimo normál, dostanu zprávu na telefon.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Energie</h3>
+        <p>Sleduje spotřebu spotřebičů. Předem vidím, kolik kWh stojí kotel, lednice nebo varná deska.</p>
       </div>
       <div class="card">
         <div class="card-icon">📊</div>
         <h3>Dashboardy</h3>
-        <p>3 displeje (32" 2880×1800, 14" 1920×1080, RPi WaveShare 1024×600). Drag/drop layout editor.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">📝</div>
-        <h3>Build log</h3>
-        <p>Pravidelné poznámky o tom, co se měnilo, co se rozbilo a jak se to fixovalo.</p>
+        <p>Tři displeje (velký monitor, notebook, RPi v kuchyni). Stav celého domu na jeden pohled.</p>
       </div>
     </div>
   </section>
 
-  <section class="external-cta">
-    <h2>Otevřít Smart Home web</h2>
+  <section class="prose">
+    <h2>Pod pokličkou (pro techniky)</h2>
     <p>
-      Plný popis systému, dashboardy, blog a build log žijí na samostatném webu —
-      jako technický projekt s vlastní strukturou.
+      Postavené na <strong>Homey Pro 2026</strong> + vlastní vrstvě HomeyScriptů.
+      Architektura: <em>request-first pipeline</em> (skripty žádají, router rozhoduje),
+      device map jako single source of truth, multi-signal sleep/wake state machine,
+      brain guardian pro detekci anomálií a regression. Data tečou do Google Sheets
+      pro audit, learning a long-term tuning. Mobile push přes Homey notifications API.
+      Kompletní popis systému, build log a dashboardy najdeš na samostatném webu níž.
+    </p>
+  </section>
+
+  <section class="external-cta">
+    <h2>Plný technický web</h2>
+    <p>
+      Architektura, dashboardy, blog a build log mají vlastní stránku —
+      smart-home-website běží jako technický projekt.
     </p>
     <p style="margin-top: 1.5rem;">
       <a href="https://bludek69-lgtm.github.io/smart-home-website/" target="_blank" rel="noopener" class="btn btn-primary">
