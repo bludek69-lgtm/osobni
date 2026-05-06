@@ -127,6 +127,96 @@
   </section>
 
   <section>
+    <h2>🧪 Interaktivní účetní kniha — DEMO</h2>
+    <p>
+      Vedle psaní si vedu i vlastní finanční dashboard — jednu HTML stránku, která spojí
+      bankovní výpisy, brokerské účty, krypto a daně do jednoho přehledu. Níže je
+      <strong>plně funkční ukázka</strong> s anonymními daty, kterou si můžeš proklikat
+      přímo v prohlížeči. Žádná registrace, žádný cloud — vše běží lokálně u tebe.
+    </p>
+
+    <div class="cards-grid" style="margin-top:1.2rem;">
+      <a href="demo/Ucetni_kniha_v4.html" class="card" style="text-decoration:none; color:inherit; border-left:4px solid var(--accent);">
+        <div class="card-icon">🔍</div>
+        <h3>Otevřít interaktivní demo →</h3>
+        <p>
+          25+ stránek (KPI dashboard, cashflow, portfolio, daňové prahy, lock-in tracker…).
+          Single-file HTML, ~390 KB, vanilla JS + Chart.js. Otevře se v novém okně.
+        </p>
+        <p style="font-size:0.85rem; color:var(--text-mut); margin-top:0.6rem;">
+          🔒 Všechna data jsou ukázková (deterministicky generovaná, seed=42). Žádné moje reálné finance.
+        </p>
+      </a>
+    </div>
+
+    <h3 style="margin-top:2rem;">Jak to funguje pod kapotou</h3>
+    <p>
+      Cílem byl <strong>jeden přehled</strong> místo skákání mezi pěti aplikacemi
+      banky, brokera a krypto burzy. Architektura je úmyslně jednoduchá:
+    </p>
+    <ol>
+      <li>
+        <strong>Master tabulka v Excelu</strong> (~41 listů) — sem padají všechny zdroje:
+        bankovní výpisy z 5 bank, statementy od 5 brokerů (XTB, T212, eToro, TastyTrade, IB),
+        krypto exporty (Anycoin, Binance, OKX…), výplatní pásky, IOLDP od ČSSZ.
+      </li>
+      <li>
+        <strong>Python agreguje xlsx → JSON snapshot</strong> (~1 MB).
+        Spočítá KPI per period (L12M / L6M / YTD…), net worth time series za 24 měsíců,
+        portfolio breakdown podle třídy / měny / regionu, lock-in tracker (kdy bude
+        která pozice osvobozená dle § 4 ZDP).
+      </li>
+      <li>
+        <strong>JSON je embedded přímo do HTML</strong> jako <code>window.__FINANCE__</code>.
+        Single-file deployment — všechno (HTML, CSS, JS, data, Chart.js) v jednom souboru.
+        Můžeš ho otevřít z USB, z e-mailu, odkudkoliv.
+      </li>
+      <li>
+        <strong>Auto-verify skript</strong> každý den kontroluje data proti realitě:
+        rolling periody, věk, lock-in <code>days_left</code>, blížící se termíny daní.
+        Změny se logují do interního audit logu.
+      </li>
+      <li>
+        <strong>Volitelný Python server</strong> (<code>tools/serve.py</code>) přidává tlačítka
+        „obnovit ceny" — krypto se táhne ze CoinGecke, akcie ze Stooq, vše zdarma bez API klíčů.
+      </li>
+    </ol>
+
+    <h3 style="margin-top:2rem;">📨 Automatizace: jak se faktury dostávají z e-mailu</h3>
+    <p>
+      Ručně stahovat faktury z e-mailu, ukládat na disk a ručně commitovat do Gitu mě časem
+      přestalo bavit. Vznikla z toho malá pipeline, která běží 24/7 na Raspberry Pi
+      (Home Assistant) a v podstatě supluje sekretářku:
+    </p>
+
+    <div style="background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:1.2rem; margin:1rem 0; font-family:ui-monospace, 'Cascadia Code', Consolas, monospace; font-size:0.88rem; line-height:1.7; overflow-x:auto;">
+      <strong>📧 Gmail (IMAP, hodinový cron na RPi)</strong><br>
+      &nbsp;&nbsp;&nbsp;↓ &nbsp;&nbsp;&nbsp;<em>strict whitelist (odesílatel × klíčová slova × příloha PDF/XLSX)</em><br>
+      <strong>🔍 Filtr: faktury, výpisy, daňové dokumenty</strong><br>
+      &nbsp;&nbsp;&nbsp;↓ &nbsp;&nbsp;&nbsp;<em>uložení do <code>nove/</code> + tracking ID, aby nevyletělo 2×</em><br>
+      <strong>🔐 Šifrování (transcrypt, AES-256-CBC)</strong><br>
+      &nbsp;&nbsp;&nbsp;↓ &nbsp;&nbsp;&nbsp;<em>citlivé soubory zašifrované per-file před commitem</em><br>
+      <strong>📦 Git push do soukromého repa</strong><br>
+      &nbsp;&nbsp;&nbsp;↓ &nbsp;&nbsp;&nbsp;<em>pull na PC v noci → ranní snídaně se synchronizovanými daty</em><br>
+      <strong>📊 Ruční klasifikace v cowork režimu s asistentem</strong>
+    </div>
+
+    <p>
+      <strong>Co to řeší v praxi:</strong> faktury z mobilního operátora, výpisy z bank,
+      statementy od brokerů, podklady pro daňové přiznání — to všechno doteče samo do jedné
+      složky a večer to zkontroluju. Když e-mail nematchuje whitelist, watcher ho ignoruje.
+      Žádné AI rozhodování, jen přísný filtr na známé odesílatele a typ přílohy.
+    </p>
+
+    <p style="font-size:0.93rem; color:var(--text-mut); padding:0.8rem 1rem; border-left:3px solid var(--accent); margin-top:1rem;">
+      🛡️ <strong>Privacy first.</strong> Žádné moje reálné finanční číslo neopustí domácí síť.
+      Sync mezi RPi a notebookem jede po Tailscale VPN, repozitář je privátní a navíc
+      zašifrovaný transcryptem. Demo výše je vygenerované skriptem se seed=42 —
+      deterministické a bez vazby na realitu.
+    </p>
+  </section>
+
+  <section>
     <div class="disclaimer">
       <strong>Důležité upozornění.</strong>
       Obsah této stránky představuje osobní pohled a zkušenosti. Nejde o investiční doporučení,

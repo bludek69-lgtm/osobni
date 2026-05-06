@@ -1,0 +1,2643 @@
+{
+  "meta": {
+    "generated": "2026-05-06T06:31:09",
+    "today": "2026-05-06",
+    "version": "4.11-demo",
+    "name": "Jan Novák",
+    "birth": "1980-03-15",
+    "age": 46,
+    "years_to_goal": 19,
+    "goal": 5000000,
+    "last_verify": "2026-05-06T06:31:09",
+    "data_through": "2026-05-01",
+    "demo": true,
+    "demo_note": "Toto jsou ukazkova FAKE data pro web showcase. Zadne realne osobni udaje."
+  },
+  "periods": {
+    "L12M": {
+      "start": "2025-05-06",
+      "end": "2026-05-06"
+    },
+    "L6M": {
+      "start": "2025-11-04",
+      "end": "2026-05-06"
+    },
+    "L3M": {
+      "start": "2026-02-05",
+      "end": "2026-05-06"
+    },
+    "2025": {
+      "start": "2025-01-01",
+      "end": "2025-12-31"
+    },
+    "2026": {
+      "start": "2026-01-01",
+      "end": "2026-05-06"
+    },
+    "ALL": {
+      "start": "2020-01-01",
+      "end": "2026-05-06"
+    }
+  },
+  "kpis": {
+    "L12M": {
+      "period_start": "2025-05-06",
+      "period_end": "2026-05-06",
+      "monthly_income_net": 52000,
+      "monthly_expenses_op": 32000,
+      "monthly_savings": 20000,
+      "savings_rate_pct": 38.5,
+      "total_invested": 240000,
+      "total_in": 624000,
+      "total_out": 384000
+    },
+    "L6M": {
+      "period_start": "2025-11-04",
+      "period_end": "2026-05-06",
+      "monthly_income_net": 53500,
+      "monthly_expenses_op": 31200,
+      "monthly_savings": 22300,
+      "savings_rate_pct": 41.7
+    },
+    "L3M": {
+      "period_start": "2026-02-05",
+      "period_end": "2026-05-06",
+      "monthly_income_net": 55000,
+      "monthly_expenses_op": 30500,
+      "monthly_savings": 24500,
+      "savings_rate_pct": 44.5
+    },
+    "2025": {
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "monthly_income_net": 50500,
+      "monthly_expenses_op": 33100,
+      "monthly_savings": 17400,
+      "savings_rate_pct": 34.4
+    },
+    "2026": {
+      "period_start": "2026-01-01",
+      "period_end": "2026-05-06",
+      "monthly_income_net": 54200,
+      "monthly_expenses_op": 31800,
+      "monthly_savings": 22400,
+      "savings_rate_pct": 41.3
+    },
+    "ALL": {
+      "period_start": "2020-01-01",
+      "period_end": "2026-05-06",
+      "monthly_income_net": 47800,
+      "monthly_expenses_op": 30900,
+      "monthly_savings": 16900,
+      "savings_rate_pct": 35.4
+    }
+  },
+  "portfolio": {
+    "total_value": 1235000,
+    "by_class": [
+      {
+        "name": "Akcie & ETF (broker)",
+        "value": 580000,
+        "pct": 47.0,
+        "color": "#3b82f6"
+      },
+      {
+        "name": "Krypto",
+        "value": 185000,
+        "pct": 15.0,
+        "color": "#f59e0b"
+      },
+      {
+        "name": "Penzijni sporeni",
+        "value": 175000,
+        "pct": 14.2,
+        "color": "#10b981"
+      },
+      {
+        "name": "Sporici ucty",
+        "value": 145000,
+        "pct": 11.7,
+        "color": "#8b5cf6"
+      },
+      {
+        "name": "Zlato fyzicke",
+        "value": 80000,
+        "pct": 6.5,
+        "color": "#eab308"
+      },
+      {
+        "name": "P2P investice",
+        "value": 45000,
+        "pct": 3.6,
+        "color": "#ef4444"
+      },
+      {
+        "name": "Cash hotovost",
+        "value": 25000,
+        "pct": 2.0,
+        "color": "#6b7280"
+      }
+    ],
+    "by_platform": [
+      {
+        "name": "Demo Broker A",
+        "value": 380000,
+        "currency": "USD"
+      },
+      {
+        "name": "Demo Broker B",
+        "value": 200000,
+        "currency": "EUR"
+      },
+      {
+        "name": "Demo Crypto",
+        "value": 185000,
+        "currency": "BTC/ETH"
+      },
+      {
+        "name": "Demo Penzijni",
+        "value": 175000,
+        "currency": "CZK"
+      },
+      {
+        "name": "Demo Sporici A",
+        "value": 90000,
+        "currency": "CZK"
+      },
+      {
+        "name": "Demo Sporici B",
+        "value": 55000,
+        "currency": "CZK"
+      },
+      {
+        "name": "Zlato",
+        "value": 80000,
+        "currency": "Au"
+      },
+      {
+        "name": "Demo P2P",
+        "value": 45000,
+        "currency": "CZK"
+      },
+      {
+        "name": "Cash",
+        "value": 25000,
+        "currency": "CZK"
+      }
+    ]
+  },
+  "debt": {
+    "total": 85000,
+    "loans": [
+      {
+        "name": "Demo Loan A",
+        "balance": 85000,
+        "rate": 8.9,
+        "monthly": 4200
+      }
+    ]
+  },
+  "krypto_holdings": [
+    {
+      "symbol": "BTC",
+      "amount": 0.085,
+      "value_usd": 6800,
+      "value_kc": 158000,
+      "platform": "Demo HW Wallet"
+    },
+    {
+      "symbol": "ETH",
+      "amount": 0.92,
+      "value_usd": 3220,
+      "value_kc": 74800,
+      "platform": "Demo HW Wallet"
+    },
+    {
+      "symbol": "ADA",
+      "amount": 1500,
+      "value_usd": 675,
+      "value_kc": 15600,
+      "platform": "Demo Exchange"
+    },
+    {
+      "symbol": "SOL",
+      "amount": 8.5,
+      "value_usd": 1700,
+      "value_kc": 39400,
+      "platform": "Demo Exchange"
+    },
+    {
+      "symbol": "DOT",
+      "amount": 120,
+      "value_usd": 720,
+      "value_kc": 16700,
+      "platform": "Demo Exchange"
+    }
+  ],
+  "tax": {
+    "year": 2025,
+    "dap_required": false,
+    "celkovy_zaklad": 0
+  },
+  "penzijko_history": [
+    {
+      "year": 2020,
+      "vklady": 36000,
+      "stat_prispevek": 4080,
+      "zhodnoceni": 5500
+    },
+    {
+      "year": 2021,
+      "vklady": 36000,
+      "stat_prispevek": 4080,
+      "zhodnoceni": 5500
+    },
+    {
+      "year": 2022,
+      "vklady": 36000,
+      "stat_prispevek": 4080,
+      "zhodnoceni": 5500
+    },
+    {
+      "year": 2023,
+      "vklady": 36000,
+      "stat_prispevek": 4080,
+      "zhodnoceni": 5500
+    },
+    {
+      "year": 2024,
+      "vklady": 36000,
+      "stat_prispevek": 4080,
+      "zhodnoceni": 5500
+    },
+    {
+      "year": 2025,
+      "vklady": 36000,
+      "stat_prispevek": 4080,
+      "zhodnoceni": 5500
+    }
+  ],
+  "dividendy_by_month": [
+    {
+      "month": "2025-06",
+      "amount_czk": 646.0
+    },
+    {
+      "month": "2025-07",
+      "amount_czk": 325.0
+    },
+    {
+      "month": "2025-08",
+      "amount_czk": 113.0
+    },
+    {
+      "month": "2025-09",
+      "amount_czk": 553.0
+    },
+    {
+      "month": "2025-10",
+      "amount_czk": 177.0
+    },
+    {
+      "month": "2025-11",
+      "amount_czk": 1079.0
+    },
+    {
+      "month": "2025-12",
+      "amount_czk": 838.0
+    },
+    {
+      "month": "2026-01",
+      "amount_czk": 905.0
+    },
+    {
+      "month": "2026-02",
+      "amount_czk": 330.0
+    },
+    {
+      "month": "2026-03",
+      "amount_czk": 388.0
+    },
+    {
+      "month": "2026-04",
+      "amount_czk": 108.0
+    },
+    {
+      "month": "2026-05",
+      "amount_czk": 796.0
+    }
+  ],
+  "monthly_series": [
+    {
+      "month": "2024-06",
+      "value": 586739
+    },
+    {
+      "month": "2024-07",
+      "value": 608520
+    },
+    {
+      "month": "2024-08",
+      "value": 606551
+    },
+    {
+      "month": "2024-09",
+      "value": 638476
+    },
+    {
+      "month": "2024-10",
+      "value": 666066
+    },
+    {
+      "month": "2024-11",
+      "value": 697028
+    },
+    {
+      "month": "2024-12",
+      "value": 717741
+    },
+    {
+      "month": "2025-01",
+      "value": 730234
+    },
+    {
+      "month": "2025-02",
+      "value": 729680
+    },
+    {
+      "month": "2025-03",
+      "value": 744119
+    },
+    {
+      "month": "2025-04",
+      "value": 767737
+    },
+    {
+      "month": "2025-05",
+      "value": 770968
+    },
+    {
+      "month": "2025-06",
+      "value": 756393
+    },
+    {
+      "month": "2025-07",
+      "value": 791122
+    },
+    {
+      "month": "2025-08",
+      "value": 786585
+    },
+    {
+      "month": "2025-09",
+      "value": 817338
+    },
+    {
+      "month": "2025-10",
+      "value": 830034
+    },
+    {
+      "month": "2025-11",
+      "value": 837332
+    },
+    {
+      "month": "2025-12",
+      "value": 840542
+    },
+    {
+      "month": "2026-01",
+      "value": 835731
+    },
+    {
+      "month": "2026-01",
+      "value": 834841
+    },
+    {
+      "month": "2026-03",
+      "value": 841900
+    },
+    {
+      "month": "2026-04",
+      "value": 833598
+    },
+    {
+      "month": "2026-05",
+      "value": 824676
+    }
+  ],
+  "networth_series": [
+    {
+      "month": "2024-06",
+      "value": 812449
+    },
+    {
+      "month": "2024-07",
+      "value": 815618
+    },
+    {
+      "month": "2024-08",
+      "value": 827381
+    },
+    {
+      "month": "2024-09",
+      "value": 838651
+    },
+    {
+      "month": "2024-10",
+      "value": 858433
+    },
+    {
+      "month": "2024-11",
+      "value": 867100
+    },
+    {
+      "month": "2024-12",
+      "value": 868523
+    },
+    {
+      "month": "2025-01",
+      "value": 892434
+    },
+    {
+      "month": "2025-02",
+      "value": 907488
+    },
+    {
+      "month": "2025-03",
+      "value": 925059
+    },
+    {
+      "month": "2025-04",
+      "value": 929149
+    },
+    {
+      "month": "2025-05",
+      "value": 941552
+    },
+    {
+      "month": "2025-06",
+      "value": 944134
+    },
+    {
+      "month": "2025-07",
+      "value": 962223
+    },
+    {
+      "month": "2025-08",
+      "value": 971829
+    },
+    {
+      "month": "2025-09",
+      "value": 992428
+    },
+    {
+      "month": "2025-10",
+      "value": 1012695
+    },
+    {
+      "month": "2025-11",
+      "value": 1024545
+    },
+    {
+      "month": "2025-12",
+      "value": 1043463
+    },
+    {
+      "month": "2026-01",
+      "value": 1049763
+    },
+    {
+      "month": "2026-01",
+      "value": 1072850
+    },
+    {
+      "month": "2026-03",
+      "value": 1075129
+    },
+    {
+      "month": "2026-04",
+      "value": 1076630
+    },
+    {
+      "month": "2026-05",
+      "value": 1098298
+    }
+  ],
+  "expense_categories": [
+    {
+      "category": "Bydleni",
+      "value": 12500,
+      "pct": 39.3
+    },
+    {
+      "category": "Jidlo",
+      "value": 8200,
+      "pct": 25.8
+    },
+    {
+      "category": "Doprava",
+      "value": 3800,
+      "pct": 12.0
+    },
+    {
+      "category": "Zabava",
+      "value": 2900,
+      "pct": 9.1
+    },
+    {
+      "category": "Zdravi",
+      "value": 1800,
+      "pct": 5.7
+    },
+    {
+      "category": "Ostatni",
+      "value": 2600,
+      "pct": 8.2
+    }
+  ],
+  "goal_scenarios": [
+    {
+      "label": "Konzervativni 3% p.a.",
+      "rate": 3.0,
+      "target_value": 4250000,
+      "shortfall_pct": 15.0
+    },
+    {
+      "label": "Vyvazeny 5% p.a.",
+      "rate": 5.0,
+      "target_value": 5180000,
+      "shortfall_pct": 0.0
+    },
+    {
+      "label": "Dynamicky 7% p.a.",
+      "rate": 7.0,
+      "target_value": 6420000,
+      "shortfall_pct": -28.4
+    }
+  ],
+  "goal_baseline_pmt": 22000,
+  "semafor": [
+    {
+      "category": "Životní rezerva",
+      "status": "yellow",
+      "value": "55 000 Kc (1.7x výdajů)",
+      "note": "Cíl 3-6× provoz. výdajů"
+    },
+    {
+      "category": "Operativní cash flow",
+      "status": "green",
+      "value": "+22 400 Kc/měs",
+      "note": "Zdravá úspora"
+    },
+    {
+      "category": "Dluhy (D/E)",
+      "status": "yellow",
+      "value": "85 000 Kc (D/E 0.07)",
+      "note": "Zvládnutelné"
+    },
+    {
+      "category": "Riziko - krypto alokace",
+      "status": "yellow",
+      "value": "15.0% portfolia",
+      "note": "Nad doporučení pro věk"
+    },
+    {
+      "category": "Daně 2025",
+      "status": "green",
+      "value": "DAP NEPOVINNÉ",
+      "note": "Pod limity"
+    },
+    {
+      "category": "Savings rate",
+      "status": "green",
+      "value": "41.3%",
+      "note": "Nad doporučených 20%"
+    },
+    {
+      "category": "Shoda portfolia",
+      "status": "green",
+      "value": "Match 100%",
+      "note": "Demo - vše v pořádku"
+    }
+  ],
+  "alerts": [
+    {
+      "level": "high",
+      "title": "Demo: Krypto preváženo",
+      "message": "Krypto 15% portfolia. Pro 45-leteho cíl: <12%. Zvaž rebalancing."
+    },
+    {
+      "level": "medium",
+      "title": "Demo: Spliva pojistka",
+      "message": "ABC pojišťovna - prislí splatka ${(TODAY + timedelta(days=5)).isoformat()}, 2.500 Kc"
+    },
+    {
+      "level": "low",
+      "title": "Demo: 3 pozice se brzy osvobodi",
+      "message": "Z lock-in trackeru: 3 pozice maji <90 dni do osvobozeni od dane"
+    }
+  ],
+  "data_quality": {
+    "total_tx": 542,
+    "unclassified": 0,
+    "verified": 542,
+    "duplicates": 0,
+    "duplicate_list": []
+  },
+  "transactions": [
+    {
+      "tx_id": "DEMO-0039",
+      "date": "2026-05-03",
+      "amount": -5998,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 39"
+    },
+    {
+      "tx_id": "DEMO-0070",
+      "date": "2026-05-02",
+      "amount": -5288,
+      "category": "Sporeni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 70"
+    },
+    {
+      "tx_id": "DEMO-0038",
+      "date": "2026-04-26",
+      "amount": 2085,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 38"
+    },
+    {
+      "tx_id": "DEMO-0093",
+      "date": "2026-04-24",
+      "amount": -6233,
+      "category": "Jidlo",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 93"
+    },
+    {
+      "tx_id": "DEMO-0089",
+      "date": "2026-04-16",
+      "amount": -1920,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 89"
+    },
+    {
+      "tx_id": "DEMO-0052",
+      "date": "2026-04-11",
+      "amount": 7048,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 52"
+    },
+    {
+      "tx_id": "DEMO-0059",
+      "date": "2026-04-07",
+      "amount": 699,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 59"
+    },
+    {
+      "tx_id": "DEMO-0060",
+      "date": "2026-04-07",
+      "amount": 4985,
+      "category": "Mzda",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 60"
+    },
+    {
+      "tx_id": "DEMO-0055",
+      "date": "2026-04-06",
+      "amount": -3304,
+      "category": "Jidlo",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 55"
+    },
+    {
+      "tx_id": "DEMO-0063",
+      "date": "2026-04-01",
+      "amount": -5731,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 63"
+    },
+    {
+      "tx_id": "DEMO-0071",
+      "date": "2026-03-30",
+      "amount": 1946,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 71"
+    },
+    {
+      "tx_id": "DEMO-0031",
+      "date": "2026-03-24",
+      "amount": -6884,
+      "category": "Sporeni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 31"
+    },
+    {
+      "tx_id": "DEMO-0015",
+      "date": "2026-03-21",
+      "amount": 7254,
+      "category": "Mzda",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 15"
+    },
+    {
+      "tx_id": "DEMO-0053",
+      "date": "2026-03-20",
+      "amount": -1562,
+      "category": "Doprava",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 53"
+    },
+    {
+      "tx_id": "DEMO-0001",
+      "date": "2026-03-16",
+      "amount": -2477,
+      "category": "Investice",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 1"
+    },
+    {
+      "tx_id": "DEMO-0029",
+      "date": "2026-03-10",
+      "amount": -7398,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 29"
+    },
+    {
+      "tx_id": "DEMO-0085",
+      "date": "2026-03-10",
+      "amount": -7941,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 85"
+    },
+    {
+      "tx_id": "DEMO-0088",
+      "date": "2026-03-02",
+      "amount": 2725,
+      "category": "Mzda",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 88"
+    },
+    {
+      "tx_id": "DEMO-0083",
+      "date": "2026-03-01",
+      "amount": -1523,
+      "category": "Zabava",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 83"
+    },
+    {
+      "tx_id": "DEMO-0072",
+      "date": "2026-02-28",
+      "amount": -7416,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 72"
+    },
+    {
+      "tx_id": "DEMO-0012",
+      "date": "2026-02-24",
+      "amount": -6302,
+      "category": "Doprava",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 12"
+    },
+    {
+      "tx_id": "DEMO-0016",
+      "date": "2026-02-17",
+      "amount": -6688,
+      "category": "Jidlo",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 16"
+    },
+    {
+      "tx_id": "DEMO-0026",
+      "date": "2026-02-17",
+      "amount": -6446,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 26"
+    },
+    {
+      "tx_id": "DEMO-0058",
+      "date": "2026-02-16",
+      "amount": -2630,
+      "category": "Doprava",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 58"
+    },
+    {
+      "tx_id": "DEMO-0092",
+      "date": "2026-02-12",
+      "amount": -7420,
+      "category": "Jidlo",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 92"
+    },
+    {
+      "tx_id": "DEMO-0049",
+      "date": "2026-01-29",
+      "amount": 3875,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 49"
+    },
+    {
+      "tx_id": "DEMO-0067",
+      "date": "2026-01-22",
+      "amount": -2155,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 67"
+    },
+    {
+      "tx_id": "DEMO-0080",
+      "date": "2026-01-22",
+      "amount": -4340,
+      "category": "Zabava",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 80"
+    },
+    {
+      "tx_id": "DEMO-0034",
+      "date": "2026-01-18",
+      "amount": 6387,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 34"
+    },
+    {
+      "tx_id": "DEMO-0098",
+      "date": "2026-01-12",
+      "amount": 5606,
+      "category": "Mzda",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 98"
+    },
+    {
+      "tx_id": "DEMO-0000",
+      "date": "2026-01-10",
+      "amount": -853,
+      "category": "Zabava",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 0"
+    },
+    {
+      "tx_id": "DEMO-0008",
+      "date": "2026-01-09",
+      "amount": 6794,
+      "category": "Mzda",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 8"
+    },
+    {
+      "tx_id": "DEMO-0040",
+      "date": "2026-01-09",
+      "amount": -7617,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 40"
+    },
+    {
+      "tx_id": "DEMO-0030",
+      "date": "2026-01-04",
+      "amount": 2173,
+      "category": "Mzda",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 30"
+    },
+    {
+      "tx_id": "DEMO-0073",
+      "date": "2026-01-01",
+      "amount": -2534,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 73"
+    },
+    {
+      "tx_id": "DEMO-0037",
+      "date": "2025-12-31",
+      "amount": -724,
+      "category": "Doprava",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 37"
+    },
+    {
+      "tx_id": "DEMO-0051",
+      "date": "2025-12-30",
+      "amount": -3830,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 51"
+    },
+    {
+      "tx_id": "DEMO-0081",
+      "date": "2025-12-29",
+      "amount": 956,
+      "category": "Mzda",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 81"
+    },
+    {
+      "tx_id": "DEMO-0023",
+      "date": "2025-12-23",
+      "amount": 6441,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 23"
+    },
+    {
+      "tx_id": "DEMO-0077",
+      "date": "2025-12-22",
+      "amount": -7488,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 77"
+    },
+    {
+      "tx_id": "DEMO-0082",
+      "date": "2025-12-16",
+      "amount": 229,
+      "category": "Mzda",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 82"
+    },
+    {
+      "tx_id": "DEMO-0042",
+      "date": "2025-12-15",
+      "amount": -1955,
+      "category": "Sporeni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 42"
+    },
+    {
+      "tx_id": "DEMO-0057",
+      "date": "2025-12-11",
+      "amount": -5906,
+      "category": "Investice",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 57"
+    },
+    {
+      "tx_id": "DEMO-0041",
+      "date": "2025-11-18",
+      "amount": -4411,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 41"
+    },
+    {
+      "tx_id": "DEMO-0048",
+      "date": "2025-11-14",
+      "amount": -2236,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 48"
+    },
+    {
+      "tx_id": "DEMO-0097",
+      "date": "2025-11-08",
+      "amount": -6921,
+      "category": "Zabava",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 97"
+    },
+    {
+      "tx_id": "DEMO-0003",
+      "date": "2025-11-06",
+      "amount": -5690,
+      "category": "Doprava",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 3"
+    },
+    {
+      "tx_id": "DEMO-0014",
+      "date": "2025-11-02",
+      "amount": -1333,
+      "category": "Doprava",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 14"
+    },
+    {
+      "tx_id": "DEMO-0006",
+      "date": "2025-10-24",
+      "amount": -7780,
+      "category": "Zabava",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 6"
+    },
+    {
+      "tx_id": "DEMO-0056",
+      "date": "2025-10-19",
+      "amount": -7790,
+      "category": "Zabava",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 56"
+    },
+    {
+      "tx_id": "DEMO-0011",
+      "date": "2025-10-16",
+      "amount": -1370,
+      "category": "Sporeni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 11"
+    },
+    {
+      "tx_id": "DEMO-0068",
+      "date": "2025-10-16",
+      "amount": -5702,
+      "category": "Jidlo",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 68"
+    },
+    {
+      "tx_id": "DEMO-0099",
+      "date": "2025-10-14",
+      "amount": -2482,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 99"
+    },
+    {
+      "tx_id": "DEMO-0009",
+      "date": "2025-10-13",
+      "amount": -742,
+      "category": "Zabava",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 9"
+    },
+    {
+      "tx_id": "DEMO-0064",
+      "date": "2025-10-12",
+      "amount": -7913,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 64"
+    },
+    {
+      "tx_id": "DEMO-0044",
+      "date": "2025-10-10",
+      "amount": -972,
+      "category": "Doprava",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 44"
+    },
+    {
+      "tx_id": "DEMO-0046",
+      "date": "2025-10-08",
+      "amount": -7276,
+      "category": "Sporeni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 46"
+    },
+    {
+      "tx_id": "DEMO-0094",
+      "date": "2025-10-08",
+      "amount": -2385,
+      "category": "Doprava",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 94"
+    },
+    {
+      "tx_id": "DEMO-0066",
+      "date": "2025-10-04",
+      "amount": 2791,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 66"
+    },
+    {
+      "tx_id": "DEMO-0050",
+      "date": "2025-10-02",
+      "amount": -2481,
+      "category": "Jidlo",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 50"
+    },
+    {
+      "tx_id": "DEMO-0022",
+      "date": "2025-09-26",
+      "amount": -3916,
+      "category": "Jidlo",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 22"
+    },
+    {
+      "tx_id": "DEMO-0036",
+      "date": "2025-09-24",
+      "amount": 3898,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 36"
+    },
+    {
+      "tx_id": "DEMO-0074",
+      "date": "2025-09-24",
+      "amount": 5963,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 74"
+    },
+    {
+      "tx_id": "DEMO-0069",
+      "date": "2025-09-14",
+      "amount": -7810,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 69"
+    },
+    {
+      "tx_id": "DEMO-0096",
+      "date": "2025-09-08",
+      "amount": -1834,
+      "category": "Doprava",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 96"
+    },
+    {
+      "tx_id": "DEMO-0054",
+      "date": "2025-08-31",
+      "amount": -1951,
+      "category": "Sporeni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 54"
+    },
+    {
+      "tx_id": "DEMO-0061",
+      "date": "2025-08-22",
+      "amount": 1489,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 61"
+    },
+    {
+      "tx_id": "DEMO-0024",
+      "date": "2025-08-20",
+      "amount": -7331,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 24"
+    },
+    {
+      "tx_id": "DEMO-0062",
+      "date": "2025-08-19",
+      "amount": -7174,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 62"
+    },
+    {
+      "tx_id": "DEMO-0032",
+      "date": "2025-08-07",
+      "amount": -1251,
+      "category": "Jidlo",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 32"
+    },
+    {
+      "tx_id": "DEMO-0005",
+      "date": "2025-08-06",
+      "amount": -1538,
+      "category": "Doprava",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 5"
+    },
+    {
+      "tx_id": "DEMO-0027",
+      "date": "2025-08-03",
+      "amount": 7724,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 27"
+    },
+    {
+      "tx_id": "DEMO-0086",
+      "date": "2025-07-31",
+      "amount": 7037,
+      "category": "Mzda",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 86"
+    },
+    {
+      "tx_id": "DEMO-0033",
+      "date": "2025-07-29",
+      "amount": -2371,
+      "category": "Jidlo",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 33"
+    },
+    {
+      "tx_id": "DEMO-0084",
+      "date": "2025-07-28",
+      "amount": -4794,
+      "category": "Investice",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 84"
+    },
+    {
+      "tx_id": "DEMO-0019",
+      "date": "2025-07-27",
+      "amount": 5772,
+      "category": "Mzda",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 19"
+    },
+    {
+      "tx_id": "DEMO-0078",
+      "date": "2025-07-27",
+      "amount": -2431,
+      "category": "Jidlo",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 78"
+    },
+    {
+      "tx_id": "DEMO-0010",
+      "date": "2025-07-20",
+      "amount": -1941,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 10"
+    },
+    {
+      "tx_id": "DEMO-0043",
+      "date": "2025-07-18",
+      "amount": -2190,
+      "category": "Sporeni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 43"
+    },
+    {
+      "tx_id": "DEMO-0065",
+      "date": "2025-07-14",
+      "amount": 5273,
+      "category": "Mzda",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 65"
+    },
+    {
+      "tx_id": "DEMO-0087",
+      "date": "2025-07-12",
+      "amount": 1413,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 87"
+    },
+    {
+      "tx_id": "DEMO-0013",
+      "date": "2025-07-11",
+      "amount": -7554,
+      "category": "Investice",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 13"
+    },
+    {
+      "tx_id": "DEMO-0017",
+      "date": "2025-07-05",
+      "amount": -3352,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 17"
+    },
+    {
+      "tx_id": "DEMO-0018",
+      "date": "2025-07-05",
+      "amount": -4534,
+      "category": "Sporeni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 18"
+    },
+    {
+      "tx_id": "DEMO-0028",
+      "date": "2025-07-04",
+      "amount": -4202,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 28"
+    },
+    {
+      "tx_id": "DEMO-0079",
+      "date": "2025-07-01",
+      "amount": -6078,
+      "category": "Doprava",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 79"
+    },
+    {
+      "tx_id": "DEMO-0075",
+      "date": "2025-06-27",
+      "amount": 264,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 75"
+    },
+    {
+      "tx_id": "DEMO-0091",
+      "date": "2025-06-23",
+      "amount": -7783,
+      "category": "Jidlo",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 91"
+    },
+    {
+      "tx_id": "DEMO-0002",
+      "date": "2025-06-15",
+      "amount": -1532,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 2"
+    },
+    {
+      "tx_id": "DEMO-0025",
+      "date": "2025-06-13",
+      "amount": 5188,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "income",
+      "note": "Demo transakce 25"
+    },
+    {
+      "tx_id": "DEMO-0021",
+      "date": "2025-06-12",
+      "amount": -1113,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 21"
+    },
+    {
+      "tx_id": "DEMO-0045",
+      "date": "2025-06-03",
+      "amount": -3102,
+      "category": "Investice",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 45"
+    },
+    {
+      "tx_id": "DEMO-0076",
+      "date": "2025-06-01",
+      "amount": -7891,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 76"
+    },
+    {
+      "tx_id": "DEMO-0090",
+      "date": "2025-05-30",
+      "amount": -3097,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 90"
+    },
+    {
+      "tx_id": "DEMO-0047",
+      "date": "2025-05-27",
+      "amount": -696,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 47"
+    },
+    {
+      "tx_id": "DEMO-0020",
+      "date": "2025-05-22",
+      "amount": 6351,
+      "category": "Vraceni",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "income",
+      "note": "Demo transakce 20"
+    },
+    {
+      "tx_id": "DEMO-0007",
+      "date": "2025-05-21",
+      "amount": -7104,
+      "category": "Zdravi",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 7"
+    },
+    {
+      "tx_id": "DEMO-0004",
+      "date": "2025-05-12",
+      "amount": -5190,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 4"
+    },
+    {
+      "tx_id": "DEMO-0095",
+      "date": "2025-05-12",
+      "amount": -3333,
+      "category": "Bydleni",
+      "subcategory": "demo",
+      "account": "Demo Banka A",
+      "tx_type": "expense",
+      "note": "Demo transakce 95"
+    },
+    {
+      "tx_id": "DEMO-0035",
+      "date": "2025-05-06",
+      "amount": -3468,
+      "category": "Zabava",
+      "subcategory": "demo",
+      "account": "Demo Banka B",
+      "tx_type": "expense",
+      "note": "Demo transakce 35"
+    }
+  ],
+  "sheets": {},
+  "pasky": [
+    {
+      "month": "2025-06",
+      "datum": "2025-06-19",
+      "hruba_mzda": 76858.0,
+      "soc_pojisteni": 5457.0,
+      "zdrav_pojisteni": 3459.0,
+      "zaloha_dan": 8959.0,
+      "cista_mzda": 56875.0,
+      "vyplaceno": 56875.0,
+      "zamestnavatel": "Demo s.r.o.",
+      "matched_bank_tx": true
+    },
+    {
+      "month": "2025-07",
+      "datum": "2025-07-19",
+      "hruba_mzda": 81738.0,
+      "soc_pojisteni": 5803.0,
+      "zdrav_pojisteni": 3678.0,
+      "zaloha_dan": 9691.0,
+      "cista_mzda": 60486.0,
+      "vyplaceno": 60486.0,
+      "zamestnavatel": "Demo s.r.o.",
+      "matched_bank_tx": true
+    },
+    {
+      "month": "2025-08",
+      "datum": "2025-08-18",
+      "hruba_mzda": 76250.0,
+      "soc_pojisteni": 5414.0,
+      "zdrav_pojisteni": 3431.0,
+      "zaloha_dan": 8868.0,
+      "cista_mzda": 56425.0,
+      "vyplaceno": 56425.0,
+      "zamestnavatel": "Demo s.r.o.",
+      "matched_bank_tx": true
+    },
+    {
+      "month": "2025-09",
+      "datum": "2025-09-17",
+      "hruba_mzda": 81793.0,
+      "soc_pojisteni": 5807.0,
+      "zdrav_pojisteni": 3681.0,
+      "zaloha_dan": 9699.0,
+      "cista_mzda": 60527.0,
+      "vyplaceno": 60527.0,
+      "zamestnavatel": "Demo s.r.o.",
+      "matched_bank_tx": true
+    },
+    {
+      "month": "2025-10",
+      "datum": "2025-10-17",
+      "hruba_mzda": 75807.0,
+      "soc_pojisteni": 5382.0,
+      "zdrav_pojisteni": 3411.0,
+      "zaloha_dan": 8801.0,
+      "cista_mzda": 56097.0,
+      "vyplaceno": 56097.0,
+      "zamestnavatel": "Demo s.r.o.",
+      "matched_bank_tx": true
+    },
+    {
+      "month": "2025-11",
+      "datum": "2025-11-16",
+      "hruba_mzda": 81575.0,
+      "soc_pojisteni": 5792.0,
+      "zdrav_pojisteni": 3671.0,
+      "zaloha_dan": 9666.0,
+      "cista_mzda": 60366.0,
+      "vyplaceno": 60366.0,
+      "zamestnavatel": "Demo s.r.o.",
+      "matched_bank_tx": true
+    },
+    {
+      "month": "2025-12",
+      "datum": "2025-12-16",
+      "hruba_mzda": 78754.0,
+      "soc_pojisteni": 5592.0,
+      "zdrav_pojisteni": 3544.0,
+      "zaloha_dan": 9243.0,
+      "cista_mzda": 58278.0,
+      "vyplaceno": 58278.0,
+      "zamestnavatel": "Demo s.r.o.",
+      "matched_bank_tx": true
+    },
+    {
+      "month": "2026-01",
+      "datum": "2026-01-15",
+      "hruba_mzda": 81868.0,
+      "soc_pojisteni": 5813.0,
+      "zdrav_pojisteni": 3684.0,
+      "zaloha_dan": 9710.0,
+      "cista_mzda": 60582.0,
+      "vyplaceno": 60582.0,
+      "zamestnavatel": "Demo s.r.o.",
+      "matched_bank_tx": true
+    },
+    {
+      "month": "2026-02",
+      "datum": "2026-02-14",
+      "hruba_mzda": 77798.0,
+      "soc_pojisteni": 5524.0,
+      "zdrav_pojisteni": 3501.0,
+      "zaloha_dan": 9100.0,
+      "cista_mzda": 57571.0,
+      "vyplaceno": 57571.0,
+      "zamestnavatel": "Demo s.r.o.",
+      "matched_bank_tx": true
+    },
+    {
+      "month": "2026-03",
+      "datum": "2026-03-16",
+      "hruba_mzda": 79490.0,
+      "soc_pojisteni": 5644.0,
+      "zdrav_pojisteni": 3577.0,
+      "zaloha_dan": 9354.0,
+      "cista_mzda": 58823.0,
+      "vyplaceno": 58823.0,
+      "zamestnavatel": "Demo s.r.o.",
+      "matched_bank_tx": true
+    },
+    {
+      "month": "2026-04",
+      "datum": "2026-04-15",
+      "hruba_mzda": 76954.0,
+      "soc_pojisteni": 5464.0,
+      "zdrav_pojisteni": 3463.0,
+      "zaloha_dan": 8973.0,
+      "cista_mzda": 56946.0,
+      "vyplaceno": 56946.0,
+      "zamestnavatel": "Demo s.r.o.",
+      "matched_bank_tx": true
+    },
+    {
+      "month": "2026-05",
+      "datum": "2026-05-15",
+      "hruba_mzda": 81768.0,
+      "soc_pojisteni": 5806.0,
+      "zdrav_pojisteni": 3680.0,
+      "zaloha_dan": 9695.0,
+      "cista_mzda": 60508.0,
+      "vyplaceno": 60508.0,
+      "zamestnavatel": "Demo s.r.o.",
+      "matched_bank_tx": true
+    }
+  ],
+  "pasky_annual": {
+    "hruba_celkem": 936000,
+    "cista_celkem": 692000
+  },
+  "pasky_match_counts": {
+    "matched": 12,
+    "missing": 0
+  },
+  "pasky_missing_months": [],
+  "bank_accounts": [
+    {
+      "id": "demo_a_main",
+      "name": "Demo Banka A - hlavni ucet",
+      "iban": "CZ12 3456 0000 0011 1111 1111",
+      "currency": "CZK",
+      "balance": 48500,
+      "role": "primary",
+      "monthly_in": 54200,
+      "monthly_out": 31800,
+      "transactions": []
+    },
+    {
+      "id": "demo_a_savings",
+      "name": "Demo Banka A - sporeni",
+      "iban": "CZ12 3456 0000 0022 2222 2222",
+      "currency": "CZK",
+      "balance": 90000,
+      "role": "savings",
+      "interest_pct": 4.5,
+      "transactions": []
+    },
+    {
+      "id": "demo_a_loan",
+      "name": "Demo Banka A - splatka uveru",
+      "iban": "CZ12 3456 0000 0033 3333 3333",
+      "currency": "CZK",
+      "balance": -85000,
+      "role": "loan",
+      "interest_pct": 8.9,
+      "monthly_payment": 4200,
+      "remaining_months": 22,
+      "transactions": []
+    },
+    {
+      "id": "demo_b_main",
+      "name": "Demo Banka B - hlavni",
+      "iban": "CZ45 6789 0000 0044 4444 4444",
+      "currency": "CZK",
+      "balance": 12500,
+      "role": "secondary",
+      "transactions": []
+    },
+    {
+      "id": "demo_b_savings",
+      "name": "Demo Banka B - rezerva",
+      "iban": "CZ45 6789 0000 0055 5555 5555",
+      "currency": "CZK",
+      "balance": 55000,
+      "role": "emergency",
+      "interest_pct": 5.2,
+      "transactions": []
+    }
+  ],
+  "accounting_checks": [
+    {
+      "check": "Mzda <-> bank tx",
+      "status": "ok",
+      "note": "12/12 matched"
+    },
+    {
+      "check": "Investice <-> portfolio",
+      "status": "ok",
+      "note": "Demo"
+    },
+    {
+      "check": "Duplicity tx",
+      "status": "ok",
+      "note": "0 duplikatu"
+    }
+  ],
+  "brokers": [],
+  "tax_module": {},
+  "lock_in_3y": {
+    "positions": [
+      {
+        "asset": "VWCE",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2025-09-17",
+        "osvobozeno_od": "2028-09-17",
+        "days_left": 865,
+        "pocet_ks": 7.36,
+        "aktualni_hodnota": 24206.67,
+        "otevreny_pl": 2707.19,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "CSPX",
+        "platforma": "Demo Broker A USD",
+        "datum_nakupu": "2024-08-01",
+        "osvobozeno_od": "2027-08-02",
+        "days_left": 453,
+        "pocet_ks": 1.83,
+        "aktualni_hodnota": 13315.87,
+        "otevreny_pl": 37.73,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "SXR8",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2024-01-12",
+        "osvobozeno_od": "2027-01-12",
+        "days_left": 251,
+        "pocet_ks": 5.51,
+        "aktualni_hodnota": 25034.3,
+        "otevreny_pl": 6561.85,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "EUNL",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2023-12-09",
+        "osvobozeno_od": "2026-12-09",
+        "days_left": 217,
+        "pocet_ks": 8.98,
+        "aktualni_hodnota": 19923.48,
+        "otevreny_pl": -2152.05,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "VOO",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2024-02-26",
+        "osvobozeno_od": "2027-02-26",
+        "days_left": 296,
+        "pocet_ks": 11.09,
+        "aktualni_hodnota": 58629.72,
+        "otevreny_pl": 21036.88,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "SPY",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2023-12-31",
+        "osvobozeno_od": "2026-12-31",
+        "days_left": 239,
+        "pocet_ks": 10.85,
+        "aktualni_hodnota": 48296.39,
+        "otevreny_pl": 4589.88,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "QQQ",
+        "platforma": "Demo Broker A USD",
+        "datum_nakupu": "2024-11-20",
+        "osvobozeno_od": "2027-11-21",
+        "days_left": 564,
+        "pocet_ks": 8.52,
+        "aktualni_hodnota": 40825.88,
+        "otevreny_pl": 4175.17,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "IWDA",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2024-12-14",
+        "osvobozeno_od": "2027-12-15",
+        "days_left": 588,
+        "pocet_ks": 8.29,
+        "aktualni_hodnota": 60518.66,
+        "otevreny_pl": 11587.09,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "AAPL",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2024-11-17",
+        "osvobozeno_od": "2027-11-18",
+        "days_left": 561,
+        "pocet_ks": 6.8,
+        "aktualni_hodnota": 5459.86,
+        "otevreny_pl": -130.44,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "MSFT",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2023-10-25",
+        "osvobozeno_od": "2026-10-25",
+        "days_left": 172,
+        "pocet_ks": 7.17,
+        "aktualni_hodnota": 39534.52,
+        "otevreny_pl": 4549.3,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "GOOGL",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2024-02-15",
+        "osvobozeno_od": "2027-02-15",
+        "days_left": 285,
+        "pocet_ks": 2.96,
+        "aktualni_hodnota": 12452.54,
+        "otevreny_pl": -600.03,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "AMZN",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2025-10-12",
+        "osvobozeno_od": "2028-10-12",
+        "days_left": 890,
+        "pocet_ks": 3.76,
+        "aktualni_hodnota": 20979.86,
+        "otevreny_pl": 1072.34,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "META",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2023-09-21",
+        "osvobozeno_od": "2026-09-21",
+        "days_left": 138,
+        "pocet_ks": 11.45,
+        "aktualni_hodnota": 28522.52,
+        "otevreny_pl": -433.99,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "NVDA",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2025-06-17",
+        "osvobozeno_od": "2028-06-17",
+        "days_left": 773,
+        "pocet_ks": 2.19,
+        "aktualni_hodnota": 2480.7,
+        "otevreny_pl": 537.73,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "TSLA",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2023-11-12",
+        "osvobozeno_od": "2026-11-12",
+        "days_left": 190,
+        "pocet_ks": 1.34,
+        "aktualni_hodnota": 5070.53,
+        "otevreny_pl": 990.8,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "JNJ",
+        "platforma": "Demo Broker A USD",
+        "datum_nakupu": "2024-01-02",
+        "osvobozeno_od": "2027-01-02",
+        "days_left": 241,
+        "pocet_ks": 8.51,
+        "aktualni_hodnota": 37099.52,
+        "otevreny_pl": -2280.03,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "PG",
+        "platforma": "Demo Broker A USD",
+        "datum_nakupu": "2024-02-02",
+        "osvobozeno_od": "2027-02-02",
+        "days_left": 272,
+        "pocet_ks": 0.56,
+        "aktualni_hodnota": 3475.89,
+        "otevreny_pl": 1102.04,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "KO",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2025-05-27",
+        "osvobozeno_od": "2028-05-27",
+        "days_left": 752,
+        "pocet_ks": 2.52,
+        "aktualni_hodnota": 19397.35,
+        "otevreny_pl": 2497.02,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "PEP",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2024-06-15",
+        "osvobozeno_od": "2027-06-16",
+        "days_left": 406,
+        "pocet_ks": 3.37,
+        "aktualni_hodnota": 23280.03,
+        "otevreny_pl": -1629.52,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "WMT",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2024-09-18",
+        "osvobozeno_od": "2027-09-19",
+        "days_left": 501,
+        "pocet_ks": 8.18,
+        "aktualni_hodnota": 64726.95,
+        "otevreny_pl": 2613.59,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "HD",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2023-11-25",
+        "osvobozeno_od": "2026-11-25",
+        "days_left": 203,
+        "pocet_ks": 10.75,
+        "aktualni_hodnota": 56019.33,
+        "otevreny_pl": 21579.33,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "MCD",
+        "platforma": "Demo Broker A USD",
+        "datum_nakupu": "2024-10-27",
+        "osvobozeno_od": "2027-10-28",
+        "days_left": 540,
+        "pocet_ks": 10.05,
+        "aktualni_hodnota": 47684.03,
+        "otevreny_pl": 14123.69,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "DIS",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2024-09-07",
+        "osvobozeno_od": "2027-09-08",
+        "days_left": 490,
+        "pocet_ks": 5.68,
+        "aktualni_hodnota": 35288.65,
+        "otevreny_pl": 578.27,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "V",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2023-11-02",
+        "osvobozeno_od": "2026-11-02",
+        "days_left": 180,
+        "pocet_ks": 6.49,
+        "aktualni_hodnota": 34478.71,
+        "otevreny_pl": 3927.94,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "MA",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2024-01-07",
+        "osvobozeno_od": "2027-01-07",
+        "days_left": 246,
+        "pocet_ks": 3.79,
+        "aktualni_hodnota": 10446.57,
+        "otevreny_pl": 4030.45,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "JPM",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2025-10-16",
+        "osvobozeno_od": "2028-10-16",
+        "days_left": 894,
+        "pocet_ks": 2.09,
+        "aktualni_hodnota": 5152.02,
+        "otevreny_pl": -300.45,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "BAC",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2025-06-01",
+        "osvobozeno_od": "2028-06-01",
+        "days_left": 757,
+        "pocet_ks": 1.24,
+        "aktualni_hodnota": 4631.05,
+        "otevreny_pl": 599.97,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "XOM",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2025-11-04",
+        "osvobozeno_od": "2028-11-04",
+        "days_left": 913,
+        "pocet_ks": 2.88,
+        "aktualni_hodnota": 11016.09,
+        "otevreny_pl": 4600.73,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "CVX",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2025-12-17",
+        "osvobozeno_od": "2028-12-17",
+        "days_left": 956,
+        "pocet_ks": 10.35,
+        "aktualni_hodnota": 65332.1,
+        "otevreny_pl": 8897.44,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "T",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2025-01-11",
+        "osvobozeno_od": "2028-01-12",
+        "days_left": 616,
+        "pocet_ks": 3.93,
+        "aktualni_hodnota": 14179.05,
+        "otevreny_pl": 2452.02,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "VZ",
+        "platforma": "Demo Broker A USD",
+        "datum_nakupu": "2023-12-16",
+        "osvobozeno_od": "2026-12-16",
+        "days_left": 224,
+        "pocet_ks": 6.78,
+        "aktualni_hodnota": 34872.39,
+        "otevreny_pl": 4984.58,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "MO",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2025-04-02",
+        "osvobozeno_od": "2028-04-02",
+        "days_left": 697,
+        "pocet_ks": 5.51,
+        "aktualni_hodnota": 5559.48,
+        "otevreny_pl": 1397.23,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "PM",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2023-10-12",
+        "osvobozeno_od": "2026-10-12",
+        "days_left": 159,
+        "pocet_ks": 5.15,
+        "aktualni_hodnota": 10239.85,
+        "otevreny_pl": 4113.6,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "PFE",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2024-04-09",
+        "osvobozeno_od": "2027-04-10",
+        "days_left": 339,
+        "pocet_ks": 6.64,
+        "aktualni_hodnota": 48670.47,
+        "otevreny_pl": 9180.96,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "MRK",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2025-12-10",
+        "osvobozeno_od": "2028-12-10",
+        "days_left": 949,
+        "pocet_ks": 1.47,
+        "aktualni_hodnota": 5712.43,
+        "otevreny_pl": -234.0,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "ABBV",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2025-04-15",
+        "osvobozeno_od": "2028-04-15",
+        "days_left": 710,
+        "pocet_ks": 4.86,
+        "aktualni_hodnota": 11294.4,
+        "otevreny_pl": 592.96,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "MRNA",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2024-12-14",
+        "osvobozeno_od": "2027-12-15",
+        "days_left": 588,
+        "pocet_ks": 3.7,
+        "aktualni_hodnota": 28300.08,
+        "otevreny_pl": 38.57,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "BRK.B",
+        "platforma": "Demo Broker A USD",
+        "datum_nakupu": "2025-10-15",
+        "osvobozeno_od": "2028-10-15",
+        "days_left": 893,
+        "pocet_ks": 5.91,
+        "aktualni_hodnota": 36600.45,
+        "otevreny_pl": 16468.18,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "UNH",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2025-01-13",
+        "osvobozeno_od": "2028-01-14",
+        "days_left": 618,
+        "pocet_ks": 3.08,
+        "aktualni_hodnota": 3985.67,
+        "otevreny_pl": -501.58,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "CSCO",
+        "platforma": "Demo Broker A USD",
+        "datum_nakupu": "2025-12-06",
+        "osvobozeno_od": "2028-12-06",
+        "days_left": 945,
+        "pocet_ks": 11.42,
+        "aktualni_hodnota": 25528.27,
+        "otevreny_pl": 5687.73,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "INTC",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2025-05-07",
+        "osvobozeno_od": "2028-05-07",
+        "days_left": 732,
+        "pocet_ks": 1.95,
+        "aktualni_hodnota": 10959.19,
+        "otevreny_pl": 4588.11,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "AMD",
+        "platforma": "Demo Broker A USD",
+        "datum_nakupu": "2024-09-17",
+        "osvobozeno_od": "2027-09-18",
+        "days_left": 500,
+        "pocet_ks": 8.54,
+        "aktualni_hodnota": 53987.06,
+        "otevreny_pl": 11528.16,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "ORCL",
+        "platforma": "Demo Broker A USD",
+        "datum_nakupu": "2023-12-03",
+        "osvobozeno_od": "2026-12-03",
+        "days_left": 211,
+        "pocet_ks": 8.76,
+        "aktualni_hodnota": 56064.88,
+        "otevreny_pl": 24042.44,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "CRM",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2025-09-18",
+        "osvobozeno_od": "2028-09-18",
+        "days_left": 866,
+        "pocet_ks": 7.15,
+        "aktualni_hodnota": 53539.13,
+        "otevreny_pl": 13727.88,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "NFLX",
+        "platforma": "Demo Broker A USD",
+        "datum_nakupu": "2024-12-18",
+        "osvobozeno_od": "2027-12-19",
+        "days_left": 592,
+        "pocet_ks": 5.06,
+        "aktualni_hodnota": 30097.44,
+        "otevreny_pl": 6177.76,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "ADBE",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2023-09-09",
+        "osvobozeno_od": "2026-09-09",
+        "days_left": 126,
+        "pocet_ks": 7.71,
+        "aktualni_hodnota": 11824.75,
+        "otevreny_pl": 4258.99,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "PYPL",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2024-05-02",
+        "osvobozeno_od": "2027-05-03",
+        "days_left": 362,
+        "pocet_ks": 9.76,
+        "aktualni_hodnota": 63760.52,
+        "otevreny_pl": 20376.66,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "STREDNE"
+      },
+      {
+        "asset": "SQ",
+        "platforma": "Demo Broker A USD",
+        "datum_nakupu": "2025-01-16",
+        "osvobozeno_od": "2028-01-17",
+        "days_left": 621,
+        "pocet_ks": 6.63,
+        "aktualni_hodnota": 36882.36,
+        "otevreny_pl": 5664.26,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "SHOP",
+        "platforma": "Demo Broker A EUR",
+        "datum_nakupu": "2025-01-22",
+        "osvobozeno_od": "2028-01-23",
+        "days_left": 627,
+        "pocet_ks": 0.65,
+        "aktualni_hodnota": 2485.87,
+        "otevreny_pl": -215.47,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      },
+      {
+        "asset": "ZM",
+        "platforma": "Demo Broker B",
+        "datum_nakupu": "2025-01-01",
+        "osvobozeno_od": "2028-01-02",
+        "days_left": 606,
+        "pocet_ks": 7.81,
+        "aktualni_hodnota": 52847.85,
+        "otevreny_pl": -3076.03,
+        "doporuceni": "Drzet do osvobozeni",
+        "status": "DALEKO"
+      }
+    ],
+    "stats": {
+      "counts": {
+        "OSVOBOZENO": 0,
+        "BLIZKO": 0,
+        "STREDNE": 19,
+        "DALEKO": 31
+      },
+      "recalculated": "2026-05-06T06:31:09"
+    }
+  },
+  "allocations": {
+    "by_currency": [
+      {
+        "currency": "CZK",
+        "pct": 45
+      },
+      {
+        "currency": "USD",
+        "pct": 35
+      },
+      {
+        "currency": "EUR",
+        "pct": 20
+      }
+    ],
+    "by_region": [
+      {
+        "region": "USA",
+        "pct": 50
+      },
+      {
+        "region": "Evropa",
+        "pct": 30
+      },
+      {
+        "region": "Globalni",
+        "pct": 20
+      }
+    ],
+    "by_sector": [
+      {
+        "sector": "Tech",
+        "pct": 28
+      },
+      {
+        "sector": "Healthcare",
+        "pct": 18
+      },
+      {
+        "sector": "Financials",
+        "pct": 15
+      },
+      {
+        "sector": "Consumer",
+        "pct": 14
+      },
+      {
+        "sector": "Energy",
+        "pct": 10
+      },
+      {
+        "sector": "Other",
+        "pct": 15
+      }
+    ]
+  },
+  "ioldp": {},
+  "position_tracker": [],
+  "knowledge_base": {
+    "updated": "2026-05-06 (auto-verify, demo)",
+    "source": "Demo dataset - ne realne odkazy",
+    "deadlines_2026": [
+      {
+        "date": "2026-04-15",
+        "akce": "Demo pojistka - rocni splatka",
+        "castka": 5500,
+        "status": "ZAPLACENO 1.4.2026 (z Demo Banka A)"
+      },
+      {
+        "date": "2026-05-14",
+        "akce": "Demo auto pojistka - ctvrtletni",
+        "castka": 2500,
+        "status": "BLIZI SE (za 8 dni)"
+      },
+      {
+        "date": "2026-04-01",
+        "akce": "Danove priznani 2025 - demo",
+        "castka": null,
+        "status": "HOTOVO (zaplaceno 26.3.2026)"
+      }
+    ],
+    "tax_rates_2026": {
+      "sazba_15": "do 1.582.812 Kc",
+      "sazba_23": "nad 1.582.812 Kc"
+    },
+    "pension_info": {
+      "nutnost_let_pojisteni": 35,
+      "vek_duchodu": 65,
+      "predcasne_zalo_let": 40
+    },
+    "urgent_actions": [
+      {
+        "priority": "low",
+        "akce": "Demo: pojistka zaplacena - bez akce",
+        "do_kdy": "OK"
+      },
+      {
+        "priority": "medium",
+        "akce": "Demo: pripravit DAP do 1.7",
+        "do_kdy": "01.07.2026"
+      }
+    ]
+  },
+  "tax_thresholds_2026": {
+    "rok": 2026,
+    "datum_aktualizace": "2026-05-06",
+    "krypto": {
+      "hodnotovy_test_limit_kc": 100000,
+      "ytd_prodeje_kc": 0,
+      "zbyva_bez_dane_kc": 100000,
+      "pravidlo": "Prijem z prodeje krypta < 100.000 Kc/rok = bez dane, bez DAP.",
+      "casovy_test": "3 roky drzby -> osvobozeno do limitu 40 mil Kc/rok.",
+      "aktualni_drzba_total_kc": 304500
+    },
+    "akcie_etf": {
+      "casovy_test_3_roky": true,
+      "limit_40m_zruseny": true,
+      "pozice_osvobozene_pocet": 0,
+      "pozice_osvobozene_value_kc": 0,
+      "pozice_2_3_roky_pocet": 12,
+      "pozice_dale_pocet": 38
+    }
+  },
+  "audit_log": [
+    {
+      "ts": "2026-05-06T06:31:09",
+      "today": "2026-05-06",
+      "changes": [
+        {
+          "field": "meta.today",
+          "from": "2026-04-29",
+          "to": "2026-05-06"
+        },
+        {
+          "field": "periods.L12M.end",
+          "from": "2026-04-29",
+          "to": "2026-05-06"
+        },
+        {
+          "field": "lock_in_3y.AAPL@Demo Broker A USD.status",
+          "from": "DALEKO",
+          "to": "STREDNE",
+          "days_left": 320
+        },
+        {
+          "field": "deadlines.Demo pojistka",
+          "from": "BLIZI SE",
+          "to": "ZAPLACENO 1.4.2026"
+        }
+      ]
+    }
+  ]
+}
