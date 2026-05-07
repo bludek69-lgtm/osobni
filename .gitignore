@@ -20,3 +20,6 @@ photos/_NEZARAZENO/
 *.tmp
 *.bak
 *.draft.html
+
+# Local-only finance backups (no private data, but no need to publish either)
+_archive/

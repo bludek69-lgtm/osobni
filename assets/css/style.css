@@ -312,6 +312,143 @@ a.link:hover { border-bottom-style: solid; }
   color: var(--text);
 }
 
+/* ── FINANCE: TABLE (investment map etc.) ─────────────────── */
+.fin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 0.6rem;
+  font-size: 0.95rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  overflow: hidden;
+}
+.fin-table th,
+.fin-table td {
+  padding: 0.7rem 0.95rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.fin-table th {
+  background: var(--panel-hi);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.fin-table tr:last-child td { border-bottom: none; }
+.fin-table tr:hover td { background: var(--panel-hi); }
+.fin-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* Risk pills inside table */
+.risk-low    { color: #2f9f5d; font-weight: 600; }
+.risk-mid    { color: #d49317; font-weight: 600; }
+.risk-high   { color: #d05656; font-weight: 600; }
+
+/* ── FINANCE: CHECKLIST ───────────────────────────────────── */
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0.4rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.5rem 1.4rem;
+}
+.checklist li {
+  position: relative;
+  padding: 0.45rem 0.2rem 0.45rem 1.7rem;
+  font-size: 0.96rem;
+  color: var(--text);
+  border-bottom: 1px dashed var(--border);
+}
+.checklist li::before {
+  content: "✓";
+  position: absolute;
+  left: 0.2rem;
+  top: 0.45rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+.checklist.compact li {
+  padding: 0.3rem 0.2rem 0.3rem 1.5rem;
+  font-size: 0.92rem;
+}
+
+/* ── FINANCE: WARNING / CALLOUT ───────────────────────────── */
+.callout {
+  background: var(--panel-hi);
+  border-left: 4px solid var(--accent);
+  padding: 0.9rem 1.15rem;
+  border-radius: 0 var(--radius-button) var(--radius-button) 0;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 0.8rem 0;
+}
+.callout.warn {
+  border-left-color: #d05656;
+}
+.callout strong { color: var(--text); }
+
+/* ── FINANCE: NÁSTROJE — sub-sections ─────────────────────── */
+.tool-group { margin-top: 1.4rem; }
+.tool-group h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* ── FINANCE: CALC LIST (inline kalkulačky) ───────────────── */
+.calc-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.7rem;
+}
+.calc-list .calc-item {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  padding: 0.85rem 1rem;
+}
+.calc-list .calc-item strong {
+  display: block;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+.calc-list .calc-item p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-mut);
+}
+
+/* ── FINANCE: SCORE BLOCK ─────────────────────────────────── */
+.score-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.5rem;
+  margin: 0.7rem 0 0.3rem;
+}
+.score-block .score {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-button);
+  font-size: 0.92rem;
+}
+.score-block .score b { display: block; color: var(--text); margin-bottom: 0.1rem; }
+
+/* Mobile tightening */
+@media (max-width: 640px) {
+  .fin-table th, .fin-table td { padding: 0.55rem 0.7rem; font-size: 0.88rem; }
+  .checklist { grid-template-columns: 1fr; }
+}
+
 /* ── ITALY-SPECIFIC FLAG STRIPE ──────────────────────────── */
 body.theme-italy .italy-flag-bar {
   height: 4px;
