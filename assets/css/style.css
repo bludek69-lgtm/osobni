@@ -443,6 +443,28 @@ a.link:hover { border-bottom-style: solid; }
 }
 .score-block .score b { display: block; color: var(--text); margin-bottom: 0.1rem; }
 
+/* ── FINANCE: TOOL CTA BUTTON ─────────────────────────────── */
+.tool-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+  padding: 0.45rem 0.95rem;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.tool-cta:hover { opacity: 0.92; transform: translateY(-1px); }
+.tool-cta.alt {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
 /* Mobile tightening */
 @media (max-width: 640px) {
   .fin-table th, .fin-table td { padding: 0.55rem 0.7rem; font-size: 0.88rem; }

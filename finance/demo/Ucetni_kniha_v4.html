@@ -173,6 +173,11 @@ input[type="text"]:focus, select:focus { outline: 2px solid var(--accent); outli
 <div class="app">
   <aside class="sidebar">
     <h1>Účetní kniha v4 <small>Demo s.r.o. + bankovní účty + investice</small></h1>
+    <div style="background:#7c3aed; color:#fff; padding:8px 12px; border-radius:8px; margin-bottom:14px; font-size:12px; line-height:1.45;">
+      🔒 <strong>Veřejné demo s fiktivními daty.</strong>
+      Žádné reálné bankovní, brokerské, krypto ani daňové údaje.
+      Data jsou deterministicky generovaná (seed=42).
+    </div>
     <ul class="nav">
       <li><div class="nav-section">Přehled</div></li>
       <li><a href="#dashboard" data-page="dashboard"><span class="ico">📊</span> Dashboard</a></li>
@@ -229,10 +234,10 @@ input[type="text"]:focus, select:focus { outline: 2px solid var(--accent); outli
         </select>
       </div>
       <div class="ctrl">
-        <span>Anonymizace</span>
-        <select onchange="document.querySelectorAll('[name=anon-mode]')[this.selectedIndex].click()">
-          <option value="off">Vypnuto</option>
-          <option value="full">Blur</option>
+        <span>Zobrazení demo čísel</span>
+        <select onchange="document.querySelectorAll('[name=anon-mode]')[this.selectedIndex].click()" title="Všechna čísla jsou fiktivní (seed=42). Tento přepínač jen mění zobrazení.">
+          <option value="off">Plná čísla</option>
+          <option value="full">Rozmazat</option>
           <option value="strong">Skrýt</option>
         </select>
       </div>
