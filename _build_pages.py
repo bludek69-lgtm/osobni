@@ -87,6 +87,7 @@ PAGES = [
     {'rel': 'cestovani/estonsko/index.html', 'theme': 'travel', 'title': 'Estonsko — Cestování — Luděk', 'depth': 2},
     {'rel': 'cestovani/holansko/index.html', 'theme': 'travel', 'title': 'Nizozemsko — Cestování — Luděk', 'depth': 2},
     {'rel': 'cestovani/lotyssko/index.html', 'theme': 'travel', 'title': 'Lotyšsko — Cestování — Luděk', 'depth': 2},
+    {'rel': 'cestovani/cesko/index.html', 'theme': 'travel', 'title': 'Česká republika — Cestování — Luděk', 'depth': 2},
     {'rel': 'cestovani/madarsko/index.html', 'theme': 'travel', 'title': 'Maďarsko — Cestování — Luděk', 'depth': 2},
     {'rel': 'cestovani/rakousko/index.html', 'theme': 'travel', 'title': 'Rakousko — Cestování — Luděk', 'depth': 2},
     {'rel': 'cestovani/slovensko/index.html', 'theme': 'travel', 'title': 'Slovensko — Cestování — Luděk', 'depth': 2},
