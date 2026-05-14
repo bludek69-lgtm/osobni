@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Crawl-delay je nepovinný; ponecháno nezadáno (GitHub Pages spravuje rate-limit sám)
+
+# Nesear­chable interní složky / archiv
+Disallow: /_archive/
+
+Sitemap: https://cestovatel69.cz/sitemap.xml
