@@ -137,17 +137,51 @@
       technice a provozovat e-shop. Dnes jezdím u <strong>BusLine</strong> a ve volném čase
       se věnuji svým projektům.
     </p>
-    <p>
-      Co mám rád:
-    </p>
+    <h2 style="margin-top:2rem;">Záliby</h2>
+
+    <div class="zaliby-cards">
+      <article class="zaliby-card">
+        <figure class="zaliby-photo">
+          <img src="assets/img/zaliby/hasici.jpg" alt="Luděk jako hasič SDH Semily u zásahového vozu." loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('zaliby-photo-pending')">
+        </figure>
+        <div class="zaliby-body">
+          <h3>🚒 Hasiči</h3>
+          <p>Aktivní člen <strong>SDH Semily</strong>. Bohužel na to teď nemám moc času — ale když to vyjde, vyjedu.</p>
+        </div>
+      </article>
+
+      <article class="zaliby-card">
+        <figure class="zaliby-photo">
+          <img src="assets/img/zaliby/tenis.jpg" alt="Luděk na tenisovém kurtu v Semilech." loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('zaliby-photo-pending')">
+        </figure>
+        <div class="zaliby-body">
+          <h3>🎾 Tenis</h3>
+          <p>Občas si zahraju. Taky na to nemám čas — a hlavně už nemám na tenis ani dech 😅.</p>
+        </div>
+      </article>
+    </div>
+
+    <p style="margin-top:1.6rem;">A co dalšího mě baví:</p>
     <ul style="line-height:1.9;">
-      <li>🎣 <strong>Rybaření</strong> — být u vody, brzké ráno, mlha nad hladinou.</li>
+      <li>🎣 <strong><a href="zaliby/rybareni/">Rybaření</a></strong> — být u vody, brzké ráno, mlha nad hladinou.</li>
       <li>🇮🇹 <strong>Itálie a italská kuchyně</strong> — vařím doma, vracím se tam pracovně i osobně.</li>
       <li>🏠 <strong>Chytrá domácnost</strong> — vlastní systém co se sám stará o topení, světla a rytmus dne.</li>
       <li>💰 <strong>Investování</strong> — zlato, akcie, ETF, krypto. Trpělivost &gt; spekulace.</li>
-      <li>🤖 <strong>AI a moderní technologie</strong> — pracuji s AI agenty, hodně si toho dělám sám.</li>
+      <li>🤖 <strong><a href="ai.html">AI a moderní technologie</a></strong> — pracuji s AI agenty, hodně si toho dělám sám.</li>
       <li>🥁 Občas si zahraji na bicí.</li>
     </ul>
+
+    <style>
+      .zaliby-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-top: 1rem; }
+      .zaliby-card { background: var(--panel, #1f2937); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+      .zaliby-photo { margin: 0; aspect-ratio: 4/3; background: linear-gradient(135deg, #2a3647, #1a212e); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+      .zaliby-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .zaliby-photo-pending::after { content: "📷 foto se nahrává..."; color: rgba(255,255,255,0.45); font-size: 0.9rem; font-style: italic; }
+      .zaliby-body { padding: 0.9rem 1.1rem 1.1rem; }
+      .zaliby-body h3 { margin: 0 0 0.4rem; font-size: 1.15rem; }
+      .zaliby-body p { margin: 0; color: var(--text-mut, #cbd5e1); line-height: 1.55; }
+      .zaliby-body p strong { color: var(--text, #f9fafb); }
+    </style>
   </section>
 </main>
 
