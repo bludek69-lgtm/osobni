@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" role="img" aria-labelledby="aiVibeT aiVibeD">
+  <title id="aiVibeT">Vibe coding: bezpečný postup</title>
+  <desc id="aiVibeD">Diagram bezpečné práce s AI při tvorbě vlastních nástrojů: nápad, prompt, návrh kódu, test, oprava a nasazení.</desc>
+  <rect width="800" height="180" fill="#fafbfd" rx="12"/>
+  <g font-family="-apple-system, system-ui, sans-serif">
+    <text x="400" y="32" text-anchor="middle" font-size="14" font-weight="700" fill="#2d3a4f">Vibe coding: spolupráce, ne automat</text>
+
+    <g transform="translate(30,60)">
+      <!-- 6 stages -->
+      <g>
+        <circle cx="30" cy="30" r="24" fill="#e0f4ff" stroke="#5b9fc8" stroke-width="2"/>
+        <text x="30" y="38" text-anchor="middle" font-size="20">💡</text>
+        <text x="30" y="80" text-anchor="middle" font-size="11" font-weight="600" fill="#2d3a4f">Nápad</text>
+      </g>
+      <path d="M58 30 h40" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M93 25 l5 5 l-5 5" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <g transform="translate(105,0)">
+        <circle cx="30" cy="30" r="24" fill="#fff4e0" stroke="#e2a857" stroke-width="2"/>
+        <text x="30" y="38" text-anchor="middle" font-size="20">💬</text>
+        <text x="30" y="80" text-anchor="middle" font-size="11" font-weight="600" fill="#2d3a4f">Prompt</text>
+      </g>
+      <path d="M163 30 h40" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M198 25 l5 5 l-5 5" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <g transform="translate(210,0)">
+        <circle cx="30" cy="30" r="24" fill="#f4e0f4" stroke="#a86db8" stroke-width="2"/>
+        <text x="30" y="38" text-anchor="middle" font-size="20">📝</text>
+        <text x="30" y="80" text-anchor="middle" font-size="11" font-weight="600" fill="#2d3a4f">Návrh kódu</text>
+      </g>
+      <path d="M268 30 h40" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M303 25 l5 5 l-5 5" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <g transform="translate(315,0)">
+        <circle cx="30" cy="30" r="24" fill="#e8f4e8" stroke="#5ba85b" stroke-width="2"/>
+        <text x="30" y="38" text-anchor="middle" font-size="20">🧪</text>
+        <text x="30" y="80" text-anchor="middle" font-size="11" font-weight="600" fill="#2d3a4f">Test</text>
+      </g>
+      <path d="M373 30 h40" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M408 25 l5 5 l-5 5" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <g transform="translate(420,0)">
+        <circle cx="30" cy="30" r="24" fill="#ffe8e8" stroke="#c85b5b" stroke-width="2"/>
+        <text x="30" y="38" text-anchor="middle" font-size="20">🔧</text>
+        <text x="30" y="80" text-anchor="middle" font-size="11" font-weight="600" fill="#2d3a4f">Oprava</text>
+      </g>
+      <path d="M478 30 h40" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M513 25 l5 5 l-5 5" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <g transform="translate(525,0)">
+        <circle cx="30" cy="30" r="24" fill="#fff0d0" stroke="#d49317" stroke-width="2"/>
+        <text x="30" y="38" text-anchor="middle" font-size="20">🚀</text>
+        <text x="30" y="80" text-anchor="middle" font-size="11" font-weight="600" fill="#2d3a4f">Nasazení</text>
+      </g>
+
+      <!-- Loop arrow (Oprava → Test) -->
+      <path d="M450 60 q-10 25 -75 5" stroke="#c85b5b" stroke-width="1.5" fill="none" stroke-dasharray="3 3" stroke-linecap="round"/>
+      <path d="M380 65 l-5 3 l1 -6" stroke="#c85b5b" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="410" y="115" text-anchor="middle" font-size="9" fill="#c85b5b" font-style="italic">opakuj dokud nesedí</text>
+
+      <g transform="translate(615,15)">
+        <text font-size="10" fill="#9aa6b8">+ report</text>
+        <text y="14" font-size="10" fill="#9aa6b8">+ rollback</text>
+        <text y="28" font-size="10" fill="#9aa6b8">+ kontrola</text>
+      </g>
+    </g>
+  </g>
+</svg>
