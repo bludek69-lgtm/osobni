@@ -9,7 +9,19 @@
  * mobile breakpoints, focus states, vibe coding section, project cards.
  */
 
-.ai-page { color: #2d3a4f; }
+/* Page wrapper — bílé pozadí přes dark theme-home, aby tmavý text byl čitelný */
+.ai-page {
+  color: #2d3a4f;
+  background: #ffffff;
+  border-radius: 16px;
+  max-width: 980px;
+  margin: 1.2rem auto;
+  padding: 2rem 1.8rem 2.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+@media (max-width: 720px) {
+  .ai-page { padding: 1.2rem 1rem 1.8rem; margin: 0.6rem 0.5rem; border-radius: 12px; }
+}
 .ai-page section { margin: 2.4rem 0; }
 .ai-page h2 {
   font-size: 1.6rem;
@@ -115,9 +127,9 @@
 .ai-illust { width: 100%; height: auto; border-radius: 10px; margin: 0.8rem 0; display: block; }
 
 .ai-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.8rem; }
-.ai-pair .bad, .ai-pair .good { padding: 1rem 1.1rem; border-radius: 10px; }
-.ai-pair .bad { background: rgba(184,80,80,0.07); border-left: 3px solid #b85050; }
-.ai-pair .good { background: rgba(61,138,61,0.07); border-left: 3px solid #3d8a3d; }
+.ai-pair .bad, .ai-pair .good { padding: 1rem 1.1rem; border-radius: 10px; color: #2d3a4f; }
+.ai-pair .bad { background: #fdf2f2; border-left: 4px solid #b85050; }
+.ai-pair .good { background: #f0f7f0; border-left: 4px solid #3d8a3d; }
 .ai-pair .lbl {
   font-weight: 600;
   font-size: 0.82rem;
@@ -129,11 +141,13 @@
 .ai-pair .good .lbl { color: #3d8a3d; }
 .ai-pair code {
   display: block;
-  background: rgba(0,0,0,0.04);
-  padding: 0.5rem 0.7rem;
+  background: #ffffff;
+  border: 1px solid #d0dae6;
+  padding: 0.6rem 0.8rem;
   border-radius: 6px;
   font-size: 0.88rem;
-  line-height: 1.45;
+  line-height: 1.55;
+  color: #1e2837;
 }
 
 .ai-reason {
