@@ -36,6 +36,13 @@ PAGES = [
         'depth':     0,
     },
     {
+        'rel':       'ai.html',
+        'theme':     'home',
+        'title':     'AI v praxi — jak používám umělou inteligenci | Luděk Budínský',
+        'depth':     0,
+        'extra_css': 'assets/css/ai.css',   # page-specific styles (loaded on top of style.css)
+    },
+    {
         'rel':       'finance/index.html',
         'theme':     'finance',
         'title':     'Finance & investice — Luděk',
@@ -174,6 +181,7 @@ NAV = [
     ('Itálie',     'cestovani/italie/'),
     ('Rybaření',   'zaliby/rybareni/'),
     ('Smart Home', 'smart-home/'),
+    ('AI',         'ai.html'),
 ]
 
 # Smart Home external link (in footer / extra)
@@ -213,6 +221,12 @@ def render_template(page: dict, main_html: str) -> str:
     css_href = pfx + 'assets/css/style.css'
     js_src = pfx + 'assets/js/main.js'
 
+    # Optional page-specific CSS (per-page extra_css field)
+    extra_css_link = ''
+    extra_css = page.get('extra_css')
+    if extra_css:
+        extra_css_link = f'\n  <link rel="stylesheet" href="{pfx + extra_css}">'
+
     return f"""<!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -220,7 +234,7 @@ def render_template(page: dict, main_html: str) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{page['title']}</title>
   <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
-  <link rel="stylesheet" href="{css_href}">
+  <link rel="stylesheet" href="{css_href}">{extra_css_link}
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
 </head>
 <body class="theme-{page['theme']}">

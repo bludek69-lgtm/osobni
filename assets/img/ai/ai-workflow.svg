@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 160" role="img" aria-labelledby="aiWfT aiWfD">
+  <title id="aiWfT">Můj přístup k AI</title>
+  <desc id="aiWfD">Postup bezpečného používání AI: Nápad, Návrh, Kontrola, Test, Nasazení.</desc>
+  <rect width="800" height="160" fill="#fafbfd" rx="12"/>
+  <g font-family="-apple-system, system-ui, sans-serif">
+    <text x="400" y="32" text-anchor="middle" font-size="14" font-weight="700" fill="#2d3a4f">Můj přístup: nic nenasadit naslepo</text>
+    <g transform="translate(40,60)">
+      <!-- 5 stages -->
+      <g>
+        <circle cx="40" cy="35" r="28" fill="#e0f4ff" stroke="#5b9fc8" stroke-width="2"/>
+        <text x="40" y="42" text-anchor="middle" font-size="22">💡</text>
+        <text x="40" y="92" text-anchor="middle" font-size="12" font-weight="600" fill="#2d3a4f">Nápad</text>
+      </g>
+      <path d="M75 35 h60" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M130 30 l5 5 l-5 5" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(140,0)">
+        <circle cx="40" cy="35" r="28" fill="#fff4e0" stroke="#e2a857" stroke-width="2"/>
+        <text x="40" y="42" text-anchor="middle" font-size="22">📝</text>
+        <text x="40" y="92" text-anchor="middle" font-size="12" font-weight="600" fill="#2d3a4f">Návrh</text>
+      </g>
+      <path d="M215 35 h60" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M270 30 l5 5 l-5 5" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(280,0)">
+        <circle cx="40" cy="35" r="28" fill="#f4e0f4" stroke="#a86db8" stroke-width="2"/>
+        <text x="40" y="42" text-anchor="middle" font-size="22">🔍</text>
+        <text x="40" y="92" text-anchor="middle" font-size="12" font-weight="600" fill="#2d3a4f">Kontrola</text>
+      </g>
+      <path d="M355 35 h60" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M410 30 l5 5 l-5 5" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(420,0)">
+        <circle cx="40" cy="35" r="28" fill="#e8f4e8" stroke="#5ba85b" stroke-width="2"/>
+        <text x="40" y="42" text-anchor="middle" font-size="22">🧪</text>
+        <text x="40" y="92" text-anchor="middle" font-size="12" font-weight="600" fill="#2d3a4f">Test</text>
+      </g>
+      <path d="M495 35 h60" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M550 30 l5 5 l-5 5" stroke="#9aa6b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g transform="translate(560,0)">
+        <circle cx="40" cy="35" r="28" fill="#fff0d0" stroke="#d49317" stroke-width="2"/>
+        <text x="40" y="42" text-anchor="middle" font-size="22">🚀</text>
+        <text x="40" y="92" text-anchor="middle" font-size="12" font-weight="600" fill="#2d3a4f">Nasazení</text>
+      </g>
+      <g transform="translate(640,30)">
+        <text font-size="10" fill="#9aa6b8">+ report</text>
+        <text y="12" font-size="10" fill="#9aa6b8">+ rollback</text>
+      </g>
+    </g>
+  </g>
+</svg>

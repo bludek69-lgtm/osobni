@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-labelledby="aiHeroT aiHeroD">
+  <title id="aiHeroT">AI jako praktický pomocník</title>
+  <desc id="aiHeroD">Ilustrace praktického používání AI pro cestování, web, chytrou domácnost, finance a texty.</desc>
+  <defs>
+    <linearGradient id="aiBg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f5f8fb"/>
+      <stop offset="100%" stop-color="#e9eff5"/>
+    </linearGradient>
+    <linearGradient id="aiAccent" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#5b8bb8"/>
+      <stop offset="100%" stop-color="#7cb0d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="360" fill="url(#aiBg)" rx="14"/>
+
+  <!-- Notebook -->
+  <g transform="translate(60,120)">
+    <rect x="0" y="0" width="240" height="150" rx="10" fill="#2d3a4f" stroke="#1a212e" stroke-width="2"/>
+    <rect x="10" y="10" width="220" height="125" rx="6" fill="#0e1421"/>
+    <rect x="-10" y="150" width="260" height="14" rx="3" fill="#1a212e"/>
+    <rect x="20" y="25" width="180" height="4" rx="2" fill="#7cd6ff" opacity="0.7"/>
+    <rect x="20" y="38" width="140" height="4" rx="2" fill="#9aa6b8" opacity="0.6"/>
+    <rect x="20" y="51" width="160" height="4" rx="2" fill="#9aa6b8" opacity="0.5"/>
+    <rect x="20" y="64" width="100" height="4" rx="2" fill="#9aa6b8" opacity="0.4"/>
+    <circle cx="120" cy="100" r="18" fill="none" stroke="#9cf2a6" stroke-width="2.5"/>
+    <path d="M112 100 l5 5 l11 -11" fill="none" stroke="#9cf2a6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Person silhouette -->
+  <g transform="translate(180,60)" fill="#5b8bb8" opacity="0.85">
+    <circle cx="20" cy="20" r="18"/>
+    <path d="M-5 80 q0 -40 25 -40 q25 0 25 40 z"/>
+  </g>
+
+  <!-- Cards radiating -->
+  <g font-family="-apple-system, system-ui, sans-serif" font-size="13" font-weight="600" fill="#2d3a4f">
+    <g transform="translate(360,40)">
+      <rect width="130" height="58" rx="10" fill="#ffffff" stroke="#d6e0eb"/>
+      <text x="14" y="22">✈ Cestování</text>
+      <text x="14" y="42" font-size="10" font-weight="400" fill="#6c7a8c">Itálie · plány · texty</text>
+    </g>
+    <g transform="translate(510,40)">
+      <rect width="130" height="58" rx="10" fill="#ffffff" stroke="#d6e0eb"/>
+      <text x="14" y="22">💻 Web</text>
+      <text x="14" y="42" font-size="10" font-weight="400" fill="#6c7a8c">Texty · struktura · SEO</text>
+    </g>
+    <g transform="translate(660,40)">
+      <rect width="120" height="58" rx="10" fill="#ffffff" stroke="#d6e0eb"/>
+      <text x="14" y="22">🏠 Smart Home</text>
+      <text x="14" y="42" font-size="10" font-weight="400" fill="#6c7a8c">Audit · skripty</text>
+    </g>
+    <g transform="translate(360,160)">
+      <rect width="130" height="58" rx="10" fill="#ffffff" stroke="#d6e0eb"/>
+      <text x="14" y="22">📊 Finance</text>
+      <text x="14" y="42" font-size="10" font-weight="400" fill="#6c7a8c">Přehled · evidence</text>
+    </g>
+    <g transform="translate(510,160)">
+      <rect width="130" height="58" rx="10" fill="#ffffff" stroke="#d6e0eb"/>
+      <text x="14" y="22">📝 Texty</text>
+      <text x="14" y="42" font-size="10" font-weight="400" fill="#6c7a8c">Maily · články</text>
+    </g>
+    <g transform="translate(660,160)">
+      <rect width="120" height="58" rx="10" fill="#ffffff" stroke="#d6e0eb"/>
+      <text x="14" y="22">🧠 Učení</text>
+      <text x="14" y="42" font-size="10" font-weight="400" fill="#6c7a8c">Pochopení</text>
+    </g>
+  </g>
+
+  <!-- Connecting lines -->
+  <g stroke="url(#aiAccent)" stroke-width="1.5" fill="none" opacity="0.4" stroke-dasharray="3 4">
+    <path d="M300 170 q40 -90 60 -100"/>
+    <path d="M300 175 q70 -50 210 -100"/>
+    <path d="M300 180 q120 -30 360 -110"/>
+    <path d="M300 200 q40 0 60 -10"/>
+    <path d="M300 205 q80 0 210 -10"/>
+    <path d="M300 210 q150 5 360 -10"/>
+  </g>
+
+  <!-- Title strip -->
+  <g transform="translate(40,295)">
+    <text font-family="-apple-system, system-ui, sans-serif" font-size="20" font-weight="700" fill="#2d3a4f">AI jako parťák, ne kouzelná krabička</text>
+    <text y="22" font-size="13" fill="#6c7a8c">Pomáhá psát, plánovat, hledat chyby a posunout projekty dál.</text>
+  </g>
+</svg>

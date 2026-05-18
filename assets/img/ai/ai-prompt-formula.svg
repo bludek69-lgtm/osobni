@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" role="img" aria-labelledby="aiPfT aiPfD">
+  <title id="aiPfT">Vzorec pro lepší prompt</title>
+  <desc id="aiPfD">Diagram vzorce pro lepší dotazování AI: role, cíl, kontext, omezení a formát.</desc>
+  <rect width="800" height="200" fill="#fafbfd" rx="12"/>
+  <g font-family="-apple-system, system-ui, sans-serif">
+    <text x="400" y="36" text-anchor="middle" font-size="16" font-weight="700" fill="#2d3a4f">Vzorec pro lepší prompt</text>
+    <g transform="translate(20,70)">
+      <!-- 5 chips -->
+      <g transform="translate(0,0)">
+        <rect width="130" height="70" rx="12" fill="#fff4e0" stroke="#e2a857" stroke-width="2"/>
+        <text x="65" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#a06d20">ROLE</text>
+        <text x="65" y="50" text-anchor="middle" font-size="10" fill="#6c7a8c">Kdo má AI být</text>
+        <text x="65" y="62" text-anchor="middle" font-size="9" fill="#9aa6b8">"Jsi editor..."</text>
+      </g>
+      <g transform="translate(150,0)">
+        <rect width="130" height="70" rx="12" fill="#e0f4ff" stroke="#5b9fc8" stroke-width="2"/>
+        <text x="65" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#1e6285">CÍL</text>
+        <text x="65" y="50" text-anchor="middle" font-size="10" fill="#6c7a8c">Co má udělat</text>
+        <text x="65" y="62" text-anchor="middle" font-size="9" fill="#9aa6b8">"Napiš článek..."</text>
+      </g>
+      <g transform="translate(300,0)">
+        <rect width="130" height="70" rx="12" fill="#e8f4e8" stroke="#5ba85b" stroke-width="2"/>
+        <text x="65" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#2d6d2d">KONTEXT</text>
+        <text x="65" y="50" text-anchor="middle" font-size="10" fill="#6c7a8c">Pro koho a proč</text>
+        <text x="65" y="62" text-anchor="middle" font-size="9" fill="#9aa6b8">"pro turisty..."</text>
+      </g>
+      <g transform="translate(450,0)">
+        <rect width="130" height="70" rx="12" fill="#f4e0f4" stroke="#a86db8" stroke-width="2"/>
+        <text x="65" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#6d2d80">OMEZENÍ</text>
+        <text x="65" y="50" text-anchor="middle" font-size="10" fill="#6c7a8c">Co se nesmí</text>
+        <text x="65" y="62" text-anchor="middle" font-size="9" fill="#9aa6b8">"bez žargonu..."</text>
+      </g>
+      <g transform="translate(600,0)">
+        <rect width="160" height="70" rx="12" fill="#fff0d0" stroke="#d49317" stroke-width="2"/>
+        <text x="80" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#8d5d10">FORMÁT</text>
+        <text x="80" y="50" text-anchor="middle" font-size="10" fill="#6c7a8c">Jak má vypadat</text>
+        <text x="80" y="62" text-anchor="middle" font-size="9" fill="#9aa6b8">"nadpisy + odst."</text>
+      </g>
+    </g>
+
+    <!-- Arrows between chips -->
+    <g stroke="#9aa6b8" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M155 105 h-5 l-3 -3 m3 3 l-3 3"/>
+      <path d="M305 105 h-5 l-3 -3 m3 3 l-3 3"/>
+      <path d="M455 105 h-5 l-3 -3 m3 3 l-3 3"/>
+      <path d="M605 105 h-5 l-3 -3 m3 3 l-3 3"/>
+    </g>
+
+    <text x="400" y="180" text-anchor="middle" font-size="11" fill="#6c7a8c">Dobrý prompt nemusí být dlouhý — stačí těchto 5 věcí.</text>
+  </g>
+</svg>

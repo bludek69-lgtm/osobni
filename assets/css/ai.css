@@ -1,0 +1,143 @@
+/* AI page — scoped styles for /ai.html
+ *
+ * Loaded ONLY by ai.html (via <link rel="stylesheet">).
+ * All selectors prefixed `.ai-*` or `.ai-page` to avoid collision with
+ * repo-wide assets/css/style.css.
+ *
+ * Created: 2026-05-18 pre-deploy fix (extracted from inline <style> in ai.html).
+ */
+
+.ai-page section { margin: 2.4rem 0; }
+.ai-page h2 { font-size: 1.55rem; margin-bottom: 0.6rem; }
+.ai-page h3 { font-size: 1.1rem; margin-top: 1rem; margin-bottom: 0.4rem; }
+
+.ai-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 1.4rem;
+  align-items: center;
+  padding: 1.4rem;
+  background: linear-gradient(135deg, rgba(124,176,212,0.06), rgba(156,242,166,0.03));
+  border-radius: 14px;
+}
+.ai-hero img, .ai-hero svg { width: 100%; height: auto; max-height: 360px; border-radius: 10px; }
+.ai-hero h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 0 0 0.4rem; }
+.ai-hero .perex { color: #4a5568; line-height: 1.55; }
+
+.ai-cta-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+.ai-cta-row .btn {
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  background: #5b8bb8;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.ai-cta-row .btn.ghost { background: rgba(91,139,184,0.12); color: #5b8bb8; }
+
+.ai-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.ai-card { background: #ffffff; border: 1px solid #d6e0eb; border-radius: 12px; padding: 1rem 1.1rem; }
+.ai-card h3 { margin-top: 0; display: flex; align-items: center; gap: 0.45rem; }
+.ai-card .icn { font-size: 1.2rem; }
+.ai-card ul { padding-left: 1.1rem; margin: 0.5rem 0 0; }
+.ai-card ul li { margin: 0.2rem 0; font-size: 0.92rem; color: #4a5568; }
+.ai-card .note {
+  font-size: 0.82rem;
+  color: #6c7a8c;
+  font-style: italic;
+  margin-top: 0.7rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed #e8edf2;
+}
+
+.ai-illust { width: 100%; height: auto; border-radius: 10px; margin: 0.8rem 0; display: block; }
+
+.ai-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.8rem; }
+.ai-pair .bad, .ai-pair .good { padding: 1rem 1.1rem; border-radius: 10px; }
+.ai-pair .bad { background: rgba(184,80,80,0.07); border-left: 3px solid #b85050; }
+.ai-pair .good { background: rgba(61,138,61,0.07); border-left: 3px solid #3d8a3d; }
+.ai-pair .lbl {
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+.ai-pair .bad .lbl { color: #b85050; }
+.ai-pair .good .lbl { color: #3d8a3d; }
+.ai-pair code {
+  display: block;
+  background: rgba(0,0,0,0.04);
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.ai-reason {
+  background: #fafbfd;
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  margin: 0.6rem 0;
+  border-left: 3px solid #5b8bb8;
+}
+.ai-reason h3 { margin: 0 0 0.4rem; font-size: 1.02rem; }
+.ai-reason p { margin: 0; color: #4a5568; font-size: 0.95rem; }
+
+.ai-prompts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.ai-prompt-box { background: #fff; border: 1px solid #d6e0eb; border-radius: 10px; padding: 0.9rem 1rem; }
+.ai-prompt-box h3 { margin: 0 0 0.5rem; font-size: 0.98rem; color: #5b8bb8; }
+.ai-prompt-box code {
+  display: block;
+  background: #f5f8fb;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #2d3a4f;
+  white-space: pre-wrap;
+}
+
+.ai-callout-warn {
+  background: rgba(255,200,100,0.1);
+  border: 1px solid rgba(255,200,100,0.3);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  margin: 1.2rem 0;
+}
+.ai-callout-warn strong { color: #8d5d10; }
+.ai-callout-info {
+  background: rgba(124,176,212,0.08);
+  border: 1px solid rgba(91,139,184,0.2);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+  color: #4a5568;
+}
+
+.ai-cta-final {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, rgba(91,139,184,0.08), rgba(156,242,166,0.05));
+  border-radius: 14px;
+  margin-top: 2rem;
+}
+.ai-cta-final p { max-width: 640px; margin: 0 auto 1rem; color: #4a5568; line-height: 1.55; }
+
+/* Responsive — mobile stack */
+@media (max-width: 720px) {
+  .ai-hero { grid-template-columns: 1fr; }
+  .ai-pair { grid-template-columns: 1fr; }
+}
