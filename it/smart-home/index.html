@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Home — Luděk</title>
+  <meta name="description" content="Una casa che si occupa da sola di riscaldamento, luci, audio e ritmo mattutino. Costruita su Homey Pro 2026 + HomeyScripts personalizzati.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+  <link rel="canonical" href="https://cestovatel69.cz/it/smart-home/">
+  <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/smart-home/">
+  <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/smart-home/">
+  <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/smart-home/">
+  <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/smart-home/">
+</head>
+<body class="theme-smart-home">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <div class="lang-switcher" aria-label="Lingua">
+      <a href="../../smart-home/" hreflang="cs" title="Česky">CS</a>
+      <a href="../../en/smart-home/" hreflang="en" title="English">EN</a>
+      <a href="./" hreflang="it" aria-current="page" title="Italiano">IT</a>
+    </div>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Navigazione principale">
+    <a href="../">Home</a>
+    <a href="../finance/">Finanza</a>
+    <a href="../cestovani/">Viaggi</a>
+    <a href="../cestovani/italie/">Italia</a>
+    <a href="../zaliby/rybareni/">Pesca</a>
+    <a href="../smart-home/" aria-current="page">Smart Home</a>
+    <a href="../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <span class="hero-accent">Smart Home</span>
+    <h1>Una casa che si capisce da sola</h1>
+    <p class="hero-sub">
+      Da anni costruisco un sistema che si occupa da solo di riscaldamento, luci, caffè e ritmo
+      della giornata. Niente app universale — una casa che conosce le mie abitudini e si accorge
+      quando qualcosa non va.
+    </p>
+  </section>
+
+  <section class="prose">
+    <h2>Cosa fa in pratica</h2>
+    <p>
+      La casa non aspetta che io prenda il telefono. Osserva più segnali contemporaneamente —
+      se sono a casa, se dormo, se è mattina, dove mi muovo — e decide da sola. Qualche esempio:
+    </p>
+    <ul style="line-height:1.9;">
+      <li>🌅 <strong>Mattina alle 3:15</strong> — quando suona la sveglia e mi muovo dal letto,
+        parte la radio in cucina, le luci della camera si accendono dolcemente, il caffè si prepara.
+        Dove non sono, non si accende nulla.</li>
+      <li>🛏 <strong>Notte</strong> — se vado in bagno, non parte "tutta la routine mattutina".
+        Il sistema capisce che sto solo passando e dopo qualche minuto torna a riposo.</li>
+      <li>🔥 <strong>Riscaldamento</strong> — ogni zona ha il proprio orario. Quando sono via,
+        abbassa la temperatura. Quando torno, scalda il bagno. Più efficiente di 24°C tutto il giorno.</li>
+      <li>🚪 <strong>Arrivo a casa</strong> — il telefono entra nel raggio, la casa passa in modalità
+        "a casa", l'audio si adatta all'ora del giorno, controlla tapparelle e finestre.</li>
+      <li>🤖 <strong>Anomalie</strong> — quando succede qualcosa di strano (allarme alle 3 di notte
+        senza movimento, o luci accese mentre sono via), il sistema se ne accorge e mi manda un push.</li>
+    </ul>
+    <p>
+      L'obiettivo: meno clic sugli interruttori, più tranquillità. La casa si capisce da sola.
+    </p>
+  </section>
+
+  <section>
+    <h2>Cosa gestisce</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🔥</div>
+        <h3>Riscaldamento &amp; clima</h3>
+        <p>4 zone con orari propri. Tre modalità (Auto / Manuale / Off). Più efficiente di un solo pulsante per tutta la casa.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💡</div>
+        <h3>Luci</h3>
+        <p>Si attenuano in base all'ora del giorno e alla luce esterna. Quando sono via o dormo, si spengono da sole.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔊</div>
+        <h3>Audio &amp; routine mattutina</h3>
+        <p>Radio in cucina, briefing leggero, musica per scena. Non si accende mai quando dormo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛡</div>
+        <h3>Sicurezza</h3>
+        <p>Movimento, porte, finestre, telecamere. Quando qualcosa è fuori norma, ricevo un avviso sul telefono.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Energia</h3>
+        <p>Monitora il consumo degli apparecchi. Vedo in anticipo quanti kWh costano caldaia, frigo o piano cottura.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Dashboard</h3>
+        <p>Tre display (monitor grande, notebook, RPi in cucina). Stato di tutta la casa a colpo d'occhio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>Sotto il cofano (per tecnici)</h2>
+    <p>
+      Costruito su <strong>Homey Pro 2026</strong> + uno strato personalizzato di HomeyScript.
+      Architettura: <em>request-first pipeline</em> (gli script chiedono, il router decide),
+      device map come singola fonte di verità per i nomi dei dispositivi, decisione sleep/wake
+      multi-segnale, strato di controllo per rilevamento anomalie e regressioni. Log e dati
+      tecnici si salvano localmente su Raspberry Pi / SSD (JSONL + SQLite). Notifiche mobile
+      via Homey notifications API. Descrizione completa del sistema e dashboard sul sito
+      separato qui sotto.
+    </p>
+  </section>
+
+  <section class="external-cta">
+    <h2>Sito tecnico completo</h2>
+    <p>
+      L'architettura, i dashboard, il blog e il build log hanno la propria pagina —
+      smart-home-website gira come progetto tecnico separato.
+    </p>
+    <p style="margin-top: 1.5rem;">
+      <a href="https://bludek69-lgtm.github.io/smart-home-website/" target="_blank" rel="noopener" class="btn btn-primary">
+        Apri smart-home-website →
+      </a>
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Luděk · Sito personale</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://bludek69-lgtm.github.io/smart-home-website/" target="_blank" rel="noopener">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js?v=2026-05-20"></script>
+</body>
+</html>
