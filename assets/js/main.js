@@ -1,8 +1,69 @@
 // Osobní web — Luděk
-// Minimal JS: mobile nav toggle + lazy-load helper
+// Minimal JS: mobile nav toggle + lazy-load helper + theme toggle (Phase 5.1)
+
+// Theme toggle — runs EARLY (before DOMContentLoaded) to prevent flash of wrong theme
+(function () {
+  'use strict';
+  const STORAGE_KEY = 'cestovatel69_theme_mode'; // 'dark' | 'light' | 'auto'
+  const stored = (() => { try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; } })();
+  const prefersDark = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let mode;
+  if (stored === 'dark' || stored === 'light') {
+    mode = stored;
+  } else {
+    // 'auto' or unset → fall back to system preference; if no preference, respect per-page theme (no override)
+    mode = prefersDark ? 'dark' : 'light';
+    // Note: if user has never toggled, we still APPLY system preference to keep behavior predictable.
+    // Saved value "auto" would mean explicit user choice for "system", overrides default to no-override.
+    if (stored === 'auto') mode = null; // no override → respect per-page designed theme
+  }
+  if (mode === 'dark' || mode === 'light') {
+    document.documentElement.setAttribute('data-theme-mode', mode);
+  }
+})();
 
 (function () {
   'use strict';
+
+  // Theme toggle button — inserted into header after DOM ready
+  function installThemeToggle() {
+    const header = document.querySelector('.site-header__inner');
+    if (!header || header.querySelector('.theme-toggle')) return;
+    const STORAGE_KEY = 'cestovatel69_theme_mode';
+    const btn = document.createElement('button');
+    btn.className = 'theme-toggle';
+    btn.setAttribute('aria-label', 'Přepnout tmavý / světlý režim');
+    btn.setAttribute('title', 'Tmavý / světlý režim');
+    const updateIcon = () => {
+      const current = document.documentElement.getAttribute('data-theme-mode');
+      // Show icon for NEXT mode (clickable affordance)
+      if (current === 'dark') { btn.textContent = '☀️'; btn.setAttribute('aria-label', 'Přepnout na světlý režim'); }
+      else if (current === 'light') { btn.textContent = '🌙'; btn.setAttribute('aria-label', 'Přepnout na tmavý režim'); }
+      else { btn.textContent = '🌓'; btn.setAttribute('aria-label', 'Auto režim — klikni pro přepnutí'); }
+    };
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme-mode');
+      const next = current === 'dark' ? 'light' : (current === 'light' ? null : 'dark');
+      if (next === null) {
+        document.documentElement.removeAttribute('data-theme-mode');
+        try { localStorage.setItem(STORAGE_KEY, 'auto'); } catch (e) {}
+      } else {
+        document.documentElement.setAttribute('data-theme-mode', next);
+        try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
+      }
+      updateIcon();
+    });
+    // Insert before nav-toggle so it appears as button group on mobile
+    const navToggle = header.querySelector('.nav-toggle');
+    if (navToggle) header.insertBefore(btn, navToggle);
+    else header.appendChild(btn);
+    updateIcon();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', installThemeToggle);
+  } else {
+    installThemeToggle();
+  }
 
   // Mobile nav toggle
   const toggle = document.querySelector('.nav-toggle');

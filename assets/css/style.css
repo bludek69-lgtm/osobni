@@ -101,6 +101,135 @@ body.theme-smart-home {
   --border:    rgba(34, 211, 238, 0.12);
 }
 
+/* ─── Phase 5.1 (2026-05-20) — DARK/LIGHT user toggle ───
+   User-driven mode override via [data-theme-mode] on <html>.
+   "auto" = respect per-page designed theme (no override)
+   "dark" = force dark variant for all themes
+   "light" = force light variant for all themes
+   Accent colors preserved per theme (italian green, finance gold, etc.) */
+
+/* DARK MODE — applies to all body themes including originally-light ones */
+html[data-theme-mode="dark"] body.theme-travel {
+  --bg:        #1a1612;
+  --bg-deep:   #100c08;
+  --panel:     #2a221b;
+  --panel-hi:  #3a2f25;
+  --text:      #f4ebe0;
+  --text-mut:  #c4b0a0;
+  --border:    rgba(255,247,237,0.08);
+  /* accent (#0e7490 teal, #b85c38 terakota) preserved */
+}
+html[data-theme-mode="dark"] body.theme-italy {
+  --bg:        #1a1810;
+  --bg-deep:   #100e08;
+  --panel:     #2a261c;
+  --panel-hi:  #3a3527;
+  --text:      #f4f1e6;
+  --text-mut:  #c0b8a4;
+  --border:    rgba(255,247,230,0.08);
+  /* italian green/red/terracotta accents preserved */
+}
+
+/* LIGHT MODE — applies to all body themes including originally-dark ones */
+html[data-theme-mode="light"] body.theme-home {
+  --bg:        #f7f9fc;
+  --bg-deep:   #e8eef5;
+  --panel:     #ffffff;
+  --panel-hi:  #f0f4fa;
+  --text:      #1a2233;
+  --text-mut:  #5a6478;
+  --border:    rgba(26,34,51,0.10);
+  /* gold accent preserved */
+}
+html[data-theme-mode="light"] body.theme-finance {
+  --bg:        #f5f6fa;
+  --bg-deep:   #e8ecf3;
+  --panel:     #ffffff;
+  --panel-hi:  #f0f2f8;
+  --text:      #1a2030;
+  --text-mut:  #545d70;
+  --border:    rgba(26,32,48,0.10);
+  /* gold accent preserved */
+}
+html[data-theme-mode="light"] body.theme-smart-home {
+  --bg:        #f0f7fb;
+  --bg-deep:   #e0eef5;
+  --panel:     #ffffff;
+  --panel-hi:  #e5f4fa;
+  --text:      #0a1828;
+  --text-mut:  #4a5868;
+  --border:    rgba(34,211,238,0.18);
+  /* cyan accent preserved */
+}
+
+/* Language switcher — CS / EN / IT pills in header */
+.lang-switcher {
+  display: inline-flex;
+  gap: 0.15rem;
+  margin-left: 0.6rem;
+  align-items: center;
+}
+.lang-switcher a {
+  color: var(--text-mut);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  transition: background 140ms, color 140ms, border-color 140ms;
+}
+.lang-switcher a:hover {
+  color: var(--text);
+  background: var(--panel-hi);
+  border-color: var(--accent);
+}
+.lang-switcher a[aria-current="page"] {
+  color: var(--text);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.lang-switcher a[aria-current="page"]:hover {
+  color: var(--text);
+  background: var(--accent);
+}
+.lang-tag {
+  font-size: 0.6rem;
+  opacity: 0.6;
+  margin-left: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  vertical-align: middle;
+}
+
+/* Theme toggle button — in header */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 160ms, transform 160ms, border-color 160ms;
+  margin-left: 0.4rem;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  background: var(--panel-hi);
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 /* ── HEADER + NAVIGATION ─────────────────────────────────── */
 .site-header {
   background: var(--panel);

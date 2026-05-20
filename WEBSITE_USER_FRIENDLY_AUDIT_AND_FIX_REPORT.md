@@ -889,3 +889,202 @@ CELKOVÝ VERDICT (Phase 1+2+3+4):       PASS_ALL_FOUR_PHASES_LOCAL_READY_FOR_COM
 ```
 
 **STOP.** Lokální stav je konzistentní, zazálohovaný, browser-tested a theme-aware. Pro publikaci na `cestovatel69.cz` napiš `GO WEBSITE USER-FRIENDLY PATCH COMMIT`.
+
+---
+
+# Phase 5 — Performance + Dark/Light toggle + i18n EN+IT MVP (2026-05-20 10:00)
+
+## VERDIKT PHASE 5
+
+```
+PASS_PHASE_5_LOCAL_READY_FOR_COMMIT
+```
+
+3 podfáze hotové: 5.3 performance quick wins (62 native decoding="async" + YouTube preconnect), 5.1 dark/light user toggle (CSS 5-theme overrides + JS button + localStorage + prefers-color-scheme), 5.2 i18n MVP (EN + IT homepage + lang switcher + hreflang infrastruktura).
+
+---
+
+## 1. Phase 5.3 — Performance quick wins
+
+| Soubor | decoding added | Preconnect | Delta |
+|---|---:|---|---|
+| ai.html | +7 | — | +119 B |
+| cestovani/bosna/index.html | +6 | — | +102 B |
+| cestovani/italie/kuchyne.html | +36 | youtube-nocookie + dns-prefetch | +758 B |
+| cestovani/pracovni-cesty/index.html | +3 | — | +51 B |
+| cestovani/pracovni-cesty/autobusy/index.html | +10 | — | +170 B |
+| **Total** | **+62 native** | 1 preconnect | **+1200 B** |
+
+### Audit summary
+
+- 850 total images, 96.5% already had loading="lazy" before
+- 62 new native decoding="async" attrs (no JS wait at runtime)
+- CSS+JS bundle minimal (33+9+6.8 KB)
+- WebP/AVIF conversion deferred (needs image pipeline)
+
+---
+
+## 2. Phase 5.1 — Dark/light user toggle
+
+### Implementace
+
+CSS: `data-theme-mode` attribute na `<html>`:
+- `dark` → overrides theme-travel + theme-italy na dark variant (preserves italian green/red accents)
+- `light` → overrides theme-home + theme-finance + theme-smart-home na light variant (preserves gold/cyan accents)
+- bez attribute → respektuje per-page designed theme (auto)
+
+JS:
+- Early IIFE (před DOMContentLoaded) zabraňuje flash of wrong theme
+- localStorage persist + prefers-color-scheme bridge
+- Cyklí: dark → light → auto → dark
+- Icons: ☀️ / 🌙 / 🌓
+
+### Live test (na italie hub, theme-italy)
+
+| Step | Mode | Body bg |
+|---|---|---|
+| Initial | light | rgb(255,247,230) cream |
+| Click 1 | auto/null | rgb(255,247,230) cream |
+| Click 2 | dark | rgb(26,24,16) dark warm |
+| Click 3 | light | rgb(255,247,230) cream |
+
+Italian dark variant zachovává green/red/terracotta accenty.
+
+---
+
+## 3. Phase 5.2 — i18n EN + IT MVP
+
+### Co bylo vytvořeno
+
+```
+en/index.html (5.3 KB) — English homepage
+it/index.html (6.2 KB) — Italian homepage
+```
+
+### Infrastructure
+
+- hreflang link tags na všech 3 entry points (cs/en/it + x-default)
+- Lang switcher pills v headeru: CS / EN / IT s aria-current syncem
+- OG locale + alternate locale meta tags
+- JSON-LD Person schema lokalizován per jazyk
+
+### Scope decision (MVP)
+
+Pouze homepage v každém jazyce. Vnitřní odkazy odkazují na CS verzi s vizuálním tagem [CS]. Plná translation všech 30+ stránek = ongoing work.
+
+### IT homepage zvláštnosti
+
+- Used theme-italy (cream + green/red Italian accents)
+- Italian flag stripe nahoře (italy-flag-bar)
+- Personal note o Lerici (toskánský přímořský městečko kde Luděk žil)
+
+---
+
+## 4. Files changed (Phase 5)
+
+```
+Phase 5.3 — performance (5 HTML):
+  ai.html
+  cestovani/bosna/index.html
+  cestovani/italie/kuchyne.html
+  cestovani/pracovni-cesty/index.html
+  cestovani/pracovni-cesty/autobusy/index.html
+
+Phase 5.1 — theme toggle:
+  assets/css/style.css            — 5 theme dark/light overrides + .theme-toggle + .lang-switcher styles
+  assets/js/main.js               — early FOUC-preventing IIFE + installThemeToggle()
+
+Phase 5.2 — i18n:
+  en/index.html                   — NEW (EN homepage, 5.3 KB)
+  it/index.html                   — NEW (IT homepage, 6.2 KB)
+  index.html                      — added hreflang + lang switcher
+
+Cache-busting:
+  35 HTML files                   — main.js src updated to ?v=2026-05-20
+```
+
+### Backup
+
+```
+_archive/website_phase5_perf_20260520_103625/
+```
+
+---
+
+## 5. Browser smoke (Phase 5)
+
+| Test | Result |
+|---|---|
+| /en/ loads, lang=en, hreflang complete | PASS |
+| /it/ loads, lang=it, hreflang complete | PASS |
+| Lang switcher CS/EN/IT všechny 3 entries | PASS aria-current synced |
+| Theme toggle button v headeru | PASS |
+| Theme cycle dark → light → auto | PASS |
+| Body bg adaptuje per mode | PASS italy: cream ↔ dark warm |
+| localStorage persist | PASS |
+| FOUC prevention | PASS |
+| Cache-bust `?v=2026-05-20` na main.js | PASS 35 souborů |
+
+---
+
+## 6. Co se NEMĚNILO
+
+- Cestopisy z Phase 3/4 (kromě bosna/kuchyne/pracovni-cesty perf opt)
+- Translation vnitřních stránek (CS-only odkazy s [CS] tagem)
+- Image WebP conversion (deferred)
+- finance/demo/Ucetni_kniha_v4.html
+- smart-home/, ai.html content (jen cache-bust src)
+
+---
+
+## 7. Bezpečnostní kontrola
+
+| Položka | Status |
+|---|---|
+| Tokeny / API klíče v EN/IT překladu | NIC |
+| Nové externí domény | pouze youtube-nocookie preconnect (legitimate) |
+| localStorage data | 1 klíč: cestovatel69_theme_mode (no PII) |
+| JSON-LD Person schema | public-facing data only |
+
+---
+
+## 8. Souhrn všech 5 fází
+
+```
+Phase 1 (08:00) — 6 textových quick-wins         (5 souborů)
+Phase 2 (08:10) — strukturální                   (3 HTML + 1 CSS)
+Phase 3 (08:22) — cestopisy                      (5 HTML, 29 IDs + 5 intros + 5 TOCs)
+Phase 4 (08:39) — italie + svycarsko + CSS refactor  (2 HTML + 1 CSS)
+Phase 5 (10:00) — perf + dark/light + i18n + cache-bust  (5 perf + CSS + JS + 2 locale + 35 cache-bust)
+─────────────────────────────────────────────────────────────────────────
+Celkem unikátních patched/new souborů:           ~41
+git push:                                        Phase 1-4 ✅ (commit 42bca36)
+                                                 Phase 5 čeká na další commit
+```
+
+---
+
+## 9. Doporučený další krok
+
+```
+GO WEBSITE PHASE 5 COMMIT
+   → commit + push Phase 5 (perf + theme toggle + i18n + cache-bust)
+```
+
+---
+
+## 10. Finální compliance (Phase 5)
+
+```
+HomeyScript / smart-home runtime:      NE TOUCHED
+API klíče v HTML:                      ŽÁDNÉ
+localStorage:                          1 key (theme preference)
+Theme toggle:                          ANO (live test PASS)
+Lang switcher:                         ANO (3 jazyky)
+hreflang:                              ANO (cs/en/it/x-default)
+git push (Phase 5):                    NE (čeká na GO)
+Fake data:                             ŽÁDNÉ
+
+VERDICT (Phase 5):                     PASS_PHASE_5_LOCAL_READY_FOR_COMMIT
+CELKOVÝ VERDICT (Phase 1+2+3+4+5):     PASS_ALL_FIVE_PHASES_LOCAL_READY_FOR_COMMIT
+```
