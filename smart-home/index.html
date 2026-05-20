@@ -104,11 +104,11 @@
     <p>
       Postavené na <strong>Homey Pro 2026</strong> + vlastní vrstvě HomeyScriptů.
       Architektura: <em>request-first pipeline</em> (skripty žádají, router rozhoduje),
-      device map jako single source of truth, multi-signal sleep/wake state machine,
-      brain guardian pro detekci anomálií a regression. Logy a technická data se ukládají
-      lokálně na Raspberry Pi / SSD do JSONL a SQLite; Google Sheets zůstává pouze jako
-      záložní fallback a historická vrstva. Mobile push přes Homey notifications API.
-      Kompletní popis systému, build log a dashboardy najdeš na samostatném webu níž.
+      device map jako jediný zdroj pravdy pro názvy zařízení, multi-signal sleep/wake
+      rozhodování, kontrolní vrstva pro detekci anomálií a regresí. Logy a technická data
+      se ukládají lokálně na Raspberry Pi / SSD (JSONL + SQLite). Mobilní notifikace přes
+      Homey notifications API. Kompletní popis systému a dashboardy najdeš na samostatném
+      webu níž.
     </p>
   </section>
 

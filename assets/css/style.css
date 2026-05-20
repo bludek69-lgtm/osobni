@@ -876,9 +876,7 @@ body.theme-italy .youtube-subscribe::before {
 .recipe-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.6rem; }
 .recipe-tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 3px; background: rgba(255,255,255,0.06); }
 .recipe-tag.tag-region { background: rgba(0,140,69,0.18); }
-.recipe-tag.tag-confidence-HIGH { background: rgba(0,140,69,0.25); }
-.recipe-tag.tag-confidence-MEDIUM { background: rgba(255,180,0,0.18); }
-.recipe-tag.tag-confidence-LOW { background: rgba(255,80,80,0.15); }
+/* tag-confidence-* styles removed 2026-05-20 — class no longer used in HTML */
 
 .pasta-guide { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; margin: 1.5rem 0; }
 @media (max-width: 1024px) { .pasta-guide { grid-template-columns: repeat(2, minmax(0,1fr)); } }
@@ -955,3 +953,78 @@ img.pasta-icon {
 .traditional-vs-home { background: linear-gradient(135deg, rgba(0,140,69,0.08), rgba(206,17,38,0.05)); border: 1px solid rgba(0,140,69,0.25); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; text-align: center; }
 .traditional-vs-home h3 { margin: 0 0 0.6rem; color: #008c45; }
 .traditional-vs-home p { margin: 0.4rem auto; max-width: 640px; font-size: 0.95rem; }
+
+/* ─── Phase 2 (2026-05-20) — Page intro + sticky TOC for long pages ─── */
+/* Phase 4 (2026-05-20) refactor — theme-aware (works on theme-home/finance/travel/italy/smart-home) */
+.page-intro {
+  background: var(--panel-hi);
+  border-left: 3px solid var(--accent);
+  padding: 0.9rem 1.2rem;
+  margin: 1.2rem 0 1.4rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+.page-intro p { margin: 0.3rem 0; }
+.page-intro p:first-child { margin-top: 0; }
+.page-intro p:last-child { margin-bottom: 0; }
+.page-intro strong { color: var(--text); }
+.page-intro .intro-other {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  opacity: 0.85;
+}
+
+.page-toc-sticky {
+  position: sticky;
+  top: 64px;
+  z-index: 9;
+  background: var(--panel);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.55rem 0.9rem;
+  margin: 0.6rem 0 1.4rem;
+  font-size: 0.85rem;
+}
+.page-toc-sticky .toc-label {
+  color: var(--text-mut);
+  margin-right: 0.6rem;
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+}
+.page-toc-sticky ul {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+.page-toc-sticky li { display: inline; }
+.page-toc-sticky a {
+  color: var(--text-mut);
+  text-decoration: none;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  transition: background 120ms, color 120ms;
+  white-space: nowrap;
+  display: inline-block;
+}
+.page-toc-sticky a:hover {
+  color: var(--text);
+  background: var(--panel-hi);
+}
+
+@media (max-width: 720px) {
+  .page-toc-sticky { position: static; padding: 0.5rem 0.7rem; }
+  .page-toc-sticky ul { gap: 0.2rem 0.4rem; font-size: 0.78rem; }
+  .page-toc-sticky .toc-label { display: block; margin-bottom: 0.3rem; }
+}
