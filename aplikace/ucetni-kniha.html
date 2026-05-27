@@ -31,35 +31,43 @@
 </header>
 
 <main id="main">
-<section class="hero" style="border-left:4px solid #d49317;padding-left:1.2rem">
-  <span class="hero-accent" style="color:#d49317">Finance — Účetní kniha</span>
+<section class="hero" style="border-left:4px solid #4a8fd0;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#4a8fd0">Finance — Účetní kniha</span>
   <h1><span style="margin-right:.4rem">📒</span>Finance — Účetní kniha</h1>
-  <p class="hero-sub">Domácí účetní kniha — všechny peníze v banky, brokerech a kryptu na jednom přehledu.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:#d493171a;color:#d49317;border:1px solid #d4931740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#d493171a;color:#d49317;border:1px solid #d4931740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vite</span> <span class="pill" style="background:#d493171a;color:#d49317;border:1px solid #d4931740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tailwind</span> <span class="pill" style="background:#d493171a;color:#d49317;border:1px solid #d4931740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python server</span></p>
+  <p class="hero-sub">Domácí účetní kniha — všechny peníze (banky, brokeři, krypto, penzijko), faktury z Gmailu a plán do důchodu v jedné aplikaci. Bez cloudu, bez registrace, vše šifrované.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vite</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tailwind</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Šifrovaný GitHub mirror</span></p>
   <p style="margin-top:.8rem"><a href="../index.html">← Zpět na Moje aplikace</a></p>
 </section>
 
 <section>
   <h2>Co to dělá</h2>
-  <p>Mám 14+ účtů — Fio, Trading 212, XTB, Tasty, eToro, krypto burzy, Trezor wallet, fingood, investown, penzijko, zlato. Bez jediného přehledu se v tom nedá orientovat. Účetní kniha v44 sheetů v Excelu, ale Excel nezvládal navigaci — proto webová appka s filtry, KPI a měsíčním rozkladem.</p><p>Pracuje lokálně, žádná data nikam neutíkají. Šifrováno přes transcrypt v privátním repu.</p>
+  <p>Postavil jsem si ji, protože mě omrzelo přepínat mezi internetbankou, brokerskými webovkami a Excelem. Mám <strong>17 platforem</strong> kde mi něco leží — XTB, Trading 212, eToro, Interactive Brokers, TastyTrade, Investown, Fingood, Wise, Revolut, krypto burzy, dvě banky, penzijko, zlato. Než jsem věděl kolik mám celkem, musel jsem se všude přihlásit a sčítat. Teď se podívám do jedné stránky.</p><p><strong>Faktury chodí samy.</strong> Z Gmailu se přes malý server doma (Home Assistant) každou hodinu stáhnou nové faktury (energie, telefon, pojistky, výplata) a aplikace mi je nabídne s návrhem do jaké kategorie patří. Já jen kliknu „zaúčtovat" — žádné přepisování čísel z papíru.</p><p><strong>Plánuju s ní důchod.</strong> Spočítá kolik mi přijde z ČSSZ podle dat která už platím, kolik si musím sám doplnit, jestli stačí současné tempo k cíli 3,1 milionu, a kdy přesně budu mít na účtu daňově osvobozenou částku (Česká republika má 3letý časový test — když držíš akcii 3+ roky, neplatíš z prodeje daň).</p><p><strong>Žádný cloud, žádná data ven.</strong> Všechno běží lokálně u mě na Windows. Pokud se něco synchronizuje mezi PC a serverem doma (Excel + faktury), je to šifrované standardní vojenskou silou (AES-256) — i kdyby někdo dostal soubor, nepřečte ho. GitHub slouží jen jako šifrované úložiště pro přenos mezi zařízeními.</p>
 </section>
 
 <section>
   <h2>Klíčové funkce</h2>
   <ul style="line-height:1.7">
-      <li><strong>Hub všech účtů</strong> — 14+ účtů (banky, brokeri, krypto, zlato, penzijko) v jednom přehledu.</li>
-      <li><strong>KPI dashboard</strong> — Reálná fiat hodnota, čistá hodnota dnes, P/L proti pořizovací ceně.</li>
-      <li><strong>Filtry transakcí</strong> — 1606 řádků s rychlými filtry per měsíc / typ / účet / měna.</li>
-      <li><strong>Krypto sekce</strong> — BTC, ETH, ADA, SOL, XRP — propojení on-chain s nákupními cenami.</li>
-      <li><strong>NEEDS_REVIEW</strong> — Položky které chtějí pozornost (chybějící data, nesouhlasné částky).</li>
+      <li><strong>Všechny peníze na jednom místě</strong> — 17 broker platforem + 2 banky + krypto + penzijko + zlato v jednom přehledu. Jeden klik a vidím kolik mám celkem.</li>
+      <li><strong>Faktury z e-mailu samy</strong> — Energie, telekom, pojistky, výplaty — automaticky stažené z Gmailu každou hodinu. Aplikace navrhne kategorii, já jen schválím.</li>
+      <li><strong>Cíl a plán do důchodu</strong> — Cíl 3,1 milionu Kč v progress baru. 8letá predikce kam mě dovede současné tempo. Kalkulačka ČSSZ důchodu podle reálných limitů 2026.</li>
+      <li><strong>Daně 2025 hned hotové</strong> — Vygeneruje XML přímo pro Finanční úřad. Hlídá 3letý časový test — kdy akcie přestanou podléhat dani.</li>
+      <li><strong>26 stránek pro každý detail</strong> — Cash Flow, Cíl, Predikce, Investice, Krypto, Dividendy, Daně, Důchod, Knowledge Base, Lock-in counter — pro každou otázku jedna stránka.</li>
+      <li><strong>Šifrované, lokální, žádný cloud</strong> — Žádná data nikam neutíkají. Šifrování AES-256-CBC. Github jen jako šifrovaný transport, ne plaintext. Žádný měsíční poplatek nikomu.</li>
   </ul>
 </section>
 
-
+<section><h2>Náhledy</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../assets/img/aplikace/ucetni-kniha/01_hero.png" alt="Dashboard — kolik mám teď, kolik chci mít, jak jsem na cestě (data jsou rozostřena)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Dashboard — kolik mám teď, kolik chci mít, jak jsem na cestě (data jsou rozostřena)</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/ucetni-kniha/02_goal.png" alt="Cíl 3,1 milionu — pokrok do důchodu v %, tempo měsíčně, plánovaný horizont" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Cíl 3,1 milionu — pokrok do důchodu v %, tempo měsíčně, plánovaný horizont</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/ucetni-kniha/03_cashflow.png" alt="Cash Flow — kolik měsíčně přijde a kolik odejde, čistá změna majetku" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Cash Flow — kolik měsíčně přijde a kolik odejde, čistá změna majetku</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/ucetni-kniha/04_predictions.png" alt="8letá predikce — kam mě dovede současné tempo do roku 2034" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">8letá predikce — kam mě dovede současné tempo do roku 2034</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/ucetni-kniha/05_investments.png" alt="Investice — 17 brokerských účtů a krypto v jednom přehledu, P/L per pozice" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Investice — 17 brokerských účtů a krypto v jednom přehledu, P/L per pozice</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/ucetni-kniha/06_krypto.png" alt="Krypto — BTC + ETH držené pozice, hodnota dnes vs nákupní cena" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Krypto — BTC + ETH držené pozice, hodnota dnes vs nákupní cena</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/ucetni-kniha/07_pending.png" alt="Čekající fronta — automaticky extrahované faktury čekají na schválení" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Čekající fronta — automaticky extrahované faktury čekají na schválení</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/ucetni-kniha/08_inbox.png" alt="Inbox — faktury z Gmailu (energie, telekom, pojistky) stahované každou hodinu" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Inbox — faktury z Gmailu (energie, telekom, pojistky) stahované každou hodinu</figcaption></figure></div></section>
 
 <section>
   <h2>Stav</h2>
-  <p>Funkční, v5 (květen 2026). Lokální Windows aplikace + lk-finance privátní repo.</p>
+  <p>Funkční verze v0.6.0 (květen 2026). Lokální Windows aplikace, ~5 měsíců aktivního vývoje. Soukromá — žádné public hosting, žádné API pro cizí.</p>
 </section>
 </main>
 

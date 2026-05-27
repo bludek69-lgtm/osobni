@@ -181,100 +181,143 @@ APPS = [
     {
         "slug": "ucetni-kniha",
         "icon": "📒",
-        "color": "#d49317",
+        "color": "#4a8fd0",
         "asset_dir": "ucetni-kniha",
-        "screens": [],
-        "stack": ["React", "Vite", "Tailwind", "Python server"],
+        "screens": [
+            ("01_hero.png",        "Dashboard — kolik mám teď, kolik chci mít, jak jsem na cestě (data jsou rozostřena)"),
+            ("02_goal.png",        "Cíl 3,1 milionu — pokrok do důchodu v %, tempo měsíčně, plánovaný horizont"),
+            ("03_cashflow.png",    "Cash Flow — kolik měsíčně přijde a kolik odejde, čistá změna majetku"),
+            ("04_predictions.png", "8letá predikce — kam mě dovede současné tempo do roku 2034"),
+            ("05_investments.png", "Investice — 17 brokerských účtů a krypto v jednom přehledu, P/L per pozice"),
+            ("06_krypto.png",      "Krypto — BTC + ETH držené pozice, hodnota dnes vs nákupní cena"),
+            ("07_pending.png",     "Čekající fronta — automaticky extrahované faktury čekají na schválení"),
+            ("08_inbox.png",       "Inbox — faktury z Gmailu (energie, telekom, pojistky) stahované každou hodinu"),
+        ],
+        "stack": ["React", "Vite", "Tailwind", "Python", "Šifrovaný GitHub mirror"],
         "i18n": {
             "cs": {
                 "name":  "Finance — Účetní kniha",
-                "lead":  "Domácí účetní kniha — všechny peníze v banky, brokerech a kryptu na jednom přehledu.",
-                "what":  "<p>Mám 14+ účtů — Fio, Trading 212, XTB, Tasty, eToro, krypto burzy, Trezor wallet, fingood, investown, penzijko, zlato. Bez jediného přehledu se v tom nedá orientovat. Účetní kniha v44 sheetů v Excelu, ale Excel nezvládal navigaci — proto webová appka s filtry, KPI a měsíčním rozkladem.</p><p>Pracuje lokálně, žádná data nikam neutíkají. Šifrováno přes transcrypt v privátním repu.</p>",
+                "lead":  "Domácí účetní kniha — všechny peníze (banky, brokeři, krypto, penzijko), faktury z Gmailu a plán do důchodu v jedné aplikaci. Bez cloudu, bez registrace, vše šifrované.",
+                "what":  "<p>Postavil jsem si ji, protože mě omrzelo přepínat mezi internetbankou, brokerskými webovkami a Excelem. Mám <strong>17 platforem</strong> kde mi něco leží — XTB, Trading 212, eToro, Interactive Brokers, TastyTrade, Investown, Fingood, Wise, Revolut, krypto burzy, dvě banky, penzijko, zlato. Než jsem věděl kolik mám celkem, musel jsem se všude přihlásit a sčítat. Teď se podívám do jedné stránky.</p>"
+                         "<p><strong>Faktury chodí samy.</strong> Z Gmailu se přes malý server doma (Home Assistant) každou hodinu stáhnou nové faktury (energie, telefon, pojistky, výplata) a aplikace mi je nabídne s návrhem do jaké kategorie patří. Já jen kliknu „zaúčtovat\" — žádné přepisování čísel z papíru.</p>"
+                         "<p><strong>Plánuju s ní důchod.</strong> Spočítá kolik mi přijde z ČSSZ podle dat která už platím, kolik si musím sám doplnit, jestli stačí současné tempo k cíli 3,1 milionu, a kdy přesně budu mít na účtu daňově osvobozenou částku (Česká republika má 3letý časový test — když držíš akcii 3+ roky, neplatíš z prodeje daň).</p>"
+                         "<p><strong>Žádný cloud, žádná data ven.</strong> Všechno běží lokálně u mě na Windows. Pokud se něco synchronizuje mezi PC a serverem doma (Excel + faktury), je to šifrované standardní vojenskou silou (AES-256) — i kdyby někdo dostal soubor, nepřečte ho. GitHub slouží jen jako šifrované úložiště pro přenos mezi zařízeními.</p>",
                 "features": [
-                    ("Hub všech účtů", "14+ účtů (banky, brokeri, krypto, zlato, penzijko) v jednom přehledu."),
-                    ("KPI dashboard",  "Reálná fiat hodnota, čistá hodnota dnes, P/L proti pořizovací ceně."),
-                    ("Filtry transakcí", "1606 řádků s rychlými filtry per měsíc / typ / účet / měna."),
-                    ("Krypto sekce",   "BTC, ETH, ADA, SOL, XRP — propojení on-chain s nákupními cenami."),
-                    ("NEEDS_REVIEW",   "Položky které chtějí pozornost (chybějící data, nesouhlasné částky)."),
+                    ("Všechny peníze na jednom místě", "17 broker platforem + 2 banky + krypto + penzijko + zlato v jednom přehledu. Jeden klik a vidím kolik mám celkem."),
+                    ("Faktury z e-mailu samy",          "Energie, telekom, pojistky, výplaty — automaticky stažené z Gmailu každou hodinu. Aplikace navrhne kategorii, já jen schválím."),
+                    ("Cíl a plán do důchodu",           "Cíl 3,1 milionu Kč v progress baru. 8letá predikce kam mě dovede současné tempo. Kalkulačka ČSSZ důchodu podle reálných limitů 2026."),
+                    ("Daně 2025 hned hotové",           "Vygeneruje XML přímo pro Finanční úřad. Hlídá 3letý časový test — kdy akcie přestanou podléhat dani."),
+                    ("26 stránek pro každý detail",     "Cash Flow, Cíl, Predikce, Investice, Krypto, Dividendy, Daně, Důchod, Knowledge Base, Lock-in counter — pro každou otázku jedna stránka."),
+                    ("Šifrované, lokální, žádný cloud", "Žádná data nikam neutíkají. Šifrování AES-256-CBC. Github jen jako šifrovaný transport, ne plaintext. Žádný měsíční poplatek nikomu."),
                 ],
-                "status": "Funkční, v5 (květen 2026). Lokální Windows aplikace + lk-finance privátní repo.",
+                "status": "Funkční verze v0.6.0 (květen 2026). Lokální Windows aplikace, ~5 měsíců aktivního vývoje. Soukromá — žádné public hosting, žádné API pro cizí.",
             },
             "en": {
                 "name":  "Finance — Ledger",
-                "lead":  "Home ledger — all my money across banks, brokers, and crypto in one view.",
-                "what":  "<p>I have 14+ accounts — Fio, Trading 212, XTB, Tasty, eToro, crypto exchanges, Trezor wallet, fingood, investown, pension, gold. There's no orienting without a single view. The ledger is a 44-sheet Excel file but Excel can't navigate that — hence a web app with filters, KPIs and monthly breakdown.</p><p>Local-only, no data leaves the machine. Encrypted via transcrypt in a private repo.</p>",
+                "lead":  "Personal finance app — all my money (banks, brokers, crypto, pension), invoices from Gmail, and a retirement plan in one place. No cloud, no signup, fully encrypted.",
+                "what":  "<p>Built because I got tired of switching between bank apps, broker websites, and Excel. I have <strong>17 platforms</strong> where I keep money — XTB, Trading 212, eToro, Interactive Brokers, TastyTrade, Investown, Fingood, Wise, Revolut, crypto exchanges, two banks, pension, gold. To know my total I used to log in everywhere and add it up. Now I just open one page.</p>"
+                         "<p><strong>Invoices arrive on their own.</strong> A small home server (Home Assistant) pulls new invoices from Gmail every hour (utilities, telecom, insurance, payslips). The app suggests a category and I just click \"post\". No manual transcription.</p>"
+                         "<p><strong>Helps me plan retirement.</strong> Calculates expected state pension from real Czech Social Security data, how much I need to save myself, whether the current pace hits the 3.1M goal, and when exactly a position becomes tax-exempt under the Czech 3-year time test.</p>"
+                         "<p><strong>No cloud, no data leaving.</strong> Runs locally on Windows. Anything that syncs between PC and home server (Excel + invoices) is encrypted with military-grade AES-256 — even if someone got the file, they can't read it. GitHub is only encrypted transport, never plaintext.</p>",
                 "features": [
-                    ("Account hub",      "14+ accounts (banks, brokers, crypto, gold, pension) in one view."),
-                    ("KPI dashboard",    "Real fiat value, net worth today, P/L vs cost basis."),
-                    ("Transaction filters", "1606 rows with quick filters by month / type / account / currency."),
-                    ("Crypto section",   "BTC, ETH, ADA, SOL, XRP — on-chain reconciled with purchase prices."),
-                    ("NEEDS_REVIEW",     "Items needing attention (missing data, mismatched amounts)."),
+                    ("All money in one place",         "17 broker platforms + 2 banks + crypto + pension + gold in one overview. One click, total visible."),
+                    ("Invoices from email automatic", "Utilities, telecom, insurance, payslips — pulled from Gmail hourly. App suggests category, I just approve."),
+                    ("Retirement goal and plan",       "3.1M CZK goal progress bar. 8-year projection of current pace. Pension calculator with real 2026 limits."),
+                    ("2025 tax filing ready",          "Generates XML for the Czech tax office. Tracks 3-year time test — when shares become tax-exempt."),
+                    ("26 pages for every detail",      "Cash Flow, Goal, Predictions, Investments, Crypto, Dividends, Tax, Pension, Knowledge Base, Lock-in counter — one page per question."),
+                    ("Encrypted, local, no cloud",     "No data leaves the machine. AES-256-CBC encryption. GitHub as encrypted transport only. Zero monthly fees."),
                 ],
-                "status": "Working, v5 (May 2026). Local Windows app + lk-finance private repo.",
+                "status": "Working v0.6.0 (May 2026). Local Windows app, ~5 months of active development. Private — no public hosting, no third-party API.",
             },
             "it": {
                 "name":  "Finance — Libro contabile",
-                "lead":  "Libro mastro domestico — tutti i miei soldi tra banche, broker e crypto in una vista.",
-                "what":  "<p>Ho 14+ conti — Fio, Trading 212, XTB, Tasty, eToro, exchange crypto, wallet Trezor, fingood, investown, pensione, oro. Senza un'unica vista non si capisce niente. Il libro contabile ha 44 fogli Excel ma Excel non ce la fa — da qui una web app con filtri, KPI e split mensile.</p><p>Solo locale, nessun dato lascia il computer. Crittografato via transcrypt in repo privato.</p>",
+                "lead":  "App per le finanze personali — tutti i miei soldi (banche, broker, crypto, pensione), fatture dalla Gmail e piano per la pensione in un posto. Niente cloud, niente registrazione, tutto crittografato.",
+                "what":  "<p>L'ho costruita perché ero stanco di passare tra app bancarie, siti broker e Excel. Ho <strong>17 piattaforme</strong> dove tengo soldi — XTB, Trading 212, eToro, Interactive Brokers, TastyTrade, Investown, Fingood, Wise, Revolut, exchange crypto, due banche, pensione, oro. Per sapere il totale dovevo loggare ovunque e sommare. Ora apro una pagina.</p>"
+                         "<p><strong>Le fatture arrivano da sole.</strong> Un piccolo server di casa (Home Assistant) tira nuove fatture dalla Gmail ogni ora (utenze, telefono, assicurazioni, busta paga). L'app suggerisce una categoria, io clicco „contabilizza\". Niente trascrizione a mano.</p>"
+                         "<p><strong>Pianifica la pensione.</strong> Calcola la pensione attesa dai dati reali della Previdenza Sociale ceca, quanto serve risparmiare, se il ritmo attuale arriva a 3,1M, e quando una posizione diventa esente da tasse (Repubblica Ceca ha il test 3 anni — possiedi un'azione 3+ anni, niente tasse sulla vendita).</p>"
+                         "<p><strong>Niente cloud, niente dati fuori.</strong> Gira in locale su Windows. Quello che si sincronizza tra PC e server casa (Excel + fatture) è crittografato AES-256 — anche se qualcuno avesse il file, non lo legge. GitHub solo come trasporto crittografato.</p>",
                 "features": [
-                    ("Hub conti",         "14+ conti (banche, broker, crypto, oro, pensione) in una vista."),
-                    ("Dashboard KPI",     "Valore fiat reale, net worth oggi, P/L sul costo medio."),
-                    ("Filtri transazioni", "1606 righe con filtri rapidi per mese / tipo / conto / valuta."),
-                    ("Sezione crypto",    "BTC, ETH, ADA, SOL, XRP — on-chain riconciliato con prezzi d'acquisto."),
-                    ("NEEDS_REVIEW",      "Voci che richiedono attenzione (dati mancanti, importi non quadrano)."),
+                    ("Tutti i soldi in un posto",     "17 broker + 2 banche + crypto + pensione + oro in una vista. Un click, totale visibile."),
+                    ("Fatture da email automatiche",  "Utenze, telefono, assicurazioni, buste paga — tirate dalla Gmail ogni ora. App suggerisce categoria, io approvo."),
+                    ("Obiettivo e piano pensione",    "Barra di progresso obiettivo 3,1M CZK. Proiezione 8 anni del ritmo attuale. Calcolatore pensione con limiti reali 2026."),
+                    ("Dichiarazione 2025 pronta",     "Genera XML per il fisco ceco. Traccia il test 3 anni — quando le azioni diventano esenti."),
+                    ("26 pagine per ogni dettaglio",  "Cash Flow, Obiettivo, Previsioni, Investimenti, Crypto, Dividendi, Tasse, Pensione, Knowledge Base, Lock-in — una pagina per domanda."),
+                    ("Crittografata, locale, no cloud", "Nessun dato lascia il computer. Crittografia AES-256-CBC. GitHub solo trasporto crittografato. Zero costi mensili."),
                 ],
-                "status": "Funzionante, v5 (maggio 2026). App Windows locale + repo privato lk-finance.",
+                "status": "Funzionante v0.6.0 (maggio 2026). App Windows locale, ~5 mesi di sviluppo attivo. Privata — niente hosting pubblico.",
             },
         },
     },
     {
         "slug": "finance-analytik",
         "icon": "📈",
-        "color": "#d35454",
+        "color": "#5b8c9f",
         "asset_dir": "finance-analytik",
         "screens": [
-            ("home.png", "Hlavní obrazovka — portfolio přehled"),
+            ("01_hero.png",        "Dashboard — přehled portfolia + signál distribuce (BUY/HOLD/SELL, data rozostřena)"),
+            ("02_portfolio.png",   "Portfolio — 96 akcií + ETF s vlastním doporučením (kup/drž/prodej) a bezpečnostní rezervou v %"),
+            ("03_fair_value.png",  "Férová cena — kolik akcie podle mě skutečně stojí (4 metody výpočtu)"),
+            ("04_cost_basis.png",  "Pořizovací ceny — kolik a kdy jsem nakupoval, jak daleko k daňovému osvobození"),
+            ("05_transactions.png", "Transakce — sjednocené výpisy od 5 brokerů (XTB, T212, IB, eToro, TastyTrade)"),
+            ("06_dividends.png",   "Dividendy — roční přehled, hrubý + čistý, sražená daň"),
+            ("07_data_sources.png", "Zdroje dat — odkud beru ceny (Stooq, Yahoo, TwelveData, manuální)"),
+            ("08_import.png",      "Import výpisů — drag-and-drop PDF/XLSX, aplikace pozná brokera sama"),
         ],
-        "stack": ["React", "TypeScript", "Tailwind", "Python server"],
+        "stack": ["React", "TypeScript", "Tailwind", "Python", "DCF + REIT FFO modely"],
         "i18n": {
             "cs": {
                 "name":  "Finance Analytik",
-                "lead":  "Soukromý analyzer akcií, ETF a portfolia — bez brokerského API, ručně importované výpisy.",
-                "what":  "<p>Když chci vidět svoje portfolio jako jeden obrázek (akcie, ETF, dividendy, FX dopad), brokerské appky to neumí společně. Analytik to spojuje: importuju výpisy z Trading 212, XTB, Tasty, eToro a aplikace mi spočítá P/L, vážený průměr, sektor exposure, FX risk a daňové podklady.</p><p>Privátní — žádný cloud, žádné OAuth, žádné API klíče k brokerům. Lokální Python server + Edge v app-mode.</p>",
+                "lead":  "Vlastní pomocník pro rozhodování o akciích — místo cizích doporučení si aplikace lokálně spočítá, kolik akcie podle mě skutečně stojí, a řekne mi: kup / drž / prodej. 96 pozic z 5 brokerů, bez API klíčů, bez cloudu.",
+                "what":  "<p>Postavil jsem si ji vedle účetní knihy, protože ta jen <em>eviduje</em> co mám. Tahle aplikace <em>radí, co s tím</em>. Funguje takhle: aplikace si stáhne aktuální ceny akcií, lokálně spočítá svou vlastní „férovou cenu\" čtyřmi různými způsoby a porovná ji s tržní cenou. Pokud je tržní cena výrazně nižší než moje férová → <strong>doporučení BUY</strong> (= levně, zvážit nákup). Pokud výrazně vyšší → <strong>SELL</strong> (= drahé, zvážit prodej). Mezi tím HOLD, ADD nebo TRIM podle bezpečnostní rezervy.</p>"
+                         "<p><strong>Čtyři způsoby výpočtu férové ceny</strong> — protože jeden vzorec nefunguje na všechno. Pro 20 velkých firem (Apple, Microsoft typu) používá <strong>DCF</strong> — diskontuje budoucí zisky firmy zpět do dneška. Pro 6 realitních fondů (Realty Income, Simon Property atd.) <strong>REIT FFO</strong> — standard pro REIT podle „funds from operations\". Pro 30 dalších akcií <strong>Multiples</strong> — porovnání s historickým a sektorovým průměrem (P/E ratio). 28 ETF se ocenit přesně nedá, držím podle indexu (= „pasivní HOLD\"). Krypto a opce vědomě vynechávám — pro ně neexistuje spolehlivý model.</p>"
+                         "<p><strong>Čte výpisy od brokerů sama.</strong> Stáhnu PDF nebo XLSX z XTB, Trading 212, Interactive Brokers, eToro nebo TastyTrade, přetáhnu do aplikace, ta pozná brokera a normalizuje formát. Plus crypto výpisy z Anycoin a Trezoru. Cross-broker duplicate detection — když mám stejnou akcii na dvou účtech, sečte je správně.</p>"
+                         "<p><strong>Hlídá český 3letý časový test pro daně.</strong> Když držíš akcii v ČR 3+ roky, prodej je daňově osvobozený. Aplikace pro každou pozici sleduje pořizovací data v pořadí jak jsi kupoval (FIFO), počítá zbývající dny do osvobození, a řadí pozice podle „kdo je první u brány\". Daňový kalkulátor produkuje výstup hotový do daňového přiznání.</p>"
+                         "<p><strong>Žádné API klíče, žádný cloud.</strong> Aplikace nepotřebuje login do brokera ani jeho API token. Stačí jí výpisy které ti broker sám pošle. Ceny si bere z veřejných zdrojů (Stooq, Yahoo Finance). Vše běží lokálně. Žádné riziko že tvé pozice někdo uvidí.</p>",
                 "features": [
-                    ("Import výpisů",     "CSV/XLS z 4 brokerů, automatický normalizér tickerů a měn."),
-                    ("Portfolio agregát", "Vážený průměrný kurz, P/L real-time, sektor & geo exposure."),
-                    ("Dividendy",         "Roční výnos, gross/net, daň, reinvestice."),
-                    ("FX risk",           "USD/EUR/CZK exposure, hedge ratio."),
-                    ("Daňové podklady",   "Roční report pro daňové přiznání, FIFO/LIFO matching."),
+                    ("Vlastní doporučení kup/drž/prodej", "Pro každou pozici aplikace spočítá svou férovou cenu a srovná s tržní. Vrátí signál BUY/HOLD/SELL/ADD/TRIM/WATCH podle bezpečnostní rezervy. Není to investiční rada — je to analytická pomůcka."),
+                    ("4 různé metody pro 4 typy aktiv",  "DCF pro velké firmy podle budoucích zisků, REIT FFO pro realitní fondy, P/E multiples pro střední akcie, pasivní hold pro ETF. Žádné krypto a opce (těm chybí spolehlivý model)."),
+                    ("Čte výpisy 5 brokerů + krypto",     "XTB, Trading 212, Interactive Brokers, eToro, TastyTrade + Anycoin + Trezor. Drag-and-drop PDF nebo XLSX, aplikace pozná brokera sama."),
+                    ("Sleduje 3letý daňový test",         "Pro každou pozici vidíš kolik dní zbývá do daňového osvobození. Při prodeji vygeneruje podklad pro daňové přiznání."),
+                    ("Bez API klíčů, bez cloudu",         "Aplikace nepotřebuje login do brokera. Ceny z veřejných zdrojů. Vše lokálně. Žádné riziko že pozice někdo uvidí."),
+                    ("96 pozic, 444 testů",               "Aktuálně sleduje 96 akcií a ETF. Pod kapotou 444 automatických testů zajišťuje že parsery výpisů a fair-value engine fungují správně i po update."),
                 ],
-                "status": "MVP v0.3 (květen 2026), soukromý. Žádné public hosting.",
+                "status": "Funkční MVP v0.3 (květen 2026), 8 rounds vývoje, ~3 měsíce aktivního vývoje. Lokální Windows aplikace přes Chrome --app launcher. Soukromá — žádné public hosting. Cíl: rozhodovací podpora pro mě, ne SaaS pro veřejnost.",
             },
             "en": {
-                "name":  "Finance Analyst",
-                "lead":  "Private analyzer for stocks, ETFs and portfolio — no broker API, manually imported statements.",
-                "what":  "<p>When I want to see my portfolio as one picture (stocks, ETFs, dividends, FX impact), broker apps don't combine them. The Analyst does: I import statements from Trading 212, XTB, Tasty, eToro and the app computes P/L, weighted average, sector exposure, FX risk and tax data.</p><p>Private — no cloud, no OAuth, no broker API keys. Local Python server + Edge app-mode.</p>",
+                "name":  "Finance Analytik",
+                "lead":  "Personal stock decision helper — instead of trusting third-party ratings, the app locally computes its own fair value and tells me: buy / hold / sell. 96 positions across 5 brokers, no API keys, no cloud.",
+                "what":  "<p>Built alongside the ledger because that one just <em>records</em> what I own. This app <em>advises what to do with it</em>. The flow: app fetches current stock prices, locally computes its own \"fair value\" using four different methods, and compares it to the market price. If market is significantly below my fair → <strong>BUY signal</strong> (cheap, worth considering). If significantly above → <strong>SELL</strong> (expensive, consider exit). In between: HOLD, ADD, or TRIM depending on margin of safety.</p>"
+                         "<p><strong>Four ways to compute fair value</strong> — one formula doesn't fit all. For 20 large firms (Apple, Microsoft type) it uses <strong>DCF</strong> — discounts future earnings back to today. For 6 REITs (Realty Income, Simon Property, etc.) <strong>REIT FFO</strong> — the standard \"funds from operations\" method. For 30 other stocks <strong>Multiples</strong> — historical and sector P/E comparison. 28 ETFs can't be precisely valued — held passively (\"passive HOLD\"). Crypto and options are intentionally excluded — no reliable model.</p>"
+                         "<p><strong>Reads broker statements automatically.</strong> Drop a PDF or XLSX from XTB, Trading 212, Interactive Brokers, eToro, or TastyTrade — the app detects the broker and normalizes the format. Plus crypto from Anycoin and Trezor. Cross-broker duplicate detection — same stock on two accounts is summed correctly.</p>"
+                         "<p><strong>Tracks the Czech 3-year tax exemption.</strong> Hold a stock in Czechia for 3+ years and the sale is tax-exempt. The app tracks acquisition dates in purchase order (FIFO), counts remaining days to exemption, sorts positions by \"who's first at the gate\". The tax calculator produces output ready for the annual filing.</p>"
+                         "<p><strong>No API keys, no cloud.</strong> The app doesn't need broker login or API token — just the statements the broker emails you. Prices from public sources (Stooq, Yahoo Finance). Everything local. Zero risk of someone seeing the positions.</p>",
                 "features": [
-                    ("Statement import",  "CSV/XLS from 4 brokers, automatic ticker and currency normalizer."),
-                    ("Portfolio aggregate", "Weighted average price, real-time P/L, sector & geo exposure."),
-                    ("Dividends",         "Annual yield, gross/net, tax, reinvestment."),
-                    ("FX risk",           "USD/EUR/CZK exposure, hedge ratio."),
-                    ("Tax data",          "Annual report for tax filing, FIFO/LIFO matching."),
+                    ("Own buy/hold/sell signal",        "For each position the app computes its own fair value and compares to market. Returns BUY/HOLD/SELL/ADD/TRIM/WATCH based on margin of safety. Not investment advice — an analytical tool."),
+                    ("4 methods for 4 asset types",     "DCF for large firms by future earnings, REIT FFO for real-estate funds, P/E multiples for mid-cap, passive hold for ETFs. No crypto or options (lacks reliable model)."),
+                    ("Reads statements from 5 brokers + crypto", "XTB, Trading 212, Interactive Brokers, eToro, TastyTrade + Anycoin + Trezor. Drag-and-drop PDF or XLSX, app detects broker."),
+                    ("Tracks 3-year tax exemption",     "For each position you see days remaining until tax exemption. On sale, generates tax filing draft."),
+                    ("No API keys, no cloud",           "App doesn't need broker login. Prices from public sources. All local. No risk of position disclosure."),
+                    ("96 positions, 444 tests",         "Currently tracks 96 stocks and ETFs. Under the hood 444 automated tests ensure parsers and fair-value engine stay correct after updates."),
                 ],
-                "status": "MVP v0.3 (May 2026), private. No public hosting.",
+                "status": "Working MVP v0.3 (May 2026), 8 rounds of development, ~3 months active. Local Windows app via Chrome --app launcher. Private — no public hosting. Goal: decision support for myself, not a SaaS for the public.",
             },
             "it": {
-                "name":  "Finance Analyst",
-                "lead":  "Analizzatore privato di azioni, ETF e portfolio — niente API broker, estratti importati a mano.",
-                "what":  "<p>Quando voglio vedere il portfolio come un'immagine unica (azioni, ETF, dividendi, impatto FX), le app dei broker non le combinano. L'Analyst sì: importo estratti da Trading 212, XTB, Tasty, eToro e l'app calcola P/L, media ponderata, esposizione settoriale, FX risk e dati fiscali.</p><p>Privato — niente cloud, niente OAuth, niente API key broker. Server Python locale + Edge app-mode.</p>",
+                "name":  "Finance Analytik",
+                "lead":  "Assistente personale per decisioni sulle azioni — invece di fidarmi di rating di terzi, l'app calcola in locale la propria fair value e mi dice: compra / tieni / vendi. 96 posizioni su 5 broker, niente API key, niente cloud.",
+                "what":  "<p>Costruita accanto al libro contabile perché quello solo <em>registra</em> cosa ho. Questa app <em>consiglia cosa farci</em>. Il flusso: l'app scarica prezzi azioni attuali, calcola in locale la propria \"fair value\" con quattro metodi, e la confronta col prezzo di mercato. Se il mercato è molto sotto la mia fair → <strong>segnale BUY</strong> (economico, valutare acquisto). Se molto sopra → <strong>SELL</strong> (caro, valutare uscita). In mezzo HOLD, ADD, o TRIM secondo margine di sicurezza.</p>"
+                         "<p><strong>Quattro modi di calcolare fair value</strong> — una formula non vale per tutto. Per 20 grandi aziende (tipo Apple, Microsoft) usa <strong>DCF</strong> — sconta utili futuri ad oggi. Per 6 REIT (Realty Income, Simon Property, ecc.) <strong>REIT FFO</strong> — standard \"funds from operations\". Per 30 altre azioni <strong>Multiples</strong> — confronto P/E storico e settoriale. 28 ETF non valutabili — tenuti passivamente. Crypto e opzioni esclusi (nessun modello affidabile).</p>"
+                         "<p><strong>Legge estratti broker automaticamente.</strong> Trascina un PDF o XLSX da XTB, Trading 212, Interactive Brokers, eToro, TastyTrade — l'app riconosce il broker e normalizza il formato. Più crypto da Anycoin e Trezor. Rilevamento duplicati cross-broker.</p>"
+                         "<p><strong>Traccia l'esenzione fiscale ceca dei 3 anni.</strong> Tieni un'azione in Cechia 3+ anni e la vendita è esente. L'app traccia date di acquisto (FIFO), conta giorni rimanenti, ordina per \"chi arriva prima al traguardo\". Il calcolatore tasse produce output pronto per la dichiarazione.</p>"
+                         "<p><strong>Niente API key, niente cloud.</strong> L'app non ha bisogno di login broker o token. Bastano gli estratti che il broker manda via email. Prezzi da fonti pubbliche. Tutto in locale. Zero rischio di esposizione posizioni.</p>",
                 "features": [
-                    ("Import estratti",   "CSV/XLS da 4 broker, normalizer automatico di ticker e valute."),
-                    ("Aggregato portfolio", "Prezzo medio ponderato, P/L real-time, esposizione settori e geo."),
-                    ("Dividendi",         "Rendimento annuo, lordo/netto, tasse, reinvestimento."),
-                    ("FX risk",           "Esposizione USD/EUR/CZK, hedge ratio."),
-                    ("Dati fiscali",      "Report annuale per la dichiarazione, matching FIFO/LIFO."),
+                    ("Segnale proprio compra/tieni/vendi", "Per ogni posizione l'app calcola fair value propria e confronta col mercato. Segnale BUY/HOLD/SELL/ADD/TRIM/WATCH per margine. Non consulenza — strumento analitico."),
+                    ("4 metodi per 4 tipi di asset",       "DCF per grandi aziende per utili futuri, REIT FFO per fondi immobiliari, P/E multiples per mid-cap, hold passivo per ETF."),
+                    ("Legge estratti da 5 broker + crypto", "XTB, Trading 212, Interactive Brokers, eToro, TastyTrade + Anycoin + Trezor. Drag-and-drop PDF o XLSX."),
+                    ("Traccia esenzione fiscale 3 anni",   "Per ogni posizione vedi giorni rimanenti all'esenzione. Alla vendita genera bozza dichiarazione."),
+                    ("Niente API key, niente cloud",       "App senza login broker. Prezzi da fonti pubbliche. Tutto in locale. Zero rischio."),
+                    ("96 posizioni, 444 test",             "Traccia 96 azioni e ETF. Sotto il cofano 444 test automatici per parser e fair-value engine."),
                 ],
-                "status": "MVP v0.3 (maggio 2026), privata. Nessun hosting pubblico.",
+                "status": "MVP funzionante v0.3 (maggio 2026), 8 round di sviluppo, ~3 mesi attivi. App Windows locale via Chrome --app. Privata — niente hosting pubblico. Obiettivo: supporto decisionale per me, non SaaS pubblica.",
             },
         },
     },
