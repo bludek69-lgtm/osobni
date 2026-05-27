@@ -76,6 +76,7 @@ APPS = [
         "color": "#4a8fd0",
         "asset_dir": "config-center",
         "screens": [
+            ("live_overview.png",  "Přihlášení tokenem — token zůstává jen v prohlížeči (localStorage)"),
             ("overview.png",       "Přehled — všechny módy a parametry na jednom místě"),
             ("heating.png",        "Topení — TRV zóny, hystereze, boost, pre-wake plán"),
             ("zones.png",          "Zóny — světla, motion sensors, audio per místnost"),
@@ -334,8 +335,7 @@ APPS = [
         "color": "#7cd6ff",
         "asset_dir": "dashboardy",
         "screens": [
-            ("energy_pc.png",      "Energy Dashboard — PC verze (Edge app-mode)"),
-            ("rpi_home.png",       "RPi kiosk — domovská stránka"),
+            ("energy_pc.png",      "Energy Dashboard — PC verze (Edge app-mode, DEMO snapshot)"),
             ("rpi_audio.png",      "RPi kiosk — audio + scény"),
             ("rpi_energy.png",     "RPi kiosk — energie & topení"),
             ("rpi_scenes.png",     "RPi kiosk — scény (Loxone-style)"),
