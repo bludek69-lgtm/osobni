@@ -177,21 +177,24 @@ PAGES = [
     {'rel': 'aplikace/ucetni-kniha.html',       'theme': 'finance','title': 'Účetní kniha — Moje aplikace — Luděk',       'depth': 1},
     {'rel': 'aplikace/finance-analytik.html',   'theme': 'finance','title': 'Finance Analytik — Moje aplikace — Luděk',   'depth': 1},
     {'rel': 'aplikace/krabickova-dieta.html',   'theme': 'home', 'title': 'Krabičková dieta — Moje aplikace — Luděk',     'depth': 1},
-    {'rel': 'aplikace/dashboardy.html',         'theme': 'smart-home','title': 'Dashboardy — Moje aplikace — Luděk',      'depth': 1},
+    {'rel': 'aplikace/energy-dashboard.html',   'theme': 'smart-home','title': 'Energy Dashboard — Moje aplikace — Luděk', 'depth': 1},
+    {'rel': 'aplikace/rpi-kiosk.html',          'theme': 'smart-home','title': 'Domácí panel na zdi — Moje aplikace — Luděk', 'depth': 1},
     {'rel': 'en/aplikace/index.html',            'theme': 'home', 'title': 'My apps — Luděk',                              'depth': 2},
     {'rel': 'en/aplikace/config-center.html',    'theme': 'home', 'title': 'Config Center — My apps — Luděk',              'depth': 2},
     {'rel': 'en/aplikace/italia-travel.html',    'theme': 'italy','title': 'Italia Travel Planner — My apps — Luděk',       'depth': 2},
     {'rel': 'en/aplikace/ucetni-kniha.html',     'theme': 'finance','title': 'Ledger — My apps — Luděk',                    'depth': 2},
     {'rel': 'en/aplikace/finance-analytik.html', 'theme': 'finance','title': 'Finance Analyst — My apps — Luděk',           'depth': 2},
     {'rel': 'en/aplikace/krabickova-dieta.html', 'theme': 'home', 'title': 'Meal Planner — My apps — Luděk',                'depth': 2},
-    {'rel': 'en/aplikace/dashboardy.html',       'theme': 'smart-home','title': 'Dashboards — My apps — Luděk',             'depth': 2},
+    {'rel': 'en/aplikace/energy-dashboard.html', 'theme': 'smart-home','title': 'Energy Dashboard — My apps — Luděk',         'depth': 2},
+    {'rel': 'en/aplikace/rpi-kiosk.html',        'theme': 'smart-home','title': 'Home wall panel — My apps — Luděk',          'depth': 2},
     {'rel': 'it/aplikace/index.html',            'theme': 'home', 'title': 'Le mie app — Luděk',                            'depth': 2},
     {'rel': 'it/aplikace/config-center.html',    'theme': 'home', 'title': 'Config Center — Le mie app — Luděk',            'depth': 2},
     {'rel': 'it/aplikace/italia-travel.html',    'theme': 'italy','title': 'Italia Travel Planner — Le mie app — Luděk',    'depth': 2},
     {'rel': 'it/aplikace/ucetni-kniha.html',     'theme': 'finance','title': 'Libro contabile — Le mie app — Luděk',        'depth': 2},
     {'rel': 'it/aplikace/finance-analytik.html', 'theme': 'finance','title': 'Finance Analyst — Le mie app — Luděk',        'depth': 2},
     {'rel': 'it/aplikace/krabickova-dieta.html', 'theme': 'home', 'title': 'Meal Planner — Le mie app — Luděk',             'depth': 2},
-    {'rel': 'it/aplikace/dashboardy.html',       'theme': 'smart-home','title': 'Dashboard — Le mie app — Luděk',           'depth': 2},
+    {'rel': 'it/aplikace/energy-dashboard.html', 'theme': 'smart-home','title': 'Energy Dashboard — Le mie app — Luděk',      'depth': 2},
+    {'rel': 'it/aplikace/rpi-kiosk.html',        'theme': 'smart-home','title': 'Pannello a muro — Le mie app — Luděk',       'depth': 2},
 ]
 
 # ─── NAV ITEMS (single nav for all pages) ────────────────────
@@ -290,6 +293,33 @@ def render_template(page: dict, main_html: str) -> str:
 </footer>
 
 <script src="{js_src}"></script>
+
+<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
+<style>
+#__lb {{ display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }}
+#__lb.open {{ display:flex }}
+#__lb img {{ max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }}
+#__lb .__lbhint {{ position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }}
+main img {{ cursor:zoom-in; transition:transform .15s ease }}
+main img:hover {{ transform:scale(1.005) }}
+</style>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
+</div>
+<script>
+(function(){{
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){{ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }}
+  function close(){{ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }}
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){{ if(e.key === 'Escape') close(); }});
+  document.querySelectorAll('main img').forEach(function(img){{
+    img.addEventListener('click', function(e){{ e.stopPropagation(); open(img.src, img.alt); }});
+  }});
+}})();
+</script>
 </body>
 </html>
 """

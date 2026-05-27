@@ -34,24 +34,25 @@
 <section class="hero" style="border-left:4px solid #4a8fd0;padding-left:1.2rem">
   <span class="hero-accent" style="color:#4a8fd0">Config Center</span>
   <h1><span style="margin-right:.4rem">⚙️</span>Config Center</h1>
-  <p class="hero-sub">Pannello web per ogni parametro della mia smart home — una pagina invece di scavare nell'app del telefono.</p>
+  <p class="hero-sub">Pannello di controllo per tutta la casa intelligente — invece di un'app per gadget, una pagina web dove regolo tutto: quando inizia la routine mattutina, quanto caldo riscalda, quando si spegne l'audio, cosa fanno le luci quando torno a casa.</p>
   <p style="margin-top:.6rem"><span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">HTML</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vanilla JS</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Homey REST API</span></p>
   <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a></p>
 </section>
 
 <section>
   <h2>Cosa fa</h2>
-  <p>La casa Homey Pro 2026 ha decine di variabili: quando inizia la routine mattutina, quanto velocemente le luci salgono, a che temperatura riscaldare la camera, quando spegnere l'audio. Config Center le riunisce tutte in <strong>22 pagine ordinate</strong> — un URL dove regolo tutto e salvo con un click.</p><p>Sorveglia ciò che cambia (preview mode), può fare auto-revert dopo 10 minuti se qualcosa va storto e protegge i dispositivi delicati dagli errori.</p>
+  <p>Ho circa 60 dispositivi a casa (luci, sensori movimento, teste TRV, altoparlanti, purificatore, tapparella, …) gestiti da Homey Pro 2026. Sa fare molto — app mobile, UI web, script, automazioni — ma c'è troppi cassetti e impostazioni sparpagliate.</p><p><strong>Config Center unifica tutto in un posto.</strong> Apro il web nel browser, login col mio token (resta solo qui, niente esce), e vedo 22 pagine ordinate: una per ogni &bdquo;modalità casa&ldquo;, separate per riscaldamento, luci, audio, ecc.</p><p><strong>Preview mode = test sicuro.</strong> Quando voglio provare qualcosa, l'app la applica prima, 10 minuti per test, e se non dico &bdquo;OK&ldquo; si ripristina da sola. La casa si auto-corregge.</p><p><strong>Protegge dagli errori.</strong> Alcuni dispositivi (audio camera, sensori delicati) hanno hard-block — non si accendono per errore.</p><p><strong>Locale, mio, niente cloud.</strong> L'app è solo un file HTML+CSS+JS aperto in Edge o Chrome. Parla direttamente con l'hub Homey a casa, niente va a server terzi. Niente abbonamento.</p>
 </section>
 
 <section>
   <h2>Funzioni principali</h2>
   <ul style="line-height:1.7">
-      <li><strong>22 pagine mode</strong> — Mattina / giorno / sera / notte / via / casa / sonno — frasi TTS + obiettivi luci/riscaldamento per mode.</li>
-      <li><strong>4 zone TRV</strong> — Programma riscaldamento giornaliero con finestre orarie, isteresi, anti-cycling, pulsante boost.</li>
-      <li><strong>Preview mode</strong> — Le modifiche si applicano prima al dispositivo, 10 min per il test, poi commit o auto-revert.</li>
-      <li><strong>100+ variabili</strong> — Soglie lux, ramp delay, finestra briefing, toggle AI, rate limits, piani settimanali.</li>
-      <li><strong>Safety guards</strong> — Hard-block camera per test audio, protected device guard per apparecchi delicati.</li>
+      <li><strong>22 pagine per modalità</strong> — Mattina / giorno / sera / notte / via / casa / sonno — ognuna con messaggi vocali, obiettivi luci, obiettivi riscaldamento.</li>
+      <li><strong>Piano riscaldamento per giorno/ora</strong> — Per ognuna delle 4 zone giorno per giorno, ora per ora la temperatura. Pulsante boost.</li>
+      <li><strong>Sicurezza preview 10 min</strong> — Modifica applica prima, 10 min di test, auto-ripristino se non confermo.</li>
+      <li><strong>100+ parametri regolabili</strong> — Quando inizia il mattino, velocità ramp luci, durata audio, volume briefing, …</li>
+      <li><strong>Token solo nel browser</strong> — Accesso hub solo in localStorage del browser. Niente server, niente cloud.</li>
+      <li><strong>Hard-block per attrezzature delicate</strong> — Alcuni dispositivi non si accendono per sbaglio. Es. audio camera durante il sonno.</li>
   </ul>
 </section>
 
@@ -65,7 +66,7 @@
 
 <section>
   <h2>Stato</h2>
-  <p>Funzionante, in uso quotidiano. Versione v1.7.5 (maggio 2026), 100+ variabili modificabili, distribuita su PC e kiosk RPi.</p>
+  <p>Uso quotidiano. Versione v1.7.5 (maggio 2026). Gira in locale nel browser su PC e su un piccolo pannello a muro (kiosk RPi). 100+ variabili modificabili live.</p>
 </section>
 </main>
 
@@ -80,5 +81,32 @@
 </footer>
 
 <script src="../../assets/js/main.js"></script>
+
+<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
+<style>
+#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
+#__lb.open { display:flex }
+#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+main img { cursor:zoom-in; transition:transform .15s ease }
+main img:hover { transform:scale(1.005) }
+</style>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  document.querySelectorAll('main img').forEach(function(img){
+    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+  });
+})();
+</script>
 </body>
 </html>

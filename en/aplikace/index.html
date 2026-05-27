@@ -39,12 +39,13 @@
 
 <section aria-label="My apps">
   <div class="cards-grid">
-      <a href="config-center.html" class="card card-link" style="border-left:4px solid #4a8fd0;"><div class="card-icon">⚙️</div><h3>Config Center</h3><p>Web admin for every parameter of my smart home — one page instead of digging through the phone app.</p><div class="card-cta">Open page →</div></a>
+      <a href="config-center.html" class="card card-link" style="border-left:4px solid #4a8fd0;"><div class="card-icon">⚙️</div><h3>Config Center</h3><p>Control panel for the whole smart home — instead of one app per gadget, I have a single web page where I tune everything: when the morning routine starts, how warm the heating is, when audio stops, what lights do when I come home.</p><div class="card-cta">Open page →</div></a>
       <a href="italia-travel.html" class="card card-link" style="border-left:4px solid #008c45;"><div class="card-icon">🇮🇹</div><h3>Italia Travel Planner</h3><p>Italy trip planner — daily itinerary, queue tips, reservations, trains, pasta vocabulary.</p><div class="card-cta">Open page →</div></a>
       <a href="ucetni-kniha.html" class="card card-link" style="border-left:4px solid #4a8fd0;"><div class="card-icon">📒</div><h3>Finance — Ledger</h3><p>Personal finance app — all my money (banks, brokers, crypto, pension), invoices from Gmail, and a retirement plan in one place. No cloud, no signup, fully encrypted.</p><div class="card-cta">Open page →</div></a>
       <a href="finance-analytik.html" class="card card-link" style="border-left:4px solid #5b8c9f;"><div class="card-icon">📈</div><h3>Finance Analytik</h3><p>Personal stock decision helper — instead of trusting third-party ratings, the app locally computes its own fair value and tells me: buy / hold / sell. 96 positions across 5 brokers, no API keys, no cloud.</p><div class="card-cta">Open page →</div></a>
       <a href="krabickova-dieta.html" class="card card-link" style="border-left:4px solid #2e7d32;"><div class="card-icon">🥗</div><h3>Meal Planner</h3><p>Meal planner — daily menu with macro targets, BMR/TDEE and a shopping list.</p><div class="card-cta">Open page →</div></a>
-      <a href="dashboardy.html" class="card card-link" style="border-left:4px solid #7cd6ff;"><div class="card-icon">📊</div><h3>Dashboards</h3><p>Two info screens: Energy on the PC with live consumption from HA RPi, and a RPi kiosk as the home control panel.</p><div class="card-cta">Open page →</div></a>
+      <a href="energy-dashboard.html" class="card card-link" style="border-left:4px solid #7cd6ff;"><div class="card-icon">⚡</div><h3>Energy Dashboard (PC)</h3><p>A simple monitor window where I see in real-time how much power the house consumes, today's cost, and the estimate for the whole month. No clicking — it's open all day.</p><div class="card-cta">Open page →</div></a>
+      <a href="rpi-kiosk.html" class="card card-link" style="border-left:4px solid #9cf2a6;"><div class="card-icon">🖥️</div><h3>Home wall panel</h3><p>A small touchscreen on the hallway wall where I control the whole flat — lights, audio, heating, scenes. No phone unlock, no app hunting. Walk up, one touch, done.</p><div class="card-cta">Open page →</div></a>
   </div>
 </section>
 </main>
@@ -60,5 +61,32 @@
 </footer>
 
 <script src="../../assets/js/main.js"></script>
+
+<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
+<style>
+#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
+#__lb.open { display:flex }
+#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+main img { cursor:zoom-in; transition:transform .15s ease }
+main img:hover { transform:scale(1.005) }
+</style>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  document.querySelectorAll('main img').forEach(function(img){
+    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+  });
+})();
+</script>
 </body>
 </html>

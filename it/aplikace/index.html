@@ -39,12 +39,13 @@
 
 <section aria-label="Le mie app">
   <div class="cards-grid">
-      <a href="config-center.html" class="card card-link" style="border-left:4px solid #4a8fd0;"><div class="card-icon">⚙️</div><h3>Config Center</h3><p>Pannello web per ogni parametro della mia smart home — una pagina invece di scavare nell'app del telefono.</p><div class="card-cta">Apri scheda →</div></a>
+      <a href="config-center.html" class="card card-link" style="border-left:4px solid #4a8fd0;"><div class="card-icon">⚙️</div><h3>Config Center</h3><p>Pannello di controllo per tutta la casa intelligente — invece di un'app per gadget, una pagina web dove regolo tutto: quando inizia la routine mattutina, quanto caldo riscalda, quando si spegne l'audio, cosa fanno le luci quando torno a casa.</p><div class="card-cta">Apri scheda →</div></a>
       <a href="italia-travel.html" class="card card-link" style="border-left:4px solid #008c45;"><div class="card-icon">🇮🇹</div><h3>Italia Travel Planner</h3><p>Pianificatore di viaggi in Italia — itinerario giornaliero, consigli code, prenotazioni, treni, vocabolario pasta.</p><div class="card-cta">Apri scheda →</div></a>
       <a href="ucetni-kniha.html" class="card card-link" style="border-left:4px solid #4a8fd0;"><div class="card-icon">📒</div><h3>Finance — Libro contabile</h3><p>App per le finanze personali — tutti i miei soldi (banche, broker, crypto, pensione), fatture dalla Gmail e piano per la pensione in un posto. Niente cloud, niente registrazione, tutto crittografato.</p><div class="card-cta">Apri scheda →</div></a>
       <a href="finance-analytik.html" class="card card-link" style="border-left:4px solid #5b8c9f;"><div class="card-icon">📈</div><h3>Finance Analytik</h3><p>Assistente personale per decisioni sulle azioni — invece di fidarmi di rating di terzi, l'app calcola in locale la propria fair value e mi dice: compra / tieni / vendi. 96 posizioni su 5 broker, niente API key, niente cloud.</p><div class="card-cta">Apri scheda →</div></a>
       <a href="krabickova-dieta.html" class="card card-link" style="border-left:4px solid #2e7d32;"><div class="card-icon">🥗</div><h3>Meal Planner</h3><p>Pianificatore pasti — menu giornaliero con obiettivi macro, BMR/TDEE e lista della spesa.</p><div class="card-cta">Apri scheda →</div></a>
-      <a href="dashboardy.html" class="card card-link" style="border-left:4px solid #7cd6ff;"><div class="card-icon">📊</div><h3>Dashboard</h3><p>Due schermi info: Energy sul PC con consumo live da HA RPi, e un kiosk RPi come pannello di controllo casa.</p><div class="card-cta">Apri scheda →</div></a>
+      <a href="energy-dashboard.html" class="card card-link" style="border-left:4px solid #7cd6ff;"><div class="card-icon">⚡</div><h3>Energy Dashboard (PC)</h3><p>Una finestra semplice sul monitor dove vedo in tempo reale quanto consuma la casa, quanto costa oggi e la stima per il mese. Niente click — sta aperta tutto il giorno.</p><div class="card-cta">Apri scheda →</div></a>
+      <a href="rpi-kiosk.html" class="card card-link" style="border-left:4px solid #9cf2a6;"><div class="card-icon">🖥️</div><h3>Pannello a muro</h3><p>Un piccolo touchscreen sul muro del corridoio dove controllo tutto l'appartamento — luci, audio, riscaldamento, scene. Niente sblocco telefono, niente caccia all'app. Passi, un tocco, fatto.</p><div class="card-cta">Apri scheda →</div></a>
   </div>
 </section>
 </main>
@@ -60,5 +61,32 @@
 </footer>
 
 <script src="../../assets/js/main.js"></script>
+
+<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
+<style>
+#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
+#__lb.open { display:flex }
+#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+main img { cursor:zoom-in; transition:transform .15s ease }
+main img:hover { transform:scale(1.005) }
+</style>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  document.querySelectorAll('main img').forEach(function(img){
+    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+  });
+})();
+</script>
 </body>
 </html>

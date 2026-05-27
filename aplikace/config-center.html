@@ -34,24 +34,25 @@
 <section class="hero" style="border-left:4px solid #4a8fd0;padding-left:1.2rem">
   <span class="hero-accent" style="color:#4a8fd0">Config Center</span>
   <h1><span style="margin-right:.4rem">⚙️</span>Config Center</h1>
-  <p class="hero-sub">Webová správa všech parametrů mého smart home — místo lezení do telefonu mám jednu stránku, kde si nastavím všechno najednou.</p>
+  <p class="hero-sub">Ovládací panel pro celou chytrou domácnost — místo aby měl člověk pro každou věc vlastní appku, mám jednu stránku v prohlížeči, kde si nastavím všechno: kdy začíná ranní rutina, jak teple se topí, kdy se vypne audio, co dělají světla když přijdu domů.</p>
   <p style="margin-top:.6rem"><span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">HTML</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vanilla JS</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Homey REST API</span></p>
   <p style="margin-top:.8rem"><a href="../index.html">← Zpět na Moje aplikace</a></p>
 </section>
 
 <section>
   <h2>Co to dělá</h2>
-  <p>Smart home Homey Pro 2026 má desítky proměnných: kdy začíná ranní rutina, jak rychle nabíhá světlo, na jakou teplotu topí ložnice, kdy se má vypnout audio. Config Center to všechno sjednocuje do <strong>22 přehledných stránek</strong> — místo lovení v telefonu mám jednu stránku, kde si všechno upravím a uložím jedním kliknutím.</p><p>Sám si hlídá, co se mění (preview mode), umí 10-minutový auto-revert kdyby něco bylo špatně, a chrání citlivá zařízení před omylem.</p>
+  <p>Mám doma cca 60 zařízení (světla, motion senzory, termostatické hlavice, reproduktory, čistička, roleta, …) řízených systémem Homey Pro 2026. Ten umí spoustu věcí — má vlastní mobilní apku, web rozhraní, scripty, automatizace — ale je v něm strašně moc šuplíčků a nastavení je rozházené.</p><p><strong>Config Center to sjednocuje na jedno místo.</strong> Otevřu web v prohlížeči, přihlásím se vlastním tokenem (token zůstane jen v mém prohlížeči, nikam se neposílá), a vidím 22 přehledných stránek: pro každý &bdquo;režim domu&ldquo; jednu (ráno / den / večer / noc / pryč / doma / spánek), zvlášť topení, zvlášť světla, zvlášť audio, atd. Klikání po telefonu nikoho nebaví — tady je všechno na čtyřech sloupcích vidět najednou.</p><p><strong>Preview režim = bezpečná zkouška.</strong> Když chci něco vyzkoušet (např. teplejší světlo v kuchyni večer), aplikace to nejprve nastaví, dá mi 10 minut na test, a pokud do té doby neřeknu &bdquo;tak jo, ulož to&ldquo;, samo se to vrátí zpátky. Takže když omylem zadám blbost, dům se sám opraví.</p><p><strong>Chrání před omyly.</strong> Některá zařízení (audio v ložnici, citlivé senzory) mají &bdquo;hard-block&ldquo; — ani omylem se nedá zapnout když by to vadilo. Třeba reproduktor v ložnici se nesmí přehrát test, kdyby tam zrovna někdo spal.</p><p><strong>Lokální, vlastní, žádný cloud.</strong> Aplikace je jen HTML+CSS+JS soubor co se otevře v Edge nebo Chrome. Komunikuje přímo s Homey hubem doma, nic se neposílá na cizí server. Žádné předplatné, žádná závislost na cloudu výrobce.</p>
 </section>
 
 <section>
   <h2>Klíčové funkce</h2>
   <ul style="line-height:1.7">
-      <li><strong>22 mode pages</strong> — Ranní / denní / večerní / noční / pryč / doma / spánek — TTS hlášky + cíle světel/topení per mód.</li>
-      <li><strong>4 TRV zóny</strong> — Plán topení per den s hodinovými okny, hystereze, anti-cycling, boost button.</li>
-      <li><strong>Preview mode</strong> — Změna se nejprve ukáže na zařízení, 10 minut na test, pak commit nebo automatický revert.</li>
-      <li><strong>100+ vars</strong> — Lux thresholdy, ramp delays, briefing window, AI toggles, rate limits, weekly schedules.</li>
-      <li><strong>Safety guards</strong> — Bedroom hard-block pro audio test, protected device guard pro citlivá zařízení.</li>
+      <li><strong>22 stránek pro každý režim</strong> — Ranní / denní / večerní / noční / pryč / doma / spánek — pro každý mám zvlášť hlasové zprávy (TTS), cíle pro světla, cíle pro topení. Nemusím si pamatovat kde co je.</li>
+      <li><strong>Plán topení po dnech a hodinách</strong> — Pro každou ze 4 zón (jídelna, ložnice, koupelna, toaleta) den po dni, hodina po hodině jakou teplotu chci. Boost knoflík když potřebuju rychle přitopit.</li>
+      <li><strong>Bezpečná zkouška se 10min navrácením</strong> — Než se změna potvrdí, mám 10 minut na test. Pokud do té doby neřeknu &bdquo;OK&ldquo;, samo se to vrátí. Nedá se rozbít dům jedním překlepem.</li>
+      <li><strong>100+ věcí které si můžu doladit</strong> — Kdy začíná ranní rutina, jak rychle nabíhá světlo (ramp), za jak dlouho se vypne audio, jak silné má být ráno briefing, …</li>
+      <li><strong>Token v prohlížeči, nikde jinde</strong> — Přístup do Homey hubu se uloží jen do localStorage tohoto prohlížeče. Žádný server, žádné cloudy, žádné &bdquo;přihlášení přes Google&ldquo;.</li>
+      <li><strong>Hard-block pro citlivá zařízení</strong> — Některá zařízení nemůžou být omylem zapnutá. Třeba audio v ložnici během spánku, čistička přes plíseň, atd.</li>
   </ul>
 </section>
 
@@ -65,7 +66,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Funkční, denně používané. Verze v1.7.5 (květen 2026), 100+ proměnných editovatelných, deployed na PC i RPi kiosk.</p>
+  <p>Denně používané. Verze v1.7.5 (květen 2026). Běží lokálně v prohlížeči na PC i na malém panelu na zdi (RPi kiosk). 100+ proměnných je živě editovatelných.</p>
 </section>
 </main>
 
@@ -80,5 +81,32 @@
 </footer>
 
 <script src="../assets/js/main.js"></script>
+
+<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
+<style>
+#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
+#__lb.open { display:flex }
+#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+main img { cursor:zoom-in; transition:transform .15s ease }
+main img:hover { transform:scale(1.005) }
+</style>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  document.querySelectorAll('main img').forEach(function(img){
+    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+  });
+})();
+</script>
 </body>
 </html>

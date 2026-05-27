@@ -34,24 +34,25 @@
 <section class="hero" style="border-left:4px solid #4a8fd0;padding-left:1.2rem">
   <span class="hero-accent" style="color:#4a8fd0">Config Center</span>
   <h1><span style="margin-right:.4rem">⚙️</span>Config Center</h1>
-  <p class="hero-sub">Web admin for every parameter of my smart home — one page instead of digging through the phone app.</p>
+  <p class="hero-sub">Control panel for the whole smart home — instead of one app per gadget, I have a single web page where I tune everything: when the morning routine starts, how warm the heating is, when audio stops, what lights do when I come home.</p>
   <p style="margin-top:.6rem"><span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">HTML</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vanilla JS</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Homey REST API</span></p>
   <p style="margin-top:.8rem"><a href="../index.html">← Back to My apps</a></p>
 </section>
 
 <section>
   <h2>What it does</h2>
-  <p>The Homey Pro 2026 smart home has dozens of variables: when the morning routine starts, how fast lights ramp up, what temperature the bedroom is heated to, when audio should stop. Config Center unifies it all in <strong>22 clean pages</strong> — one URL where I tune everything and save with a single click.</p><p>It watches what changes (preview mode), can auto-revert after 10 minutes if something's wrong, and protects sensitive devices from accidents.</p>
+  <p>I have about 60 devices at home (lights, motion sensors, TRV heads, speakers, air purifier, blind, …) running on Homey Pro 2026. It can do a lot — has its own mobile app, web UI, scripts, automations — but there are far too many drawers and the settings are scattered.</p><p><strong>Config Center unifies everything in one place.</strong> Open the web in a browser, log in with my token (the token stays only in this browser, nothing is sent anywhere), and see 22 clean pages: one per &bdquo;house mode&ldquo; (morning / day / evening / night / away / home / sleep), separate for heating, lights, audio, etc.</p><p><strong>Preview mode = safe test.</strong> When I want to try something, the app applies it first, gives me 10 minutes to test, and if I don't say &bdquo;OK, save it&ldquo; in that window, it reverts itself. So even if I make a mistake, the house heals itself.</p><p><strong>Protects from mistakes.</strong> Some devices (bedroom audio, sensitive sensors) have a hard-block — they cannot be turned on accidentally. The bedroom speaker can't play a test if someone's sleeping there.</p><p><strong>Local, mine, no cloud.</strong> The app is just an HTML+CSS+JS file opened in Edge or Chrome. It talks directly to the Homey hub at home, nothing goes to a third-party server. No subscription, no vendor cloud dependency.</p>
 </section>
 
 <section>
   <h2>Key features</h2>
   <ul style="line-height:1.7">
-      <li><strong>22 mode pages</strong> — Morning / day / evening / night / away / home / sleep — TTS lines + light/heating goals per mode.</li>
-      <li><strong>4 TRV zones</strong> — Per-day heating schedule with hour windows, hysteresis, anti-cycling, boost button.</li>
-      <li><strong>Preview mode</strong> — Changes first apply to the device, 10 min for testing, then commit or auto-revert.</li>
-      <li><strong>100+ vars</strong> — Lux thresholds, ramp delays, briefing window, AI toggles, rate limits, weekly schedules.</li>
-      <li><strong>Safety guards</strong> — Bedroom hard-block for audio test, protected device guard for sensitive equipment.</li>
+      <li><strong>22 pages per mode</strong> — Morning / day / evening / night / away / home / sleep — each with its own voice messages (TTS), light goals, heating goals.</li>
+      <li><strong>Per-day, per-hour heating plan</strong> — For each of 4 zones (dining, bedroom, bathroom, toilet) day by day, hour by hour what temp I want. Boost button for quick heating.</li>
+      <li><strong>10-min preview safety</strong> — Change applies first, 10 min to test, auto-reverts if I don't confirm. Can't break the house with one typo.</li>
+      <li><strong>100+ knobs to tune</strong> — When morning starts, how fast lights ramp up, how long audio stays on, how loud the morning briefing is, …</li>
+      <li><strong>Token in browser only</strong> — Hub access stored only in this browser's localStorage. No server, no clouds, no &bdquo;sign in with Google&ldquo;.</li>
+      <li><strong>Hard-block for sensitive gear</strong> — Some devices can't be accidentally on. E.g. bedroom audio while sleeping, purifier during mold treatment, etc.</li>
   </ul>
 </section>
 
@@ -65,7 +66,7 @@
 
 <section>
   <h2>Status</h2>
-  <p>Working, used daily. Version v1.7.5 (May 2026), 100+ editable variables, deployed on PC and the RPi kiosk.</p>
+  <p>In daily use. Version v1.7.5 (May 2026). Runs locally in a browser on PC and on a small wall panel (RPi kiosk). 100+ variables editable live.</p>
 </section>
 </main>
 
@@ -80,5 +81,32 @@
 </footer>
 
 <script src="../../assets/js/main.js"></script>
+
+<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
+<style>
+#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
+#__lb.open { display:flex }
+#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+main img { cursor:zoom-in; transition:transform .15s ease }
+main img:hover { transform:scale(1.005) }
+</style>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  document.querySelectorAll('main img').forEach(function(img){
+    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+  });
+})();
+</script>
 </body>
 </html>

@@ -88,42 +88,57 @@ APPS = [
         "i18n": {
             "cs": {
                 "name":       "Config Center",
-                "lead":       "Webová správa všech parametrů mého smart home — místo lezení do telefonu mám jednu stránku, kde si nastavím všechno najednou.",
-                "what": "<p>Smart home Homey Pro 2026 má desítky proměnných: kdy začíná ranní rutina, jak rychle nabíhá světlo, na jakou teplotu topí ložnice, kdy se má vypnout audio. Config Center to všechno sjednocuje do <strong>22 přehledných stránek</strong> — místo lovení v telefonu mám jednu stránku, kde si všechno upravím a uložím jedním kliknutím.</p><p>Sám si hlídá, co se mění (preview mode), umí 10-minutový auto-revert kdyby něco bylo špatně, a chrání citlivá zařízení před omylem.</p>",
+                "lead":       "Ovládací panel pro celou chytrou domácnost — místo aby měl člověk pro každou věc vlastní appku, mám jednu stránku v prohlížeči, kde si nastavím všechno: kdy začíná ranní rutina, jak teple se topí, kdy se vypne audio, co dělají světla když přijdu domů.",
+                "what":       "<p>Mám doma cca 60 zařízení (světla, motion senzory, termostatické hlavice, reproduktory, čistička, roleta, …) řízených systémem Homey Pro 2026. Ten umí spoustu věcí — má vlastní mobilní apku, web rozhraní, scripty, automatizace — ale je v něm strašně moc šuplíčků a nastavení je rozházené.</p>"
+                              "<p><strong>Config Center to sjednocuje na jedno místo.</strong> Otevřu web v prohlížeči, přihlásím se vlastním tokenem (token zůstane jen v mém prohlížeči, nikam se neposílá), a vidím 22 přehledných stránek: pro každý &bdquo;režim domu&ldquo; jednu (ráno / den / večer / noc / pryč / doma / spánek), zvlášť topení, zvlášť světla, zvlášť audio, atd. Klikání po telefonu nikoho nebaví — tady je všechno na čtyřech sloupcích vidět najednou.</p>"
+                              "<p><strong>Preview režim = bezpečná zkouška.</strong> Když chci něco vyzkoušet (např. teplejší světlo v kuchyni večer), aplikace to nejprve nastaví, dá mi 10 minut na test, a pokud do té doby neřeknu &bdquo;tak jo, ulož to&ldquo;, samo se to vrátí zpátky. Takže když omylem zadám blbost, dům se sám opraví.</p>"
+                              "<p><strong>Chrání před omyly.</strong> Některá zařízení (audio v ložnici, citlivé senzory) mají &bdquo;hard-block&ldquo; — ani omylem se nedá zapnout když by to vadilo. Třeba reproduktor v ložnici se nesmí přehrát test, kdyby tam zrovna někdo spal.</p>"
+                              "<p><strong>Lokální, vlastní, žádný cloud.</strong> Aplikace je jen HTML+CSS+JS soubor co se otevře v Edge nebo Chrome. Komunikuje přímo s Homey hubem doma, nic se neposílá na cizí server. Žádné předplatné, žádná závislost na cloudu výrobce.</p>",
                 "features": [
-                    ("22 mode pages", "Ranní / denní / večerní / noční / pryč / doma / spánek — TTS hlášky + cíle světel/topení per mód."),
-                    ("4 TRV zóny",    "Plán topení per den s hodinovými okny, hystereze, anti-cycling, boost button."),
-                    ("Preview mode",  "Změna se nejprve ukáže na zařízení, 10 minut na test, pak commit nebo automatický revert."),
-                    ("100+ vars",     "Lux thresholdy, ramp delays, briefing window, AI toggles, rate limits, weekly schedules."),
-                    ("Safety guards", "Bedroom hard-block pro audio test, protected device guard pro citlivá zařízení."),
+                    ("22 stránek pro každý režim",        "Ranní / denní / večerní / noční / pryč / doma / spánek — pro každý mám zvlášť hlasové zprávy (TTS), cíle pro světla, cíle pro topení. Nemusím si pamatovat kde co je."),
+                    ("Plán topení po dnech a hodinách",   "Pro každou ze 4 zón (jídelna, ložnice, koupelna, toaleta) den po dni, hodina po hodině jakou teplotu chci. Boost knoflík když potřebuju rychle přitopit."),
+                    ("Bezpečná zkouška se 10min navrácením", "Než se změna potvrdí, mám 10 minut na test. Pokud do té doby neřeknu &bdquo;OK&ldquo;, samo se to vrátí. Nedá se rozbít dům jedním překlepem."),
+                    ("100+ věcí které si můžu doladit",   "Kdy začíná ranní rutina, jak rychle nabíhá světlo (ramp), za jak dlouho se vypne audio, jak silné má být ráno briefing, …"),
+                    ("Token v prohlížeči, nikde jinde",   "Přístup do Homey hubu se uloží jen do localStorage tohoto prohlížeče. Žádný server, žádné cloudy, žádné &bdquo;přihlášení přes Google&ldquo;."),
+                    ("Hard-block pro citlivá zařízení",   "Některá zařízení nemůžou být omylem zapnutá. Třeba audio v ložnici během spánku, čistička přes plíseň, atd."),
                 ],
-                "status": "Funkční, denně používané. Verze v1.7.5 (květen 2026), 100+ proměnných editovatelných, deployed na PC i RPi kiosk.",
+                "status": "Denně používané. Verze v1.7.5 (květen 2026). Běží lokálně v prohlížeči na PC i na malém panelu na zdi (RPi kiosk). 100+ proměnných je živě editovatelných.",
             },
             "en": {
                 "name":       "Config Center",
-                "lead":       "Web admin for every parameter of my smart home — one page instead of digging through the phone app.",
-                "what": "<p>The Homey Pro 2026 smart home has dozens of variables: when the morning routine starts, how fast lights ramp up, what temperature the bedroom is heated to, when audio should stop. Config Center unifies it all in <strong>22 clean pages</strong> — one URL where I tune everything and save with a single click.</p><p>It watches what changes (preview mode), can auto-revert after 10 minutes if something's wrong, and protects sensitive devices from accidents.</p>",
+                "lead":       "Control panel for the whole smart home — instead of one app per gadget, I have a single web page where I tune everything: when the morning routine starts, how warm the heating is, when audio stops, what lights do when I come home.",
+                "what":       "<p>I have about 60 devices at home (lights, motion sensors, TRV heads, speakers, air purifier, blind, …) running on Homey Pro 2026. It can do a lot — has its own mobile app, web UI, scripts, automations — but there are far too many drawers and the settings are scattered.</p>"
+                              "<p><strong>Config Center unifies everything in one place.</strong> Open the web in a browser, log in with my token (the token stays only in this browser, nothing is sent anywhere), and see 22 clean pages: one per &bdquo;house mode&ldquo; (morning / day / evening / night / away / home / sleep), separate for heating, lights, audio, etc.</p>"
+                              "<p><strong>Preview mode = safe test.</strong> When I want to try something, the app applies it first, gives me 10 minutes to test, and if I don't say &bdquo;OK, save it&ldquo; in that window, it reverts itself. So even if I make a mistake, the house heals itself.</p>"
+                              "<p><strong>Protects from mistakes.</strong> Some devices (bedroom audio, sensitive sensors) have a hard-block — they cannot be turned on accidentally. The bedroom speaker can't play a test if someone's sleeping there.</p>"
+                              "<p><strong>Local, mine, no cloud.</strong> The app is just an HTML+CSS+JS file opened in Edge or Chrome. It talks directly to the Homey hub at home, nothing goes to a third-party server. No subscription, no vendor cloud dependency.</p>",
                 "features": [
-                    ("22 mode pages", "Morning / day / evening / night / away / home / sleep — TTS lines + light/heating goals per mode."),
-                    ("4 TRV zones",   "Per-day heating schedule with hour windows, hysteresis, anti-cycling, boost button."),
-                    ("Preview mode",  "Changes first apply to the device, 10 min for testing, then commit or auto-revert."),
-                    ("100+ vars",     "Lux thresholds, ramp delays, briefing window, AI toggles, rate limits, weekly schedules."),
-                    ("Safety guards", "Bedroom hard-block for audio test, protected device guard for sensitive equipment."),
+                    ("22 pages per mode",                 "Morning / day / evening / night / away / home / sleep — each with its own voice messages (TTS), light goals, heating goals."),
+                    ("Per-day, per-hour heating plan",    "For each of 4 zones (dining, bedroom, bathroom, toilet) day by day, hour by hour what temp I want. Boost button for quick heating."),
+                    ("10-min preview safety",             "Change applies first, 10 min to test, auto-reverts if I don't confirm. Can't break the house with one typo."),
+                    ("100+ knobs to tune",                "When morning starts, how fast lights ramp up, how long audio stays on, how loud the morning briefing is, …"),
+                    ("Token in browser only",             "Hub access stored only in this browser's localStorage. No server, no clouds, no &bdquo;sign in with Google&ldquo;."),
+                    ("Hard-block for sensitive gear",     "Some devices can't be accidentally on. E.g. bedroom audio while sleeping, purifier during mold treatment, etc."),
                 ],
-                "status": "Working, used daily. Version v1.7.5 (May 2026), 100+ editable variables, deployed on PC and the RPi kiosk.",
+                "status": "In daily use. Version v1.7.5 (May 2026). Runs locally in a browser on PC and on a small wall panel (RPi kiosk). 100+ variables editable live.",
             },
             "it": {
                 "name":       "Config Center",
-                "lead":       "Pannello web per ogni parametro della mia smart home — una pagina invece di scavare nell'app del telefono.",
-                "what": "<p>La casa Homey Pro 2026 ha decine di variabili: quando inizia la routine mattutina, quanto velocemente le luci salgono, a che temperatura riscaldare la camera, quando spegnere l'audio. Config Center le riunisce tutte in <strong>22 pagine ordinate</strong> — un URL dove regolo tutto e salvo con un click.</p><p>Sorveglia ciò che cambia (preview mode), può fare auto-revert dopo 10 minuti se qualcosa va storto e protegge i dispositivi delicati dagli errori.</p>",
+                "lead":       "Pannello di controllo per tutta la casa intelligente — invece di un'app per gadget, una pagina web dove regolo tutto: quando inizia la routine mattutina, quanto caldo riscalda, quando si spegne l'audio, cosa fanno le luci quando torno a casa.",
+                "what":       "<p>Ho circa 60 dispositivi a casa (luci, sensori movimento, teste TRV, altoparlanti, purificatore, tapparella, …) gestiti da Homey Pro 2026. Sa fare molto — app mobile, UI web, script, automazioni — ma c'è troppi cassetti e impostazioni sparpagliate.</p>"
+                              "<p><strong>Config Center unifica tutto in un posto.</strong> Apro il web nel browser, login col mio token (resta solo qui, niente esce), e vedo 22 pagine ordinate: una per ogni &bdquo;modalità casa&ldquo;, separate per riscaldamento, luci, audio, ecc.</p>"
+                              "<p><strong>Preview mode = test sicuro.</strong> Quando voglio provare qualcosa, l'app la applica prima, 10 minuti per test, e se non dico &bdquo;OK&ldquo; si ripristina da sola. La casa si auto-corregge.</p>"
+                              "<p><strong>Protegge dagli errori.</strong> Alcuni dispositivi (audio camera, sensori delicati) hanno hard-block — non si accendono per errore.</p>"
+                              "<p><strong>Locale, mio, niente cloud.</strong> L'app è solo un file HTML+CSS+JS aperto in Edge o Chrome. Parla direttamente con l'hub Homey a casa, niente va a server terzi. Niente abbonamento.</p>",
                 "features": [
-                    ("22 pagine mode", "Mattina / giorno / sera / notte / via / casa / sonno — frasi TTS + obiettivi luci/riscaldamento per mode."),
-                    ("4 zone TRV",    "Programma riscaldamento giornaliero con finestre orarie, isteresi, anti-cycling, pulsante boost."),
-                    ("Preview mode",  "Le modifiche si applicano prima al dispositivo, 10 min per il test, poi commit o auto-revert."),
-                    ("100+ variabili", "Soglie lux, ramp delay, finestra briefing, toggle AI, rate limits, piani settimanali."),
-                    ("Safety guards", "Hard-block camera per test audio, protected device guard per apparecchi delicati."),
+                    ("22 pagine per modalità",            "Mattina / giorno / sera / notte / via / casa / sonno — ognuna con messaggi vocali, obiettivi luci, obiettivi riscaldamento."),
+                    ("Piano riscaldamento per giorno/ora", "Per ognuna delle 4 zone giorno per giorno, ora per ora la temperatura. Pulsante boost."),
+                    ("Sicurezza preview 10 min",          "Modifica applica prima, 10 min di test, auto-ripristino se non confermo."),
+                    ("100+ parametri regolabili",         "Quando inizia il mattino, velocità ramp luci, durata audio, volume briefing, …"),
+                    ("Token solo nel browser",            "Accesso hub solo in localStorage del browser. Niente server, niente cloud."),
+                    ("Hard-block per attrezzature delicate", "Alcuni dispositivi non si accendono per sbaglio. Es. audio camera durante il sonno."),
                 ],
-                "status": "Funzionante, in uso quotidiano. Versione v1.7.5 (maggio 2026), 100+ variabili modificabili, distribuita su PC e kiosk RPi.",
+                "status": "Uso quotidiano. Versione v1.7.5 (maggio 2026). Gira in locale nel browser su PC e su un piccolo pannello a muro (kiosk RPi). 100+ variabili modificabili live.",
             },
         },
     },
@@ -373,60 +388,131 @@ APPS = [
         },
     },
     {
-        "slug": "dashboardy",
-        "icon": "📊",
+        "slug": "energy-dashboard",
+        "icon": "⚡",
         "color": "#7cd6ff",
-        "asset_dir": "dashboardy",
+        "asset_dir": "energy-dashboard",
         "screens": [
-            ("energy_pc.png",      "Energy Dashboard — PC verze (Edge app-mode, DEMO snapshot)"),
-            ("rpi_audio.png",      "RPi kiosk — audio + scény"),
-            ("rpi_energy.png",     "RPi kiosk — energie & topení"),
-            ("rpi_scenes.png",     "RPi kiosk — scény (Loxone-style)"),
-            ("rpi_settings.png",   "RPi kiosk — nastavení"),
+            ("01_overview.png", "Hlavní pohled — kolik dům teď bere, dnes spotřeboval, kolik to stojí (data jsou DEMO snapshot)"),
         ],
-        "stack": ["HTML", "Vanilla JS", "Python proxy", "HA REST", "Homey REST"],
+        "stack": ["HTML", "Vanilla JS", "Python proxy", "HA REST"],
         "i18n": {
             "cs": {
-                "name":  "Dashboardy",
-                "lead":  "Dvě informační obrazovky: Energy na PC s živým odběrem z HA RPi, RPi kiosk jako ovládací centrum bytu.",
-                "what":  "<p>Místo apky na telefonu mám dvě věci na stěně:</p><p><strong>1) Energy Dashboard na PC</strong> — kolik teď bere dům, co stojí dnes, prognóza na měsíc, který spotřebič bere nejvíc. Edge app-mode, žádné menu, žádné okno — jen čistý dashboard.</p><p><strong>2) RPi kiosk</strong> — Raspberry Pi 4 s 7\" displayem na zdi, ovládá světla, audio, topení, scény. Stránka home + audio + energy + scény + settings, vše bez kliknutí dál — všechno na první obrazovce.</p><p>Oba čtou data z HA RPi (192.168.1.241), který agreguje vše ze Smart Home (Homey + 3EM měření + Shelly + heating data).</p>",
+                "name":  "Energy Dashboard (PC)",
+                "lead":  "Jednoduché okno na monitoru, kde vidím v reálném čase kolik dům spotřebovává proudu, co to stojí dnes, a co odhaduji za celý měsíc. Nemusím nikam klikat — visí to celý den otevřené.",
+                "what":  "<p><strong>Proč to existuje:</strong> mít elektřinu pod kontrolou znamená vědět co kolik bere. Aplikace mi řekne kolik <em>teď</em> beru (v W), kolik <em>dnes</em> (v kWh), kolik to <em>dnes stojí</em>, kolik <em>očekávám za měsíc</em>, a který spotřebič právě teď tahá nejvíc (typicky lednice, vařič, sušička).</p>"
+                         "<p><strong>Jak to funguje:</strong> doma mám malý server (Raspberry Pi s Home Assistant), který sbírá data ze 3-fázového měřiče (Shelly Pro 3EM) a z jednotlivých chytrých zásuvek. Aplikace se ho ptá každých 30 sekund a překresluje hodnoty. Na PC to běží jako samostatné okno v Edge — žádný taskbar, žádné menu, prostě dashboard.</p>"
+                         "<p><strong>Tarif NT/VT visible:</strong> mám distribuční tarif D57D — nízký tarif (NT, levný proud) v určitých hodinách, vysoký tarif (VT) zbytek. Velký badge nahoře jasně ukazuje který je teď a podle toho můžu rozhodnout jestli si pustit pračku.</p>"
+                         "<p><strong>Když je RPi nedostupný</strong> (např. internet doma vypadne), aplikace zobrazí poslední uložená data + výrazné upozornění &bdquo;cached-stale&ldquo;. Nikdy nezobrazuje falešná data jako kdyby byla čerstvá.</p>",
                 "features": [
-                    ("Energy Dashboard PC", "Aktuální W, dnes kWh, cena s/bez POZE, měsíční prognóza, top spotřebič."),
-                    ("Tarif NT/VT",         "Vizuální badge pro nízký/vysoký tarif, HDO kód, jistič."),
-                    ("RPi kiosk home",      "Status domu (kdo je doma, kdo spí, kde je motion), rychlé akce."),
-                    ("RPi audio + scény",   "Spuštění radia, scény (relax, kino, vaření, večeře)."),
-                    ("Energy + topení",     "Topení runtime, runtime today, kotel stav, TRV zóny."),
-                    ("Settings",            "Pinned overview pro provoz domu — bez nutnosti otevřít telefon."),
+                    ("Aktuální spotřeba v reálném čase",  "Co teď dům bere (W), rozpis po 3 fázích, top spotřebič právě teď. Updatuje se každých 30 sekund."),
+                    ("Dnes a měsíc v Kč",                 "Kolik kWh dnes, kolik to stojí (s POZE i bez), odhad za celý měsíc na základě dosavadního průměru."),
+                    ("Tarif NT/VT badge",                 "Vizuální označení který tarif je teď aktivní — pomáhá rozhodnout kdy zapnout energeticky náročné spotřebiče."),
+                    ("Top spotřebiče",                    "Která chytrá zásuvka právě teď tahá nejvíc — užitečné když člověk něco zapomene zapnutého."),
+                    ("Topení & kotel",                    "Stav režimu topení, doba běhu kotle za dnešek, jestli souhlasí stav s požadavkem."),
+                    ("Offline fallback s upozorněním",    "Když je server doma nedostupný, ukáže poslední data + jasnou hlášku že nejsou čerstvá. Nelze přehlédnout."),
                 ],
-                "status": "Funkční. Energy běží lokálně na PC (proxy → HA RPi). RPi kiosk běží 24/7 na Raspberry Pi 4 v chodbě.",
+                "status": "Denně používané na PC. Verze v1.0.1 (květen 2026). Spouští se jednoklikem ze zástupce na ploše (Edge app-mode).",
             },
             "en": {
-                "name":  "Dashboards",
-                "lead":  "Two info screens: Energy on the PC with live consumption from HA RPi, and a RPi kiosk as the home control panel.",
-                "what":  "<p>Instead of a phone app I have two things on the wall:</p><p><strong>1) Energy Dashboard on the PC</strong> — current draw, today's kWh, monthly forecast, top consumer. Edge app-mode, no menus, no windows — just a clean dashboard.</p><p><strong>2) RPi kiosk</strong> — Raspberry Pi 4 with 7\" wall display, controls lights, audio, heating, scenes. Home + audio + energy + scenes + settings — everything on the first screen.</p><p>Both read from HA RPi (192.168.1.241), which aggregates smart-home data (Homey + 3EM meter + Shelly + heating).</p>",
+                "name":  "Energy Dashboard (PC)",
+                "lead":  "A simple monitor window where I see in real-time how much power the house consumes, today's cost, and the estimate for the whole month. No clicking — it's open all day.",
+                "what":  "<p><strong>Why it exists:</strong> to know what consumes what. The app shows <em>current</em> draw (W), <em>today's</em> usage (kWh), <em>today's cost</em>, <em>monthly estimate</em>, and which appliance is pulling the most right now (typically fridge, stove, dryer).</p>"
+                         "<p><strong>How it works:</strong> at home there's a small server (Raspberry Pi running Home Assistant) collecting data from a 3-phase meter (Shelly Pro 3EM) and individual smart plugs. The app polls it every 30 seconds and redraws. On the PC it runs as a standalone Edge window — no taskbar, no menu, just a dashboard.</p>"
+                         "<p><strong>NT/VT tariff visible:</strong> Czech distribution tariff D57D — low tariff (NT, cheap power) at specific hours, high (VT) the rest. A big top badge clearly shows which is active so I can decide whether to run the washer.</p>"
+                         "<p><strong>When RPi is unreachable</strong> (e.g. home internet drops), the app shows the last saved data with a clear &bdquo;cached-stale&ldquo; warning. Never shows stale data as if it were live.</p>",
                 "features": [
-                    ("Energy Dashboard PC", "Live W, today kWh, cost with/without POZE, monthly forecast, top consumer."),
-                    ("NT/VT tariff",        "Visual badge for low/high tariff, HDO code, breaker."),
-                    ("RPi kiosk home",      "House status (who's home, who's asleep, where's motion), quick actions."),
-                    ("RPi audio + scenes",  "Radio start, scenes (relax, cinema, cooking, dinner)."),
-                    ("Energy + heating",    "Heating runtime, today's runtime, boiler state, TRV zones."),
-                    ("Settings",            "Pinned home operation overview — no phone needed."),
+                    ("Real-time consumption",        "Current draw (W), 3-phase split, top consumer right now. Updates every 30 s."),
+                    ("Today and month in CZK",       "kWh today, cost (with and without POZE fee), monthly estimate based on running average."),
+                    ("NT/VT tariff badge",           "Visual flag of which tariff is active — helps decide when to run heavy appliances."),
+                    ("Top consumers",                "Which smart plug is currently pulling the most — useful when something was left on."),
+                    ("Heating & boiler",             "Heating mode, today's boiler runtime, whether state matches the request."),
+                    ("Offline fallback with notice", "When server is unreachable, shows last data with clear stale warning. Can't be missed."),
                 ],
-                "status": "Working. Energy runs locally on the PC (proxy → HA RPi). RPi kiosk runs 24/7 on a Raspberry Pi 4 in the hallway.",
+                "status": "Used daily on PC. Version v1.0.1 (May 2026). One-click launch from desktop shortcut (Edge app-mode).",
             },
             "it": {
-                "name":  "Dashboard",
-                "lead":  "Due schermi info: Energy sul PC con consumo live da HA RPi, e un kiosk RPi come pannello di controllo casa.",
-                "what":  "<p>Invece di un'app sul telefono ho due cose sul muro:</p><p><strong>1) Energy Dashboard su PC</strong> — consumo attuale, kWh oggi, previsione mensile, top consumer. Edge app-mode, niente menu, niente finestre — solo dashboard pulita.</p><p><strong>2) Kiosk RPi</strong> — Raspberry Pi 4 con display 7\" a muro, controlla luci, audio, riscaldamento, scene. Home + audio + energia + scene + impostazioni — tutto sulla prima schermata.</p><p>Entrambi leggono da HA RPi (192.168.1.241), che aggrega dati smart-home (Homey + 3EM + Shelly + riscaldamento).</p>",
+                "name":  "Energy Dashboard (PC)",
+                "lead":  "Una finestra semplice sul monitor dove vedo in tempo reale quanto consuma la casa, quanto costa oggi e la stima per il mese. Niente click — sta aperta tutto il giorno.",
+                "what":  "<p><strong>Perché esiste:</strong> sapere cosa consuma. L'app mostra il consumo <em>attuale</em> (W), il <em>giornaliero</em> (kWh), il <em>costo di oggi</em>, la <em>stima mensile</em>, e quale elettrodomestico sta tirando di più adesso.</p>"
+                         "<p><strong>Come funziona:</strong> a casa c'è un piccolo server (Raspberry Pi con Home Assistant) che raccoglie dati da un contatore trifase (Shelly Pro 3EM) e dalle prese smart. L'app lo interroga ogni 30 secondi. Sul PC gira come finestra Edge dedicata.</p>"
+                         "<p><strong>Tariffa NT/VT visibile:</strong> tariffa ceca D57D — bassa in certe ore, alta nel resto. Badge in alto mostra quale è attiva.</p>"
+                         "<p><strong>Quando il RPi è irraggiungibile</strong> mostra l'ultimo dato salvato con avviso chiaro &bdquo;cached-stale&ldquo;. Mai dati vecchi mascherati da freschi.</p>",
                 "features": [
-                    ("Energy Dashboard PC", "W attuali, kWh oggi, costo con/senza POZE, previsione mensile, top consumer."),
-                    ("Tariffa NT/VT",       "Badge visuale per tariffa bassa/alta, codice HDO, interruttore."),
-                    ("Home kiosk RPi",      "Stato casa (chi è in casa, chi dorme, dov'è motion), azioni rapide."),
-                    ("Audio + scene RPi",   "Avvio radio, scene (relax, cinema, cucina, cena)."),
-                    ("Energia + riscaldamento", "Runtime riscaldamento, oggi runtime, stato caldaia, zone TRV."),
-                    ("Impostazioni",        "Vista operativa casa fissa — niente telefono."),
+                    ("Consumo in tempo reale",       "W attuali, split su 3 fasi, top consumer ora. Update ogni 30 s."),
+                    ("Oggi e mese in CZK",           "kWh oggi, costo (con e senza POZE), stima mensile."),
+                    ("Badge tariffa NT/VT",          "Indica quale tariffa è attiva — utile per decidere quando avviare elettrodomestici pesanti."),
+                    ("Top consumer",                 "Quale presa smart tira di più ora — utile quando si è dimenticato qualcosa acceso."),
+                    ("Riscaldamento e caldaia",     "Modalità, runtime caldaia oggi, stato vs richiesta."),
+                    ("Fallback offline con avviso", "Quando il server è irraggiungibile, mostra ultimo dato con avviso chiaro."),
                 ],
-                "status": "Funzionante. Energy gira in locale sul PC (proxy → HA RPi). Kiosk RPi gira 24/7 su Raspberry Pi 4 nel corridoio.",
+                "status": "Uso quotidiano sul PC. Versione v1.0.1 (maggio 2026). Avvio one-click da shortcut desktop (Edge app-mode).",
+            },
+        },
+    },
+    {
+        "slug": "rpi-kiosk",
+        "icon": "🖥️",
+        "color": "#9cf2a6",
+        "asset_dir": "rpi-kiosk",
+        "screens": [
+            ("01_audio.png",    "Audio a scény — spuštění rádia, scénář pro relax / kino / vaření / večeři"),
+            ("02_energy.png",   "Energie a topení — runtime kotle dnes, stav TRV zón, aktuální odběr"),
+            ("03_scenes.png",   "Scény (styl Loxone) — jeden velký dotyk a celá místnost se přestaví"),
+            ("04_settings.png", "Nastavení — rychlý přehled provozu domu bez nutnosti otevřít telefon"),
+        ],
+        "stack": ["HTML", "Vanilla JS", "Raspberry Pi 4", "Chromium kiosk"],
+        "i18n": {
+            "cs": {
+                "name":  "Domácí panel na zdi",
+                "lead":  "Malý dotykový displej na zdi v chodbě, kde ovládám celý byt — světla, audio, topení, scény. Žádné odemykání telefonu, žádné hledání aplikace. Stačí přijít, jeden dotyk a hotovo.",
+                "what":  "<p><strong>Proč to existuje:</strong> ovládání chytré domácnosti přes telefon je rychlé jen vzhledem k tomu, jak je pomalé. Než člověk odemkne telefon, najde appku, klikne na správnou ikonu, scrolluje — to si může rovnou jít rozsvítit ručně. <strong>Wall panel řeší přesně tohle.</strong> Je vždy zapnutý, vždy připravený, na první obrazovce má všechno důležité.</p>"
+                         "<p><strong>Hardware:</strong> Raspberry Pi 4 (malý počítač velikosti krabičky od žvýkaček) + 7&quot; dotykový displej, přišroubovaný na zdi v chodbě. Stojí dohromady asi 2500 Kč. Žije v Chromium browseru spuštěném v &bdquo;kiosk mode&ldquo; — žádný systém, žádná nabídka, jen plné okno aplikace.</p>"
+                         "<p><strong>Co umí:</strong> ovládat všechna světla, spustit/zastavit rádio, přepnout scénu (relax / kino / vaření / večeře / příchod / odchod), upravit topení, vidět co je v ledničce (ne fakt — ale vidět co dům spotřebovává v reálu, kdo je doma, kdo spí, kde se zrovna pohybuje motion senzor).</p>"
+                         "<p><strong>Scény ve stylu Loxone:</strong> velké dlaždice, palcem se zmáčkne &bdquo;Kino&ldquo; a celý byt se přestaví — světla na 30 %, hudba se ztiší, roleta zaslepí ulici, topení o stupeň víc. Jeden dotyk místo deseti.</p>",
+                "features": [
+                    ("Dotykový displej v chodbě",     "Raspberry Pi 4 + 7&quot; touch displej na zdi. Vždy zapnutý, vždy připravený."),
+                    ("Scény jedním palcem",           "Relax, Kino, Vaření, Večeře, Romantika, Práce, Příchod, Odchod — každá scéna nastaví všechno najednou."),
+                    ("Ovládání světel",               "Všechny místnosti, dim, barva, scény. Žádné hledání v telefonu."),
+                    ("Audio z rádia",                 "Spuštění/zastavení internetových rádií, volba reproduktoru, hlasitost."),
+                    ("Topení a energie",              "Runtime kotle, TRV zóny, aktuální odběr, který spotřebič tahá."),
+                    ("Bez telefonu, bez login",       "Nemusí se nikdo přihlašovat, nemusí se nic hledat. Otevři dveře — panel ti to ukáže."),
+                ],
+                "status": "Běží 24/7 na Raspberry Pi 4 v chodbě. Auto-restart při výpadku proudu. Cca rok bez problémů.",
+            },
+            "en": {
+                "name":  "Home wall panel",
+                "lead":  "A small touchscreen on the hallway wall where I control the whole flat — lights, audio, heating, scenes. No phone unlock, no app hunting. Walk up, one touch, done.",
+                "what":  "<p><strong>Why it exists:</strong> phone control of a smart home is fast only relative to how slow it is. By the time you unlock the phone, find the app, tap the right icon, scroll — you could've just turned the lights on by hand. <strong>A wall panel solves this exactly.</strong> Always on, always ready, everything important on the first screen.</p>"
+                         "<p><strong>Hardware:</strong> Raspberry Pi 4 (small computer the size of a deck of cards) + 7&quot; touch display, screwed to the hallway wall. About €100 total. Lives in a Chromium browser launched in &bdquo;kiosk mode&ldquo; — no OS UI, no menu, just the full-window app.</p>"
+                         "<p><strong>What it does:</strong> control all lights, start/stop radio, switch scene (relax / cinema / cooking / dinner / arriving / leaving), adjust heating, see what the house is consuming in real time, who's home, who's asleep, where motion was last detected.</p>"
+                         "<p><strong>Scenes Loxone-style:</strong> big tiles, tap &bdquo;Cinema&ldquo; with a thumb and the whole flat reconfigures — lights to 30%, music quietens, blind blocks the street, heating up one degree. One touch instead of ten.</p>",
+                "features": [
+                    ("Touchscreen in hallway",      "Raspberry Pi 4 + 7&quot; touch on wall. Always on, always ready."),
+                    ("Scenes with one thumb",       "Relax, Cinema, Cooking, Dinner, Romance, Work, Arrive, Leave — one tap configures everything."),
+                    ("Light control",               "All rooms, dim, color, scenes. No phone hunting."),
+                    ("Radio audio",                 "Start/stop internet radios, choose speaker, volume."),
+                    ("Heating & energy",            "Boiler runtime, TRV zones, current draw, top consumer."),
+                    ("No phone, no login",          "No sign-in needed, nothing to search for. Open the door — panel shows it."),
+                ],
+                "status": "Runs 24/7 on Raspberry Pi 4 in the hallway. Auto-restart on power loss. About a year without issues.",
+            },
+            "it": {
+                "name":  "Pannello a muro",
+                "lead":  "Un piccolo touchscreen sul muro del corridoio dove controllo tutto l'appartamento — luci, audio, riscaldamento, scene. Niente sblocco telefono, niente caccia all'app. Passi, un tocco, fatto.",
+                "what":  "<p><strong>Perché esiste:</strong> il controllo via telefono è veloce solo in relativo. Tra sblocco, ricerca app, tap, scroll — si fa prima a accendere a mano. <strong>Il pannello a muro risolve esattamente questo.</strong> Sempre acceso, sempre pronto, tutto sulla prima schermata.</p>"
+                         "<p><strong>Hardware:</strong> Raspberry Pi 4 + display touch 7&quot;, avvitato al muro. Circa 100 €. Gira in Chromium &bdquo;kiosk mode&ldquo;.</p>"
+                         "<p><strong>Cosa fa:</strong> controllo luci, avvio radio, scene (relax / cinema / cucina / cena / arrivo / uscita), riscaldamento, vede chi è in casa, chi dorme, dove c'è movimento.</p>"
+                         "<p><strong>Scene stile Loxone:</strong> mattonelle grandi, premi &bdquo;Cinema&ldquo; e tutto si riconfigura.</p>",
+                "features": [
+                    ("Touchscreen nel corridoio",  "Raspberry Pi 4 + touch 7&quot; a muro. Sempre acceso."),
+                    ("Scene con un pollice",       "Relax, Cinema, Cucina, Cena, Romanza, Lavoro, Arrivo, Uscita — un tap configura tutto."),
+                    ("Controllo luci",             "Tutte le stanze, dim, colore, scene."),
+                    ("Audio radio",                "Avvio/stop radio, scelta altoparlante, volume."),
+                    ("Riscaldamento e energia",    "Runtime caldaia, zone TRV, consumo attuale."),
+                    ("No telefono, no login",      "Niente accesso. Apri la porta — il pannello mostra."),
+                ],
+                "status": "Gira 24/7 su Raspberry Pi 4 nel corridoio. Auto-restart su mancanza corrente. Circa un anno senza problemi.",
             },
         },
     },
@@ -555,7 +641,10 @@ def render_app(lang: str, app: dict) -> str:
 
 def wrap_html(lang: str, title: str, depth: int, body: str) -> str:
     """Minimal full HTML wrapper. _build_pages.py rewraps with shared
-    header/nav/footer later, so we just provide a valid <main>."""
+    header/nav/footer later, so we just provide a valid <main>.
+
+    Includes vanilla-JS lightbox: click any <main> img → fullscreen overlay,
+    click/ESC to close. No dependencies."""
     css = ("../" * depth) + "assets/css/style.css"
     return f"""<!DOCTYPE html>
 <html lang="{lang}">
@@ -564,11 +653,48 @@ def wrap_html(lang: str, title: str, depth: int, body: str) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <link rel="stylesheet" href="{css}">
+  <style>
+    #__lb {{
+      display:none; position:fixed; inset:0; z-index:9999;
+      background:rgba(0,0,0,0.93); cursor:zoom-out;
+      align-items:center; justify-content:center; padding:2vh;
+    }}
+    #__lb.open {{ display:flex }}
+    #__lb img {{ max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }}
+    #__lb .__lbhint {{ position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }}
+    main img {{ cursor:zoom-in; transition:transform .15s ease }}
+    main img:hover {{ transform:scale(1.005) }}
+  </style>
 </head>
 <body>
 <main id="main">
 {body}
 </main>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
+</div>
+<script>
+(function(){{
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){{
+    lbimg.src = src; lbimg.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }}
+  function close(){{
+    lb.classList.remove('open');
+    lbimg.src = '';
+    document.body.style.overflow = '';
+  }}
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){{ if(e.key === 'Escape') close(); }});
+  document.querySelectorAll('main img').forEach(function(img){{
+    img.addEventListener('click', function(){{ open(img.src, img.alt); }});
+  }});
+}})();
+</script>
 </body>
 </html>
 """
