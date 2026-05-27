@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Le mie app — Luděk</title>
+  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+</head>
+<body class="theme-smart-home">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+    <a href="../../">Domů</a>
+    <a href="../../aplikace/">Aplikace</a>
+    <a href="../../finance/">Finance</a>
+    <a href="../../cestovani/">Cestování</a>
+    <a href="../../cestovani/italie/">Itálie</a>
+    <a href="../../zaliby/rybareni/">Rybaření</a>
+    <a href="../../smart-home/">Smart Home</a>
+    <a href="../../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #7cd6ff;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#7cd6ff">Dashboard</span>
+  <h1><span style="margin-right:.4rem">📊</span>Dashboard</h1>
+  <p class="hero-sub">Due schermi info: Energy sul PC con consumo live da HA RPi, e un kiosk RPi come pannello di controllo casa.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#7cd6ff1a;color:#7cd6ff;border:1px solid #7cd6ff40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">HTML</span> <span class="pill" style="background:#7cd6ff1a;color:#7cd6ff;border:1px solid #7cd6ff40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vanilla JS</span> <span class="pill" style="background:#7cd6ff1a;color:#7cd6ff;border:1px solid #7cd6ff40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python proxy</span> <span class="pill" style="background:#7cd6ff1a;color:#7cd6ff;border:1px solid #7cd6ff40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">HA REST</span> <span class="pill" style="background:#7cd6ff1a;color:#7cd6ff;border:1px solid #7cd6ff40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Homey REST</span></p>
+  <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a></p>
+</section>
+
+<section>
+  <h2>Cosa fa</h2>
+  <p>Invece di un'app sul telefono ho due cose sul muro:</p><p><strong>1) Energy Dashboard su PC</strong> — consumo attuale, kWh oggi, previsione mensile, top consumer. Edge app-mode, niente menu, niente finestre — solo dashboard pulita.</p><p><strong>2) Kiosk RPi</strong> — Raspberry Pi 4 con display 7" a muro, controlla luci, audio, riscaldamento, scene. Home + audio + energia + scene + impostazioni — tutto sulla prima schermata.</p><p>Entrambi leggono da HA RPi (192.168.1.241), che aggrega dati smart-home (Homey + 3EM + Shelly + riscaldamento).</p>
+</section>
+
+<section>
+  <h2>Funzioni principali</h2>
+  <ul style="line-height:1.7">
+      <li><strong>Energy Dashboard PC</strong> — W attuali, kWh oggi, costo con/senza POZE, previsione mensile, top consumer.</li>
+      <li><strong>Tariffa NT/VT</strong> — Badge visuale per tariffa bassa/alta, codice HDO, interruttore.</li>
+      <li><strong>Home kiosk RPi</strong> — Stato casa (chi è in casa, chi dorme, dov'è motion), azioni rapide.</li>
+      <li><strong>Audio + scene RPi</strong> — Avvio radio, scene (relax, cinema, cucina, cena).</li>
+      <li><strong>Energia + riscaldamento</strong> — Runtime riscaldamento, oggi runtime, stato caldaia, zone TRV.</li>
+      <li><strong>Impostazioni</strong> — Vista operativa casa fissa — niente telefono.</li>
+  </ul>
+</section>
+
+<section><h2>Anteprime</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/dashboardy/energy_pc.png" alt="Energy Dashboard — PC verze (Edge app-mode)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Energy Dashboard — PC verze (Edge app-mode)</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/dashboardy/rpi_home.png" alt="RPi kiosk — domovská stránka" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">RPi kiosk — domovská stránka</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/dashboardy/rpi_audio.png" alt="RPi kiosk — audio + scény" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">RPi kiosk — audio + scény</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/dashboardy/rpi_energy.png" alt="RPi kiosk — energie & topení" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">RPi kiosk — energie & topení</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/dashboardy/rpi_scenes.png" alt="RPi kiosk — scény (Loxone-style)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">RPi kiosk — scény (Loxone-style)</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/dashboardy/rpi_settings.png" alt="RPi kiosk — nastavení" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">RPi kiosk — nastavení</figcaption></figure></div></section>
+
+<section>
+  <h2>Stato</h2>
+  <p>Funzionante. Energy gira in locale sul PC (proxy → HA RPi). Kiosk RPi gira 24/7 su Raspberry Pi 4 nel corridoio.</p>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://bludek69-lgtm.github.io/smart-home-website/" target="_blank" rel="noopener">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

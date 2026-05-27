@@ -170,12 +170,35 @@ PAGES = [
         'title':     'Rybaření — Luděk',
         'depth':     2,
     },
+    # ─── Moje aplikace (hub + 6 sub-pages × 3 jazyky) ───
+    {'rel': 'aplikace/index.html',              'theme': 'home', 'title': 'Moje aplikace — Luděk',                       'depth': 1},
+    {'rel': 'aplikace/config-center.html',      'theme': 'home', 'title': 'Config Center — Moje aplikace — Luděk',       'depth': 1},
+    {'rel': 'aplikace/italia-travel.html',      'theme': 'italy','title': 'Italia Travel Planner — Moje aplikace — Luděk','depth': 1},
+    {'rel': 'aplikace/ucetni-kniha.html',       'theme': 'finance','title': 'Účetní kniha — Moje aplikace — Luděk',       'depth': 1},
+    {'rel': 'aplikace/finance-analytik.html',   'theme': 'finance','title': 'Finance Analytik — Moje aplikace — Luděk',   'depth': 1},
+    {'rel': 'aplikace/krabickova-dieta.html',   'theme': 'home', 'title': 'Krabičková dieta — Moje aplikace — Luděk',     'depth': 1},
+    {'rel': 'aplikace/dashboardy.html',         'theme': 'smart-home','title': 'Dashboardy — Moje aplikace — Luděk',      'depth': 1},
+    {'rel': 'en/aplikace/index.html',            'theme': 'home', 'title': 'My apps — Luděk',                              'depth': 2},
+    {'rel': 'en/aplikace/config-center.html',    'theme': 'home', 'title': 'Config Center — My apps — Luděk',              'depth': 2},
+    {'rel': 'en/aplikace/italia-travel.html',    'theme': 'italy','title': 'Italia Travel Planner — My apps — Luděk',       'depth': 2},
+    {'rel': 'en/aplikace/ucetni-kniha.html',     'theme': 'finance','title': 'Ledger — My apps — Luděk',                    'depth': 2},
+    {'rel': 'en/aplikace/finance-analytik.html', 'theme': 'finance','title': 'Finance Analyst — My apps — Luděk',           'depth': 2},
+    {'rel': 'en/aplikace/krabickova-dieta.html', 'theme': 'home', 'title': 'Meal Planner — My apps — Luděk',                'depth': 2},
+    {'rel': 'en/aplikace/dashboardy.html',       'theme': 'smart-home','title': 'Dashboards — My apps — Luděk',             'depth': 2},
+    {'rel': 'it/aplikace/index.html',            'theme': 'home', 'title': 'Le mie app — Luděk',                            'depth': 2},
+    {'rel': 'it/aplikace/config-center.html',    'theme': 'home', 'title': 'Config Center — Le mie app — Luděk',            'depth': 2},
+    {'rel': 'it/aplikace/italia-travel.html',    'theme': 'italy','title': 'Italia Travel Planner — Le mie app — Luděk',    'depth': 2},
+    {'rel': 'it/aplikace/ucetni-kniha.html',     'theme': 'finance','title': 'Libro contabile — Le mie app — Luděk',        'depth': 2},
+    {'rel': 'it/aplikace/finance-analytik.html', 'theme': 'finance','title': 'Finance Analyst — Le mie app — Luděk',        'depth': 2},
+    {'rel': 'it/aplikace/krabickova-dieta.html', 'theme': 'home', 'title': 'Meal Planner — Le mie app — Luděk',             'depth': 2},
+    {'rel': 'it/aplikace/dashboardy.html',       'theme': 'smart-home','title': 'Dashboard — Le mie app — Luděk',           'depth': 2},
 ]
 
 # ─── NAV ITEMS (single nav for all pages) ────────────────────
 # href is depth-prefixed at render time.
 NAV = [
     ('Domů',       ''),
+    ('Aplikace',   'aplikace/'),
     ('Finance',    'finance/'),
     ('Cestování',  'cestovani/'),
     ('Itálie',     'cestovani/italie/'),

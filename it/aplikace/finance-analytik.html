@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Analyst — Le mie app — Luděk</title>
+  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+</head>
+<body class="theme-finance">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+    <a href="../../">Domů</a>
+    <a href="../../aplikace/">Aplikace</a>
+    <a href="../../finance/">Finance</a>
+    <a href="../../cestovani/">Cestování</a>
+    <a href="../../cestovani/italie/">Itálie</a>
+    <a href="../../zaliby/rybareni/">Rybaření</a>
+    <a href="../../smart-home/">Smart Home</a>
+    <a href="../../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #d35454;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#d35454">Finance Analyst</span>
+  <h1><span style="margin-right:.4rem">📈</span>Finance Analyst</h1>
+  <p class="hero-sub">Analizzatore privato di azioni, ETF e portfolio — niente API broker, estratti importati a mano.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#d354541a;color:#d35454;border:1px solid #d3545440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#d354541a;color:#d35454;border:1px solid #d3545440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#d354541a;color:#d35454;border:1px solid #d3545440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tailwind</span> <span class="pill" style="background:#d354541a;color:#d35454;border:1px solid #d3545440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python server</span></p>
+  <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a></p>
+</section>
+
+<section>
+  <h2>Cosa fa</h2>
+  <p>Quando voglio vedere il portfolio come un'immagine unica (azioni, ETF, dividendi, impatto FX), le app dei broker non le combinano. L'Analyst sì: importo estratti da Trading 212, XTB, Tasty, eToro e l'app calcola P/L, media ponderata, esposizione settoriale, FX risk e dati fiscali.</p><p>Privato — niente cloud, niente OAuth, niente API key broker. Server Python locale + Edge app-mode.</p>
+</section>
+
+<section>
+  <h2>Funzioni principali</h2>
+  <ul style="line-height:1.7">
+      <li><strong>Import estratti</strong> — CSV/XLS da 4 broker, normalizer automatico di ticker e valute.</li>
+      <li><strong>Aggregato portfolio</strong> — Prezzo medio ponderato, P/L real-time, esposizione settori e geo.</li>
+      <li><strong>Dividendi</strong> — Rendimento annuo, lordo/netto, tasse, reinvestimento.</li>
+      <li><strong>FX risk</strong> — Esposizione USD/EUR/CZK, hedge ratio.</li>
+      <li><strong>Dati fiscali</strong> — Report annuale per la dichiarazione, matching FIFO/LIFO.</li>
+  </ul>
+</section>
+
+<section><h2>Anteprime</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/home.png" alt="Hlavní obrazovka — portfolio přehled" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Hlavní obrazovka — portfolio přehled</figcaption></figure></div></section>
+
+<section>
+  <h2>Stato</h2>
+  <p>MVP v0.3 (maggio 2026), privata. Nessun hosting pubblico.</p>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://bludek69-lgtm.github.io/smart-home-website/" target="_blank" rel="noopener">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

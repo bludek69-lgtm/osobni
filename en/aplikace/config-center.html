@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Config Center — My apps — Luděk</title>
+  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+</head>
+<body class="theme-home">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+    <a href="../../">Domů</a>
+    <a href="../../aplikace/">Aplikace</a>
+    <a href="../../finance/">Finance</a>
+    <a href="../../cestovani/">Cestování</a>
+    <a href="../../cestovani/italie/">Itálie</a>
+    <a href="../../zaliby/rybareni/">Rybaření</a>
+    <a href="../../smart-home/">Smart Home</a>
+    <a href="../../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #4a8fd0;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#4a8fd0">Config Center</span>
+  <h1><span style="margin-right:.4rem">⚙️</span>Config Center</h1>
+  <p class="hero-sub">Web admin for every parameter of my smart home — one page instead of digging through the phone app.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">HTML</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vanilla JS</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Homey REST API</span></p>
+  <p style="margin-top:.8rem"><a href="../index.html">← Back to My apps</a></p>
+</section>
+
+<section>
+  <h2>What it does</h2>
+  <p>The Homey Pro 2026 smart home has dozens of variables: when the morning routine starts, how fast lights ramp up, what temperature the bedroom is heated to, when audio should stop. Config Center unifies it all in <strong>22 clean pages</strong> — one URL where I tune everything and save with a single click.</p><p>It watches what changes (preview mode), can auto-revert after 10 minutes if something's wrong, and protects sensitive devices from accidents.</p>
+</section>
+
+<section>
+  <h2>Key features</h2>
+  <ul style="line-height:1.7">
+      <li><strong>22 mode pages</strong> — Morning / day / evening / night / away / home / sleep — TTS lines + light/heating goals per mode.</li>
+      <li><strong>4 TRV zones</strong> — Per-day heating schedule with hour windows, hysteresis, anti-cycling, boost button.</li>
+      <li><strong>Preview mode</strong> — Changes first apply to the device, 10 min for testing, then commit or auto-revert.</li>
+      <li><strong>100+ vars</strong> — Lux thresholds, ramp delays, briefing window, AI toggles, rate limits, weekly schedules.</li>
+      <li><strong>Safety guards</strong> — Bedroom hard-block for audio test, protected device guard for sensitive equipment.</li>
+  </ul>
+</section>
+
+<section><h2>Screenshots</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/overview.png" alt="Přehled — všechny módy a parametry na jednom místě" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Přehled — všechny módy a parametry na jednom místě</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/heating.png" alt="Topení — TRV zóny, hystereze, boost, pre-wake plán" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Topení — TRV zóny, hystereze, boost, pre-wake plán</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/zones.png" alt="Zóny — světla, motion sensors, audio per místnost" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Zóny — světla, motion sensors, audio per místnost</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/morning_params.png" alt="Ranní rutina — wake window, ramp delay, briefing" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Ranní rutina — wake window, ramp delay, briefing</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/lights_rules.png" alt="Pravidla světel — lux thresholdy, denní/večerní cíle" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Pravidla světel — lux thresholdy, denní/večerní cíle</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/toggles.png" alt="AI toggles — autonomy, intent engine, health monitor" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">AI toggles — autonomy, intent engine, health monitor</figcaption></figure></div></section>
+
+<section>
+  <h2>Status</h2>
+  <p>Working, used daily. Version v1.7.5 (May 2026), 100+ editable variables, deployed on PC and the RPi kiosk.</p>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://bludek69-lgtm.github.io/smart-home-website/" target="_blank" rel="noopener">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
