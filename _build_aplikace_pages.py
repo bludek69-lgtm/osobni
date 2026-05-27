@@ -148,48 +148,88 @@ APPS = [
         "color": "#008c45",
         "asset_dir": "italia-travel",
         "screens": [
-            ("home.png", "Domovská obrazovka aplikace"),
+            ("01_hero.png",            "Přehled cest — 4 testovací výlety (Bergamo, kemper roadtrip, Řím, Toskánsko) v jednom dashboardu, italský tricolore proužek"),
+            ("02_nova_cesta.png",      "Nová cesta — formulář s názvem, regionem, datem, počtem osob, rozpočtem a stylem (městský pobyt / roadtrip / lake / coast / hory / food & wine)"),
+            ("03_doprava.png",         "Doprava — 4 záložky (Letadlo / Auto / Vlak / Kombinace), deeplinky na Kiwi a Trenitalia, žádné automatické rezervace"),
+            ("04_roadtrip.png",        "Roadtrip plánovač — výběr země odjezdu/cíle s vlajkami 10 zemí, autocomplete měst, styl trasy, počet zastávek, multi-select zájmů (UNESCO, víno, gastronomie)"),
+            ("05_camper.png",          "Camper režim — profil obytného auta (rozměry, hmotnost), 10 typů stopů (Stellplatz, Area sosta, …), 11 facility chipů (voda, WC, sprcha, …), warning badges ZTL"),
+            ("06_ubytovani.png",       "Ubytování — hotely / Airbnb / agriturismi s hodnocením, cenou, výhodami/nevýhodami (parking, ZTL), deeplink na Booking"),
+            ("07_mapa.png",            "Mapa POI — všechny body zájmu vizualizované, barevné ikony (hotel, restaurace, vstupenky, ZTL warning), export do Google My Maps CSV"),
+            ("08_itinerar.png",        "Itinerář den po dni — Ráno / Odpoledne / Večer s časy + jídlo + doprava + záložní plán pro déšť, plně offline"),
+            ("09_vstupenky.png",       "Vstupenky — Vatikán/Uffizi/Koloseum na konkrétní čas + alternativy z GetYourGuide a Big Bus jako manual deeplinky se statusem 'unknown' / 'pending user confirmation'"),
+            ("10_rozpocet.png",        "Rozpočet — 9 položek pro camper roadtrip v kategoriích (Palivo, Mýtné, Camping, Service, …), cap utilization bar, povinné vs volitelné vs zaplaceno"),
+            ("11_export.png",          "Export — 5 formátů: Google Calendar ICS, Google My Maps CSV, Markdown itinerář, Rozpočet CSV, Trip JSON záloha"),
+            ("12_dark_mode.png",       "Dark mode — kompletně čitelný v tmavém režimu, italian green akcent, kontrast textu WCAG AAA"),
+            ("13_mobil_dnes.png",      "Mobilní 'Dnes' (414×896) — kompaktní topbar, smart view podle data (před cestou / během / po), spodní 6-ikona navigace"),
+            ("14_mobil_checklist.png", "Mobilní checklist — 18 položek v 5 kategoriích (Doklady, Elektronika, Balení, Ubytování, Doprava), progress bar, lokální uložení"),
         ],
-        "stack": ["React", "Vite", "PWA", "Tailwind"],
+        "stack": ["React", "TypeScript", "Vite", "Tauri (Windows)", "PWA"],
         "i18n": {
             "cs": {
                 "name":  "Italia Travel Planner",
-                "lead":  "Plánovač cest po Itálii — denní itinerář, fronty na atrakce, rezervace, vlaky, pasta vocabulary.",
-                "what":  "<p>Když plánuju další výlet do Itálie, potřebuju na jednom místě <strong>kde, kdy, jak dlouho, kolik to stojí</strong>. Italia Travel Planner mi spojuje denní itinerář (po hodinách), seznam atrakcí s tipy pro fronty, místa kde se najíst, vlakové trasy a slovník italských jídel + frází.</p><p>PWA — funguje offline (cache uložená na telefonu / v Edge app modu), nepotřebuje internet když jsem v Itálii a roaming je drahý.</p>",
+                "lead":  "Cestovní plánovač po Itálii pro lidi co tam jezdí často nebo dlouho. Sestaví itinerář, hlídá vstupenky, kreslí mapu, dělá rozpočet, varuje před ZTL zónami (kde dostaneš pokutu 80–200 € za vjezd autem). Funguje offline, žádné účty, žádné platby přes aplikaci.",
+                "what":  "<p><strong>Proč to vzniklo:</strong> cestování po Itálii má vlastní pravidla. Historická centra mají <strong>ZTL zóny</strong> (Zona Traffico Limitato) — když do nich vjedeš autem, dostaneš pokutu 80–200 €. Vstupenky do Vatikánu, Uffizi a Kolosea se kupují měsíc dopředu na konkrétní čas a den, jinak se nedostaneš. Obytné auto má jiné potřeby než osobák — potřebuješ Stellplatzy, area sosta, dump stations. A klasické cestovní appky to neřeší — buď tě nutí mít účet a kupovat všechno přes ně, nebo jsou pro Itálii naprosto slepé.</p>"
+                         "<p><strong>Jeden uživatel, všechno lokálně:</strong> aplikace patří mně, běží u mě v počítači, na telefonu jako PWA, nebo jako Windows desktop apka (Tauri). Žádný backend, žádný cloud, žádné API klíče. Plánuje cestu — itinerář, vstupenky, rozpočet, trasu. Skutečné nákupy (letenky, hotely, vstupenky) si potom kupuju sám na oficiálních stránkách — aplikace mi je jen otevře v prohlížeči přes deeplink. Žádná smlouva, žádná provize, žádný vendor lock-in.</p>"
+                         "<p><strong>Plánování od nuly:</strong> Zadám novou cestu (název, region, datum, počet osob, rozpočet, styl — městský pobyt / roadtrip / pobřeží / hory / víno & jídlo / camper). Aplikace mi pak nabídne čtyři způsoby dopravy s deeplinky (Kiwi pro letenky, Booking pro auto, Trenitalia pro vlaky). Pro roadtrip má samostatný plánovač s výběrem 10 zemí, autocomplete měst (cca 100 evropských destinací) a stylem trasy (Rychlá / Vyvážená / Zážitková).</p>"
+                         "<p><strong>Itinerář a vstupenky:</strong> Pro každý den 3 sekce (Ráno / Odpoledne / Večer) s konkrétními aktivitami a časy, plus tipy na jídlo, poznámky o dopravě, záložní plán pro déšť. Vstupenky se evidují s konkrétním datem, časem a confirmation kódem. Alternativní nabídky z GetYourGuide a Big Bus jsou pouze deeplinky se statusem &bdquo;unknown&ldquo; nebo &bdquo;pending user confirmation&ldquo; — aplikace je <em>nikdy</em> automaticky nepředpokládá jako zaplacené.</p>"
+                         "<p><strong>Camper režim:</strong> Unikátní feature, co většina cestovních appek nemá. Vytvořím profil mého obytného auta (rozměry, hmotnost, spotřeba, vybavení). Aplikace pak filtruje stopy podle typu (Stellplatz, Area sosta, Camping, Agriturismo, Service point, Free wild, …) a podle vybavení (voda, elektřina, WC, sprcha, černá voda, …). Varuje když místo nemá dostatečnou výšku/délku pro můj kemper, nebo když je v ZTL zóně. Plus camper-specific rozpočet (palivo + mýtné + camping + service).</p>"
+                         "<p><strong>Export do reálných nástrojů:</strong> Itinerář → Google Calendar (ICS), POI → Google My Maps (CSV), rozpočet → Excel, kompletní trip → JSON pro zálohu. Žádný proprietary formát, vše standardní.</p>"
+                         "<p><strong>Funguje úplně offline:</strong> Po prvním načtení je aplikace v cache prohlížeče nebo nainstalovaná jako desktop apka (Tauri NSIS installer, 1.4 MB). Když jsem v Itálii a roaming stojí 1 €/den, neplatím za žádný internet — apka mi všechno ukáže lokálně z paměti.</p>",
                 "features": [
-                    ("Denní itinerář",   "Po-hodinové bloky s mapou, dobou přesunu, otevíracími dobami."),
-                    ("Fronty & rezervace", "Doporučené časy návštěvy, tipy na předkup vstupenek, alternativy pokud je zavřeno."),
-                    ("Pasta & menu",     "Italský slovník jídel + frází co potřebuju v restauraci."),
-                    ("Vlaky & autobusy", "Reálné trasy s časy a alternativami, integrace s Trenitalia."),
-                    ("Offline-first PWA", "Cache funguje bez sítě, ideální pro Itálii s drahým roamingem."),
+                    ("Plánování od nuly s deeplinky",      "Nová cesta s rozpočtem a stylem, 4 záložky dopravy s deeplinky na Kiwi / Booking / Trenitalia. Aplikace nákupy nezprostředkovává — otevře oficiální stránku v prohlížeči."),
+                    ("Roadtrip plánovač pro 10 zemí",      "Výběr země odjezdu a cíle (CZ/IT/AT/SI/DE/SK/HR/PL/FR/CH), autocomplete měst (~100 destinací), styl trasy, počet zastávek, multi-select zájmů."),
+                    ("Itinerář den po dni",                "Ráno / Odpoledne / Večer s časy + jídlo + záložní plán pro déšť. Pro každou cestu samostatně, plně offline."),
+                    ("Vstupenky s alternativami",          "Hlavní rezervace (Vatikán, Uffizi, Koloseum) s konkrétním datem + 7 alternativ z GetYourGuide a Big Bus jako manual deeplinky se statusem 'unknown'."),
+                    ("Rozpočet s cap utilization",         "12 kategorií (doprava, ubytování, jídlo, vstupenky, parkování, mýto, camping, …), vizuální bar kolik % je zaplaceno, povinné vs volitelné."),
+                    ("Mapa POI + Google My Maps export",   "Body zájmu vizualizované barevnými ikonami, export CSV jedním klikem importovatelné do Google My Maps."),
+                    ("Camper režim s ZTL warningy",        "Profil obytného auta (rozměry, hmotnost), 10 typů stopů, 11 facility chipů, warning badges když je místo v ZTL zóně nebo malé pro tvůj kemper."),
+                    ("Funguje offline, multi-platform",    "Web PWA + Windows desktop (Tauri NSIS, 1.4 MB) + portable web launcher — všechno z jednoho codebase. V Itálii nepotřebuje roaming."),
                 ],
-                "status": "Funkční, používané pro vlastní plánování. Windows installer + PWA verze.",
+                "status": "Funkční verze 0.5.0 (květen 2026). Windows installer + PWA + web launcher. Soukromé pro vlastní cesty — žádné public hosting, žádné účty, žádné platby přes aplikaci.",
             },
             "en": {
                 "name":  "Italia Travel Planner",
-                "lead":  "Italy trip planner — daily itinerary, queue tips, reservations, trains, pasta vocabulary.",
-                "what":  "<p>When I plan another Italy trip I need <strong>where, when, how long, how much</strong> in one place. Italia Travel Planner combines hour-by-hour daily itinerary, attractions with queue tips, food spots, train routes, and an Italian dictionary of dishes + phrases.</p><p>It's a PWA — works offline (cache stored on the phone or in Edge app mode), no need for internet when roaming in Italy is expensive.</p>",
+                "lead":  "Italy trip planner for people who travel there often or long. Builds an itinerary, tracks tickets, draws a map, manages a budget, warns about ZTL zones (where a car drive-in costs 80–200 €). Works offline, no accounts, no payments through the app.",
+                "what":  "<p><strong>Why it exists:</strong> Italy travel has its own rules. Historic centers have <strong>ZTL zones</strong> (Zona Traffico Limitato) — drive in by car and you get an 80–200 € fine. Tickets for the Vatican, Uffizi, and Colosseum sell out a month ahead for specific time slots. Motorhomes need different infrastructure than cars — Stellplatzy, area sosta, dump stations. Mainstream travel apps don't handle this — either they force an account and try to sell everything, or they're Italy-blind.</p>"
+                         "<p><strong>One user, everything local:</strong> the app is mine, runs on my computer, on my phone as PWA, or as a Windows desktop app (Tauri). No backend, no cloud, no API keys. Plans the trip — itinerary, tickets, budget, route. Actual purchases (flights, hotels, tickets) I make myself on official sites — the app just opens them in the browser via deeplink. No contract, no commission, no vendor lock-in.</p>"
+                         "<p><strong>Planning from scratch:</strong> New trip (name, region, dates, party size, budget, style — city / roadtrip / coast / mountains / wine & food / camper). The app offers four transport modes with deeplinks (Kiwi for flights, Booking for car, Trenitalia for trains). For roadtrips there's a dedicated planner with 10 country picker, ~100 city autocomplete, and route style (Fast / Balanced / Experience).</p>"
+                         "<p><strong>Itinerary and tickets:</strong> Each day three sections (Morning / Afternoon / Evening) with specific activities and times, plus food tips, transport notes, rain backup plan. Tickets tracked with date, time, confirmation code. Alternatives from GetYourGuide and Big Bus are manual deeplinks with status &bdquo;unknown&ldquo; or &bdquo;pending user confirmation&ldquo; — the app <em>never</em> assumes they're paid.</p>"
+                         "<p><strong>Camper mode:</strong> Unique feature most travel apps lack. Create a profile for my motorhome (dimensions, weight, fuel, equipment). The app then filters stops by type (Stellplatz, Area sosta, Camping, Agriturismo, Service point, Free wild, …) and by facility (water, electricity, toilet, shower, black water, …). Warns when a spot doesn't have enough height/length for my camper, or is inside a ZTL zone. Plus camper-specific budget (fuel + tolls + camping + service).</p>"
+                         "<p><strong>Export to real tools:</strong> Itinerary → Google Calendar (ICS), POI → Google My Maps (CSV), budget → Excel, full trip → JSON for backup. No proprietary format.</p>"
+                         "<p><strong>Fully offline:</strong> After first load the app is in browser cache or installed as desktop (Tauri NSIS installer, 1.4 MB). When I'm in Italy and roaming costs €1/day, I pay zero for internet — app shows everything locally from memory.</p>",
                 "features": [
-                    ("Daily itinerary",   "Hourly blocks with map, transit time, opening hours."),
-                    ("Queues & reservations", "Recommended visit times, pre-booking tips, alternatives when closed."),
-                    ("Pasta & menu",     "Italian food + phrase dictionary needed at restaurants."),
-                    ("Trains & buses",   "Real routes with times and alternatives, Trenitalia integration."),
-                    ("Offline-first PWA", "Cache works without net, perfect for Italy with pricey roaming."),
+                    ("Planning from scratch with deeplinks", "New trip with budget and style, 4 transport tabs with deeplinks to Kiwi / Booking / Trenitalia. App doesn't broker purchases — opens the official site in the browser."),
+                    ("Roadtrip planner for 10 countries",    "Pick origin/destination country, ~100 city autocomplete, route style, stop count, multi-select interests."),
+                    ("Day-by-day itinerary",                  "Morning / Afternoon / Evening with times + food + rain backup. Per trip, fully offline."),
+                    ("Tickets with alternatives",             "Main reservations (Vatican, Uffizi, Colosseum) with specific date + 7 GetYourGuide / Big Bus alternatives as manual deeplinks, status 'unknown'."),
+                    ("Budget with cap utilization",           "12 categories, visual bar of % paid, mandatory vs optional vs paid."),
+                    ("POI map + Google My Maps export",       "POIs visualized with color icons, one-click CSV importable to Google My Maps."),
+                    ("Camper mode with ZTL warnings",         "Motorhome profile, 10 stop types, 11 facility chips, warnings when spot is in ZTL or too small for your camper."),
+                    ("Works offline, multi-platform",         "Web PWA + Windows desktop (Tauri NSIS, 1.4 MB) + portable web launcher from one codebase. No roaming needed in Italy."),
                 ],
-                "status": "Working, used for my own planning. Windows installer + PWA build.",
+                "status": "Working version 0.5.0 (May 2026). Windows installer + PWA + web launcher. Private for personal trips — no public hosting, no accounts, no payments through the app.",
             },
             "it": {
                 "name":  "Italia Travel Planner",
-                "lead":  "Pianificatore di viaggi in Italia — itinerario giornaliero, consigli code, prenotazioni, treni, vocabolario pasta.",
-                "what":  "<p>Quando pianifico un altro viaggio in Italia mi serve <strong>dove, quando, quanto dura, quanto costa</strong> tutto in un posto. Italia Travel Planner unisce itinerario orario, attrazioni con consigli sulle code, posti dove mangiare, treni e dizionario di piatti e frasi italiane.</p><p>È una PWA — funziona offline (cache sul telefono o in modalità app Edge), non serve internet quando il roaming in Italia è caro.</p>",
+                "lead":  "Pianificatore di viaggi in Italia per chi ci va spesso o a lungo. Costruisce l'itinerario, traccia i biglietti, disegna la mappa, gestisce il budget, avverte sulle ZTL (dove l'auto costa multe 80–200 €). Funziona offline, niente account, niente pagamenti tramite l'app.",
+                "what":  "<p><strong>Perché esiste:</strong> viaggiare in Italia ha regole proprie. I centri storici hanno <strong>ZTL</strong> (Zona Traffico Limitato) — entri in auto e prendi multa 80–200 €. Biglietti per Vaticano, Uffizi, Colosseo si comprano un mese prima per orari specifici. I camper hanno bisogno di infrastruttura diversa — Stellplatzy, aree sosta, service point. Le app mainstream non gestiscono questo — o forzano un account e vendono tutto, o sono Italia-blind.</p>"
+                         "<p><strong>Un utente, tutto in locale:</strong> l'app è mia, gira sul mio computer, sul telefono come PWA, o come app desktop Windows (Tauri). Niente backend, niente cloud, niente API key. Pianifica il viaggio — itinerario, biglietti, budget, percorso. Gli acquisti veri (voli, hotel, biglietti) li faccio io sui siti ufficiali — l'app li apre nel browser via deeplink. Niente contratto, niente commissione, niente lock-in.</p>"
+                         "<p><strong>Pianificazione da zero:</strong> Nuovo viaggio con budget e stile (città / roadtrip / costa / montagna / vino & cibo / camper). L'app offre 4 modalità trasporto con deeplink (Kiwi voli, Booking auto, Trenitalia treni). Per roadtrip c'è un pianificatore con selettore di 10 paesi, autocompletamento ~100 città, stile percorso.</p>"
+                         "<p><strong>Itinerario e biglietti:</strong> Per ogni giorno tre sezioni (Mattino / Pomeriggio / Sera) con attività e orari, più consigli cibo, note trasporto, piano B per pioggia. Biglietti tracciati con data, ora, codice. Alternative da GetYourGuide e Big Bus sono deeplink manuali con stato &bdquo;unknown&ldquo; — l'app <em>mai</em> li assume come pagati.</p>"
+                         "<p><strong>Modalità camper:</strong> Feature unica che la maggior parte delle app non ha. Profilo del camper (dimensioni, peso, consumo, dotazione). L'app filtra le tappe per tipo (Stellplatz, Area sosta, Camping, Agriturismo, …) e per dotazione (acqua, elettricità, WC, doccia, …). Avverte quando un posto non ha altezza/lunghezza per il camper o è in ZTL. Più budget camper-specifico (carburante + pedaggi + camping + service).</p>"
+                         "<p><strong>Export su strumenti reali:</strong> Itinerario → Google Calendar (ICS), POI → Google My Maps (CSV), budget → Excel, viaggio completo → JSON backup. Nessun formato proprietario.</p>"
+                         "<p><strong>Completamente offline:</strong> Dopo primo caricamento l'app è in cache o installata come desktop (Tauri NSIS, 1.4 MB). In Italia con roaming 1 €/giorno non pago internet — l'app mostra tutto in locale.</p>",
                 "features": [
-                    ("Itinerario giornaliero", "Blocchi orari con mappa, tempo di transito, orari di apertura."),
-                    ("Code e prenotazioni",    "Orari consigliati, consigli per biglietti, alternative se chiuso."),
-                    ("Pasta & menu",           "Dizionario di piatti e frasi per il ristorante."),
-                    ("Treni e bus",            "Tratte reali con orari e alternative, integrazione Trenitalia."),
-                    ("PWA offline-first",      "Cache funziona senza rete, ideale per Italia con roaming caro."),
+                    ("Pianificazione con deeplink",   "Nuovo viaggio con budget e stile, 4 tab trasporto con deeplink a Kiwi / Booking / Trenitalia. L'app non fa da broker — apre il sito ufficiale."),
+                    ("Pianificatore roadtrip 10 paesi", "Selezione paese origine/destinazione, autocomplete ~100 città, stile percorso, multi-select interessi."),
+                    ("Itinerario giorno per giorno",  "Mattino / Pomeriggio / Sera con orari + cibo + piano pioggia. Per viaggio, totalmente offline."),
+                    ("Biglietti con alternative",     "Prenotazioni principali (Vaticano, Uffizi, Colosseo) + 7 alternative GetYourGuide / Big Bus come deeplink manuali."),
+                    ("Budget con cap utilization",    "12 categorie, barra visuale % pagato, obbligatorio vs opzionale vs pagato."),
+                    ("Mappa POI + Google My Maps",    "POI visualizzati con icone colorate, export CSV un click importabile in Google My Maps."),
+                    ("Modalità camper con avvisi ZTL", "Profilo camper, 10 tipi di sosta, 11 chip dotazione, avvisi quando il posto è in ZTL o piccolo per il camper."),
+                    ("Funziona offline, multi-platform", "Web PWA + Desktop Windows (Tauri NSIS, 1.4 MB) + portable web launcher da un codice. Niente roaming serve in Italia."),
                 ],
-                "status": "Funzionante, usata per la mia pianificazione. Installer Windows + build PWA.",
+                "status": "Versione funzionante 0.5.0 (maggio 2026). Installer Windows + PWA + web launcher. Privata per viaggi personali — niente hosting pubblico, niente account, niente pagamenti tramite l'app.",
             },
         },
     },
