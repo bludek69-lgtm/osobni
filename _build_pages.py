@@ -179,6 +179,7 @@ PAGES = [
     {'rel': 'aplikace/krabickova-dieta.html',   'theme': 'home', 'title': 'Krabičková dieta — Moje aplikace — Luděk',     'depth': 1},
     {'rel': 'aplikace/energy-dashboard.html',   'theme': 'smart-home','title': 'Energy Dashboard — Moje aplikace — Luděk', 'depth': 1},
     {'rel': 'aplikace/rpi-kiosk.html',          'theme': 'smart-home','title': 'Domácí panel na zdi — Moje aplikace — Luděk', 'depth': 1},
+    {'rel': 'aplikace/busline-prace.html',      'theme': 'home', 'title': 'Práce BusLine — Moje aplikace — Luděk',         'depth': 1},
     {'rel': 'en/aplikace/index.html',            'theme': 'home', 'title': 'My apps — Luděk',                              'depth': 2},
     {'rel': 'en/aplikace/config-center.html',    'theme': 'home', 'title': 'Config Center — My apps — Luděk',              'depth': 2},
     {'rel': 'en/aplikace/italia-travel.html',    'theme': 'italy','title': 'Italia Travel Planner — My apps — Luděk',       'depth': 2},
@@ -187,6 +188,7 @@ PAGES = [
     {'rel': 'en/aplikace/krabickova-dieta.html', 'theme': 'home', 'title': 'Meal Planner — My apps — Luděk',                'depth': 2},
     {'rel': 'en/aplikace/energy-dashboard.html', 'theme': 'smart-home','title': 'Energy Dashboard — My apps — Luděk',         'depth': 2},
     {'rel': 'en/aplikace/rpi-kiosk.html',        'theme': 'smart-home','title': 'Home wall panel — My apps — Luděk',          'depth': 2},
+    {'rel': 'en/aplikace/busline-prace.html',    'theme': 'home', 'title': 'BusLine work — My apps — Luděk',                'depth': 2},
     {'rel': 'it/aplikace/index.html',            'theme': 'home', 'title': 'Le mie app — Luděk',                            'depth': 2},
     {'rel': 'it/aplikace/config-center.html',    'theme': 'home', 'title': 'Config Center — Le mie app — Luděk',            'depth': 2},
     {'rel': 'it/aplikace/italia-travel.html',    'theme': 'italy','title': 'Italia Travel Planner — Le mie app — Luděk',    'depth': 2},
@@ -195,6 +197,7 @@ PAGES = [
     {'rel': 'it/aplikace/krabickova-dieta.html', 'theme': 'home', 'title': 'Meal Planner — Le mie app — Luděk',             'depth': 2},
     {'rel': 'it/aplikace/energy-dashboard.html', 'theme': 'smart-home','title': 'Energy Dashboard — Le mie app — Luděk',      'depth': 2},
     {'rel': 'it/aplikace/rpi-kiosk.html',        'theme': 'smart-home','title': 'Pannello a muro — Le mie app — Luděk',       'depth': 2},
+    {'rel': 'it/aplikace/busline-prace.html',    'theme': 'home', 'title': 'Lavoro BusLine — Le mie app — Luděk',           'depth': 2},
 ]
 
 # ─── NAV ITEMS (single nav for all pages) ────────────────────

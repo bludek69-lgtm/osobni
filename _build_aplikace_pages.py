@@ -25,7 +25,7 @@ I18N = {
     "cs": {
         "hub_title":    "Moje aplikace — Luděk Budínský",
         "hub_h1":       "Moje aplikace",
-        "hub_intro":    "Sedm vlastních aplikací co jsem si postavil, abych si zjednodušil život s Homey, financemi, cestováním do Itálie a jídlem. Žádný cloud, žádná telemetrie — všechno běží lokálně u mě doma nebo na malém serveru.",
+        "hub_intro":    "Osm vlastních aplikací co jsem si postavil (nebo postavit chystám), abych si zjednodušil život s Homey, financemi, cestováním do Itálie, jídlem a prací. Žádný cloud, žádná telemetrie — všechno běží lokálně u mě doma nebo na malém serveru.",
         "live":         "Funkční",
         "internal":     "Soukromé",
         "stack":        "Stack",
@@ -39,7 +39,7 @@ I18N = {
     "en": {
         "hub_title":    "My apps — Luděk Budínský",
         "hub_h1":       "My apps",
-        "hub_intro":    "Seven custom apps I built to make life with Homey, finances, travel to Italy and meals easier. No cloud, no telemetry — everything runs locally at home or on a small server.",
+        "hub_intro":    "Eight custom apps I built (or am building) to make life with Homey, finances, travel to Italy, meals and work easier. No cloud, no telemetry — everything runs locally at home or on a small server.",
         "live":         "Working",
         "internal":     "Private",
         "stack":        "Stack",
@@ -53,7 +53,7 @@ I18N = {
     "it": {
         "hub_title":    "Le mie app — Luděk Budínský",
         "hub_h1":       "Le mie app",
-        "hub_intro":    "Sette applicazioni che mi sono costruito per semplificare la vita con Homey, le finanze personali, i viaggi in Italia e i pasti. Niente cloud, niente telemetria — tutto gira in locale a casa mia o su un piccolo server.",
+        "hub_intro":    "Otto applicazioni che mi sono costruito (o che sto costruendo) per semplificare la vita con Homey, le finanze personali, i viaggi in Italia, i pasti e il lavoro. Niente cloud, niente telemetria — tutto gira in locale a casa mia o su un piccolo server.",
         "live":         "Funzionante",
         "internal":     "Privata",
         "stack":        "Stack",
@@ -584,6 +584,61 @@ APPS = [
             },
         },
     },
+    {
+        "slug": "busline-prace",
+        "icon": "🚌",
+        "color": "#e8a317",
+        "asset_dir": "busline-prace",
+        "screens": [],  # ještě nejsou — aplikace ve vývoji
+        "stack": ["Python", "Excel / XLSX parser", "PDF parser (turnusy)", "Lokální Windows app"],
+        "i18n": {
+            "cs": {
+                "name":  "Práce BusLine — turnusy a mzdy",
+                "lead":  "Pracovní aplikace pro řidiče autobusu — automatické zpracování turnusů (rozpisů směn) a výpočet měsíční mzdy podle skutečně odjetých hodin, příplatků a kategorií. Ve vývoji.",
+                "what":  "<p><strong>Proč vzniká:</strong> každý měsíc dostávám rozpis turnusů (kdy a kde mám jet) a výplatní pásku. Ručně si počítám jestli sedí hodiny, příplatky za noční, víkend, svátky, příplatky za přesčas, stravenky. Excel tabulka by stačila, ale chci to mít automatické — nahraju PDF turnusu, aplikace mi vyplivne kolik to vyjde a kde se případně rozchází s výplatou.</p>"
+                         "<p><strong>Co bude umět:</strong> načte PDF rozpis turnusů z BusLine LK (parsuje jednotlivé směny — kdy začátek, kdy konec, který spoj), spočítá pracovní hodiny + přestávky + příplatky (noční 22-6, víkend, svátky, přesčas přes základní úvazek). Pak importuje výplatní pásku (XLSX/PDF) a porovná: aplikace říká „za tento měsíc očekávám X Kč hrubého", páska říká Y Kč — pokud se to liší, vyhodí seznam položek na ověření s mistrem.</p>"
+                         "<p><strong>Stav:</strong> Ve vývoji. Plán Phase 1 = PDF parser turnusů, Phase 2 = mzdová kalkulačka, Phase 3 = porovnání s výplatou, Phase 4 = UI dashboard. Bez cloudu, bez účtu — všechno lokálně.</p>",
+                "features": [
+                    ("Import PDF turnusu",         "Načte měsíční rozpis směn z BusLine LK PDF, rozparsuje jednotlivé spoje, časy a místa."),
+                    ("Výpočet hodin a příplatků",  "Pracovní hodiny + přestávky + noční (22-6) + víkend + svátky + přesčas přes základní úvazek."),
+                    ("Porovnání s výplatou",       "Import výplatní pásky a křížová kontrola: očekávané vs reálné Kč hrubého. Rozdíly vyhodí jako seznam k ověření."),
+                    ("Měsíční přehled",            "Kolik odjeto hodin, kolik příplatků, kolik stravenek, kolik dovolené zbývá."),
+                    ("Lokální, bez cloudu",        "Žádný účet, žádné API. Výplata a turnusy zůstávají u mě v PC."),
+                ],
+                "status": "**Ve vývoji.** Phase 1 (PDF parser) skeleton, Phase 2-4 plánované. Žádné public hosting plánované — privátní pomůcka pro vlastní mzdové sebekontrolu.",
+            },
+            "en": {
+                "name":  "BusLine work — shifts & salary",
+                "lead":  "Work app for a bus driver — automatic parsing of shift schedules and computing monthly salary from actually-driven hours, bonuses and categories. In development.",
+                "what":  "<p><strong>Why it's being built:</strong> every month I get a shift schedule (when and where to drive) and a payslip. I manually verify whether the hours match, bonuses for night, weekend, holidays, overtime, meal vouchers. An Excel sheet would do, but I want it automatic — drop a shift-schedule PDF in, the app spits out what to expect and where it differs from payroll.</p>"
+                         "<p><strong>What it will do:</strong> read shift-schedule PDF from BusLine LK (parse each shift — start, end, route), compute work hours + breaks + bonuses (night 22-6, weekend, holidays, overtime over the base contract). Then import the payslip (XLSX/PDF) and compare: app says &bdquo;for this month I expect X CZK gross&ldquo;, payslip says Y CZK — if they differ, output the line items to verify with the supervisor.</p>"
+                         "<p><strong>Status:</strong> In development. Plan: Phase 1 = PDF shift parser, Phase 2 = salary calculator, Phase 3 = payslip comparison, Phase 4 = UI dashboard. No cloud, no account — everything local.</p>",
+                "features": [
+                    ("PDF shift import",          "Reads monthly BusLine LK schedule PDF, parses individual runs, times and locations."),
+                    ("Hours & bonus computation", "Work hours + breaks + night (22-6) + weekend + holidays + overtime over base contract."),
+                    ("Payslip cross-check",       "Imports payslip and cross-verifies: expected vs actual gross CZK. Diffs output as a verification list."),
+                    ("Monthly overview",          "Hours driven, bonuses, meal vouchers, vacation days left."),
+                    ("Local, no cloud",           "No account, no API. Payslip and schedules stay on my PC."),
+                ],
+                "status": "**In development.** Phase 1 (PDF parser) skeleton, Phase 2-4 planned. No public hosting planned — private payroll self-check tool.",
+            },
+            "it": {
+                "name":  "Lavoro BusLine — turni e stipendio",
+                "lead":  "App di lavoro per un autista di autobus — parsing automatico dei turni e calcolo dello stipendio mensile dalle ore effettivamente guidate, indennità e categorie. In sviluppo.",
+                "what":  "<p><strong>Perché nasce:</strong> ogni mese ricevo un piano turni (quando e dove guidare) e una busta paga. Verifico a mano se le ore tornano, indennità per notte, weekend, festivi, straordinario, buoni pasto. Un Excel basterebbe, ma voglio l'automatico — trascino il PDF dei turni, l'app dice cosa aspettarsi e dove diverge dalla busta.</p>"
+                         "<p><strong>Cosa farà:</strong> legge il PDF turni di BusLine LK (parsa ogni turno — inizio, fine, linea), calcola ore + pause + indennità (notte 22-6, weekend, festivi, straordinario). Poi importa la busta paga (XLSX/PDF) e confronta: l'app dice &bdquo;questo mese aspetto X CZK lordo&ldquo;, la busta dice Y CZK — se diversi, lista voci da verificare con il caporeparto.</p>"
+                         "<p><strong>Stato:</strong> In sviluppo. Piano: Phase 1 = PDF parser turni, Phase 2 = calcolatore stipendio, Phase 3 = confronto busta, Phase 4 = UI dashboard. Niente cloud, niente account — tutto in locale.</p>",
+                "features": [
+                    ("Import PDF turni",          "Legge il piano mensile BusLine LK PDF, parsa singoli turni, orari e località."),
+                    ("Calcolo ore e indennità",  "Ore + pause + notte (22-6) + weekend + festivi + straordinario oltre contratto base."),
+                    ("Confronto con busta paga", "Importa busta e verifica: lordo atteso vs reale CZK. Differenze come lista da verificare."),
+                    ("Riepilogo mensile",        "Ore guidate, indennità, buoni pasto, giorni ferie rimanenti."),
+                    ("Locale, niente cloud",     "Niente account, niente API. Busta e turni restano sul PC."),
+                ],
+                "status": "**In sviluppo.** Phase 1 (PDF parser) skeleton, Phase 2-4 pianificate. Nessun hosting pubblico previsto — strumento privato di auto-verifica stipendio.",
+            },
+        },
+    },
 ]
 
 
@@ -615,15 +670,26 @@ def asset_url_relative_from_hub(lang: str, sub: str, filename: str) -> str:
 def render_hub(lang: str) -> str:
     L = I18N[lang]
     cards = []
+    # "In development" badge texts per language
+    WIP_LABEL = {"cs": "Ve vývoji", "en": "In development", "it": "In sviluppo"}[lang]
     for app in APPS:
         a = app["i18n"][lang]
         slug = app["slug"]
         icon = app["icon"]
         color = app["color"]
+        # WIP badge if no screens yet (development placeholder)
+        wip_badge = ""
+        if not app.get("screens"):
+            wip_badge = (
+                f'<span style="display:inline-block;background:{color}1f;color:{color};'
+                f'border:1px solid {color}55;padding:.15rem .55rem;border-radius:6px;'
+                f'font-size:.72rem;font-weight:600;margin-left:.4rem;vertical-align:middle">'
+                f'{WIP_LABEL}</span>'
+            )
         cards.append(
             f'<a href="{slug}.html" class="card card-link" style="border-left:4px solid {color};">'
             f'<div class="card-icon">{icon}</div>'
-            f'<h3>{a["name"]}</h3>'
+            f'<h3>{a["name"]}{wip_badge}</h3>'
             f'<p>{a["lead"]}</p>'
             f'<div class="card-cta">{L["open_card"]} →</div>'
             "</a>"
