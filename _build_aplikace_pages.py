@@ -199,7 +199,7 @@ APPS = [
         "color": "#4a8fd0",
         "asset_dir": "ucetni-kniha",
         "screens": [
-            ("01_hero.png",        "Dashboard — kolik mám teď, kolik chci mít, jak jsem na cestě (data jsou rozostřena)"),
+            ("01_hero.png",        "Dashboard — kolik mám teď, kolik chci mít, jak jsem na cestě (ilustrativní náhled)"),
             ("02_goal.png",        "Cíl 3,1 milionu — pokrok do důchodu v %, tempo měsíčně, plánovaný horizont"),
             ("03_cashflow.png",    "Cash Flow — kolik měsíčně přijde a kolik odejde, čistá změna majetku"),
             ("04_predictions.png", "8letá predikce — kam mě dovede současné tempo do roku 2034"),
@@ -269,7 +269,7 @@ APPS = [
         "color": "#5b8c9f",
         "asset_dir": "finance-analytik",
         "screens": [
-            ("01_hero.png",        "Dashboard — přehled portfolia + signál distribuce (BUY/HOLD/SELL, data rozostřena)"),
+            ("01_hero.png",        "Dashboard — přehled portfolia + signál distribuce (BUY/HOLD/SELL, ilustrativní náhled)"),
             ("02_portfolio.png",   "Portfolio — 96 akcií + ETF s vlastním doporučením (kup/drž/prodej) a bezpečnostní rezervou v %"),
             ("03_fair_value.png",  "Férová cena — kolik akcie podle mě skutečně stojí (4 metody výpočtu)"),
             ("04_cost_basis.png",  "Pořizovací ceny — kolik a kdy jsem nakupoval, jak daleko k daňovému osvobození"),
