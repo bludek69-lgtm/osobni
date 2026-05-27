@@ -342,48 +342,76 @@ APPS = [
         "color": "#2e7d32",
         "asset_dir": "krabickova-dieta",
         "screens": [
-            ("home.png", "Meal Planner — denní bowls"),
+            ("01_hero.png",        "Dashboard — denní rozpis 5 jídel, sledování váhy, doporučený kalorický cíl (DEMO data)"),
+            ("02_week.png",        "Týdenní jídelníček — 7 dní × 5 jídel, každá krabička s názvem receptu a kcal"),
+            ("03_day.png",         "Den v detailu — 5 krabiček s makronutrienty a postupem přípravy"),
+            ("04_shopping.png",    "Nákupní seznam — agregovaný z celého týdne, rozdělený do kategorií, export do CSV"),
+            ("05_settings.png",    "Nastavení — BMR/TDEE kalkulačka, doporučený kcal cíl podle váhy a aktivity"),
+            ("06_rohlik_live.png", "Rohlík košík — preview ceny vs minimum objednávky (objednávku potvrzuje user ručně)"),
+            ("07_weight_chart.png", "Vývoj váhy — vlastní SVG sparkline, osobní tracking v localStorage prohlížeče"),
+            ("08_analytics.png",   "Analytika — read-only přehled spending, typical order, recipe search"),
         ],
-        "stack": ["React", "Vite", "PWA", "Tailwind"],
+        "stack": ["React", "TypeScript", "Vite", "PWA", "Tailwind"],
         "i18n": {
             "cs": {
-                "name":  "Krabičková dieta",
-                "lead":  "Meal planner — denní jídelníček s makro-cíli, BMR/TDEE a nákupní seznam.",
-                "what":  "<p>Vařím si dopředu krabičky na týden. Potřebuju vědět <strong>kolik mám sníst kalorií, bílkovin, sacharidů</strong> a jaký recept se trefuje do mého denního cíle. Meal Planner mi to spočítá: BMR/TDEE z profilu, plán na 7 dní s recepty (kuřecí bowl, ryžovky, ...), automatický nákupní seznam.</p><p>Lokální PWA — funguje offline, recepty + nutrition databáze v IndexedDB.</p>",
+                "name":  "Krabíčková dieta",
+                "lead":  "Vlastní plánovač jídelníčku — místo přihlašování do dietních aplikací co tě sledují má svojí aplikaci co běží jen u mě v prohlížeči. Sestaví si týdenní plán krabiček podle mého kalorického cíle, spočítá nákupní seznam, hlídá makro. Bez účtu, bez cloudu.",
+                "what":  "<p><strong>Proč vznikl:</strong> zkoušel jsem několik dietních aplikací (MyFitnessPal, Yazio, Lifesum…) a všechny mě naštvaly. Buď chtěly účet a posílaly mi reklamy, nebo neuměly česká jídla, nebo tlačily konkrétní výživovou filozofii. Tahle aplikace běží <strong>jen u mě v prohlížeči</strong> — profil žije v localStorage (paměti prohlížeče), žádný server nevidí moji váhu, kalorie, ani co dnes jím.</p>"
+                         "<p><strong>Jak funguje:</strong> Zadám svoji výšku, váhu, věk, aktivitu. Aplikace spočítá kolik kalorií denně potřebuju (vzorec Mifflin-St Jeor pro klidový metabolismus + multiplier podle aktivity). Pokud chci zhubnout, doporučí asymetrický deficit (lehčí o pár stovek kcal). Pokud nabrat svaly, navíc se snaží vybírat recepty s vyšším protein ratio.</p>"
+                         "<p><strong>Týdenní plán krabiček:</strong> Aplikace projde databázi cca 21 receptů a sestaví 7 dní × 5 jídel (snídaně, svačina, oběd, svačina, večeře) tak, aby denní suma kcal padla do ±10 % cíle. Pak vygeneruje nákupní seznam — sečte všechny ingredience za týden a rozdělí do kategorií (masa, mléčné, zelenina, …). Export do CSV nebo tisku.</p>"
+                         "<p><strong>Volitelně Rohlík:</strong> Pokud mám zákazníka u Rohlíka, můžu si nechat agentem (Claude) připravit návrh košíku z týdenního plánu, vložit JSON do Nastavení a aplikace zobrazí cenu vs minimum objednávky vs cenu doručení. <em>Objednávku ale vždy potvrzuji ručně v Rohlík UI</em> — aplikace fyzicky neumí objednat ani zaplatit (defense-in-depth, 5 vrstev ochrany, 14 PII blacklist pravidel).</p>"
+                         "<p><strong>PWA = funguje offline:</strong> Po prvním otevření se uloží do prohlížeče a funguje i bez internetu. Můžu si ji nainstalovat jako desktopovou aplikaci na Windows přes Edge. Žádné aktualizace přes app store, žádné notifikace, žádná telemetrie.</p>",
                 "features": [
-                    ("Profil & metriky", "BMR + TDEE z věku/výšky/váhy/aktivity, denní cíle kcal a makro."),
-                    ("Týdenní plán",     "7-denní jídelníček s recepty a celkovými makro per den."),
-                    ("Recepty",          "Vlastní databáze receptů s gramy, makra, instrukcemi."),
-                    ("Nákupní seznam",   "Automaticky sečtené ingredience pro celý týden."),
-                    ("Profile export/import", "JSON export profilu pro backup."),
+                    ("Auto-generovaný týdenní plán",      "Combo search algoritmus pro 7×5 jídel, denní kcal v ±10 % cíle. Penalizace opakování receptů pro pestrost."),
+                    ("BMR/TDEE kalkulačka",               "Mifflin-St Jeor vzorec pro klidový metabolismus + activity multiplier. Asymetrický deficit/surplus podle týdenní změny váhy."),
+                    ("Doporučený cíl + banner",           "Když se podle metrik posune doporučený kcal cíl, aplikace nabídne &bdquo;Použít doporučený&ldquo; (nikdy tichá změna bez vědomí uživatele)."),
+                    ("Tracking váhy",                     "Vlastní SVG graf bez externí knihovny, historie v localStorage prohlížeče. Žádné zdravotnické claims."),
+                    ("Optimizer pro hubnutí/nabírání",   "Pokud chceš zhubnout, vybírá recepty s vyšším protein ratio. Pokud nabrat svaly, totéž + těsnější dodržení kcal targetu."),
+                    ("Rohlík integrace (volitelná)",      "Agent připraví návrh košíku jako JSON, ty vidíš cenu vs minimum vs doručení. Objednávku potvrzuješ vždy ručně v Rohlíku."),
+                    ("Nákupní seznam s exportem",         "Z týdenního plánu agreguje ingredience, rozdělí do kategorií, export CSV nebo tisk."),
+                    ("PWA + offline",                     "Funguje bez internetu po prvním načtení. Nainstalovatelná jako desktop app přes Edge / Chrome."),
                 ],
-                "status": "Funkční, Phase 2.8 (květen 2026). Lokální PWA, žádný cloud.",
+                "status": "Funkční, Phase 4C + 5A + 5B + 5C + 6 (květen 2026). Lokální PWA, 21 receptů, 157 unit testů, 8 architektonických ADR. Bez cloudu, bez účtu, bez telemetrie.",
             },
             "en": {
                 "name":  "Meal Planner",
-                "lead":  "Meal planner — daily menu with macro targets, BMR/TDEE and a shopping list.",
-                "what":  "<p>I cook meal boxes for the week in advance. I need to know <strong>how many calories, protein, carbs</strong> to eat and which recipe hits my daily target. Meal Planner computes it: BMR/TDEE from profile, 7-day plan with recipes (chicken bowl, rice bowl, ...), automatic shopping list.</p><p>Local PWA — works offline, recipes + nutrition DB in IndexedDB.</p>",
+                "lead":  "My own meal planner — instead of signing up to diet apps that track me, I have my own that runs only in my browser. Generates a weekly meal-box plan based on my calorie target, computes a shopping list, tracks macros. No account, no cloud.",
+                "what":  "<p><strong>Why it exists:</strong> I tried several mainstream diet apps (MyFitnessPal, Yazio, Lifesum…) and they all annoyed me. Either they wanted an account and pushed ads, or didn't know Czech meals, or forced a specific nutrition ideology. This one runs <strong>only in my browser</strong> — profile lives in localStorage, no server sees my weight, calories, or what I'm eating today.</p>"
+                         "<p><strong>How it works:</strong> I enter my height, weight, age, activity. The app computes my daily calorie need (Mifflin-St Jeor for resting metabolism + activity multiplier). For weight loss it recommends an asymmetric deficit. For muscle gain it also prioritizes higher-protein recipes.</p>"
+                         "<p><strong>Weekly meal-box plan:</strong> The app searches a database of ~21 recipes and builds 7 days × 5 meals (breakfast, snack, lunch, snack, dinner) so the daily kcal lands within ±10% of target. Then it generates a shopping list — sums all ingredients for the week and groups them by category. Export to CSV or print.</p>"
+                         "<p><strong>Optional Rohlík:</strong> If I'm a Rohlík customer, I can have an agent (Claude) prepare a cart proposal from the weekly plan, paste JSON into Settings and see the cart preview with totals vs minimum vs delivery price. <em>The order is always confirmed manually in Rohlík UI</em> — the app physically cannot order or pay (5-layer defense-in-depth).</p>"
+                         "<p><strong>PWA = works offline:</strong> After first load it caches and works without internet. Installable as a desktop app on Windows via Edge. No app store updates, no notifications, no telemetry.</p>",
                 "features": [
-                    ("Profile & metrics", "BMR + TDEE from age/height/weight/activity, daily kcal and macro targets."),
-                    ("Weekly plan",       "7-day menu with recipes and total macros per day."),
-                    ("Recipes",           "Own recipe DB with grams, macros, instructions."),
-                    ("Shopping list",     "Auto-sum of ingredients for the whole week."),
-                    ("Profile export/import", "JSON profile export for backup."),
+                    ("Auto-generated weekly plan",     "Combo search for 7×5 meals, daily kcal within ±10% target. Repeat-recipe penalty for variety."),
+                    ("BMR/TDEE calculator",            "Mifflin-St Jeor formula + activity multiplier. Asymmetric deficit/surplus by weekly weight change."),
+                    ("Recommended target banner",      "When metrics shift the recommended kcal, app offers &bdquo;Use recommended&ldquo; (never a silent change)."),
+                    ("Weight tracking",                "Own SVG chart without external library, history in localStorage. No medical claims."),
+                    ("Loss/gain optimizer",            "Weight loss → prefers higher-protein recipes. Muscle gain → same plus tighter kcal target."),
+                    ("Rohlík integration (optional)",  "Agent prepares cart JSON, you see total vs minimum vs delivery price. Order always confirmed manually."),
+                    ("Shopping list with export",      "Aggregates ingredients from weekly plan, groups by category, CSV or print."),
+                    ("PWA + offline",                  "Works without internet after first load. Installable as desktop app via Edge/Chrome."),
                 ],
-                "status": "Working, Phase 2.8 (May 2026). Local PWA, no cloud.",
+                "status": "Working, Phase 4C + 5A + 5B + 5C + 6 (May 2026). Local PWA, 21 recipes, 157 unit tests, 8 architecture ADRs. No cloud, no account, no telemetry.",
             },
             "it": {
                 "name":  "Meal Planner",
-                "lead":  "Pianificatore pasti — menu giornaliero con obiettivi macro, BMR/TDEE e lista della spesa.",
-                "what":  "<p>Mi preparo le porzioni per la settimana. Devo sapere <strong>quante calorie, proteine, carboidrati</strong> mangiare e quale ricetta centra il mio obiettivo. Meal Planner lo calcola: BMR/TDEE dal profilo, piano 7 giorni con ricette (bowl pollo, riso, ...), lista della spesa automatica.</p><p>PWA locale — funziona offline, ricette + DB nutrizione in IndexedDB.</p>",
+                "lead":  "Pianificatore pasti mio — invece di iscrivermi ad app dietetiche che mi tracciano, ho la mia che gira solo nel browser. Genera piano settimanale di porzioni secondo l'obiettivo calorico, calcola lista spesa, traccia macro. Niente account, niente cloud.",
+                "what":  "<p><strong>Perché esiste:</strong> ho provato diverse app dietetiche mainstream (MyFitnessPal, Yazio, Lifesum…) e tutte mi hanno infastidito. O volevano un account e mostravano pubblicità, o non conoscevano piatti cechi, o forzavano un'ideologia nutrizionale. Questa gira <strong>solo nel browser</strong> — il profilo vive in localStorage, nessun server vede peso, calorie, o cosa mangio oggi.</p>"
+                         "<p><strong>Come funziona:</strong> inserisco altezza, peso, età, attività. L'app calcola il fabbisogno calorico (Mifflin-St Jeor + moltiplicatore attività). Per perdere peso raccomanda un deficit asimmetrico. Per massa muscolare privilegia ricette ad alta proteina.</p>"
+                         "<p><strong>Piano settimanale di porzioni:</strong> Cerca tra ~21 ricette e costruisce 7 giorni × 5 pasti così che le kcal giornaliere stiano entro ±10% dell'obiettivo. Genera la lista della spesa — somma tutti gli ingredienti per la settimana, divide per categorie. Esporta in CSV o stampa.</p>"
+                         "<p><strong>Rohlík opzionale:</strong> Se sono cliente Rohlík, un agente può preparare proposta carrello dal piano settimanale, incollo JSON in Impostazioni e vedo prezzo vs minimo vs spedizione. <em>L'ordine si conferma sempre manualmente in Rohlík UI</em> — l'app non può fisicamente ordinare o pagare (5 strati di difesa).</p>"
+                         "<p><strong>PWA = funziona offline:</strong> Dopo il primo caricamento è in cache e funziona senza internet. Installabile come app desktop su Windows via Edge. Niente aggiornamenti app store, niente notifiche, niente telemetria.</p>",
                 "features": [
-                    ("Profilo e metriche", "BMR + TDEE da età/altezza/peso/attività, obiettivi kcal e macro."),
-                    ("Piano settimanale", "Menu 7 giorni con ricette e macro totali per giorno."),
-                    ("Ricette",           "DB ricette personale con grammi, macro, istruzioni."),
-                    ("Lista spesa",       "Somma automatica ingredienti per tutta la settimana."),
-                    ("Export/import",     "Export profilo in JSON per backup."),
+                    ("Piano settimanale auto-generato",   "Combo search per 7×5 pasti, kcal giornaliere entro ±10% obiettivo. Penalità ripetizione per varietà."),
+                    ("Calcolatore BMR/TDEE",              "Formula Mifflin-St Jeor + moltiplicatore attività. Deficit/surplus asimmetrico per cambio peso."),
+                    ("Banner obiettivo raccomandato",     "Quando metriche cambiano l'obiettivo kcal, app propone &bdquo;Usa raccomandato&ldquo; (mai cambio silenzioso)."),
+                    ("Tracking peso",                     "Grafico SVG proprio senza libreria esterna, storia in localStorage. Niente claim medici."),
+                    ("Ottimizzatore perdita/massa",       "Perdita → ricette ad alta proteina. Massa → stesso + obiettivo kcal stretto."),
+                    ("Integrazione Rohlík (opzionale)",   "Agente prepara JSON carrello, vedi totale vs minimo vs spedizione. Ordine sempre manuale."),
+                    ("Lista spesa con esportazione",     "Aggrega ingredienti dal piano settimanale, divide per categoria, CSV o stampa."),
+                    ("PWA + offline",                     "Funziona senza internet dopo primo caricamento. Installabile come app desktop via Edge/Chrome."),
                 ],
-                "status": "Funzionante, Phase 2.8 (maggio 2026). PWA locale, niente cloud.",
+                "status": "Funzionante, Phase 4C + 5A + 5B + 5C + 6 (maggio 2026). PWA locale, 21 ricette, 157 test unitari, 8 ADR. Niente cloud, niente account, niente telemetria.",
             },
         },
     },
