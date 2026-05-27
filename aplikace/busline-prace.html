@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Práce BusLine — Moje aplikace — Luděk</title>
+  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+</head>
+<body class="theme-home">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+    <a href="../">Domů</a>
+    <a href="../aplikace/" aria-current="page">Aplikace</a>
+    <a href="../finance/">Finance</a>
+    <a href="../cestovani/">Cestování</a>
+    <a href="../cestovani/italie/">Itálie</a>
+    <a href="../zaliby/rybareni/">Rybaření</a>
+    <a href="../smart-home/">Smart Home</a>
+    <a href="../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #e8a317;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#e8a317">Práce BusLine — turnusy a mzdy</span>
+  <h1><span style="margin-right:.4rem">🚌</span>Práce BusLine — turnusy a mzdy</h1>
+  <p class="hero-sub">Pracovní aplikace pro řidiče autobusu — automatické zpracování turnusů (rozpisů směn) a výpočet měsíční mzdy podle skutečně odjetých hodin, příplatků a kategorií. Ve vývoji.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Excel / XLSX parser</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PDF parser (turnusy)</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Lokální Windows app</span></p>
+  <p style="margin-top:.8rem"><a href="../index.html">← Zpět na Moje aplikace</a></p>
+</section>
+
+<section>
+  <h2>Co to dělá</h2>
+  <p><strong>Proč vzniká:</strong> každý měsíc dostávám rozpis turnusů (kdy a kde mám jet) a výplatní pásku. Ručně si počítám jestli sedí hodiny, příplatky za noční, víkend, svátky, příplatky za přesčas, stravenky. Excel tabulka by stačila, ale chci to mít automatické — nahraju PDF turnusu, aplikace mi vyplivne kolik to vyjde a kde se případně rozchází s výplatou.</p><p><strong>Co bude umět:</strong> načte PDF rozpis turnusů z BusLine LK (parsuje jednotlivé směny — kdy začátek, kdy konec, který spoj), spočítá pracovní hodiny + přestávky + příplatky (noční 22-6, víkend, svátky, přesčas přes základní úvazek). Pak importuje výplatní pásku (XLSX/PDF) a porovná: aplikace řekne &bdquo;za tento měsíc očekávám X Kč hrubého&ldquo;, páska říká Y Kč — pokud se to liší, vyhodí seznam položek na ověření s mistrem.</p><p><strong>Stav:</strong> Ve vývoji. Plán Phase 1 = PDF parser turnusů, Phase 2 = mzdová kalkulačka, Phase 3 = porovnání s výplatou, Phase 4 = UI dashboard. Bez cloudu, bez účtu — všechno lokálně.</p>
+</section>
+
+<section>
+  <h2>Klíčové funkce</h2>
+  <ul style="line-height:1.7">
+      <li><strong>Import PDF turnusu</strong> — Načte měsíční rozpis směn z BusLine LK PDF, rozparsuje jednotlivé spoje, časy a místa.</li>
+      <li><strong>Výpočet hodin a příplatků</strong> — Pracovní hodiny + přestávky + noční (22-6) + víkend + svátky + přesčas přes základní úvazek.</li>
+      <li><strong>Porovnání s výplatou</strong> — Import výplatní pásky a křížová kontrola: očekávané vs reálné Kč hrubého. Rozdíly vyhodí jako seznam k ověření.</li>
+      <li><strong>Měsíční přehled</strong> — Kolik odjeto hodin, kolik příplatků, kolik stravenek, kolik dovolené zbývá.</li>
+      <li><strong>Lokální, bez cloudu</strong> — Žádný účet, žádné API. Výplata a turnusy zůstávají u mě v PC.</li>
+  </ul>
+</section>
+
+
+
+<section>
+  <h2>Stav</h2>
+  <p>**Ve vývoji.** Phase 1 (PDF parser) skeleton, Phase 2-4 plánované. Žádné public hosting plánované — privátní pomůcka pro vlastní mzdové sebekontrolu.</p>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://bludek69-lgtm.github.io/smart-home-website/" target="_blank" rel="noopener">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+
+<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
+<style>
+#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
+#__lb.open { display:flex }
+#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+main img { cursor:zoom-in; transition:transform .15s ease }
+main img:hover { transform:scale(1.005) }
+</style>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  document.querySelectorAll('main img').forEach(function(img){
+    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+  });
+})();
+</script>
+</body>
+</html>
