@@ -1,7 +1,7 @@
 """Capture screenshots of running/serveable web apps for aplikace pages.
 
 Strategy:
-- Energy PC dashboard: already running on http://127.0.0.1:5176 (proxy)
+- Energy PC dashboard: already running on http://127.0.0.1:5177 (proxy; 5176 = Meal Planner)
 - Italia Travel Planner: file:// to dist/index.html (static dist)
 - Meal Planner: file:// dist
 - Finance UK + FA: serve dist via temporary Python http.server, then capture
@@ -58,7 +58,7 @@ def main():
     targets = []
 
     # 1) Energy PC dashboard (already running via launcher)
-    targets.append(("energy_pc", "http://127.0.0.1:5176/energy_dashboard.html", OUT / "dashboardy" / "energy_pc.png", None))
+    targets.append(("energy_pc", "http://127.0.0.1:5177/energy_dashboard.html", OUT / "energy-dashboard" / "01_overview.png", None))
 
     # 2) Italia Travel Planner (serve dist)
     itp_root = Path("C:/.Projekt/ItaliaTravelPlanner")

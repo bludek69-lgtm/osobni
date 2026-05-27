@@ -25,7 +25,7 @@ I18N = {
     "cs": {
         "hub_title":    "Moje aplikace — Luděk Budínský",
         "hub_h1":       "Moje aplikace",
-        "hub_intro":    "Šest vlastních aplikací co jsem si postavil, abych si zjednodušil život s Homey, financemi, cestováním do Itálie a jídlem. Žádný cloud, žádná telemetrie — všechno běží lokálně u mě doma nebo na malém serveru.",
+        "hub_intro":    "Sedm vlastních aplikací co jsem si postavil, abych si zjednodušil život s Homey, financemi, cestováním do Itálie a jídlem. Žádný cloud, žádná telemetrie — všechno běží lokálně u mě doma nebo na malém serveru.",
         "live":         "Funkční",
         "internal":     "Soukromé",
         "stack":        "Stack",
@@ -39,7 +39,7 @@ I18N = {
     "en": {
         "hub_title":    "My apps — Luděk Budínský",
         "hub_h1":       "My apps",
-        "hub_intro":    "Six custom apps I built to make life with Homey, finances, travel to Italy and meals easier. No cloud, no telemetry — everything runs locally at home or on a small server.",
+        "hub_intro":    "Seven custom apps I built to make life with Homey, finances, travel to Italy and meals easier. No cloud, no telemetry — everything runs locally at home or on a small server.",
         "live":         "Working",
         "internal":     "Private",
         "stack":        "Stack",
@@ -53,7 +53,7 @@ I18N = {
     "it": {
         "hub_title":    "Le mie app — Luděk Budínský",
         "hub_h1":       "Le mie app",
-        "hub_intro":    "Sei applicazioni che mi sono costruito per semplificare la vita con Homey, le finanze personali, i viaggi in Italia e i pasti. Niente cloud, niente telemetria — tutto gira in locale a casa mia o su un piccolo server.",
+        "hub_intro":    "Sette applicazioni che mi sono costruito per semplificare la vita con Homey, le finanze personali, i viaggi in Italia e i pasti. Niente cloud, niente telemetria — tutto gira in locale a casa mia o su un piccolo server.",
         "live":         "Funzionante",
         "internal":     "Privata",
         "stack":        "Stack",
