@@ -35,7 +35,7 @@
   <span class="hero-accent" style="color:#008c45">Italia Travel Planner</span>
   <h1><span style="margin-right:.4rem">🇮🇹</span>Italia Travel Planner</h1>
   <p class="hero-sub">Cestovní plánovač po Itálii pro lidi co tam jezdí často nebo dlouho. Sestaví itinerář, hlídá vstupenky, kreslí mapu, dělá rozpočet, varuje před ZTL zónami (kde dostaneš pokutu 80–200 € za vjezd autem). Funguje offline, žádné účty, žádné platby přes aplikaci.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vite</span> <span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tauri (Windows)</span> <span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PWA</span></p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vite</span> <span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tauri (Windows + Android)</span> <span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PWA</span></p>
   <p style="margin-top:.8rem"><a href="../index.html">← Zpět na Moje aplikace</a></p>
 </section>
 
@@ -54,7 +54,7 @@
       <li><strong>Rozpočet s cap utilization</strong> — 12 kategorií (doprava, ubytování, jídlo, vstupenky, parkování, mýto, camping, …), vizuální bar kolik % je zaplaceno, povinné vs volitelné.</li>
       <li><strong>Mapa POI + Google My Maps export</strong> — Body zájmu vizualizované barevnými ikonami, export CSV jedním klikem importovatelné do Google My Maps.</li>
       <li><strong>Camper režim s ZTL warningy</strong> — Profil obytného auta (rozměry, hmotnost), 10 typů stopů, 11 facility chipů, warning badges když je místo v ZTL zóně nebo malé pro tvůj kemper.</li>
-      <li><strong>Funguje offline, multi-platform</strong> — Web PWA + Windows desktop (Tauri NSIS, 1.4 MB) + portable web launcher — všechno z jednoho codebase. V Itálii nepotřebuje roaming.</li>
+      <li><strong>Funguje offline, multi-platform</strong> — Web PWA + Windows desktop (Tauri NSIS, 1.4 MB) + Android APK (Tauri, 6.9 MB) + portable web launcher — všechno z jednoho codebase, React app běží na všech třech. V Itálii nepotřebuje roaming.</li>
   </ul>
 </section>
 
@@ -123,9 +123,79 @@
 </section>
 
 <section>
+  <h2>📱 Mobilní aplikace</h2>
+  <p>Na mobilu běží jako <strong>Android APK (Tauri, 6.9 MB)</strong> nebo jako <strong>PWA</strong> — přidej stránku na plochu z prohlížeče. Mobilní layout je kompletně oddělený od desktopového — místo sidebaru je spodní 6-ikonová navigace, stránky jsou optimalizované pro dotek a jednu ruku.</p>
+  <style>
+    .mob-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:.9rem; margin-top:.8rem; }
+    .mob-grid figure { margin:0; }
+    .mob-grid img { width:100%; height:auto; border-radius:12px; border:1px solid var(--border,#334155); box-shadow:0 4px 20px rgba(0,0,0,.35); display:block; }
+    .mob-grid figcaption { font-size:.82rem; color:var(--text-mut,#94a3b8); margin-top:.35rem; }
+  </style>
+  <div class="mob-grid">
+    <figure>
+      <img src="img/15_mobile_today.png" alt="Mobilní Dnes — přehled aktuální cesty, smart view před cestou / během / po" loading="lazy">
+      <figcaption>Dnes — přehled cesty, smart view podle data</figcaption>
+    </figure>
+    <figure>
+      <img src="img/16_mobile_itinerar.png" alt="Mobilní itinerář — den po dni, Ráno / Odpoledne / Večer" loading="lazy">
+      <figcaption>Itinerář — den po dni s časy</figcaption>
+    </figure>
+    <figure>
+      <img src="img/17_mobile_mapa.png" alt="Mobilní mapa — Leaflet OSM s piny POI" loading="lazy">
+      <figcaption>Mapa — Leaflet + OSM, piny POI</figcaption>
+    </figure>
+    <figure>
+      <img src="img/18_mobile_vstupenky.png" alt="Mobilní vstupenky — přehled rezervací a alternativ" loading="lazy">
+      <figcaption>Vstupenky — rezervace a alternativy</figcaption>
+    </figure>
+    <figure>
+      <img src="img/19_mobile_checklist.png" alt="Mobilní checklist — 18 položek, progress bar, 5 kategorií" loading="lazy">
+      <figcaption>Checklist — balení, doklady, elektronika</figcaption>
+    </figure>
+    <figure>
+      <img src="img/20_mobile_export.png" alt="Mobilní export — ICS, CSV, JSON, Markdown" loading="lazy">
+      <figcaption>Export — ICS / CSV / JSON / Markdown</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>📥 Ke stažení — v0.6.2</h2>
+  <p>Tři verze, jeden codebase (React + TypeScript + Vite). Vybírej podle toho, co se ti hodí.</p>
+  <style>
+    .dl-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1rem; margin-top:.8rem; }
+    .dl-card { border:1px solid var(--border,#334155); border-radius:10px; padding:1.1rem 1.2rem; background:var(--surface,#1e293b); }
+    .dl-card h3 { margin:0 0 .4rem; font-size:1rem; display:flex; align-items:center; gap:.5rem; }
+    .dl-card .dl-badge { font-size:.72rem; padding:.15rem .5rem; border-radius:4px; background:#008c4530; color:#008c45; border:1px solid #008c4550; font-weight:600; }
+    .dl-card p { margin:.3rem 0; font-size:.88rem; color:var(--text-mut,#94a3b8); line-height:1.5; }
+    .dl-card .dl-note { font-size:.78rem; color:#64748b; margin-top:.5rem; font-style:italic; }
+  </style>
+  <div class="dl-cards">
+    <div class="dl-card">
+      <h3>🖥️ Windows <span class="dl-badge">NSIS installer · 1.4 MB</span></h3>
+      <p><strong>ItaliaTravel-v0.6.2-Setup.exe</strong><br>Nainstaluje se do Program Files. Spouštěcí ikona na ploše, záznam v Přidat/odebrat programy (Publisher: Luděk Budinský).</p>
+      <p class="dl-note">Aktualizace: při startu aplikace se zobrazí zelený banner pokud je dostupná novější verze → odkaz na tuto stránku pro stažení nového instalátoru.</p>
+    </div>
+    <div class="dl-card">
+      <h3>🤖 Android <span class="dl-badge">APK · 6.9 MB</span></h3>
+      <p><strong>ItaliaTravel-v0.6.2-arm64.apk</strong><br>Unsigned release APK, ARM64 (99 % moderních Android telefonů). Nainstaluj přes Správce souborů — v nastavení Androidu povol „Instalovat z neznámých zdrojů".</p>
+      <p class="dl-note">Aktualizace: stejný zelený banner jako na Windows — při startu appky. Nový APK nainstaluj přes ten stejný soubor (přeinstalace zachová data).</p>
+    </div>
+    <div class="dl-card">
+      <h3>🌐 Web PWA <span class="dl-badge">online · bez instalace</span></h3>
+      <p>Otevři v prohlížeči a přidej na plochu (Chrome/Edge: ⋮ → Nainstalovat app, Safari iOS: Sdílet → Přidat na plochu). Data se ukládají lokálně v prohlížeči (IndexedDB).</p>
+      <p class="dl-note">Aktualizace: automatická — prohlížeč stáhne novou verzi na pozadí přes Service Worker, při příštím spuštění běží nová verze.</p>
+    </div>
+  </div>
+</section>
+
+<section>
   <h2>Stav</h2>
-  <p>Funkční verze 0.6.1 (květen 2026). Windows installer + PWA + web launcher. Soukromé pro vlastní cesty — žádné public hosting, žádné účty, žádné platby přes aplikaci.</p>
-  <p>Novinky v0.6.1: Leaflet/OSM mapa s reálnými piny, OSRM polyline pro roadtrip trasy, napojení akčních tlačítek zastávek na store (Přidat do itineráře / Přidat na mapu / Přidat do kalendáře).</p>
+  <p>Funkční verze <strong>0.6.2</strong> (květen 2026). Windows NSIS installer + Android APK + PWA + web launcher. Soukromé pro vlastní cesty — žádné public hosting, žádné účty, žádné platby přes aplikaci.</p>
+  <ul style="line-height:1.8;margin-top:.5rem">
+    <li><strong>v0.6.2 (28. 5. 2026)</strong> — Android APK (Tauri, arm64), oprava Czech NSIS stringů v instalátoru, verze + jméno viditelné v Sidebaru a Topbaru, update banner (automatická kontrola nové verze), oprava build skriptu (správná cesta pro APK výstup).</li>
+    <li><strong>v0.6.1 (28. 5. 2026)</strong> — Leaflet/OSM mapa s reálnými piny, OSRM polyline pro roadtrip trasy, napojení akčních tlačítek zastávek na store (Přidat do itineráře / Přidat na mapu / Přidat do kalendáře).</li>
+  </ul>
 </section>
 </main>
 
