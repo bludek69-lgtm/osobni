@@ -40,7 +40,8 @@
     <span class="pill" style="background:#0ea5e91a;color:#0284c7;border:1px solid #0ea5e940;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span>
     <span class="pill" style="background:#0ea5e91a;color:#0284c7;border:1px solid #0ea5e940;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vite 5</span>
     <span class="pill" style="background:#0ea5e91a;color:#0284c7;border:1px solid #0ea5e940;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tailwind CSS</span>
-    <span class="pill" style="background:#0ea5e91a;color:#0284c7;border:1px solid #0ea5e940;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows (Launcher)</span>
+    <span class="pill" style="background:#0ea5e91a;color:#0284c7;border:1px solid #0ea5e940;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows (.exe)</span>
+    <span class="pill" style="background:#0ea5e91a;color:#0284c7;border:1px solid #0ea5e940;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tauri 2</span>
     <span class="pill" style="background:#0ea5e91a;color:#0284c7;border:1px solid #0ea5e940;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PWA</span>
   </p>
   <p style="margin-top:.8rem"><a href="../index.html">← Zpět na Moje aplikace</a></p>
@@ -49,7 +50,7 @@
 <section>
   <h2>Co to dělá</h2>
   <p><strong>Proč to vzniklo:</strong> klasické nutričky tě nutí mít účet, neustále tě bombardují reklamami a jejich data nejsou tvoje. Chci jednoduchou appku, která bude fungovat offline, nebude posílat nic nikam a poběží i bez internetu — doma, v kempu, v autě.</p>
-  <p><strong>Jeden uživatel, všechno lokálně:</strong> aplikace běží jako React SPA — v prohlížeči jako PWA nebo jako Windows desktop apka (Python + Edge --app mode, nic se neinstaluje do systému). Data jsou výhradně v <code>localStorage</code> v prohlížeči. Žádný backend, žádný cloud, žádná registrace.</p>
+  <p><strong>Jeden uživatel, všechno lokálně:</strong> aplikace běží jako React SPA — v prohlížeči jako PWA nebo jako nativní Windows desktop apka (Tauri 2, NSIS instalátor ~1,1 MB). Data jsou výhradně v <code>localStorage</code> v prohlížeči. Žádný backend, žádný cloud, žádná registrace.</p>
   <p><strong>Makra a kalorický cíl:</strong> Nastavíš profil (váha, výška, věk, pohlaví, aktivita, cíl) a appka spočítá BMR/TDEE a doporučený příjem. Denní dashboard ukazuje kolik kcal / bílkovin / sacharidů / tuků máš na daný den naplánovaných vs. kolik je tvůj cíl — jednoduchými progress bary.</p>
   <p><strong>Týdenní jídelníček:</strong> Plánuješ jídla na každý den a slot (snídaně, svačina, oběd, svačina, večeře). Aplikace ti zobrazí makra pro celý den, porovná je s cílem a vypočítá odchylku. PlanQuality skóre ti řekne, jak dobře máš plán sestavený.</p>
   <p><strong>Krabičky:</strong> Pro každý recept vidíš, kolik krabičiček připravit (meal prep), co přesně koupit a jak se to promítne do týdenního jídelníčku. Recepty jsou staticky seedované (36 receptů), každý s kompletními makry a odhadovanou cenou.</p>
@@ -69,7 +70,7 @@
     <li><strong>Expiry banner</strong> — Položky expirující do 3 dnů se zobrazí barevným bannerem v horní části stránky Lednice i v dashboard widgetu.</li>
     <li><strong>Kalorická odchylka (drift)</strong> — Sleduje odchylku od cíle za posledních N dní, zobrazí banner pokud je drift příliš velký.</li>
     <li><strong>Log váhy s grafem</strong> — Denní záznamy váhy, sparkline graf vývoje, průměr za 7/30 dní.</li>
-    <li><strong>Funguje offline, multi-platform</strong> — Web PWA (Service Worker, přidej na plochu) + Windows desktop launcher (Python serve.py + Edge --app mode, žádný instalátor, žádná registrace).</li>
+    <li><strong>Funguje offline, multi-platform</strong> — Web PWA (Service Worker, přidej na plochu) + Windows nativní desktop apka (Tauri 2, NSIS instalátor ~1,1 MB, nainstaluje se jako klasická Windows apka).</li>
     <li><strong>225 unit testů</strong> — Vitest, 100% pass rate. Testuje makra, BMR/TDEE, plán, recipe matcher, fridge lookup, shopping aggregator, weight log, analytiky, Rohlik mock.</li>
   </ul>
 </section>
@@ -120,8 +121,9 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Funkční verze <strong>0.2.0</strong> (březen–květen 2026). Web PWA + Windows launcher. Soukromé pro vlastní použití — žádné public hosting, žádné účty, žádné platby.</p>
+  <p>Funkční verze <strong>0.2.0</strong> (březen–květen 2026). Web PWA + Windows desktop .exe. Soukromé pro vlastní použití — žádné public hosting, žádné účty, žádné platby.</p>
   <ul style="line-height:1.8;margin-top:.5rem">
+    <li><strong>v0.2.0 / Windows Tauri installer (28. 5. 2026)</strong> — Nativní Windows desktop apka (Tauri 2 + NSIS, ~1,1 MB). Instaluje se jako klasická Windows apka, data v localStorage jako webová verze. Bez Rustu, bez CLI závislostí pro uživatele.</li>
     <li><strong>v0.2.0 / Phase 7.1+7.2+8.1 (28. 5. 2026)</strong> — Lednice: fuzzy autocomplete (Levenshtein ≤2), kontrola množství surovin s upozorněním "Máš málo", datum expirace v formuláři + řazení dle expirace + FridgeExpiryBanner (≤3 dny). Dashboard widgety: top 3 expirující položky + top 3 vařitelné recepty. 225/225 unit testů PASS.</li>
     <li><strong>v0.2.0 / Phase 7.0 (duben 2026)</strong> — Lednice MVP: přidávání položek s autocomplete z food_db (emoji, kcal/100g), recipe matcher "Co mohu uvařit?" (coverage % seřazeno sestupně). Fridge storage + unit testy.</li>
     <li><strong>v0.1.x (únor–duben 2026)</strong> — MVP fáze 1–6: profil, BMR/TDEE, týdenní jídelníček, krabičky, nákupní seznam, analytika, log váhy, kalorická odchylka, PlanQuality, 36 receptů.</li>
