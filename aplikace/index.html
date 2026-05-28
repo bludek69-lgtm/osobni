@@ -3,84 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aplikace — Luděk</title>
-  <meta name="description" content="Italia Travel Planner — osobní cestovní plánovač pro Itálii. Mapy, itinerář, roadtrip, vstupenky.">
+  <title>Moje aplikace — Luděk</title>
+  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
   <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🗺️%3C/text%3E%3C/svg%3E">
-  <style>
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.25rem;
-      margin: 1.5rem 0;
-    }
-    .feature-card {
-      background: var(--surface, #1e293b);
-      border: 1px solid var(--border, #334155);
-      border-radius: 12px;
-      padding: 1.25rem 1.4rem;
-    }
-    .feature-card h3 {
-      margin: 0 0 0.5rem;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .feature-card p {
-      margin: 0;
-      font-size: 0.92rem;
-      color: var(--text-mut, #94a3b8);
-      line-height: 1.55;
-    }
-
-    .screenshot-section { margin: 2rem 0; }
-    .screenshot-wrap {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--border, #334155);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
-    }
-    .screenshot-wrap img { display: block; width: 100%; height: auto; }
-    .screenshot-caption {
-      font-size: 0.87rem;
-      color: var(--text-mut, #94a3b8);
-      margin-top: 0.5rem;
-    }
-
-    .dist-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1.1rem;
-      margin: 1.25rem 0;
-    }
-    .dist-card {
-      background: var(--surface, #1e293b);
-      border: 1px solid var(--border, #334155);
-      border-radius: 10px;
-      padding: 1.2rem 1.4rem;
-    }
-    .dist-card .dist-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--accent, #60a5fa);
-      margin-bottom: 0.4rem;
-    }
-    .dist-card h3 { margin: 0 0 0.4rem; font-size: 1rem; }
-    .dist-card p { margin: 0; font-size: 0.88rem; color: var(--text-mut, #94a3b8); line-height: 1.5; }
-
-    .tech-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
-    .tech-pill {
-      background: var(--surface, #1e293b);
-      border: 1px solid var(--border, #334155);
-      border-radius: 20px;
-      padding: 0.3rem 0.8rem;
-      font-size: 0.82rem;
-      color: var(--text-mut, #94a3b8);
-    }
-  </style>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
 </head>
 <body class="theme-home">
 
@@ -105,160 +31,24 @@
 </header>
 
 <main id="main">
+<section class="hero">
+  <span class="hero-accent">Moje aplikace</span>
+  <h1>Moje aplikace</h1>
+  <p class="hero-sub">Osm vlastních aplikací co jsem si postavil (nebo postavit chystám), abych si zjednodušil život s Homey, financemi, cestováním do Itálie, jídlem a prací. Žádný cloud, žádná telemetrie — všechno běží lokálně u mě doma nebo na malém serveru.</p>
+</section>
 
-  <section class="hero">
-    <span class="hero-accent">Aplikace</span>
-    <h1>Italia Travel Planner</h1>
-    <p class="hero-sub">
-      Osobní cestovní plánovač pro cesty do Itálie. Naplánuj trasu, roadtrip, itinerář
-      i vstupenky — vše na jednom místě, bez placených API.
-    </p>
-  </section>
-
-  <section class="prose">
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>🗺️ Mapy (Leaflet + OSM)</h3>
-        <p>Interaktivní mapa s piny ze vstupenky, ubytování a atrakcí. Export do Google My Maps CSV.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🚗 Roadtrip plánování</h3>
-        <p>Zadej odkud–kam, systém vrátí 3 varianty trasy (rychlá / vyvážená / zážitková) přes OSRM s polyline na mapě.</p>
-      </div>
-      <div class="feature-card">
-        <h3>📅 Denní itinerář</h3>
-        <p>Hodinový rozvrh na každý den. Záložní plány, food tips, praktické poznámky ve strukturované formě.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🎟️ Vstupenky</h3>
-        <p>Přehled vstupenek s ověřenými cenami, rezervačními doporučeními a varováními (ZTL, dress code, frontová okna).</p>
-      </div>
-      <div class="feature-card">
-        <h3>🌤️ Počasí</h3>
-        <p>7denní předpověď přímo v přehledu cest a itineráři — data z open-meteo.com, bez API klíče.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🏕️ Camper / ubytování</h3>
-        <p>Plánování kempů, B&amp;B a hotelů s náklady a poznámkami integrovanými do rozpočtu.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="screenshot-section prose">
-    <h2>Přehled cest</h2>
-    <p>
-      Úvodní stránka zobrazuje všechny cesty s živým počasím v destinaci, klíčovými štítky
-      a celkovým rozpočtem. Aktivní cesta je zvýrazněna.
-    </p>
-    <div class="screenshot-wrap">
-      <img src="img/overview.png" alt="Přehled cest — Italia Travel Planner s kartami cest a 7denní předpovědí počasí" loading="lazy">
-    </div>
-    <p class="screenshot-caption">4 cesty — Bergamo, Italy camper roadtrip, Řím, Toskánsko. Živá předpověď z open-meteo.com.</p>
-  </section>
-
-  <section class="screenshot-section prose">
-    <h2>Interaktivní mapa</h2>
-    <p>
-      Leaflet mapa s OpenStreetMap podkladem. Piny jsou generovány automaticky z dat cesty —
-      letiště, hotely, atrakce, restaurace. Žádné Google Maps API ani API klíče.
-    </p>
-    <div class="screenshot-wrap">
-      <img src="img/mapa.png" alt="Leaflet mapa s 11 piny pro Řím — letiště, hotel, Vatikán, Colosseum, Trastevere" loading="lazy">
-    </div>
-    <p class="screenshot-caption">Řím — 11 bodů zájmu. Leaflet + OpenStreetMap, zdarma, bez API klíče. Export do Google My Maps CSV.</p>
-  </section>
-
-  <section class="screenshot-section prose">
-    <h2>Roadtrip — 3 varianty trasy</h2>
-    <p>
-      Zadej odkud–kam, datum a styl. Systém přes OSRM (free routing) spočítá vzdálenost a čas,
-      navrhne zastávky a sestaví plán dne pro každou variantu.
-    </p>
-    <div class="screenshot-wrap">
-      <img src="img/roadtrip-results.png" alt="Roadtrip výsledky — Firenze → San Gimignano, 3 varianty trasy s plán dne a zastávkami" loading="lazy">
-    </div>
-    <p class="screenshot-caption">Firenze → San Gimignano — Rychlá 59.1 km / 1h 3min · Vyvážená 68 km / 2h 42min · Zážitková 79.8 km / 4h 28min.</p>
-  </section>
-
-  <section class="screenshot-section prose">
-    <h2>Roadtrip mapa — OSRM polyline</h2>
-    <p>
-      Po výpočtu trasy se zobrazí Leaflet mapa s reálnou OSRM polyline a kartami zastávek
-      s akcemi: přidat do itineráře, na mapu nebo do kalendáře.
-    </p>
-    <div class="screenshot-wrap">
-      <img src="img/roadtrip-mapa.png" alt="Roadtrip mapa — OSRM polyline trasa Firenze → San Gimignano přes Toskánsko s kartami zastávek" loading="lazy">
-    </div>
-    <p class="screenshot-caption">Modrá trasa OSRM přes Toskánsko. Zastávky: Greve in Chianti, Siena, Monteriggioni, San Gimignano. ZTL upozornění.</p>
-  </section>
-
-  <section class="screenshot-section prose">
-    <h2>Denní itinerář</h2>
-    <p>
-      Strukturovaný hodinový program pro každý den — ráno, odpoledne, večer. Záložní plány
-      pro špatné počasí a food tips přímo v itineráři.
-    </p>
-    <div class="screenshot-wrap">
-      <img src="img/itinerar.png" alt="Denní itinerář — Den 1 Řím, Vatikán, Trastevere s hodinovým rozvrhem a záložním plánem" loading="lazy">
-    </div>
-    <p class="screenshot-caption">Den 1 — Řím. Let PRG→FCO, Vatikán + Sixtinská kaple, Trastevere večer. Záložní plán při plném Vatikánu.</p>
-  </section>
-
-  <section class="screenshot-section prose">
-    <h2>Vstupenky</h2>
-    <p>
-      Přehled vstupenek s ověřenými cenami z oficiálních zdrojů, upozorněními na dress code,
-      ZTL zóny a časová okna. Alternativy z GetYourGuide pro porovnání.
-    </p>
-    <div class="screenshot-wrap">
-      <img src="img/vstupenky.png" alt="Vstupenky — Vatikán 50 EUR, Koloseum 36 EUR, Pantheon 10 EUR s Koupit tlačítky" loading="lazy">
-    </div>
-    <p class="screenshot-caption">Řím — Vatikán + Sixtinská kaple (50 EUR), Koloseum + Forum (36 EUR), Pantheon (10 EUR). Verified pricing.</p>
-  </section>
-
-  <section class="prose">
-    <h2>Kde aplikaci najít</h2>
-    <p>Aplikace existuje ve třech formách:</p>
-    <div class="dist-grid">
-      <div class="dist-card">
-        <div class="dist-label">PWA / Web</div>
-        <h3>🌐 Webová aplikace</h3>
-        <p>Hostovaná lokálně, funguje jako PWA. Otevřeš v prohlížeči, přidáš na plochu — funguje offline.</p>
-      </div>
-      <div class="dist-card">
-        <div class="dist-label">Desktop Launcher</div>
-        <h3>🚀 Web Launcher</h3>
-        <p>Jednoduchý HTML launcher, který spustí aplikaci v okně bez lišty prohlížeče. Pro každodenní použití na PC.</p>
-      </div>
-      <div class="dist-card">
-        <div class="dist-label">Windows Installer</div>
-        <h3>🖥️ Windows App (Tauri)</h3>
-        <p>Nativní Windows aplikace zabalená přes Tauri 2.0 + WebView2. Instalátor 1.6 MB, ikona v Start menu.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="prose">
-    <h2>Technologie</h2>
-    <p>Aplikace je napsaná jako pnpm monorepo — React frontend + Tauri desktop wrapper.</p>
-    <div class="tech-pills">
-      <span class="tech-pill">React 18</span>
-      <span class="tech-pill">TypeScript</span>
-      <span class="tech-pill">Vite 5</span>
-      <span class="tech-pill">Tailwind CSS 3</span>
-      <span class="tech-pill">Zustand 4</span>
-      <span class="tech-pill">Leaflet</span>
-      <span class="tech-pill">OSRM routing</span>
-      <span class="tech-pill">OpenStreetMap</span>
-      <span class="tech-pill">open-meteo.com</span>
-      <span class="tech-pill">Tauri 2.0</span>
-      <span class="tech-pill">pnpm monorepo</span>
-    </div>
-    <p style="margin-top:1rem; color:var(--text-mut,#94a3b8); font-size:0.92rem;">
-      Žádné placené API. Routování přes OSRM (zdarma), mapy přes OpenStreetMap (zdarma), počasí přes open-meteo.com (zdarma).
-    </p>
-  </section>
-
+<section aria-label="Moje aplikace">
+  <div class="cards-grid">
+      <a href="config-center.html" class="card card-link" style="border-left:4px solid #4a8fd0;"><div class="card-icon">⚙️</div><h3>Config Center</h3><p>Ovládací panel pro celou chytrou domácnost — místo aby měl člověk pro každou věc vlastní appku, mám jednu stránku v prohlížeči, kde si nastavím všechno: kdy začíná ranní rutina, jak teple se topí, kdy se vypne audio, co dělají světla když přijdu domů.</p><div class="card-cta">Otevřít stránku →</div></a>
+      <a href="italia-travel.html" class="card card-link" style="border-left:4px solid #008c45;"><div class="card-icon">🇮🇹</div><h3>Italia Travel Planner</h3><p>Cestovní plánovač po Itálii pro lidi co tam jezdí často nebo dlouho. Sestaví itinerář, hlídá vstupenky, kreslí mapu, dělá rozpočet, varuje před ZTL zónami (kde dostaneš pokutu 80–200 € za vjezd autem). Funguje offline, žádné účty, žádné platby přes aplikaci.</p><div class="card-cta">Otevřít stránku →</div></a>
+      <a href="ucetni-kniha.html" class="card card-link" style="border-left:4px solid #4a8fd0;"><div class="card-icon">📒</div><h3>Finance — Účetní kniha</h3><p>Domácí účetní kniha — všechny peníze (banky, brokeři, krypto, penzijko), faktury z Gmailu a plán do důchodu v jedné aplikaci. Bez cloudu, bez registrace, vše šifrované.</p><div class="card-cta">Otevřít stránku →</div></a>
+      <a href="finance-analytik.html" class="card card-link" style="border-left:4px solid #5b8c9f;"><div class="card-icon">📈</div><h3>Finance Analytik</h3><p>Vlastní pomocník pro rozhodování o akciích — místo cizích doporučení si aplikace lokálně spočítá, kolik akcie podle mě skutečně stojí, a řekne mi: kup / drž / prodej. 96 pozic z 5 brokerů, bez API klíčů, bez cloudu.</p><div class="card-cta">Otevřít stránku →</div></a>
+      <a href="krabickova-dieta.html" class="card card-link" style="border-left:4px solid #2e7d32;"><div class="card-icon">🥗</div><h3>Krabíčková dieta</h3><p>Vlastní plánovač jídelníčku — místo přihlašování do dietních aplikací co tě sledují má svojí aplikaci co běží jen u mě v prohlížeči. Sestaví si týdenní plán krabiček podle mého kalorického cíle, spočítá nákupní seznam, hlídá makro. Bez účtu, bez cloudu.</p><div class="card-cta">Otevřít stránku →</div></a>
+      <a href="energy-dashboard.html" class="card card-link" style="border-left:4px solid #7cd6ff;"><div class="card-icon">⚡</div><h3>Energy Dashboard (PC)</h3><p>Jednoduché okno na monitoru, kde vidím v reálném čase kolik dům spotřebovává proudu, co to stojí dnes, a co odhaduji za celý měsíc. Nemusím nikam klikat — visí to celý den otevřené.</p><div class="card-cta">Otevřít stránku →</div></a>
+      <a href="rpi-kiosk.html" class="card card-link" style="border-left:4px solid #9cf2a6;"><div class="card-icon">🖥️</div><h3>Domácí panel na zdi</h3><p>Malý dotykový displej na zdi v chodbě, kde ovládám celý byt — světla, audio, topení, scény. Žádné odemykání telefonu, žádné hledání aplikace. Stačí přijít, jeden dotyk a hotovo.</p><div class="card-cta">Otevřít stránku →</div></a>
+      <a href="busline-prace.html" class="card card-link" style="border-left:4px solid #e8a317;"><div class="card-icon">🚌</div><h3>Práce BusLine — turnusy a mzdy<span style="display:inline-block;background:#e8a3171f;color:#e8a317;border:1px solid #e8a31755;padding:.15rem .55rem;border-radius:6px;font-size:.72rem;font-weight:600;margin-left:.4rem;vertical-align:middle">Ve vývoji</span></h3><p>Pracovní aplikace pro řidiče autobusu — automatické zpracování turnusů (rozpisů směn) a výpočet měsíční mzdy podle skutečně odjetých hodin, příplatků a kategorií. Ve vývoji.</p><div class="card-cta">Otevřít stránku →</div></a>
+  </div>
+</section>
 </main>
 
 <footer class="site-footer">
@@ -273,6 +63,7 @@
 
 <script src="../assets/js/main.js"></script>
 
+<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
 <style>
 #__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
 #__lb.open { display:flex }
@@ -294,10 +85,9 @@ main img:hover { transform:scale(1.005) }
   lb.addEventListener('click', close);
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
   document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(){ open(img.src, img.alt); });
+    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
   });
 })();
 </script>
-
 </body>
 </html>
