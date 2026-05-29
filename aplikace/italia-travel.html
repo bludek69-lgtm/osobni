@@ -58,7 +58,12 @@
       <li><strong>Rozpočet s cap utilization</strong> — 12 kategorií (doprava, ubytování, jídlo, vstupenky, parkování, mýto, camping, …), vizuální bar kolik % je zaplaceno, povinné vs volitelné.</li>
       <li><strong>Mapa POI + Google My Maps export</strong> — Body zájmu vizualizované barevnými ikonami, export CSV jedním klikem importovatelné do Google My Maps.</li>
       <li><strong>Camper režim s ZTL warningy</strong> — Profil obytného auta (rozměry, hmotnost), 10 typů stopů, 11 facility chipů, warning badges když je místo v ZTL zóně nebo malé pro tvůj kemper.</li>
-      <li><strong>Funguje offline, multi-platform</strong> — Web PWA + Windows desktop (Tauri NSIS, 1.4 MB) + Android APK (Tauri, 6.9 MB) + portable web launcher — všechno z jednoho codebase, React app běží na všech třech. V Itálii nepotřebuje roaming.</li>
+      <li><strong>Funguje offline, multi-platform</strong> — Web PWA + Windows desktop (Tauri NSIS, 1.7 MB) + Android APK (Tauri, 6.9 MB) + portable web launcher — všechno z jednoho codebase, React app běží na všech třech. V Itálii nepotřebuje roaming.</li>
+      <li><strong>Plánovač cesty (v0.6.3)</strong> — Jedna obrazovka: založ cestu <em>odkud → kam</em> + datumy, uprav / archivuj / smaž cestu, přidávej dopravní spoje i ubytování. Konec roztahaného plánování přes víc záložek.</li>
+      <li><strong>Travel Import Center (v0.6.3)</strong> — Bezpečný import 7 typů (hotel · let · vlak · <strong>trajekt</strong> · vstupenka · aktivita · trasa) z JSON — jednotlivě, jako pole, nebo envelope <code>{ schema_version, items }</code>. Náhled → potvrzení → zápis do itineráře. Booking/Kiwi běží <em>agent-side</em> (data dodá asistent jako JSON), ne přímé volání z appky.</li>
+      <li><strong>Lodní doprava / ferry (v0.6.3)</strong> — Trajekty mezi přístavy (GNV, Moby, Tirrenia, Grimaldi…) s nočním badge 🌙, manuální deep-link, import do itineráře. Itálie bez trajektů na Sardinii/Sicílii nedává smysl.</li>
+      <li><strong>Itinerář krok po kroku + odkaz na dopravce (v0.6.3)</strong> — Sloučený výstup po dnech: doprava + ubytování + vstupenky + aktivity chronologicky. U každého spoje tlačítko <em>„Otevřít u dopravce"</em> (Trenitalia / Italo / GNV…). Tisk / PDF.</li>
+      <li><strong>Pravdivé statusy konektorů (v0.6.3)</strong> — Registr nepředstírá živé API. Každý konektor má poctivý režim: <em>agent</em> / <em>ICS&nbsp;export</em> / <em>CSV&nbsp;export</em> / <em>manual deep-link</em> / <em>mock</em>. Žádné tokeny, žádné platby, žádný scraping.</li>
   </ul>
 </section>
 
@@ -164,9 +169,35 @@
 </section>
 
 <section>
+  <h2>Live screenshoty — v0.6.3 (Plánovač + Import Center + Ferry)</h2>
+  <p>Z funkční instalace v0.6.3. Nový unifikovaný plánovač, Travel Import Center se 7 typy položek (vč. trajektů) a itinerář s odkazem „Otevřít u dopravce".</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;margin-top:.6rem">
+    <figure style="margin:0"><img src="img/v063_01_connectors.png" alt="Konektory — pravdivý registr: agent / ICS export / CSV export / manual deep-link / mock, žádné live API" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Konektory — pravdivé statusy (agent / ICS / CSV / deep-link / mock), žádné předstírané live API</figcaption></figure>
+    <figure style="margin:0"><img src="img/v063_02_planner.png" alt="Plánovač — založ cestu odkud→kam, uprav/archivuj/smaž, přidej dopravu a ubytování na jednom místě" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Plánovač cesty — odkud → kam, dopravní spoje a ubytování na jedné obrazovce</figcaption></figure>
+    <figure style="margin:0"><img src="img/v063_03_import_review.png" alt="Travel Import Center — náhled importu (let + trajekt + vstupenka) před potvrzením, validace a sanitizace URL" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Travel Import Center — náhled (let · trajekt · vstupenka) před potvrzením</figcaption></figure>
+    <figure style="margin:0"><img src="img/v063_04_itinerary.png" alt="Itinerář — den po dni: vlak Roma→Firenze (Trenitalia FR9512), noční trajekt Genova→Olbia (GNV), vstupenka, aktivity; u spojů odkaz Otevřít u dopravce" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Itinerář — vlak Trenitalia FR9512 + noční trajekt GNV 🌙 + vstupenka, s odkazem „Otevřít u dopravce"</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <h2>Vývojový deník — v0.6.3 (29. 5. 2026)</h2>
+  <p><strong>Z plánovače trasy se stal použitelný nástroj.</strong> Předchozí verze uměly hodně zobrazovat, ale málo přidávat. Tohle vydání to obrátilo:</p>
+  <ul style="line-height:1.7">
+    <li><strong>Jeden plánovač místo pěti záložek.</strong> Cestu teď založím jako <em>odkud → kam</em> + datumy a na jednom místě k ní přidávám spoje a ubytování. Cesta jde upravit, archivovat i smazat — žádné „demo, co nejde editovat".</li>
+    <li><strong>Import z asistenta, ne scraping.</strong> Booking a Kiwi nevolá appka — vyhledá je asistent (Claude/Cowork) a předá je jako bezpečný JSON. Aplikace ho jen zkontroluje, ukáže náhled a po mém potvrzení zapíše do itineráře. Žádné tokeny, žádné účty, žádné automatické platby.</li>
+    <li><strong>Konečně i lodě.</strong> Trajekty mezi přístavy (Sardinie, Sicílie, Korsika) — s nočním režimem, operátorem a odkazem na rezervaci. Bez toho se po Itálii cestovat nedá.</li>
+    <li><strong>Itinerář, který se dá použít na cestě.</strong> Den po dni: doprava, kde spím, co mám rezervované, co budu dělat — a u každého spoje tlačítko „Otevřít u dopravce". Plus tisk / PDF do mobilu.</li>
+    <li><strong>Poctivé statusy.</strong> Po nezávislém auditu (ChatGPT) jsem srovnal, co je opravdu živé a co je manuální / mock. Registr konektorů teď nelže — žádné „OK" tam, kde je jen ruční odkaz.</li>
+    <li><strong>Pod kapotou:</strong> 199 unit testů, sjednocená verze 0.6.3 napříč web/Windows/Android, opravené aliasy polí z webových odkazů (dep/arr/train), sanitizace HTML v importu, blokace nebezpečných <code>javascript:</code>/<code>data:</code> odkazů.</li>
+  </ul>
+  <p style="color:var(--txt-muted,#666)">Postaveno script-first, jeden uživatel, vše lokálně. Booking.com connector běží na straně asistenta — appka sama nikdy nevolá placené API.</p>
+</section>
+
+<section>
   <h2>Stav</h2>
-  <p>Funkční verze <strong>0.6.2</strong> (květen 2026). Windows NSIS installer + Android APK + PWA + web launcher. Soukromé pro vlastní cesty — žádné public hosting, žádné účty, žádné platby přes aplikaci.</p>
+  <p>Funkční verze <strong>0.6.3</strong> (29. 5. 2026). Windows NSIS installer (1,7 MB) + Android APK (6,9 MB, arm64) + PWA + web launcher. Soukromé pro vlastní cesty — žádné public hosting, žádné účty, žádné platby přes aplikaci.</p>
   <ul style="line-height:1.8;margin-top:.5rem">
+    <li><strong>v0.6.3 (29. 5. 2026)</strong> — Plánovač cest (založ cestu odkud–kam, přidávej dopravu a ubytování), Travel Import Center pro 7 typů položek (vlak / let / trajekt / ubytování / vstupenka / aktivita / mezizastávka) včetně dávkového importu přes obálku, doprava trajektem, krok-za-krokem itinerář s odkazem „Otevřít u dopravce ↗", pravdivé stavy konektorů (žádné falešné „live API"), perzistence aktuální cesty, sjednocené branding/metadata na „Budinský Luděk". Windows NSIS installer (1,7 MB) + Android APK (6,9 MB, arm64).</li>
     <li><strong>v0.6.2 (28. 5. 2026)</strong> — Android APK (Tauri, arm64), oprava Czech NSIS stringů v instalátoru, verze + jméno viditelné v Sidebaru a Topbaru, update banner (automatická kontrola nové verze), oprava build skriptu (správná cesta pro APK výstup).</li>
     <li><strong>v0.6.1 (28. 5. 2026)</strong> — Leaflet/OSM mapa s reálnými piny, OSRM polyline pro roadtrip trasy, napojení akčních tlačítek zastávek na store (Přidat do itineráře / Přidat na mapu / Přidat do kalendáře).</li>
   </ul>

@@ -1,6 +1,6 @@
 {
-  "version": "0.6.2",
-  "releaseDate": "2026-05-28",
+  "version": "0.6.3",
+  "releaseDate": "2026-05-29",
   "downloadUrl": "https://bludek69-lgtm.github.io/osobni/aplikace/italia-travel.html",
-  "notes": ""
+  "notes": "Plánovač cest, Travel Import Center (7 typů + dávkový import), doprava trajektem, krok-za-krokem itinerář s odkazem na dopravce, pravdivé stavy konektorů, Windows installer + Android APK."
 }
