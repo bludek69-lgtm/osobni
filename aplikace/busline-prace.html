@@ -40,7 +40,7 @@
   <h1><span style="margin-right:.4rem">🚌</span>Práce BusLine — turnusy a mzdy</h1>
   <p class="hero-sub">Pracovní aplikace pro řidiče autobusu — automatické zpracování turnusů (rozpisů směn) a výpočet měsíční mzdy podle skutečně odjetých hodin, příplatků a kategorií. Ve vývoji.</p>
   <p style="margin-top:.6rem"><span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Excel / XLSX parser</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PDF parser (turnusy)</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Lokální Windows app</span></p>
-  <p style="margin-top:.8rem"><a href="index.html">← Zpět na Moje aplikace</a></p>
+  <p style="margin-top:.8rem"><a href="index.html">← Zpět na Moje aplikace</a><button id="openDenik" class="diary-btn" style="margin-left:1rem">📖 Vývojový deník</button></p>
 </section>
 
 <section>
@@ -78,6 +78,40 @@
 </footer>
 
 <script src="../assets/js/main.js"></script>
+
+<!-- vyvojovy denik popup -->
+<style>
+.diary-btn { font: inherit; cursor:pointer; background:#e8a317; color:#fff; border:none; padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem; }
+.diary-btn:hover { filter:brightness(1.1); }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--txt,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
+.diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--txt-muted,#666); }
+.diary-close:hover { color:var(--txt,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
+</style>
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Vyvojovy denik" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head"><h2 style="margin:0">📖 Vývojový deník — Práce BusLine</h2><button class="diary-close" aria-label="Zavrit">✕</button></div>
+    <div class="diary-body"><ul style="line-height:1.8"><li><strong>Záměr (ve vývoji)</strong> — Pracovní appka pro řidiče autobusu — automatické zpracování turnusů (rozpisů směn) a výpočet měsíční mzdy podle skutečně odjetých hodin, příplatků a kategorií.</li><li><strong>Plán</strong> — Import turnusu (PDF/foto/text) → rozpad na směny → výpočet hodin, nočních, víkendů, svátků → měsíční mzda. Vše lokálně, žádný cloud.</li><li><strong>Stav</strong> — Ve vývoji — sbírám reálné turnusy a mzdová pravidla, ať výpočet sedí na korunu.</li></ul></div>
+  </div>
+</div>
+<script>
+(function(){
+  var modal=document.getElementById('diary'); if(!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  var ob=document.getElementById('openDenik'); if(ob) ob.addEventListener('click', open);
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+
 
 <!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
 <style>
