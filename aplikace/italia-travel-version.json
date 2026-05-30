@@ -1,6 +1,6 @@
 {
-  "version": "0.6.3",
-  "releaseDate": "2026-05-29",
+  "version": "0.7.0",
+  "releaseDate": "2026-05-30",
   "downloadUrl": "https://bludek69-lgtm.github.io/osobni/aplikace/italia-travel.html",
-  "notes": "Plánovač cest, Travel Import Center (7 typů + dávkový import), doprava trajektem, krok-za-krokem itinerář s odkazem na dopravce, pravdivé stavy konektorů, Windows installer + Android APK."
+  "notes": "AI Asistent (Gemini): generátor itineráře, asistent nad cestou (chat), optimalizace roadtripu, odhad rozpočtu, kontrola cesty, italské fráze, cestovní deník. Sdílený AI klíč, vše jen poradí (žádné rezervace). Plus vše z 0.6.3 (Travel Import Center, doprava trajektem, itinerář)."
 }
