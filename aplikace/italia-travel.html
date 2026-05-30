@@ -23,7 +23,7 @@
     </div>    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
     <nav class="nav" aria-label="Hlavní navigace">
     <a href="../">Domů</a>
-    <a href="../aplikace/" aria-current="page">Aplikace</a>
+    <a href="../aplikace/" aria-current="page">Moje aplikace</a>
     <a href="../finance/">Finance</a>
     <a href="../cestovani/">Cestování</a>
     <a href="../cestovani/italie/">Itálie</a>
@@ -40,7 +40,7 @@
   <h1><span style="margin-right:.4rem">🇮🇹</span>Italia Travel Planner</h1>
   <p class="hero-sub">Cestovní plánovač po Itálii pro lidi co tam jezdí často nebo dlouho. Sestaví itinerář, hlídá vstupenky, kreslí mapu, dělá rozpočet, varuje před ZTL zónami (kde dostaneš pokutu 80–200 € za vjezd autem). Funguje offline, žádné účty, žádné platby přes aplikaci.</p>
   <p style="margin-top:.6rem"><span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vite</span> <span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tauri (Windows + Android)</span> <span class="pill" style="background:#008c451a;color:#008c45;border:1px solid #008c4540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PWA</span></p>
-  <p style="margin-top:.8rem"><a href="index.html">← Zpět na Moje aplikace</a></p>
+  <p style="margin-top:.8rem"><a href="index.html">← Zpět na Moje aplikace</a><button id="openDeník" class="diary-btn" style="margin-left:1rem">📖 Vývojový deník</button></p>
 </section>
 
 <section>
@@ -179,19 +179,28 @@
   </div>
 </section>
 
-<section>
-  <h2>Vývojový deník — v0.6.3 (29. 5. 2026)</h2>
-  <p><strong>Z plánovače trasy se stal použitelný nástroj.</strong> Předchozí verze uměly hodně zobrazovat, ale málo přidávat. Tohle vydání to obrátilo:</p>
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Vývojový deník" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head">
+      <h2 style="margin:0">📖 Vývojový deník — v0.6.3+ (Italia Travel)</h2>
+      <button class="diary-close" aria-label="Zavřít">✕</button>
+    </div>
+    <div class="diary-body">
+  <p><strong>v0.7.0 — AI Asistent (30. 5. 2026).</strong> Přibyla stránka <em>AI Asistent</em> (Gemini): vygeneruje itinerář po dnech, odpoví na otázky o mé cestě, optimalizuje roadtrip, odhadne rozpočet, zkontroluje plán na konflikty, poradí italské fráze a napíše cestovní deník. Sdílený AI klíč, vše jen poradí (žádné rezervace), klíč nikdy v appce.</p>
+  <p><strong>Z plánovače trasy se stal použitelný nástroj (v0.6.3).</strong> Předchozí verze uměly hodně zobrazovat, ale málo přidávat. Tohle vydání to obrátilo:</p>
   <ul style="line-height:1.7">
     <li><strong>Jeden plánovač místo pěti záložek.</strong> Cestu teď založím jako <em>odkud → kam</em> + datumy a na jednom místě k ní přidávám spoje a ubytování. Cesta jde upravit, archivovat i smazat — žádné „demo, co nejde editovat".</li>
     <li><strong>Import z asistenta, ne scraping.</strong> Booking a Kiwi nevolá appka — vyhledá je asistent (Claude/Cowork) a předá je jako bezpečný JSON. Aplikace ho jen zkontroluje, ukáže náhled a po mém potvrzení zapíše do itineráře. Žádné tokeny, žádné účty, žádné automatické platby.</li>
     <li><strong>Konečně i lodě.</strong> Trajekty mezi přístavy (Sardinie, Sicílie, Korsika) — s nočním režimem, operátorem a odkazem na rezervaci. Bez toho se po Itálii cestovat nedá.</li>
     <li><strong>Itinerář, který se dá použít na cestě.</strong> Den po dni: doprava, kde spím, co mám rezervované, co budu dělat — a u každého spoje tlačítko „Otevřít u dopravce". Plus tisk / PDF do mobilu.</li>
     <li><strong>Poctivé statusy.</strong> Po nezávislém auditu (ChatGPT) jsem srovnal, co je opravdu živé a co je manuální / mock. Registr konektorů teď nelže — žádné „OK" tam, kde je jen ruční odkaz.</li>
-    <li><strong>Pod kapotou:</strong> 199 unit testů, sjednocená verze 0.6.3 napříč web/Windows/Android, opravené aliasy polí z webových odkazů (dep/arr/train), sanitizace HTML v importu, blokace nebezpečných <code>javascript:</code>/<code>data:</code> odkazů.</li>
+    <li><strong>Pod kapotou:</strong> 199 unit testů, sjednocená verze napříč web/Windows/Android, opravené aliasy polí z webových odkazů (dep/arr/train), sanitizace HTML v importu, blokace nebezpečných <code>javascript:</code>/<code>data:</code> odkazů.</li>
   </ul>
   <p style="color:var(--txt-muted,#666)">Postaveno script-first, jeden uživatel, vše lokálně. Booking.com connector běží na straně asistenta — appka sama nikdy nevolá placené API.</p>
-</section>
+    </div>
+  </div>
+</div>
 
 <section>
   <h2>Stav</h2>
@@ -215,6 +224,32 @@
 </footer>
 
 <script src="../assets/js/main.js"></script>
+
+<!-- ═══ Vývojový deník — popup ═══ -->
+<style>
+.diary-btn { font: inherit; cursor:pointer; background:#008c45; color:#fff; border:none; padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem; }
+.diary-btn:hover { background:#00a050; }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--txt,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
+.diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--txt-muted,#666); }
+.diary-close:hover { color:var(--txt,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
+</style>
+<script>
+(function(){
+  var modal = document.getElementById('diary'); if(!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  var ob=document.getElementById('openDeník'); if(ob) ob.addEventListener('click', open);
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
 
 <!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
 <style>
