@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hardware co řídí dům — Homey Pro 2026, 79 zařízení, infrastruktura okolo." />
+  <meta name="theme-color" content="#0a0e14" />
+  <title>Zařízení | SMART HOME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Přeskočit na obsah</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="SMART HOME – home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+      </a>
+      <nav class="primary-nav" aria-label="Hlavní navigace">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+          <span class="sr-only">Otevřít menu</span>
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+        <ul id="nav-list" class="nav-list">
+          <li><a href="index.html">Domů</a></li>
+          <li><a href="prozivani.html">Jak to funguje</a></li>
+          <li><a href="zarizeni.html" class="is-active" aria-current="page">Zařízení</a></li>
+          <li><a href="hardware-komplet.html">Hardware</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="pribeh.html">Příběh</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="aplikace.html">Sbírka App</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+<section id="zarizeni" class="section">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">05 — Zařízení</p>
+          <h2 class="section-title">Co všechno systém řídí</h2>
+          <p class="section-lead">
+            Zařízení rozdělená do funkčních kategorií. Každá kategorie má svůj router
+            a svá pravidla.
+          </p>
+        </header>
+
+        <div class="category-grid">
+          <article class="category-card">
+            <span class="category-icon" aria-hidden="true">💡</span>
+            <h3>Světla</h3>
+            <p>
+              Open space + ložnice + pracovna. Multi-signal: FP2 presence + Z-Wave motion.
+              Privacy režim (roleta nahoře = open space LED off). Sunrise simulace
+              při ranním buzení.
+            </p>
+          </article>
+
+          <article class="category-card">
+            <span class="category-icon" aria-hidden="true">🔥</span>
+            <h3>Topení</h3>
+            <p>
+              FGS-214 + 3× TRV. Tři režimy (auto / manual / off), state-aware hystereze,
+              anti-cycling, runtime-based kWh tracking. Plánováno: AI vrstvy
+              (preWakeBoost, weatherAdjust, occupancyBonus).
+            </p>
+          </article>
+
+          <article class="category-card">
+            <span class="category-icon" aria-hidden="true">🔊</span>
+            <h3>Audio</h3>
+            <p>
+              Cast speakery + TTS pipeline s 200-char split (Google Cast hard limit).
+              Sleep-respect (žádné TTS v noci), priority engine, radio router,
+              briefing každé ráno přes Gemini.
+            </p>
+          </article>
+
+          <article class="category-card">
+            <span class="category-icon" aria-hidden="true">📡</span>
+            <h3>Senzory</h3>
+            <p>
+              FP2 mmWave presence, Z-Wave motion, door/window kontakty, lux,
+              teplota, vlhkost, PM2.5. Všechna data vstupují do rozhodovací vrstvy (request-first pipeline).
+            </p>
+          </article>
+
+          <article class="category-card">
+            <span class="category-icon" aria-hidden="true">📷</span>
+            <h3>Kamery</h3>
+            <p>
+              Indoor + outdoor. Stream přes Homey, automatika spínání během odchodu /
+              při alarm triggeru. Live preview na dashboardu u vstupu.
+            </p>
+          </article>
+
+          <article class="category-card">
+            <span class="category-icon" aria-hidden="true">🪟</span>
+            <h3>Rolety</h3>
+            <p>
+              Lux-driven + rezim_doma + roleta_router v3. Hystereze pro stable řízení,
+              privacy guard pro open space, ranní/večerní časová okna.
+            </p>
+          </article>
+
+          <article class="category-card category-card-accent">
+            <span class="category-icon" aria-hidden="true">🧠</span>
+            <h3>AI / Diagnostika</h3>
+            <p>
+              Brain Guardian, state validator, expected state engine, release guard,
+              self-healing engine, daily Gemini analýza. Meta-vrstva nad celým systémem.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Zvětšený obrázek">
+    <button class="lightbox-close" aria-label="Zavřít zvětšení">&times;</button>
+    <img class="lightbox-img" src="" alt="" />
+    <p class="lightbox-cap"></p>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> SMART HOME projekt · Semily · Vyrobeno s ❤️ a script-first myšlením.</p>
+      <p class="footer-meta">Veřejná prezentace · žádné API klíče · žádné lokální IP · žádné ovládání odtud.</p>
+      <p class="footer-meta"><a href="technicka-mapa.html">Technická mapa →</a> · <a href="index.html">Domů</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Topení, ranní rutina, příchod/odchod, fyzická tlačítka, koupelna, světelný cyklus, robot vysavač." />
+  <meta name="theme-color" content="#0a0e14" />
+  <title>Funkce | SMART HOME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Přeskočit na obsah</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="SMART HOME – home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+      </a>
+      <nav class="primary-nav" aria-label="Hlavní navigace">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+          <span class="sr-only">Otevřít menu</span>
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+        <ul id="nav-list" class="nav-list">
+          <li><a href="index.html">Domů</a></li>
+          <li><a href="prozivani.html" class="is-active" aria-current="page">Jak to funguje</a></li>
+          <li><a href="zarizeni.html">Zařízení</a></li>
+          <li><a href="hardware-komplet.html">Hardware</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="pribeh.html">Příběh</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="aplikace.html">Sbírka App</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+<section id="funkce" class="section">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">🏠 Prožívání · Funkce</p>
+          <h2 class="section-title">Co systém reálně dělá</h2>
+          <p class="section-lead">
+            Rozcestník. Klíčové funkce jsou každá v dedikované podstránce s detailním
+            denním provozem, hardware listem a tech sekcí. Tady je krátký přehled —
+            kam jít pro co. Plus jeden plnohodnotný popis vysavače Giuseppe níže
+            (zatím nemá vlastní stránku).
+          </p>
+        </header>
+
+        <div class="home-grid home-grid-pillars">
+          <a href="topeni-klima.html" class="home-card home-card-pillar">
+            <span class="home-card-icon" aria-hidden="true">🔥</span>
+            <h3>Topení a klima</h3>
+            <p>Elektrický kotel 9 kW + 3 zónové termo hlavice, 3 režimy, AI vrstvy nad rozvrhem.</p>
+            <span class="home-card-cta">Otevřít →</span>
+          </a>
+          <a href="rano-rutina.html" class="home-card home-card-pillar">
+            <span class="home-card-icon" aria-hidden="true">🌅</span>
+            <h3>Ranní rutina (3:15)</h3>
+            <p>Minute-by-minute timeline pondělního rána, pre-wake boost, briefing split.</p>
+            <span class="home-card-cta">Otevřít →</span>
+          </a>
+          <a href="navrat-domu.html" class="home-card home-card-pillar">
+            <span class="home-card-icon" aria-hidden="true">🚗</span>
+            <h3>Příchod / odchod</h3>
+            <p>Multi-signal arrival pipeline — geofence + door + motion confirm.</p>
+            <span class="home-card-cta">Otevřít →</span>
+          </a>
+          <a href="ovladace.html" class="home-card home-card-pillar">
+            <span class="home-card-icon" aria-hidden="true">🎲</span>
+            <h3>Fyzická tlačítka a ovladače</h3>
+            <p>Aqara Cube T1 Pro, gestural input, fyzická tlačítka jako fallback.</p>
+            <span class="home-card-cta">Otevřít →</span>
+          </a>
+          <a href="audio.html" class="home-card home-card-pillar">
+            <span class="home-card-icon" aria-hidden="true">🚿</span>
+            <h3>Koupelna (audio + světlo)</h3>
+            <p>Motion → bathroom router, ranní Sanremo radio, jemná dim cesta v noci.</p>
+            <span class="home-card-cta">Otevřít →</span>
+          </a>
+          <a href="svetla.html" class="home-card home-card-pillar">
+            <span class="home-card-icon" aria-hidden="true">💡</span>
+            <h3>Adaptivní světelný cyklus</h3>
+            <p>Dual-sensor, lux-driven, privacy guard, sleep guard. Pipeline detail.</p>
+            <span class="home-card-cta">Otevřít →</span>
+          </a>
+        </div>
+        <!-- VYSAVAČ GIUSEPPE -->
+        <article class="feature">
+          <div class="feature-text">
+            <span class="feature-badge">🤖 Giuseppe</span>
+            <h3>Vysavač jako autonomní agent</h3>
+            <p>
+              <strong>Xiaomi Viomi V7 robot vysavač</strong>, doma jménem
+              <strong>Giuseppe</strong> (každé zařízení má jméno, je to
+              přátelštější než „vysavač_01"). Wi-Fi, fixní IP, integrovaný
+              v Homey přes Mi-Home komunitní app
+              (driver <code>vacuum_viomi_vacuum_v7</code> ověřeno v Homey API).
+            </p>
+            <h4>Plán úklidu</h4>
+            <ul class="feature-list">
+              <li><strong>Schedule</strong>: <code>sh_vacuum_router_v1</code> spouští úklid v okně, kdy nikdo není doma (geofence + telefon + scheduler).</li>
+              <li><strong>Žádné rušení</strong>: pokud je v bytě motion (skutečný — ne falešný), úklid se odloží. Žádný robot vám neproletí kolem nohou.</li>
+              <li><strong>Sleep guard</strong>: nikdy se neuklízí v noci ani když svítí <code>sh_spim=yes</code>.</li>
+              <li><strong>Per-zone úklid</strong>: speciální flow „vyluxuj jen kuchyni" (po vaření, manuální trigger z dashboardu nebo z kostky).</li>
+            </ul>
+            <h4>Token security saga</h4>
+            <p>
+              Pairing Viomi v Homey vyžaduje <strong>cloud token z Mi Home</strong>.
+              Token je <em>session-only</em> — rotuje při každém Wi-Fi reconnect,
+              což znamená že po reset routeru / výměně Wi-Fi sítě se musí
+              znovu získat. 5-hodinová epická saga: factory reset → AP mód
+              (vlastní SSID <code>viomi-vacuum-v8</code>) → discover token →
+              configure_wifi → re-pair v Homey. Po té už running stable.
+            </p>
+            <h4>Diagnostika</h4>
+            <p>
+              Battery, mode, last_clean_time, error_code se logují každou hodinu
+              do EventLog. <code>sh_self_healing_v4</code> má vlastní detector:
+              pokud je Giuseppe stuck (battery se nemění + mode = error) →
+              alert. Reálný incident: zachycená nožička stoličky, robot
+              v dead-loop. Health detect to chytil dřív než já.
+            </p>
+          </div>
+          <div class="feature-visual">
+            <svg viewBox="0 0 280 280" class="diagram" aria-label="Robot vysavač Giuseppe">
+              <defs>
+                <radialGradient id="vacuumBody" cx="50%" cy="40%" r="60%">
+                  <stop offset="0%" stop-color="#e8e8e8"/>
+                  <stop offset="100%" stop-color="#999999"/>
+                </radialGradient>
+              </defs>
+              <!-- Robot body (circle, top view) -->
+              <circle cx="140" cy="140" r="90" fill="url(#vacuumBody)" stroke="#666" stroke-width="2"/>
+              <!-- Lidar dome -->
+              <circle cx="140" cy="100" r="24" fill="#1c2330" stroke="#444" stroke-width="2"/>
+              <circle cx="140" cy="100" r="16" fill="none" stroke="#00e5ff" stroke-width="1" opacity="0.6"/>
+              <!-- Lidar beams -->
+              <line x1="140" y1="100" x2="140" y2="40" stroke="#00e5ff" stroke-width="1" opacity="0.4" stroke-dasharray="2,3"/>
+              <line x1="140" y1="100" x2="80" y2="60" stroke="#00e5ff" stroke-width="1" opacity="0.4" stroke-dasharray="2,3"/>
+              <line x1="140" y1="100" x2="200" y2="60" stroke="#00e5ff" stroke-width="1" opacity="0.4" stroke-dasharray="2,3"/>
+
+              <!-- Brushes -->
+              <circle cx="100" cy="180" r="12" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
+              <circle cx="180" cy="180" r="12" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
+
+              <!-- Buttons -->
+              <circle cx="140" cy="155" r="6" fill="#22c55e"/>
+              <text x="140" y="159" text-anchor="middle" fill="#000" font-size="8" font-weight="700">⏵</text>
+
+              <!-- Name tag -->
+              <rect x="80" y="220" width="120" height="30" rx="6" fill="#0a0e14" stroke="#00e5ff"/>
+              <text x="140" y="240" text-anchor="middle" fill="#00e5ff" font-size="13" font-weight="700">GIUSEPPE</text>
+
+              <!-- Status indicator -->
+              <text x="140" y="270" text-anchor="middle" fill="#22c55e" font-size="10">● ready · battery 87%</text>
+
+              <!-- Decorative dust trail -->
+              <circle cx="40" cy="90" r="2" fill="#aab4c2" opacity="0.5"/>
+              <circle cx="50" cy="100" r="1.5" fill="#aab4c2" opacity="0.4"/>
+              <circle cx="35" cy="120" r="2" fill="#aab4c2" opacity="0.4"/>
+              <circle cx="240" cy="200" r="2" fill="#aab4c2" opacity="0.5"/>
+              <circle cx="250" cy="220" r="1.5" fill="#aab4c2" opacity="0.4"/>
+            </svg>
+            <p class="diagram-cap">Stylizovaná ilustrace Giuseppe (Xiaomi Viomi V8) z pohledu shora. Lidar dome, dvě boční kartáče, status LED.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Zvětšený obrázek">
+    <button class="lightbox-close" aria-label="Zavřít zvětšení">&times;</button>
+    <img class="lightbox-img" src="" alt="" />
+    <p class="lightbox-cap"></p>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> SMART HOME projekt · Semily · Vyrobeno s ❤️ a script-first myšlením.</p>
+      <p class="footer-meta">Veřejná prezentace · žádné API klíče · žádné lokální IP · žádné ovládání odtud.</p>
+      <p class="footer-meta"><a href="technicka-mapa.html">Technická mapa →</a> · <a href="index.html">Domů</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

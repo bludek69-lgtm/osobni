@@ -1,173 +1,229 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Home — Luděk</title>
-  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Domácnost řízená script-first architekturou nad Homey Pro 2026. Garsonka v přízemí, 79 zařízení, 100+ skriptů, vlastní AI Brain Guardian." />
+  <meta name="theme-color" content="#0a0e14" />
+  <title>SMART HOME — projekt Luďka Budínského | SMART HOME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="theme-smart-home">
+<body>
+  <a href="#main" class="skip-link">Přeskočit na obsah</a>
 
-<header class="site-header">
-  <div class="site-header__inner">
-    <a href="../" class="brand">
-      <span class="brand-dot"></span>
-      Luděk
-    </a>
-    <div class="lang-switcher" aria-label="Jazyk">
-      <a href="./" hreflang="cs" aria-current="page" title="Česky">CS</a>
-      <a href="../en/smart-home/" hreflang="en" title="English">EN</a>
-      <a href="../it/smart-home/" hreflang="it" title="Italiano">IT</a>
-    </div>
-    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
-    <nav class="nav" aria-label="Hlavní navigace">
-    <a href="../">Domů</a>
-    <a href="../aplikace/">Moje aplikace</a>
-    <a href="../finance/">Finance</a>
-    <a href="../cestovani/">Cestování</a>
-    <a href="../cestovani/italie/">Itálie</a>
-    <a href="../zaliby/rybareni/">Rybaření</a>
-    <a href="../smart-home/" aria-current="page">Smart Home</a>
-    <a href="../ai.html">AI</a>
-    </nav>
-  </div>
-</header>
-
-<main id="main">
-  <section class="hero">
-    <span class="hero-accent">Smart Home</span>
-    <h1>Dům, který si rozumí sám se sebou</h1>
-    <p class="hero-sub">
-      Roky stavím systém, který se sám stará o topení, světla, kávu a rytmus dne.
-      Žádná univerzální appka — domácnost, která zná moje zvyky a sama si všímá, když je něco divně.
-    </p>
-  </section>
-
-  <section class="prose">
-    <h2>Co to umí v praxi</h2>
-    <p>
-      Domácnost nečeká, až sáhnu po telefonu. Sleduje víc signálů najednou — jestli jsem doma,
-      jestli spím, jestli je ráno, kde se hýbu — a podle toho rozhoduje sama. Pár příkladů:
-    </p>
-    <ul style="line-height:1.9;">
-      <li>🌅 <strong>Ráno v 3:15</strong> — když budík zazvoní a já se hnu z postele, spustí se rádio
-        v kuchyni, jemně rozsvítí ložnice, připraví kávu. Kde nejsem, tam svítit nezačne.</li>
-      <li>🛏 <strong>Noc</strong> — když si zajdu na záchod, nezapne se „celá ranní rutina".
-        Systém pozná, že jen procházím, a po pár minutách zase utlumí.</li>
-      <li>🔥 <strong>Topení</strong> — každá zóna má vlastní rozvrh. Když jsem pryč, sníží teplotu.
-        Když přijdu domů, zahřeje koupelnu. Šetrnější než celodenní 24°C.</li>
-      <li>🚪 <strong>Příchod domů</strong> — telefon přijde do dosahu, dům přepne do „doma" módu,
-        nahodí audio podle denní doby, zkontroluje rolety a okna.</li>
-      <li>🤖 <strong>Anomálie</strong> — když se něco děje divně (alarm v 3 ráno + nikde žádný pohyb,
-        nebo světla zůstávají svítit když jsem pryč), systém si toho všimne a pošle mi push.</li>
-    </ul>
-    <p>
-      Cíl: méně klikání po vypínačích, víc klidu. Dům si rozumí sám se sebou.
-    </p>
-  </section>
-
-  <section>
-    <h2>Co všechno řídí</h2>
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-icon">🔥</div>
-        <h3>Topení &amp; klima</h3>
-        <p>4 zóny s vlastním rozvrhem. Tři režimy (Auto / Manuál / Off). Šetrnější než celodenní jedno tlačítko.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">💡</div>
-        <h3>Světla</h3>
-        <p>Stmívají se podle denní doby a venkovního světla. Když jsem pryč nebo spím, samy se vypnou.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🔊</div>
-        <h3>Audio &amp; ranní rutina</h3>
-        <p>Rádio v kuchyni, jemný briefing, hudba podle scény. Nikdy nezačne hrát, když spím.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🛡</div>
-        <h3>Bezpečnost</h3>
-        <p>Pohyb, dveře, okna, kamery. Když je něco mimo normál, dostanu zprávu na telefon.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">⚡</div>
-        <h3>Energie</h3>
-        <p>Sleduje spotřebu spotřebičů. Předem vidím, kolik kWh stojí kotel, lednice nebo varná deska.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">📊</div>
-        <h3>Dashboardy</h3>
-        <p>Tři displeje (velký monitor, notebook, RPi panel v předsíni). Stav celého domu na jeden pohled.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="prose">
-    <h2>Pod pokličkou (pro techniky)</h2>
-    <p>
-      Postavené na <strong>Homey Pro 2026</strong> + vlastní vrstvě HomeyScriptů.
-      Architektura: <em>request-first pipeline</em> (skripty žádají, router rozhoduje),
-      device map jako jediný zdroj pravdy pro názvy zařízení, multi-signal sleep/wake
-      rozhodování, kontrolní vrstva pro detekci anomálií a regresí. Logy a technická data
-      se ukládají lokálně na Raspberry Pi / SSD (JSONL + SQLite). Mobilní notifikace přes
-      Homey notifications API. Kompletní popis systému a dashboardy najdeš na samostatném
-      webu níž.
-    </p>
-  </section>
-
-  <section class="external-cta">
-    <h2>Plný technický web</h2>
-    <p>
-      Architektura, dashboardy, blog a build log mají vlastní stránku —
-      smart-home-website běží jako technický projekt.
-    </p>
-    <p style="margin-top: 1.5rem;">
-      <a href="https://bludek69-lgtm.github.io/smart-home-website/" target="_blank" rel="noopener" class="btn btn-primary">
-        Otevřít smart-home-website →
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="SMART HOME – home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
       </a>
-    </p>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="site-footer__inner">
-    <div>© Luděk · Osobní web</div>
-    <div class="footer-links">
-      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
-      <a href="https://bludek69-lgtm.github.io/smart-home-website/" target="_blank" rel="noopener">Smart Home web</a>
+      <nav class="primary-nav" aria-label="Hlavní navigace">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+          <span class="sr-only">Otevřít menu</span>
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+        <ul id="nav-list" class="nav-list">
+          <li><a href="index.html" class="is-active" aria-current="page">Domů</a></li>
+          <li><a href="prozivani.html">Jak to funguje</a></li>
+          <li><a href="zarizeni.html">Zařízení</a></li>
+          <li><a href="hardware-komplet.html">Hardware</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="pribeh.html">Příběh</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="aplikace.html">Sbírka App</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
+
+  <main id="main">
+    <section id="home" class="section section-hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">
+            <span class="status-dot" aria-hidden="true"></span>
+            Live · Homey Pro 2026 · Semily
+          </p>
+          <h1 class="hero-title">
+            Smart home jako<br />
+            <span class="grad-text">živý organismus</span>
+          </h1>
+          <p class="hero-lead">
+            Domácnost řízená script-first architekturou nad <strong>Homey Pro 2026</strong>.
+            Garsonka v přízemí, 79 zařízení v 11 funkčních zónách
+            (Jídelna, Kitchen, Koupelna, Ložnice, Pracovna, Prádelna,
+            Předsíň, Spolecne, Toaleta, Pc Setup + sklad), 100+ HomeyScriptů,
+            200+ flow automatizací, 500+ stavových proměnných, vlastní AI Brain Guardian
+            a multi-resolution dashboardy. Vše vyvíjené v jednom bytě
+            v Semilech jako roky tichého refaktoringu od první žárovky
+            k samodiagnostickému systému.
+          </p>
+          <div class="hero-cta">
+            <a href="dashboard.html" class="btn btn-primary">Explore Dashboard →</a>
+            <a href="ai-brain.html" class="btn btn-ghost">Brain Guardian</a>
+          </div>
+        </div>
+
+        <aside class="hero-stats" aria-label="Klíčová čísla">
+          <div class="stat">
+            <span class="stat-num" data-count="132">132</span>
+            <span class="stat-label">HomeyScriptů</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="232">232</span>
+            <span class="stat-label">Flows</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="82">82</span>
+            <span class="stat-label">Zařízení</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="11">11</span>
+            <span class="stat-label">Funkčních zón</span>
+          </div>
+        </aside>
+      </div>
+      <div class="hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- HERO SHOWCASE: dashboard + 3 thumbnails -->
+    <section class="hero-showcase" id="showcase" aria-labelledby="showcase-title">
+      <div class="container">
+        <header class="showcase-header">
+          <p class="showcase-eyebrow">Live system · Dashboard V7</p>
+          <h2 class="showcase-title" id="showcase-title">Co dům reálně dělá</h2>
+        </header>
+        <a href="dashboard.html" class="showcase-main" aria-label="Otevřít stránku Dashboard">
+          <img src="assets/screenshots/dashboard-1920x1080.png" alt="Dashboard V7 — hlavní obrazovka 1920×1080" loading="eager" />
+        </a>
+        <div class="showcase-thumbs">
+          <a href="ai-brain.html" class="showcase-thumb" aria-label="AI Brain Guardian detail">
+            <img src="assets/screenshots/after/1920/ai.png" alt="AI Brain Guardian — health gauge + decision feed" loading="lazy" />
+            <span class="showcase-thumb-label">🧠 AI Brain</span>
+          </a>
+          <a href="dashboard.html" class="showcase-thumb" aria-label="Dashboard přehled">
+            <img src="assets/screenshots/after/1920/home.png" alt="Dashboard přehled — scenes, zones, camera, V5 KPI cards" loading="lazy" />
+            <span class="showcase-thumb-label">📊 Dashboard</span>
+          </a>
+          <a href="bezpecnost-kamery.html" class="showcase-thumb" aria-label="Kamera live view">
+            <img src="assets/screenshots/after/1920/camera.png" alt="Kamera — live view, motion timeline, IR controls" loading="lazy" />
+            <span class="showcase-thumb-label">📷 Kamera</span>
+          </a>
+        </div>
+        <div class="showcase-cta">
+          <a href="dashboard.html" class="btn btn-primary">Explore Dashboard →</a>
+          <a href="ai-brain.html" class="btn btn-ghost">Brain Guardian</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE METRICS PANEL -->
+    <section class="metrics-section section-alt" id="metrics" aria-labelledby="metrics-title">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">Live snapshot</p>
+          <h2 class="section-title" id="metrics-title">System health · current export</h2>
+          <p class="section-lead">Read-only tabule co dům právě má. Hodnoty z posledního exportu Homey API + Brain Guardian validátoru.</p>
+        </header>
+        <div class="metrics-grid">
+          <div class="metric-card m-health">
+            <p class="metric-label">System Health Score</p>
+            <p class="metric-value">92<span class="metric-suffix">/100</span></p>
+            <p class="metric-meta">Brain Guardian · status OK · validator 100</p>
+          </div>
+          <div class="metric-card m-flows">
+            <p class="metric-label">Active Flows</p>
+            <p class="metric-value">203</p>
+            <p class="metric-meta">Advanced Flow + 1 Stale Cleaner cron</p>
+          </div>
+          <div class="metric-card m-scripts">
+            <p class="metric-label">HomeyScripts</p>
+            <p class="metric-value">116</p>
+            <p class="metric-meta">~80 % migrated to LIB pattern</p>
+          </div>
+          <div class="metric-card m-devices">
+            <p class="metric-label">Devices Online</p>
+            <p class="metric-value">74<span class="metric-suffix">/74</span></p>
+            <p class="metric-meta">11 zón · 100 % availability</p>
+          </div>
+          <div class="metric-card m-vars">
+            <p class="metric-label">Variables (sh_*)</p>
+            <p class="metric-value">507</p>
+            <p class="metric-meta">9 cfg + state + cache + audit</p>
+          </div>
+          <div class="metric-card m-anom">
+            <p class="metric-label">Last anomaly</p>
+            <p class="metric-value" style="font-size:24px;">Bug E ghost</p>
+            <p class="metric-meta">29.4. detected → fixed (Stale Cleaner cron)</p>
+          </div>
+        </div>
+        <p class="metric-snapshot-note">Current snapshot as of latest system export · 2026-04-29</p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="navigace">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">Navigace</p>
+          <h2 class="section-title">Co tě zajímá?</h2>
+          <p class="section-lead">Web je rozdělený do čtyř pilířů. Vyber, kam chceš.</p>
+        </header>
+        <div class="home-grid home-grid-pillars">
+      <a href="prozivani.html" class="home-card home-card-pillar">
+        <span class="home-card-icon" aria-hidden="true">🏠</span>
+        <h3>Prožívání</h3>
+        <p>Use-case pohled na celý systém — co dům dělá pro ty, kdo v něm žijí. Funkce, dashboardy a AI vrstva v jednom.</p>
+        <span class="home-card-cta">Otevřít pilíř →</span>
+      </a>
+      <a href="zarizeni.html" class="home-card home-card-pillar">
+        <span class="home-card-icon" aria-hidden="true">📦</span>
+        <h3>Zařízení</h3>
+        <p>Hardware co řídí dům — Homey Pro 2026, 79 zařízení, infrastruktura okolo.</p>
+        <span class="home-card-cta">Otevřít pilíř →</span>
+      </a>
+      <a href="pribeh.html" class="home-card home-card-pillar">
+        <span class="home-card-icon" aria-hidden="true">📖</span>
+        <h3>Příběh</h3>
+        <p>Cesta k současnému stavu — historie, architektonické přechody a problémy které vznikaly a řešily se cestou.</p>
+        <span class="home-card-cta">Otevřít pilíř →</span>
+      </a>
+      <a href="blog.html" class="home-card home-card-pillar">
+        <span class="home-card-icon" aria-hidden="true">📝</span>
+        <h3>Blog</h3>
+        <p>Pravidelné poznámky o tom, co se v systému změnilo, co se rozbilo a jak se to fixovalo.</p>
+        <span class="home-card-cta">Otevřít pilíř →</span>
+      </a>
+      <a href="aplikace.html" class="home-card home-card-pillar">
+        <span class="home-card-icon" aria-hidden="true">🗃</span>
+        <h3>Sbírka App</h3>
+        <p>Dashboard smart home systému a sbírka numismatiky + filatelie. Přístup chráněný přes Cloudflare Access — Google + TOTP.</p>
+        <span class="home-card-cta">Otevřít pilíř →</span>
+      </a>
+        </div>
+        <p class="home-foot">Hledáš kontakt? <a href="kontakt.html">O projektu →</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Zvětšený obrázek">
+    <button class="lightbox-close" aria-label="Zavřít zvětšení">&times;</button>
+    <img class="lightbox-img" src="" alt="" />
+    <p class="lightbox-cap"></p>
   </div>
-</footer>
 
-<script src="../assets/js/main.js"></script>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> SMART HOME projekt · Semily · Vyrobeno s ❤️ a script-first myšlením.</p>
+      <p class="footer-meta">Veřejná prezentace · žádné API klíče · žádné lokální IP · žádné ovládání odtud.</p>
+      <p class="footer-meta"><a href="technicka-mapa.html">Technická mapa →</a> · <a href="index.html">Domů</a></p>
+    </div>
+  </footer>
 
-<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
-<style>
-#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
-#__lb.open { display:flex }
-#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-main img { cursor:zoom-in; transition:transform .15s ease }
-main img:hover { transform:scale(1.005) }
-</style>
-<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
-  <img id="__lbimg" alt="">
-  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
-</div>
-<script>
-(function(){
-  var lb = document.getElementById('__lb');
-  var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
-  lb.addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-  document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
-  });
-})();
-</script>
+  <script src="script.js" defer></script>
 </body>
 </html>

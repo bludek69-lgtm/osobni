@@ -23,3 +23,12 @@ photos/_NEZARAZENO/
 
 # Local-only finance backups (no private data, but no need to publish either)
 _archive/
+
+# smart-home showcase — dev/QA artefakty (nepatří na public web, 2026-05-31 unifikace)
+smart-home/_*.py
+smart-home/*.md
+smart-home/.gitignore
+
+# backup soubory (nepatří na web)
+smart-home/*.bak*
+*.bak_*

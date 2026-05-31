@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Meta-vrstva nad systémem — state validator, expected state engine, self-healing, Gemini." />
+  <meta name="theme-color" content="#0a0e14" />
+  <title>AI Brain Guardian | SMART HOME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Přeskočit na obsah</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="SMART HOME – home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+      </a>
+      <nav class="primary-nav" aria-label="Hlavní navigace">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+          <span class="sr-only">Otevřít menu</span>
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+        <ul id="nav-list" class="nav-list">
+          <li><a href="index.html">Domů</a></li>
+          <li><a href="prozivani.html" class="is-active" aria-current="page">Jak to funguje</a></li>
+          <li><a href="zarizeni.html">Zařízení</a></li>
+          <li><a href="hardware-komplet.html">Hardware</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="pribeh.html">Příběh</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="aplikace.html">Sbírka App</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+<section id="ai-brain" class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">🏠 Prožívání · AI Brain</p>
+          <h2 class="section-title">Guardian vrstva nad systémem</h2>
+          <p class="section-lead">
+            Smart home, který se sám kontroluje. Detekuje ghost values, ověřuje
+            očekávaný stav, blokuje rozbité nasazení, denně analyzuje logy přes Gemini.
+          </p>
+        </header>
+
+        <div class="module-grid">
+          <article class="module-card">
+            <div class="module-head">
+              <span class="module-status module-status-live">LIVE</span>
+              <code class="module-name">sh_brain_guardian_v1</code>
+            </div>
+            <h3>Brain Guardian</h3>
+            <p>
+              Top-level supervisor. Agreguje výstupy validátoru a expected state
+              engine, vypočítává <strong>health score</strong> (aktuálně 92/100).
+              Při kritickém poklesu vyhlásí alarm.
+            </p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-head">
+              <span class="module-status module-status-live">LIVE</span>
+              <code class="module-name">sh_expected_state_engine_v1</code>
+            </div>
+            <h3>Expected State Engine</h3>
+            <p>
+              Pro každý čas + režim spočítá co <em>by mělo</em> být zapnuté
+              / vypnuté. Slouží jako reference proti reálnému stavu —
+              základ pro detekci anomálií.
+            </p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-head">
+              <span class="module-status module-status-live">LIVE</span>
+              <code class="module-name">sh_state_validator_v1</code>
+            </div>
+            <h3>State Validator</h3>
+            <p>
+              Porovnává očekávaný a reálný stav. Detekuje ghost values
+              (proměnné, které lžou) a stuck flagy. První produkční detekce:
+              <code>priority_active=tts</code> ghost po 00:40.
+            </p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-head">
+              <span class="module-status module-status-live">LIVE</span>
+              <code class="module-name">sh_release_guard_v1</code>
+            </div>
+            <h3>Release Guard</h3>
+            <p>
+              Před nasazením nové verze skriptu spustí canary checks
+              (3 testovací volání). Pokud Brain Guardian score klesne,
+              release se zablokuje a starý skript zůstává.
+            </p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-head">
+              <span class="module-status module-status-live">LIVE</span>
+              <code class="module-name">sh_self_healing_v4</code>
+            </div>
+            <h3>Self-Healing Engine</h3>
+            <p>
+              4 detektory každých 10 minut: orphan requests, stuck events,
+              audio deadlocks, offline kritická zařízení. Auto-reset bez mé
+              intervence.
+            </p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-head">
+              <span class="module-status module-status-live">LIVE</span>
+              <code class="module-name">sh_gemini_diagnostic_v1</code>
+            </div>
+            <h3>Gemini Diagnostika</h3>
+            <p>
+              Každý den v 11:40. Načte JSONL logy z SSD na Raspberry Pi
+              (od 27.5.2026 — předtím Google Sheets), pošle Gemini Flash
+              s diagnostickým promptem, výsledek (priority + fix suggestion)
+              uloží do dashboardu na AI stránce.
+            </p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-head">
+              <span class="module-status module-status-live">LIVE (2.5.)</span>
+              <code class="module-name">sh_intent_engine_v1</code>
+            </div>
+            <h3>Intent Engine</h3>
+            <p>
+              Každou minutu se ptá: <em>„co se dům právě snaží dělat?"</em>
+              Odpovědí je jeden z 8 záměrů (klidný spánek, noční výlet,
+              ranní probouzení, příchod, odchod, …) plus skóre 0-100 jak si
+              je systém jistý. Slouží jako vyšší vrstva nad jednotlivými
+              skripty — jeden ucelený obraz situace místo desítek
+              fragmentovaných signálů.
+            </p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-head">
+              <span class="module-status module-status-live">LIVE (2.5.)</span>
+              <code class="module-name">sh_health_monitor_v1</code>
+            </div>
+            <h3>Health Monitor</h3>
+            <p>
+              Každých 5 minut kontroluje 5 zdravotních ukazatelů — kotel,
+              audio pipeline, presence detection, sleep state machine, energy
+              loggery. Když některý začne dělat divné věci, do telefonu přijde
+              push notifikace s konkrétním popisem (anti-flap guarded, aby
+              nezasypal user spamem při short blipech).
+            </p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-head">
+              <span class="module-status module-status-live">LIVE (2.5.)</span>
+              <code class="module-name">sh_kill_switch</code>
+            </div>
+            <h3>Kill Switch — pohotovostní vypínač</h3>
+            <p>
+              Jediná proměnná <code>yes/no</code>. Když přepneš na <code>yes</code>,
+              6 klíčových skriptů (rozhodovací mozek, predikce, ranní rutina,
+              hlídka, vytápění) se při příštím spuštění zastaví na začátku
+              a nic neudělají. Cesta k jistotě, že lidský operátor má vždy
+              poslední slovo. Reset jediným kliknutím.
+            </p>
+          </article>
+
+          <article class="module-card">
+            <div class="module-head">
+              <span class="module-status module-status-live">LIVE (14.5.)</span>
+              <code class="module-name">sh_room_vacancy_guardian_v1 v1.1</code>
+            </div>
+            <h3>Vacancy Guardian — heartbeat detekce</h3>
+            <p>
+              Pohlídá, aby koupelna nesvítila nebo nehrála rádio dlouho po tom,
+              co z ní někdo odešel. Verze 1.1 (14. 5.) přidala dva časové
+              razítka: <strong>heartbeat</strong> (script začal běžet)
+              a <strong>last_run</strong> (script doběhl). Když je první svěží
+              ale druhý starý, vidíme přesně: cron fire-uje, ale script se
+              zabije v polovině kvůli memory pressure. Plus stuck-state reset —
+              když je koupelna prázdná a audio mode pořád říká <em>radio_bathroom</em>,
+              vyresetuje ho na idle, aby se rádio už nikdy samo nevrátilo
+              z prázdné koupelny.
+            </p>
+          </article>
+        </div>
+
+        <figure class="uc-screenshot">
+          <img src="assets/screenshots/after/1920/ai.png"
+               alt="AI Brain stránka v dashboardu — guardian status, validator invariants, Gemini briefing log"
+               loading="lazy" class="zoomable" />
+          <figcaption>AI Brain stránka v dashboardu — Guardian health score, validator invariants check, Gemini briefing log</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">Filozofie · Jak s AI mluvit</p>
+          <h2 class="section-title">Proč lidé AI nevěří</h2>
+          <p class="section-lead">Jednoduché motto: na hloupou otázku hloupá odpověď.</p>
+        </header>
+
+        <article class="uc-prose">
+          <p>Často slyším, že umělá inteligence nefunguje, protože píše nesmysly. Jenže ve většině případů platí jednoduché pravidlo: na hloupou otázku přijde hloupá odpověď.</p>
+          <p>AI není kouzelná věštecká koule. Je to nástroj. Když jí člověk položí nepřesnou otázku, nedá jí kontext, neuvede cíl a neřekne, co přesně od ní čeká, výsledek bývá slabý. AI pak jen hádá, doplňuje si mezery a někdy vytvoří odpověď, která sice vypadá chytře, ale prakticky je k ničemu.</p>
+          <p>Když se ale člověk naučí ptát konkrétně, přidá příklady, omezení, zdroje a jasně popíše požadovaný výstup, AI se změní z hračky na velmi silného pomocníka. Není to o tom, že AI nefunguje. Často jde spíš o to, že s ní neumíme správně mluvit.</p>
+
+          <h3>Příklad rozdílu</h3>
+          <p><strong>Slabý dotaz:</strong> Napiš mi něco o AI.</p>
+          <p><strong>Lepší dotaz:</strong> Napiš krátký, srozumitelný text pro laiky o tom, proč AI někdy odpovídá špatně, a vysvětli, že kvalita odpovědi závisí na kvalitě zadání.</p>
+          <p>Proto lidem vždy říkám: AI není náhrada za přemýšlení. Je to zesilovač přemýšlení. Když jí dáme chaos, vrátí nám chaos. Když jí dáme jasné zadání, může nám výrazně pomoci.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Zvětšený obrázek">
+    <button class="lightbox-close" aria-label="Zavřít zvětšení">&times;</button>
+    <img class="lightbox-img" src="" alt="" />
+    <p class="lightbox-cap"></p>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> SMART HOME projekt · Semily · Vyrobeno s ❤️ a script-first myšlením.</p>
+      <p class="footer-meta">Veřejná prezentace · žádné API klíče · žádné lokální IP · žádné ovládání odtud.</p>
+      <p class="footer-meta"><a href="technicka-mapa.html">Technická mapa →</a> · <a href="index.html">Domů</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

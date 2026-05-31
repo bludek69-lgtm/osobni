@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pravidelné poznámky o tom, co se v systému změnilo, co se rozbilo a jak se to fixovalo." />
+  <meta name="theme-color" content="#0a0e14" />
+  <title>Blog a novinky | SMART HOME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Přeskočit na obsah</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="SMART HOME – home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+      </a>
+      <nav class="primary-nav" aria-label="Hlavní navigace">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+          <span class="sr-only">Otevřít menu</span>
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+        <ul id="nav-list" class="nav-list">
+          <li><a href="index.html">Domů</a></li>
+          <li><a href="prozivani.html">Jak to funguje</a></li>
+          <li><a href="zarizeni.html">Zařízení</a></li>
+          <li><a href="hardware-komplet.html">Hardware</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="pribeh.html">Příběh</a></li>
+          <li><a href="blog.html" class="is-active" aria-current="page">Blog</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="aplikace.html">Sbírka App</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+<section id="blog" class="section section-hero hub-hero">
+      <div class="container">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>📝 Build Log · Release Notes</p>
+        <h1 class="hero-title">Engineering <span class="grad-text">build log</span></h1>
+        <p class="hero-lead">Není to blog v běžném smyslu. Je to <strong>release notes engineera</strong>, který staví dům jako product. Každá entry odkazuje na konkrétní deploy, fix nebo roadmap milník.</p>
+      </div>
+    </section>
+
+    <!-- BUILD LOG entries (recent → older) -->
+    <section class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">Recent releases</p>
+          <h2 class="section-title">Posledních 30 dní</h2>
+          <p class="section-lead">Kombinace feature ship, bugfix, deploy a roadmap entries. Tagged barevně podle typu.</p>
+        </header>
+
+        <div class="buildlog-list" role="list">
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-28</span>
+              <span class="buildlog-tag">WEB</span>
+            </div>
+            <h3>Sekce „Moje aplikace" živá — 7 aplikací, 50 screenů, audit drift sweep</h3>
+            <p>Dvoudenní intenzivní práce na osobním webu <a href="https://cestovatel69.cz/aplikace/" target="_blank" rel="noopener">cestovatel69.cz/aplikace</a>. Nová hub sekce prezentuje sedm vlastních aplikací: <strong>Config Center</strong>, <strong>Italia Travel Planner</strong>, <strong>Účetní kniha</strong>, <strong>Finance Analytik</strong>, <strong>Krabičková dieta</strong>, <strong>Energy Dashboard</strong> a <strong>Domácí panel na zdi</strong> (RPi kiosk). Celkem 50 screenů (14 ITP, 8 UK, 8 Analytik, 8 Meal Planner, 7 CC, 4 RPi, 1 Energy), plně lokalizováno CS/EN/IT (21 stránek = 7×3). Texty pro běžné lidi — tech jargon vždy vysvětlený v 1 větě (DCF, FIFO, AES, ZTL zóny, BMR/TDEE). Site-wide vanilla JS lightbox — klikni na kterýkoli obrázek, otevře se fullscreen modal, ESC zavře. Po finišování proběhl <strong>audit drift sweep</strong> obou webů (osobni + smart-home-website): nalezeno 25 driftů ve 3 prioritách, opraveno 13 (P0+P1). Hlavní motivy: RPi kiosk umístění (kuchyně → předsíň, oprava i v EN/IT mirrorech), Sheets → SSD framing na 5 stránkách smart-home webu (po 27.5. cutover), Shelly Plug S Gen3 status z „na cestě" → „LIVE od 30.4.", Door/Window Sensor diakritika („Jídelna1" → „Jidelna1") sjednocena, Intenso SSD z „plánováno" → „LIVE od 27.5.2026" (verified <code>/dev/sda1</code>).</p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-27</span>
+              <span class="buildlog-tag">DEPLOY</span>
+            </div>
+            <h3>Energy Dashboard one-click launcher — PC webová aplikace bez blikajícího monitoru</h3>
+            <p>Standalone projekt v <code>C:\.Projekt\.Energy\</code> dostal kompletní Windows webapp wrapper. Jeden klik na desktop shortcut <strong>Energy Dashboard</strong> → spustí se hidden pythonw proxy (port 5177) → otevře se Edge/Chrome v <code>--app</code> módu na čistém dashboardu (žádný taskbar, žádné menu). Proxy je server-side reverse fetcher pro <code>http://192.168.1.xxx:8123/local/smart-home/energy-dashboard.json</code> — řeší CORS problém (HA Core neposílá ACAO header) a poskytuje on-disk fallback když je HA RPi nedostupný (<code>X-Energy-Source: cached-stale</code> header + viditelný alert). Původně byl design „PC scheduled task každých 60 s sync" — vyřazeno, protože blikalo okno. Nahrazeno on-demand proxy: data si stahuje až browser tab je otevřený. RPi data live od 28.5., port přesunut z 5176 (kolize s Meal Plannerem) na 5177. Vlastní programaticky generovaná multi-res ICO ikona (16/32/48/64/128/256, cyan blesk na navy panelu). Repo: <code>bludek69-lgtm/energy-dashboard</code> (private).</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-27</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Roleta zavírala přes otevřené okno — paralelní writer v sh_light_router_v1</h3>
+            <p>User report: „roleta se zavírá i když je otevřené okno". SSD log z 19:12 přesně diagnostikoval problém: <code>sh_jidelna_roleta_router_v2</code> zafungoval správně (<code>roleta_window_safety skipped</code> v 19:12:48 — window contact = open detected) — ale o sekundu později <code>sh_light_router_v1</code> zavřel roletu PŘÍMO bez window kontroly (<code>roleta_auto_close_privacy 100% → 15%</code>, trigger <code>evening_deadlock_fix</code>). Root cause: <code>canAutoClose</code> branch (L1009) checkoval jen <code>phase + mode + sleep</code>, žádný <code>alarm_contact</code> guard. Sandbox-first oprava — 8-case test scenarios v <code>_backup_window_safety_fix/test_roleta_window_safety.js</code> (closed/open/sensor-offline/getDevice-throws/null/day-phase/away/sleep) → 8/8 PASS → live PUT v1.16. <strong>Fail-CLOSED policy</strong>: když je senzor nedostupný / vyhodí exception → považuj okno za otevřené, raději nezavřít. Nový log event <code>roleta_auto_close_skip_window_open</code>. Pure-function logic replica, žádná funkční změna jiných cest. Backup pair pre/post v <code>_backup_window_safety_fix/</code>.</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-22</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Roleta jídelna zavřela přes otevřené okno (P1) — silent-fail kvůli rename device</h3>
+            <p>Předchozí incident stejného typu, jiný root cause. <code>sh_jidelna_roleta_router_v2</code> měl v lokálním <code>D</code> constu hardcoded starý device name <code>'Door/Window Sensor (SNZB-04)1'</code>, ale device byl mezitím přejmenován na <code>'Door/Window Sensor Jidelna1'</code>. <code>getDev()</code> vrátil <code>null</code>, <code>try/catch(_)</code> ho potichu spolkl, <code>windowOpen</code> defaultoval na <code>false</code> (unsafe default) → SAFETY skip se nespustil → roleta zavřela přes otevřené okno. Fix commit <code>349532d</code>: dva string replaces (oba název senzoru), commit + push. <strong>Pravidla z incidentu</strong>: (1) safety guards musí default-to-fail-CLOSED (<code>windowOpen=true</code> při fetch failu), (2) <code>catch</code> bloky musí volat <code>logEvent</code> aby silent fail šel vidět, (3) device names číst ze <code>sh_device_map</code> namísto hardcoded stringů. Memory entry <code>feedback_device_rename_silent_fail_2026-05-22.md</code> dokumentuje pravidla pro reuse v dalších scriptech.</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-19</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>SIGABRT každých 5 minut — group concurrency, ne vadný script</h3>
+            <p>Čtyři dny audit memory, knihoven a logování. Nasazený forensic patch na 80 hot-path scriptech (odstranění <code>Promise.race + wait()</code> z inline <code>fetchWithTimeout</code>). Crash cyklus pokračoval. Teprve když uživatel vizuálně oznámil <strong>„padá to přesně každých 5 minut"</strong>, příčina začala konvergovat. Nešlo o jeden vadný script — bylo to <strong>skupinová souběžná zátěž</strong>: 17 Advanced Flow s triggerem <code>cron:every_nth {n:5, type:minute}</code> spouštělo HomeyScript synchronně na 00s 5min hranici, runtime nezvládl souběh. <strong>Emergency 5-min isolation</strong> (vypnutí celé /5min HomeyScript skupiny) zastavila pády — crashedCount +0 za 12 minut. Pak <strong>R1</strong> obnovil 3 kritické flows s delay 30/60/90s (Heating, Presence Failsafe, Brain Guardian). <strong>R1B</strong> rozprostřel 8 lehkých flows přes delays 5–195s. <strong>R1C</strong> snížil kadenci 3 nejtěžších na <code>/10m</code> (Device Availability, Health Monitor, OpenSpace Autoheal) — mem peak spadl z 235 MB na ~145 MB median (−38 %). <strong>ENABLE-ALL sequential</strong> vrátil zbývajících 6 heavy flows (Dashboard, Health Alert, Context Full, Diagnostic, Meta, AI Guard) na <code>/15m</code> nebo <code>/30m</code> s offsetem 215–320s, 1 PUT na flow + reálné fire ověření + 10 min observační okno. Tři hodiny, 6 kroků, 0 crashes během deploye. Žádný HomeyScript PUT, žádná business logika dotčená, žádný manual restart. Klíčová lekce: <strong>před hlubší crash analýzou nejdřív spočítej intervaly mezi pády</strong> — pravidelný interval = trigger-driven cause. <a href="posts/sigabrt-5min-group-concurrency.html">Číst delší post →</a></p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-19</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Context Full chain — 7-day stale článek opraven Flow bypassem</h3>
+            <p>Audit po SIGABRT odhalil další pre-existing bug: Flow <code>SH – System – Context Full</code> mělo chain <code>trigger /30m → delay 215s → runWithArg sh_context_full_v1("get") → run sh_context_history_v1</code>, ale první článek dlouhodobě silent-failoval. Skript <code>sh_context_full_v1</code> byl ~12.5. ručně smazán z Homey UI (vrácel <code>false</code> i bez exception), Flow card si ale držela orphan SID. <code>sh_context_history_v1</code> tak nedostal control přes <code>outputSuccess</code> chain — jeho <code>lastExecuted</code> ustrnulo na <strong>2026-05-12 18:25</strong> (7 dní stale). Restore-with-patch (recreate skript s <code>Promise.race+wait</code> odstraněním v <code>fetchWithTimeout</code>) ani defensive try/catch wrap kolem koncových <code>setValueSafe</code> volání chování nezměnily — debug ukázal že throw je <strong>před</strong> hypotetizovaným řádkem. Mezitím <code>sh_context_weather_sync_v1</code> (separate /10m bridge, existující 3 týdny jako workaround) drží <code>sh_context_json</code> fresh nezávisle. Finální fix: <strong>atomický Flow bypass</strong> — z 4-card chain odstraněno card #1 (runWithArg), delay přepojen přímo na sh_context_history_v1. První /30m fire @ <strong>11:33:35.979</strong> (exact schedule match, +979 ms latency) — chain obnoven. <code>sh_context_full_v1</code> ponechán jako legacy artifact (per hard rule nemazat). Slot 215s zachován pro no-overlap plán. <strong>Lekce</strong>: Pokud Flow míří na smazaný skript, Homey ho NEMUSÍ označit jako <code>broken=true</code> — ověřuj action-level SID reference přes <code>GET /script/&lt;sid&gt;</code>.</p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-18</span>
+              <span class="buildlog-tag">INFRASTRUCTURE</span>
+            </div>
+            <h3>SSD logging cutover — 1 var flip migroval 91+ logEvent callerů</h3>
+            <p>2026-05-18 v 07:09 CEST proběhl migrační moment, na který se v Homey velmi obtížně reaguje retroaktivně. Až do tohoto okamžiku všechny <code>logEvent(...)</code> hovory napříč 91+ skripty směřovaly na Google Sheets Apps Script web app — pomalý, rate-limited a závislý na cloudu. Nasazená architektura umístila <strong>SQLite receiver</strong> na HA RPi (<code>http://192.168.1.xxx:9080/log/sheets-compat</code>) s daily JSONL files + WAL-enabled SQLite (4.2 MB po prvním dni). Migrace bez touching jediného skriptu: stačila změna jediné Logic proměnné <code>sh_sheets_url</code> z Apps Script URL na receiver URL. Skripty si target endpoint čtou per-call přes <code>getValue('sh_sheets_url')</code>, takže <strong>všechny callery se přepojily okamžitě</strong>. Google Sheets endpoint zůstává jako záložní fallback (revert = swap původní URL zpět). Schema kompatibilita 100 % (payload format <code>sheets-compat</code>), zero data loss. Po cutover proběhla séria operací na vrácení Energy Dashboard R1 aggregatoru + UI a osobní web AI page deploye.</p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-15</span>
+              <span class="buildlog-tag">FEATURE</span>
+            </div>
+            <h3>Dashboard Config Center + Weather restore — 8 vln v jeden den</h3>
+            <p>15. května večer. Po sérii R2-R6A oprav Homey runtime se přesun na dashboard. <strong>Wave 1</strong> přidal <code>__CANON_ENUMS</code> guard — dashboard přestal psát czech literály (<code>doma</code>, <code>pryc</code>, <code>ano</code>, <code>strong_yes</code>) do logických proměnných, 9 zakázaných tokenů blokováno na write path. <strong>Wave 2A</strong> obnovil cache-first weather renderer (po SSD migraci RPi se vrátila stará OWM verze — deploy-channel regression, ne code bug); <strong>Wave 2B</strong> oživil cron <code>sh_weather_yr_bridge_v1</code> z yr.no, žádné API klíče. <strong>Wave 3</strong> udělal z rolety PURE LUX truth (odstraněný short-circuit <code>sh_house_state='home_normal'</code>, který občas držel roletu nahoře i v noci). <strong>Wave 6</strong> propagoval enum guard na desktop v7_1920 + v7_2880. <strong>Wave 4A → 4B-6</strong> Config Center: <code>DASHBOARD_CONFIG_SCHEMA</code> + <code>writeVarValidated</code> + <code>writeCfg</code> dispatcher, růst z 18 entries na 128+ (min/max/enum/crossField/softWarnings), pokrývá morning/heating/audio/light/occupancy/roleta/energy/scenes. Aktuálně soft-reject, po 24h soaku hard-mode flip. Final RPi sha <code>e3216213…</code>. <a href="posts/dashboard-config-center.html">Číst delší post →</a></p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-14</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Memory pressure — 1 var + 6 live patchů + bathroom audio konečně odjelo z koupelny</h3>
+            <p>Druhá půle dne 14. května: po dopoledním úklidu RPi/HAOS přišly živé zásahy do Homey. Diagnostika potvrdila <strong>1 295 cron fires/h</strong> napříč 67 cron flows — HomeyScript app cyklovala na 125 MB threshold, watchdog ji restartoval 38× za den, a <strong>vacancy guardian běžel reálně jen 5× za 24h místo očekávaných 288×</strong>. To vysvětlilo dlouhotrvající stížnost: koupelna která zůstala svítit / s rádiem po opuštění místnosti. Nasazeno 6 live změn v jednom dni — všech 6 bit-perfect SHA verify, žádný flow/dashboard/device touch: (1) nová proměnná <code>sh_vacancy_guardian_heartbeat_ts</code>, (2) <code>sh_room_vacancy_guardian_v1</code> v1.1 (heartbeat at start + stuck-audio-reset), (3-7) pět throttle patchů (TTS skip-empty-queue, Kaffe time-window, Wake/Score sleep-window). Měřitelný win <strong>do 9 minut</strong>: guardian dokončil první run za 40+ min a vyresetoval stuck <code>sh_audio_current_mode='radio_bathroom'</code> z ranní rutiny na <code>idle</code>. Pět R2-failsafe sandbox testů (T22-T26), staleness pair-logic OK/WARN/CRASH_MID_RUN/CRON_NOT_FIRING klasifikátor. <a href="posts/r2-memory-pressure-six-live-patches.html">Číst delší post →</a></p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-14</span>
+              <span class="buildlog-tag">INFRASTRUCTURE</span>
+            </div>
+            <h3>Sandbox 24/7 + kiosk Phase E + dashboard cache retry — den úklidu</h3>
+            <p>Den, kdy se RPi/HAOS přestal hrát na servisního pomocníka a stal se z něj plnohodnotná testovací brána. Node.js 24.14 nainstalován do <code>core_ssh</code> addonu s persistencí přes <code>apks</code> config. <strong>Python sandbox runner</strong> nasazen 24/7 přes HA <code>shell_command</code> + automation každou hodinu — gate <code>DEPLOY_GATE_OPEN</code>, testy <strong>20/20 PASS</strong>, replay 13/13. Když HA Core container Node neměl, runner přepsán do Pythonu (F1-B). <strong>Dashboard cache retry fix v2.1</strong> — transient 417/0 errory teď retry 3× s backoffem místo crashe; error rate spadl z 5 % na 1.8 %. <strong>Kiosk Phase E LIVE</strong> — RPi kiosek (192.168.1.xxx) má teď cache→Homey REST→localStorage fallback chain s viditelným badge (● CACHE / ◐ CACHE OLD / ○ HOMEY / ○ LOCAL). Vše rebuilt fresh ze samotného kiosk HTML bez PC reference. 0 Homey writes, 0 dashboard edits, 0 device renames. <a href="posts/sandbox-24-7-kiosk-phase-e.html">Číst delší post →</a></p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-12</span>
+              <span class="buildlog-tag">ARCHITEKTURA</span>
+            </div>
+            <h3>Tři zdroje počasí → jeden. LOCATION_TIME_GUARD den.</h3>
+            <p>Briefing recitoval 13 °C zatímco venku bylo 6 °C. V 3:03 ráno se sám spustil než zazvonil budík. A systém uměl říct „dobré ráno" v noci. Audit odhalil tři paralelní zdroje počasí (yr.no + OpenWeatherMap + Open-Meteo) ve dvou různých městech (Semily / Praha) a hardcoded fallback teplotu. Konsolidace: yr.no jako jediný zdroj (lokalita Semily 50.6012/15.495), nový skript <code>sh_weather_yr_bridge_v1</code> (cron 10 min → 22 vars), centrální vrstva <code>sh_location_time_context_v1</code> (master JSON pro lokaci+čas+phase, refresh 5 min). Smazáno: Open-Meteo fetcher, OWM HTTP fetch v context_full (−2 868 znaků dead code), <code>sh_owm_api_key</code>, hardcoded GPS v dashboards. Greeting guard v briefingu: phase=night → „Vítej, Luďku" místo „Dobré ráno". Phase guard v morning_brain blokuje motion-trigger v noci bez alarmu. <a href="posts/yr-single-source.html">Číst delší post →</a></p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-05</span>
+              <span class="buildlog-tag">INFRASTRUCTURE</span>
+            </div>
+            <h3>Sheets cleanup + dashboard fix — den po rozbité rutině</h3>
+            <p>Ranní rutina v pondělí nezačala. Začalo to fixem jednoho bugu (sleep_window blokoval routing po budíku) a skončilo úklidem celé Google Sheets vrstvy. 28 listů → 25, 6 commitů, Apps Script v18 → v21. Score producer (existoval, nikdo ho nečetl) napojený na brain. Tři chybějící dashboard endpointy přidané (Lux/Battery/Morning Timeline). Sensor registry pro adaptabilní budoucí čidla. DeviceInventory producer který nikdy neposílal. Architektonický bug v <code>logEvent</code> lib (default <code>sheet:'EventLog'</code> forsoval všechny event_type events do jednoho listu) odhalený. <a href="posts/sheets-cleanup-v21.html">Číst celý postmortem →</a></p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-02</span>
+              <span class="buildlog-tag">FEATURE</span>
+            </div>
+            <h3>Dům, který sám sebe pozoruje — nová vrstva vědomí</h3>
+            <p>Přibyly dvě „pozorovatelské" vrstvy. První každou minutu vyhodnocuje, v jakém režimu se domov právě nachází (klidný spánek, noční výlet na záchod, ranní probouzení, někdo odchází…) — a u každého odhadu má skóre jistoty od 0 do 100. Druhá vrstva každých 5 minut kontroluje, že všechny klíčové programy běží, a u jednoznačně-bezpečných problémů je sama opraví. Při kritickém problému pošle push notifikaci na telefon. <a href="posts/dum-pozoruje-sam-sebe.html">Číst delší vysvětlení →</a></p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-02</span>
+              <span class="buildlog-tag">FEATURE</span>
+            </div>
+            <h3>Pohotovostní vypínač — jediný přepínač pro všechno automatické</h3>
+            <p>Nová proměnná <code>sh_kill_switch</code> se dvěma stavy. Když ji přepnu na <code>yes</code>, šest klíčových programů (rozhodovací mozek, noční světla, predikce, ranní rutina, hlídka, vytápění) se při příštím spuštění zastaví na začátku a nic neudělají. Cesta k jistotě, že lidský operátor má vždy poslední slovo.</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-02</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Ranní rutina se nespustila — uživatel vstal před budíkem</h3>
+            <p>V sobotu ráno (budík 5:15) uživatel vstal v 3:08, procházel mezi pokoji, ale rutina nikdy neběžela. Příčina: stará logika čekala buď na budík, nebo na dvojí pohyb v jedné zóně do 3 minut. Při procházení mezi zónami senzory zachytily pohyb v každé jen jednou. Mezitím nezávislý detektor probuzení hlásil „silně ano" ve 4 zónách — ranní rutina ten signál ale neposlouchala. Oprava: třetí spouštěcí cesta — silný multi-zóna signál + 10 minutový kompromis filtruje noční výlety na záchod.</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-02</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>LED pásek a stolní lampa svítily celou noc</h3>
+            <p>Příčina: program, který se každou půlhodinu probudí a předvídá co dům potřebuje, neměl podmínku „pokud uživatel spí, nezapínej nic". V 23:00 i v 00:30 napadlo „je tma + někdo doma → noční dotyk světla", a lampa se rozsvítila. Tři řádky kódu — sleep guard přidán do dvou míst (predikce + záchranná logika). Příští noc se nic samo nerozsvítí.</p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-05-02</span>
+              <span class="buildlog-tag">FEATURE</span>
+            </div>
+            <h3>SNZB-06P openspace + integrace ložnice/koupelna senzorů</h3>
+            <p>Tři radarové senzory přítomnosti (otevřený prostor, ložnice, koupelna) — radar vidí osobu i v klidu, na rozdíl od PIR pohybového. Hlavní z nich přejmenován na <code>Sensore di Presenza SNZB-06P openspace</code> kvůli jasnému rozlišení. Ložnice + koupelna teď přidány do logu zónové aktivity (před tím se logoval jen openspace). Atomický rename: zařízení + mapa + 7 skriptů + záloha před/po. Smoke test prošel.</p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-04-29</span>
+              <span class="buildlog-tag">FEATURE</span>
+            </div>
+            <h3>Dashboard V7.5 layout editor</h3>
+            <p>Drag-and-drop tile reorder + native CSS resize via corner handle + per-page localStorage persistence. <code>Ctrl+E</code> toggles edit mode. 3 floating buttons (🎨 Edit / 💾 Save / ↻ Reset). MutationObserver chrání proti bounce-back při render cycles.</p>
+            <ul>
+              <li>Stable tile identity (id or hash of textContent)</li>
+              <li>Multi-parent aware (handles tiles spread across grid containers)</li>
+              <li>Auto-save on drop (no need to click Save for reordering)</li>
+            </ul>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-04-29</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Bug E — priority engine ghost auto-cleanup</h3>
+            <p><code>sh_priority_active='tts'</code> stuck po crashi HomeyScript app během 10s delay v reset flow. Fix: timestamp na claim + stale check &gt; 60s + nový cron <code>SH – Priority – Stale Cleaner</code>. Validator score 94 → 100, Brain Guardian 92 → 97.</p>
+          </article>
+
+          <article class="buildlog-entry bl-deploy" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-04-29</span>
+              <span class="buildlog-tag">DEPLOY</span>
+            </div>
+            <h3>Brain Guardian deployment</h3>
+            <p>5 scripts + 1 flow + 12 vars deployed. Top-level supervisor: <code>sh_state_validator</code> (drift detection), <code>sh_brain_guardian</code> (orchestrator), <code>sh_release_guard</code> (deploy gate). První live finding: detekoval <code>priority_active=tts</code> ghost (Bug E nahoře).</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-04-29</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Audio race condition fix — bathroom misroute</h3>
+            <p>Po comfort_suggest TTS se sám spustil bathroom radio i bez user accept. Root cause v <code>sh_tts_resume_exec_v1</code> fallback bez <code>prev_playing</code> guardu. Fix v1.8 přidal explicit guard. Stuck <code>sh_audio_current_mode='radio_bathroom'</code> reseten.</p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-04-29</span>
+              <span class="buildlog-tag">FEATURE</span>
+            </div>
+            <h3>Dashboard V7 polish — V7.1 → V7.5.1</h3>
+            <p>8 micro-sprintů: Zones bottom strip, AI grid 2-col, Ložnice tile dedupe, status chips wired, Settings collapse, Burza 2→6 coins, Heating right rail rebuild, AI 4 system cards, layout editor.</p>
+          </article>
+
+          <article class="buildlog-entry bl-perf" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-04-29</span>
+              <span class="buildlog-tag">PERF</span>
+            </div>
+            <h3>Memory leak partial mitigation</h3>
+            <p>3 cron flows zpomalené 1 → 2 min (Dashboard Refresh, Wake Scorer, Audio Pipeline WD). Saves <strong>2 160 runs/den</strong>. Manual app restart 143 → 99 MB. Watchdog drží &lt;125 MB threshold.</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-04-29</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Vacuum Giuseppe rename revert</h3>
+            <p>Device name byl omylem změněn na <code>'ano'</code> (UUID stable). 4 sw consumers silently fail. Revert via API PUT name='Giuseppe'. Reset ghost vars. Live test: router can find device, state stays <code>idle</code>.</p>
+          </article>
+
+          <article class="buildlog-entry bl-deploy" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-04-29</span>
+              <span class="buildlog-tag">DEPLOY</span>
+            </div>
+            <h3>Morning routine pipeline rebuild</h3>
+            <p>Nový request type <code>morning_open_space_gentle</code>. ON Sektorka1 + Stul Jidelna1 (warm dim 0.4) + OFF Led pasek postel (sleep nightlight deactivace). Motion branch teď symetrická s alarm/fallback. Live test 7/7 PASS.</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-04-26</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>UUID re-pair orphans — silent fail</h3>
+            <p>Door/Window Sensor Jidelna1 dostal nové UUID po výměně baterky. Tři flows osiřely, čistička se nevypínala při otevření okna. Diagnose + bulk swap fix. Memory entry pro budoucnost.</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-04-21</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Cold-start anti-cycling bug — heating</h3>
+            <p>Kotel sepnul jednou, vypnul, pak nikdy víc. Anti-cycling guard držel <code>hold_off_180s_left</code> forever kvůli NaN propagation. Defensive coding gone wrong, fix v1.2.</p>
+          </article>
+
+          <article class="buildlog-entry bl-roadmap" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-04-29</span>
+              <span class="buildlog-tag">ROADMAP</span>
+            </div>
+            <h3>Release Governance V2 — plánovaná etapa</h3>
+            <p>Canary deploys (1 zóna na 24h před plošným nasazením), auto-rollback při score &lt; 80, sanity checks před PUT (přečíst flow tree, validate DAG, simulate edge cases), drift gates (Brain Guardian musí dovolit). Backlog Q3 2026.</p>
+          </article>
+
+          <article class="buildlog-entry bl-roadmap" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-04-29</span>
+              <span class="buildlog-tag">ROADMAP</span>
+            </div>
+            <h3>Predictive Heating · ML model</h3>
+            <p>Plán pro 2026/2027: anomaly detection na event sequences, predikce occupancy, integrace electricity tariff (NT/VT) do scheduler decision. Aktuálně rule-based scheduler s 3 AI vrstvami (preWake / weather / occupancy bonus).</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Original post archive (long-form articles) -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">Long-form posts</p>
+          <h2 class="section-title">Hlubší články</h2>
+          <p class="section-lead">Vybrané build log entries rozepsané do plnohodnotného článku — případové studie, hypothesis ladders, root cause analysis.</p>
+        </header>
+
+        <div class="post-grid">
+          <article class="post-card">
+            <a href="posts/yr-single-source.html" class="post-card-link" aria-label="Tři zdroje počasí — jeden">
+              <div class="post-card-thumb">
+                <span class="post-card-badge">ARCHITEKTURA</span>
+              </div>
+              <div class="post-card-body">
+                <p class="post-card-meta">12. května 2026 · 10 min čtení</p>
+                <h3 class="post-card-title">Tři zdroje počasí → jeden. LOCATION_TIME_GUARD den.</h3>
+                <p class="post-card-excerpt">
+                  Briefing recitoval 13 °C, venku bylo 6 °C. V 3:03 ráno se rutina sama
+                  spustila. A systém uměl říct „dobré ráno" v noci. Den konsolidace
+                  počasí, lokace a denní fáze do jedné vrstvy.
+                </p>
+                <span class="post-card-cta">Číst příspěvek →</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="post-card">
+            <a href="posts/dum-pozoruje-sam-sebe.html" class="post-card-link" aria-label="Den, kdy dům začal sám sebe pozorovat">
+              <div class="post-card-thumb">
+                <span class="post-card-badge">INTELIGENCE</span>
+              </div>
+              <div class="post-card-body">
+                <p class="post-card-meta">2. května 2026 · 8 min čtení</p>
+                <h3 class="post-card-title">Den, kdy dům začal sám sebe pozorovat</h3>
+                <p class="post-card-excerpt">
+                  Tři opravy a jedna nová vrstva — popsáno bez technických zkratek.
+                  Noční záhada se světlem, ranní rutina, která se nespustila, a vědomá
+                  vrstva, která rozumí, co se právě děje.
+                </p>
+                <span class="post-card-cta">Číst příspěvek →</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="post-card">
+            <a href="posts/dashboard-v7.html" class="post-card-link" aria-label="Dashboard V7 – nový layout a vizuální kontrola">
+              <div class="post-card-thumb">
+                <span class="post-card-badge">DASHBOARD</span>
+              </div>
+              <div class="post-card-body">
+                <p class="post-card-meta">26. dubna 2026 · 6 min čtení</p>
+                <h3 class="post-card-title">Dashboard V7 — nový layout a vizuální kontrola</h3>
+                <p class="post-card-excerpt">
+                  Sidebar 240px, status pills v topbaru, premium CSS layer aplikovaný do
+                  všech 6 dashboardů. Cyklus V3.7 → V7 dokončen, focus se přesouvá na
+                  Brain Guardian.
+                </p>
+                <span class="post-card-cta">Číst příspěvek →</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="post-card">
+            <a href="posts/uuid-repair-orphans.html" class="post-card-link" aria-label="UUID re-pair orphans – silent fail po výměně baterky">
+              <div class="post-card-thumb">
+                <span class="post-card-badge">SENZORY</span>
+              </div>
+              <div class="post-card-body">
+                <p class="post-card-meta">26. dubna 2026 · 6 min čtení</p>
+                <h3 class="post-card-title">UUID re-pair orphans — silent fail po výměně baterky</h3>
+                <p class="post-card-excerpt">
+                  Door/Window Sensor Jidelna1 dostal nové UUID po výměně baterky. Tři
+                  flows osiřely, čistička se nevypínala při otevření okna. Diagnose
+                  + bulk swap fix.
+                </p>
+                <span class="post-card-cta">Číst příspěvek →</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="post-card">
+            <a href="posts/bathroom-misroute.html" class="post-card-link" aria-label="Bathroom misroute – 4 hodiny diagnostiky">
+              <div class="post-card-thumb">
+                <span class="post-card-badge">AUDIO</span>
+              </div>
+              <div class="post-card-body">
+                <p class="post-card-meta">25. dubna 2026 · 8 min čtení</p>
+                <h3 class="post-card-title">Bathroom misroute — 4 hodiny diagnostiky a fix v1.8</h3>
+                <p class="post-card-excerpt">
+                  Po comfort_suggest TTS se sám spustil bathroom radio i bez user accept.
+                  Root cause v sh_tts_resume_exec_v1 fallback bez prev_playing guardu.
+                  Hypothesis ladder a fix.
+                </p>
+                <span class="post-card-cta">Číst příspěvek →</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="post-card">
+            <a href="posts/heating-coldstart-bug.html" class="post-card-link" aria-label="Cold-start anti-cycling bug">
+              <div class="post-card-thumb">
+                <span class="post-card-badge">TOPENÍ</span>
+              </div>
+              <div class="post-card-body">
+                <p class="post-card-meta">21. dubna 2026 · 7 min čtení</p>
+                <h3 class="post-card-title">Cold-start anti-cycling bug — kotel zaseklý forever</h3>
+                <p class="post-card-excerpt">
+                  Heating Fáze A live, kotel sepnul jednou, vypnul, pak nikdy víc.
+                  Anti-cycling guard držel hold_off_180s_left forever. NaN, defensive
+                  coding gone wrong, fix v1.2.
+                </p>
+                <span class="post-card-cta">Číst příspěvek →</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="post-card post-card-placeholder">
+            <div class="post-card-thumb post-card-thumb-soon">
+              <span class="post-card-badge">SOON</span>
+            </div>
+            <div class="post-card-body">
+              <p class="post-card-meta">Připravuje se</p>
+              <h3 class="post-card-title">Brain Guardian V1 — supervisor v ostrém provozu</h3>
+              <p class="post-card-excerpt">
+                Jak vznikla meta-vrstva nad celým smart home systémem a co první týden
+                provozu odhalil.
+              </p>
+            </div>
+          </article>
+
+          <article class="post-card post-card-placeholder">
+            <div class="post-card-thumb post-card-thumb-soon">
+              <span class="post-card-badge">SOON</span>
+            </div>
+            <div class="post-card-body">
+              <p class="post-card-meta">Připravuje se</p>
+              <h3 class="post-card-title">Heating Fáze C — AI vrstvy nad topením</h3>
+              <p class="post-card-excerpt">
+                preWakeBoost, weatherAdjust, occupancyBonus. Topení, které předvídá
+                a šetří podle obsazenosti místností.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Zvětšený obrázek">
+    <button class="lightbox-close" aria-label="Zavřít zvětšení">&times;</button>
+    <img class="lightbox-img" src="" alt="" />
+    <p class="lightbox-cap"></p>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> SMART HOME projekt · Semily · Vyrobeno s ❤️ a script-first myšlením.</p>
+      <p class="footer-meta">Veřejná prezentace · žádné API klíče · žádné lokální IP · žádné ovládání odtud.</p>
+      <p class="footer-meta"><a href="technicka-mapa.html">Technická mapa →</a> · <a href="index.html">Domů</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
