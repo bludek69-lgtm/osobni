@@ -41,7 +41,7 @@
   <h1><span style="margin-right:.4rem">🥗</span>Meal Planner</h1>
   <p class="hero-sub">Pianificatore pasti mio — invece di iscrivermi ad app dietetiche che mi tracciano, ho la mia che gira solo nel browser. Genera piano settimanale di porzioni secondo l'obiettivo calorico, calcola lista spesa, traccia macro. Niente account, niente cloud.</p>
   <p style="margin-top:.6rem"><span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React 18</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vite 5</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tailwind</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tauri 2</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows (.exe)</span></p>
-  <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a></p>
+  <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a><button id="openDeník" class="diary-btn" style="margin-left:1rem">📖 Diario di sviluppo</button></p>
 </section>
 
 <section>
@@ -118,5 +118,46 @@ main img:hover { transform:scale(1.005) }
   });
 })();
 </script>
+
+<!-- vyvojovy denik popup (auto EN/IT) -->
+<style>
+.diary-btn { font: inherit; cursor:pointer; background:#2e7d32; color:#fff; border:none; padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem; }
+.diary-btn:hover { filter:brightness(1.1); }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--txt,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
+.diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--txt-muted,#666); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
+</style>
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Diario di sviluppo" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head"><h2 style="margin:0">📖 Diario di sviluppo — Meal Planner</h2><button class="diary-close" aria-label="Chiudi">✕</button></div>
+    <div class="diary-body"><ul style="line-height:1.8">
+      <li><strong>v0.4.0 / Phase 9 (1 giu 2026)</strong> — Integrazione Rohlík live (accesso nell'app, prezzi live dall'account, proposta carrello, articoli aggiunti dopo conferma; l'app non invia mai checkout o pagamento da sola). Tema scuro (nero-oro) con interruttore 🌙/☀️. Pulizia del codice, 259/259 test unitari PASS.</li>
+      <li><strong>v0.2.0 / Windows Tauri (28 mag 2026)</strong> — App desktop Windows nativa (Tauri 2 + NSIS, ~1,1 MB). Dati in localStorage, come il web.</li>
+      <li><strong>Phase 7.1+7.2+8.1 (28 mag 2026)</strong> — Frigo: autocomplete fuzzy (Levenshtein ≤2), controllo quantità, date di scadenza + banner (≤3 giorni), widget dashboard. 225/225 test.</li>
+      <li><strong>Phase 7.0 (aprile 2026)</strong> — Frigo MVP: autocomplete da food_db, recipe matcher “Cosa posso cucinare?” (coverage %).</li>
+      <li><strong>v0.1.x (feb–apr 2026)</strong> — Fasi MVP 1–6: profilo, BMR/TDEE, piano settimanale, porzioni, lista spesa, analitica, log peso, 36 ricette.</li>
+    </ul></div>
+  </div>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('openDeík') || document.getElementById('openDeník'); var modal=document.getElementById('diary');
+  if(!modal) return;
+  var btn=document.getElementById('openDeník');
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  if(btn) btn.addEventListener('click', open);
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+
 </body>
 </html>

@@ -41,7 +41,7 @@
   <h1><span style="margin-right:.4rem">🚌</span>Lavoro BusLine — turni e stipendio</h1>
   <p class="hero-sub">App di lavoro per un autista di autobus — parsing automatico dei turni e calcolo dello stipendio mensile dalle ore effettivamente guidate, indennità e categorie. In sviluppo.</p>
   <p style="margin-top:.6rem"><span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Excel / XLSX parser</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PDF parser (turnusy)</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Lokální Windows app</span></p>
-  <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a></p>
+  <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a><button id="openDeník" class="diary-btn" style="margin-left:1rem">📖 Diario di sviluppo</button></p>
 </section>
 
 <section>
@@ -106,5 +106,44 @@ main img:hover { transform:scale(1.005) }
   });
 })();
 </script>
+
+<!-- vyvojovy denik popup (auto EN/IT) -->
+<style>
+.diary-btn { font: inherit; cursor:pointer; background:#e8a317; color:#fff; border:none; padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem; }
+.diary-btn:hover { filter:brightness(1.1); }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--txt,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
+.diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--txt-muted,#666); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
+</style>
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Diario di sviluppo" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head"><h2 style="margin:0">📖 Diario di sviluppo — Lavoro BusLine — turni e stipendio</h2><button class="diary-close" aria-label="Chiudi">✕</button></div>
+    <div class="diary-body"><ul style="line-height:1.8">
+      <li><strong>Obiettivo (in sviluppo)</strong> — App di lavoro per autista di autobus — elaborazione automatica dei turni e calcolo dello stipendio mensile dalle ore effettivamente guidate, maggiorazioni e categorie.</li>
+      <li><strong>Piano</strong> — Import turni (PDF/foto/testo) → suddivisione in turni → calcolo ore, notturni, weekend, festivi → stipendio mensile. Tutto in locale, niente cloud.</li>
+      <li><strong>Stato</strong> — In sviluppo — raccolgo turni reali e regole salariali perché il calcolo sia preciso.</li>
+    </ul></div>
+  </div>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('openDeík') || document.getElementById('openDeník'); var modal=document.getElementById('diary');
+  if(!modal) return;
+  var btn=document.getElementById('openDeník');
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  if(btn) btn.addEventListener('click', open);
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+
 </body>
 </html>
