@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resident Auditor — Le mie app — Luděk</title>
+  <meta name="description" content="Sito personale di Luděk — autista, viaggiatore, amante dell'Italia, della tecnologia e della casa intelligente.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔎%3C/text%3E%3C/svg%3E">
+</head>
+<body class="theme-home">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <div class="lang-switcher" aria-label="Lingua">
+      <a href="../../aplikace/resident-auditor.html" hreflang="cs" title="Česky">CS</a>
+      <a href="../../en/aplikace/resident-auditor.html" hreflang="en" title="English">EN</a>
+      <a href="resident-auditor.html" hreflang="it" aria-current="page" title="Italiano">IT</a>
+    </div>
+    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+    <a href="../../">Domů</a>
+    <a href="../../aplikace/">Moje aplikace</a>
+    <a href="../../finance/">Finance</a>
+    <a href="../../cestovani/">Cestování</a>
+    <a href="../../cestovani/italie/">Itálie</a>
+    <a href="../../zaliby/rybareni/">Rybaření</a>
+    <a href="../../smart-home/">Smart Home</a>
+    <a href="../../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #4a8fd0;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#4a8fd0">Resident Auditor</span>
+  <h1><span style="margin-right:.4rem">🔎</span>Smart Home Resident Auditor</h1>
+  <p class="hero-sub">Uno strumento che valuta la mia casa intelligente <strong>con gli occhi di chi ci abita</strong> — non &bdquo;lo script è andato&ldquo;, ma &bdquo;la mattina ha funzionato come doveva?&ldquo;. Legge i log reali di un determinato giorno e restituisce <strong>PASS / WATCH / FAIL</strong> con le prove. Si avvia a mano, non cambia nulla in casa.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Read-only</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Avvio manuale</span></p>
+  <p style="margin-top:.8rem"><a href="index.html">← Torna a Le mie app</a><button id="openDenik" class="diary-btn" style="margin-left:1rem">📖 Diario di sviluppo</button></p>
+</section>
+
+<section>
+  <h2>Che cosa fa</h2>
+  <p>La mia casa è gestita da molte automazioni — luci, audio, riscaldamento, tapparelle, scene. Gli strumenti comuni dicono solo &bdquo;lo script è terminato senza errori&ldquo;. Ma <strong>uno script tecnicamente riuscito non significa che sia stato piacevole per una persona.</strong> La radio può partire tre volte di fila, una luce può accendersi al massimo di notte, il riscaldamento può scaldare anche se non c'è nessuno in casa — e tutto questo &bdquo;tecnicamente è andato bene&ldquo;.</p>
+  <p><strong>Resident Auditor guarda in modo diverso.</strong> Prende i log salvati della casa per un giorno preciso e si chiede, in termini umani: <em>La mattina è stata tranquilla? Le luci hanno reagito al movimento e le tapparelle hanno avuto la priorità? È rimasto qualcosa acceso o la radio accesa dopo che sono uscito? Il riscaldamento si è comportato in modo sensato? Qualcosa mi ha svegliato di notte?</em></p>
+  <p><strong>La regola chiave: mai PASS senza prove.</strong> Se manca la prova che qualcosa è andato bene, non riceve il via libera — riceve &bdquo;WATCH&ldquo; (da osservare). E viceversa: gli eventi di routine e innocui non contano come problema, così non ci sono <em>falsi allarmi</em>. L'obiettivo è un verdetto affidabile, non belle statistiche.</p>
+  <p><strong>Non cambia nulla.</strong> Lo strumento è puramente <strong>read-only</strong> — legge solo i log. Non tocca la casa, non ripara nulla, non gira in background. Lo avvio a mano quando voglio sapere come si è comportata la casa.</p>
+</section>
+
+<section>
+  <h2>Funzioni principali</h2>
+  <ul style="line-height:1.7">
+      <li><strong>10 ambiti della vita in casa</strong> — mattina, movimento notturno, audio e messaggi vocali, luci e tapparelle, bagno, riscaldamento, affidabilità dei dispositivi e stabilità del sistema. Ognuno ha il proprio &bdquo;valutatore&ldquo;.</li>
+      <li><strong>Verdetto basato sulle prove: PASS / WATCH / FAIL</strong> — verde solo con prova positiva del comportamento corretto; altrimenti da osservare; rosso solo per un problema reale.</li>
+      <li><strong>Nessun falso PASS né falso allarme</strong> — distingue un'azione reale da un controllo di routine, quindi non segnala un problema dove non c'è.</li>
+      <li><strong>Una proposta di passo successivo per ogni problema</strong> — quando qualcosa fallisce nasce un &bdquo;compito da risolvere&ldquo; con le prove (ora, cosa è successo, impatto sull'abitante) — ma una correzione non parte mai da sola, aspetta la mia decisione.</li>
+      <li><strong>Audit di un giorno specifico</strong> — lo avvio per un giorno scelto e ottengo un report chiaro; ideale come verifica dopo ogni modifica alla casa.</li>
+      <li><strong>Manuale, sicuro</strong> — nessun avvio automatico, nessuna interferenza con la casa, sola lettura.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Esempio di output</h2>
+  <p>Audit di un giorno reale (abbreviato):</p>
+  <pre style="background:#0d1117;color:#c9d1d9;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.82rem;line-height:1.55;border:1px solid #4a8fd040">$ python -m core.runner --run --real --day 2026-06-02
+
+  mattina (risveglio)   : PASS   — avvio tranquillo, briefing 1×, nessun disturbo
+  movimento notturno    : PASS   — gestito in modo soffuso, niente mi ha svegliato
+  audio / radio / TTS   : PASS   — radio al massimo 1×, nessun annuncio notturno
+  luci + tapparelle     : PASS   — luci per scena, le tapparelle hanno la priorità
+  bagno / toilette      : PASS   — luce per fase, guardiano a riposo
+  riscaldamento &amp; comfort: PASS  — gestito su pianificazione, senza sprechi
+  stabilità del sistema : PASS   — 0 crash
+  dashboard vs realtà   : PASS   — corrisponde alla realtà
+  affidabilità dispositivi: WATCH — 1 dispositivo non critico cade ogni tanto
+
+  Stato complessivo: WATCH  ·  0 interventi necessari  ·  0 falsi allarmi</pre>
+  <p style="font-size:.9rem;color:var(--txt-muted,#666)">Il verdetto è <em>WATCH</em>, non &bdquo;tutto verde&ldquo; — perché un dispositivo cade ogni tanto. Onesto, senza abbellimenti.</p>
+</section>
+
+<section>
+  <h2>Stato</h2>
+  <p>Versione v0.1 — base completa, pronta per l'uso manuale (giugno 2026). Verificato su giorni reali, 72 test automatici superati. Le aggiunte (la &bdquo;storia della casa&ldquo; giornaliera, una classificazione più fine dei dispositivi) sono pianificate, non necessarie.</p>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Budinský Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="../../smart-home/">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+
+<style>
+.diary-btn { font: inherit; cursor:pointer; background:#4a8fd0; color:#fff; border:none; padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem; }
+.diary-btn:hover { filter:brightness(1.1); }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--txt,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
+.diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--txt-muted,#666); }
+.diary-close:hover { color:var(--txt,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
+</style>
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Diario di sviluppo" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head"><h2 style="margin:0">📖 Diario di sviluppo — Resident Auditor</h2><button class="diary-close" aria-label="Chiudi">✕</button></div>
+    <div class="diary-body"><ul style="line-height:1.8">
+      <li><strong>v0.1 completa — calibrata su dati reali (giugno 2026)</strong> — Lo strumento legge i log reali della casa e, per luci, bagno, riscaldamento e mattina, dà PASS/FAIL in base alle azioni effettive (non al numero di righe di log). Verificato su due giorni reali: 9 ambiti verdi con prove, 1 da osservare — 0 falsi allarmi.</li>
+      <li><strong>Correzione dei falsi allarmi</strong> — È emerso che gli eventi di &bdquo;controllo&ldquo; di routine (il guardiano ha verificato qualcosa, tutto OK) non devono contare come problema. Un &bdquo;livello semantico&ldquo; ora distingue un'azione reale dalla routine — così lo strumento non lancia allarmi dove non c'è nulla.</li>
+      <li><strong>Collegamento ai log reali della casa</strong> — La casa salva da tempo registrazioni dettagliate del comportamento. Lo strumento vi si è collegato (sola lettura) e ha imparato a interpretarle correttamente — inclusi fusi orari e contesto (fase del giorno, presenza, luminosità).</li>
+      <li><strong>Dieci valutatori (plugin)</strong> — Gli ambiti sono stati aggiunti gradualmente: mattina e crash del sistema, poi audio/luci/bagno, poi riscaldamento/notte/dashboard/dispositivi. Ognuno è indipendente e testabile.</li>
+      <li><strong>Il principio di base fin dall'inizio</strong> — Mai PASS senza prove. Il successo tecnico non basta. Sola lettura, avvio manuale, mai tocca la casa senza la mia approvazione.</li>
+    </ul></div>
+  </div>
+</div>
+<script>
+(function(){
+  var modal=document.getElementById('diary'); if(!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  var ob=document.getElementById('openDenik'); if(ob) ob.addEventListener('click', open);
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Tester — Moje aplikace — Luděk</title>
+  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧪%3C/text%3E%3C/svg%3E">
+</head>
+<body class="theme-home">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <div class="lang-switcher" aria-label="Jazyk">
+      <a href="app-tester.html" hreflang="cs" aria-current="page" title="Česky">CS</a>
+      <a href="../en/aplikace/app-tester.html" hreflang="en" title="English">EN</a>
+      <a href="../it/aplikace/app-tester.html" hreflang="it" title="Italiano">IT</a>
+    </div>    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+    <a href="../">Domů</a>
+    <a href="../aplikace/" aria-current="page">Moje aplikace</a>
+    <a href="../finance/">Finance</a>
+    <a href="../cestovani/">Cestování</a>
+    <a href="../cestovani/italie/">Itálie</a>
+    <a href="../zaliby/rybareni/">Rybaření</a>
+    <a href="../smart-home/">Smart Home</a>
+    <a href="../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #22a39f;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#22a39f">App Tester</span>
+  <h1><span style="margin-right:.4rem">🧪</span>Univerzální tester aplikací</h1>
+  <p class="hero-sub">Nástroj, který sám projde celou webovou aplikaci: spustí prohlížeč, otevře všechny stránky a řekne <strong>PASS / WATCH / FAIL</strong> — nenačetlo se něco? jsou chyby v konzoli? je stránka prázdná nebo pomalá? Přidání nové aplikace = jeden řádek v configu. <strong>Stejné ovládání jako Resident Auditor.</strong></p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#22a39f1a;color:#22a39f;border:1px solid #22a39f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#22a39f1a;color:#22a39f;border:1px solid #22a39f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Playwright</span> <span class="pill" style="background:#22a39f1a;color:#22a39f;border:1px solid #22a39f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Read-only</span></p>
+  <p style="margin-top:.8rem"><a href="index.html">← Zpět na Moje aplikace</a><button id="openDenik" class="diary-btn" style="margin-left:1rem">📖 Vývojový deník</button></p>
+</section>
+
+<section>
+  <h2>Co to dělá</h2>
+  <p>Dělám si vlastní aplikace — plánovač jídel, cestovní plánovač Itálie, účetní knihu, sbírku, … Po každé úpravě je potřeba zkontrolovat, že se všechny stránky pořád normálně načtou, nikde nepadá konzole a nic není rozbité. Proklikávat to ručně je otrava a snadno se na něco zapomene.</p>
+  <p><strong>App Tester to udělá za mě.</strong> Spustí na pozadí prohlížeč (bez okna), postupně otevře každou stránku zvolené aplikace a u každé si zapíše: načetla se vůbec? jak rychle? jsou tam chyby v konzoli prohlížeče? má stránka nějaký obsah, nebo je prázdná? liší se stránky mezi sebou (funguje přepínání)? Z toho složí přehledný verdikt.</p>
+  <p><strong>Univerzální = žádný hardcode.</strong> Aplikace nejsou napevno v kódu — jsou v jednoduchém seznamu (config). Přidat novou appku znamená dopsat pár řádků: adresa, seznam stránek. Tester je obecný, funguje na cokoliv, co běží v prohlížeči.</p>
+  <p><strong>Stejná filozofie jako Resident Auditor: bez důkazů nikdy PASS.</strong> Když aplikace zrovna neběží, nedostane zelenou ani červenou — dostane &bdquo;WATCH&ldquo; (nedostatek důkazů), ať se nevyrobí falešně dobrý výsledek. A tester nic nemění — jen se dívá (read-only), spouští se ručně, neběží na pozadí.</p>
+</section>
+
+<section>
+  <h2>Klíčové funkce</h2>
+  <ul style="line-height:1.7">
+      <li><strong>6 kontrol u každé stránky</strong> — načtení stránky, chyby v konzoli, prázdný obsah, rychlost načítání, a zda se stránky navzájem liší (funguje routing).</li>
+      <li><strong>Verdikt PASS / WATCH / FAIL</strong> — FAIL když se něco nenačte nebo padá konzole; WATCH když je stránka pomalá, prázdná nebo appka neběží; PASS jen když je vše v pořádku.</li>
+      <li><strong>Univerzální config</strong> — přidání aplikace = jeden objekt se seznamem stránek. Žádné přepisování kódu.</li>
+      <li><strong>Screenshoty + report</strong> — z každé stránky se uloží snímek; výsledek je přehledný report po aplikacích i souhrn za všechny.</li>
+      <li><strong>Bez falešného PASS</strong> — když appka neběží, je to poctivě WATCH, ne falešně zelená.</li>
+      <li><strong>Ručně, read-only</strong> — žádné automatické spouštění, jen se dívá, nic nenasazuje.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Ukázka výstupu</h2>
+  <p>Nejdřív sebe-test (ověří, že je vše připravené), pak test jedné aplikace:</p>
+  <pre style="background:#0d1117;color:#c9d1d9;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.82rem;line-height:1.55;border:1px solid #22a39f40">$ python -m core.runner --self-test
+  [PASS] režim: ručně spouštěné
+  [PASS] prohlížeč + Playwright dostupné
+  [PASS] kontrola: aplikace neběží → WATCH
+  [PASS] kontrola: chyba v konzoli → FAIL
+  [PASS] kontrola: čistý běh → PASS
+  VÝSLEDEK SELF-TEST: PASS
+
+$ python -m core.runner --run --app meal-planner
+  meal-planner: FAIL — 6/7 stránek načteno, 1 chyba v konzoli
+  Celkový stav: FAIL · report a screenshoty uloženy</pre>
+  <p style="font-size:.9rem;color:var(--txt-muted,#666)">Tester nahlásí konkrétní problém (která stránka, jaká chyba) — ne jen &bdquo;něco se pokazilo&ldquo;.</p>
+</section>
+
+<section>
+  <h2>Stav</h2>
+  <p>Verze v0.1 (červen 2026). Sebe-test prochází (12/12), ověřeno naživo na reálné aplikaci. Vzniklo z dřívějších jednorázových skriptů, které jsem sjednotil do jednoho univerzálního nástroje ovládaného stejně jako Resident Auditor.</p>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Budinský Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="../smart-home/">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+
+<style>
+.diary-btn { font: inherit; cursor:pointer; background:#22a39f; color:#fff; border:none; padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem; }
+.diary-btn:hover { filter:brightness(1.1); }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--txt,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
+.diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--txt-muted,#666); }
+.diary-close:hover { color:var(--txt,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
+</style>
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Vyvojovy denik" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head"><h2 style="margin:0">📖 Vývojový deník — App Tester</h2><button class="diary-close" aria-label="Zavrit">✕</button></div>
+    <div class="diary-body"><ul style="line-height:1.8">
+      <li><strong>v0.1 — univerzální tester (červen 2026)</strong> — Z jednorázových skriptů, které uměly testovat jen dvě konkrétní aplikace, vznikl obecný nástroj řízený configem. Přidání další aplikace = pár řádků, žádné přepisování kódu.</li>
+      <li><strong>Stejné ovládání jako Resident Auditor</strong> — Záměrně sdílí způsob spouštění i filozofii: ručně, read-only, bez automatu, a hlavně &bdquo;bez důkazů nikdy PASS&ldquo;. Když aplikace neběží, je výsledek poctivě WATCH.</li>
+      <li><strong>6 kontrol + screenshoty</strong> — Načtení, chyby v konzoli, prázdný obsah, rychlost, rozlišitelnost stránek. Z každé stránky snímek, na konci souhrnný report.</li>
+      <li><strong>Ověřeno naživo</strong> — Sebe-test 12/12 a reálný průchod jednou aplikací v prohlížeči bez okna. Když narazil na chybu, poctivě ji nahlásil — žádný falešný PASS.</li>
+    </ul></div>
+  </div>
+</div>
+<script>
+(function(){
+  var modal=document.getElementById('diary'); if(!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  var ob=document.getElementById('openDenik'); if(ob) ob.addEventListener('click', open);
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+</body>
+</html>

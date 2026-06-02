@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resident Auditor — Moje aplikace — Luděk</title>
+  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔎%3C/text%3E%3C/svg%3E">
+</head>
+<body class="theme-home">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <div class="lang-switcher" aria-label="Jazyk">
+      <a href="resident-auditor.html" hreflang="cs" aria-current="page" title="Česky">CS</a>
+      <a href="../en/aplikace/resident-auditor.html" hreflang="en" title="English">EN</a>
+      <a href="../it/aplikace/resident-auditor.html" hreflang="it" title="Italiano">IT</a>
+    </div>    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+    <a href="../">Domů</a>
+    <a href="../aplikace/" aria-current="page">Moje aplikace</a>
+    <a href="../finance/">Finance</a>
+    <a href="../cestovani/">Cestování</a>
+    <a href="../cestovani/italie/">Itálie</a>
+    <a href="../zaliby/rybareni/">Rybaření</a>
+    <a href="../smart-home/">Smart Home</a>
+    <a href="../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #4a8fd0;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#4a8fd0">Resident Auditor</span>
+  <h1><span style="margin-right:.4rem">🔎</span>Smart Home Resident Auditor</h1>
+  <p class="hero-sub">Nástroj, který hodnotí můj chytrý byt <strong>očima obyvatele</strong> — ne &bdquo;skript doběhl&ldquo;, ale &bdquo;fungovalo to ráno tak, jak má?&ldquo;. Přečte si reálné logy za konkrétní den a řekne <strong>PASS / WATCH / FAIL</strong> s důkazy. Spouští se ručně, nic v bytě nemění.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Read-only</span> <span class="pill" style="background:#4a8fd01a;color:#4a8fd0;border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Ručně spouštěné</span></p>
+  <p style="margin-top:.8rem"><a href="index.html">← Zpět na Moje aplikace</a><button id="openDenik" class="diary-btn" style="margin-left:1rem">📖 Vývojový deník</button></p>
+</section>
+
+<section>
+  <h2>Co to dělá</h2>
+  <p>Můj byt řídí spousta automatizací — světla, audio, topení, rolety, scény. Běžné nástroje hlásí jen &bdquo;skript proběhl bez chyby&ldquo;. Jenže <strong>technicky úspěšný skript ještě neznamená, že to bylo příjemné pro člověka.</strong> Rádio se může spustit třikrát po sobě, světlo se může rozsvítit naplno v noci, topení může hřát, i když nikdo není doma — a všechno to &bdquo;technicky proběhlo OK&ldquo;.</p>
+  <p><strong>Resident Auditor se dívá jinak.</strong> Vezme uložené logy domu za konkrétní den a u každé situace se ptá lidsky: <em>Proběhlo ráno klidně? Reagovala světla na pohyb a měla rolety přednost? Nezůstalo svítit nebo hrát rádio, když jsem odešel? Hřálo topení rozumně? Nevzbudilo mě něco v noci?</em></p>
+  <p><strong>Klíčové pravidlo: bez důkazů nikdy PASS.</strong> Pokud chybí důkaz, že něco proběhlo dobře, nedostane to zelenou — dostane &bdquo;WATCH&ldquo; (ke sledování). A naopak: rutinní, neškodné události se nepočítají jako problém, aby nevznikaly <em>falešné poplachy</em>. Cílem je důvěryhodný verdikt, ne hezké statistiky.</p>
+  <p><strong>Nic nemění.</strong> Nástroj je čistě <strong>read-only</strong> — jen čte logy. Nezasahuje do domu, nic neopravuje, neběží na pozadí. Spustím ho ručně, když chci vědět, jak se dům choval.</p>
+</section>
+
+<section>
+  <h2>Klíčové funkce</h2>
+  <ul style="line-height:1.7">
+      <li><strong>10 oblastí života v bytě</strong> — ráno, noční pohyb, audio &amp; hlasové zprávy, světla &amp; rolety, koupelna, topení, spolehlivost zařízení a stabilita systému. Každá má vlastního &bdquo;hodnotitele&ldquo;.</li>
+      <li><strong>Verdikt podle důkazů: PASS / WATCH / FAIL</strong> — zelená jen s pozitivním důkazem správného chování; jinak ke sledování; červená jen u skutečného problému.</li>
+      <li><strong>Žádný falešný PASS ani falešný poplach</strong> — rozezná skutečnou akci od rutinní kontroly, takže nehlásí problém tam, kde žádný není.</li>
+      <li><strong>Návrh dalšího kroku u každého problému</strong> — když něco selže, vznikne &bdquo;úkol k řešení&ldquo; s důkazy (čas, co se stalo, dopad na obyvatele) — ale oprava se nikdy nespustí sama, čeká na moje rozhodnutí.</li>
+      <li><strong>Audit konkrétního dne</strong> — spustím ho na vybraný den a dostanu přehledný report; ideální po každé úpravě domu jako kontrola.</li>
+      <li><strong>Ručně, bezpečně</strong> — žádné automatické spouštění, žádný zásah do domu, jen čtení.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Ukázka výstupu</h2>
+  <p>Audit jednoho reálného dne (zkráceno):</p>
+  <pre style="background:#0d1117;color:#c9d1d9;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.82rem;line-height:1.55;border:1px solid #4a8fd040">$ python -m core.runner --run --real --day 2026-06-02
+
+  ráno (probuzení)   : PASS   — klidný náběh, briefing 1×, bez rušení
+  noční pohyb        : PASS   — řešeno tlumeně, nic nevzbudilo
+  audio / rádio / TTS: PASS   — rádio ≤1×, žádné noční hlášení
+  světla + rolety    : PASS   — světla dle scén, roleta měla přednost
+  koupelna / toaleta : PASS   — světlo dle fáze, hlídač v klidu
+  topení a komfort   : PASS   — řízeno dle plánu, bez plýtvání
+  stabilita systému  : PASS   — 0 pádů
+  dashboard vs realita: PASS  — odpovídá skutečnosti
+  spolehlivost zařízení: WATCH — 1 nekritické zařízení občas vypadává
+
+  Celkový stav: WATCH  ·  0 nutných zásahů  ·  0 falešných poplachů</pre>
+  <p style="font-size:.9rem;color:var(--txt-muted,#666)">Verdikt je <em>WATCH</em>, ne &bdquo;všechno zelené&ldquo; — protože jedno zařízení občas vypadává. Poctivě, bez přikrášlování.</p>
+</section>
+
+<section>
+  <h2>Stav</h2>
+  <p>Verze v0.1 — hotový základ, připravený k ručnímu používání (červen 2026). Ověřeno na reálných dnech, 72 automatických testů prochází. Doplňky (denní &bdquo;příběh bytu&ldquo;, jemnější rozlišení zařízení) jsou naplánované, ne nutné.</p>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Budinský Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="../smart-home/">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+
+<style>
+.diary-btn { font: inherit; cursor:pointer; background:#4a8fd0; color:#fff; border:none; padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem; }
+.diary-btn:hover { filter:brightness(1.1); }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--txt,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
+.diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--txt-muted,#666); }
+.diary-close:hover { color:var(--txt,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
+</style>
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Vyvojovy denik" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head"><h2 style="margin:0">📖 Vývojový deník — Resident Auditor</h2><button class="diary-close" aria-label="Zavrit">✕</button></div>
+    <div class="diary-body"><ul style="line-height:1.8">
+      <li><strong>v0.1 hotovo — kalibrace na reálných datech (červen 2026)</strong> — Nástroj čte reálné logy domu a u světel, koupelny, topení a rána dává PASS/FAIL podle skutečných akcí (ne podle počtu řádků v logu). Ověřeno na dvou reálných dnech: 9 oblastí zelených s důkazem, 1 ke sledování — 0 falešných poplachů.</li>
+      <li><strong>Náprava falešných poplachů</strong> — Ukázalo se, že rutinní &bdquo;kontrolní&ldquo; události (hlídač něco ověřil, vše OK) se nesmí počítat jako problém. Přidaná &bdquo;sémantická vrstva&ldquo; rozezná skutečnou akci od rutiny — díky tomu nástroj nehlásí poplach tam, kde nic není.</li>
+      <li><strong>Napojení na reálné logy domu</strong> — Dům si už delší dobu ukládá podrobné záznamy chování. Nástroj se na ně napojil (jen pro čtení) a začal je správně interpretovat — včetně časových pásem a kontextu (fáze dne, přítomnost, jas).</li>
+      <li><strong>Deset hodnotitelů (pluginů)</strong> — Postupně přibyly oblasti: ráno a pády systému, pak audio/světla/koupelna, pak topení/noc/dashboard/zařízení. Každý je samostatný a testovatelný.</li>
+      <li><strong>Základní princip od začátku</strong> — Bez důkazů nikdy PASS. Technický úspěch nestačí. Read-only, ručně spouštěné, nikdy nezasahuje do domu bez mého svolení.</li>
+    </ul></div>
+  </div>
+</div>
+<script>
+(function(){
+  var modal=document.getElementById('diary'); if(!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  var ob=document.getElementById('openDenik'); if(ob) ob.addEventListener('click', open);
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+</body>
+</html>

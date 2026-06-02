@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Tester — Le mie app — Luděk</title>
+  <meta name="description" content="Sito personale di Luděk — autista, viaggiatore, amante dell'Italia, della tecnologia e della casa intelligente.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧪%3C/text%3E%3C/svg%3E">
+</head>
+<body class="theme-home">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <div class="lang-switcher" aria-label="Lingua">
+      <a href="../../aplikace/app-tester.html" hreflang="cs" title="Česky">CS</a>
+      <a href="../../en/aplikace/app-tester.html" hreflang="en" title="English">EN</a>
+      <a href="app-tester.html" hreflang="it" aria-current="page" title="Italiano">IT</a>
+    </div>
+    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+    <a href="../../">Domů</a>
+    <a href="../../aplikace/">Moje aplikace</a>
+    <a href="../../finance/">Finance</a>
+    <a href="../../cestovani/">Cestování</a>
+    <a href="../../cestovani/italie/">Itálie</a>
+    <a href="../../zaliby/rybareni/">Rybaření</a>
+    <a href="../../smart-home/">Smart Home</a>
+    <a href="../../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #22a39f;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#22a39f">App Tester</span>
+  <h1><span style="margin-right:.4rem">🧪</span>Tester universale di applicazioni</h1>
+  <p class="hero-sub">Uno strumento che percorre da solo un'intera app web: avvia un browser, apre tutte le pagine e restituisce <strong>PASS / WATCH / FAIL</strong> — qualcosa non si è caricato? ci sono errori in console? la pagina è vuota o lenta? Aggiungere una nuova app = una voce nel file di config. <strong>Stessi comandi del Resident Auditor.</strong></p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#22a39f1a;color:#22a39f;border:1px solid #22a39f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#22a39f1a;color:#22a39f;border:1px solid #22a39f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Playwright</span> <span class="pill" style="background:#22a39f1a;color:#22a39f;border:1px solid #22a39f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Read-only</span></p>
+  <p style="margin-top:.8rem"><a href="index.html">← Torna a Le mie app</a><button id="openDenik" class="diary-btn" style="margin-left:1rem">📖 Diario di sviluppo</button></p>
+</section>
+
+<section>
+  <h2>Che cosa fa</h2>
+  <p>Mi creo le mie app — un pianificatore di pasti, un pianificatore di viaggi in Italia, un libro contabile, un catalogo da collezione, … Dopo ogni modifica devo verificare che tutte le pagine si carichino ancora normalmente, che la console non vada in errore e che nulla sia rotto. Cliccare a mano è noioso e si dimentica facilmente qualcosa.</p>
+  <p><strong>App Tester lo fa al posto mio.</strong> Avvia un browser in background (senza finestra), apre una per una ogni pagina dell'app scelta e per ciascuna registra: si è caricata? quanto velocemente? ci sono errori nella console del browser? la pagina ha del contenuto o è vuota? le pagine sono diverse tra loro (il routing funziona)? Da qui compone un verdetto chiaro.</p>
+  <p><strong>Universale = nessun hardcoding.</strong> Le app non sono fissate nel codice — stanno in un semplice elenco (config). Aggiungere una nuova app significa scrivere poche righe: indirizzo, elenco delle pagine. Il tester è generico, funziona su qualsiasi cosa giri in un browser.</p>
+  <p><strong>Stessa filosofia del Resident Auditor: mai PASS senza prove.</strong> Quando un'app non è in esecuzione non riceve né verde né rosso — riceve &bdquo;WATCH&ldquo; (prove insufficienti), così non si produce un risultato falsamente positivo. E il tester non cambia nulla — guarda soltanto (sola lettura), si avvia a mano, non gira in background.</p>
+</section>
+
+<section>
+  <h2>Funzioni principali</h2>
+  <ul style="line-height:1.7">
+      <li><strong>6 controlli per pagina</strong> — caricamento della pagina, errori in console, contenuto vuoto, velocità di caricamento e se le pagine differiscono tra loro (il routing funziona).</li>
+      <li><strong>Verdetto PASS / WATCH / FAIL</strong> — FAIL quando qualcosa non si carica o la console va in errore; WATCH quando una pagina è lenta, vuota o l'app non è in esecuzione; PASS solo quando è tutto a posto.</li>
+      <li><strong>Config universale</strong> — aggiungere un'app = un oggetto con l'elenco delle pagine. Nessuna riscrittura del codice.</li>
+      <li><strong>Screenshot + report</strong> — da ogni pagina viene salvata un'istantanea; il risultato è un report chiaro per app più un riepilogo su tutte.</li>
+      <li><strong>Nessun falso PASS</strong> — quando un'app non è in esecuzione è onestamente WATCH, non falsamente verde.</li>
+      <li><strong>Manuale, sola lettura</strong> — nessun avvio automatico, guarda soltanto, non distribuisce nulla.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Esempio di output</h2>
+  <p>Prima un auto-test (verifica che sia tutto pronto), poi il test di un'app:</p>
+  <pre style="background:#0d1117;color:#c9d1d9;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.82rem;line-height:1.55;border:1px solid #22a39f40">$ python -m core.runner --self-test
+  [PASS] modalità: avvio manuale
+  [PASS] browser + Playwright disponibili
+  [PASS] controllo: app non in esecuzione → WATCH
+  [PASS] controllo: errore in console → FAIL
+  [PASS] controllo: esecuzione pulita → PASS
+  RISULTATO AUTO-TEST: PASS
+
+$ python -m core.runner --run --app meal-planner
+  meal-planner: FAIL — 6/7 pagine caricate, 1 errore in console
+  Stato complessivo: FAIL · report e screenshot salvati</pre>
+  <p style="font-size:.9rem;color:var(--txt-muted,#666)">Il tester segnala il problema concreto (quale pagina, quale errore) — non solo &bdquo;qualcosa è andato storto&ldquo;.</p>
+</section>
+
+<section>
+  <h2>Stato</h2>
+  <p>Versione v0.1 (giugno 2026). L'auto-test passa (12/12), verificato dal vivo su un'app reale. È nato da precedenti script una tantum, che ho unificato in un unico strumento universale controllato come il Resident Auditor.</p>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Budinský Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="../../smart-home/">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+
+<style>
+.diary-btn { font: inherit; cursor:pointer; background:#22a39f; color:#fff; border:none; padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem; }
+.diary-btn:hover { filter:brightness(1.1); }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--txt,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
+.diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--txt-muted,#666); }
+.diary-close:hover { color:var(--txt,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
+</style>
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Diario di sviluppo" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head"><h2 style="margin:0">📖 Diario di sviluppo — App Tester</h2><button class="diary-close" aria-label="Chiudi">✕</button></div>
+    <div class="diary-body"><ul style="line-height:1.8">
+      <li><strong>v0.1 — tester universale (giugno 2026)</strong> — Da script una tantum capaci di testare solo due app specifiche è nato uno strumento generico guidato da config. Aggiungere un'altra app = poche righe, nessuna riscrittura del codice.</li>
+      <li><strong>Stessi comandi del Resident Auditor</strong> — Condivide di proposito il modo di avvio e la filosofia: manuale, sola lettura, nessuno scheduler e soprattutto &bdquo;mai PASS senza prove&ldquo;. Quando un'app non è in esecuzione, il risultato è onestamente WATCH.</li>
+      <li><strong>6 controlli + screenshot</strong> — Caricamento, errori in console, contenuto vuoto, velocità, distinzione delle pagine. Un'istantanea da ogni pagina, un report di riepilogo alla fine.</li>
+      <li><strong>Verificato dal vivo</strong> — Auto-test 12/12 e un percorso reale di un'app in un browser senza finestra. Quando ha incontrato un errore, lo ha segnalato onestamente — nessun falso PASS.</li>
+    </ul></div>
+  </div>
+</div>
+<script>
+(function(){
+  var modal=document.getElementById('diary'); if(!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  var ob=document.getElementById('openDenik'); if(ob) ob.addEventListener('click', open);
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+</body>
+</html>
