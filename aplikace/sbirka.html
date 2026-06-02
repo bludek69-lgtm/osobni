@@ -82,7 +82,7 @@
     .ss-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.1rem; margin-top:.8rem; }
     .ss-grid figure { margin:0; }
     .ss-grid img { width:100%; height:auto; border-radius:8px; border:1px solid var(--border,#0001); display:block; }
-    .ss-grid figcaption { font-size:.82rem; color:var(--txt-muted,#666); margin-top:.35rem; }
+    .ss-grid figcaption { font-size:.82rem; color:var(--text-mut,#666); margin-top:.35rem; }
   </style>
   <div class="ss-grid">
     <figure>
@@ -139,7 +139,7 @@
         <li><strong>Bezpečnost</strong> — reálná data (SQLite + fotky) jen lokálně v <code>C:\.Projekt\.CollectionPrivateData</code>, na GitHub jde jen kód + ukázková data. Backend servíruje frontend bez vystavení konfigurace.</li>
         <li><strong>Základ (Phase A–H)</strong> — bezpečná architektura, read-only MVP, editor sbírky, oceňování s důkazy, exporty (CSV/Excel/PDF/ZIP), Windows launcher, CI + demo.</li>
       </ul>
-      <p style="color:var(--txt-muted,#777);font-size:.85rem">Pozn.: appka eviduje a orientačně oceňuje — neprovádí znaleckou činnost. Reálnou cenu vždy ověř na burze.</p>
+      <p style="color:var(--text-mut,#777);font-size:.85rem">Pozn.: appka eviduje a orientačně oceňuje — neprovádí znaleckou činnost. Reálnou cenu vždy ověř na burze.</p>
     </div>
   </div>
 </div>
@@ -169,7 +169,7 @@
 .diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
 .diary-panel {
   position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
-  background:var(--bg,#fff); color:var(--txt,#111); border-radius:14px;
+  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
   box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
 }
 .diary-head {
@@ -177,8 +177,8 @@
   padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
   position:sticky; top:0; background:var(--bg,#fff);
 }
-.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--txt-muted,#666); }
-.diary-close:hover { color:var(--txt,#111); }
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
+.diary-close:hover { color:var(--text,#111); }
 .diary-body { padding:1.2rem 1.4rem; }
 @media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
 </style>

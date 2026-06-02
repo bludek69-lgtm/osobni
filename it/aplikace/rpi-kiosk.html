@@ -61,10 +61,10 @@
   </ul>
 </section>
 
-<section><h2>Anteprime</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/01_audio.png" alt="Audio a scény — spuštění rádia, scénář pro relax / kino / vaření / večeři" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Audio a scény — spuštění rádia, scénář pro relax / kino / vaření / večeři</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/02_energy.png" alt="Energie a topení — runtime kotle dnes, stav TRV zón, aktuální odběr" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Energie a topení — runtime kotle dnes, stav TRV zón, aktuální odběr</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/03_scenes.png" alt="Scény (styl Loxone) — jeden velký dotyk a celá místnost se přestaví" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Scény (styl Loxone) — jeden velký dotyk a celá místnost se přestaví</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/04_settings.png" alt="Nastavení — rychlý přehled provozu domu bez nutnosti otevřít telefon" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Nastavení — rychlý přehled provozu domu bez nutnosti otevřít telefon</figcaption></figure></div></section>
+<section><h2>Anteprime</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/01_audio.png" alt="Audio a scény — spuštění rádia, scénář pro relax / kino / vaření / večeři" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Audio a scény — spuštění rádia, scénář pro relax / kino / vaření / večeři</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/02_energy.png" alt="Energie a topení — runtime kotle dnes, stav TRV zón, aktuální odběr" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Energie a topení — runtime kotle dnes, stav TRV zón, aktuální odběr</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/03_scenes.png" alt="Scény (styl Loxone) — jeden velký dotyk a celá místnost se přestaví" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Scény (styl Loxone) — jeden velký dotyk a celá místnost se přestaví</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/04_settings.png" alt="Nastavení — rychlý přehled provozu domu bez nutnosti otevřít telefon" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Nastavení — rychlý přehled provozu domu bez nutnosti otevřít telefon</figcaption></figure></div></section>
 
 <section>
   <h2>Stato</h2>
@@ -118,9 +118,9 @@ main img:hover { transform:scale(1.005) }
 .diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
 .diary-modal.open { display:block; }
 .diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
-.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--txt,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
+.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--text,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
 .diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
-.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--txt-muted,#666); }
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
 .diary-body { padding:1.2rem 1.4rem; }
 @media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
 </style>
