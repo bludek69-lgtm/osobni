@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lavoro BusLine — Le mie app — Luděk</title>
+  <title>Lavoro autista — Le mie app — Luděk</title>
   <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
@@ -17,8 +17,8 @@
       Luděk
     </a>
     <div class="lang-switcher" aria-label="Lingua">
-      <a href="../../aplikace/busline-prace.html" hreflang="cs" title="Česky">CS</a>
-      <a href="../../en/aplikace/busline-prace.html" hreflang="en" title="English">EN</a>
+      <a href="../../aplikace/ridic-turnusy-mzdy.html" hreflang="cs" title="Česky">CS</a>
+      <a href="../../en/aplikace/ridic-turnusy-mzdy.html" hreflang="en" title="English">EN</a>
       <a href="./" hreflang="it" aria-current="page" title="Italiano">IT</a>
     </div>
     <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
@@ -37,8 +37,8 @@
 
 <main id="main">
 <section class="hero" style="border-left:4px solid #e8a317;padding-left:1.2rem">
-  <span class="hero-accent" style="color:#e8a317">Lavoro BusLine — turni e stipendio</span>
-  <h1><span style="margin-right:.4rem">🚌</span>Lavoro BusLine — turni e stipendio</h1>
+  <span class="hero-accent" style="color:#e8a317">Lavoro autista — turni e stipendio</span>
+  <h1><span style="margin-right:.4rem">🚌</span>Lavoro autista — turni e stipendio</h1>
   <p class="hero-sub">Strumento locale per autista di autobus (internamente "BudLine Panel"). Analizza i turni dai PDF, calcola lo stipendio mensile dai turni guidati, costruisce una <strong>busta paga propria</strong> e la confronta con quella ufficiale. Include un <strong>livello fiscale</strong> (acconto imposta, contributi, netto) e la verifica annuale delle aliquote. Tutto offline, niente cloud.</p>
   <p style="margin-top:.6rem"><span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Web locale (stdlib http.server)</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Parser turni PDF</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Motore stipendio</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Niente cloud</span></p>
   <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a><button id="openDeník" class="diary-btn" style="margin-left:1rem">📖 Diario di sviluppo</button></p>
@@ -126,7 +126,7 @@ main img:hover { transform:scale(1.005) }
 <div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Diario di sviluppo" aria-hidden="true">
   <div class="diary-backdrop"></div>
   <div class="diary-panel">
-    <div class="diary-head"><h2 style="margin:0">📖 Diario di sviluppo — Lavoro BusLine — turni e stipendio</h2><button class="diary-close" aria-label="Chiudi">✕</button></div>
+    <div class="diary-head"><h2 style="margin:0">📖 Diario di sviluppo — Lavoro autista — turni e stipendio</h2><button class="diary-close" aria-label="Chiudi">✕</button></div>
     <div class="diary-body"><ul style="line-height:1.8">
       <li><strong>Obiettivo</strong> — Strumento locale dell&rsquo;autista: turni → stipendio → verifica busta. Tutto offline, come ausilio di controllo.</li>
       <li><strong>Parser turni</strong> — Lettura dei turni da PDF; corrette le corse a lunga percorrenza (numeri a 4 cifre) e i trasferimenti di servizio, perché km e corse corrispondano all&rsquo;originale.</li>

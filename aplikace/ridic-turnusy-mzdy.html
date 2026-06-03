@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Práce BusLine — Moje aplikace — Luděk</title>
+  <title>Práce řidiče — Moje aplikace — Luděk</title>
   <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
@@ -36,8 +36,8 @@
 
 <main id="main">
 <section class="hero" style="border-left:4px solid #e8a317;padding-left:1.2rem">
-  <span class="hero-accent" style="color:#e8a317">Práce BusLine — turnusy a mzdy</span>
-  <h1><span style="margin-right:.4rem">🚌</span>Práce BusLine — turnusy a mzdy</h1>
+  <span class="hero-accent" style="color:#e8a317">Práce řidiče — turnusy a mzdy</span>
+  <h1><span style="margin-right:.4rem">🚌</span>Práce řidiče — turnusy a mzdy</h1>
   <p class="hero-sub">Lokální nástroj pro řidiče autobusu (interně „BudLine Panel"). Parsuje turnusy z PDF, počítá měsíční mzdu z odjetých směn, sestaví <strong>vlastní výplatní pásku</strong> a porovná ji s oficiální páskou. Včetně <strong>daňové vrstvy</strong> (záloha daně, pojištění, čistá mzda) a ročního ověření sazeb. Vše offline, bez cloudu.</p>
   <p style="margin-top:.6rem"><span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Lokální web (stdlib http.server)</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PDF parser turnusů</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Mzdový engine</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Bez cloudu</span></p>
   <p style="margin-top:.8rem"><a href="index.html">← Zpět na Moje aplikace</a><button id="openDenik" class="diary-btn" style="margin-left:1rem">📖 Vývojový deník</button></p>
@@ -99,7 +99,7 @@
 <div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Vyvojovy denik" aria-hidden="true">
   <div class="diary-backdrop"></div>
   <div class="diary-panel">
-    <div class="diary-head"><h2 style="margin:0">📖 Vývojový deník — Práce BusLine</h2><button class="diary-close" aria-label="Zavrit">✕</button></div>
+    <div class="diary-head"><h2 style="margin:0">📖 Vývojový deník — Práce řidiče</h2><button class="diary-close" aria-label="Zavrit">✕</button></div>
     <div class="diary-body"><ul style="line-height:1.8"><li><strong>Záměr</strong> — Lokální nástroj řidiče: turnusy → mzda → kontrola výplaty. Vše offline, jako kontrolní pomůcka.</li><li><strong>Parser turnusů</strong> — Načítání směn z PDF; opraveny dálkové spoje (4místná čísla) a režijní přejezdy, ať km a spoje sedí proti originálu.</li><li><strong>Dvojí páska + porovnání</strong> — Originální páska (z PDF) vs vlastní (vypočtená) přes existující mzdový engine; položkové porovnání s 9 stavy a verdiktem SEDÍ/WATCH/NESDÍ. Neúplný měsíc = WATCH, ne falešné „nesedí".</li><li><strong>Daňová vrstva</strong> — Samostatný engine pro zálohu daně, sociální/zdravotní pojištění a čistou mzdu; sazby jen z ručně potvrzených pravidel, zamčené proti přepsání. Ověřeno proti reálné pásce (odvody i daň seděly; rozdíl = nezdaněné diety).</li><li><strong>Karta řidiče</strong> — Děti, sleva, prohlášení → vstup do výpočtu. Jeden řidič na instanci (kolega má vlastní kopii).</li><li><strong>Roční ověření sazeb</strong> — Tlačítko, které ověří oficiální zdroje a nabídne sazby k potvrzení; nikdy se nepřepíšou samy.</li><li><strong>Stav</strong> — Funkční v1.0; doladění (diety v porovnání čisté) až po prvním kompletním reálném měsíci.</li></ul></div>
   </div>
 </div>

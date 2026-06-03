@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BusLine work — My apps — Luděk</title>
+  <title>Driver work — My apps — Luděk</title>
   <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
@@ -17,9 +17,9 @@
       Luděk
     </a>
     <div class="lang-switcher" aria-label="Language">
-      <a href="../../aplikace/busline-prace.html" hreflang="cs" title="Česky">CS</a>
+      <a href="../../aplikace/ridic-turnusy-mzdy.html" hreflang="cs" title="Česky">CS</a>
       <a href="./" hreflang="en" aria-current="page" title="English">EN</a>
-      <a href="../../it/aplikace/busline-prace.html" hreflang="it" title="Italiano">IT</a>
+      <a href="../../it/aplikace/ridic-turnusy-mzdy.html" hreflang="it" title="Italiano">IT</a>
     </div>
     <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
     <nav class="nav" aria-label="Hlavní navigace">
@@ -37,8 +37,8 @@
 
 <main id="main">
 <section class="hero" style="border-left:4px solid #e8a317;padding-left:1.2rem">
-  <span class="hero-accent" style="color:#e8a317">BusLine work — shifts & salary</span>
-  <h1><span style="margin-right:.4rem">🚌</span>BusLine work — shifts & salary</h1>
+  <span class="hero-accent" style="color:#e8a317">Driver work — shifts & salary</span>
+  <h1><span style="margin-right:.4rem">🚌</span>Driver work — shifts & salary</h1>
   <p class="hero-sub">Local tool for a bus driver (internally "BudLine Panel"). Parses shift schedules from PDF, computes monthly salary from driven shifts, builds an <strong>own payslip</strong> and compares it to the official one. Includes a <strong>tax layer</strong> (advance tax, insurance, net pay) and yearly rate verification. Fully offline, no cloud.</p>
   <p style="margin-top:.6rem"><span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Local web (stdlib http.server)</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PDF shift parser</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Salary engine</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">No cloud</span></p>
   <p style="margin-top:.8rem"><a href="../index.html">← Back to My apps</a><button id="openDeník" class="diary-btn" style="margin-left:1rem">📖 Dev diary</button></p>
@@ -126,7 +126,7 @@ main img:hover { transform:scale(1.005) }
 <div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Dev diary" aria-hidden="true">
   <div class="diary-backdrop"></div>
   <div class="diary-panel">
-    <div class="diary-head"><h2 style="margin:0">📖 Dev diary — BusLine work — shifts & salary</h2><button class="diary-close" aria-label="Close">✕</button></div>
+    <div class="diary-head"><h2 style="margin:0">📖 Dev diary — Driver work — shifts & salary</h2><button class="diary-close" aria-label="Close">✕</button></div>
     <div class="diary-body"><ul style="line-height:1.8">
       <li><strong>Goal</strong> — A local driver tool: shifts → pay → payslip check. Fully offline, as a checking aid.</li>
       <li><strong>Shift parser</strong> — Reading shifts from PDF; fixed long-distance runs (4-digit numbers) and deadhead transfers so km and runs match the original.</li>
