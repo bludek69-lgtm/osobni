@@ -39,24 +39,27 @@
 <section class="hero" style="border-left:4px solid #e8a317;padding-left:1.2rem">
   <span class="hero-accent" style="color:#e8a317">BusLine work — shifts & salary</span>
   <h1><span style="margin-right:.4rem">🚌</span>BusLine work — shifts & salary</h1>
-  <p class="hero-sub">Work app for a bus driver — automatic parsing of shift schedules and computing monthly salary from actually-driven hours, bonuses and categories. In development.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Excel / XLSX parser</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PDF parser (turnusy)</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Lokální Windows app</span></p>
+  <p class="hero-sub">Local tool for a bus driver (internally "BudLine Panel"). Parses shift schedules from PDF, computes monthly salary from driven shifts, builds an <strong>own payslip</strong> and compares it to the official one. Includes a <strong>tax layer</strong> (advance tax, insurance, net pay) and yearly rate verification. Fully offline, no cloud.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Local web (stdlib http.server)</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PDF shift parser</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Salary engine</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">No cloud</span></p>
   <p style="margin-top:.8rem"><a href="../index.html">← Back to My apps</a><button id="openDeník" class="diary-btn" style="margin-left:1rem">📖 Dev diary</button></p>
 </section>
 
 <section>
   <h2>What it does</h2>
-  <p><strong>Why it is being built:</strong> every month I get a shift schedule (when and where to drive) and a payslip. I manually verify whether the hours match, bonuses for night, weekend, holidays, overtime, meal vouchers. An Excel sheet would do, but I want it automatic — drop a shift-schedule PDF in, the app spits out what to expect and where it differs from payroll.</p><p><strong>What it will do:</strong> read shift-schedule PDF from BusLine LK (parse each shift — start, end, route), compute work hours + breaks + bonuses (night 22-6, weekend, holidays, overtime over the base contract). Then import the payslip (XLSX/PDF) and compare: app says &bdquo;for this month I expect X CZK gross&ldquo;, payslip says Y CZK — if they differ, output the line items to verify with the supervisor.</p><p><strong>Status:</strong> In development. Plan: Phase 1 = PDF shift parser, Phase 2 = salary calculator, Phase 3 = payslip comparison, Phase 4 = UI dashboard. No cloud, no account — everything local.</p>
+  <p><strong>Why it exists:</strong> every month I get a shift schedule and a payslip. Manually checking whether hours, bonuses (night, weekend, holidays), waiting time and net pay match is tedious. This app does it for me — locally, on my PC, no cloud.</p><p><strong>How it works:</strong> it reads the shift PDFs (splits them into runs, times, km), computes the gross part from confirmed driven shifts via an own salary engine and builds an <strong>own (computed) payslip</strong>. It then puts it next to the <strong>official payslip from the carrier</strong> (from PDF) and <strong>compares</strong> them line by line — with a clear verdict MATCHES / WATCH / MISMATCH and an explanation per row. If only part of the month is entered, the app detects it and reports WATCH (incomplete data), not a false "mismatch".</p><p><strong>Taxes & net pay:</strong> a separate tax layer computes advance income tax, social and health insurance and net pay — strictly from <strong>manually confirmed rates</strong> (the app never invents rates; until confirmed, net pay waits). Credits and children come from the "driver card".</p>
 </section>
 
 <section>
   <h2>Key features</h2>
   <ul style="line-height:1.7">
-      <li><strong>PDF shift import</strong> — Reads monthly BusLine LK schedule PDF, parses individual runs, times and locations.</li>
-      <li><strong>Hours & bonus computation</strong> — Work hours + breaks + night (22-6) + weekend + holidays + overtime over base contract.</li>
-      <li><strong>Payslip cross-check</strong> — Imports payslip and cross-verifies: expected vs actual gross CZK. Diffs output as a verification list.</li>
-      <li><strong>Monthly overview</strong> — Hours driven, bonuses, meal vouchers, vacation days left.</li>
-      <li><strong>Local, no cloud</strong> — No account, no API. Payslip and schedules stay on my PC.</li>
+      <li><strong>Shift parser (PDF)</strong> — Reads the monthly schedule, parses runs, times, stops and km (incl. long-distance lines and deadhead transfers).</li>
+      <li><strong>Salary engine</strong> — From confirmed shifts computes hours, waiting time and bonuses (night, weekend, holiday, hard-environment).</li>
+      <li><strong>Own vs official payslip + comparison</strong> — Builds the own payslip and compares it to the official one; 9 states (matches / differs / missing / unclear / …), verdict MATCHES/WATCH/MISMATCH, with source and what to add per item.</li>
+      <li><strong>Tax layer (net pay)</strong> — Advance tax, social and health insurance, net pay — only from manually confirmed rates; rates locked against overwrite.</li>
+      <li><strong>Driver card</strong> — Children, taxpayer credit, signed declaration, insurer — inputs to the calculation.</li>
+      <li><strong>Yearly rate verification</strong> — One button checks official sources and offers rates to confirm (they never change by themselves).</li>
+      <li><strong>Records</strong> — Shifts + AETR/561 checks, fleet, drivers, collective agreement, updates from official sources.</li>
+      <li><strong>Local, no cloud</strong> — No account, no outbound API. Payslips and schedules stay on my PC.</li>
   </ul>
 </section>
 
@@ -64,7 +67,7 @@
 
 <section>
   <h2>Status</h2>
-  <p>**In development.** Phase 1 (PDF parser) skeleton, Phase 2-4 planned. No public hosting planned — private payroll self-check tool.</p>
+  <p><strong>Working (v1.0) — private tool, no public hosting.</strong> The main flow <em>shift → official payslip → own payslip → comparison → net pay</em> works. Built strictly safe: the salary engine is never edited, everything is a proposal, real data is never overwritten automatically, with a backup and a check at each phase. Tax rates are confirmed manually from official sources — the app never invents them or presents them as certainty (a checking aid, not tax advice).</p>
 </section>
 </main>
 
@@ -125,9 +128,13 @@ main img:hover { transform:scale(1.005) }
   <div class="diary-panel">
     <div class="diary-head"><h2 style="margin:0">📖 Dev diary — BusLine work — shifts & salary</h2><button class="diary-close" aria-label="Close">✕</button></div>
     <div class="diary-body"><ul style="line-height:1.8">
-      <li><strong>Goal (in development)</strong> — A work app for a bus driver — automatic processing of duty rosters and monthly pay calculation from actually driven hours, premiums and categories.</li>
-      <li><strong>Plan</strong> — Import the roster (PDF/photo/text) → split into shifts → compute hours, nights, weekends, holidays → monthly pay. All local, no cloud.</li>
-      <li><strong>Status</strong> — In development — collecting real rosters and pay rules so the calculation is exact to the koruna.</li>
+      <li><strong>Goal</strong> — A local driver tool: shifts → pay → payslip check. Fully offline, as a checking aid.</li>
+      <li><strong>Shift parser</strong> — Reading shifts from PDF; fixed long-distance runs (4-digit numbers) and deadhead transfers so km and runs match the original.</li>
+      <li><strong>Dual payslip + comparison</strong> — Official payslip (from PDF) vs own (computed) via the existing salary engine; line-by-line comparison with 9 states and a MATCHES/WATCH/MISMATCH verdict. Incomplete month = WATCH, not a false "mismatch".</li>
+      <li><strong>Tax layer</strong> — A separate engine for advance tax, social/health insurance and net pay; rates only from manually confirmed rules, locked against overwrite. Validated against a real payslip (insurance and tax matched; the gap was untaxed per-diems).</li>
+      <li><strong>Driver card</strong> — Children, credit, declaration → inputs to the calculation. One driver per instance (a colleague gets their own copy).</li>
+      <li><strong>Yearly rate verification</strong> — A button that checks official sources and offers rates to confirm; they never change by themselves.</li>
+      <li><strong>Status</strong> — Working v1.0; fine-tuning (per-diems in the net comparison) once the first full real month is entered.</li>
     </ul></div>
   </div>
 </div>
