@@ -38,7 +38,7 @@
 <section class="hero" style="border-left:4px solid #2e7d32;padding-left:1.2rem">
   <span class="hero-accent" style="color:#2e7d32">Meal Planner / Krabíčková dieta</span>
   <h1><span style="margin-right:.4rem">🥗</span>Meal Planner</h1>
-  <p class="hero-sub">Osobní plánovač jídelníčku — sestaví týdenní plán krabiček podle kalorického cíle, spočítá makra, nákupní seznam i co aktuálně mám v lednici. Fuzzy autocomplete, sledování expirace, recepty které lze uvařit z toho co mám. Živé napojení na Rohlík, světlý i tmavý režim. Bez účtu, bez cloudu, vše lokálně.</p>
+  <p class="hero-sub">Osobní plánovač jídelníčku — průvodce prvním nastavením a na jedno kliknutí sestaví týdenní plán krabiček (režimy Hubnutí / Levný týden / Rychle do práce), spočítá makra, nákupní seznam a u každého jídla vysvětlí „proč je tady". Zamykání oblíbených jídel, kontrola pestrosti, práce s lednicí a expirací, odečet zásob od nákupu, tiskový plán nedělní přípravy. Živé napojení na Rohlík, světlý i tmavý režim, tichá auto-aktualizace. Bez účtu, bez cloudu, vše lokálně.</p>
   <p style="margin-top:.6rem">
     <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React 18</span>
     <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span>
@@ -53,10 +53,11 @@
 <section>
   <h2>Co to dělá</h2>
   <p><strong>Proč vznikl:</strong> Zkoušel jsem MyFitnessPal, Yazio, Lifesum — všechny chtěly účet, posílaly reklamy nebo neuměly česká jídla. Tahle aplikace běží <strong>jen lokálně v prohlížeči nebo jako Windows .exe</strong> — profil, váha i jídelníček žijí v localStorage, žádný server nevidí co jím ani kolik vážím.</p>
-  <p><strong>Jak funguje:</strong> Zadám výšku, váhu, věk, aktivitu. Aplikace spočítá denní kalorický cíl (vzorec Mifflin-St Jeor + activity multiplier). Při hubnutí navrhne asymetrický deficit, při nabírání svalů vybírá recepty s vyšším protein ratio.</p>
-  <p><strong>Týdenní plán:</strong> Projde databázi receptů a sestaví 7 dní × 5 jídel (snídaně, svačina, oběd, svačina, večeře) tak, aby denní kcal padly do ±10 % cíle. Generuje nákupní seznam — sečte ingredience za celý týden, rozdělí do kategorií. Export CSV nebo tisk.</p>
+  <p><strong>Jak funguje:</strong> Při prvním spuštění mě provede průvodce (jméno, věk, výška, váha, aktivita, cíl, dieta, rozpočet). Aplikace spočítá denní kalorický cíl (vzorec Mifflin-St Jeor + activity multiplier). Při hubnutí navrhne asymetrický deficit, při nabírání svalů vybírá recepty s vyšším protein ratio.</p>
+  <p><strong>Týdenní plán na jedno kliknutí:</strong> Tlačítko „Vygenerovat týden" sestaví 7 dní × 5 jídel tak, aby denní kcal padly do ±10 % cíle. Vyberu režim — <strong>Hubnutí</strong>, <strong>Vyvážený</strong>, <strong>Levný týden</strong> (preferuje levné recepty) nebo <strong>Rychle do práce</strong> (krátká příprava, do krabičky). U každého jídla blok „<strong>Proč je tady?</strong>" vysvětlí výběr (kalorie, protein, levné, rychlé, využívá lednici…). Oblíbená jídla můžu <strong>zamknout</strong> a appka vymění jen zbytek; hlídá i <strong>pestrost</strong> týdne („Vyměnit podobná jídla").</p>
+  <p><strong>Nedělní příprava + nákup:</strong> Tiskový přehled „co vařit v neděli na celý týden" — co uvařit najednou, časový plán, skladování, krabičky po dnech. Nákupní seznam sečte ingredience za celý týden a <strong>odečte, co už mám v lednici</strong> (jen bezpečné jednotky g/ml/ks; jinak označí „ověř ručně"). Export CSV nebo tisk.</p>
   <p><strong>Lednice:</strong> Evidence zásob doma. Fuzzy autocomplete s Levenshtein algoritmem (překlepy ≤2 znaky). Sledování expirace s barevnými varovánímí (≤3 dny). Dashboard automaticky ukáže co brzy vyprší a jaké recepty lze uvařit z toho co je v lednici (≥50 % pokrytí ingrediencí).</p>
-  <p><strong>Windows desktop:</strong> Tauri 2 instalátor (~1,1 MB NSIS .exe). Funguje jako normální desktopová aplikace bez app storu, bez aktualizací přes cloud.</p>
+  <p><strong>Windows desktop + tichá aktualizace:</strong> Nativní aplikace (Tauri 2 + lokální Python sidecar, zaheslovaný instalátor). Funguje bez app storu — a sama se <strong>tiše aktualizuje</strong> na novou verzi (po potvrzení, bez zadávání hesla).</p>
   <p><strong>Živé napojení na Rohlík (volitelné):</strong> Pokud nakupuju u Rohlíka, přihlásím se přímo v aplikaci a ta načte <strong>živé ceny</strong> produktů z mého účtu. Z týdenního plánu sestaví návrh košíku a ukáže cenu vs minimum objednávky vs doručení. Položky do košíku přidám až po svém potvrzení — <em>samotnou objednávku (checkout / platbu) aplikace nikdy neodešle sama</em>. Heslo zůstává jen lokálně na mém stroji, nikdy v prohlížeči ani v kódu (mimo přidání do košíku je vše read-only).</p>
   <p><strong>Světlý i tmavý režim:</strong> Přepínač 🌙/☀️ — elegantní černo-zlaté tmavé téma i světlé, volba se pamatuje v prohlížeči.</p>
 </section>
@@ -64,6 +65,11 @@
 <section>
   <h2>Klíčové funkce</h2>
   <ul style="line-height:1.7">
+      <li><strong>Průvodce prvním spuštěním</strong> — 6 kroků (údaje, cíl, dieta, vaření, rozpočet, výstup), přeskočitelný, offline. „Spustit průvodce znovu" v Nastavení.</li>
+      <li><strong>„Vygenerovat týden" + režimy</strong> — jedním kliknutím: Hubnutí · Vyvážený · Levný týden · Rychle do práce. Po vygenerování shrnutí (kcal, protein, cena, ø čas přípravy).</li>
+      <li><strong>„Proč je tady?"</strong> — u každého jídla vysvětlení výběru jen z dat (kalorie, vysoký protein, levné, rychlé, do krabičky, využívá lednici, neopakuje se).</li>
+      <li><strong>Zamykání jídel + pestrost</strong> — oblíbené jídlo zamknu, regenerace ho zachová; „Pestrost týdne %" + „Vyměnit podobná jídla".</li>
+      <li><strong>Nedělní meal-prep tisk</strong> — co uvařit najednou, časový plán, skladování (vždy „ověř ručně"), krabičky po dnech, nákup s odečtem lednice.</li>
       <li><strong>Auto-generovaný týdenní plán</strong> — 7×5 jídel, denní kcal v ±10 % cíle, penalizace opakování pro pestrost jídelníčku.</li>
       <li><strong>BMR/TDEE kalkulačka</strong> — Mifflin-St Jeor + activity multiplier. Asymetrický deficit/surplus podle cíle.</li>
       <li><strong>Doporučený cíl + banner</strong> — Když se posune doporučený kcal cíl, nabídne „Použít doporučený" — nikdy tichá změna.</li>
@@ -75,7 +81,7 @@
       <li><strong>Analytika</strong> — Kalorická odchylka za N dní, log váhy s grafem, přehled výdajů na jídlo.</li>
       <li><strong>Živé napojení na Rohlík (volitelné)</strong> — Přihlášení přímo v aplikaci → živé ceny z účtu → návrh košíku z plánu. Položky přidám po svém potvrzení; checkout a platbu appka nikdy neodešle sama. Heslo jen lokálně, jinak read-only.</li>
       <li><strong>Světlý i tmavý režim</strong> — Přepínač 🌙/☀️, černo-zlaté tmavé téma, volba se pamatuje.</li>
-      <li><strong>Lokální web + Windows app</strong> — Web běží v prohlížeči (data v localStorage), navíc nativní Windows aplikace (Tauri 2, ~1,1 MB instalátor).</li>
+      <li><strong>Lokální web + Windows app + tichá aktualizace</strong> — Web běží v prohlížeči (data v localStorage), navíc nativní Windows aplikace (Tauri 2 + Python sidecar) s tichým auto-updatem na novou verzi.</li>
   </ul>
 </section>
 
@@ -95,7 +101,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Funkční, v0.4.0 — Phase 7–9 (červen 2026): + živé napojení na Rohlík a tmavý režim. 259 unit testů PASS, 36 receptů, Tauri 2 Windows instalátor (~1,1 MB), Lednice s fuzzy match + expiry tracking. Lokální web + Windows app, bez cloudu, bez účtu, bez telemetrie.</p>
+  <p>Funkční, v0.8.0 — UX Functional Upgrade (červen 2026): průvodce nastavením, „Vygenerovat týden" + režimy (Hubnutí / Levný / Rychle do práce), „Proč je tady?", zamykání jídel, kontrola pestrosti, chytrá lednice + odečet nákupu, nedělní meal-prep tisk. <strong>338 unit testů PASS</strong>, 37 receptů, Tauri 2 + Python sidecar s tichou auto-aktualizací. Lokální web + Windows app, bez cloudu, bez účtu, bez telemetrie.</p>
 </section>
 </main>
 
@@ -130,6 +136,7 @@
   <div class="diary-panel">
     <div class="diary-head"><h2 style="margin:0">📖 Vývojový deník — Krabíčková dieta</h2><button class="diary-close" aria-label="Zavrit">✕</button></div>
     <div class="diary-body"><ul style="line-height:1.8">
+      <li><strong>v0.8.0 / UX Functional Upgrade + Visual Polish (5. 6. 2026)</strong> — Wave 1–5: průvodce prvním spuštěním, „Vygenerovat týden" + režimy (Hubnutí / Levný / Rychle do práce), „Proč je tady?" u jídel, zamykání jídel + pestrost („Vyměnit podobná"), chytrá lednice (expirace, využití zbytků, odečet od nákupu — jen bezpečné jednotky), nedělní meal-prep tisk. + Visual Polish: přehlednější Dashboard, navigace „Více", mobilní týden jako seznam, sjednocené badge/barvy. <strong>338/338 unit testů PASS</strong>, default generátor beze změny, checkout/platba nikdy. Tichá auto-aktualizace (Tauri + Python sidecar).</li>
       <li><strong>v0.4.0 / Phase 9 (1. 6. 2026)</strong> — Živé napojení na Rohlík (přihlášení v aplikaci, živé ceny z účtu, návrh košíku, přidání po potvrzení; checkout a platbu appka nikdy neodešle sama). Tmavý režim (černo-zlaté téma) s přepínačem 🌙/☀️. Úklid kódu, 259/259 unit testů PASS.</li>
       <li><strong>v0.2.0 / Windows Tauri (28. 5. 2026)</strong> — Nativní Windows desktop apka (Tauri 2 + NSIS, ~1,1 MB). Data v localStorage jako web.</li>
       <li><strong>Phase 7.1+7.2+8.1 (28. 5. 2026)</strong> — Lednice: fuzzy autocomplete (Levenshtein ≤2), kontrola množství, datum expirace + banner (≤3 dny), dashboard widgety. 225/225 testů.</li>
