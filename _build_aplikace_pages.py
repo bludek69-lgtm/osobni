@@ -667,6 +667,125 @@ def asset_url_relative_from_hub(lang: str, sub: str, filename: str) -> str:
     return img_url(lang, sub, filename)
 
 
+# ────────────────────────────────────────────────────────────
+# Download section ("Moje aplikace ke stažení") — veřejné zaheslované
+# instalátory z repa bludek69-lgtm/aplikace. Tlačítko míří na stránku
+# release (releases/tag/apps), kde jsou všechny assety → web se nemusí
+# měnit při každé nové verzi. Verze jsou jen textový štítek v DL_APPS
+# (aktualizovat při vydání). DL_BASE je přímá base pro případné přímé odkazy.
+# ────────────────────────────────────────────────────────────
+DL_BASE = "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/"
+DL_RELEASE_URL = "https://github.com/bludek69-lgtm/aplikace/releases/tag/apps"
+DL_CHECKSUMS_URL = "https://github.com/bludek69-lgtm/aplikace/blob/main/CHECKSUMS.txt"
+
+DL_I18N = {
+    "cs": {
+        "h2": "Moje aplikace ke stažení",
+        "intro": "Veřejně stáhnutelné aplikace pro Windows. Instalátory jsou zaheslované — heslo dostaneš ode mě zvlášť.",
+        "btn": "Stáhnout",
+        "via": "GitHub Releases",
+        "warn_title": "Než stáhneš",
+        "warn": [
+            "🔒 Instalátory jsou zaheslované — <strong>heslo posílám zvlášť</strong> (ne přes web).",
+            "🛡️ Windows může zobrazit upozornění <strong>SmartScreen</strong>. Pokud aplikaci znáš a čekáš ji ode mě, klikni „Další informace“ → „Přesto spustit“.",
+            "🔑 Kontrolní součty SHA-256 najdeš v souboru CHECKSUMS.txt.",
+        ],
+        "checksums": "Zobrazit CHECKSUMS.txt",
+    },
+    "en": {
+        "h2": "My apps to download",
+        "intro": "Publicly downloadable Windows apps. The installers are password-protected — you get the password from me separately.",
+        "btn": "Download",
+        "via": "GitHub Releases",
+        "warn_title": "Before you download",
+        "warn": [
+            "🔒 Installers are password-protected — <strong>I send the password separately</strong> (not on the web).",
+            "🛡️ Windows may show a <strong>SmartScreen</strong> warning. If you know the app and expect it from me, click “More info” → “Run anyway”.",
+            "🔑 SHA-256 checksums are in the CHECKSUMS.txt file.",
+        ],
+        "checksums": "View CHECKSUMS.txt",
+    },
+    "it": {
+        "h2": "Le mie app da scaricare",
+        "intro": "App per Windows scaricabili pubblicamente. Gli installer sono protetti da password — la password te la mando a parte.",
+        "btn": "Scarica",
+        "via": "GitHub Releases",
+        "warn_title": "Prima di scaricare",
+        "warn": [
+            "🔒 Gli installer sono protetti da password — <strong>mando la password a parte</strong> (non sul web).",
+            "🛡️ Windows può mostrare un avviso <strong>SmartScreen</strong>. Se conosci l’app e te l’aspetti da me, clicca “Ulteriori informazioni” → “Esegui comunque”.",
+            "🔑 I checksum SHA-256 sono nel file CHECKSUMS.txt.",
+        ],
+        "checksums": "Mostra CHECKSUMS.txt",
+    },
+}
+
+# (klíč, ikona, barva, verze, i18n popis)
+DL_APPS = [
+    {"icon": "🚍", "color": "#2d6ad5", "version": "1.2.3",
+     "name": "BudLine Panel", "file": "BudLinePanel-v1.2.3-Setup.exe",
+     "desc": {"cs": "Evidence směn, turnusů a výplatních podkladů pro řidiče.",
+              "en": "Shifts, rosters and payroll documents for drivers.",
+              "it": "Turni, rotazioni e documenti per la busta paga degli autisti."}},
+    {"icon": "🍱", "color": "#e2722e", "version": "0.8.4",
+     "name": "Meal Planner", "file": "MealPlanner-v0.8.4-Setup.exe",
+     "desc": {"cs": "Jídelníček, krabičky a nákupní seznam.",
+              "en": "Meal plan, meal-prep boxes and shopping list.",
+              "it": "Menù, pasti pronti e lista della spesa."}},
+    {"icon": "🧳", "color": "#1a9c5b", "version": "0.7.4",
+     "name": "Italia Travel Planner", "file": "ItaliaTravel-v0.7.4-Setup.exe",
+     "desc": {"cs": "Plánování cest do Itálie — itinerář a rozpočet.",
+              "en": "Trip planning for Italy — itinerary and budget.",
+              "it": "Pianificazione viaggi in Italia — itinerario e budget."}},
+    {"icon": "🪙", "color": "#9b59b6", "version": "1.1.3",
+     "name": "Collection", "file": "Collection-v1.1.3-Setup.exe",
+     "desc": {"cs": "Evidence sbírky a popisy přes AI.",
+              "en": "Collection catalog with AI descriptions.",
+              "it": "Catalogo della collezione con descrizioni AI."}},
+]
+
+
+def render_downloads(lang: str) -> str:
+    D = DL_I18N[lang]
+    cards = []
+    for app in DL_APPS:
+        color = app["color"]
+        desc = app["desc"][lang]
+        cards.append(
+            f'<div class="card" style="border-left:4px solid {color};">'
+            f'<div class="card-icon">{app["icon"]}</div>'
+            f'<h3>{app["name"]} '
+            f'<span style="display:inline-block;background:{color}1f;color:{color};'
+            f'border:1px solid {color}55;padding:.1rem .5rem;border-radius:6px;'
+            f'font-size:.72rem;font-weight:600;vertical-align:middle">v{app["version"]}</span></h3>'
+            f'<p>{desc}</p>'
+            f'<div class="card-cta" style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap">'
+            f'<a href="{DL_RELEASE_URL}" target="_blank" rel="noopener" '
+            f'style="display:inline-block;background:{color};color:#fff;text-decoration:none;'
+            f'padding:.5rem 1rem;border-radius:8px;font-weight:600;white-space:nowrap">⬇ {D["btn"]}</a>'
+            f'<span style="font-size:.78rem;color:var(--txt-muted,#666);white-space:nowrap">{D["via"]}</span></div>'
+            "</div>"
+        )
+    cards_html = "\n      ".join(cards)
+    warn_items = "\n        ".join(f"<li>{w}</li>" for w in D["warn"])
+    return f"""
+<section aria-label="{D["h2"]}" style="margin-top:2.5rem">
+  <h2>{D["h2"]}</h2>
+  <p class="hero-sub">{D["intro"]}</p>
+  <div class="cards-grid">
+      {cards_html}
+  </div>
+  <div style="margin-top:1.4rem;padding:1rem 1.2rem;border:1px solid var(--border,#0002);border-radius:10px;background:var(--card-bg,#0000000a)">
+    <strong>{D["warn_title"]}</strong>
+    <ul style="margin:.5rem 0 0;padding-left:1.2rem;line-height:1.7">
+        {warn_items}
+    </ul>
+    <p style="margin:.7rem 0 0"><a href="{DL_CHECKSUMS_URL}" target="_blank" rel="noopener">{D["checksums"]}</a></p>
+  </div>
+</section>
+"""
+
+
 def render_hub(lang: str) -> str:
     L = I18N[lang]
     cards = []
@@ -707,6 +826,7 @@ def render_hub(lang: str) -> str:
       {cards_html}
   </div>
 </section>
+{render_downloads(lang)}
 """
 
 
