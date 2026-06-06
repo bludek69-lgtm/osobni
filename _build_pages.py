@@ -158,12 +158,9 @@ PAGES = [
         'title':     'Autobusy, se kterými jsem jezdil — Luděk',
         'depth':     3,
     },
-    {
-        'rel':       'smart-home/index.html',
-        'theme':     'smart-home',
-        'title':     'Smart Home — Luděk',
-        'depth':     1,
-    },
+    # POZN. (Wave 2.6): smart-home/index.html ZÁMĚRNĚ NENÍ v PAGES. Má vlastní cizí
+    # design (jiný head/footer/lightbox, žádný lang-switcher) jako zbylých 35 smart-home
+    # stránek = orphan / vlastní build. Osobní šablona by jí poškodila head+footer.
     {
         'rel':       'zaliby/rybareni/index.html',
         'theme':     'travel',
@@ -179,7 +176,7 @@ PAGES = [
     {'rel': 'aplikace/krabickova-dieta.html',   'theme': 'home', 'title': 'Krabičková dieta — Moje aplikace — Luděk',     'depth': 1},
     {'rel': 'aplikace/energy-dashboard.html',   'theme': 'smart-home','title': 'Energy Dashboard — Moje aplikace — Luděk', 'depth': 1},
     {'rel': 'aplikace/rpi-kiosk.html',          'theme': 'smart-home','title': 'Domácí panel na zdi — Moje aplikace — Luděk', 'depth': 1},
-    {'rel': 'aplikace/busline-prace.html',      'theme': 'home', 'title': 'Práce BusLine — Moje aplikace — Luděk',         'depth': 1},
+    {'rel': 'aplikace/ridic-turnusy-mzdy.html', 'theme': 'home', 'title': 'Práce řidiče — Moje aplikace — Luděk',          'depth': 1},
     {'rel': 'en/aplikace/index.html',            'theme': 'home', 'title': 'My apps — Luděk',                              'depth': 2},
     {'rel': 'en/aplikace/config-center.html',    'theme': 'home', 'title': 'Config Center — My apps — Luděk',              'depth': 2},
     {'rel': 'en/aplikace/italia-travel.html',    'theme': 'italy','title': 'Italia Travel Planner — My apps — Luděk',       'depth': 2},
@@ -188,7 +185,7 @@ PAGES = [
     {'rel': 'en/aplikace/krabickova-dieta.html', 'theme': 'home', 'title': 'Meal Planner — My apps — Luděk',                'depth': 2},
     {'rel': 'en/aplikace/energy-dashboard.html', 'theme': 'smart-home','title': 'Energy Dashboard — My apps — Luděk',         'depth': 2},
     {'rel': 'en/aplikace/rpi-kiosk.html',        'theme': 'smart-home','title': 'Home wall panel — My apps — Luděk',          'depth': 2},
-    {'rel': 'en/aplikace/busline-prace.html',    'theme': 'home', 'title': 'BusLine work — My apps — Luděk',                'depth': 2},
+    {'rel': 'en/aplikace/ridic-turnusy-mzdy.html','theme': 'home', 'title': 'Driver work — My apps — Luděk',                 'depth': 2},
     {'rel': 'it/aplikace/index.html',            'theme': 'home', 'title': 'Le mie app — Luděk',                            'depth': 2},
     {'rel': 'it/aplikace/config-center.html',    'theme': 'home', 'title': 'Config Center — Le mie app — Luděk',            'depth': 2},
     {'rel': 'it/aplikace/italia-travel.html',    'theme': 'italy','title': 'Italia Travel Planner — Le mie app — Luděk',    'depth': 2},
@@ -197,14 +194,14 @@ PAGES = [
     {'rel': 'it/aplikace/krabickova-dieta.html', 'theme': 'home', 'title': 'Meal Planner — Le mie app — Luděk',             'depth': 2},
     {'rel': 'it/aplikace/energy-dashboard.html', 'theme': 'smart-home','title': 'Energy Dashboard — Le mie app — Luděk',      'depth': 2},
     {'rel': 'it/aplikace/rpi-kiosk.html',        'theme': 'smart-home','title': 'Pannello a muro — Le mie app — Luděk',       'depth': 2},
-    {'rel': 'it/aplikace/busline-prace.html',    'theme': 'home', 'title': 'Lavoro BusLine — Le mie app — Luděk',           'depth': 2},
+    {'rel': 'it/aplikace/ridic-turnusy-mzdy.html','theme': 'home', 'title': 'Lavoro autista — Le mie app — Luděk',           'depth': 2},
 ]
 
 # ─── NAV ITEMS (single nav for all pages) ────────────────────
 # href is depth-prefixed at render time.
 NAV = [
     ('Domů',       ''),
-    ('Aplikace',   'aplikace/'),
+    ('Moje aplikace', 'aplikace/'),
     ('Finance',    'finance/'),
     ('Cestování',  'cestovani/'),
     ('Itálie',     'cestovani/italie/'),
@@ -244,7 +241,44 @@ def render_nav(depth: int, current_rel: str) -> str:
     return '\n'.join(items)
 
 
-def render_template(page: dict, main_html: str) -> str:
+# Výchozí trailing (po </footer>) — main.js + lightbox. Použije se JEN jako fallback,
+# když živá stránka nemá vlastní obsah za </footer> (běžně ho má → bere se verbatim přes
+# body_post). Normální string (single braces), js cesta přes placeholder __JS__.
+DEFAULT_TRAILING = """
+
+<script src="__JS__"></script>
+
+<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
+<style>
+#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
+#__lb.open { display:flex }
+#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+main img { cursor:zoom-in; transition:transform .15s ease }
+main img:hover { transform:scale(1.005) }
+</style>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  document.querySelectorAll('main img').forEach(function(img){
+    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+  });
+})();
+</script>
+"""
+
+
+def render_template(page: dict, main_html: str, header_extra: str = '\n    ',
+                    body_pre: str = '\n\n', body_post: str | None = None) -> str:
     pfx = build_prefix(page['depth'])
     nav_html = render_nav(page['depth'], page['rel'])
     css_href = pfx + 'assets/css/style.css'
@@ -255,6 +289,10 @@ def render_template(page: dict, main_html: str) -> str:
     extra_css = page.get('extra_css')
     if extra_css:
         extra_css_link = f'\n  <link rel="stylesheet" href="{pfx + extra_css}">'
+
+    # page-specific obsah za </footer> (lightbox / per-page skripty / vývojový deník) —
+    # verbatim z živé stránky; fallback na výchozí shell, pokud chybí.
+    trailing = body_post if body_post is not None else DEFAULT_TRAILING.replace('__JS__', js_src)
 
     return f"""<!DOCTYPE html>
 <html lang="cs">
@@ -273,8 +311,7 @@ def render_template(page: dict, main_html: str) -> str:
     <a href="{pfx or './'}" class="brand">
       <span class="brand-dot"></span>
       Luděk
-    </a>
-    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    </a>{header_extra}<button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
     <nav class="nav" aria-label="Hlavní navigace">
 {nav_html}
     </nav>
@@ -283,47 +320,15 @@ def render_template(page: dict, main_html: str) -> str:
 
 <main id="main">
 {main_html}
-</main>
-
-<footer class="site-footer">
+</main>{body_pre}<footer class="site-footer">
   <div class="site-footer__inner">
-    <div>© Luděk · Osobní web</div>
+    <div>© Budinský Luděk · Osobní web</div>
     <div class="footer-links">
       <a href="{YOUTUBE}" target="_blank" rel="noopener">YouTube @cestovatel69</a>
-      <a href="{SMART_HOME_EXT}" target="_blank" rel="noopener">Smart Home web</a>
+      <a href="{pfx}smart-home/">Smart Home web</a>
     </div>
   </div>
-</footer>
-
-<script src="{js_src}"></script>
-
-<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
-<style>
-#__lb {{ display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }}
-#__lb.open {{ display:flex }}
-#__lb img {{ max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }}
-#__lb .__lbhint {{ position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }}
-main img {{ cursor:zoom-in; transition:transform .15s ease }}
-main img:hover {{ transform:scale(1.005) }}
-</style>
-<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
-  <img id="__lbimg" alt="">
-  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
-</div>
-<script>
-(function(){{
-  var lb = document.getElementById('__lb');
-  var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){{ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }}
-  function close(){{ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }}
-  lb.addEventListener('click', close);
-  document.addEventListener('keydown', function(e){{ if(e.key === 'Escape') close(); }});
-  document.querySelectorAll('main img').forEach(function(img){{
-    img.addEventListener('click', function(e){{ e.stopPropagation(); open(img.src, img.alt); }});
-  }});
-}})();
-</script>
-</body>
+</footer>{trailing}</body>
 </html>
 """
 
@@ -336,6 +341,32 @@ def extract_main(content: str) -> str | None:
     return m.group(1).strip('\n')
 
 
+def extract_header_extra(content: str) -> str:
+    """Zachová obsah mezi brand odkazem (</a>) a tlačítkem nav-toggle — typicky
+    jazykový přepínač (<div class="lang-switcher">…). Přepínač je do živých stránek
+    vkládán samostatným patch skriptem s per-page/per-jazyk URL logikou (i ručně
+    upravený, např. ridic), proto ho NEREGENERUJEME — bereme ho verbatim z živého HTML,
+    aby rebuild lang-switcher neodebral ani nezměnil. Bez přepínače vrací '\\n    '
+    (zachová původní formátování </a>\\n    <button)."""
+    m = re.search(r'class="brand"[\s\S]*?</a>([\s\S]*?)<button class="nav-toggle"', content)
+    return m.group(1) if m else '\n    '
+
+
+def extract_body_extra(content: str):
+    """Zachová page-specific obsah MIMO <main> z živé stránky, aby ho rebuild neztratil:
+      • body_pre  = vše mezi </main> a <footer  (např. vývojový deník / per-page lightbox / styl),
+      • body_post = vše mezi </footer> a </body> (trailing skripty, lightbox, deník za patičkou).
+    Footer (shell) se NEbere — ten render_template generuje znovu (sync ©). Nic se neduplikuje:
+    body_pre končí těsně před <footer>, body_post začíná těsně za </footer>.
+    Vrací (body_pre, body_post). Když chybí </main>/</footer>, vrací rozumný default
+    ('\\n\\n', None) → render_template použije výchozí trailing shell."""
+    mpre = re.search(r'</main>(.*?)<footer', content, re.DOTALL | re.IGNORECASE)
+    body_pre = mpre.group(1) if mpre else '\n\n'
+    mpost = re.search(r'</footer>(.*?)</body>', content, re.DOTALL | re.IGNORECASE)
+    body_post = mpost.group(1) if mpost else None
+    return body_pre, body_post
+
+
 def build_one(page: dict) -> str:
     path = ROOT / page['rel']
     if not path.exists():
@@ -344,7 +375,13 @@ def build_one(page: dict) -> str:
     main_html = extract_main(src)
     if main_html is None:
         return f"  ⚠ SKIP {page['rel']} — chybí <main id=\"main\">...</main> block"
-    rendered = render_template(page, main_html)
+    header_extra = extract_header_extra(src)  # zachová lang-switcher z živého HTML
+    body_pre, body_post = extract_body_extra(src)  # zachová page-specific obsah mimo <main>
+    rendered = render_template(page, main_html, header_extra, body_pre, body_post)
+    # BOM politika: zachovat stav zdrojové stránky — když měla UTF-8 BOM, výstup ho má taky;
+    # když ne, nepřidávat. (render_template začíná <!DOCTYPE bez BOM.)
+    if src.startswith('﻿'):  # UTF-8 BOM
+        rendered = '﻿' + rendered
     path.write_text(rendered, encoding='utf-8')
     return f"  ✓ {page['rel']} ({len(rendered)} chars)"
 

@@ -585,21 +585,21 @@ APPS = [
         },
     },
     {
-        "slug": "busline-prace",
+        "slug": "ridic-turnusy-mzdy",
         "icon": "🚌",
         "color": "#e8a317",
-        "asset_dir": "busline-prace",
+        "asset_dir": "ridic-turnusy-mzdy",
         "screens": [],  # ještě nejsou — aplikace ve vývoji
         "stack": ["Python", "Excel / XLSX parser", "PDF parser (turnusy)", "Lokální Windows app"],
         "i18n": {
             "cs": {
-                "name":  "Práce BusLine — turnusy a mzdy",
+                "name":  "Práce řidiče — turnusy a mzdy",
                 "lead":  "Pracovní aplikace pro řidiče autobusu — automatické zpracování turnusů (rozpisů směn) a výpočet měsíční mzdy podle skutečně odjetých hodin, příplatků a kategorií. Ve vývoji.",
                 "what":  "<p><strong>Proč vzniká:</strong> každý měsíc dostávám rozpis turnusů (kdy a kde mám jet) a výplatní pásku. Ručně si počítám jestli sedí hodiny, příplatky za noční, víkend, svátky, příplatky za přesčas, stravenky. Excel tabulka by stačila, ale chci to mít automatické — nahraju PDF turnusu, aplikace mi vyplivne kolik to vyjde a kde se případně rozchází s výplatou.</p>"
-                         "<p><strong>Co bude umět:</strong> načte PDF rozpis turnusů z BusLine LK (parsuje jednotlivé směny — kdy začátek, kdy konec, který spoj), spočítá pracovní hodiny + přestávky + příplatky (noční 22-6, víkend, svátky, přesčas přes základní úvazek). Pak importuje výplatní pásku (XLSX/PDF) a porovná: aplikace řekne &bdquo;za tento měsíc očekávám X Kč hrubého&ldquo;, páska říká Y Kč — pokud se to liší, vyhodí seznam položek na ověření s mistrem.</p>"
+                         "<p><strong>Co bude umět:</strong> načte PDF rozpis turnusů od regionálního dopravce (parsuje jednotlivé směny — kdy začátek, kdy konec, který spoj), spočítá pracovní hodiny + přestávky + příplatky (noční 22-6, víkend, svátky, přesčas přes základní úvazek). Pak importuje výplatní pásku (XLSX/PDF) a porovná: aplikace řekne &bdquo;za tento měsíc očekávám X Kč hrubého&ldquo;, páska říká Y Kč — pokud se to liší, vyhodí seznam položek na ověření s mistrem.</p>"
                          "<p><strong>Stav:</strong> Ve vývoji. Plán Phase 1 = PDF parser turnusů, Phase 2 = mzdová kalkulačka, Phase 3 = porovnání s výplatou, Phase 4 = UI dashboard. Bez cloudu, bez účtu — všechno lokálně.</p>",
                 "features": [
-                    ("Import PDF turnusu",         "Načte měsíční rozpis směn z BusLine LK PDF, rozparsuje jednotlivé spoje, časy a místa."),
+                    ("Import PDF turnusu",         "Načte měsíční rozpis směn z PDF od regionálního dopravce, rozparsuje jednotlivé spoje, časy a místa."),
                     ("Výpočet hodin a příplatků",  "Pracovní hodiny + přestávky + noční (22-6) + víkend + svátky + přesčas přes základní úvazek."),
                     ("Porovnání s výplatou",       "Import výplatní pásky a křížová kontrola: očekávané vs reálné Kč hrubého. Rozdíly vyhodí jako seznam k ověření."),
                     ("Měsíční přehled",            "Kolik odjeto hodin, kolik příplatků, kolik stravenek, kolik dovolené zbývá."),
@@ -608,13 +608,13 @@ APPS = [
                 "status": "**Ve vývoji.** Phase 1 (PDF parser) skeleton, Phase 2-4 plánované. Žádné public hosting plánované — privátní pomůcka pro vlastní mzdové sebekontrolu.",
             },
             "en": {
-                "name":  "BusLine work — shifts & salary",
+                "name":  "Driver work — shifts & salary",
                 "lead":  "Work app for a bus driver — automatic parsing of shift schedules and computing monthly salary from actually-driven hours, bonuses and categories. In development.",
                 "what":  "<p><strong>Why it is being built:</strong> every month I get a shift schedule (when and where to drive) and a payslip. I manually verify whether the hours match, bonuses for night, weekend, holidays, overtime, meal vouchers. An Excel sheet would do, but I want it automatic — drop a shift-schedule PDF in, the app spits out what to expect and where it differs from payroll.</p>"
-                         "<p><strong>What it will do:</strong> read shift-schedule PDF from BusLine LK (parse each shift — start, end, route), compute work hours + breaks + bonuses (night 22-6, weekend, holidays, overtime over the base contract). Then import the payslip (XLSX/PDF) and compare: app says &bdquo;for this month I expect X CZK gross&ldquo;, payslip says Y CZK — if they differ, output the line items to verify with the supervisor.</p>"
+                         "<p><strong>What it will do:</strong> read shift-schedule PDF from the regional carrier (parse each shift — start, end, route), compute work hours + breaks + bonuses (night 22-6, weekend, holidays, overtime over the base contract). Then import the payslip (XLSX/PDF) and compare: app says &bdquo;for this month I expect X CZK gross&ldquo;, payslip says Y CZK — if they differ, output the line items to verify with the supervisor.</p>"
                          "<p><strong>Status:</strong> In development. Plan: Phase 1 = PDF shift parser, Phase 2 = salary calculator, Phase 3 = payslip comparison, Phase 4 = UI dashboard. No cloud, no account — everything local.</p>",
                 "features": [
-                    ("PDF shift import",          "Reads monthly BusLine LK schedule PDF, parses individual runs, times and locations."),
+                    ("PDF shift import",          "Reads the monthly regional-carrier schedule PDF, parses individual runs, times and locations."),
                     ("Hours & bonus computation", "Work hours + breaks + night (22-6) + weekend + holidays + overtime over base contract."),
                     ("Payslip cross-check",       "Imports payslip and cross-verifies: expected vs actual gross CZK. Diffs output as a verification list."),
                     ("Monthly overview",          "Hours driven, bonuses, meal vouchers, vacation days left."),
@@ -623,13 +623,13 @@ APPS = [
                 "status": "**In development.** Phase 1 (PDF parser) skeleton, Phase 2-4 planned. No public hosting planned — private payroll self-check tool.",
             },
             "it": {
-                "name":  "Lavoro BusLine — turni e stipendio",
+                "name":  "Lavoro autista — turni e stipendio",
                 "lead":  "App di lavoro per un autista di autobus — parsing automatico dei turni e calcolo dello stipendio mensile dalle ore effettivamente guidate, indennità e categorie. In sviluppo.",
                 "what":  "<p><strong>Perché nasce:</strong> ogni mese ricevo un piano turni (quando e dove guidare) e una busta paga. Verifico a mano se le ore tornano, indennità per notte, weekend, festivi, straordinario, buoni pasto. Un Excel basterebbe, ma voglio l&rsquo;automatico — trascino il PDF dei turni, l&rsquo;app dice cosa aspettarsi e dove diverge dalla busta.</p>"
-                         "<p><strong>Cosa farà:</strong> legge il PDF turni di BusLine LK (parsa ogni turno — inizio, fine, linea), calcola ore + pause + indennità (notte 22-6, weekend, festivi, straordinario). Poi importa la busta paga (XLSX/PDF) e confronta: l&rsquo;app dice &bdquo;questo mese aspetto X CZK lordo&ldquo;, la busta dice Y CZK — se diversi, lista voci da verificare con il caporeparto.</p>"
+                         "<p><strong>Cosa farà:</strong> legge il PDF turni del vettore regionale (parsa ogni turno — inizio, fine, linea), calcola ore + pause + indennità (notte 22-6, weekend, festivi, straordinario). Poi importa la busta paga (XLSX/PDF) e confronta: l&rsquo;app dice &bdquo;questo mese aspetto X CZK lordo&ldquo;, la busta dice Y CZK — se diversi, lista voci da verificare con il caporeparto.</p>"
                          "<p><strong>Stato:</strong> In sviluppo. Piano: Phase 1 = PDF parser turni, Phase 2 = calcolatore stipendio, Phase 3 = confronto busta, Phase 4 = UI dashboard. Niente cloud, niente account — tutto in locale.</p>",
                 "features": [
-                    ("Import PDF turni",          "Legge il piano mensile BusLine LK PDF, parsa singoli turni, orari e località."),
+                    ("Import PDF turni",          "Legge il piano mensile PDF del vettore regionale, parsa singoli turni, orari e località."),
                     ("Calcolo ore e indennità",  "Ore + pause + notte (22-6) + weekend + festivi + straordinario oltre contratto base."),
                     ("Confronto con busta paga", "Importa busta e verifica: lordo atteso vs reale CZK. Differenze come lista da verificare."),
                     ("Riepilogo mensile",        "Ore guidate, indennità, buoni pasto, giorni ferie rimanenti."),
