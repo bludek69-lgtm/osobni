@@ -723,8 +723,8 @@ DL_I18N = {
 
 # (klíč, ikona, barva, verze, i18n popis)
 DL_APPS = [
-    {"icon": "🚍", "color": "#2d6ad5", "version": "1.2.3",
-     "name": "BudLine Panel", "file": "BudLinePanel-v1.2.3-Setup.exe",
+    {"icon": "🚍", "color": "#2d6ad5", "version": "1.2.4",
+     "name": "BudLine Panel", "file": "BudLinePanel-v1.2.4-Setup.exe",
      "desc": {"cs": "Evidence směn, turnusů a výplatních podkladů pro řidiče.",
               "en": "Shifts, rosters and payroll documents for drivers.",
               "it": "Turni, rotazioni e documenti per la busta paga degli autisti."}},
