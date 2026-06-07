@@ -669,10 +669,11 @@ def asset_url_relative_from_hub(lang: str, sub: str, filename: str) -> str:
 
 # ────────────────────────────────────────────────────────────
 # Download section ("Moje aplikace ke stažení") — veřejné zaheslované
-# instalátory z repa bludek69-lgtm/aplikace. Tlačítko míří na stránku
-# release (releases/tag/apps), kde jsou všechny assety → web se nemusí
-# měnit při každé nové verzi. Verze jsou jen textový štítek v DL_APPS
-# (aktualizovat při vydání). DL_BASE je přímá base pro případné přímé odkazy.
+# instalátory z repa bludek69-lgtm/aplikace. Tlačítko míří PŘÍMO na konkrétní
+# .exe (DL_BASE + app["file"], atribut download) → 1 tlačítko = 1 aplikace =
+# přímé stažení (NE na releases/tag listing). Verze + název souboru v DL_APPS
+# AKTUALIZOVAT při každém vydání (jinak tlačítko stáhne starý installer).
+# DL_RELEASE_URL zůstává jen pro referenci (listing všech assetů).
 # ────────────────────────────────────────────────────────────
 DL_BASE = "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/"
 DL_RELEASE_URL = "https://github.com/bludek69-lgtm/aplikace/releases/tag/apps"
@@ -683,7 +684,7 @@ DL_I18N = {
         "h2": "Moje aplikace ke stažení",
         "intro": "Veřejně stáhnutelné aplikace pro Windows. Instalátory jsou zaheslované — heslo dostaneš ode mě zvlášť.",
         "btn": "Stáhnout",
-        "via": "GitHub Releases",
+        "via": "přímé stažení .exe",
         "warn_title": "Než stáhneš",
         "warn": [
             "🔒 Instalátory jsou zaheslované — <strong>heslo posílám zvlášť</strong> (ne přes web).",
@@ -696,7 +697,7 @@ DL_I18N = {
         "h2": "My apps to download",
         "intro": "Publicly downloadable Windows apps. The installers are password-protected — you get the password from me separately.",
         "btn": "Download",
-        "via": "GitHub Releases",
+        "via": "direct .exe download",
         "warn_title": "Before you download",
         "warn": [
             "🔒 Installers are password-protected — <strong>I send the password separately</strong> (not on the web).",
@@ -709,7 +710,7 @@ DL_I18N = {
         "h2": "Le mie app da scaricare",
         "intro": "App per Windows scaricabili pubblicamente. Gli installer sono protetti da password — la password te la mando a parte.",
         "btn": "Scarica",
-        "via": "GitHub Releases",
+        "via": "download .exe diretto",
         "warn_title": "Prima di scaricare",
         "warn": [
             "🔒 Gli installer sono protetti da password — <strong>mando la password a parte</strong> (non sul web).",
@@ -760,7 +761,7 @@ def render_downloads(lang: str) -> str:
             f'font-size:.72rem;font-weight:600;vertical-align:middle">v{app["version"]}</span></h3>'
             f'<p>{desc}</p>'
             f'<div class="card-cta" style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap">'
-            f'<a href="{DL_RELEASE_URL}" target="_blank" rel="noopener" '
+            f'<a href="{DL_BASE}{app["file"]}" download '
             f'style="display:inline-block;background:{color};color:#fff;text-decoration:none;'
             f'padding:.5rem 1rem;border-radius:8px;font-weight:600;white-space:nowrap">⬇ {D["btn"]}</a>'
             f'<span style="font-size:.78rem;color:var(--txt-muted,#666);white-space:nowrap">{D["via"]}</span></div>'
