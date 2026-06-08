@@ -1,111 +1,67 @@
-﻿<!DOCTYPE html>
-<html lang="cs">
+<!DOCTYPE html>
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meal Planner — Le mie app — Luděk</title>
-  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
   <link rel="stylesheet" href="../../assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+  <style>
+    #__lb {
+      display:none; position:fixed; inset:0; z-index:9999;
+      background:rgba(0,0,0,0.93); cursor:zoom-out;
+      align-items:center; justify-content:center; padding:2vh;
+    }
+    #__lb.open { display:flex }
+    #__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+    #__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+    main img { cursor:zoom-in; transition:transform .15s ease }
+    main img:hover { transform:scale(1.005) }
+  </style>
 </head>
-<body class="theme-home">
-
-<header class="site-header">
-  <div class="site-header__inner">
-    <a href="../../" class="brand">
-      <span class="brand-dot"></span>
-      Luděk
-    </a>
-    <div class="lang-switcher" aria-label="Lingua">
-      <a href="../../aplikace/krabickova-dieta.html" hreflang="cs" title="Česky">CS</a>
-      <a href="../../en/aplikace/krabickova-dieta.html" hreflang="en" title="English">EN</a>
-      <a href="./" hreflang="it" aria-current="page" title="Italiano">IT</a>
-    </div>
-    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
-    <nav class="nav" aria-label="Hlavní navigace">
-    <a href="../../">Domů</a>
-    <a href="../../aplikace/">Moje aplikace</a>
-    <a href="../../finance/">Finance</a>
-    <a href="../../cestovani/">Cestování</a>
-    <a href="../../cestovani/italie/">Itálie</a>
-    <a href="../../zaliby/rybareni/">Rybaření</a>
-    <a href="../../smart-home/">Smart Home</a>
-    <a href="../../ai.html">AI</a>
-    </nav>
-  </div>
-</header>
-
+<body>
 <main id="main">
 <section class="hero" style="border-left:4px solid #2e7d32;padding-left:1.2rem">
   <span class="hero-accent" style="color:#2e7d32">Meal Planner</span>
   <h1><span style="margin-right:.4rem">🥗</span>Meal Planner</h1>
-  <p class="hero-sub">Pianificatore pasti mio — una procedura guidata iniziale e un piano settimanale di porzioni con un clic (modalità Dimagrimento / Settimana economica / Veloce per il lavoro), macro, lista della spesa e una spiegazione „perché è qui?" per ogni pasto. Bloccare i pasti preferiti, controllo della varietà, gestione di frigo e scadenze, sottrazione di ciò che ho già dalla lista, piano di meal-prep domenicale stampabile. Collegamento Rohlík live opzionale, tema chiaro e scuro, aggiornamento automatico silenzioso. Niente account, niente cloud, tutto locale.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React 18</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vite 5</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tailwind</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tauri 2</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows (.exe)</span></p>
-  <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a><button id="openDeník" class="diary-btn" style="margin-left:1rem">📖 Diario di sviluppo</button></p>
+  <p class="hero-sub">Pianificatore pasti mio — invece di iscrivermi ad app dietetiche che mi tracciano, ho la mia che gira solo nel browser. Genera piano settimanale di porzioni secondo l'obiettivo calorico, calcola lista spesa, traccia macro. Niente account, niente cloud.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vite</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PWA</span> <span class="pill" style="background:#2e7d321a;color:#2e7d32;border:1px solid #2e7d3240;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tailwind</span></p>
+  <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a></p>
 </section>
 
 <section>
   <h2>Cosa fa</h2>
-  <p><strong>Perché esiste:</strong> ho provato diverse app dietetiche mainstream (MyFitnessPal, Yazio, Lifesum…) e tutte mi hanno infastidito. O volevano un account e mostravano pubblicità, o non conoscevano piatti cechi, o forzavano un'ideologia nutrizionale. Questa gira <strong>solo nel browser</strong> — il profilo vive in localStorage, nessun server vede peso, calorie, o cosa mangio oggi.</p><p><strong>Come funziona:</strong> al primo avvio una procedura guidata mi accompagna nella configurazione (nome, età, altezza, peso, attività, obiettivo, dieta, budget). L'app calcola il fabbisogno calorico (Mifflin-St Jeor + moltiplicatore attività). Per dimagrire raccomanda un deficit asimmetrico; per la massa privilegia ricette ad alta proteina.</p><p><strong>Piano settimanale con un clic:</strong> Il pulsante „Genera settimana" costruisce 7 giorni × 5 pasti entro ±10% dell'obiettivo. Scelgo una modalità — <strong>Dimagrimento</strong>, <strong>Bilanciato</strong>, <strong>Settimana economica</strong> (preferisce ricette economiche) o <strong>Veloce per il lavoro</strong> (preparazione breve, da portare via). Ogni pasto ha un blocco „<strong>Perché è qui?</strong>" che spiega la scelta (calorie, proteine, economico, veloce, usa il frigo…). Posso <strong>bloccare</strong> i pasti preferiti e l'app sostituisce solo il resto; controlla anche la <strong>varietà</strong> della settimana („Sostituisci pasti simili").</p><p><strong>Meal-prep domenicale + spesa:</strong> Un riepilogo stampabile „cosa cucinare la domenica per tutta la settimana" — cosa cucinare in una volta, una tabella oraria, conservazione, porzioni per giorno. La lista della spesa somma gli ingredienti della settimana e <strong>sottrae ciò che ho già in frigo</strong> (solo unità sicure g/ml/pz; altrimenti segnala „verifica a mano"). Esporta in CSV o stampa.</p><p><strong>Frigo:</strong> Gestione delle scorte in casa con autocomplete fuzzy (refusi Levenshtein ≤2), date di scadenza con banner (≤3 giorni). La dashboard mostra cosa sta per scadere e quali ricette posso cucinare dal frigo attuale (≥50% degli ingredienti).</p><p><strong>Integrazione Rohlík live (opzionale):</strong> Se faccio la spesa su Rohlík, accedo direttamente nell'app che carica i <strong>prezzi live</strong> dal mio account. Dal piano settimanale costruisce una proposta di carrello e mostra prezzo vs minimo ordine vs spedizione. Gli articoli vengono aggiunti al carrello solo dopo la mia conferma — <em>l'app non invia mai l'ordine (checkout / pagamento) da sola</em>. La password resta in locale, mai nel browser o nel codice (tutto tranne l'aggiunta al carrello è in sola lettura).</p><p><strong>Tema chiaro e scuro:</strong> Interruttore 🌙/☀️ — elegante tema scuro nero-oro e uno chiaro, la scelta viene ricordata.</p><p><strong>Web locale + app Windows + aggiornamento silenzioso:</strong> Il web gira nel browser (dati in localStorage), più un'app Windows nativa (Tauri 2 + sidecar Python locale) che si <strong>aggiorna da sola in silenzio</strong> alla nuova versione (dopo conferma, senza password). Niente app store, niente telemetria.</p>
+  <p><strong>Perché esiste:</strong> ho provato diverse app dietetiche mainstream (MyFitnessPal, Yazio, Lifesum…) e tutte mi hanno infastidito. O volevano un account e mostravano pubblicità, o non conoscevano piatti cechi, o forzavano un'ideologia nutrizionale. Questa gira <strong>solo nel browser</strong> — il profilo vive in localStorage, nessun server vede peso, calorie, o cosa mangio oggi.</p><p><strong>Come funziona:</strong> inserisco altezza, peso, età, attività. L'app calcola il fabbisogno calorico (Mifflin-St Jeor + moltiplicatore attività). Per perdere peso raccomanda un deficit asimmetrico. Per massa muscolare privilegia ricette ad alta proteina.</p><p><strong>Piano settimanale di porzioni:</strong> Cerca tra ~21 ricette e costruisce 7 giorni × 5 pasti così che le kcal giornaliere stiano entro ±10% dell'obiettivo. Genera la lista della spesa — somma tutti gli ingredienti per la settimana, divide per categorie. Esporta in CSV o stampa.</p><p><strong>Rohlík opzionale:</strong> Se sono cliente Rohlík, un agente può preparare proposta carrello dal piano settimanale, incollo JSON in Impostazioni e vedo prezzo vs minimo vs spedizione. <em>L'ordine si conferma sempre manualmente in Rohlík UI</em> — l'app non può fisicamente ordinare o pagare (5 strati di difesa).</p><p><strong>PWA = funziona offline:</strong> Dopo il primo caricamento è in cache e funziona senza internet. Installabile come app desktop su Windows via Edge. Niente aggiornamenti app store, niente notifiche, niente telemetria.</p>
 </section>
 
 <section>
   <h2>Funzioni principali</h2>
   <ul style="line-height:1.7">
-      <li><strong>Procedura guidata iniziale</strong> — 6 passi (dati, obiettivo, dieta, cucina, budget, esito), saltabile, offline. „Riavvia la procedura" nelle Impostazioni.</li>
-      <li><strong>„Genera settimana" + modalità</strong> — un clic: Dimagrimento · Bilanciato · Settimana economica · Veloce per il lavoro. Riepilogo dopo la generazione (kcal, proteine, prezzo, tempo medio di preparazione).</li>
-      <li><strong>„Perché è qui?"</strong> — spiegazione per ogni pasto solo dai dati (calorie, alta proteina, economico, veloce, da portare via, usa il frigo, non si ripete).</li>
-      <li><strong>Blocco pasti + varietà</strong> — blocco un preferito, la rigenerazione lo mantiene; „Varietà della settimana %" + „Sostituisci pasti simili".</li>
-      <li><strong>Stampa meal-prep domenicale</strong> — cosa cucinare in una volta, tabella oraria, conservazione (sempre „verifica a mano"), porzioni per giorno, spesa con sottrazione del frigo.</li>
       <li><strong>Piano settimanale auto-generato</strong> — Combo search per 7×5 pasti, kcal giornaliere entro ±10% obiettivo. Penalità ripetizione per varietà.</li>
       <li><strong>Calcolatore BMR/TDEE</strong> — Formula Mifflin-St Jeor + moltiplicatore attività. Deficit/surplus asimmetrico per cambio peso.</li>
       <li><strong>Banner obiettivo raccomandato</strong> — Quando metriche cambiano l'obiettivo kcal, app propone &bdquo;Usa raccomandato&ldquo; (mai cambio silenzioso).</li>
       <li><strong>Tracking peso</strong> — Grafico SVG proprio senza libreria esterna, storia in localStorage. Niente claim medici.</li>
       <li><strong>Ottimizzatore perdita/massa</strong> — Perdita → ricette ad alta proteina. Massa → stesso + obiettivo kcal stretto.</li>
-      <li><strong>Frigo + recipe matcher</strong> — Gestione scorte con food_db, autocomplete fuzzy (Levenshtein ≤2), ordinamento per scadenza, avvisi quantità basse, widget dashboard (in scadenza + cucinabili).</li>
+      <li><strong>Integrazione Rohlík (opzionale)</strong> — Agente prepara JSON carrello, vedi totale vs minimo vs spedizione. Ordine sempre manuale.</li>
       <li><strong>Lista spesa con esportazione</strong> — Aggrega ingredienti dal piano settimanale, divide per categoria, CSV o stampa.</li>
-      <li><strong>Integrazione Rohlík live (opzionale)</strong> — Accesso nell'app → prezzi live dall'account → proposta carrello dal piano. Articoli aggiunti dopo la tua conferma; checkout e pagamento mai inviati dall'app. Password solo in locale, altrimenti sola lettura.</li>
-      <li><strong>Tema chiaro e scuro</strong> — Interruttore 🌙/☀️, tema scuro nero-oro, la scelta viene ricordata.</li>
-      <li><strong>Web locale + app Windows + aggiornamento silenzioso</strong> — Il web gira nel browser (dati in localStorage), più un'app Windows nativa (Tauri 2 + sidecar Python) con aggiornamento automatico silenzioso alle nuove versioni.</li>
+      <li><strong>PWA + offline</strong> — Funziona senza internet dopo primo caricamento. Installabile come app desktop via Edge/Chrome.</li>
   </ul>
 </section>
 
-<section><h2>Anteprime</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../aplikace/img/meal-planner/01_dashboard.png" alt="Dashboard (tema scuro) — macro giornaliere, tolleranza ±10%, prossimi pasti e andamento peso" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Dashboard (tema scuro) — macro giornaliere, tolleranza ±10%, prossimi pasti e andamento peso</figcaption></figure>
-      <figure style="margin:0"><img src="../../aplikace/img/meal-planner/02_jidelnicek.png" alt="Piano settimanale — 7 giorni × 5 pasti, Σ kcal/giorno, valutazione tolleranza ±10%" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Piano settimanale — 7 giorni × 5 pasti, Σ kcal/giorno, valutazione tolleranza ±10%</figcaption></figure>
-      <figure style="margin:0"><img src="../../aplikace/img/meal-planner/03_krabicky.png" alt="Porzioni — 5 pasti con macro e prezzo, ingredienti espandibili, stampa foglio porzioni" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Porzioni — 5 pasti con macro e prezzo, ingredienti espandibili, stampa foglio porzioni</figcaption></figure>
-      <figure style="margin:0"><img src="../../aplikace/img/meal-planner/04_nakup.png" alt="Lista spesa — aggregata dalla settimana (65 articoli), stima prezzo, carica prezzi live Rohlík" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Lista spesa — aggregata dalla settimana (65 articoli), stima prezzo, carica prezzi live Rohlík</figcaption></figure>
-      <figure style="margin:0"><img src="../../aplikace/img/meal-planner/05_lednice.png" alt="Frigo — scorte con date di scadenza, carica immagini prodotti da Rohlík, „Cosa posso cucinare?“" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Frigo — scorte con date di scadenza, carica immagini prodotti da Rohlík, „Cosa posso cucinare?“</figcaption></figure>
-      <figure style="margin:0"><img src="../../aplikace/img/meal-planner/06_analytika.png" alt="Integrazione Rohlík live — accesso solo al server locale, sola lettura, submit_checkout disabilitato in modo permanente" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Integrazione Rohlík live — accesso solo al server locale, sola lettura, submit_checkout disabilitato in modo permanente</figcaption></figure>
-      <figure style="margin:0"><img src="../../aplikace/img/meal-planner/07_nastaveni.png" alt="Impostazioni — profilo, calcolatore BMR/TDEE, obiettivo calorico, interruttore tema scuro" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Impostazioni — profilo, calcolatore BMR/TDEE, obiettivo calorico, interruttore tema scuro</figcaption></figure>
-      <figure style="margin:0"><img src="../../aplikace/img/meal-planner/08_recepty.png" alt="Ricette (36) — ricerca, filtro categorie, kcal / macro / prezzo / tempo di preparazione" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Ricette (36) — ricerca, filtro categorie, kcal / macro / prezzo / tempo di preparazione</figcaption></figure></div></section>
+<section><h2>Anteprime</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/krabickova-dieta/01_hero.png" alt="Dashboard — denní rozpis 5 jídel, sledování váhy, doporučený kalorický cíl (DEMO data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Dashboard — denní rozpis 5 jídel, sledování váhy, doporučený kalorický cíl (DEMO data)</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/krabickova-dieta/02_week.png" alt="Týdenní jídelníček — 7 dní × 5 jídel, každá krabička s názvem receptu a kcal" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Týdenní jídelníček — 7 dní × 5 jídel, každá krabička s názvem receptu a kcal</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/krabickova-dieta/03_day.png" alt="Den v detailu — 5 krabiček s makronutrienty a postupem přípravy" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Den v detailu — 5 krabiček s makronutrienty a postupem přípravy</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/krabickova-dieta/04_shopping.png" alt="Nákupní seznam — agregovaný z celého týdne, rozdělený do kategorií, export do CSV" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Nákupní seznam — agregovaný z celého týdne, rozdělený do kategorií, export do CSV</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/krabickova-dieta/05_settings.png" alt="Nastavení — BMR/TDEE kalkulačka, doporučený kcal cíl podle váhy a aktivity" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Nastavení — BMR/TDEE kalkulačka, doporučený kcal cíl podle váhy a aktivity</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/krabickova-dieta/06_rohlik_live.png" alt="Rohlík košík — preview ceny vs minimum objednávky (objednávku potvrzuje user ručně)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Rohlík košík — preview ceny vs minimum objednávky (objednávku potvrzuje user ručně)</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/krabickova-dieta/07_weight_chart.png" alt="Vývoj váhy — vlastní SVG sparkline, osobní tracking v localStorage prohlížeče" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Vývoj váhy — vlastní SVG sparkline, osobní tracking v localStorage prohlížeče</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/krabickova-dieta/08_analytics.png" alt="Analytika — read-only přehled spending, typical order, recipe search" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Analytika — read-only přehled spending, typical order, recipe search</figcaption></figure></div></section>
 
 <section>
   <h2>Stato</h2>
-  <p>Funzionante, v0.8.0 — UX Functional Upgrade (giugno 2026): procedura guidata iniziale, „Genera settimana" + modalità (Dimagrimento / Economica / Veloce), „Perché è qui?", blocco pasti, controllo varietà, frigo intelligente + sottrazione spesa, stampa meal-prep domenicale. <strong>338 test unitari PASS</strong>, 37 ricette, Tauri 2 + sidecar Python con aggiornamento automatico silenzioso. Web locale + app Windows, niente cloud, niente account, niente telemetria.</p>
+  <p>Funzionante, Phase 4C + 5A + 5B + 5C + 6 (maggio 2026). PWA locale, 21 ricette, 157 test unitari, 8 ADR. Niente cloud, niente account, niente telemetria.</p>
 </section>
+
 </main>
-
-<footer class="site-footer">
-  <div class="site-footer__inner">
-    <div>© Budinský Luděk · Osobní web</div>
-    <div class="footer-links">
-      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
-      <a href="../../smart-home/">Smart Home web</a>
-    </div>
-  </div>
-</footer>
-
-<script src="../../assets/js/main.js"></script>
-
-<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
-<style>
-#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
-#__lb.open { display:flex }
-#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-main img { cursor:zoom-in; transition:transform .15s ease }
-main img:hover { transform:scale(1.005) }
-</style>
 <div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
   <img id="__lbimg" alt="">
   <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
@@ -114,56 +70,22 @@ main img:hover { transform:scale(1.005) }
 (function(){
   var lb = document.getElementById('__lb');
   var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  function open(src, alt){
+    lbimg.src = src; lbimg.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open');
+    lbimg.src = '';
+    document.body.style.overflow = '';
+  }
   lb.addEventListener('click', close);
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
   document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+    img.addEventListener('click', function(){ open(img.src, img.alt); });
   });
 })();
 </script>
-
-<!-- vyvojovy denik popup (auto EN/IT) -->
-<style>
-.diary-btn { font: inherit; cursor:pointer; background:#2e7d32; color:#fff; border:none; padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem; }
-.diary-btn:hover { filter:brightness(1.1); }
-.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
-.diary-modal.open { display:block; }
-.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
-.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--text,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
-.diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
-.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
-.diary-body { padding:1.2rem 1.4rem; }
-@media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
-</style>
-<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Diario di sviluppo" aria-hidden="true">
-  <div class="diary-backdrop"></div>
-  <div class="diary-panel">
-    <div class="diary-head"><h2 style="margin:0">📖 Diario di sviluppo — Meal Planner</h2><button class="diary-close" aria-label="Chiudi">✕</button></div>
-    <div class="diary-body"><ul style="line-height:1.8">
-      <li><strong>v0.8.0 / UX Functional Upgrade + Visual Polish (5 giu 2026)</strong> — Wave 1–5: procedura guidata iniziale, „Genera settimana" + modalità (Dimagrimento / Economica / Veloce), „Perché è qui?" per pasto, blocco pasti + varietà („Sostituisci simili"), frigo intelligente (scadenze, avanzi, sottrazione spesa — solo unità sicure), stampa meal-prep domenicale. + Visual Polish: Dashboard più chiara, navigazione „Più", settimana mobile come elenco, badge/colori unificati. <strong>338/338 test unitari PASS</strong>, generatore di default invariato, checkout/pagamento mai. Aggiornamento automatico silenzioso (Tauri + sidecar Python).</li>
-      <li><strong>v0.4.0 / Phase 9 (1 giu 2026)</strong> — Integrazione Rohlík live (accesso nell'app, prezzi live dall'account, proposta carrello, articoli aggiunti dopo conferma; l'app non invia mai checkout o pagamento da sola). Tema scuro (nero-oro) con interruttore 🌙/☀️. Pulizia del codice, 259/259 test unitari PASS.</li>
-      <li><strong>v0.2.0 / Windows Tauri (28 mag 2026)</strong> — App desktop Windows nativa (Tauri 2 + NSIS, ~1,1 MB). Dati in localStorage, come il web.</li>
-      <li><strong>Phase 7.1+7.2+8.1 (28 mag 2026)</strong> — Frigo: autocomplete fuzzy (Levenshtein ≤2), controllo quantità, date di scadenza + banner (≤3 giorni), widget dashboard. 225/225 test.</li>
-      <li><strong>Phase 7.0 (aprile 2026)</strong> — Frigo MVP: autocomplete da food_db, recipe matcher “Cosa posso cucinare?” (coverage %).</li>
-      <li><strong>v0.1.x (feb–apr 2026)</strong> — Fasi MVP 1–6: profilo, BMR/TDEE, piano settimanale, porzioni, lista spesa, analitica, log peso, 36 ricette.</li>
-    </ul></div>
-  </div>
-</div>
-<script>
-(function(){
-  var b=document.getElementById('openDeík') || document.getElementById('openDeník'); var modal=document.getElementById('diary');
-  if(!modal) return;
-  var btn=document.getElementById('openDeník');
-  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-  if(btn) btn.addEventListener('click', open);
-  modal.querySelector('.diary-close').addEventListener('click', close);
-  modal.querySelector('.diary-backdrop').addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
-})();
-</script>
-
 </body>
 </html>

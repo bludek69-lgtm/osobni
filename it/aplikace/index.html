@@ -1,40 +1,24 @@
-﻿<!DOCTYPE html>
-<html lang="cs">
+<!DOCTYPE html>
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Le mie app — Luděk</title>
-  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <title>Le mie app — Luděk Budínský</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+  <style>
+    #__lb {
+      display:none; position:fixed; inset:0; z-index:9999;
+      background:rgba(0,0,0,0.93); cursor:zoom-out;
+      align-items:center; justify-content:center; padding:2vh;
+    }
+    #__lb.open { display:flex }
+    #__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+    #__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+    main img { cursor:zoom-in; transition:transform .15s ease }
+    main img:hover { transform:scale(1.005) }
+  </style>
 </head>
-<body class="theme-home">
-
-<header class="site-header">
-  <div class="site-header__inner">
-    <a href="../../" class="brand">
-      <span class="brand-dot"></span>
-      Luděk
-    </a>
-    <div class="lang-switcher" aria-label="Lingua">
-      <a href="../../aplikace/" hreflang="cs" title="Česky">CS</a>
-      <a href="../../en/aplikace/" hreflang="en" title="English">EN</a>
-      <a href="./" hreflang="it" aria-current="page" title="Italiano">IT</a>
-    </div>
-    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
-    <nav class="nav" aria-label="Hlavní navigace">
-    <a href="../../">Domů</a>
-    <a href="../../aplikace/">Moje aplikace</a>
-    <a href="../../finance/">Finance</a>
-    <a href="../../cestovani/">Cestování</a>
-    <a href="../../cestovani/italie/">Itálie</a>
-    <a href="../../zaliby/rybareni/">Rybaření</a>
-    <a href="../../smart-home/">Smart Home</a>
-    <a href="../../ai.html">AI</a>
-    </nav>
-  </div>
-</header>
-
+<body>
 <main id="main">
 <section class="hero">
   <span class="hero-accent">Le mie app</span>
@@ -51,15 +35,10 @@
       <a href="krabickova-dieta.html" class="card card-link" style="border-left:4px solid #2e7d32;"><div class="card-icon">🥗</div><h3>Meal Planner</h3><p>Pianificatore pasti mio — invece di iscrivermi ad app dietetiche che mi tracciano, ho la mia che gira solo nel browser. Genera piano settimanale di porzioni secondo l'obiettivo calorico, calcola lista spesa, traccia macro. Niente account, niente cloud.</p><div class="card-cta">Apri scheda →</div></a>
       <a href="energy-dashboard.html" class="card card-link" style="border-left:4px solid #7cd6ff;"><div class="card-icon">⚡</div><h3>Energy Dashboard (PC)</h3><p>Una finestra semplice sul monitor dove vedo in tempo reale quanto consuma la casa, quanto costa oggi e la stima per il mese. Niente click — sta aperta tutto il giorno.</p><div class="card-cta">Apri scheda →</div></a>
       <a href="rpi-kiosk.html" class="card card-link" style="border-left:4px solid #9cf2a6;"><div class="card-icon">🖥️</div><h3>Pannello a muro</h3><p>Un piccolo touchscreen sul muro del corridoio dove controllo tutto l'appartamento — luci, audio, riscaldamento, scene. Niente sblocco telefono, niente caccia all'app. Passi, un tocco, fatto.</p><div class="card-cta">Apri scheda →</div></a>
-      <a href="resident-auditor.html" class="card card-link" style="border-left:4px solid #4a8fd0;"><div class="card-icon">🔎</div><h3>Resident Auditor</h3><p>Uno strumento che valuta la mia casa intelligente con gli occhi di chi ci abita — non &bdquo;lo script è andato&ldquo;, ma &bdquo;la mattina ha funzionato?&ldquo;. Legge i log reali di un giorno e restituisce PASS / WATCH / FAIL con le prove. Sola lettura, avvio manuale.</p><div class="card-cta">Apri scheda →</div></a>
-      <a href="app-tester.html" class="card card-link" style="border-left:4px solid #22a39f;"><div class="card-icon">🧪</div><h3>App Tester</h3><p>Un tester universale di app web — percorre da solo ogni pagina, avvia un browser e restituisce PASS / WATCH / FAIL: qualcosa non si è caricato? errori in console? pagina vuota o lenta? Aggiungere un'app = una riga di config.</p><div class="card-cta">Apri scheda →</div></a>
-      <a href="ridic-turnusy-mzdy.html" class="card card-link" style="border-left:4px solid #e8a317;"><div class="card-icon">🚌</div><h3>Lavoro autista — turni e stipendio</h3><p>Strumento locale per autista: parser turni, motore stipendio, busta propria vs ufficiale + confronto e livello fiscale (netto). Offline, niente cloud.</p><div class="card-cta">Apri scheda →</div></a>
+      <a href="ridic-turnusy-mzdy.html" class="card card-link" style="border-left:4px solid #e8a317;"><div class="card-icon">🚌</div><h3>Lavoro autista — turni e stipendio<span style="display:inline-block;background:#e8a3171f;color:#e8a317;border:1px solid #e8a31755;padding:.15rem .55rem;border-radius:6px;font-size:.72rem;font-weight:600;margin-left:.4rem;vertical-align:middle">In sviluppo</span></h3><p>App di lavoro per un autista di autobus — parsing automatico dei turni e calcolo dello stipendio mensile dalle ore effettivamente guidate, indennità e categorie. In sviluppo.</p><div class="card-cta">Apri scheda →</div></a>
   </div>
 </section>
 
-
-
-<!-- DL_SECTION_START -->
 <section aria-label="Le mie app da scaricare" style="margin-top:2.5rem">
   <h2>Le mie app da scaricare</h2>
   <p class="hero-sub">App per Windows scaricabili pubblicamente. Gli installer sono protetti da password — la password te la mando a parte.</p>
@@ -67,7 +46,7 @@
       <div class="card" style="border-left:4px solid #2d6ad5;"><div class="card-icon">🚍</div><h3>BudLine Panel <span style="display:inline-block;background:#2d6ad51f;color:#2d6ad5;border:1px solid #2d6ad555;padding:.1rem .5rem;border-radius:6px;font-size:.72rem;font-weight:600;vertical-align:middle">v1.2.5</span></h3><p>Turni, rotazioni e documenti per la busta paga degli autisti.</p><div class="card-cta" style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel-v1.2.5-Setup.exe" download style="display:inline-block;background:#2d6ad5;color:#fff;text-decoration:none;padding:.5rem 1rem;border-radius:8px;font-weight:600;white-space:nowrap">⬇ Scarica</a><span style="font-size:.78rem;color:var(--txt-muted,#666);white-space:nowrap">download .exe diretto</span></div></div>
       <div class="card" style="border-left:4px solid #e2722e;"><div class="card-icon">🍱</div><h3>Meal Planner <span style="display:inline-block;background:#e2722e1f;color:#e2722e;border:1px solid #e2722e55;padding:.1rem .5rem;border-radius:6px;font-size:.72rem;font-weight:600;vertical-align:middle">v0.8.4</span></h3><p>Menù, pasti pronti e lista della spesa.</p><div class="card-cta" style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/MealPlanner-v0.8.4-Setup.exe" download style="display:inline-block;background:#e2722e;color:#fff;text-decoration:none;padding:.5rem 1rem;border-radius:8px;font-weight:600;white-space:nowrap">⬇ Scarica</a><span style="font-size:.78rem;color:var(--txt-muted,#666);white-space:nowrap">download .exe diretto</span></div></div>
       <div class="card" style="border-left:4px solid #1a9c5b;"><div class="card-icon">🧳</div><h3>Italia Travel Planner <span style="display:inline-block;background:#1a9c5b1f;color:#1a9c5b;border:1px solid #1a9c5b55;padding:.1rem .5rem;border-radius:6px;font-size:.72rem;font-weight:600;vertical-align:middle">v0.7.4</span></h3><p>Pianificazione viaggi in Italia — itinerario e budget.</p><div class="card-cta" style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/ItaliaTravel-v0.7.4-Setup.exe" download style="display:inline-block;background:#1a9c5b;color:#fff;text-decoration:none;padding:.5rem 1rem;border-radius:8px;font-weight:600;white-space:nowrap">⬇ Scarica</a><span style="font-size:.78rem;color:var(--txt-muted,#666);white-space:nowrap">download .exe diretto</span></div></div>
-      <div class="card" style="border-left:4px solid #9b59b6;"><div class="card-icon">🪙</div><h3>Collection <span style="display:inline-block;background:#9b59b61f;color:#9b59b6;border:1px solid #9b59b655;padding:.1rem .5rem;border-radius:6px;font-size:.72rem;font-weight:600;vertical-align:middle">v1.1.3</span></h3><p>Catalogo della collezione con descrizioni AI.</p><div class="card-cta" style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/Collection-v1.1.3-Setup.exe" download style="display:inline-block;background:#9b59b6;color:#fff;text-decoration:none;padding:.5rem 1rem;border-radius:8px;font-weight:600;white-space:nowrap">⬇ Scarica</a><span style="font-size:.78rem;color:var(--txt-muted,#666);white-space:nowrap">download .exe diretto</span></div></div>
+      <div class="card" style="border-left:4px solid #9b59b6;"><div class="card-icon">🪙</div><h3>Collection <span style="display:inline-block;background:#9b59b61f;color:#9b59b6;border:1px solid #9b59b655;padding:.1rem .5rem;border-radius:6px;font-size:.72rem;font-weight:600;vertical-align:middle">v1.1.4</span></h3><p>Catalogo della collezione con descrizioni AI.</p><div class="card-cta" style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/Collection-v1.1.4-Setup.exe" download style="display:inline-block;background:#9b59b6;color:#fff;text-decoration:none;padding:.5rem 1rem;border-radius:8px;font-weight:600;white-space:nowrap">⬇ Scarica</a><span style="font-size:.78rem;color:var(--txt-muted,#666);white-space:nowrap">download .exe diretto</span></div></div>
   </div>
   <div style="margin-top:1.4rem;padding:1rem 1.2rem;border:1px solid var(--border,#0002);border-radius:10px;background:var(--card-bg,#0000000a)">
     <strong>Prima di scaricare</strong>
@@ -79,30 +58,9 @@
     <p style="margin:.7rem 0 0"><a href="https://github.com/bludek69-lgtm/aplikace/blob/main/CHECKSUMS.txt" target="_blank" rel="noopener">Mostra CHECKSUMS.txt</a></p>
   </div>
 </section>
-<!-- DL_SECTION_END -->
+
+
 </main>
-
-<footer class="site-footer">
-  <div class="site-footer__inner">
-    <div>© Budinský Luděk · Osobní web</div>
-    <div class="footer-links">
-      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
-      <a href="../../smart-home/">Smart Home web</a>
-    </div>
-  </div>
-</footer>
-
-<script src="../../assets/js/main.js"></script>
-
-<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
-<style>
-#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
-#__lb.open { display:flex }
-#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-main img { cursor:zoom-in; transition:transform .15s ease }
-main img:hover { transform:scale(1.005) }
-</style>
 <div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
   <img id="__lbimg" alt="">
   <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
@@ -111,12 +69,20 @@ main img:hover { transform:scale(1.005) }
 (function(){
   var lb = document.getElementById('__lb');
   var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  function open(src, alt){
+    lbimg.src = src; lbimg.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open');
+    lbimg.src = '';
+    document.body.style.overflow = '';
+  }
   lb.addEventListener('click', close);
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
   document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+    img.addEventListener('click', function(){ open(img.src, img.alt); });
   });
 })();
 </script>

@@ -1,113 +1,57 @@
-﻿<!DOCTYPE html>
-<html lang="cs">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Driver work — My apps — Luděk</title>
-  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <title>Driver work — shifts & salary — My apps — Luděk</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+  <style>
+    #__lb {
+      display:none; position:fixed; inset:0; z-index:9999;
+      background:rgba(0,0,0,0.93); cursor:zoom-out;
+      align-items:center; justify-content:center; padding:2vh;
+    }
+    #__lb.open { display:flex }
+    #__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+    #__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+    main img { cursor:zoom-in; transition:transform .15s ease }
+    main img:hover { transform:scale(1.005) }
+  </style>
 </head>
-<body class="theme-home">
-
-<header class="site-header">
-  <div class="site-header__inner">
-    <a href="../../" class="brand">
-      <span class="brand-dot"></span>
-      Luděk
-    </a>
-    <div class="lang-switcher" aria-label="Language">
-      <a href="../../aplikace/ridic-turnusy-mzdy.html" hreflang="cs" title="Česky">CS</a>
-      <a href="./" hreflang="en" aria-current="page" title="English">EN</a>
-      <a href="../../it/aplikace/ridic-turnusy-mzdy.html" hreflang="it" title="Italiano">IT</a>
-    </div>
-    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
-    <nav class="nav" aria-label="Hlavní navigace">
-    <a href="../../">Domů</a>
-    <a href="../../aplikace/">Moje aplikace</a>
-    <a href="../../finance/">Finance</a>
-    <a href="../../cestovani/">Cestování</a>
-    <a href="../../cestovani/italie/">Itálie</a>
-    <a href="../../zaliby/rybareni/">Rybaření</a>
-    <a href="../../smart-home/">Smart Home</a>
-    <a href="../../ai.html">AI</a>
-    </nav>
-  </div>
-</header>
-
+<body>
 <main id="main">
 <section class="hero" style="border-left:4px solid #e8a317;padding-left:1.2rem">
   <span class="hero-accent" style="color:#e8a317">Driver work — shifts & salary</span>
   <h1><span style="margin-right:.4rem">🚌</span>Driver work — shifts & salary</h1>
-  <p class="hero-sub">Local tool for a bus driver (internally "BudLine Panel"). Parses shift schedules from PDF, computes monthly salary from driven shifts, builds an <strong>own payslip</strong> and compares it to the official one. Includes a <strong>tax layer</strong> (advance tax, insurance, net pay) and yearly rate verification. Fully offline, no cloud.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Local web (stdlib http.server)</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PDF shift parser</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Salary engine</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">No cloud</span></p>
-  <p style="margin-top:.8rem"><a href="../index.html">← Back to My apps</a><button id="openDeník" class="diary-btn" style="margin-left:1rem">📖 Dev diary</button></p>
+  <p class="hero-sub">Work app for a bus driver — automatic parsing of shift schedules and computing monthly salary from actually-driven hours, bonuses and categories. In development.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Excel / XLSX parser</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PDF parser (turnusy)</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Lokální Windows app</span></p>
+  <p style="margin-top:.8rem"><a href="../index.html">← Back to My apps</a></p>
 </section>
 
 <section>
   <h2>What it does</h2>
-  <p><strong>Why it exists:</strong> every month I get a shift schedule and a payslip. Manually checking whether hours, bonuses (night, weekend, holidays), waiting time and net pay match is tedious. This app does it for me — locally, on my PC, no cloud.</p><p><strong>How it works:</strong> it reads the shift PDFs (splits them into runs, times, km), computes the gross part from confirmed driven shifts via an own salary engine and builds an <strong>own (computed) payslip</strong>. It then puts it next to the <strong>official payslip from the carrier</strong> (from PDF) and <strong>compares</strong> them line by line — with a clear verdict MATCHES / WATCH / MISMATCH and an explanation per row. If only part of the month is entered, the app detects it and reports WATCH (incomplete data), not a false "mismatch".</p><p><strong>Taxes & net pay:</strong> a separate tax layer computes advance income tax, social and health insurance and net pay — strictly from <strong>manually confirmed rates</strong> (the app never invents rates; until confirmed, net pay waits). Credits and children come from the "driver card".</p>
+  <p><strong>Why it is being built:</strong> every month I get a shift schedule (when and where to drive) and a payslip. I manually verify whether the hours match, bonuses for night, weekend, holidays, overtime, meal vouchers. An Excel sheet would do, but I want it automatic — drop a shift-schedule PDF in, the app spits out what to expect and where it differs from payroll.</p><p><strong>What it will do:</strong> read shift-schedule PDF from the regional carrier (parse each shift — start, end, route), compute work hours + breaks + bonuses (night 22-6, weekend, holidays, overtime over the base contract). Then import the payslip (XLSX/PDF) and compare: app says &bdquo;for this month I expect X CZK gross&ldquo;, payslip says Y CZK — if they differ, output the line items to verify with the supervisor.</p><p><strong>Status:</strong> In development. Plan: Phase 1 = PDF shift parser, Phase 2 = salary calculator, Phase 3 = payslip comparison, Phase 4 = UI dashboard. No cloud, no account — everything local.</p>
 </section>
 
 <section>
   <h2>Key features</h2>
   <ul style="line-height:1.7">
-      <li><strong>Shift parser (PDF)</strong> — Reads the monthly schedule, parses runs, times, stops and km (incl. long-distance lines and deadhead transfers).</li>
-      <li><strong>Salary engine</strong> — From confirmed shifts computes hours, waiting time and bonuses (night, weekend, holiday, hard-environment).</li>
-      <li><strong>Own vs official payslip + comparison</strong> — Builds the own payslip and compares it to the official one; 9 states (matches / differs / missing / unclear / …), verdict MATCHES/WATCH/MISMATCH, with source and what to add per item.</li>
-      <li><strong>Tax layer (net pay)</strong> — Advance tax, social and health insurance, net pay — only from manually confirmed rates; rates locked against overwrite.</li>
-      <li><strong>Driver card</strong> — Children, taxpayer credit, signed declaration, insurer — inputs to the calculation.</li>
-      <li><strong>Yearly rate verification</strong> — One button checks official sources and offers rates to confirm (they never change by themselves).</li>
-      <li><strong>AETR / Reg. 561/2006 + labour-law checks</strong> — Verifies the driver's legal limits against the shifts driven: <strong>daily driving time</strong> (9 h, up to 10 h twice a week), <strong>weekly</strong> (max 56 h) and <strong>fortnightly</strong> (max 90 h), the mandatory <strong>break after 4.5 h of driving</strong>, <strong>daily rest</strong> (11 h, reduced 9 h) and <strong>weekly rest</strong> (45 h), driver <strong>night work</strong> (CZ) and the <strong>maximum weekly working time</strong> (not just driving). For each shift it flags where it nears or exceeds a limit. Every rule carries its source (regulation) and is confirmed manually — nothing is treated as legal certainty.</li>
-      <li><strong>Records</strong> — Fleet, drivers (health insurers), collective agreement, and rule updates from official sources.</li>
-      <li><strong>Local, no cloud</strong> — No account, no outbound API. Payslips and schedules stay on my PC.</li>
+      <li><strong>PDF shift import</strong> — Reads the monthly regional-carrier schedule PDF, parses individual runs, times and locations.</li>
+      <li><strong>Hours & bonus computation</strong> — Work hours + breaks + night (22-6) + weekend + holidays + overtime over base contract.</li>
+      <li><strong>Payslip cross-check</strong> — Imports payslip and cross-verifies: expected vs actual gross CZK. Diffs output as a verification list.</li>
+      <li><strong>Monthly overview</strong> — Hours driven, bonuses, meal vouchers, vacation days left.</li>
+      <li><strong>Local, no cloud</strong> — No account, no API. Payslip and schedules stay on my PC.</li>
   </ul>
 </section>
 
-<section>
-  <h2>Screenshots</h2>
-  <p style="color:#9aa7bd;font-size:.9rem;margin-bottom:1rem">Sample screens with <strong>anonymized data</strong> — no real wages or personal details.</p>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
-    <figure style="margin:0"><img src="../../aplikace/img/budline/budline_01_prehled.png" alt="Overview (dashboard)" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Overview — dashboard</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/budline_06_legislativa_aetr.png" alt="Legislation / AETR" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">AETR / Reg. 561/2006 checks</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/budline_05_vlastni_paska.png" alt="Own payslip" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Own (computed) payslip</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/budline_07_dane.png" alt="Taxes and rates" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Taxes + yearly rate check</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/budline_03_nova_smena.png" alt="New shift" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">New shift</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/budline_09_ridici.png" alt="Drivers" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Drivers (anonymized)</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/budline_10_nastaveni.png" alt="Settings" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Settings</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/budline_02_porovnani.png" alt="Payslip comparison" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Payslip comparison (MATCHES / WATCH / MISMATCH)</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/budline_04_kontrola_vyplat.png" alt="Payslip check" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Payslip check</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/budline_00_pruvodce.png" alt="First-run guide" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">First-run guide</figcaption></figure>
-  </div>
-</section>
+
 
 <section>
   <h2>Status</h2>
-  <p><strong>Working (v1.0) — private tool, no public hosting.</strong> The main flow <em>shift → official payslip → own payslip → comparison → net pay</em> works. Built strictly safe: the salary engine is never edited, everything is a proposal, real data is never overwritten automatically, with a backup and a check at each phase. Tax rates are confirmed manually from official sources — the app never invents them or presents them as certainty (a checking aid, not tax advice).</p>
+  <p>**In development.** Phase 1 (PDF parser) skeleton, Phase 2-4 planned. No public hosting planned — private payroll self-check tool.</p>
 </section>
+
 </main>
-
-<footer class="site-footer">
-  <div class="site-footer__inner">
-    <div>© Budinský Luděk · Osobní web</div>
-    <div class="footer-links">
-      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
-      <a href="../../smart-home/">Smart Home web</a>
-    </div>
-  </div>
-</footer>
-
-<script src="../../assets/js/main.js"></script>
-
-<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
-<style>
-#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
-#__lb.open { display:flex }
-#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-main img { cursor:zoom-in; transition:transform .15s ease }
-main img:hover { transform:scale(1.005) }
-</style>
 <div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
   <img id="__lbimg" alt="">
   <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
@@ -116,57 +60,22 @@ main img:hover { transform:scale(1.005) }
 (function(){
   var lb = document.getElementById('__lb');
   var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  function open(src, alt){
+    lbimg.src = src; lbimg.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open');
+    lbimg.src = '';
+    document.body.style.overflow = '';
+  }
   lb.addEventListener('click', close);
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
   document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+    img.addEventListener('click', function(){ open(img.src, img.alt); });
   });
 })();
 </script>
-
-<!-- vyvojovy denik popup (auto EN/IT) -->
-<style>
-.diary-btn { font: inherit; cursor:pointer; background:#e8a317; color:#fff; border:none; padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem; }
-.diary-btn:hover { filter:brightness(1.1); }
-.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
-.diary-modal.open { display:block; }
-.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
-.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--text,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
-.diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
-.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
-.diary-body { padding:1.2rem 1.4rem; }
-@media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
-</style>
-<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Dev diary" aria-hidden="true">
-  <div class="diary-backdrop"></div>
-  <div class="diary-panel">
-    <div class="diary-head"><h2 style="margin:0">📖 Dev diary — Driver work — shifts & salary</h2><button class="diary-close" aria-label="Close">✕</button></div>
-    <div class="diary-body"><ul style="line-height:1.8">
-      <li><strong>Goal</strong> — A local driver tool: shifts → pay → payslip check. Fully offline, as a checking aid.</li>
-      <li><strong>Shift parser</strong> — Reading shifts from PDF; fixed long-distance runs (4-digit numbers) and deadhead transfers so km and runs match the original.</li>
-      <li><strong>Dual payslip + comparison</strong> — Official payslip (from PDF) vs own (computed) via the existing salary engine; line-by-line comparison with 9 states and a MATCHES/WATCH/MISMATCH verdict. Incomplete month = WATCH, not a false "mismatch".</li>
-      <li><strong>Tax layer</strong> — A separate engine for advance tax, social/health insurance and net pay; rates only from manually confirmed rules, locked against overwrite. Validated against a real payslip (insurance and tax matched; the gap was untaxed per-diems).</li>
-      <li><strong>Driver card</strong> — Children, credit, declaration → inputs to the calculation. One driver per instance (a colleague gets their own copy).</li>
-      <li><strong>Yearly rate verification</strong> — A button that checks official sources and offers rates to confirm; they never change by themselves.</li>
-      <li><strong>Status</strong> — Working v1.0; fine-tuning (per-diems in the net comparison) once the first full real month is entered.</li>
-    </ul></div>
-  </div>
-</div>
-<script>
-(function(){
-  var b=document.getElementById('openDeík') || document.getElementById('openDeník'); var modal=document.getElementById('diary');
-  if(!modal) return;
-  var btn=document.getElementById('openDeník');
-  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-  if(btn) btn.addEventListener('click', open);
-  modal.querySelector('.diary-close').addEventListener('click', close);
-  modal.querySelector('.diary-backdrop').addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
-})();
-</script>
-
 </body>
 </html>

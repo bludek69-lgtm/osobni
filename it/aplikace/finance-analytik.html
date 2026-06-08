@@ -1,47 +1,31 @@
-﻿<!DOCTYPE html>
-<html lang="cs">
+<!DOCTYPE html>
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finance Analyst — Le mie app — Luděk</title>
-  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <title>Finance Analytik — Le mie app — Luděk</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+  <style>
+    #__lb {
+      display:none; position:fixed; inset:0; z-index:9999;
+      background:rgba(0,0,0,0.93); cursor:zoom-out;
+      align-items:center; justify-content:center; padding:2vh;
+    }
+    #__lb.open { display:flex }
+    #__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+    #__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+    main img { cursor:zoom-in; transition:transform .15s ease }
+    main img:hover { transform:scale(1.005) }
+  </style>
 </head>
-<body class="theme-finance">
-
-<header class="site-header">
-  <div class="site-header__inner">
-    <a href="../../" class="brand">
-      <span class="brand-dot"></span>
-      Luděk
-    </a>
-    <div class="lang-switcher" aria-label="Lingua">
-      <a href="../../aplikace/finance-analytik.html" hreflang="cs" title="Česky">CS</a>
-      <a href="../../en/aplikace/finance-analytik.html" hreflang="en" title="English">EN</a>
-      <a href="./" hreflang="it" aria-current="page" title="Italiano">IT</a>
-    </div>
-    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
-    <nav class="nav" aria-label="Hlavní navigace">
-    <a href="../../">Domů</a>
-    <a href="../../aplikace/">Moje aplikace</a>
-    <a href="../../finance/">Finance</a>
-    <a href="../../cestovani/">Cestování</a>
-    <a href="../../cestovani/italie/">Itálie</a>
-    <a href="../../zaliby/rybareni/">Rybaření</a>
-    <a href="../../smart-home/">Smart Home</a>
-    <a href="../../ai.html">AI</a>
-    </nav>
-  </div>
-</header>
-
+<body>
 <main id="main">
 <section class="hero" style="border-left:4px solid #5b8c9f;padding-left:1.2rem">
   <span class="hero-accent" style="color:#5b8c9f">Finance Analytik</span>
   <h1><span style="margin-right:.4rem">📈</span>Finance Analytik</h1>
   <p class="hero-sub">Assistente personale per decisioni sulle azioni — invece di fidarmi di rating di terzi, l'app calcola in locale la propria fair value e mi dice: compra / tieni / vendi. 96 posizioni su 5 broker, niente API key, niente cloud.</p>
   <p style="margin-top:.6rem"><span class="pill" style="background:#5b8c9f1a;color:#5b8c9f;border:1px solid #5b8c9f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#5b8c9f1a;color:#5b8c9f;border:1px solid #5b8c9f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#5b8c9f1a;color:#5b8c9f;border:1px solid #5b8c9f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tailwind</span> <span class="pill" style="background:#5b8c9f1a;color:#5b8c9f;border:1px solid #5b8c9f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#5b8c9f1a;color:#5b8c9f;border:1px solid #5b8c9f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">DCF + REIT FFO modely</span></p>
-  <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a><button id="openDeník" class="diary-btn" style="margin-left:1rem">📖 Diario di sviluppo</button></p>
+  <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a></p>
 </section>
 
 <section>
@@ -61,42 +45,21 @@
   </ul>
 </section>
 
-<section><h2>Anteprime</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/01_hero.png" alt="Dashboard — přehled portfolia + signál distribuce (BUY/HOLD/SELL, ilustrativní náhled)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Dashboard — přehled portfolia + signál distribuce (BUY/HOLD/SELL, ilustrativní náhled)</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/02_portfolio.png" alt="Portfolio — 96 akcií + ETF s vlastním doporučením (kup/drž/prodej) a bezpečnostní rezervou v %" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Portfolio — 96 akcií + ETF s vlastním doporučením (kup/drž/prodej) a bezpečnostní rezervou v %</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/03_fair_value.png" alt="Férová cena — kolik akcie podle mě skutečně stojí (4 metody výpočtu)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Férová cena — kolik akcie podle mě skutečně stojí (4 metody výpočtu)</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/04_cost_basis.png" alt="Pořizovací ceny — kolik a kdy jsem nakupoval, jak daleko k daňovému osvobození" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Pořizovací ceny — kolik a kdy jsem nakupoval, jak daleko k daňovému osvobození</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/05_transactions.png" alt="Transakce — sjednocené výpisy od 5 brokerů (XTB, T212, IB, eToro, TastyTrade)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Transakce — sjednocené výpisy od 5 brokerů (XTB, T212, IB, eToro, TastyTrade)</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/06_dividends.png" alt="Dividendy — roční přehled, hrubý + čistý, sražená daň" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Dividendy — roční přehled, hrubý + čistý, sražená daň</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/07_data_sources.png" alt="Zdroje dat — odkud beru ceny (Stooq, Yahoo, TwelveData, manuální)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Zdroje dat — odkud beru ceny (Stooq, Yahoo, TwelveData, manuální)</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/08_import.png" alt="Import výpisů — drag-and-drop PDF/XLSX, aplikace pozná brokera sama" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--text-mut,#666);margin-top:.4rem">Import výpisů — drag-and-drop PDF/XLSX, aplikace pozná brokera sama</figcaption></figure></div></section>
+<section><h2>Anteprime</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/01_hero.png" alt="Dashboard — přehled portfolia + signál distribuce (BUY/HOLD/SELL, ilustrativní náhled)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Dashboard — přehled portfolia + signál distribuce (BUY/HOLD/SELL, ilustrativní náhled)</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/02_portfolio.png" alt="Portfolio — 96 akcií + ETF s vlastním doporučením (kup/drž/prodej) a bezpečnostní rezervou v %" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Portfolio — 96 akcií + ETF s vlastním doporučením (kup/drž/prodej) a bezpečnostní rezervou v %</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/03_fair_value.png" alt="Férová cena — kolik akcie podle mě skutečně stojí (4 metody výpočtu)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Férová cena — kolik akcie podle mě skutečně stojí (4 metody výpočtu)</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/04_cost_basis.png" alt="Pořizovací ceny — kolik a kdy jsem nakupoval, jak daleko k daňovému osvobození" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Pořizovací ceny — kolik a kdy jsem nakupoval, jak daleko k daňovému osvobození</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/05_transactions.png" alt="Transakce — sjednocené výpisy od 5 brokerů (XTB, T212, IB, eToro, TastyTrade)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Transakce — sjednocené výpisy od 5 brokerů (XTB, T212, IB, eToro, TastyTrade)</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/06_dividends.png" alt="Dividendy — roční přehled, hrubý + čistý, sražená daň" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Dividendy — roční přehled, hrubý + čistý, sražená daň</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/07_data_sources.png" alt="Zdroje dat — odkud beru ceny (Stooq, Yahoo, TwelveData, manuální)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Zdroje dat — odkud beru ceny (Stooq, Yahoo, TwelveData, manuální)</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/finance-analytik/08_import.png" alt="Import výpisů — drag-and-drop PDF/XLSX, aplikace pozná brokera sama" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Import výpisů — drag-and-drop PDF/XLSX, aplikace pozná brokera sama</figcaption></figure></div></section>
 
 <section>
   <h2>Stato</h2>
   <p>MVP funzionante v0.3 (maggio 2026), 8 round di sviluppo, ~3 mesi attivi. App Windows locale via Chrome --app. Privata — niente hosting pubblico. Obiettivo: supporto decisionale per me, non SaaS pubblica.</p>
 </section>
+
 </main>
-
-<footer class="site-footer">
-  <div class="site-footer__inner">
-    <div>© Budinský Luděk · Osobní web</div>
-    <div class="footer-links">
-      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
-      <a href="../../smart-home/">Smart Home web</a>
-    </div>
-  </div>
-</footer>
-
-<script src="../../assets/js/main.js"></script>
-
-<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
-<style>
-#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
-#__lb.open { display:flex }
-#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-main img { cursor:zoom-in; transition:transform .15s ease }
-main img:hover { transform:scale(1.005) }
-</style>
 <div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
   <img id="__lbimg" alt="">
   <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
@@ -105,53 +68,22 @@ main img:hover { transform:scale(1.005) }
 (function(){
   var lb = document.getElementById('__lb');
   var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  function open(src, alt){
+    lbimg.src = src; lbimg.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open');
+    lbimg.src = '';
+    document.body.style.overflow = '';
+  }
   lb.addEventListener('click', close);
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
   document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+    img.addEventListener('click', function(){ open(img.src, img.alt); });
   });
 })();
 </script>
-
-<!-- vyvojovy denik popup (auto EN/IT) -->
-<style>
-.diary-btn { font: inherit; cursor:pointer; background:#5b8c9f; color:#fff; border:none; padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem; }
-.diary-btn:hover { filter:brightness(1.1); }
-.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
-.diary-modal.open { display:block; }
-.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
-.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--text,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
-.diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
-.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
-.diary-body { padding:1.2rem 1.4rem; }
-@media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
-</style>
-<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Diario di sviluppo" aria-hidden="true">
-  <div class="diary-backdrop"></div>
-  <div class="diary-panel">
-    <div class="diary-head"><h2 style="margin:0">📖 Diario di sviluppo — Finance Analytik</h2><button class="diary-close" aria-label="Chiudi">✕</button></div>
-    <div class="diary-body"><ul style="line-height:1.8">
-      <li><strong>Obiettivo</strong> — Un aiuto mio per le decisioni azionarie — calcola il valore equo in locale e dice compra / mantieni / vendi. Nessun consiglio esterno, nessuna API key.</li>
-      <li><strong>Ambito</strong> — 96 posizioni da 5 broker, valutazione in locale, niente cloud. Input manuali o da export.</li>
-      <li><strong>Stato</strong> — Funzionante per uso personale. Non è consulenza finanziaria — solo indicativo.</li>
-    </ul></div>
-  </div>
-</div>
-<script>
-(function(){
-  var b=document.getElementById('openDeík') || document.getElementById('openDeník'); var modal=document.getElementById('diary');
-  if(!modal) return;
-  var btn=document.getElementById('openDeník');
-  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-  if(btn) btn.addEventListener('click', open);
-  modal.querySelector('.diary-close').addEventListener('click', close);
-  modal.querySelector('.diary-backdrop').addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
-})();
-</script>
-
 </body>
 </html>

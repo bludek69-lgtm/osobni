@@ -1,146 +1,57 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Práce řidiče — Moje aplikace — Luděk</title>
-  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <title>Práce řidiče — turnusy a mzdy — Moje aplikace — Luděk</title>
   <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+  <style>
+    #__lb {
+      display:none; position:fixed; inset:0; z-index:9999;
+      background:rgba(0,0,0,0.93); cursor:zoom-out;
+      align-items:center; justify-content:center; padding:2vh;
+    }
+    #__lb.open { display:flex }
+    #__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+    #__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+    main img { cursor:zoom-in; transition:transform .15s ease }
+    main img:hover { transform:scale(1.005) }
+  </style>
 </head>
-<body class="theme-home">
-
-<header class="site-header">
-  <div class="site-header__inner">
-    <a href="../" class="brand">
-      <span class="brand-dot"></span>
-      Luděk
-    </a>
-    <div class="lang-switcher" aria-label="Jazyk">
-      <a href="./" hreflang="cs" aria-current="page" title="Česky">CS</a>
-      <a href="../en/aplikace/" hreflang="en" title="English">EN</a>
-      <a href="../it/aplikace/" hreflang="it" title="Italiano">IT</a>
-    </div>    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
-    <nav class="nav" aria-label="Hlavní navigace">
-    <a href="../">Domů</a>
-    <a href="../aplikace/" aria-current="page">Moje aplikace</a>
-    <a href="../finance/">Finance</a>
-    <a href="../cestovani/">Cestování</a>
-    <a href="../cestovani/italie/">Itálie</a>
-    <a href="../zaliby/rybareni/">Rybaření</a>
-    <a href="../smart-home/">Smart Home</a>
-    <a href="../ai.html">AI</a>
-    </nav>
-  </div>
-</header>
-
+<body>
 <main id="main">
 <section class="hero" style="border-left:4px solid #e8a317;padding-left:1.2rem">
   <span class="hero-accent" style="color:#e8a317">Práce řidiče — turnusy a mzdy</span>
   <h1><span style="margin-right:.4rem">🚌</span>Práce řidiče — turnusy a mzdy</h1>
-  <p class="hero-sub">Lokální nástroj pro řidiče autobusu (interně „BudLine Panel"). Parsuje turnusy z PDF, počítá měsíční mzdu z odjetých směn, sestaví <strong>vlastní výplatní pásku</strong> a porovná ji s oficiální páskou. Včetně <strong>daňové vrstvy</strong> (záloha daně, pojištění, čistá mzda) a ročního ověření sazeb. Vše offline, bez cloudu.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Lokální web (stdlib http.server)</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PDF parser turnusů</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Mzdový engine</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Bez cloudu</span></p>
-  <p style="margin-top:.8rem"><a href="index.html">← Zpět na Moje aplikace</a><button id="openDenik" class="diary-btn" style="margin-left:1rem">📖 Vývojový deník</button></p>
+  <p class="hero-sub">Pracovní aplikace pro řidiče autobusu — automatické zpracování turnusů (rozpisů směn) a výpočet měsíční mzdy podle skutečně odjetých hodin, příplatků a kategorií. Ve vývoji.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Excel / XLSX parser</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PDF parser (turnusy)</span> <span class="pill" style="background:#e8a3171a;color:#e8a317;border:1px solid #e8a31740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Lokální Windows app</span></p>
+  <p style="margin-top:.8rem"><a href="../index.html">← Zpět na Moje aplikace</a></p>
 </section>
 
 <section>
   <h2>Co to dělá</h2>
-  <p><strong>Proč vznikla:</strong> každý měsíc dostávám rozpis turnusů (kdy a kde mám jet) a výplatní pásku. Ručně kontrolovat, jestli sedí hodiny, příplatky (noční, víkend, svátky), čekání a čistá mzda, je otrava. Tahle appka to dělá za mě — lokálně, na mém PC, bez cloudu.</p><p><strong>Jak to funguje:</strong> načte PDF turnusů (rozpadne je na jednotlivé spoje, časy, km), z potvrzených odjetých směn spočítá přes vlastní mzdový engine hrubou část a sestaví <strong>vlastní (vypočtenou) výplatní pásku</strong>. Tu pak postaví vedle <strong>originální pásky od dopravce</strong> (z PDF) a položku po položce je <strong>porovná</strong> — s jasným verdiktem SEDÍ / WATCH / NESDÍ a vysvětlením u každého řádku. Když mám zadanou jen část měsíce, appka to pozná a hlásí WATCH (neúplná data), ne falešné „nesedí".</p><p><strong>Daně a čistá mzda:</strong> samostatná daňová vrstva spočítá zálohu na daň, sociální a zdravotní pojištění a čistou mzdu — výhradně z <strong>ručně potvrzených sazeb</strong> (appka si sazby nevymýšlí; dokud je nepotvrdím, čistá mzda čeká). Slevy a děti se berou z „karty řidiče".</p>
+  <p><strong>Proč vzniká:</strong> každý měsíc dostávám rozpis turnusů (kdy a kde mám jet) a výplatní pásku. Ručně si počítám jestli sedí hodiny, příplatky za noční, víkend, svátky, příplatky za přesčas, stravenky. Excel tabulka by stačila, ale chci to mít automatické — nahraju PDF turnusu, aplikace mi vyplivne kolik to vyjde a kde se případně rozchází s výplatou.</p><p><strong>Co bude umět:</strong> načte PDF rozpis turnusů od regionálního dopravce (parsuje jednotlivé směny — kdy začátek, kdy konec, který spoj), spočítá pracovní hodiny + přestávky + příplatky (noční 22-6, víkend, svátky, přesčas přes základní úvazek). Pak importuje výplatní pásku (XLSX/PDF) a porovná: aplikace řekne &bdquo;za tento měsíc očekávám X Kč hrubého&ldquo;, páska říká Y Kč — pokud se to liší, vyhodí seznam položek na ověření s mistrem.</p><p><strong>Stav:</strong> Ve vývoji. Plán Phase 1 = PDF parser turnusů, Phase 2 = mzdová kalkulačka, Phase 3 = porovnání s výplatou, Phase 4 = UI dashboard. Bez cloudu, bez účtu — všechno lokálně.</p>
 </section>
 
 <section>
   <h2>Klíčové funkce</h2>
   <ul style="line-height:1.7">
-      <li><strong>Parser turnusů (PDF)</strong> — Načte měsíční rozpis směn, rozparsuje spoje, časy, zastávky a km (vč. dálkových linek a režijních přejezdů).</li>
-      <li><strong>Mzdový engine</strong> — Z potvrzených směn spočítá hodiny, čekání a příplatky (noční, víkend, svátek, ztížené prostředí).</li>
-      <li><strong>Vlastní vs originální páska + porovnání</strong> — Sestaví vlastní pásku a porovná ji s oficiální páskou; 9 stavů (sedí / rozdíl / chybí / nejasné / …), verdikt SEDÍ/WATCH/NESDÍ, u každé položky zdroj a co doplnit.</li>
-      <li><strong>Daňová vrstva (čistá mzda)</strong> — Záloha daně, sociální a zdravotní pojištění, čistá mzda — jen z ručně potvrzených sazeb; sazby zamčené proti přepsání.</li>
-      <li><strong>Karta řidiče</strong> — Děti, sleva na poplatníka, podepsané prohlášení, pojišťovna — vstupy do výpočtu.</li>
-      <li><strong>Roční ověření sazeb</strong> — Jedním tlačítkem ověří oficiální zdroje a nabídne sazby k potvrzení (nikdy se nepřepíšou samy).</li>
-      <li><strong>Kontrola AETR / 561/2006 + zákoník práce</strong> — Hlídá zákonné limity řidiče proti odjetým turnusům: <strong>denní doba řízení</strong> (9 h, 2× týdně až 10 h), <strong>týdenní</strong> (max 56 h) i <strong>dvoutýdenní</strong> (max 90 h), povinná <strong>přestávka po 4,5 h řízení</strong>, <strong>denní odpočinek</strong> (11 h, zkrácený 9 h) i <strong>týdenní odpočinek</strong> (45 h), <strong>noční práce</strong> řidiče dle ČR a <strong>maximální týdenní pracovní doba</strong> (ne jen řízení). U každého turnusu upozorní, kde se blíží limitu nebo ho překračuje. Každé pravidlo má uvedený zdroj (předpis) a potvrzuje se ručně — nic se nebere jako právní jistota.</li>
-      <li><strong>Evidence</strong> — Vozový park, řidiči (zdravotní pojišťovny), kolektivní smlouva a aktualizace pravidel z oficiálních zdrojů.</li>
-      <li><strong>Lokální, bez cloudu</strong> — Žádný účet, žádné API ven. Výplaty a turnusy zůstávají u mě v PC.</li>
+      <li><strong>Import PDF turnusu</strong> — Načte měsíční rozpis směn z PDF od regionálního dopravce, rozparsuje jednotlivé spoje, časy a místa.</li>
+      <li><strong>Výpočet hodin a příplatků</strong> — Pracovní hodiny + přestávky + noční (22-6) + víkend + svátky + přesčas přes základní úvazek.</li>
+      <li><strong>Porovnání s výplatou</strong> — Import výplatní pásky a křížová kontrola: očekávané vs reálné Kč hrubého. Rozdíly vyhodí jako seznam k ověření.</li>
+      <li><strong>Měsíční přehled</strong> — Kolik odjeto hodin, kolik příplatků, kolik stravenek, kolik dovolené zbývá.</li>
+      <li><strong>Lokální, bez cloudu</strong> — Žádný účet, žádné API. Výplata a turnusy zůstávají u mě v PC.</li>
   </ul>
 </section>
 
-<section>
-  <h2>Náhledy</h2>
-  <p style="color:#9aa7bd;font-size:.9rem;margin-bottom:1rem">Ukázkové snímky aplikace s <strong>anonymizovanými daty</strong> — žádné reálné mzdy ani osobní údaje.</p>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
-    <figure style="margin:0"><img src="img/budline/budline_01_prehled.png" alt="Přehled (dashboard)" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Přehled — dashboard</figcaption></figure>
-    <figure style="margin:0"><img src="img/budline/budline_06_legislativa_aetr.png" alt="Legislativa / AETR" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Kontrola AETR / 561/2006</figcaption></figure>
-    <figure style="margin:0"><img src="img/budline/budline_05_vlastni_paska.png" alt="Vlastní páska" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Vlastní (vypočtená) páska</figcaption></figure>
-    <figure style="margin:0"><img src="img/budline/budline_07_dane.png" alt="Daně a sazby" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Daně + roční ověření sazeb</figcaption></figure>
-    <figure style="margin:0"><img src="img/budline/budline_03_nova_smena.png" alt="Nová směna" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Nová směna</figcaption></figure>
-    <figure style="margin:0"><img src="img/budline/budline_09_ridici.png" alt="Řidiči" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Řidiči (anonymizováno)</figcaption></figure>
-    <figure style="margin:0"><img src="img/budline/budline_10_nastaveni.png" alt="Nastavení" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Nastavení</figcaption></figure>
-    <figure style="margin:0"><img src="img/budline/budline_02_porovnani.png" alt="Porovnání pásek" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Porovnání pásek (SEDÍ / WATCH / NESDÍ)</figcaption></figure>
-    <figure style="margin:0"><img src="img/budline/budline_04_kontrola_vyplat.png" alt="Kontrola výplat" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Kontrola výplat</figcaption></figure>
-    <figure style="margin:0"><img src="img/budline/budline_00_pruvodce.png" alt="Průvodce při prvním spuštění" loading="lazy" style="width:100%;border-radius:10px;border:1px solid #ffffff14"><figcaption style="font-size:.82rem;color:#9aa7bd;margin-top:.35rem">Průvodce při prvním spuštění</figcaption></figure>
-  </div>
-</section>
+
 
 <section>
   <h2>Stav</h2>
-  <p><strong>Funkční (v1.0) — privátní pomůcka, bez veřejného hostingu.</strong> Hlavní tok <em>směna → originální páska → vlastní páska → porovnání → čistá mzda</em> funguje. Postaveno přísně bezpečně: mzdový engine se needituje, vše jde jako návrh, ostrá data se nepřepisují automaticky, u každé fáze záloha a kontrola. Daňové sazby potvrzuji ručně dle oficiálních zdrojů — appka je nevymýšlí ani nevydává za jistotu (kontrolní pomůcka, ne daňové poradenství).</p>
+  <p>**Ve vývoji.** Phase 1 (PDF parser) skeleton, Phase 2-4 plánované. Žádné public hosting plánované — privátní pomůcka pro vlastní mzdové sebekontrolu.</p>
 </section>
+
 </main>
-
-<footer class="site-footer">
-  <div class="site-footer__inner">
-    <div>© Budinský Luděk · Osobní web</div>
-    <div class="footer-links">
-      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
-      <a href="../smart-home/">Smart Home web</a>
-    </div>
-  </div>
-</footer>
-
-<script src="../assets/js/main.js"></script>
-
-<!-- vyvojovy denik popup -->
-<style>
-.diary-btn { font: inherit; cursor:pointer; background:#e8a317; color:#fff; border:none; padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem; }
-.diary-btn:hover { filter:brightness(1.1); }
-.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
-.diary-modal.open { display:block; }
-.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
-.diary-panel { position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto; background:var(--bg,#fff); color:var(--text,#111); border-radius:14px; box-shadow:0 16px 60px rgba(0,0,0,.4); }
-.diary-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002); position:sticky; top:0; background:var(--bg,#fff); }
-.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
-.diary-close:hover { color:var(--text,#111); }
-.diary-body { padding:1.2rem 1.4rem; }
-@media (prefers-color-scheme: dark) { .diary-panel, .diary-head { background:#161b22; color:#e6edf3; } }
-</style>
-<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Vyvojovy denik" aria-hidden="true">
-  <div class="diary-backdrop"></div>
-  <div class="diary-panel">
-    <div class="diary-head"><h2 style="margin:0">📖 Vývojový deník — Práce řidiče</h2><button class="diary-close" aria-label="Zavrit">✕</button></div>
-    <div class="diary-body"><ul style="line-height:1.8"><li><strong>Záměr</strong> — Lokální nástroj řidiče: turnusy → mzda → kontrola výplaty. Vše offline, jako kontrolní pomůcka.</li><li><strong>Parser turnusů</strong> — Načítání směn z PDF; opraveny dálkové spoje (4místná čísla) a režijní přejezdy, ať km a spoje sedí proti originálu.</li><li><strong>Dvojí páska + porovnání</strong> — Originální páska (z PDF) vs vlastní (vypočtená) přes existující mzdový engine; položkové porovnání s 9 stavy a verdiktem SEDÍ/WATCH/NESDÍ. Neúplný měsíc = WATCH, ne falešné „nesedí".</li><li><strong>Daňová vrstva</strong> — Samostatný engine pro zálohu daně, sociální/zdravotní pojištění a čistou mzdu; sazby jen z ručně potvrzených pravidel, zamčené proti přepsání. Ověřeno proti reálné pásce (odvody i daň seděly; rozdíl = nezdaněné diety).</li><li><strong>Karta řidiče</strong> — Děti, sleva, prohlášení → vstup do výpočtu. Jeden řidič na instanci (kolega má vlastní kopii).</li><li><strong>Roční ověření sazeb</strong> — Tlačítko, které ověří oficiální zdroje a nabídne sazby k potvrzení; nikdy se nepřepíšou samy.</li><li><strong>Stav</strong> — Funkční v1.0; doladění (diety v porovnání čisté) až po prvním kompletním reálném měsíci.</li></ul></div>
-  </div>
-</div>
-<script>
-(function(){
-  var modal=document.getElementById('diary'); if(!modal) return;
-  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-  var ob=document.getElementById('openDenik'); if(ob) ob.addEventListener('click', open);
-  modal.querySelector('.diary-close').addEventListener('click', close);
-  modal.querySelector('.diary-backdrop').addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
-})();
-</script>
-
-
-<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
-<style>
-#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
-#__lb.open { display:flex }
-#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-main img { cursor:zoom-in; transition:transform .15s ease }
-main img:hover { transform:scale(1.005) }
-</style>
 <div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
   <img id="__lbimg" alt="">
   <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
@@ -149,12 +60,20 @@ main img:hover { transform:scale(1.005) }
 (function(){
   var lb = document.getElementById('__lb');
   var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  function open(src, alt){
+    lbimg.src = src; lbimg.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open');
+    lbimg.src = '';
+    document.body.style.overflow = '';
+  }
   lb.addEventListener('click', close);
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
   document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+    img.addEventListener('click', function(){ open(img.src, img.alt); });
   });
 })();
 </script>

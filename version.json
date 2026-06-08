@@ -1,0 +1,7 @@
+{
+  "app": "Osobní web (cestovatel69.cz)",
+  "version": "1.0.0",
+  "stage": "final",
+  "date": "2026-06-03",
+  "_note": "Jeden zdroj pravdy o verzi (skill app-versioning). Statický web (GitHub Pages) — stage final = veřejně živý. Zvyš version při větší změně webu."
+}
