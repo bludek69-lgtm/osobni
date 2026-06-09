@@ -682,39 +682,81 @@ DL_CHECKSUMS_URL = "https://github.com/bludek69-lgtm/aplikace/blob/main/CHECKSUM
 DL_I18N = {
     "cs": {
         "h2": "Moje aplikace ke stažení",
-        "intro": "Veřejně stáhnutelné aplikace pro Windows. Instalátory jsou zaheslované — heslo dostaneš ode mě zvlášť.",
-        "btn": "Stáhnout",
+        "intro": "Veřejně stáhnutelné aplikace pro Windows.",
+        "btn": "Stáhnout instalátor",
         "via": "přímé stažení .exe",
+        "beta": "BETA",
+        "verified_title": "✅ Ověřené beta instalátory",
+        "verified_text": "Tyto instalátory byly ověřeny ve Windows VM: čistá instalace i upgrade ze starší verze proběhly bez duplicitní instalace. Aplikace jsou stále beta verze, ne finální vydání.",
+        "close_note": "Před instalací zavři běžící aplikaci.",
+        "checksum_link": "Zobrazit kontrolní součet",
+        "guide_title": "Návod k instalaci",
+        "guide": [
+            "Zavři aplikaci, pokud už běží.",
+            "Stáhni aktuální beta instalátor z této stránky.",
+            "Pokud Windows zobrazí SmartScreen nebo bezpečnostní varování, jde o unsigned beta instalátor.",
+            "Pokud vidíš starou duplicitní instalaci, nejdřív odinstaluj starou položku v Programs &amp; Features.",
+            "Nemazat uživatelská data aplikace, pouze starý program.",
+            "Po instalaci zkontroluj verzi v aplikaci.",
+        ],
         "warn_title": "Než stáhneš",
         "warn": [
-            "🔒 Instalátory jsou zaheslované — <strong>heslo posílám zvlášť</strong> (ne přes web).",
-            "🛡️ Windows může zobrazit upozornění <strong>SmartScreen</strong>. Pokud aplikaci znáš a čekáš ji ode mě, klikni „Další informace“ → „Přesto spustit“.",
+            "🔒 Instalátory jsou zaheslované — <strong>instalační heslo není součástí veřejné stránky a poskytuje se odděleně</strong>.",
+            "🛡️ Windows může zobrazit upozornění <strong>SmartScreen</strong> (unsigned beta instalátor). Pokud aplikaci znáš a čekáš ji ode mě, klikni „Další informace“ → „Přesto spustit“.",
             "🔑 Kontrolní součty SHA-256 najdeš v souboru CHECKSUMS.txt.",
         ],
         "checksums": "Zobrazit CHECKSUMS.txt",
     },
     "en": {
         "h2": "My apps to download",
-        "intro": "Publicly downloadable Windows apps. The installers are password-protected — you get the password from me separately.",
-        "btn": "Download",
+        "intro": "Publicly downloadable Windows apps.",
+        "btn": "Download installer",
         "via": "direct .exe download",
+        "beta": "BETA",
+        "verified_title": "✅ Verified beta installers",
+        "verified_text": "These installers were verified in a Windows VM: both a clean install and an upgrade from an older version completed with no duplicate installation. The apps are still beta versions, not final releases.",
+        "close_note": "Close the running app before installing.",
+        "checksum_link": "View checksum",
+        "guide_title": "Installation guide",
+        "guide": [
+            "Close the app if it is already running.",
+            "Download the current beta installer from this page.",
+            "If Windows shows SmartScreen or a security warning, it is an unsigned beta installer.",
+            "If you see an old duplicate installation, first uninstall the old entry in Programs &amp; Features.",
+            "Do not delete the app's user data, only the old program.",
+            "After installing, check the version inside the app.",
+        ],
         "warn_title": "Before you download",
         "warn": [
-            "🔒 Installers are password-protected — <strong>I send the password separately</strong> (not on the web).",
-            "🛡️ Windows may show a <strong>SmartScreen</strong> warning. If you know the app and expect it from me, click “More info” → “Run anyway”.",
+            "🔒 Installers are password-protected — <strong>the installation password is not part of this public page and is provided separately</strong>.",
+            "🛡️ Windows may show a <strong>SmartScreen</strong> warning (unsigned beta installer). If you know the app and expect it from me, click “More info” → “Run anyway”.",
             "🔑 SHA-256 checksums are in the CHECKSUMS.txt file.",
         ],
         "checksums": "View CHECKSUMS.txt",
     },
     "it": {
         "h2": "Le mie app da scaricare",
-        "intro": "App per Windows scaricabili pubblicamente. Gli installer sono protetti da password — la password te la mando a parte.",
-        "btn": "Scarica",
+        "intro": "App per Windows scaricabili pubblicamente.",
+        "btn": "Scarica installer",
         "via": "download .exe diretto",
+        "beta": "BETA",
+        "verified_title": "✅ Installer beta verificati",
+        "verified_text": "Questi installer sono stati verificati in una VM Windows: sia l'installazione pulita sia l'aggiornamento da una versione precedente sono andati a buon fine senza installazioni duplicate. Le app sono ancora versioni beta, non release finali.",
+        "close_note": "Chiudi l'app in esecuzione prima di installare.",
+        "checksum_link": "Mostra checksum",
+        "guide_title": "Guida all'installazione",
+        "guide": [
+            "Chiudi l'app se è già in esecuzione.",
+            "Scarica l'installer beta attuale da questa pagina.",
+            "Se Windows mostra SmartScreen o un avviso di sicurezza, è un installer beta non firmato.",
+            "Se vedi una vecchia installazione duplicata, disinstalla prima la vecchia voce in Programmi e funzionalità.",
+            "Non eliminare i dati utente dell'app, solo il vecchio programma.",
+            "Dopo l'installazione, controlla la versione dentro l'app.",
+        ],
         "warn_title": "Prima di scaricare",
         "warn": [
-            "🔒 Gli installer sono protetti da password — <strong>mando la password a parte</strong> (non sul web).",
-            "🛡️ Windows può mostrare un avviso <strong>SmartScreen</strong>. Se conosci l’app e te l’aspetti da me, clicca “Ulteriori informazioni” → “Esegui comunque”.",
+            "🔒 Gli installer sono protetti da password — <strong>la password di installazione non è su questa pagina pubblica e viene fornita separatamente</strong>.",
+            "🛡️ Windows può mostrare un avviso <strong>SmartScreen</strong> (installer beta non firmato). Se conosci l’app e te l’aspetti da me, clicca “Ulteriori informazioni” → “Esegui comunque”.",
             "🔑 I checksum SHA-256 sono nel file CHECKSUMS.txt.",
         ],
         "checksums": "Mostra CHECKSUMS.txt",
@@ -758,25 +800,41 @@ def render_downloads(lang: str) -> str:
             f'<h3>{app["name"]} '
             f'<span style="display:inline-block;background:{color}1f;color:{color};'
             f'border:1px solid {color}55;padding:.1rem .5rem;border-radius:6px;'
-            f'font-size:.72rem;font-weight:600;vertical-align:middle">v{app["version"]}</span></h3>'
+            f'font-size:.72rem;font-weight:600;vertical-align:middle">v{app["version"]}</span> '
+            f'<span style="display:inline-block;background:#e8731a1f;color:#c25e10;'
+            f'border:1px solid #e8731a66;padding:.1rem .5rem;border-radius:6px;'
+            f'font-size:.7rem;font-weight:700;letter-spacing:.04em;vertical-align:middle">{D["beta"]}</span></h3>'
             f'<p>{desc}</p>'
             f'<div class="card-cta" style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap">'
             f'<a href="{DL_BASE}{app["file"]}" download '
             f'style="display:inline-block;background:{color};color:#fff;text-decoration:none;'
             f'padding:.5rem 1rem;border-radius:8px;font-weight:600;white-space:nowrap">⬇ {D["btn"]}</a>'
-            f'<span style="font-size:.78rem;color:var(--txt-muted,#666);white-space:nowrap">{D["via"]}</span></div>'
+            f'<a href="{DL_CHECKSUMS_URL}" target="_blank" rel="noopener" '
+            f'style="font-size:.78rem;color:{color};white-space:nowrap">{D["checksum_link"]}</a></div>'
+            f'<p style="margin:.5rem 0 0;font-size:.78rem;color:var(--txt-muted,#666)">⚠️ {D["close_note"]}</p>'
             "</div>"
         )
     cards_html = "\n      ".join(cards)
     warn_items = "\n        ".join(f"<li>{w}</li>" for w in D["warn"])
+    guide_items = "\n        ".join(f"<li>{g}</li>" for g in D["guide"])
     return f"""
 <section aria-label="{D["h2"]}" style="margin-top:2.5rem">
   <h2>{D["h2"]}</h2>
   <p class="hero-sub">{D["intro"]}</p>
+  <div style="margin:.4rem 0 1.4rem;padding:1rem 1.2rem;border:1px solid #1a9c5b40;border-radius:10px;background:#1a9c5b12">
+    <strong>{D["verified_title"]}</strong>
+    <p style="margin:.4rem 0 0;line-height:1.6">{D["verified_text"]}</p>
+  </div>
   <div class="cards-grid">
       {cards_html}
   </div>
   <div style="margin-top:1.4rem;padding:1rem 1.2rem;border:1px solid var(--border,#0002);border-radius:10px;background:var(--card-bg,#0000000a)">
+    <strong>{D["guide_title"]}</strong>
+    <ol style="margin:.5rem 0 0;padding-left:1.2rem;line-height:1.7">
+        {guide_items}
+    </ol>
+  </div>
+  <div style="margin-top:1rem;padding:1rem 1.2rem;border:1px solid var(--border,#0002);border-radius:10px;background:var(--card-bg,#0000000a)">
     <strong>{D["warn_title"]}</strong>
     <ul style="margin:.5rem 0 0;padding-left:1.2rem;line-height:1.7">
         {warn_items}
