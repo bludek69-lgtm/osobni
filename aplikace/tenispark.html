@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TenisPark — Moje aplikace — Luděk</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    #__lb {
+      display:none; position:fixed; inset:0; z-index:9999;
+      background:rgba(0,0,0,0.93); cursor:zoom-out;
+      align-items:center; justify-content:center; padding:2vh;
+    }
+    #__lb.open { display:flex }
+    #__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+    #__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+    main img { cursor:zoom-in; transition:transform .15s ease }
+    main img:hover { transform:scale(1.005) }
+  </style>
+</head>
+<body>
+<main id="main">
+<section class="hero" style="border-left:4px solid #b04a24;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#b04a24">TenisPark</span>
+  <h1><span style="margin-right:.4rem">🎾</span>TenisPark</h1>
+  <p class="hero-sub">Jedna aplikace pro celý malý tenisový areál: domácí rozpočet, rezervace kurtů a kiosek s občerstvením. Místo tří sešitů a kalkulačky — všechno na jednom místě, v počítači, bez internetu. Žádný cloud, žádné bankovní napojení, žádné online platby.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#b04a241a;color:#b04a24;border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#b04a241a;color:#b04a24;border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#b04a241a;color:#b04a24;border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> <span class="pill" style="background:#b04a241a;color:#b04a24;border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tauri (Windows)</span></p>
+  <p style="margin-top:.8rem"><a href="index.html">← Zpět na Moje aplikace</a></p>
+</section>
+
+<section>
+  <h2>Co to dělá</h2>
+  <p><strong>Proč to vzniklo:</strong> kdo se stará o pár tenisových kurtů s kioskem, zná to: rezervace v jednom sešitě, „na zápis" (kdo co vypil a nezaplatil) v druhém, večer počítání kasy na kalkulačce a vlastní peníze v třetím. TenisPark to spojuje do jedné aplikace, kterou zvládne ovládat úplně každý — na každé stránce je rozklikávací nápověda „jak na to".</p>
+  <p><strong>Tenisové kurty:</strong> rezervace se zapisují na pár kliknutí — kurt, od–do, jméno. Aplikace nedovolí dva lidi na stejný kurt ve stejný čas, cena se předvyplní z ceníku (jiná na všední den a víkend), po zaplacení se klikne „Zaplaceno". K tomu evidence údržby (lajnování, kropení) a reporty obsazenosti a příjmů za den i měsíc.</p>
+  <p><strong>Kiosek:</strong> prodej zboží se skladem, který se hlídá sám — nejde prodat víc, než je skladem, a aplikace upozorní, když něco dochází. Speciální funkce je <strong>sešit dlužníků</strong>: kdo neplatí hned, zapíše se mu konzumace „na zápis" se jménem, a kdo nezaplatí do 3 dnů, svítí červeně. Večer se počítá denní uzávěrka — aplikace porovná, kolik má být v kase, s tím, co tam opravdu je. Při změně cen zůstává v ceníku vidět stará cena přeškrtnutá vedle nové.</p>
+  <p><strong>Domácí rozpočet:</strong> osobní příjmy a výdaje jako účtenky, kategorie (šuplíky), měsíční limity „kolik chci utratit za jídlo" a navíc celoroční plánovací část pro sezónní práci — kolik odložit v létě, aby vyšla zima.</p>
+  <p><strong>Všechno lokálně a bezpečně:</strong> data jsou v databázi SQLite jen v počítači, zálohují se jedním kliknutím do souboru s kontrolním součtem a obnova se vždy nejdřív ukáže v náhledu. Aplikace má světlý a tmavý vzhled v barvách antuky.</p>
+</section>
+
+<section>
+  <h2>Klíčové funkce</h2>
+  <ul style="line-height:1.7">
+      <li><strong>Rezervace kurtů bez kolizí</strong> — dvojitou rezervaci stejného kurtu aplikace prostě nedovolí; ceník všední den / víkend, stavy Rezervováno / Zaplaceno / Zrušeno / Nepřišel.</li>
+      <li><strong>Kiosek se skladem</strong> — prodej sám snižuje sklad, hlídá minimální zásoby, nejde prodat víc, než je skladem. Denní uzávěrka porovná kasu s tržbami.</li>
+      <li><strong>Sešit dlužníků</strong> — konzumace „na zápis" se jménem, našeptávač jmen, po 3 dnech bez platby červené „po splatnosti", úhrada jedním kliknutím.</li>
+      <li><strong>Ceník se starou a novou cenou</strong> — při zdražení zůstává stará cena přeškrtnutá vedle nové, s historií všech změn.</li>
+      <li><strong>Domácí rozpočet</strong> — transakce v haléřích (žádné zaokrouhlovací chyby), měsíční limity podle kategorií s hláškou „Překročeno", plán sezóny.</li>
+      <li><strong>Zálohy s kontrolním součtem</strong> — jedno kliknutí, obnova vždy přes náhled a potvrzení; před obnovou se aktuální data automaticky odloží stranou.</li>
+      <li><strong>Nápověda pro laika všude</strong> — na každé stránce rozklikávací „💡 Nápověda — jak na to" v normální češtině, žádný technický žargon.</li>
+      <li><strong>Windows aplikace</strong> — desktopové okno si samo spustí i ukončí svůj lokální server; nebo se dá spustit jedním dvojklikem v prohlížeči.</li>
+  </ul>
+</section>
+
+<section><h2>Náhledy</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/01_prehled.png" alt="Přehled — rozcestník tří modulů (rozpočet, kurty, kiosek) s dnešními souhrny" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Přehled — rozcestník tří modulů (rozpočet, kurty, kiosek) s dnešními souhrny</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/02_kurty_den.png" alt="Tenisové kurty — přehled dne: rezervace, obsazenost, volné časy, rychlé přidání rezervace" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Tenisové kurty — přehled dne: rezervace, obsazenost, volné časy, rychlé přidání rezervace</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/03_cenik.png" alt="Kiosek — ceník podle skladu: stará cena přeškrtnutá vedle nové, stav zásob, historie změn cen" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Kiosek — ceník podle skladu: stará cena přeškrtnutá vedle nové, stav zásob, historie změn cen</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/04_dluznici.png" alt="Sešit dlužníků — kdo kolik dluží, červené 'po splatnosti' po 3 dnech, úhrada jedním kliknutím (ukázková jména)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Sešit dlužníků — kdo kolik dluží, červené „po splatnosti" po 3 dnech, úhrada jedním kliknutím (ukázková jména)</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/05_transakce.png" alt="Domácí rozpočet — transakce s měsíčním souhrnem (příjmy, výdaje, rozdíl, největší kategorie)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Domácí rozpočet — transakce s měsíčním souhrnem (příjmy, výdaje, rozdíl, největší kategorie)</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/06_kiosk_dark.png" alt="Tmavý režim — celá aplikace v tmavých barvách antuky, přepínač v levém menu" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Tmavý režim — celá aplikace v tmavých barvách antuky, přepínač v levém menu</figcaption></figure></div></section>
+
+<section>
+  <h2>Stažení (soukromá beta)</h2>
+  <p style="margin:.4rem 0 .8rem"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/TenisPark-v0.2.0-Setup.exe" download style="display:inline-block;background:#b04a24;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600">⬇ Stáhnout instalátor (v0.2.0, Windows)</a>
+  <a href="https://github.com/bludek69-lgtm/aplikace/blob/main/CHECKSUMS.txt" target="_blank" rel="noopener" style="margin-left:.8rem;font-size:.85rem;color:#b04a24">Zobrazit kontrolní součet</a></p>
+  <p style="font-size:.9rem;line-height:1.6">🔒 <strong>Instalátor je chráněný heslem</strong> — heslo dávám osobně, na webu není a nebude. Bez hesla instalaci nikdo neotevře.</p>
+</section>
+
+<section>
+  <h2>Stav</h2>
+  <p><strong>BETA — soukromá beta pro kamarády</strong> (verze 0.2.0, červen 2026). Windows aplikace s instalátorem.</p>
+  <ul style="line-height:1.7">
+    <li><strong>Instalátor je chráněný heslem</strong> — aplikaci dostanou jen lidé, kterým heslo osobně dám. Na webu žádné heslo není a nebude.</li>
+    <li><strong>Aktualizace fungují stejně jako u mých ostatních aplikací</strong> — appka si sama hlídá novou verzi a po potvrzení se tiše aktualizuje. Nic se nemusí stahovat ručně.</li>
+    <li><strong>Poznámka k Windows SmartScreen:</strong> aplikace zatím není podepsaná certifikátem, takže Windows může při instalaci ukázat varování „neznámý vydavatel". Je to v pořádku — pokračuje se přes „Další informace → Přesto spustit".</li>
+    <li>Všechna data zůstávají jen v počítači. Aplikace není účetnictví ani pokladní systém — je to provozní pomocník.</li>
+  </ul>
+</section>
+
+</main>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){
+    lbimg.src = src; lbimg.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open');
+    lbimg.src = '';
+    document.body.style.overflow = '';
+  }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  document.querySelectorAll('main img').forEach(function(img){
+    img.addEventListener('click', function(){ open(img.src, img.alt); });
+  });
+})();
+</script>
+</body>
+</html>
