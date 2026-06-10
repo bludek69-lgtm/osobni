@@ -1,6 +1,6 @@
 {
-  "version": "0.7.8",
+  "version": "0.7.9",
   "releaseDate": "2026-06-10",
   "downloadUrl": "https://bludek69-lgtm.github.io/osobni/aplikace/italia-travel.html",
-  "notes": "0.7.8 beta: zálohy v2 — SHA-256 kontrolní součet, stav checklistů v záloze, detekce poškozené zálohy. Plus 0.7.7: PDF/tisk itineráře, kontrola konfliktů, offline režim. BETA / NOT_FINAL."
+  "notes": "0.7.9 beta: exporty Google Earth (KML), GPS waypointy (GPX), Word itinerář, sdílení cesty odkazem (bez serveru, import s náhledem). Plus zálohy v2, PDF/tisk, konflikty, offline. BETA / NOT_FINAL."
 }
