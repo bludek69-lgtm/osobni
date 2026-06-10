@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TenisPark — My apps — Luděk</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    #__lb {
+      display:none; position:fixed; inset:0; z-index:9999;
+      background:rgba(0,0,0,0.93); cursor:zoom-out;
+      align-items:center; justify-content:center; padding:2vh;
+    }
+    #__lb.open { display:flex }
+    #__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+    #__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+    main img { cursor:zoom-in; transition:transform .15s ease }
+    main img:hover { transform:scale(1.005) }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a><button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+      <a href="../../">Domů</a>
+      <a href="../../aplikace/" aria-current="page">Moje aplikace</a>
+      <a href="../../finance/">Finance</a>
+      <a href="../../cestovani/">Cestování</a>
+      <a href="../../cestovani/italie/">Itálie</a>
+      <a href="../../zaliby/rybareni/">Rybaření</a>
+      <a href="../../smart-home/">Smart Home</a>
+      <a href="../../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #b04a24;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#b04a24">TenisPark</span>
+  <h1><span style="margin-right:.4rem">🎾</span>TenisPark</h1>
+  <p class="hero-sub">One app for a whole small tennis club: home budget, court bookings and a snack kiosk. Instead of three notebooks and a calculator — everything in one place, on your PC, no internet needed. No cloud, no bank connection, no online payments.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#b04a241a;color:#b04a24;border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#b04a241a;color:#b04a24;border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#b04a241a;color:#b04a24;border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> <span class="pill" style="background:#b04a241a;color:#b04a24;border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tauri (Windows)</span></p>
+  <p style="margin-top:.8rem"><a href="index.html">← Back to My apps</a></p>
+</section>
+
+<section>
+  <h2>What it does</h2>
+  <p><strong>Why it exists:</strong> anyone who looks after a few tennis courts with a kiosk knows it: bookings in one notebook, "on the tab" (who drank what and hasn't paid) in another, counting the till on a calculator in the evening and personal money in a third one. TenisPark joins it all into one app that absolutely anyone can use — every page has an expandable "how to" help.</p>
+  <p><strong>Tennis courts:</strong> bookings take a few clicks — court, from–to, name. The app won't allow two people on the same court at the same time, the price is pre-filled from the price list (different for weekdays and weekends), and after payment you click "Paid". Plus maintenance records (lining, watering) and occupancy and revenue reports per day and month.</p>
+  <p><strong>Kiosk:</strong> sales with a stock that watches itself — you can't sell more than is in stock, and the app warns when something is running low. A special feature is the <strong>debtors book</strong>: whoever doesn't pay right away gets their consumption written "on the tab" with their name, and whoever doesn't pay within 3 days lights up red. In the evening you run the daily closing — the app compares how much should be in the till with what's really there. When prices change, the old price stays visible crossed out next to the new one.</p>
+  <p><strong>Home budget:</strong> personal income and expenses like receipts, categories (envelopes), monthly limits "how much I want to spend on food", plus a year-round planning section for seasonal work — how much to put aside in summer so winter works out.</p>
+  <p><strong>Everything local and safe:</strong> data lives in an SQLite database on your PC only, backs up with one click to a file with a checksum, and a restore always shows a preview first. The app has a light and dark look in clay-court colours.</p>
+</section>
+
+<section>
+  <h2>Key features</h2>
+  <ul style="line-height:1.7">
+      <li><strong>Collision-free court bookings</strong> — the app simply won't allow a double booking of the same court; weekday/weekend price list, states Booked / Paid / Cancelled / No-show.</li>
+      <li><strong>Kiosk with stock</strong> — every sale lowers the stock, minimum levels are watched, you can't sell more than is in stock. The daily closing compares the till with sales.</li>
+      <li><strong>Debtors book</strong> — consumption "on the tab" with a name, name autocomplete, red "overdue" after 3 days without payment, settle with one click.</li>
+      <li><strong>Price list with old and new price</strong> — after a price rise the old price stays crossed out next to the new one, with a history of all changes.</li>
+      <li><strong>Home budget</strong> — transactions in cents (no rounding errors), monthly limits per category with an "Exceeded" warning, season plan.</li>
+      <li><strong>Backups with a checksum</strong> — one click, restore always via preview and confirmation; current data is automatically set aside before a restore.</li>
+      <li><strong>Plain-language help everywhere</strong> — every page has an expandable "💡 Help — how to" in plain language, no technical jargon.</li>
+      <li><strong>Windows app</strong> — the desktop window starts and stops its own local server; or you can run it with a double click in the browser.</li>
+  </ul>
+</section>
+
+<section><h2>Screenshots</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/01_prehled.png" alt="Overview — hub of the three modules (budget, courts, kiosk) with today's summaries" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Overview — hub of the three modules (budget, courts, kiosk) with today's summaries</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/02_kurty_den.png" alt="Tennis courts — day view: bookings, occupancy, free slots, quick add booking" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Tennis courts — day view: bookings, occupancy, free slots, quick add booking</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/03_cenik.png" alt="Kiosk — price list with stock: old price crossed out next to the new one, stock levels, price history" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Kiosk — price list with stock: old price crossed out next to the new one, stock levels, price history</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/04_dluznici.png" alt="Debtors book — who owes what, red 'overdue' after 3 days, settle with one click (sample names)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Debtors book — who owes what, red "overdue" after 3 days, settle with one click (sample names)</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/05_transakce.png" alt="Home budget — transactions with a monthly summary (income, expenses, difference, top category)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Home budget — transactions with a monthly summary (income, expenses, difference, top category)</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/06_kiosk_dark.png" alt="Dark mode — the whole app in dark clay-court colours, toggle in the left menu" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Dark mode — the whole app in dark clay-court colours, toggle in the left menu</figcaption></figure></div></section>
+
+<section>
+  <h2>Download (private beta)</h2>
+  <p style="margin:.4rem 0 .8rem"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/TenisPark-v0.2.1-Setup.exe" download style="display:inline-block;background:#b04a24;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600">⬇ Download installer (v0.2.1, Windows)</a>
+  <a href="https://github.com/bludek69-lgtm/aplikace/blob/main/CHECKSUMS.txt" target="_blank" rel="noopener" style="margin-left:.8rem;font-size:.85rem;color:#b04a24">View checksum</a></p>
+  <p style="font-size:.9rem;line-height:1.6">🔒 <strong>The installer is password-protected</strong> — I share the password personally; it is not and will not be on the web. Without the password nobody can open the installation.</p>
+  <p style="font-size:.9rem;line-height:1.6">🛡️ <strong>Using Avast or AVG?</strong> It may silently block the downloaded installer (Windows then says "access to the file is denied"). Open the antivirus → Quarantine → restore the file and add an exception, then run the installer again.</p>
+</section>
+
+<section>
+  <h2>Status</h2>
+  <p><strong>BETA — private beta for friends</strong> (version 0.2.1, June 2026). Windows app with an installer.</p>
+  <ul style="line-height:1.7">
+    <li><strong>The installer is password-protected</strong> — only people I personally give the password to get the app. There is no password on the web and there never will be.</li>
+    <li><strong>Updates work the same as in my other apps</strong> — the app checks for a new version itself and updates silently after confirmation. Nothing needs to be downloaded manually.</li>
+    <li><strong>A note on Windows SmartScreen:</strong> the app is not signed with a certificate yet, so Windows may show an "unknown publisher" warning during installation. That's fine — continue via "More info → Run anyway".</li>
+    <li>All data stays on your PC only. The app is not accounting or a POS system — it's an operations helper.</li>
+  </ul>
+</section>
+
+</main>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Click or press ESC to close</span>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){
+    lbimg.src = src; lbimg.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open');
+    lbimg.src = '';
+    document.body.style.overflow = '';
+  }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  document.querySelectorAll('main img').forEach(function(img){
+    img.addEventListener('click', function(){ open(img.src, img.alt); });
+  });
+})();
+</script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

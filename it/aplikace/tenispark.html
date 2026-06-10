@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TenisPark — Le mie app — Luděk</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    #__lb {
+      display:none; position:fixed; inset:0; z-index:9999;
+      background:rgba(0,0,0,0.93); cursor:zoom-out;
+      align-items:center; justify-content:center; padding:2vh;
+    }
+    #__lb.open { display:flex }
+    #__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+    #__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+    main img { cursor:zoom-in; transition:transform .15s ease }
+    main img:hover { transform:scale(1.005) }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a><button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+      <a href="../../">Domů</a>
+      <a href="../../aplikace/" aria-current="page">Moje aplikace</a>
+      <a href="../../finance/">Finance</a>
+      <a href="../../cestovani/">Cestování</a>
+      <a href="../../cestovani/italie/">Itálie</a>
+      <a href="../../zaliby/rybareni/">Rybaření</a>
+      <a href="../../smart-home/">Smart Home</a>
+      <a href="../../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #b04a24;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#b04a24">TenisPark</span>
+  <h1><span style="margin-right:.4rem">🎾</span>TenisPark</h1>
+  <p class="hero-sub">Un'unica app per tutto un piccolo circolo di tennis: budget domestico, prenotazioni dei campi e chiosco con snack. Invece di tre quaderni e una calcolatrice — tutto in un unico posto, sul PC, senza internet. Niente cloud, niente collegamento bancario, niente pagamenti online.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#b04a241a;color:#b04a24;border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#b04a241a;color:#b04a24;border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#b04a241a;color:#b04a24;border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> <span class="pill" style="background:#b04a241a;color:#b04a24;border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Tauri (Windows)</span></p>
+  <p style="margin-top:.8rem"><a href="index.html">← Torna a Le mie app</a></p>
+</section>
+
+<section>
+  <h2>Cosa fa</h2>
+  <p><strong>Perché è nata:</strong> chi gestisce qualche campo da tennis con un chiosco lo sa bene: prenotazioni in un quaderno, "sul conto" (chi ha bevuto cosa e non ha pagato) in un altro, la sera il conteggio della cassa con la calcolatrice e i soldi personali in un terzo. TenisPark unisce tutto in un'unica app che può usare davvero chiunque — ogni pagina ha una guida espandibile "come si fa".</p>
+  <p><strong>Campi da tennis:</strong> le prenotazioni si inseriscono in pochi clic — campo, da–a, nome. L'app non permette due persone sullo stesso campo alla stessa ora, il prezzo si precompila dal listino (diverso per feriali e weekend), dopo il pagamento si clicca "Pagato". In più registro della manutenzione (righe, irrigazione) e report di occupazione e incassi per giorno e mese.</p>
+  <p><strong>Chiosco:</strong> vendita con magazzino che si controlla da solo — non si può vendere più di quanto c'è in magazzino e l'app avvisa quando qualcosa sta finendo. Una funzione speciale è il <strong>quaderno dei debitori</strong>: chi non paga subito viene segnato "sul conto" con il nome, e chi non paga entro 3 giorni diventa rosso. La sera si fa la chiusura giornaliera — l'app confronta quanto dovrebbe esserci in cassa con quanto c'è davvero. Quando cambiano i prezzi, il vecchio prezzo resta visibile barrato accanto al nuovo.</p>
+  <p><strong>Budget domestico:</strong> entrate e uscite personali come scontrini, categorie (cassetti), limiti mensili "quanto voglio spendere per il cibo" e in più una sezione di pianificazione annuale per il lavoro stagionale — quanto mettere da parte in estate perché l'inverno torni in pari.</p>
+  <p><strong>Tutto in locale e al sicuro:</strong> i dati stanno in un database SQLite solo sul PC, si salvano con un clic in un file con checksum e il ripristino mostra sempre prima un'anteprima. L'app ha un aspetto chiaro e scuro nei colori della terra rossa.</p>
+</section>
+
+<section>
+  <h2>Funzioni principali</h2>
+  <ul style="line-height:1.7">
+      <li><strong>Prenotazioni senza collisioni</strong> — l'app semplicemente non permette una doppia prenotazione dello stesso campo; listino feriale/weekend, stati Prenotato / Pagato / Annullato / Non presentato.</li>
+      <li><strong>Chiosco con magazzino</strong> — la vendita riduce da sola il magazzino, controlla le scorte minime, non si può vendere più di quanto disponibile. La chiusura giornaliera confronta la cassa con gli incassi.</li>
+      <li><strong>Quaderno dei debitori</strong> — consumazioni "sul conto" con il nome, suggerimento dei nomi, dopo 3 giorni senza pagamento "scaduto" in rosso, saldo con un clic.</li>
+      <li><strong>Listino con prezzo vecchio e nuovo</strong> — dopo un rincaro il vecchio prezzo resta barrato accanto al nuovo, con lo storico di tutte le modifiche.</li>
+      <li><strong>Budget domestico</strong> — transazioni in centesimi (niente errori di arrotondamento), limiti mensili per categoria con avviso "Superato", piano della stagione.</li>
+      <li><strong>Backup con checksum</strong> — un clic, ripristino sempre tramite anteprima e conferma; prima del ripristino i dati attuali vengono messi da parte automaticamente.</li>
+      <li><strong>Guida per tutti ovunque</strong> — ogni pagina ha una "💡 Guida — come si fa" espandibile in linguaggio semplice, senza gergo tecnico.</li>
+      <li><strong>App per Windows</strong> — la finestra desktop avvia e chiude da sola il proprio server locale; oppure si può aprire con un doppio clic nel browser.</li>
+  </ul>
+</section>
+
+<section><h2>Anteprime</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/01_prehled.png" alt="Panoramica — accesso ai tre moduli (budget, campi, chiosco) con i riepiloghi di oggi" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Panoramica — accesso ai tre moduli (budget, campi, chiosco) con i riepiloghi di oggi</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/02_kurty_den.png" alt="Campi da tennis — vista del giorno: prenotazioni, occupazione, orari liberi, aggiunta rapida" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Campi da tennis — vista del giorno: prenotazioni, occupazione, orari liberi, aggiunta rapida</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/03_cenik.png" alt="Chiosco — listino con magazzino: prezzo vecchio barrato accanto al nuovo, scorte, storico prezzi" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Chiosco — listino con magazzino: prezzo vecchio barrato accanto al nuovo, scorte, storico prezzi</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/04_dluznici.png" alt="Quaderno dei debitori — chi deve quanto, 'scaduto' in rosso dopo 3 giorni, saldo con un clic (nomi di esempio)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Quaderno dei debitori — chi deve quanto, "scaduto" in rosso dopo 3 giorni, saldo con un clic (nomi di esempio)</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/05_transakce.png" alt="Budget domestico — transazioni con riepilogo mensile (entrate, uscite, differenza, categoria principale)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Budget domestico — transazioni con riepilogo mensile (entrate, uscite, differenza, categoria principale)</figcaption></figure>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/06_kiosk_dark.png" alt="Modalità scura — tutta l'app nei colori scuri della terra rossa, interruttore nel menu a sinistra" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Modalità scura — tutta l'app nei colori scuri della terra rossa, interruttore nel menu a sinistra</figcaption></figure></div></section>
+
+<section>
+  <h2>Download (beta privata)</h2>
+  <p style="margin:.4rem 0 .8rem"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/TenisPark-v0.2.1-Setup.exe" download style="display:inline-block;background:#b04a24;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600">⬇ Scarica l'installer (v0.2.1, Windows)</a>
+  <a href="https://github.com/bludek69-lgtm/aplikace/blob/main/CHECKSUMS.txt" target="_blank" rel="noopener" style="margin-left:.8rem;font-size:.85rem;color:#b04a24">Vedi checksum</a></p>
+  <p style="font-size:.9rem;line-height:1.6">🔒 <strong>L'installer è protetto da password</strong> — la condivido personalmente; sul web non c'è e non ci sarà. Senza password nessuno può aprire l'installazione.</p>
+  <p style="font-size:.9rem;line-height:1.6">🛡️ <strong>Usi Avast o AVG?</strong> Potrebbe bloccare silenziosamente l'installer scaricato (Windows poi dice "accesso al file negato"). Apri l'antivirus → Quarantena → ripristina il file e aggiungi un'eccezione, poi riavvia l'installer.</p>
+</section>
+
+<section>
+  <h2>Stato</h2>
+  <p><strong>BETA — beta privata per gli amici</strong> (versione 0.2.1, giugno 2026). App per Windows con installer.</p>
+  <ul style="line-height:1.7">
+    <li><strong>L'installer è protetto da password</strong> — l'app la ricevono solo le persone a cui do personalmente la password. Sul web non c'è nessuna password e non ci sarà mai.</li>
+    <li><strong>Gli aggiornamenti funzionano come nelle mie altre app</strong> — l'app controlla da sola le nuove versioni e dopo la conferma si aggiorna silenziosamente. Non serve scaricare nulla a mano.</li>
+    <li><strong>Nota su Windows SmartScreen:</strong> l'app non è ancora firmata con un certificato, quindi Windows può mostrare un avviso "editore sconosciuto" durante l'installazione. Va bene così — si continua con "Ulteriori informazioni → Esegui comunque".</li>
+    <li>Tutti i dati restano solo sul PC. L'app non è una contabilità né un sistema di cassa — è un aiutante operativo.</li>
+  </ul>
+</section>
+
+</main>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Immagine ingrandita">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Clicca o premi ESC per chiudere</span>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){
+    lbimg.src = src; lbimg.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open');
+    lbimg.src = '';
+    document.body.style.overflow = '';
+  }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  document.querySelectorAll('main img').forEach(function(img){
+    img.addEventListener('click', function(){ open(img.src, img.alt); });
+  });
+})();
+</script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
