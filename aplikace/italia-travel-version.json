@@ -1,6 +1,7 @@
 {
-  "version": "0.7.10",
+  "version": "1.0.0",
+  "stage": "final",
   "releaseDate": "2026-06-10",
   "downloadUrl": "https://bludek69-lgtm.github.io/osobni/aplikace/italia-travel.html",
-  "notes": "0.7.10 beta: checklist export (se stavem z mobilu) — 11 exportů hotových; výrazně rychlejší start (code-split). Plus KML/GPX/Word/sdílení odkazem, zálohy v2, PDF, offline. BETA / NOT_FINAL."
+  "notes": "1.0.0 — první FINÁLNÍ verze. Kompletní plánovač: itinerář s kontrolou konfliktů, 11 exportů (PDF, Word, KML/GPX, checklist, sdílení odkazem…), zálohy s kontrolním součtem, offline režim, AI asistent, camper/roadtrip."
 }
