@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collezione — Numismatica &amp; Filatelia — Le mie app — Luděk</title>
+  <meta name="description" content="Catalogo personale di monete, banconote e francobolli in stile casa d'aste. Riconoscimento AI da foto, valutazione, link ai mercati, import da Excel. In locale, senza cloud.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="/favicon.ico">
+
+  <link rel="canonical" href="https://cestovatel69.cz/it/aplikace/sbirka.html">
+  <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/aplikace/sbirka.html">
+  <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/sbirka.html">
+  <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/sbirka.html">
+  <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/sbirka.html">
+  <meta property="og:title" content="Collezione — Numismatica &amp; Filatelia — Le mie app — Luděk">
+  <meta property="og:description" content="Catalogo personale di monete, banconote e francobolli in stile casa d'aste. Riconoscimento AI da foto, valutazione, link ai mercati, import da Excel. In locale, senza cloud.">
+  <meta property="og:image" content="https://cestovatel69.cz/aplikace/img/sbirka/01_dashboard.png">
+  <meta property="og:url" content="https://cestovatel69.cz/it/aplikace/sbirka.html">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <div class="lang-switcher" aria-label="Lingua">
+      <a href="../../aplikace/sbirka.html" hreflang="cs" title="Česky">CS</a>
+      <a href="../../en/aplikace/sbirka.html" hreflang="en" title="English">EN</a>
+      <a href="sbirka.html" hreflang="it" aria-current="page" title="Italiano">IT</a>
+    </div>    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Navigazione principale">
+    <a href="../">Home</a>
+    <a href="../aplikace/" aria-current="page">Le mie app</a>
+    <a href="../finance/">Finanze</a>
+    <a href="../cestovani/">Viaggi</a>
+    <a href="../cestovani/italie/">Italia</a>
+    <a href="../zaliby/rybareni/">Pesca</a>
+    <a href="../smart-home/">Smart Home</a>
+    <a href="../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #c9a227;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#c9a227">Collezione — Numismatica &amp; Filatelia</span>
+  <h1><span style="margin-right:.4rem">🪙</span>Collezione — Numismatica &amp; Filatelia</h1>
+  <p class="hero-sub">Catalogo personale di monete, banconote, francobolli e cartoline in stile casa d'aste. L'AI riconosce il pezzo da una foto e compila i dati, l'app mostra dove lo stesso pezzo si vende davvero (mercati e aste) e registra cosa alza o abbassa il valore. I dati reali restano in locale da me — niente cloud, niente account, niente pagamenti.</p>
+  <p style="margin-top:.6rem">
+    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">HTML/JS</span>
+    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python + FastAPI</span>
+    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span>
+    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">AI Gemini (vision)</span>
+    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows (.exe, Tauri)</span>
+  </p>
+  <p style="margin-top:.8rem">
+    <a href="index.html">← Torna a Le mie app</a>
+  </p>
+</section>
+
+<section>
+  <h2>Cosa fa</h2>
+  <p><strong>Perché esiste:</strong> un amico di lavoro colleziona monete e francobolli per hobby e mi faceva mille domande — cos'è questo pezzo, dove lo cerco, a quanto si vende. Così gli ho costruito un'app per fare chiarezza: si fotografa il pezzo, l'app aiuta a <em>identificarlo</em> e a dargli una <em>valutazione indicativa</em>, e rimanda subito ai posti dove verificare il prezzo. Gira in locale, sembra il catalogo di una casa d'aste, nessun account, nessun dato in giro.</p>
+  <p><strong>Due modalità:</strong> una <strong>demo</strong> pubblica (solo dati di esempio, nel browser) e la <strong>versione completa</strong> sul mio PC con database, foto e AI propri. La collezione reale non lascia mai il computer.</p>
+  <p><strong>Riconoscimento AI da foto:</strong> fotografo una moneta o un francobollo, l'app manda la foto all'AI (Gemini) che <em>legge il testo sul pezzo</em> e precompila il modulo — categoria, paese, anno, valore nominale, stato. Poi basta controllare e salvare. Gestisce anche entrambi i lati insieme (dritto + rovescio). Se la foto è sfocata o non è una moneta, l'app non compila nulla e chiede una nuova foto (come la verifica di un documento).</p>
+  <p><strong>Dove si vende:</strong> ogni pezzo ha link precompilati ai cataloghi (Numista, Pofis…), ai <em>prezzi realizzati</em> (eBay venduti, acsearch, Delcampe) e alle offerte attive (Aukro). Vedi subito a quanto si vende davvero lo stesso pezzo — non a quanto qualcuno lo chiede.</p>
+  <p><strong>Cosa influenza il prezzo:</strong> sezione educativa — cosa alza il valore (grade più alto, errori di conio, certificazione, gomma NH nei francobolli) e cosa lo abbassa (pulizia, fori, difetti). Per non comprare e vendere alla cieca.</p>
+  <p><strong>Import massivo:</strong> chi ha già una lista in Excel la carica in un colpo solo (CSV / XLSX) invece di cliccare pezzo per pezzo.</p>
+</section>
+
+<section>
+  <h2>Funzioni chiave</h2>
+  <ul style="line-height:1.7">
+    <li><strong>Catalogo in stile casa d'aste</strong> — look scuro con accenti oro, dettaglio del pezzo come un "lotto" d'asta (foto grande, parametri, valutazione).</li>
+    <li><strong>Riconoscimento AI da foto</strong> — Gemini legge il testo su moneta/francobollo e precompila i campi; dritto + rovescio in un passaggio; controllo qualità foto (foto scarsa = nessuna valutazione).</li>
+    <li><strong>Link a mercati e aste</strong> — ricerche precompilate sui parametri del pezzo: cataloghi / prezzi realizzati / offerte attive. Regola: "il prezzo realizzato batte il prezzo richiesto".</li>
+    <li><strong>Cosa influenza il prezzo</strong> — fattori ↑/↓ separati per monete e francobolli + come si compone un prezzo (catalogo vs. asta vs. stima).</li>
+    <li><strong>Valutazione con prove</strong> — a ogni pezzo si allega la fonte (catalogo / asta realizzata / perizia); le offerte attive non entrano nella media.</li>
+    <li><strong>Foto dei pezzi</strong> — fronte/retro, visibili nella scheda e nel dettaglio.</li>
+    <li><strong>Import / export</strong> — import massivo da CSV/Excel, export CSV / Excel / PDF / ZIP.</li>
+    <li><strong>In locale e al sicuro</strong> — SQLite + foto solo sul mio PC; su GitHub vanno solo codice e dati di esempio. L'app Windows (Tauri) avvia il backend da sola con un click.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Anteprime</h2>
+  <style>
+    .ss-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.1rem; margin-top:.8rem; }
+    .ss-grid figure { margin:0; }
+    .ss-grid img { width:100%; height:auto; border-radius:8px; border:1px solid var(--border,#0001); display:block; }
+    .ss-grid figcaption { font-size:.82rem; color:var(--text-mut,#666); margin-top:.35rem; }
+  </style>
+  <div class="ss-grid">
+    <figure>
+      <img src="../../aplikace/img/sbirka/01_dashboard.png" alt="Dashboard della collezione — riquadri con conteggi, valore indicativo, ultimi aggiunti" loading="lazy">
+      <figcaption>Dashboard — riquadri (conteggi monete/francobolli, senza foto, senza valutazione, verificato) + ultimi aggiunti</figcaption>
+    </figure>
+    <figure>
+      <img src="../../aplikace/img/sbirka/02_katalog.png" alt="Catalogo — schede in stile casa d'aste, filtri, chip del grade" loading="lazy">
+      <figcaption>Catalogo — schede in stile casa d'aste, filtri laterali, confidenza AI</figcaption>
+    </figure>
+    <figure>
+      <img src="../../aplikace/img/sbirka/03_numismatika.png" alt="Modulo Numismatica — selettore Tutto / Numismatica / Filatelia" loading="lazy">
+      <figcaption>Selettore moduli — Tutto / Numismatica (monete+banconote) / Filatelia (francobolli+cartoline)</figcaption>
+    </figure>
+    <figure>
+      <img src="../../aplikace/img/sbirka/04_detail_lot.png" alt="Dettaglio del pezzo come lotto d'asta — foto, parametri, valutazione" loading="lazy">
+      <figcaption>Dettaglio del pezzo = "lotto" d'asta — foto grande, parametri, valutazione indicativa (bassa/media/alta)</figcaption>
+    </figure>
+    <figure>
+      <img src="../../aplikace/img/sbirka/05_burzy_detail.png" alt="Dettaglio — riconoscimento AI e cronologia delle modifiche" loading="lazy">
+      <figcaption>Dettaglio del pezzo — riconoscimento AI (Gemini): identificazione della moneta da foto + cronologia delle modifiche</figcaption>
+    </figure>
+    <figure>
+      <img src="../../aplikace/img/sbirka/06_zdroje_burzy.png" alt="Pagina Fonti e mercati — directory di cataloghi e aste" loading="lazy">
+      <figcaption>Fonti &amp; mercati — directory: cataloghi (Numista, Pofis…), prezzi realizzati (eBay venduti, acsearch, Delcampe), offerte attive</figcaption>
+    </figure>
+    <figure>
+      <img src="../../aplikace/img/sbirka/07_co_ovlivnuje_cenu.png" alt="Pagina Cosa influenza il prezzo — fattori su e giù" loading="lazy">
+      <figcaption>Cosa influenza il prezzo — fattori ↑ alza / ↓ abbassa, separati per monete e francobolli + come si compone un prezzo</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>Stato</h2>
+  <p>Versione attuale <strong>1.1.6 BETA</strong> (giugno 2026), scaricabile dalla pagina <a href="index.html">Le mie app</a>. Demo pubblica + versione completa locale (web e Windows .exe). Privata, per uso personale — nessun hosting pubblico di dati reali, nessun account, nessun pagamento. <em>Nota: l'app cataloga e dà valutazioni indicative — non è una perizia professionale. Verifica sempre i prezzi reali su un mercato.</em></p>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Budinský Luděk · Sito personale</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://github.com/bludek69-lgtm" target="_blank" rel="noopener">GitHub</a>
+      <a href="/smart-home/kontakt.html">Contatti</a>
+      <a href="../smart-home/">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+
+<!-- Lightbox -->
+<style>
+#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
+#__lb.open { display:flex }
+#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+main img { cursor:zoom-in; transition:transform .15s ease }
+main img:hover { transform:scale(1.005) }
+</style>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Immagine ingrandita">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Clicca o premi ESC per chiudere</span>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  document.querySelectorAll('main img').forEach(function(img){
+    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+  });
+})();
+</script>
+</body>
+</html>

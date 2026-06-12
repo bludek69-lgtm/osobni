@@ -295,6 +295,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://cestovatel69.cz/en/aplikace/budline.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://cestovatel69.cz/en/aplikace/config-center.html</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -344,6 +350,12 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/rpi-kiosk.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cestovatel69.cz/en/aplikace/sbirka.html</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -595,6 +607,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://cestovatel69.cz/it/aplikace/budline.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://cestovatel69.cz/it/aplikace/config-center.html</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -644,6 +662,12 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/rpi-kiosk.html</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cestovatel69.cz/it/aplikace/sbirka.html</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

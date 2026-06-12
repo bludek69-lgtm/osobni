@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BudLine Panel — Le mie app — Luděk</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="App per autisti di autobus — turni, rotazioni, documenti per la busta paga e verifica dello stipendio. Beta per Windows.">
+  <link rel="canonical" href="https://cestovatel69.cz/it/aplikace/budline.html">
+  <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/aplikace/budline.html">
+  <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/budline.html">
+  <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/budline.html">
+  <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/budline.html">
+  <meta property="og:title" content="BudLine Panel — Le mie app — Luděk">
+  <meta property="og:description" content="App per autisti di autobus — turni, rotazioni, documenti per la busta paga e verifica dello stipendio. Beta per Windows.">
+  <meta property="og:image" content="https://cestovatel69.cz/aplikace/img/budline/01_nova_smena.png">
+  <meta property="og:url" content="https://cestovatel69.cz/it/aplikace/budline.html">
+  <meta property="og:type" content="website">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <div class="lang-switcher" aria-label="Lingua">
+      <a href="../../aplikace/budline.html" hreflang="cs" title="Česky">CS</a>
+      <a href="../../en/aplikace/budline.html" hreflang="en" title="English">EN</a>
+      <a href="budline.html" hreflang="it" aria-current="page" title="Italiano">IT</a>
+    </div><button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Navigazione principale">
+      <a href="../">Home</a>
+      <a href="../aplikace/" aria-current="page">Le mie app</a>
+      <a href="../finance/">Finanze</a>
+      <a href="../cestovani/">Viaggi</a>
+      <a href="../cestovani/italie/">Italia</a>
+      <a href="../zaliby/rybareni/">Pesca</a>
+      <a href="../smart-home/">Smart Home</a>
+      <a href="../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #2d6ad5;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#2d6ad5">BudLine Panel</span>
+  <h1><span style="margin-right:.4rem">🚍</span>BudLine Panel</h1>
+  <p class="hero-sub">Un'app per autisti di autobus che tiene sotto controllo turni, rotazioni e stipendio. Niente foglietti e calcoli a mente: registro i turni e l'app calcola quanto deve arrivare in busta paga — a fine mese verifico che torni tutto. Gira solo sul computer, senza cloud e senza account.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows</span> <span class="pill" style="background:#e8731a1f;color:#c25e10;border:1px solid #e8731a66;padding:.2rem .6rem;border-radius:6px;font-size:.78rem">v1.2.13 BETA</span></p>
+  <p style="margin-top:.8rem"><a href="index.html">← Torna a Le mie app</a></p>
+</section>
+
+<section>
+  <h2>Cosa fa</h2>
+  <p><strong>Perché esiste:</strong> i turni di un autista sono sparsi tra rotazioni, supplementi per weekend e festivi, e a fine mese arriva una busta paga difficile da controllare. BudLine è un pannello semplice: registro i turni (o li leggo dalla carta del conducente), l'app li somma secondo le regole e mostra quanto deve uscire. La usiamo in due — io e un collega di lavoro.</p>
+  <p><strong>Registro turni e rotazioni:</strong> ogni turno ha data, orari e tipo; l'app controlla la correttezza dell'inserimento (formato HH:MM, niente numeri negativi) e compone il riepilogo mensile.</p>
+  <p><strong>Documenti per la busta paga:</strong> dai turni registrati l'app calcola la base per lo stipendio secondo le regole impostate (ore, supplementi). A fine mese basta confrontare con la busta paga — se qualcosa non torna, si vede subito dove.</p>
+  <p><strong>Lettura della carta del conducente:</strong> dalla versione 1.2.13 l'app legge i dati direttamente dalla carta a chip tramite un lettore — meno trascrizioni manuali.</p>
+  <p><strong>Tutto in locale:</strong> i dati restano sul computer (SQLite). Gli aggiornamenti si installano da soli in background; l'upgrade non sovrascrive mai dati e impostazioni dell'utente.</p>
+</section>
+
+<section>
+  <h2>Funzioni chiave</h2>
+  <ul style="line-height:1.7">
+    <li><strong>Riepilogo mensile dei turni</strong> — i turni registrati confluiscono in un riepilogo con i totali di presenza.</li>
+    <li><strong>Calcolo della busta paga</strong> — secondo le regole (ore, supplementi); confronto di fine mese con il cedolino.</li>
+    <li><strong>Import dalla carta del conducente</strong> — dati dalla carta a chip via lettore (dalla v1.2.13).</li>
+    <li><strong>Controlli di inserimento</strong> — validazione di orari e valori, così un errore di battitura non finisce nello stipendio.</li>
+    <li><strong>Aggiornamento automatico silenzioso</strong> — le nuove versioni si installano da sole; configurazione e dati restano.</li>
+    <li><strong>Senza cloud</strong> — nessun account, nessun server, dati solo sul computer.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Anteprime</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem">
+    <figure style="margin:0"><img src="../../aplikace/img/budline/01_nova_smena.png" alt="Nová směna — formulář pro zápis odjeté směny (datum, turnus, časy, km)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Nuovo turno — registrazione di un turno (dati di esempio)</figcaption></figure>
+    <figure style="margin:0"><img src="../../aplikace/img/budline/02_dane.png" alt="Daně a cestovní náhrady — přehled pravidel a sazeb pro výpočet mzdy" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Tasse / indennità — regole e aliquote usate per il calcolo</figcaption></figure>
+    <figure style="margin:0"><img src="../../aplikace/img/budline/03_nastaveni.png" alt="Nastavení — profil řidiče a parametry aplikace (ukázková data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Impostazioni — profilo autista (dati di esempio)</figcaption></figure>
+  </div>
+  <p style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.6rem">Gli screenshot usano dati di esempio. Le anteprime di dashboard e stipendio arriveranno con un profilo demo completo — le buste paga reali non vanno sul web.</p>
+</section>
+
+<section>
+  <h2>Download (beta)</h2>
+  <p style="margin:.4rem 0 .8rem"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel-v1.2.13-Setup.exe" download style="display:inline-block;background:#2d6ad5;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600">⬇ Scarica installer (v1.2.13, Windows)</a></p>
+  <p style="font-size:.9rem;line-height:1.6">🔒 <strong>L'installer è protetto da password</strong> — la condivido di persona; sul web non c'è e non ci sarà.</p>
+  <p style="font-size:.9rem;line-height:1.6">🛡️ Windows può mostrare un avviso SmartScreen (installer beta non firmato). Se conosci l'app e la aspetti da me, clicca "Ulteriori informazioni" → "Esegui comunque".</p>
+  <p style="font-size:.9rem;line-height:1.6">⚠️ Chiudi l'app in esecuzione prima di installare.</p>
+</section>
+
+<section>
+  <h2>Stato</h2>
+  <p>Versione <strong>1.2.13 BETA</strong> (giugno 2026). La usiamo attivamente in due; si sviluppa sulla base di buste paga reali. Beta = funziona, ma è ancora in rifinitura; l'installer non è firmato ed è protetto da password.</p>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Budinský Luděk · Sito personale</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://github.com/bludek69-lgtm" target="_blank" rel="noopener">GitHub</a>
+      <a href="/smart-home/kontakt.html">Contatti</a>
+      <a href="../smart-home/">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

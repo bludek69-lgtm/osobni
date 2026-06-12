@@ -11,9 +11,14 @@
   <link rel="canonical" href="https://cestovatel69.cz/aplikace/budline.html">
   <meta property="og:title" content="BudLine Panel — Moje aplikace — Luděk">
   <meta property="og:description" content="Aplikace pro řidiče autobusu — evidence směn a turnusů, podklady pro mzdu a kontrola výplatní pásky. Beta pro Windows.">
-  <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
+  <meta property="og:image" content="https://cestovatel69.cz/aplikace/img/budline/01_nova_smena.png">
   <meta property="og:url" content="https://cestovatel69.cz/aplikace/budline.html">
   <meta property="og:type" content="website">
+
+  <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/aplikace/budline.html">
+  <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/budline.html">
+  <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/budline.html">
+  <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/budline.html">
 </head>
 <body>
 <header class="site-header">
@@ -21,7 +26,12 @@
     <a href="../" class="brand">
       <span class="brand-dot"></span>
       Luděk
-    </a><button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    </a>
+    <div class="lang-switcher" aria-label="Jazyk">
+      <a href="budline.html" hreflang="cs" aria-current="page" title="Česky">CS</a>
+      <a href="../en/aplikace/budline.html" hreflang="en" title="English">EN</a>
+      <a href="../it/aplikace/budline.html" hreflang="it" title="Italiano">IT</a>
+    </div><button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
     <nav class="nav" aria-label="Hlavní navigace">
       <a href="../">Domů</a>
       <a href="../aplikace/" aria-current="page">Moje aplikace</a>
@@ -67,7 +77,12 @@
 
 <section>
   <h2>Náhledy</h2>
-  <p style="color:var(--txt-muted,#666)">Galerii screenshotů zde zatím nenajdeš — původní obrázky obsahovaly skutečné směny a výplatní údaje, takže šly z webu pryč. Až připravím ukázková data, přibudou náhledy bez osobních údajů.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem">
+    <figure style="margin:0"><img src="img/budline/01_nova_smena.png" alt="Nová směna — formulář pro zápis odjeté směny (datum, turnus, časy, km)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Nová směna — zápis odjeté směny (ukázková data)</figcaption></figure>
+    <figure style="margin:0"><img src="img/budline/02_dane.png" alt="Daně a cestovní náhrady — přehled pravidel a sazeb pro výpočet mzdy" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Daně / náhrady — pravidla a sazby, podle kterých se počítá</figcaption></figure>
+    <figure style="margin:0"><img src="img/budline/03_nastaveni.png" alt="Nastavení — profil řidiče a parametry aplikace (ukázková data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Nastavení — profil řidiče (ukázková data)</figcaption></figure>
+  </div>
+  <p style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.6rem">Screenshoty jsou s ukázkovými daty. Náhledy přehledu směn a mzdového dashboardu doplním, až bude kompletní demo profil — skutečné výplaty na web nepatří.</p>
 </section>
 
 <section>

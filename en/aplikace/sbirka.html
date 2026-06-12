@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collection — Numismatics &amp; Philately — My apps — Luděk</title>
+  <meta name="description" content="A personal catalogue of coins, banknotes and stamps with an auction-house look. AI recognition from a photo, valuation, marketplace links, Excel import. Local, no cloud.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="/favicon.ico">
+
+  <link rel="canonical" href="https://cestovatel69.cz/en/aplikace/sbirka.html">
+  <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/aplikace/sbirka.html">
+  <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/sbirka.html">
+  <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/sbirka.html">
+  <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/sbirka.html">
+  <meta property="og:title" content="Collection — Numismatics &amp; Philately — My apps — Luděk">
+  <meta property="og:description" content="A personal catalogue of coins, banknotes and stamps with an auction-house look. AI recognition from a photo, valuation, marketplace links, Excel import. Local, no cloud.">
+  <meta property="og:image" content="https://cestovatel69.cz/aplikace/img/sbirka/01_dashboard.png">
+  <meta property="og:url" content="https://cestovatel69.cz/en/aplikace/sbirka.html">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <div class="lang-switcher" aria-label="Language">
+      <a href="../../aplikace/sbirka.html" hreflang="cs" title="Česky">CS</a>
+      <a href="sbirka.html" hreflang="en" aria-current="page" title="English">EN</a>
+      <a href="../../it/aplikace/sbirka.html" hreflang="it" title="Italiano">IT</a>
+    </div>    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main navigation">
+    <a href="../">Home</a>
+    <a href="../aplikace/" aria-current="page">My apps</a>
+    <a href="../finance/">Finance</a>
+    <a href="../cestovani/">Travel</a>
+    <a href="../cestovani/italie/">Italy</a>
+    <a href="../zaliby/rybareni/">Fishing</a>
+    <a href="../smart-home/">Smart Home</a>
+    <a href="../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #c9a227;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#c9a227">Collection — Numismatics &amp; Philately</span>
+  <h1><span style="margin-right:.4rem">🪙</span>Collection — Numismatics &amp; Philately</h1>
+  <p class="hero-sub">A personal catalogue of coins, banknotes, stamps and postcards with an auction-house look. AI recognizes an item from a photo and fills in the details, the app shows where the same item actually sells (marketplaces and auctions) and tracks what raises or lowers the value. Real data stays local with me — no cloud, no accounts, no payments.</p>
+  <p style="margin-top:.6rem">
+    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">HTML/JS</span>
+    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python + FastAPI</span>
+    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span>
+    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">AI Gemini (vision)</span>
+    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows (.exe, Tauri)</span>
+  </p>
+  <p style="margin-top:.8rem">
+    <a href="index.html">← Back to My apps</a>
+  </p>
+</section>
+
+<section>
+  <h2>What it does</h2>
+  <p><strong>Why it exists:</strong> a friend from work collects coins and stamps as a hobby and kept asking me questions — what is this piece, where do I look it up, what does it sell for. So I built him an app to make it clear: photograph the item, the app helps <em>identify</em> it and give an <em>indicative valuation</em>, and links straight to places where the price can be verified. Runs locally, looks like an auction-house catalogue, no account, no data leaves the machine.</p>
+  <p><strong>Two modes:</strong> a public <strong>demo</strong> (sample data only, runs in the browser) and the <strong>full version</strong> on my PC with its own database, photos and AI. The real collection never leaves the computer.</p>
+  <p><strong>AI recognition from a photo:</strong> photograph a coin or stamp, the app sends the photo to AI (Gemini) which <em>reads the text on the item</em> and pre-fills the form — category, country, year, denomination, condition. Then you just review and save. It handles both sides at once (obverse + reverse). If the photo is blurry or it is not a coin, the app fills nothing and asks for a new photo (like document verification).</p>
+  <p><strong>Where it sells:</strong> each item has pre-filled links to catalogues (Numista, Pofis…), <em>realized prices</em> (eBay sold, acsearch, Delcampe) and active listings (Aukro). You see immediately what the same item actually sells for — not what someone is asking.</p>
+  <p><strong>What drives the price:</strong> an educational section — what raises value (higher grade, mint errors, certification, NH gum on stamps) and what lowers it (cleaning, mounting holes, defects). So you never buy or sell blind.</p>
+  <p><strong>Bulk import:</strong> if you already keep a list in Excel, upload it in one go (CSV / XLSX) instead of clicking item by item.</p>
+</section>
+
+<section>
+  <h2>Key features</h2>
+  <ul style="line-height:1.7">
+    <li><strong>Auction-house style catalogue</strong> — dark look with gold accents, item detail as an auction "lot" (large photo, parameters, valuation).</li>
+    <li><strong>AI recognition from photo</strong> — Gemini reads the text on the coin/stamp and pre-fills the fields; obverse + reverse in one step; photo quality check (bad photo = no valuation).</li>
+    <li><strong>Marketplace and auction links</strong> — pre-filled searches by item parameters: catalogues / realized prices / active listings. Rule: "a realized price beats an asking price".</li>
+    <li><strong>What drives the price</strong> — up/down factors separately for coins and stamps + how a price is composed (catalogue vs. auction vs. estimate).</li>
+    <li><strong>Valuation with evidence</strong> — attach a source to each item (catalogue / realized auction / appraisal); active listings are excluded from the average.</li>
+    <li><strong>Item photos</strong> — front/back, shown in the card and the detail.</li>
+    <li><strong>Import / export</strong> — bulk import from CSV/Excel, export to CSV / Excel / PDF / ZIP.</li>
+    <li><strong>Local and safe</strong> — SQLite + photos only on my PC; only code and sample data go to GitHub. The Windows app (Tauri) starts its backend itself with one click.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Screenshots</h2>
+  <style>
+    .ss-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.1rem; margin-top:.8rem; }
+    .ss-grid figure { margin:0; }
+    .ss-grid img { width:100%; height:auto; border-radius:8px; border:1px solid var(--border,#0001); display:block; }
+    .ss-grid figcaption { font-size:.82rem; color:var(--text-mut,#666); margin-top:.35rem; }
+  </style>
+  <div class="ss-grid">
+    <figure>
+      <img src="../../aplikace/img/sbirka/01_dashboard.png" alt="Collection dashboard — tiles with counts, indicative value, recently added" loading="lazy">
+      <figcaption>Dashboard — tiles (coin/stamp counts, missing photo, missing valuation, verified) + recently added</figcaption>
+    </figure>
+    <figure>
+      <img src="../../aplikace/img/sbirka/02_katalog.png" alt="Catalogue — auction-house style cards, filters, grade chip" loading="lazy">
+      <figcaption>Catalogue — auction-house style cards, side filters, AI confidence</figcaption>
+    </figure>
+    <figure>
+      <img src="../../aplikace/img/sbirka/03_numismatika.png" alt="Numismatics module — All / Numismatics / Philately switch" loading="lazy">
+      <figcaption>Module switch — All / Numismatics (coins+banknotes) / Philately (stamps+postcards)</figcaption>
+    </figure>
+    <figure>
+      <img src="../../aplikace/img/sbirka/04_detail_lot.png" alt="Item detail as an auction lot — photo, parameters, valuation" loading="lazy">
+      <figcaption>Item detail = auction "lot" — large photo, parameters, indicative valuation (low/mid/high)</figcaption>
+    </figure>
+    <figure>
+      <img src="../../aplikace/img/sbirka/05_burzy_detail.png" alt="Detail — AI item recognition and change history" loading="lazy">
+      <figcaption>Item detail — AI recognition (Gemini): coin identification from a photo + item change history</figcaption>
+    </figure>
+    <figure>
+      <img src="../../aplikace/img/sbirka/06_zdroje_burzy.png" alt="Sources and marketplaces page — catalogue and auction directory" loading="lazy">
+      <figcaption>Sources &amp; marketplaces — directory: catalogues (Numista, Pofis…), realized prices (eBay sold, acsearch, Delcampe), active listings</figcaption>
+    </figure>
+    <figure>
+      <img src="../../aplikace/img/sbirka/07_co_ovlivnuje_cenu.png" alt="What drives the price page — up and down factors" loading="lazy">
+      <figcaption>What drives the price — ↑ raises / ↓ lowers, separately for coins and stamps + how a price is composed</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>Status</h2>
+  <p>Current version <strong>1.1.6 BETA</strong> (June 2026), available for download on the <a href="index.html">My apps</a> page. Public demo + full local version (web and Windows .exe). Private, for personal use — no public hosting of real data, no accounts, no payments. <em>Note: the app catalogues and gives indicative valuations — it is not a professional appraisal. Always verify real prices on a marketplace.</em></p>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Budinský Luděk · Personal website</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://github.com/bludek69-lgtm" target="_blank" rel="noopener">GitHub</a>
+      <a href="/smart-home/kontakt.html">Contact</a>
+      <a href="../smart-home/">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+
+<!-- Lightbox -->
+<style>
+#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
+#__lb.open { display:flex }
+#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
+#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
+main img { cursor:zoom-in; transition:transform .15s ease }
+main img:hover { transform:scale(1.005) }
+</style>
+<div id="__lb" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <img id="__lbimg" alt="">
+  <span class="__lbhint">Click or press ESC to close</span>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('__lb');
+  var lbimg = document.getElementById('__lbimg');
+  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  document.querySelectorAll('main img').forEach(function(img){
+    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+  });
+})();
+</script>
+</body>
+</html>

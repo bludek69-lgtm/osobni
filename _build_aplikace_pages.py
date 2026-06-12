@@ -1,15 +1,27 @@
 """Generate Moje aplikace section: hub index + 6 sub-pages in CS/EN/IT.
 
+⛔ DEPRECATED / STALE (2026-06-12): data v tomto skriptu (verze, texty, checksum odkazy)
+jsou ZASTARALÉ vůči živým stránkám — živé HTML v aplikace/ je zdroj pravdy
+(release verze dle latest.json, checksum odkazy odstraněny, budline.html přidána ručně).
+Spuštění by přepsalo aktuální obsah starým. Pokud skript chceš oživit, nejdřív
+synchronizuj datové dicty se živým stavem a spusť s --force-i-synced-data.
+
 Each sub-page is built from a structured spec (Python dict) — text + asset
 paths + tech badges. Output: <main> blocks ready to be wrapped by _build_pages.py.
 
 Run from osobni root:
-    py -3 _build_aplikace_pages.py
+    py -3 _build_aplikace_pages.py --force-i-synced-data
 """
 from __future__ import annotations
 import io
 import sys
 from pathlib import Path
+
+if "--force-i-synced-data" not in sys.argv:
+    print("⛔ STALE BUILDER GUARD: tento generátor má zastaralá data (verze/texty/odkazy).")
+    print("   Živé HTML v aplikace/ je zdroj pravdy. Nejdřív synchronizuj datové dicty,")
+    print("   pak spusť s --force-i-synced-data. Nic nebylo přepsáno.")
+    sys.exit(1)
 
 try:
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")

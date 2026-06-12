@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BudLine Panel — My apps — Luděk</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="App for bus drivers — shift and roster records, payroll documents and payslip checking. Windows beta.">
+  <link rel="canonical" href="https://cestovatel69.cz/en/aplikace/budline.html">
+  <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/aplikace/budline.html">
+  <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/budline.html">
+  <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/budline.html">
+  <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/budline.html">
+  <meta property="og:title" content="BudLine Panel — My apps — Luděk">
+  <meta property="og:description" content="App for bus drivers — shift and roster records, payroll documents and payslip checking. Windows beta.">
+  <meta property="og:image" content="https://cestovatel69.cz/aplikace/img/budline/01_nova_smena.png">
+  <meta property="og:url" content="https://cestovatel69.cz/en/aplikace/budline.html">
+  <meta property="og:type" content="website">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <div class="lang-switcher" aria-label="Language">
+      <a href="../../aplikace/budline.html" hreflang="cs" title="Česky">CS</a>
+      <a href="budline.html" hreflang="en" aria-current="page" title="English">EN</a>
+      <a href="../../it/aplikace/budline.html" hreflang="it" title="Italiano">IT</a>
+    </div><button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../">Home</a>
+      <a href="../aplikace/" aria-current="page">My apps</a>
+      <a href="../finance/">Finance</a>
+      <a href="../cestovani/">Travel</a>
+      <a href="../cestovani/italie/">Italy</a>
+      <a href="../zaliby/rybareni/">Fishing</a>
+      <a href="../smart-home/">Smart Home</a>
+      <a href="../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #2d6ad5;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#2d6ad5">BudLine Panel</span>
+  <h1><span style="margin-right:.4rem">🚍</span>BudLine Panel</h1>
+  <p class="hero-sub">An app for bus drivers that keeps track of shifts, rosters and pay. Instead of paper notes and mental arithmetic: I log my shifts and the app calculates what should arrive on the payslip — and at the end of the month I check whether it matches. Everything runs locally on the computer, no cloud, no accounts.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows</span> <span class="pill" style="background:#e8731a1f;color:#c25e10;border:1px solid #e8731a66;padding:.2rem .6rem;border-radius:6px;font-size:.78rem">v1.2.13 BETA</span></p>
+  <p style="margin-top:.8rem"><a href="index.html">← Back to My apps</a></p>
+</section>
+
+<section>
+  <h2>What it does</h2>
+  <p><strong>Why it exists:</strong> a bus driver's shifts are scattered across rosters, with weekend and holiday bonuses, and at the end of the month there is a payslip that is hard to verify. BudLine is a simple panel for that: I log my shifts (or read them from the driver card), the app adds them up according to the rules and shows what the pay should be. Two of us use it — me and a colleague from work.</p>
+  <p><strong>Shift and roster records:</strong> each shift has a date, times and a type; the app validates the entry (HH:MM time format, no negative numbers) and builds a monthly overview.</p>
+  <p><strong>Payroll documents:</strong> from the logged shifts the app calculates the pay basis according to configured rules (hours, bonuses). At the end of the month you just compare it with the payslip — if something is off, you see exactly where.</p>
+  <p><strong>Driver card reading:</strong> since version 1.2.13 the app can read data directly from the driver's chip card via a reader — less manual typing.</p>
+  <p><strong>Everything local:</strong> data stays on the computer (SQLite). Updates install silently in the background; an upgrade never overwrites user data or settings.</p>
+</section>
+
+<section>
+  <h2>Key features</h2>
+  <ul style="line-height:1.7">
+    <li><strong>Monthly shift overview</strong> — logged shifts roll up into an overview with attendance totals.</li>
+    <li><strong>Payroll calculation</strong> — by rules (hours, bonuses); end-of-month comparison with the payslip.</li>
+    <li><strong>Driver card import</strong> — chip card data via a reader (since v1.2.13).</li>
+    <li><strong>Entry validation</strong> — time and value checks so a typo never reaches the payroll.</li>
+    <li><strong>Silent auto-update</strong> — new versions install themselves; config and data are kept.</li>
+    <li><strong>No cloud</strong> — no account, no server, data only on the computer.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Screenshots</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem">
+    <figure style="margin:0"><img src="../../aplikace/img/budline/01_nova_smena.png" alt="Nová směna — formulář pro zápis odjeté směny (datum, turnus, časy, km)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">New shift — logging a completed shift (sample data)</figcaption></figure>
+    <figure style="margin:0"><img src="../../aplikace/img/budline/02_dane.png" alt="Daně a cestovní náhrady — přehled pravidel a sazeb pro výpočet mzdy" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Taxes / allowances — the rules and rates used for calculation</figcaption></figure>
+    <figure style="margin:0"><img src="../../aplikace/img/budline/03_nastaveni.png" alt="Nastavení — profil řidiče a parametry aplikace (ukázková data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Settings — driver profile (sample data)</figcaption></figure>
+  </div>
+  <p style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.6rem">Screenshots use sample data. Dashboard and payroll previews will follow once a complete demo profile exists — real payslips do not belong on the web.</p>
+</section>
+
+<section>
+  <h2>Download (beta)</h2>
+  <p style="margin:.4rem 0 .8rem"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel-v1.2.13-Setup.exe" download style="display:inline-block;background:#2d6ad5;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600">⬇ Download installer (v1.2.13, Windows)</a></p>
+  <p style="font-size:.9rem;line-height:1.6">🔒 <strong>The installer is password-protected</strong> — I share the password personally; it is not and will not be on the web.</p>
+  <p style="font-size:.9rem;line-height:1.6">🛡️ Windows may show a SmartScreen warning (unsigned beta installer). If you know the app and expect it from me, click "More info" → "Run anyway".</p>
+  <p style="font-size:.9rem;line-height:1.6">⚠️ Close the running app before installing.</p>
+</section>
+
+<section>
+  <h2>Status</h2>
+  <p>Version <strong>1.2.13 BETA</strong> (June 2026). Two of us use the app actively; it is developed against real payslips. Beta = it works, but it is still being polished; the installer is unsigned and password-protected.</p>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Budinský Luděk · Personal website</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://github.com/bludek69-lgtm" target="_blank" rel="noopener">GitHub</a>
+      <a href="/smart-home/kontakt.html">Contact</a>
+      <a href="../smart-home/">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

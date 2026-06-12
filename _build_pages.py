@@ -277,12 +277,24 @@ main img:hover { transform:scale(1.005) }
 """
 
 
+def page_lang(rel: str) -> str:
+    """Jazyk stránky podle cesty (en/… → en, it/… → it, jinak cs)."""
+    if rel.startswith('en/'):
+        return 'en'
+    if rel.startswith('it/'):
+        return 'it'
+    return 'cs'
+
+
 def render_template(page: dict, main_html: str, header_extra: str = '\n    ',
-                    body_pre: str = '\n\n', body_post: str | None = None) -> str:
+                    body_pre: str = '\n\n', body_post: str | None = None,
+                    live_title: str | None = None, seo_head: str = '') -> str:
     pfx = build_prefix(page['depth'])
     nav_html = render_nav(page['depth'], page['rel'])
     css_href = pfx + 'assets/css/style.css'
     js_src = pfx + 'assets/js/main.js'
+    lang = page_lang(page['rel'])
+    kontakt_label = {'en': 'Contact', 'it': 'Contatti'}.get(lang, 'Kontakt')
 
     # Optional page-specific CSS (per-page extra_css field)
     extra_css_link = ''
@@ -290,19 +302,26 @@ def render_template(page: dict, main_html: str, header_extra: str = '\n    ',
     if extra_css:
         extra_css_link = f'\n  <link rel="stylesheet" href="{pfx + extra_css}">'
 
+    # SEO HEAD POLITIKA (2026-06-12): title + description + canonical + hreflang + og:*
+    # se berou VERBATIM z živé stránky (extract_seo_head) — builder je NEgeneruje a NEpřepisuje.
+    # Fallbacky níže platí jen pro novou stránku bez SEO bloku.
+    title = live_title if live_title else page['title']
+    if not seo_head:
+        seo_head = ('  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, '
+                    'milovník Itálie, technologií a chytré domácnosti.">\n')
+
     # page-specific obsah za </footer> (lightbox / per-page skripty / vývojový deník) —
     # verbatim z živé stránky; fallback na výchozí shell, pokud chybí.
     trailing = body_post if body_post is not None else DEFAULT_TRAILING.replace('__JS__', js_src)
 
     return f"""<!DOCTYPE html>
-<html lang="cs">
+<html lang="{lang}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{page['title']}</title>
-  <meta name="description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
-  <link rel="stylesheet" href="{css_href}">{extra_css_link}
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+  <title>{title}</title>
+{seo_head}  <link rel="stylesheet" href="{css_href}">{extra_css_link}
+  <link rel="icon" href="/favicon.ico">
 </head>
 <body class="theme-{page['theme']}">
 
@@ -325,6 +344,8 @@ def render_template(page: dict, main_html: str, header_extra: str = '\n    ',
     <div>© Budinský Luděk · Osobní web</div>
     <div class="footer-links">
       <a href="{YOUTUBE}" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://github.com/bludek69-lgtm" target="_blank" rel="noopener">GitHub</a>
+      <a href="/smart-home/kontakt.html">{kontakt_label}</a>
       <a href="{pfx}smart-home/">Smart Home web</a>
     </div>
   </div>
@@ -367,6 +388,26 @@ def extract_body_extra(content: str):
     return body_pre, body_post
 
 
+def extract_seo_head(content: str):
+    """Zachová SEO head tagy z živé stránky (politika 2026-06-12: live HTML = zdroj pravdy
+    pro SEO; tagy vkládal _go4_seo_patch.py / ruční úpravy a rebuild je NESMÍ ztratit):
+      • <title> (verbatim — PAGES['title'] je jen fallback pro novou stránku),
+      • meta description, link canonical, link rel=alternate hreflang, meta property og:*.
+    Vrací (live_title|None, seo_head_block_str)."""
+    mt = re.search(r'<title>(.*?)</title>', content, re.DOTALL)
+    live_title = mt.group(1).strip() if mt else None
+    tags = []
+    m = re.search(r'<meta\s+name="description"[^>]*>', content)
+    if m:
+        tags.append(m.group(0))
+    for pat in (r'<link\s+rel="canonical"[^>]*>',
+                r'<link\s+rel="alternate"\s+hreflang[^>]*>',
+                r'<meta\s+property="og:[^"]+"[^>]*>'):
+        tags.extend(re.findall(pat, content))
+    seo_head = ''.join(f'  {t}\n' for t in tags)
+    return live_title, seo_head
+
+
 def build_one(page: dict) -> str:
     path = ROOT / page['rel']
     if not path.exists():
@@ -377,7 +418,9 @@ def build_one(page: dict) -> str:
         return f"  ⚠ SKIP {page['rel']} — chybí <main id=\"main\">...</main> block"
     header_extra = extract_header_extra(src)  # zachová lang-switcher z živého HTML
     body_pre, body_post = extract_body_extra(src)  # zachová page-specific obsah mimo <main>
-    rendered = render_template(page, main_html, header_extra, body_pre, body_post)
+    live_title, seo_head = extract_seo_head(src)  # zachová SEO head z živého HTML
+    rendered = render_template(page, main_html, header_extra, body_pre, body_post,
+                               live_title, seo_head)
     # BOM politika: zachovat stav zdrojové stránky — když měla UTF-8 BOM, výstup ho má taky;
     # když ne, nepřidávat. (render_template začíná <!DOCTYPE bez BOM.)
     if src.startswith('﻿'):  # UTF-8 BOM
