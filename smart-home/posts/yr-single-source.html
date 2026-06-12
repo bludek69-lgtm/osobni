@@ -11,6 +11,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="canonical" href="https://bludek69-lgtm.github.io/smart-home-website/posts/yr-single-source.html">
+
+  <link rel="icon" href="/favicon.ico">
+  <meta property="og:title" content="Tři zdroje počasí → jeden | SMART HOME">
+  <meta property="og:description" content="Tři zdroje počasí ve jednom systému, briefing recitující 13 °C zatímco venku bylo 6 °C, a &#x27;dobré ráno&#x27; v noci. Jak vznikla vrstva LOCATION_TIME_GUARD a yr.no se stalo jediným zdrojem pravdy.">
+  <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
+  <meta property="og:url" content="https://cestovatel69.cz/smart-home/posts/yr-single-source.html">
+  <meta property="og:type" content="website">
 </head>
 <body>
   <header class="site-header">
@@ -72,7 +79,7 @@
           <li>
             <strong>OpenWeatherMap fetch</strong> v <code>sh_context_full_v1.js</code>.
             HTTP volání na <code>api.openweathermap.org</code> s hardcoded GPS souřadnicemi
-            Semily (50.6012, 15.4950). Klíč v Homey proměnné. Funkční, ale duplicate.
+            byt (LOCATION_REDACTED). Klíč v Homey proměnné. Funkční, ale duplicate.
           </li>
           <li>
             <strong>Open-Meteo fetch</strong> v <code>sh_weather_fetcher_v1</code>.
@@ -241,10 +248,10 @@ const isStuckPresence = (info) =&gt; info.exists &amp;&amp; info.value === true 
   "utc_offset":    "+02:00",
   "local_time_iso": "2026-05-12T07:32:41",
   "local_hour":    7,
-  "latitude":      50.6012,    ← Semily
-  "longitude":     15.495,
+  "latitude":      …,         ← LOCATION_REDACTED
+  "longitude":     …,
   "altitude":      489,
-  "city":          "Semily",
+  "city":          "LOCATION_REDACTED",
   "country":       "CZ",
   "sunrise_local": "05:14",
   "sunset_local":  "20:35",
@@ -260,7 +267,7 @@ const isStuckPresence = (info) =&gt; info.exists &amp;&amp; info.value === true 
           Den se nedělí podle hardcoded hodin („morning = 5–10"), ale podle skutečného
           východu a západu slunce z yr.no. <code>morning</code> = od (sunrise − 1h) do
           (sunrise + 4h). <code>night</code> = mezi (sunset + 1h) a (sunrise − 1h).
-          V Semilech 12. května 2026: sunrise 5:14, sunset 20:35 — takže morning =
+          U nás 12. května 2026: sunrise 5:14, sunset 20:35 — takže morning =
           4:14–9:14, evening = 18:35–21:35.
         </p>
 

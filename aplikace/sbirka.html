@@ -7,6 +7,13 @@
   <meta name="description" content="Vlastní katalog mincí, bankovek a známek se vzhledem aukčního domu. AI rozpoznávání z fotky, oceňování, odkazy na burzy, import z Excelu. Lokálně, bez cloudu.">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🪙%3C/text%3E%3C/svg%3E">
+
+  <link rel="canonical" href="https://cestovatel69.cz/aplikace/sbirka.html">
+  <meta property="og:title" content="Sbírka — Numismatika &amp;amp; Filatelie — Moje aplikace — Luděk">
+  <meta property="og:description" content="Vlastní katalog mincí, bankovek a známek se vzhledem aukčního domu. AI rozpoznávání z fotky, oceňování, odkazy na burzy, import z Excelu. Lokálně, bez cloudu.">
+  <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
+  <meta property="og:url" content="https://cestovatel69.cz/aplikace/sbirka.html">
+  <meta property="og:type" content="website">
 </head>
 <body>
 
@@ -118,7 +125,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Funkční verze <strong>1.1.0</strong> (květen 2026). Veřejné demo + plná lokální verze (web i Windows .exe). Soukromé pro vlastní použití — žádný public hosting reálných dat, žádné účty, žádné platby. Detailní průběh vývoje je ve <button class="diary-link" id="openDeník2">vývojovém deníku</button>.</p>
+  <p>Aktuální verze <strong>1.1.6 BETA</strong> (červen 2026), ke stažení na stránce <a href="index.html">Moje aplikace</a>. Veřejné demo + plná lokální verze (web i Windows .exe). Soukromé pro vlastní použití — žádný public hosting reálných dat, žádné účty, žádné platby. Detailní průběh vývoje je ve <button class="diary-link" id="openDeník2">vývojovém deníku</button>.</p>
 </section>
 </main>
 
@@ -136,7 +143,7 @@
         <li><strong>AI rozpoznávání z fotky</strong> — Gemini vision: přečte text na kusu a předvyplní formulář (kategorie, země, rok, nominál, stav). Řešeno: správný model (gemini-2.5-pro), SSL přes systémové certifikáty (firemní síť), čeština ve výstupu, KYC kontrola kvality fotky (rozmazané/není mince → nehodnotí), <strong>líc + rub v jednom kroku</strong>, návod na focení (rámeček jako u ověřování dokladu).</li>
         <li><strong>Deep-linky na burzy</strong> — z parametrů položky se poskládá hledání: Numista / NGC / PCGS / Colnect / Pofis (katalogy), eBay prodané / acsearch / CoinArchives / Delcampe (realizované ceny), Aukro / eBay (aktivní). Pravidlo „realizovaná > aktivní".</li>
         <li><strong>Windows aplikace (Tauri)</strong> — jeden klik na ikonu spustí lokální backend sám (sidecar) a otevře plnou verzi ve vlastním okně, bez konzole. Plus spouštěč přes prohlížeč (Edge --app).</li>
-        <li><strong>Bezpečnost</strong> — reálná data (SQLite + fotky) jen lokálně v <code>C:\.Projekt\.CollectionPrivateData</code>, na GitHub jde jen kód + ukázková data. Backend servíruje frontend bez vystavení konfigurace.</li>
+        <li><strong>Bezpečnost</strong> — reálná data (SQLite + fotky) zůstávají jen lokálně na disku, na GitHub jde jen kód + ukázková data. Backend servíruje frontend bez vystavení konfigurace.</li>
         <li><strong>Základ (Phase A–H)</strong> — bezpečná architektura, read-only MVP, editor sbírky, oceňování s důkazy, exporty (CSV/Excel/PDF/ZIP), Windows launcher, CI + demo.</li>
       </ul>
       <p style="color:var(--text-mut,#777);font-size:.85rem">Pozn.: appka eviduje a orientačně oceňuje — neprovádí znaleckou činnost. Reálnou cenu vždy ověř na burze.</p>
@@ -149,6 +156,8 @@
     <div>© Budinský Luděk · Osobní web</div>
     <div class="footer-links">
       <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://github.com/bludek69-lgtm" target="_blank" rel="noopener">GitHub</a>
+      <a href="/smart-home/kontakt.html">Kontakt</a>
       <a href="../smart-home/">Smart Home web</a>
     </div>
   </div>

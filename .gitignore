@@ -32,3 +32,10 @@ smart-home/.gitignore
 # backup soubory (nepatří na web)
 smart-home/*.bak*
 *.bak_*
+
+# Audit/repair vystupy (lokalni, nepatri na web)
+_reports/
+
+# Foto staging kdekoli ve strome (GPS metadata, duplicity)
+**/photos/_staging/
+**/photos/_inventory.json

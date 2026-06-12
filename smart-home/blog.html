@@ -10,6 +10,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="style.css" />
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="canonical" href="https://cestovatel69.cz/smart-home/blog.html">
+  <meta property="og:title" content="Blog a novinky | SMART HOME">
+  <meta property="og:description" content="Pravidelné poznámky o tom, co se v systému změnilo, co se rozbilo a jak se to fixovalo.">
+  <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
+  <meta property="og:url" content="https://cestovatel69.cz/smart-home/blog.html">
+  <meta property="og:type" content="website">
 </head>
 <body>
   <a href="#main" class="skip-link">Přeskočit na obsah</a>
@@ -35,7 +43,7 @@
           <li><a href="pribeh.html">Příběh</a></li>
           <li><a href="blog.html" class="is-active" aria-current="page">Blog</a></li>
           <li><a href="kontakt.html">Kontakt</a></li>
-          <li><a href="aplikace.html">Sbírka App</a></li>
+          <li><a href="aplikace.html">Collection App</a></li>
         </ul>
       </nav>
     </div>
@@ -102,7 +110,7 @@
               <span class="buildlog-tag">FIX</span>
             </div>
             <h3>SIGABRT každých 5 minut — group concurrency, ne vadný script</h3>
-            <p>Čtyři dny audit memory, knihoven a logování. Nasazený forensic patch na 80 hot-path scriptech (odstranění <code>Promise.race + wait()</code> z inline <code>fetchWithTimeout</code>). Crash cyklus pokračoval. Teprve když uživatel vizuálně oznámil <strong>„padá to přesně každých 5 minut"</strong>, příčina začala konvergovat. Nešlo o jeden vadný script — bylo to <strong>skupinová souběžná zátěž</strong>: 17 Advanced Flow s triggerem <code>cron:every_nth {n:5, type:minute}</code> spouštělo HomeyScript synchronně na 00s 5min hranici, runtime nezvládl souběh. <strong>Emergency 5-min isolation</strong> (vypnutí celé /5min HomeyScript skupiny) zastavila pády — crashedCount +0 za 12 minut. Pak <strong>R1</strong> obnovil 3 kritické flows s delay 30/60/90s (Heating, Presence Failsafe, Brain Guardian). <strong>R1B</strong> rozprostřel 8 lehkých flows přes delays 5–195s. <strong>R1C</strong> snížil kadenci 3 nejtěžších na <code>/10m</code> (Device Availability, Health Monitor, OpenSpace Autoheal) — mem peak spadl z 235 MB na ~145 MB median (−38 %). <strong>ENABLE-ALL sequential</strong> vrátil zbývajících 6 heavy flows (Dashboard, Health Alert, Context Full, Diagnostic, Meta, AI Guard) na <code>/15m</code> nebo <code>/30m</code> s offsetem 215–320s, 1 PUT na flow + reálné fire ověření + 10 min observační okno. Tři hodiny, 6 kroků, 0 crashes během deploye. Žádný HomeyScript PUT, žádná business logika dotčená, žádný manual restart. Klíčová lekce: <strong>před hlubší crash analýzou nejdřív spočítej intervaly mezi pády</strong> — pravidelný interval = trigger-driven cause. <a href="posts/sigabrt-5min-group-concurrency.html">Číst delší post →</a></p>
+            <p>Čtyři dny audit memory, knihoven a logování. Nasazený forensic patch na 80 hot-path scriptech (odstranění <code>Promise.race + wait()</code> z inline <code>fetchWithTimeout</code>). Crash cyklus pokračoval. Teprve když uživatel vizuálně oznámil <strong>„padá to přesně každých 5 minut"</strong>, příčina začala konvergovat. Nešlo o jeden vadný script — bylo to <strong>skupinová souběžná zátěž</strong>: 17 Advanced Flow s triggerem <code>cron:every_nth {n:5, type:minute}</code> spouštělo HomeyScript synchronně na 00s 5min hranici, runtime nezvládl souběh. <strong>Emergency 5-min isolation</strong> (vypnutí celé /5min HomeyScript skupiny) zastavila pády — crashedCount +0 za 12 minut. Pak <strong>R1</strong> obnovil 3 kritické flows s delay 30/60/90s (Heating, Presence Failsafe, Brain Guardian). <strong>R1B</strong> rozprostřel 8 lehkých flows přes delays 5–195s. <strong>R1C</strong> snížil kadenci 3 nejtěžších na <code>/10m</code> (Device Availability, Health Monitor, OpenSpace Autoheal) — mem peak spadl z 235 MB na ~145 MB median (−38 %). <strong>ENABLE-ALL sequential</strong> vrátil zbývajících 6 heavy flows (Dashboard, Health Alert, Context Full, Diagnostic, Meta, AI Guard) na <code>/15m</code> nebo <code>/30m</code> s offsetem 215–320s, 1 PUT na flow + reálné fire ověření + 10 min observační okno. Tři hodiny, 6 kroků, 0 crashes během deploye. Žádný HomeyScript PUT, žádná business logika dotčená, žádný manual restart. Klíčová lekce: <strong>před hlubší crash analýzou nejdřív spočítej intervaly mezi pády</strong> — pravidelný interval = trigger-driven cause.</p>
           </article>
 
           <article class="buildlog-entry bl-fix" role="listitem">
@@ -156,7 +164,7 @@
               <span class="buildlog-tag">ARCHITEKTURA</span>
             </div>
             <h3>Tři zdroje počasí → jeden. LOCATION_TIME_GUARD den.</h3>
-            <p>Briefing recitoval 13 °C zatímco venku bylo 6 °C. V 3:03 ráno se sám spustil než zazvonil budík. A systém uměl říct „dobré ráno" v noci. Audit odhalil tři paralelní zdroje počasí (yr.no + OpenWeatherMap + Open-Meteo) ve dvou různých městech (Semily / Praha) a hardcoded fallback teplotu. Konsolidace: yr.no jako jediný zdroj (lokalita Semily 50.6012/15.495), nový skript <code>sh_weather_yr_bridge_v1</code> (cron 10 min → 22 vars), centrální vrstva <code>sh_location_time_context_v1</code> (master JSON pro lokaci+čas+phase, refresh 5 min). Smazáno: Open-Meteo fetcher, OWM HTTP fetch v context_full (−2 868 znaků dead code), <code>sh_owm_api_key</code>, hardcoded GPS v dashboards. Greeting guard v briefingu: phase=night → „Vítej, Luďku" místo „Dobré ráno". Phase guard v morning_brain blokuje motion-trigger v noci bez alarmu. <a href="posts/yr-single-source.html">Číst delší post →</a></p>
+            <p>Briefing recitoval 13 °C zatímco venku bylo 6 °C. V 3:03 ráno se sám spustil než zazvonil budík. A systém uměl říct „dobré ráno" v noci. Audit odhalil tři paralelní zdroje počasí (yr.no + OpenWeatherMap + Open-Meteo) ve dvou různých městech a hardcoded fallback teplotu. Konsolidace: yr.no jako jediný zdroj (lokalita bytu, LOCATION_REDACTED), nový skript <code>sh_weather_yr_bridge_v1</code> (cron 10 min → 22 vars), centrální vrstva <code>sh_location_time_context_v1</code> (master JSON pro lokaci+čas+phase, refresh 5 min). Smazáno: Open-Meteo fetcher, OWM HTTP fetch v context_full (−2 868 znaků dead code), <code>sh_owm_api_key</code>, hardcoded GPS v dashboards. Greeting guard v briefingu: phase=night → „Vítej, Luďku" místo „Dobré ráno". Phase guard v morning_brain blokuje motion-trigger v noci bez alarmu. <a href="posts/yr-single-source.html">Číst delší post →</a></p>
           </article>
 
           <article class="buildlog-entry bl-fix" role="listitem">
@@ -488,7 +496,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> SMART HOME projekt · Semily · Vyrobeno s ❤️ a script-first myšlením.</p>
+      <p>© <span id="year"></span> SMART HOME projekt · Vyrobeno s ❤️ a script-first myšlením.</p>
       <p class="footer-meta">Veřejná prezentace · žádné API klíče · žádné lokální IP · žádné ovládání odtud.</p>
       <p class="footer-meta"><a href="technicka-mapa.html">Technická mapa →</a> · <a href="index.html">Domů</a></p>
     </div>

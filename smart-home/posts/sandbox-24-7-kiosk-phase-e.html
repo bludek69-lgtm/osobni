@@ -11,6 +11,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="canonical" href="https://bludek69-lgtm.github.io/smart-home-website/posts/sandbox-24-7-kiosk-phase-e.html">
+
+  <link rel="icon" href="/favicon.ico">
+  <meta property="og:title" content="Sandbox 24/7 + kiosk Phase E + cache retry — den úklidu | SMART HOME">
+  <meta property="og:description" content="14. května 2026 — den, kdy se RPi/HAOS proměnil v plnohodnotnou testovací bránu. Python sandbox runner 24/7, kiosk Phase E s cache fallback chain, dashboard cache retry fix v2.1. 20/20 testů PASS, 0 Homey writes.">
+  <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
+  <meta property="og:url" content="https://cestovatel69.cz/smart-home/posts/sandbox-24-7-kiosk-phase-e.html">
+  <meta property="og:type" content="website">
 </head>
 <body>
   <header class="site-header">
@@ -182,7 +189,7 @@ RETRY_BACKOFFS = (0.5, 1.5)  # 3 total attempts</code></pre>
         <h2>Kiosk Phase E — RPi-only rebuild</h2>
 
         <p>
-          Kiosek (RPi 192.168.1.122 s 1024×600 WaveShare displayem) běžel HTML z 11. 5.
+          Kiosek (RPi 192.168.1.xxx s 1024×600 WaveShare displayem) běžel HTML z 11. 5.
           v 19:25 — verze, která nikdy neznala dashboard cache. Když HAOS-side cache
           pipeline začala produkovat čerstvý JSON, kiosek o tom neměl jak vědět.
           Pořád polloval direct přes <code>server.py</code> proxy na Homey REST.
