@@ -1,27 +1,53 @@
-"""Generate Moje aplikace section: hub index + 6 sub-pages in CS/EN/IT.
+"""Generate Moje aplikace section: hub index + sub-pages in CS/EN/IT.
 
-⛔ DEPRECATED / STALE (2026-06-12): data v tomto skriptu (verze, texty, checksum odkazy)
-jsou ZASTARALÉ vůči živým stránkám — živé HTML v aplikace/ je zdroj pravdy
-(release verze dle latest.json, checksum odkazy odstraněny, budline.html přidána ručně).
-Spuštění by přepsalo aktuální obsah starým. Pokud skript chceš oživit, nejdřív
-synchronizuj datové dicty se živým stavem a spusť s --force-i-synced-data.
-
-Each sub-page is built from a structured spec (Python dict) — text + asset
-paths + tech badges. Output: <main> blocks ready to be wrapped by _build_pages.py.
+DATOVÉ ZDROJE (oprava 2026-06-12):
+  • Verze + download soubory: ŽIVÝ latest.json repa bludek69-lgtm/aplikace
+    (fetch při buildu; offline fallback = _data/latest_cache.json).
+    Žádné verze už nejsou natvrdo v tomto skriptu.
+  • Checksum odkazy: ODSTRANĚNY (politika webu 2026-06-12 — download bez
+    viditelných CHECKSUMS odkazů; mechanismus v repu aplikace netknut).
+  • Zápis: MERGE-MODE — u existující stránky se vymění JEN obsah <main>;
+    head (SEO tagy), header (lang-switcher) a footer zůstávají ze živé stránky.
+    Nová stránka se založí minimálním wrapperem (pak spusť _build_pages.py).
+  • Ručně udržované stránky (budline, sbirka, tenispark detail, app-tester,
+    resident-auditor, meal-planner stub) tento builder NEgeneruje.
 
 Run from osobni root:
-    py -3 _build_aplikace_pages.py --force-i-synced-data
+    py -3 _build_aplikace_pages.py
 """
 from __future__ import annotations
 import io
+import json
+import re
 import sys
+import urllib.request
 from pathlib import Path
 
-if "--force-i-synced-data" not in sys.argv:
-    print("⛔ STALE BUILDER GUARD: tento generátor má zastaralá data (verze/texty/odkazy).")
-    print("   Živé HTML v aplikace/ je zdroj pravdy. Nejdřív synchronizuj datové dicty,")
-    print("   pak spusť s --force-i-synced-data. Nic nebylo přepsáno.")
-    sys.exit(1)
+LATEST_URL = "https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json"
+LATEST_CACHE = Path(__file__).resolve().parent / "_data" / "latest_cache.json"
+
+
+def load_latest() -> dict:
+    """Verze/URL instalátorů: živý latest.json, fallback lokální cache."""
+    try:
+        # firemní síť / AV TLS interception → systémové certifikáty Windows
+        import truststore
+        truststore.inject_into_ssl()
+    except ImportError:
+        pass
+    try:
+        with urllib.request.urlopen(LATEST_URL, timeout=10) as r:
+            data = json.loads(r.read().decode("utf-8"))
+        LATEST_CACHE.parent.mkdir(exist_ok=True)
+        LATEST_CACHE.write_text(json.dumps(data, indent=1), encoding="utf-8")
+        versions = ", ".join(f"{k} {v['version']}" for k, v in data.items())
+        print(f"latest.json: live ({versions})")
+        return data
+    except Exception as e:
+        if LATEST_CACHE.exists():
+            print(f"latest.json: OFFLINE — používám cache {LATEST_CACHE.name} ({e})")
+            return json.loads(LATEST_CACHE.read_text(encoding="utf-8"))
+        sys.exit(f"⛔ latest.json nedostupný a cache neexistuje — nelze bezpečně generovat verze. ({e})")
 
 try:
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
@@ -157,6 +183,7 @@ APPS = [
     {
         "slug": "italia-travel",
         "icon": "🇮🇹",
+        "icon_html": '<svg width="30" height="20" viewBox="0 0 3 2" style="border-radius:3px;vertical-align:middle"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#f4f5f0"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg>',
         "color": "#008c45",
         "asset_dir": "italia-travel",
         "screens": [
@@ -197,7 +224,7 @@ APPS = [
                     ("Camper režim s ZTL warningy",        "Profil obytného auta (rozměry, hmotnost), 10 typů stopů, 11 facility chipů, warning badges když je místo v ZTL zóně nebo malé pro tvůj kemper."),
                     ("Funguje offline, multi-platform",    "Web PWA + Windows desktop (Tauri NSIS, 1.4 MB) + portable web launcher — všechno z jednoho codebase. V Itálii nepotřebuje roaming."),
                 ],
-                "status": "Funkční verze 0.5.0 (květen 2026). Windows installer + PWA + web launcher. Soukromé pro vlastní cesty — žádné public hosting, žádné účty, žádné platby přes aplikaci.",
+                "status": "<strong>Verze 1.0.1 — beta</strong> (červen 2026). 11 exportů (PDF, Word, KML/GPX, checklist, sdílení odkazem…), itinerář s kontrolou konfliktů, zálohy s kontrolním součtem, offline režim, AI asistent. Windows installer + PWA + web launcher. Soukromé pro vlastní cesty — žádné public hosting, žádné účty, žádné platby přes aplikaci.",
             },
             "en": {
                 "name":  "Italia Travel Planner",
@@ -219,7 +246,7 @@ APPS = [
                     ("Camper mode with ZTL warnings",         "Motorhome profile, 10 stop types, 11 facility chips, warnings when spot is in ZTL or too small for your camper."),
                     ("Works offline, multi-platform",         "Web PWA + Windows desktop (Tauri NSIS, 1.4 MB) + portable web launcher from one codebase. No roaming needed in Italy."),
                 ],
-                "status": "Working version 0.5.0 (May 2026). Windows installer + PWA + web launcher. Private for personal trips — no public hosting, no accounts, no payments through the app.",
+                "status": "<strong>Version 1.0.1 — beta</strong> (June 2026). 11 exports (PDF, Word, KML/GPX, checklist, share link…), itinerary with conflict checking, checksummed backups, offline mode, AI assistant. Windows installer + PWA + web launcher. Private, for my own trips — no public hosting, no accounts, no payments.",
             },
             "it": {
                 "name":  "Italia Travel Planner",
@@ -241,7 +268,7 @@ APPS = [
                     ("Modalità camper con avvisi ZTL", "Profilo camper, 10 tipi di sosta, 11 chip dotazione, avvisi quando il posto è in ZTL o piccolo per il camper."),
                     ("Funziona offline, multi-platform", "Web PWA + Desktop Windows (Tauri NSIS, 1.4 MB) + portable web launcher da un codice. Niente roaming serve in Italia."),
                 ],
-                "status": "Versione funzionante 0.5.0 (maggio 2026). Installer Windows + PWA + web launcher. Privata per viaggi personali — niente hosting pubblico, niente account, niente pagamenti tramite l'app.",
+                "status": "<strong>Versione 1.0.1 — beta</strong> (giugno 2026). 11 export (PDF, Word, KML/GPX, checklist, link di condivisione…), itinerario con controllo conflitti, backup con checksum, modalità offline, assistente AI. Installer Windows + PWA + web launcher. Privata, per i miei viaggi — niente hosting pubblico, account o pagamenti.",
             },
         },
     },
@@ -348,7 +375,7 @@ APPS = [
                     ("Bez API klíčů, bez cloudu",         "Aplikace nepotřebuje login do brokera. Ceny z veřejných zdrojů. Vše lokálně. Žádné riziko že pozice někdo uvidí."),
                     ("96 pozic, 444 testů",               "Aktuálně sleduje 96 akcií a ETF. Pod kapotou 444 automatických testů zajišťuje že parsery výpisů a fair-value engine fungují správně i po update."),
                 ],
-                "status": "Funkční MVP v0.3 (květen 2026), 8 rounds vývoje, ~3 měsíce aktivního vývoje. Lokální Windows aplikace přes Chrome --app launcher. Soukromá — žádné public hosting. Cíl: rozhodovací podpora pro mě, ne SaaS pro veřejnost.",
+                "status": "Funkční MVP v0.3.0 BETA (červen 2026), 8 kol vývoje, ~3 měsíce aktivního vývoje. Lokální Windows aplikace přes Chrome --app launcher. Soukromá — žádné public hosting. Cíl: rozhodovací podpora pro mě, ne SaaS pro veřejnost.",
             },
             "en": {
                 "name":  "Finance Analytik",
@@ -366,7 +393,7 @@ APPS = [
                     ("No API keys, no cloud",           "App doesn't need broker login. Prices from public sources. All local. No risk of position disclosure."),
                     ("96 positions, 444 tests",         "Currently tracks 96 stocks and ETFs. Under the hood 444 automated tests ensure parsers and fair-value engine stay correct after updates."),
                 ],
-                "status": "Working MVP v0.3 (May 2026), 8 rounds of development, ~3 months active. Local Windows app via Chrome --app launcher. Private — no public hosting. Goal: decision support for myself, not a SaaS for the public.",
+                "status": "Working MVP v0.3.0 BETA (June 2026), 8 rounds of development, ~3 months active. Local Windows app via Chrome --app launcher. Private — no public hosting. Goal: decision support for myself, not a SaaS for the public.",
             },
             "it": {
                 "name":  "Finance Analytik",
@@ -384,7 +411,7 @@ APPS = [
                     ("Niente API key, niente cloud",       "App senza login broker. Prezzi da fonti pubbliche. Tutto in locale. Zero rischio."),
                     ("96 posizioni, 444 test",             "Traccia 96 azioni e ETF. Sotto il cofano 444 test automatici per parser e fair-value engine."),
                 ],
-                "status": "MVP funzionante v0.3 (maggio 2026), 8 round di sviluppo, ~3 mesi attivi. App Windows locale via Chrome --app. Privata — niente hosting pubblico. Obiettivo: supporto decisionale per me, non SaaS pubblica.",
+                "status": "MVP funzionante v0.3.0 BETA (giugno 2026), 8 round di sviluppo, ~3 mesi attivi. App Windows locale via Chrome --app. Privata — niente hosting pubblico. Obiettivo: supporto decisionale per me, non SaaS pubblica.",
             },
         },
     },
@@ -406,7 +433,7 @@ APPS = [
         "stack": ["React", "TypeScript", "Vite", "PWA", "Tailwind"],
         "i18n": {
             "cs": {
-                "name":  "Krabíčková dieta",
+                "name":  "Krabičková dieta",
                 "lead":  "Vlastní plánovač jídelníčku — místo přihlašování do dietních aplikací co tě sledují má svojí aplikaci co běží jen u mě v prohlížeči. Sestaví si týdenní plán krabiček podle mého kalorického cíle, spočítá nákupní seznam, hlídá makro. Bez účtu, bez cloudu.",
                 "what":  "<p><strong>Proč vznikl:</strong> zkoušel jsem několik dietních aplikací (MyFitnessPal, Yazio, Lifesum…) a všechny mě naštvaly. Buď chtěly účet a posílaly mi reklamy, nebo neuměly česká jídla, nebo tlačily konkrétní výživovou filozofii. Tahle aplikace běží <strong>jen u mě v prohlížeči</strong> — profil žije v localStorage (paměti prohlížeče), žádný server nevidí moji váhu, kalorie, ani co dnes jím.</p>"
                          "<p><strong>Jak funguje:</strong> Zadám svoji výšku, váhu, věk, aktivitu. Aplikace spočítá kolik kalorií denně potřebuju (vzorec Mifflin-St Jeor pro klidový metabolismus + multiplier podle aktivity). Pokud chci zhubnout, doporučí asymetrický deficit (lehčí o pár stovek kcal). Pokud nabrat svaly, navíc se snaží vybírat recepty s vyšším protein ratio.</p>"
@@ -598,10 +625,25 @@ APPS = [
     },
     {
         "slug": "ridic-turnusy-mzdy",
+        "wip": True,                  # hub badge Ve vyvoji i kdyz ma demo nahledy
+        "screens_langs": ["cs"],      # zivy stav: demo galerie jen na CS strance
+        "screens_h2": {"cs": "Náhledy (ukázková data)"},
+        "screens_note": {"cs": "⚠️ Všechny náhledy ukazují <strong>demo data</strong> — žádná skutečná výplata, směny ani osobní údaje. Skutečné screenshoty budou doplněny po veřejném demo režimu aplikace."},
         "icon": "🚌",
         "color": "#e8a317",
         "asset_dir": "ridic-turnusy-mzdy",
-        "screens": [],  # ještě nejsou — aplikace ve vývoji
+        "screens": [
+            ("img/budline-demo/budline-demo-dashboard.png", "Přehled — měsíční souhrn (demo data)", "BudLine — Přehled (ukázková demo data, žádná skutečná výplata)"),
+            ("img/budline-demo/budline-demo-kontrola-vyplaty.png", "Kontrola výplat — spočítané vs. vyplacené (demo data)", "BudLine — Kontrola výplat (ukázková demo data)"),
+            ("img/budline-demo/budline-demo-porovnani-pasek.png", "Porovnání pásek (demo data)", "BudLine — Porovnání pásek (ukázková demo data)"),
+            ("img/budline-demo/budline-demo-nova-smena.png", "Nová směna (demo data)", "BudLine — Nová směna (ukázková demo data)"),
+            ("img/budline-demo/budline-demo-vlastni-paska.png", "Vlastní páska (demo data)", "BudLine — Vlastní páska (ukázková demo data)"),
+            ("img/budline-demo/budline-demo-legislativa-aetr.png", "Legislativa / AETR — kontrolní pomůcka (demo data)", "BudLine — Legislativa / AETR (ukázková demo data)"),
+            ("img/budline-demo/budline-demo-dane.png", "Daně / náhrady (demo data)", "BudLine — Daně a náhrady (ukázková demo data)"),
+            ("img/budline-demo/budline-demo-ridici.png", "Řidiči — ukázkový profil (demo data)", "BudLine — Řidiči (ukázkový demo profil)"),
+            ("img/budline-demo/budline-demo-pruvodce.png", "Průvodce prvním spuštěním (demo data)", "BudLine — Průvodce prvním spuštěním (ukázková demo data)"),
+            ("img/budline-demo/budline-demo-nastaveni.png", "Nastavení (demo data)", "BudLine — Nastavení (ukázková demo data)"),
+        ],  # ještě nejsou — aplikace ve vývoji
         "stack": ["Python", "Excel / XLSX parser", "PDF parser (turnusy)", "Lokální Windows app"],
         "i18n": {
             "cs": {
@@ -617,7 +659,7 @@ APPS = [
                     ("Měsíční přehled",            "Kolik odjeto hodin, kolik příplatků, kolik stravenek, kolik dovolené zbývá."),
                     ("Lokální, bez cloudu",        "Žádný účet, žádné API. Výplata a turnusy zůstávají u mě v PC."),
                 ],
-                "status": "**Ve vývoji.** Phase 1 (PDF parser) skeleton, Phase 2-4 plánované. Žádné public hosting plánované — privátní pomůcka pro vlastní mzdové sebekontrolu.",
+                "status": "<strong>Ve vývoji.</strong> Phase 1 (PDF parser) skeleton, Phase 2-4 plánované. Žádné public hosting plánované — privátní pomůcka pro vlastní mzdové sebekontrolu.",
             },
             "en": {
                 "name":  "Driver work — shifts & salary",
@@ -632,7 +674,7 @@ APPS = [
                     ("Monthly overview",          "Hours driven, bonuses, meal vouchers, vacation days left."),
                     ("Local, no cloud",           "No account, no API. Payslip and schedules stay on my PC."),
                 ],
-                "status": "**In development.** Phase 1 (PDF parser) skeleton, Phase 2-4 planned. No public hosting planned — private payroll self-check tool.",
+                "status": "<strong>In development.</strong> Phase 1 (PDF parser) skeleton, Phase 2-4 planned. No public hosting planned — private payroll self-check tool.",
             },
             "it": {
                 "name":  "Lavoro autista — turni e stipendio",
@@ -647,7 +689,7 @@ APPS = [
                     ("Riepilogo mensile",        "Ore guidate, indennità, buoni pasto, giorni ferie rimanenti."),
                     ("Locale, niente cloud",     "Niente account, niente API. Busta e turni restano sul PC."),
                 ],
-                "status": "**In sviluppo.** Phase 1 (PDF parser) skeleton, Phase 2-4 pianificate. Nessun hosting pubblico previsto — strumento privato di auto-verifica stipendio.",
+                "status": "<strong>In sviluppo.</strong> Phase 1 (PDF parser) skeleton, Phase 2-4 pianificate. Nessun hosting pubblico previsto — strumento privato di auto-verifica stipendio.",
             },
         },
     },
@@ -657,6 +699,23 @@ APPS = [
 # ────────────────────────────────────────────────────────────
 # Builders
 # ────────────────────────────────────────────────────────────
+APPS.append({
+    "slug": "tenispark",
+    "icon": "🎾",
+    "color": "#b04a24",
+    "hub_only": True,   # detail tenispark.html je udrzovany rucne (galerie + download)
+    "hub_langs": ["cs"],  # zivy stav: karta jen na CS hubu (EN/IT maji tenispark v downloads + detailu)
+    "hub_badge": {"cs": "Soukromá beta", "en": "Private beta", "it": "Beta privata"},
+    "screens": [],
+    "stack": [],
+    "i18n": {
+        "cs": {"name": "TenisPark", "lead": "Jedna aplikace pro malý tenisový areál — rezervace kurtů bez kolizí, kiosek se skladem a sešitem dlužníků, denní uzávěrka a domácí rozpočet. Všechno lokálně, bez cloudu."},
+        "en": {"name": "TenisPark", "lead": "One app for a whole small tennis facility: home budget, court bookings and a snack kiosk. Instead of three notebooks and a calculator — everything in one place, on the computer, offline."},
+        "it": {"name": "TenisPark", "lead": "Un'app per un piccolo centro tennis: budget di casa, prenotazioni campi e chiosco. Invece di tre quaderni e una calcolatrice — tutto in un posto, sul computer, offline."},
+    },
+})
+
+
 def lang_prefix(lang: str) -> str:
     return "" if lang == "cs" else f"{lang}/"
 
@@ -699,9 +758,8 @@ DL_I18N = {
         "via": "přímé stažení .exe",
         "beta": "BETA",
         "verified_title": "✅ Ověřené beta instalátory",
-        "verified_text": "Tyto instalátory byly ověřeny ve Windows VM: čistá instalace i upgrade ze starší verze proběhly bez duplicitní instalace. Aplikace jsou stále beta verze, ne finální vydání.",
+        "verified_text": "Tyto instalátory byly ověřeny ve Windows VM: čistá instalace i upgrade ze starší verze proběhly bez duplicitní instalace. Všechny aplikace jsou beta verze (ne finální vydání).",
         "close_note": "Před instalací zavři běžící aplikaci.",
-        "checksum_link": "Zobrazit kontrolní součet",
         "guide_title": "Návod k instalaci",
         "guide": [
             "Zavři aplikaci, pokud už běží.",
@@ -715,9 +773,7 @@ DL_I18N = {
         "warn": [
             "🔒 Instalátory jsou zaheslované — <strong>instalační heslo není součástí veřejné stránky a poskytuje se odděleně</strong>.",
             "🛡️ Windows může zobrazit upozornění <strong>SmartScreen</strong> (unsigned beta instalátor). Pokud aplikaci znáš a čekáš ji ode mě, klikni „Další informace“ → „Přesto spustit“.",
-            "🔑 Kontrolní součty SHA-256 najdeš v souboru CHECKSUMS.txt.",
         ],
-        "checksums": "Zobrazit CHECKSUMS.txt",
     },
     "en": {
         "h2": "My apps to download",
@@ -726,9 +782,8 @@ DL_I18N = {
         "via": "direct .exe download",
         "beta": "BETA",
         "verified_title": "✅ Verified beta installers",
-        "verified_text": "These installers were verified in a Windows VM: both a clean install and an upgrade from an older version completed with no duplicate installation. The apps are still beta versions, not final releases.",
+        "verified_text": "These installers were verified in a Windows VM: both a clean install and an upgrade from an older version completed with no duplicate installation. All apps are beta versions (not final releases).",
         "close_note": "Close the running app before installing.",
-        "checksum_link": "View checksum",
         "guide_title": "Installation guide",
         "guide": [
             "Close the app if it is already running.",
@@ -742,9 +797,7 @@ DL_I18N = {
         "warn": [
             "🔒 Installers are password-protected — <strong>the installation password is not part of this public page and is provided separately</strong>.",
             "🛡️ Windows may show a <strong>SmartScreen</strong> warning (unsigned beta installer). If you know the app and expect it from me, click “More info” → “Run anyway”.",
-            "🔑 SHA-256 checksums are in the CHECKSUMS.txt file.",
         ],
-        "checksums": "View CHECKSUMS.txt",
     },
     "it": {
         "h2": "Le mie app da scaricare",
@@ -753,9 +806,8 @@ DL_I18N = {
         "via": "download .exe diretto",
         "beta": "BETA",
         "verified_title": "✅ Installer beta verificati",
-        "verified_text": "Questi installer sono stati verificati in una VM Windows: sia l'installazione pulita sia l'aggiornamento da una versione precedente sono andati a buon fine senza installazioni duplicate. Le app sono ancora versioni beta, non release finali.",
+        "verified_text": "Questi installer sono stati verificati in una VM Windows: sia l'installazione pulita sia l'aggiornamento da una versione precedente sono andati a buon fine senza installazioni duplicate. Tutte le app sono versioni beta (non release finali).",
         "close_note": "Chiudi l'app in esecuzione prima di installare.",
-        "checksum_link": "Mostra checksum",
         "guide_title": "Guida all'installazione",
         "guide": [
             "Chiudi l'app se è già in esecuzione.",
@@ -769,43 +821,77 @@ DL_I18N = {
         "warn": [
             "🔒 Gli installer sono protetti da password — <strong>la password di installazione non è su questa pagina pubblica e viene fornita separatamente</strong>.",
             "🛡️ Windows può mostrare un avviso <strong>SmartScreen</strong> (installer beta non firmato). Se conosci l’app e te l’aspetti da me, clicca “Ulteriori informazioni” → “Esegui comunque”.",
-            "🔑 I checksum SHA-256 sono nel file CHECKSUMS.txt.",
         ],
-        "checksums": "Mostra CHECKSUMS.txt",
     },
 }
 
-# (klíč, ikona, barva, verze, i18n popis)
-DL_APPS = [
-    {"icon": "🚍", "color": "#2d6ad5", "version": "1.2.5",
-     "name": "BudLine Panel", "file": "BudLinePanel-v1.2.5-Setup.exe",
+# Prezentační metadata download karet. VERZE + SOUBOR se doplní z latest.json
+# (load_latest) — klíč = klíč v latest.json. Pořadí = pořadí karet na stránce.
+# "more" = odkaz na detail stránku (per-lang href + label), "badge" = override
+# beta štítku, "note" = override poznámky pod tlačítkem.
+DL_META = [
+    {"key": "budline", "icon": "🚍", "color": "#2d6ad5", "name": "BudLine Panel",
      "desc": {"cs": "Evidence směn, turnusů a výplatních podkladů pro řidiče.",
               "en": "Shifts, rosters and payroll documents for drivers.",
-              "it": "Turni, rotazioni e documenti per la busta paga degli autisti."}},
-    {"icon": "🍱", "color": "#e2722e", "version": "0.8.6",
-     "name": "Meal Planner", "file": "MealPlanner-v0.8.6-Setup.exe",
+              "it": "Turni, rotazioni e documenti per la busta paga degli autisti."},
+     "more": {"cs": ("budline.html", "Více o aplikaci →"),
+              "en": ("budline.html", "More →"),
+              "it": ("budline.html", "Dettagli →")}},
+    {"key": "meal-planner", "icon": "🍱", "color": "#e2722e", "name": "Meal Planner",
      "desc": {"cs": "Jídelníček, krabičky a nákupní seznam.",
               "en": "Meal plan, meal-prep boxes and shopping list.",
               "it": "Menù, pasti pronti e lista della spesa."}},
-    {"icon": "🧳", "color": "#1a9c5b", "version": "0.7.6",
-     "name": "Italia Travel Planner", "file": "ItaliaTravel-v0.7.6-Setup.exe",
+    {"key": "italia", "icon": "🧳", "color": "#1a9c5b", "name": "Italia Travel Planner",
      "desc": {"cs": "Plánování cest do Itálie — itinerář a rozpočet.",
               "en": "Trip planning for Italy — itinerary and budget.",
               "it": "Pianificazione viaggi in Italia — itinerario e budget."}},
-    {"icon": "🪙", "color": "#9b59b6", "version": "1.1.5",
-     "name": "Collection", "file": "Collection-v1.1.5-Setup.exe",
+    {"key": "tenispark", "icon": "🎾", "color": "#b04a24", "name": "TenisPark",
+     "desc": {"cs": "Rezervace tenisových kurtů, kiosek se skladem a dlužníky, domácí rozpočet.",
+              "en": "Tennis court bookings, a kiosk with stock and debtors, and a home budget.",
+              "it": "Prenotazioni campi da tennis, chiosco con magazzino e debitori, budget di casa."},
+     "badge": {"cs": "SOUKROMÁ BETA", "en": "PRIVATE BETA", "it": "BETA PRIVATA"},
+     "note": {"cs": "🔒 Instalátor je chráněný heslem — heslo dávám osobně. Windows může ukázat SmartScreen varování (nepodepsáno) — „Další informace → Přesto spustit\".",
+              "en": "🔒 The installer is password-protected — I share the password personally. Windows may show a SmartScreen warning (unsigned) — \"More info → Run anyway\".",
+              "it": "🔒 L'installer è protetto da password — la condivido personalmente. Windows può mostrare un avviso SmartScreen (non firmato) — \"Ulteriori informazioni → Esegui comunque\"."}},
+    {"key": "collection", "icon": "🪙", "color": "#9b59b6", "name": "Collection",
      "desc": {"cs": "Evidence sbírky a popisy přes AI.",
               "en": "Collection catalog with AI descriptions.",
-              "it": "Catalogo della collezione con descrizioni AI."}},
+              "it": "Catalogo della collezione con descrizioni AI."},
+     "more": {"cs": ("sbirka.html", "Více o aplikaci →"),
+              "en": ("sbirka.html", "More →"),
+              "it": ("sbirka.html", "Dettagli →")}},
 ]
 
 
-def render_downloads(lang: str) -> str:
+def build_dl_apps(latest: dict) -> list[dict]:
+    """Spojí DL_META s živými verzemi z latest.json. Chybějící klíč = tvrdá chyba
+    (nikdy nemlčet a nepublikovat starou verzi)."""
+    out = []
+    for meta in DL_META:
+        rel = latest.get(meta["key"])
+        if not rel:
+            sys.exit(f"⛔ latest.json nemá klíč '{meta['key']}' — kartu nelze vygenerovat.")
+        app = dict(meta)
+        app["version"] = rel["version"]
+        app["file"] = rel["url"].rsplit("/", 1)[-1]
+        out.append(app)
+    return out
+
+
+def render_downloads(lang: str, dl_apps: list[dict]) -> str:
     D = DL_I18N[lang]
     cards = []
-    for app in DL_APPS:
+    for app in dl_apps:
         color = app["color"]
         desc = app["desc"][lang]
+        if app.get("more"):
+            href, label = app["more"][lang]
+            desc = f'{desc} <a href="{href}">{label}</a>'
+        badge = app.get("badge", {}).get(lang, D["beta"]) if isinstance(app.get("badge"), dict) else D["beta"]
+        note = app.get("note", {}).get(lang) if isinstance(app.get("note"), dict) else None
+        note_html = (f'<p style="margin:.5rem 0 0;font-size:.78rem;color:var(--txt-muted,#666)">{note}</p>'
+                     if note else
+                     f'<p style="margin:.5rem 0 0;font-size:.78rem;color:var(--txt-muted,#666)">⚠️ {D["close_note"]}</p>')
         cards.append(
             f'<div class="card" style="border-left:4px solid {color};">'
             f'<div class="card-icon">{app["icon"]}</div>'
@@ -815,15 +901,13 @@ def render_downloads(lang: str) -> str:
             f'font-size:.72rem;font-weight:600;vertical-align:middle">v{app["version"]}</span> '
             f'<span style="display:inline-block;background:#e8731a1f;color:#c25e10;'
             f'border:1px solid #e8731a66;padding:.1rem .5rem;border-radius:6px;'
-            f'font-size:.7rem;font-weight:700;letter-spacing:.04em;vertical-align:middle">{D["beta"]}</span></h3>'
+            f'font-size:.7rem;font-weight:700;letter-spacing:.04em;vertical-align:middle">{badge}</span></h3>'
             f'<p>{desc}</p>'
             f'<div class="card-cta" style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap">'
             f'<a href="{DL_BASE}{app["file"]}" download '
             f'style="display:inline-block;background:{color};color:#fff;text-decoration:none;'
-            f'padding:.5rem 1rem;border-radius:8px;font-weight:600;white-space:nowrap">⬇ {D["btn"]}</a>'
-            f'<a href="{DL_CHECKSUMS_URL}" target="_blank" rel="noopener" '
-            f'style="font-size:.78rem;color:{color};white-space:nowrap">{D["checksum_link"]}</a></div>'
-            f'<p style="margin:.5rem 0 0;font-size:.78rem;color:var(--txt-muted,#666)">⚠️ {D["close_note"]}</p>'
+            f'padding:.5rem 1rem;border-radius:8px;font-weight:600;white-space:nowrap">⬇ {D["btn"]}</a></div>'
+            f'{note_html}'
             "</div>"
         )
     cards_html = "\n      ".join(cards)
@@ -851,35 +935,51 @@ def render_downloads(lang: str) -> str:
     <ul style="margin:.5rem 0 0;padding-left:1.2rem;line-height:1.7">
         {warn_items}
     </ul>
-    <p style="margin:.7rem 0 0"><a href="{DL_CHECKSUMS_URL}" target="_blank" rel="noopener">{D["checksums"]}</a></p>
   </div>
 </section>
 """
 
 
-def render_hub(lang: str) -> str:
+def render_hub(lang: str, dl_apps: list[dict]) -> str:
     L = I18N[lang]
     cards = []
     # "In development" badge texts per language
     WIP_LABEL = {"cs": "Ve vývoji", "en": "In development", "it": "In sviluppo"}[lang]
     for app in APPS:
+        if app.get("hub_langs") and lang not in app["hub_langs"]:
+            continue
         a = app["i18n"][lang]
         slug = app["slug"]
         icon = app["icon"]
+        icon_div = f'<div class="card-icon">{icon}</div>'
+        if app.get("icon_html"):
+            icon_div = f'<div class="card-icon" aria-hidden="true">{app["icon_html"]}</div>'
         color = app["color"]
-        # WIP badge if no screens yet (development placeholder)
-        wip_badge = ""
-        if not app.get("screens"):
-            wip_badge = (
-                f'<span style="display:inline-block;background:{color}1f;color:{color};'
-                f'border:1px solid {color}55;padding:.15rem .55rem;border-radius:6px;'
-                f'font-size:.72rem;font-weight:600;margin-left:.4rem;vertical-align:middle">'
-                f'{WIP_LABEL}</span>'
-            )
+        # badge: per-app override (např. "Soukromá beta"), jinak WIP pokud bez screens
+        badge = ""
+        badge_label = (app.get("hub_badge") or {}).get(lang) if app.get("hub_badge") else (
+            WIP_LABEL if (not app.get("screens") or app.get("wip")) else None)
+        if badge_label:
+            # hub_badge (např. Soukromá beta) = oranžový beta styl jako na živém webu;
+            # WIP badge zůstává v barvě aplikace
+            if app.get("hub_badge"):
+                badge = (
+                    f'<span style="display:inline-block;background:#e8731a1f;color:#c25e10;'
+                    f'border:1px solid #e8731a66;padding:.15rem .55rem;border-radius:6px;'
+                    f'font-size:.72rem;font-weight:700;margin-left:.4rem;vertical-align:middle">'
+                    f'{badge_label}</span>'
+                )
+            else:
+                badge = (
+                    f'<span style="display:inline-block;background:{color}1f;color:{color};'
+                    f'border:1px solid {color}55;padding:.15rem .55rem;border-radius:6px;'
+                    f'font-size:.72rem;font-weight:600;margin-left:.4rem;vertical-align:middle">'
+                    f'{badge_label}</span>'
+                )
         cards.append(
             f'<a href="{slug}.html" class="card card-link" style="border-left:4px solid {color};">'
-            f'<div class="card-icon">{icon}</div>'
-            f'<h3>{a["name"]}{wip_badge}</h3>'
+            f'{icon_div}'
+            f'<h3>{a["name"]}{badge}</h3>'
             f'<p>{a["lead"]}</p>'
             f'<div class="card-cta">{L["open_card"]} →</div>'
             "</a>"
@@ -897,7 +997,7 @@ def render_hub(lang: str) -> str:
       {cards_html}
   </div>
 </section>
-{render_downloads(lang)}
+{render_downloads(lang, dl_apps)}
 """
 
 
@@ -916,23 +1016,44 @@ def render_app(lang: str, app: dict) -> str:
         for title, body in a["features"]
     )
     screen_cards = []
-    for filename, caption in app["screens"]:
-        url = img_url(lang, app["asset_dir"], filename)
-        screen_cards.append(
-            f'<figure style="margin:0">'
-            f'<img src="{url}" alt="{caption}" loading="lazy" '
-            f'style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block">'
-            f'<figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">{caption}</figcaption>'
-            "</figure>"
-        )
+    show_screens = (not app.get("screens_langs")) or (lang in app["screens_langs"])
+    if show_screens:
+        for entry in app["screens"]:
+            filename, caption = entry[0], entry[1]
+            alt = entry[2] if len(entry) > 2 else caption
+            # cesta s '/' = relativní k aplikace/ (cs) — passthrough; jinak sdílené assets
+            if "/" in filename:
+                url = filename if lang == "cs" else f"../../aplikace/{filename}"
+            else:
+                url = img_url(lang, app["asset_dir"], filename)
+            screen_cards.append(
+                f'<figure style="margin:0">'
+                f'<img src="{url}" alt="{alt}" loading="lazy" '
+                f'style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block">'
+                f'<figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">{caption}</figcaption>'
+                "</figure>"
+            )
     screens_block = ""
     if screen_cards:
-        screens_block = (
-            f'<section><h2>{L["screens"]}</h2>'
-            f'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem">'
-            + "\n      ".join(screen_cards)
-            + "</div></section>"
-        )
+        h2 = (app.get("screens_h2") or {}).get(lang) or L["screens"]
+        note = (app.get("screens_note") or {}).get(lang)
+        if note:
+            # víceřádkový formát s upozorněním (živý vzor: ridic demo galerie)
+            screens_block = (
+                f'<section>\n  <h2>{h2}</h2>\n'
+                f'  <p style="font-size:.9rem;color:var(--txt-muted,#666);margin:.2rem 0 .6rem">{note}</p>\n'
+                f'  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem">\n      '
+                + "\n      ".join(screen_cards)
+                + "\n  </div>\n</section>"
+            )
+        else:
+            # jednolinkový formát (původní generované stránky)
+            screens_block = (
+                f'<section><h2>{h2}</h2>'
+                f'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem">'
+                + "\n      ".join(screen_cards)
+                + "</div></section>"
+            )
     back = "../index.html"
     return f"""\
 <section class="hero" style="border-left:4px solid {color};padding-left:1.2rem">
@@ -1025,31 +1146,49 @@ def wrap_html(lang: str, title: str, depth: int, body: str) -> str:
 """
 
 
+def write_page(path: Path, lang: str, title: str, depth: int, body: str) -> str:
+    """MERGE-MODE zápis: u existující stránky vymění JEN <main id=\"main\">…</main>
+    (head se SEO tagy, header s lang-switcherem i footer zůstávají ze živé stránky).
+    Nová stránka → minimální wrapper (pak spusť _build_pages.py na rewrap)."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    new_main = f"<main id=\"main\">\n{body}\n</main>"
+    if path.exists():
+        src = path.read_text(encoding="utf-8")
+        merged, n = re.subn(r'<main[^>]*id="main"[^>]*>.*?</main>', lambda m: new_main,
+                            src, count=1, flags=re.DOTALL)
+        if n == 1:
+            if merged != src:
+                path.write_text(merged, encoding="utf-8")
+                return "merge"
+            return "beze změny"
+        # existující stránka bez <main id=main> — nepřepisovat naslepo
+        return "SKIP (chybí <main id=\"main\">)"
+    path.write_text(wrap_html(lang, title, depth, body), encoding="utf-8")
+    return "NOVÁ (spusť _build_pages.py)"
+
+
 def main() -> int:
-    written = []
+    latest = load_latest()
+    dl_apps = build_dl_apps(latest)
+    results = []
     for lang in ("cs", "en", "it"):
-        # Hub index
         L = I18N[lang]
         depth = 1 if lang == "cs" else 2
-        hub_html = wrap_html(lang, L["hub_title"], depth, render_hub(lang))
-        p = hub_path(lang)
-        p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(hub_html, encoding="utf-8")
-        written.append(p)
-        # Sub pages
+        # Hub index
+        r = write_page(hub_path(lang), lang, L["hub_title"], depth, render_hub(lang, dl_apps))
+        results.append((hub_path(lang), r))
+        # Sub pages (hub_only entries mají jen kartu na hubu, detail se negeneruje)
         for app in APPS:
+            if app.get("hub_only"):
+                continue
             title = f"{app['i18n'][lang]['name']} — {L['hub_h1']} — Luděk"
-            page_html = wrap_html(lang, title, depth, render_app(lang, app))
-            p2 = app_path(lang, app["slug"])
-            p2.parent.mkdir(parents=True, exist_ok=True)
-            p2.write_text(page_html, encoding="utf-8")
-            written.append(p2)
-    print(f"Wrote {len(written)} files:")
-    for w in written:
+            r = write_page(app_path(lang, app["slug"]), lang, title, depth, render_app(lang, app))
+            results.append((app_path(lang, app["slug"]), r))
+    for p, r in results:
         try:
-            print(f"  - {w.relative_to(ROOT)}")
+            print(f"  {r:28} {p.relative_to(ROOT)}")
         except ValueError:
-            print(f"  - {w}")
+            print(f"  {r:28} {p}")
     return 0
 
 
