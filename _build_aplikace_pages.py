@@ -715,6 +715,24 @@ APPS.append({
     },
 })
 
+# Sbírka (Collection) — detail sbirka.html je udrzovany rucne (aukcni vzhled + galerie);
+# zde jen karta v gridu (vsechny 3 jazyky maji sbirka.html). #c9a227 = zlata jako detail.
+APPS.append({
+    "slug": "sbirka",
+    "icon": "🪙",
+    "color": "#c9a227",
+    "hub_only": True,
+    "no_hub_badge": True,
+    "hub_langs": ["cs", "en", "it"],
+    "screens": [],
+    "stack": [],
+    "i18n": {
+        "cs": {"name": "Sbírka — Numismatika &amp; Filatelie", "lead": "Vlastní katalog mincí, bankovek a známek ve vzhledu aukčního domu. AI rozpozná kus z fotky, pomůže ho ocenit a ukáže, kde se reálně prodává. Lokálně, bez cloudu."},
+        "en": {"name": "Collection — Numismatics &amp; Philately", "lead": "A personal catalogue of coins, banknotes and stamps with an auction-house look. AI recognizes an item from a photo, helps value it and shows where it actually sells. Local, no cloud."},
+        "it": {"name": "Collezione — Numismatica &amp; Filatelia", "lead": "Catalogo personale di monete, banconote e francobolli in stile casa d'aste. L'AI riconosce il pezzo da una foto, aiuta a valutarlo e mostra dove si vende davvero. In locale, senza cloud."},
+    },
+})
+
 
 def lang_prefix(lang: str) -> str:
     return "" if lang == "cs" else f"{lang}/"
@@ -957,8 +975,12 @@ def render_hub(lang: str, dl_apps: list[dict]) -> str:
         color = app["color"]
         # badge: per-app override (např. "Soukromá beta"), jinak WIP pokud bez screens
         badge = ""
-        badge_label = (app.get("hub_badge") or {}).get(lang) if app.get("hub_badge") else (
-            WIP_LABEL if (not app.get("screens") or app.get("wip")) else None)
+        # no_hub_badge = hotova appka bez screens v gridu, ale NENI ve vyvoji (napr. Sbirka)
+        if app.get("no_hub_badge"):
+            badge_label = None
+        else:
+            badge_label = (app.get("hub_badge") or {}).get(lang) if app.get("hub_badge") else (
+                WIP_LABEL if (not app.get("screens") or app.get("wip")) else None)
         if badge_label:
             # hub_badge (např. Soukromá beta) = oranžový beta styl jako na živém webu;
             # WIP badge zůstává v barvě aplikace
@@ -1141,6 +1163,12 @@ def wrap_html(lang: str, title: str, depth: int, body: str) -> str:
   }});
 }})();
 </script>
+<script>/* BudLine verze dynamicky z latest.json (runtime self-correct, ať web nikdy nedrift) */(function(){{
+  fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{{cache:"no-store"}})
+  .then(function(r){{return r.json();}}).then(function(d){{var b=d&&d.budline;if(!b||!b.version)return;var v=b.version;
+  document.querySelectorAll("[data-bl-ver]").forEach(function(el){{el.textContent=el.getAttribute("data-bl-ver").replace("{{v}}",v);}});
+  document.querySelectorAll("[data-bl-dl]").forEach(function(a){{if(b.url)a.href=b.url;}});
+  }}).catch(function(){{}});}})();</script>
 </body>
 </html>
 """
