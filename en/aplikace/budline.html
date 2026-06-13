@@ -49,7 +49,7 @@
   <span class="hero-accent" style="color:#2d6ad5">BudLine Panel</span>
   <h1><span style="margin-right:.4rem">🚍</span>BudLine Panel</h1>
   <p class="hero-sub">An app for bus drivers that keeps track of shifts, rosters and pay. Instead of paper notes and mental arithmetic: I log my shifts and the app calculates what should arrive on the payslip — and at the end of the month I check whether it matches. Everything runs locally on the computer, no cloud, no accounts.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows</span> <span class="pill" style="background:#e8731a1f;color:#c25e10;border:1px solid #e8731a66;padding:.2rem .6rem;border-radius:6px;font-size:.78rem">v1.2.14 BETA</span></p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows</span> <span class="pill" style="background:#e8731a1f;color:#c25e10;border:1px solid #e8731a66;padding:.2rem .6rem;border-radius:6px;font-size:.78rem" data-bl-ver="v{v} BETA">v1.2.17 BETA</span></p>
   <p style="margin-top:.8rem"><a href="index.html">← Back to My apps</a></p>
 </section>
 
@@ -87,7 +87,7 @@
 
 <section>
   <h2>Download (beta)</h2>
-  <p style="margin:.4rem 0 .8rem"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel-v1.2.14-Setup.exe" download style="display:inline-block;background:#2d6ad5;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600">⬇ Download installer (v1.2.14, Windows)</a></p>
+  <p style="margin:.4rem 0 .8rem"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel-v1.2.17-Setup.exe" data-bl-dl download style="display:inline-block;background:#2d6ad5;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600">⬇ Download installer (v1.2.17, Windows)</a></p>
   <p style="font-size:.9rem;line-height:1.6">🔒 <strong>The installer is password-protected</strong> — I share the password personally; it is not and will not be on the web.</p>
   <p style="font-size:.9rem;line-height:1.6">🛡️ Windows may show a SmartScreen warning (unsigned beta installer). If you know the app and expect it from me, click "More info" → "Run anyway".</p>
   <p style="font-size:.9rem;line-height:1.6">⚠️ Close the running app before installing.</p>
@@ -95,7 +95,7 @@
 
 <section>
   <h2>Status</h2>
-  <p>Version <strong>1.2.14 BETA</strong> (June 2026). Two of us use the app actively; it is developed against real payslips. Beta = it works, but it is still being polished; the installer is unsigned and password-protected.</p>
+  <p>Version <strong data-bl-ver="{v} BETA">1.2.17 BETA</strong> (June 2026). Two of us use the app actively; it is developed against real payslips. Beta = it works, but it is still being polished; the installer is unsigned and password-protected.</p>
 </section>
 
 </main>
@@ -113,5 +113,7 @@
 </footer>
 
 <script src="../../assets/js/main.js"></script>
+
+<script>/* BudLine verze dynamicky z latest.json (nikdy nedrift) */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var b=d&&d.budline;if(!b||!b.version)return;var v=b.version;document.querySelectorAll("[data-bl-ver]").forEach(function(el){el.textContent=el.getAttribute("data-bl-ver").replace("{v}",v);});document.querySelectorAll("[data-bl-dl]").forEach(function(a){if(b.url)a.href=b.url;});}).catch(function(){});})();</script>
 </body>
 </html>
