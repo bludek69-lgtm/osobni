@@ -100,9 +100,69 @@
 <section>
   <h2>Stav</h2>
   <p>Verze <strong data-bl-ver="{v} BETA">1.2.17 BETA</strong> (červen 2026). Aplikaci aktivně používáme dva, vyvíjí se podle reálných výplatních pásek. Beta = funguje, ale stále se ladí; instalátor je nepodepsaný a zaheslovaný.</p>
+  <p style="margin-top:.6rem">Detailní průběh vývoje je ve <button class="diary-link" id="openDeník2">vývojovém deníku</button>. <button id="openDeník" class="diary-btn" style="margin-left:.4rem">📖 Vývojový deník</button></p>
 </section>
 
 </main>
+
+<!-- ═══ VÝVOJOVÝ DENÍK — popup (drží stránku krátkou) ═══ -->
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Vývojový deník" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head">
+      <h2 style="margin:0">📖 Vývojový deník — BudLine Panel</h2>
+      <button class="diary-close" aria-label="Zavřít">✕</button>
+    </div>
+    <div class="diary-body">
+      <ul style="line-height:1.8">
+        <li><strong>v1.2.23 — Archiv a výpočet čisté mzdy (15. 6. 2026)</strong> — Nová stránka <strong>Archiv</strong> (uzavřené měsíce + archivované směny: jen nahlížet a opravit evidenci, nepřepisují se). <strong>Porovnání pásek</strong> se u uzavřených měsíců konečně naplní (příplatky, hodiny, hrubá) a po potvrzení daňových sazeb dopočítá i <strong>čistou mzdu, daň a odvody</strong> — daň počítá správně ze základu bez diet. Daňové sazby 2026 <strong>ověřené z oficiálních zdrojů</strong> (ČSSZ, VZP, Finanční správa). Povinná daňová pole v kartě řidiče.</li>
+        <li><strong>v1.2.20–1.2.22 — hlídání jízdních řádů (14. 6. 2026)</strong> — Stránky „Změny JŘ k ověření" a „Změny zastávek spojů": aplikace porovnává oficiální jízdní řády (CIS JŘ) s evidovanými turnusy a upozorní na změny ke kontrole — sama nic nemění.</li>
+        <li><strong>v1.2.14–1.2.19 — provoz živě a karta řidiče (13.–14. 6. 2026)</strong> — Stránka <strong>MPV Live / Provoz</strong>: právě jedoucí semilské spoje, detail spoje (zpoždění, obsazenost), mapa vozů a okamžitá zpoždění (jen pro čtení). Čtení dat přímo z <strong>čipové karty řidiče</strong> přes čtečku. Evidence překážek v práci (dovolená, nemoc, lékař…).</li>
+        <li><strong>Tichá aktualizace a bezpečnost</strong> — nové verze se instalují samy na pozadí s viditelným průběhem; uživatelská data a nastavení se při upgradu nikdy nepřepisují. Instalátor je chráněný heslem; žádná osobní data ani výplaty nejdou na web ani na GitHub.</li>
+        <li><strong>Jádro — evidence a kontrola výplaty</strong> — zápis odjetých směn s kontrolou (časy HH:MM, žádná záporná čísla), složení do měsíčního přehledu, výpočet podkladů pro mzdu podle pravidel (hodiny, příplatky za noc/víkend/svátek) a porovnání s výplatní páskou. Všechno lokálně (SQLite), bez cloudu a účtů.</li>
+      </ul>
+      <p style="color:var(--text-mut,#777);font-size:.85rem">Pozn.: aplikace je orientační kontrolní pomůcka, ne účetní ani daňové poradenství. Závazná je výplatní páska zaměstnavatele.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.diary-btn, .diary-link {
+  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
+  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
+}
+.diary-btn:hover { background:#e6c75a; }
+.diary-link { background:none; color:#a07d12; text-decoration:underline; padding:0; font-weight:600; }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel {
+  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
+  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
+  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
+}
+.diary-head {
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
+  position:sticky; top:0; background:var(--bg,#fff);
+}
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
+.diary-close:hover { color:var(--text,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
+</style>
+<script>
+(function(){
+  var modal = document.getElementById('diary');
+  if (!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  ['openDeník','openDeník2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
 
 <footer class="site-footer">
   <div class="site-footer__inner">
