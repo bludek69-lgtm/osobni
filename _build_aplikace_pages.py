@@ -733,6 +733,37 @@ APPS.append({
     },
 })
 
+APPS.append({
+    "slug": "budline", "icon": "🚍", "color": "#2d6ad5",
+    "hub_only": True, "no_hub_badge": True, "hub_langs": ["cs", "en", "it"],
+    "screens": [], "stack": [],
+    "i18n": {
+        "cs": {"name": "BudLine Panel", "lead": "Směny, turnusy a podklady pro mzdu řidiče autobusu — a kontrola výplatní pásky."},
+        "en": {"name": "BudLine Panel", "lead": "Shifts, rosters and payroll documents for a bus driver — and payslip checking."},
+        "it": {"name": "BudLine Panel", "lead": "Turni, rotazioni e documenti per la busta paga di un autista — e verifica dello stipendio."},
+    },
+})
+APPS.append({
+    "slug": "app-tester", "icon": "🧪", "color": "#6d6df0",
+    "hub_only": True, "no_hub_badge": True, "hub_langs": ["cs", "en", "it"],
+    "screens": [], "stack": [],
+    "i18n": {
+        "cs": {"name": "Univerzální tester aplikací", "lead": "Sám proklikne celou webovou appku, hlídá chyby v konzoli a řekne PASS / WATCH / FAIL."},
+        "en": {"name": "Universal app tester", "lead": "Clicks through a whole web app on its own, watches for console errors and reports PASS / WATCH / FAIL."},
+        "it": {"name": "Tester universale di app", "lead": "Naviga da solo un'intera app web, controlla gli errori in console e restituisce PASS / WATCH / FAIL."},
+    },
+})
+APPS.append({
+    "slug": "resident-auditor", "icon": "🔎", "color": "#2fa39a",
+    "hub_only": True, "no_hub_badge": True, "hub_langs": ["cs", "en", "it"],
+    "screens": [], "stack": [],
+    "i18n": {
+        "cs": {"name": "Resident Auditor", "lead": "Hodnotí chytrý byt očima obyvatele z reálných logů — fungovalo ráno tak, jak má?"},
+        "en": {"name": "Resident Auditor", "lead": "Judges the smart home through a resident's eyes from real logs — did the morning work as it should?"},
+        "it": {"name": "Resident Auditor", "lead": "Valuta la casa intelligente con gli occhi di chi ci vive, dai log reali — la mattina ha funzionato?"},
+    },
+})
+
 
 def lang_prefix(lang: str) -> str:
     return "" if lang == "cs" else f"{lang}/"
@@ -958,9 +989,30 @@ def render_downloads(lang: str, dl_apps: list[dict]) -> str:
 """
 
 
+HUB_SECTIONS = {
+    1: {"cs": ("Aplikace pro lidi", "co používám a sdílím s lidmi"),
+        "en": ("Apps for people", "what I use and share"),
+        "it": ("App per le persone", "che uso e condivido")},
+    2: {"cs": ("Nástroje pro můj ekosystém", "řízení, diagnostika a testování chytré domácnosti a aplikací"),
+        "en": ("Tools for my ecosystem", "control, diagnostics and testing of the smart home and apps"),
+        "it": ("Strumenti per il mio ecosistema", "controllo, diagnostica e test della casa intelligente e delle app")},
+}
+HUB_GROUPS = {
+    "budline": (1, 10), "krabickova-dieta": (1, 20), "italia-travel": (1, 30),
+    "tenispark": (1, 40), "sbirka": (1, 50), "ucetni-kniha": (1, 60),
+    "finance-analytik": (1, 70), "ridic-turnusy-mzdy": (1, 80),
+    "config-center": (2, 10), "energy-dashboard": (2, 20), "rpi-kiosk": (2, 30),
+    "app-tester": (2, 40), "resident-auditor": (2, 50),
+}
+HUB_CARD_TAG = {
+    "ucetni-kniha": {"cs": "jen pro mě", "en": "personal", "it": "solo per me"},
+    "finance-analytik": {"cs": "jen pro mě", "en": "personal", "it": "solo per me"},
+}
+
+
 def render_hub(lang: str, dl_apps: list[dict]) -> str:
     L = I18N[lang]
-    cards = []
+    entries = []
     # "In development" badge texts per language
     WIP_LABEL = {"cs": "Ve vývoji", "en": "In development", "it": "In sviluppo"}[lang]
     for app in APPS:
@@ -998,15 +1050,33 @@ def render_hub(lang: str, dl_apps: list[dict]) -> str:
                     f'font-size:.72rem;font-weight:600;margin-left:.4rem;vertical-align:middle">'
                     f'{badge_label}</span>'
                 )
-        cards.append(
+        tag = ""
+        ct = HUB_CARD_TAG.get(slug, {}).get(lang)
+        if ct:
+            tag = (
+                '<span style="display:inline-block;background:rgba(127,127,127,.12);'
+                'color:var(--txt-muted,#777);border:1px solid rgba(127,127,127,.28);'
+                'padding:.15rem .55rem;border-radius:6px;font-size:.72rem;font-weight:600;'
+                f'margin-left:.4rem;vertical-align:middle">{ct}</span>'
+            )
+        card_html = (
             f'<a href="{slug}.html" class="card card-link" style="border-left:4px solid {color};">'
             f'{icon_div}'
-            f'<h3>{a["name"]}{badge}</h3>'
+            f'<h3>{a["name"]}{badge}{tag}</h3>'
             f'<p>{a["lead"]}</p>'
             f'<div class="card-cta">{L["open_card"]} →</div>'
             "</a>"
         )
-    cards_html = "\n      ".join(cards)
+        grp, order = HUB_GROUPS.get(slug, (1, 999))
+        entries.append((grp, order, card_html))
+
+    entries.sort(key=lambda e: (e[0], e[1]))
+
+    def grid(g):
+        return "\n      ".join(h for (gg, o, h) in entries if gg == g)
+
+    s1 = HUB_SECTIONS[1][lang]
+    s2 = HUB_SECTIONS[2][lang]
     return f"""\
 <section class="hero">
   <span class="hero-accent">{L["hub_h1"]}</span>
@@ -1014,9 +1084,19 @@ def render_hub(lang: str, dl_apps: list[dict]) -> str:
   <p class="hero-sub">{L["hub_intro"]}</p>
 </section>
 
-<section aria-label="{L["hub_h1"]}">
+<section aria-label="{s1[0]}">
+  <h2 style="margin-top:1.6rem">{s1[0]}</h2>
+  <p class="hero-sub" style="margin-top:-.5rem">{s1[1]}</p>
   <div class="cards-grid">
-      {cards_html}
+      {grid(1)}
+  </div>
+</section>
+
+<section aria-label="{s2[0]}">
+  <h2 style="margin-top:2rem">{s2[0]}</h2>
+  <p class="hero-sub" style="margin-top:-.5rem">{s2[1]}</p>
+  <div class="cards-grid">
+      {grid(2)}
   </div>
 </section>
 {render_downloads(lang, dl_apps)}
