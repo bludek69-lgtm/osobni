@@ -70,6 +70,60 @@
         <div class="buildlog-list" role="list">
           <article class="buildlog-entry bl-feature" role="listitem">
             <div class="buildlog-meta">
+              <span class="buildlog-date">2026-06-15</span>
+              <span class="buildlog-tag">FEATURE</span>
+            </div>
+            <h3>Roleta jako soukromý štít — privacy-light latch + anti-cyklování (3 vrstvy)</h3>
+            <p>Když je venku světlo, ale doma se svítí a uvnitř je šero, z ulice je do bytu krásně vidět. Nová logika to vyřeší sama — stáhne roletu a rozsvítí. Roleta router (<code>sh_jidelna_roleta_router_v2</code>, sha <code>675a427f</code>) má teď <strong>tři vrstvy</strong>. (1) <strong>pure-lux</strong>: lux&lt;200 zavři, &gt;300 otevři, mezi tím deadband 200–300 drž. (2) <strong>privacy-light latch</strong>: spustí se jen při zhasnutých světlech (aby se měřil čistý denní jas, ne vlastní žárovky — anti-feedback), když by roleta jinak byla nahoře, uvnitř je tma (&lt;18 lux) a jsem doma a vzhůru → roleta úplně dolů + scéna rozsvítí. Konec latche: světla zhasnou (90 s grace) / venku se setmí / odchod / spánek / ruční zásah / pojistka 4 h. (3) <strong>anti-cyklování</strong>: po každém pohybu 15min zámek na světelné pohyby, aby projíždějící mraky roletou nehoupaly — soukromí, otevřené okno, příchod a změna přítomnosti ale projdou hned. <strong>První pokus (v1) byl rollbacknutý</strong>: auto-zavírání jsem dal do světelného routeru, jenže pak se o roletu praly dva regulátory a vznikla oscilace. Vráceno na <code>81c1d1c3</code> a přepsáno jako jediný regulátor v roleta routeru. Vše sandbox-first (nové test scénáře pro latch i anti-cyklo PASS před live), laditelné v Config Centru bez kódu (<code>sh_cfg_lux_room_dark</code>=18, <code>sh_cfg_roleta_min_move_interval_s</code>=900).</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-06-15</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Koupelnové světlo přežije i odpojené čidlo — multi-signal</h3>
+            <p>Pohybové čidlo v koupelně se odpojilo od sítě (baterie plná, lokálně reaguje, ale hlášení už nedoletí k centrále). Normálně by tím světlo přestalo fungovat. <code>sh_bathroom_router_v1</code> (sha <code>1a58483e</code>) teď spíná světlo i z vrstvy <em>přítomnosti</em> (<code>presence_on/off</code> = <code>motion_on/off</code>), takže běží i bez živého pohybového čidla. Mezitím se čidlo mění za novější (Matter). Princip: nikdy nespoléhat na jediný senzor — když jeden umlkne, rozhodnutí utáhne druhý. Sandbox test 8 scénářů PASS, rollback připraven.</p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-06-15</span>
+              <span class="buildlog-tag">FEATURE</span>
+            </div>
+            <h3>Digestoř, která pozná, že se opravdu vaří — multi-signal</h3>
+            <p>Digestoř se nezapíná na tlačítko, ale podle toho, jestli se reálně vaří. <code>sh_digestor_router_v1</code> (sha <code>a1fd510d</code>) zapne, když: <strong>vaříš</strong> (zásuvka sporáku hlásí příkon &gt;100 W nebo je zapnutý vypínač varné desky) <strong>nebo</strong> je u digestoře <strong>lokální pára</strong> (vlhkost ≥65 % a zároveň ≥18 % nad zbytkem bytu — to odliší vaření od vlhkého počasí, kdy je vlhko všude stejně). Vypne, když vlhkost klesne pod 55 %, srovná se se zbytkem bytu, nebo po pojistce 2 h (počítané z příkonu sporáku = aktivní vaření, ne z vypínače). Křížová kontrola vlhkosti je to klíčové — bez ní by digestoř běžela při každém dešti. Prahy laditelné přes <code>sh_cfg_digestor_*</code>.</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-06-15</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Reproduktory se samy uzdraví — Cast watchdog na Raspberry Pi</h3>
+            <p>Občas všechny Cast reproduktory naráz vypadly do offline a hudba i hlasové hlášení zmlkly. Teď se uzdraví samy, dřív než si toho stačím všimnout. Nový <code>cast_watchdog.py</code> na Raspberry Pi restartuje Chromecast aplikaci každých 5 minut (zapojený jako hook do už běžícího runtime watchdogu). HomeyScript zůstal netknutý — uzdravení řeší infrastrukturní vrstva, ne automatizační logika. Volitelná prevence do budoucna: statické DHCP adresy + kontrola IGMP snoopingu na síti.</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-06-15</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Topení: tři tiché chyby najednou</h3>
+            <p>Tři drobnosti, co každá zvlášť mohla zlobit topení, opravené v jedné dávce. (1) <strong>Baterie termohlavic</strong>: hranice <code>&lt;15</code> → <code>&lt;=15</code> + ošetření prázdné hodnoty (<code>sh_heating_zone_sync_v1</code>) — hraniční stav baterie se hlásil špatně. (2) <strong>Přejmenované proměnné</strong>: <code>until_ts0</code> → <code>until_ts</code> — vary topení byly přejmenované bez „0", ale plánovač a ranní mozek četly starý název → sjednoceno. (3) <strong>Termohlavice ložnice</strong> (<code>Fibaro Radiator Loznice</code>) doplněná do mapy zařízení (pozor na velikost písmen) — předtím v mapě chyběla. K tomu 2 zaseklé odkazy na proměnné přepojené (rozbité reference 2 → 0). Vše sandbox-first s připraveným rollbackem.</p>
+          </article>
+
+          <article class="buildlog-entry bl-deploy" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-06-11</span>
+              <span class="buildlog-tag">AUDIT</span>
+            </div>
+            <h3>Read-only audit celého systému — 84 zařízení, 238 flows, 139 scriptů</h3>
+            <p>Než začnu cokoli měnit, projedu celý systém a hledám, co tiše nesedí. Kompletní read-only audit přes cloud-relay API obsáhl <strong>84 zařízení</strong>, <strong>238 automatizací (flows)</strong>, <strong>139 HomeyScriptů</strong> a 700+ proměnných. Verdikt 🟡 WATCH — systém běží, ale pár věcí potřebovalo dotáhnout. Z auditu vzešly opravy nasazené v dalších dnech: audio dispatch přes stabilní UUID, hranice baterie termohlavic, mapa zařízení, sjednocení proměnných topení. Jeden zajímavý nález: <strong>14 scriptů mělo kód jen v Homey</strong> a záloha ho nekryla — doplněno do verzování. Princip celé téhle práce: audit první, sandbox druhý, live až po zeleném testu a s připraveným rollbackem.</p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
               <span class="buildlog-date">2026-05-28</span>
               <span class="buildlog-tag">WEB</span>
             </div>
