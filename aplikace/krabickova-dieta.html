@@ -93,9 +93,11 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
-        <li><strong>Týdenní plán krabiček</strong> — sestaví jídelníček podle kalorického cíle a poměru živin, místo přihlašování do sledujících dietních appek.</li>
-        <li><strong>Vlastní recepty a nákupní seznam</strong> — z plánu se poskládá, co nakoupit a navařit.</li>
-        <li><strong>Jen u mě</strong> — běží v prohlížeči lokálně, bez účtu a bez sledování.</li>
+        <li><strong>Phase 6 — Rohlík integrace, volitelná (květen 2026)</strong> — agent (Claude) připraví z týdenního plánu návrh košíku jako JSON; aplikace ukáže cenu vs. minimum objednávky vs. doručení. Objednávku ale <strong>vždy potvrzuješ ručně v Rohlíku</strong> — aplikace fyzicky neumí objednat ani zaplatit (defense-in-depth: 5 vrstev ochrany, 14 PII pravidel).</li>
+        <li><strong>Phase 5 — optimizer a doporučený cíl</strong> — když se podle váhy a aktivity posune doporučený kalorický cíl, aplikace nabídne jeho použití (nikdy tichá změna bez tvého vědomí). Optimizer vybírá recepty s vyšším podílem bílkovin pro hubnutí i nabírání.</li>
+        <li><strong>Phase 4 — týdenní plán a nákupní seznam</strong> — combo-search poskládá 7 dní × 5 jídel tak, aby denní kalorie padly do ±10 % cíle, s penalizací opakování receptů kvůli pestrosti. Nákupní seznam sečte ingredience za celý týden do kategorií + export CSV nebo tisk.</li>
+        <li><strong>Jádro — kalorický cíl a váha</strong> — výpočet potřeby kalorií (Mifflin-St Jeor + multiplier podle aktivity, asymetrický deficit/surplus) a sledování váhy vlastním SVG grafem. Vše jen v paměti prohlížeče (localStorage).</li>
+        <li><strong>PWA, offline a soukromí</strong> — po prvním načtení funguje bez internetu, jde nainstalovat jako desktopová aplikace přes Edge. Žádný účet, žádný cloud, žádná telemetrie. 21 receptů, 157 unit testů, 8 architektonických rozhodnutí (ADR).</li>
       </ul>
       <p style="color:var(--text-mut,#777);font-size:.85rem">Pozn.: aplikace běží jen lokálně, reálná data ani osobní údaje nejdou na web.</p>
     </div>
