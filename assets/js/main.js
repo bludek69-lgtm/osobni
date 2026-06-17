@@ -163,3 +163,33 @@
   st.textContent = 'img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}';
   document.head.appendChild(st);
 })();
+
+
+/* Sdílený lightbox — klik na jakýkoli <main> obrázek = zvětšení přes celou obrazovku.
+   JEDNOTNÝ zdroj: každá stránka, která načítá main.js, dostane zoom automaticky.
+   Guard: pokud stránka má vlastní inline #__lb (legacy / builder), main.js se nezapojí
+   (žádná kolize). Běží až po DOMContentLoaded, aby guard viděl celý DOM. */
+(function () {
+  function init() {
+    if (document.getElementById('__lb')) return;            // stránka má vlastní inline lightbox
+    var imgs = document.querySelectorAll('main img');
+    if (!imgs.length) return;                                 // není co zvětšovat
+    var style = document.createElement('style');
+    style.textContent = '#__lb{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.93);cursor:zoom-out;align-items:center;justify-content:center;padding:2vh}#__lb.open{display:flex}#__lb img{max-width:100%;max-height:96vh;object-fit:contain;box-shadow:0 8px 40px rgba(0,0,0,0.6);border-radius:8px}#__lb .__lbhint{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.6);font:13px/1 system-ui,sans-serif}main img{cursor:zoom-in;transition:transform .15s ease}main img:hover{transform:scale(1.005)}';
+    document.head.appendChild(style);
+    var lb = document.createElement('div');
+    lb.id = '__lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Zvětšený obrázek');
+    lb.innerHTML = '<img id="__lbimg" alt=""><span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>';
+    document.body.appendChild(lb);
+    var lbimg = document.getElementById('__lbimg');
+    function open(src, alt) { lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function close() { lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    imgs.forEach(function (img) {
+      img.addEventListener('click', function (e) { e.stopPropagation(); open(img.src, img.alt); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
