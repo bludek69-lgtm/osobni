@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Tracker — My apps — Luděk</title>
+  <meta name="description" content="Local investment portfolio tracker — positions, profit/loss, dividends, taxes, fair value and performance. All in the browser, no cloud, no account.">
+  <link rel="canonical" href="https://cestovatel69.cz/en/aplikace/portfolio-tracker.html">
+  <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/aplikace/portfolio-tracker.html">
+  <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/portfolio-tracker.html">
+  <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/portfolio-tracker.html">
+  <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/portfolio-tracker.html">
+  <meta property="og:title" content="Portfolio Tracker — My apps — Luděk">
+  <meta property="og:description" content="Local investment portfolio tracker — positions, profit/loss, dividends, taxes, fair value and performance. All in the browser, no cloud, no account.">
+  <meta property="og:url" content="https://cestovatel69.cz/en/aplikace/portfolio-tracker.html">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="/favicon.ico">
+</head>
+<body class="theme-finance">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a><button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+    <a href="../../">Domů</a>
+    <a href="../../aplikace/">Moje aplikace</a>
+    <a href="../../finance/">Finance</a>
+    <a href="../../cestovani/">Cestování</a>
+    <a href="../../cestovani/italie/">Itálie</a>
+    <a href="../../zaliby/rybareni/">Rybaření</a>
+    <a href="../../smart-home/">Smart Home</a>
+    <a href="../../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #2e9e6b;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#2e9e6b">Portfolio Tracker</span>
+  <h1><span style="margin-right:.4rem">📊</span>Portfolio Tracker</h1>
+  <p class="hero-sub">My own investment portfolio tracker that runs entirely in my browser. It records positions across brokers, computes profit/loss, dividends, taxes and stock fair value — and shows how the portfolio actually performs over time. No account, no cloud, my holdings never leave the device.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#2e9e6b1a;color:#2e9e6b;border:1px solid #2e9e6b40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#2e9e6b1a;color:#2e9e6b;border:1px solid #2e9e6b40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#2e9e6b1a;color:#2e9e6b;border:1px solid #2e9e6b40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vite</span> <span class="pill" style="background:#2e9e6b1a;color:#2e9e6b;border:1px solid #2e9e6b40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Recharts</span> <span class="pill" style="background:#2e9e6b1a;color:#2e9e6b;border:1px solid #2e9e6b40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">localStorage (no cloud)</span></p>
+  <p style="margin-top:.8rem"><a href="../index.html">← Back to My apps</a></p>
+</section>
+
+<section>
+  <h2>What it does</h2>
+  <p>I have a bookkeeping app that <em>records</em> money and an analyst that <em>advises</em> on individual stocks. Portfolio Tracker is the third piece: it <em>tracks how the whole investment portfolio performs over time</em> — in one place, without logging in anywhere. Inspired by tools like Digrin, but built so my positions never get sent out.</p>
+  <p><strong>Transactions are the source of truth.</strong> Instead of typing "I own 10 shares", the app keeps individual buys, sells and dividends — and derives positions, average price and realized gain from them (FIFO). That keeps taxes and history consistent.</p>
+  <p><strong>It reads broker statements itself.</strong> I drop in CSV / XLSX / PDF from XTB, eToro, Trading 212 or Interactive Brokers; the app detects the broker, normalizes the format and de-duplicates repeated imports (a fingerprint per transaction). XTB accounts can be split by currency (USD/EUR/CZK separately).</p>
+  <p><strong>Taxes by Czech rules.</strong> FIFO matching of sales, the <strong>3-year time test</strong> (exemption for long holding) and the <strong>§4 value test</strong> (sale proceeds ≤ CZK 100,000/year). The summary is always computed in CZK even when the portfolio base is e.g. USD (converted at the historical rate on the trade date).</p>
+  <p><strong>Performance and fair value.</strong> XIRR, CAGR, TWR, volatility, Sharpe, a value-over-time chart and <strong>monthly returns</strong> (year × month). Per ticker there are 6 valuation models (DCF, Graham, Lynch, DDM, EV/EBITDA, Multiples), a screener with my own composite score, a sector heatmap and an earnings calendar.</p>
+  <p><strong>Public data, keys stay with me.</strong> Live prices from Yahoo Finance, fundamentals from SEC EDGAR and Finnhub, an optional AI analyst via Gemini. Any API keys stay locally in the browser — never in the code or sent out. The whole app runs locally; no server sees my positions.</p>
+</section>
+
+<section>
+  <h2>Key features</h2>
+  <ul style="line-height:1.7">
+      <li><strong>Positions, P/L and allocation</strong> — portfolio value overview, unrealized and realized gain, breakdown by sector, type, position and currency, concentration warnings.</li>
+      <li><strong>Import from 4 brokers</strong> — XTB, eToro, Trading 212, Interactive Brokers (CSV/XLSX/PDF), idempotent dedup, a broker → account → transaction model, XTB split by currency.</li>
+      <li><strong>Czech taxes (FIFO)</strong> — 3-year time test and the CZK 100,000 value test, days remaining to exemption, trade export for the tax return. Indicative, not tax advice.</li>
+      <li><strong>Performance</strong> — XIRR, CAGR, TWR, volatility, max drawdown, Sharpe, a value-over-time chart and monthly returns (capital gain by month).</li>
+      <li><strong>Fair value &amp; screener</strong> — 6 valuation models, a model switch, my own composite score, Beta and analyst consensus (Finnhub), P/E and Fwd P/E.</li>
+      <li><strong>Heatmap, calendar, AI analyst</strong> — a sector heatmap of the portfolio, an earnings calendar and an AI analyst (Gemini) over the portfolio data — all clearly flagged as not investment advice.</li>
+      <li><strong>No account, no cloud, 47 tests</strong> — everything in the browser (localStorage), data never leaves the device. Under the hood 47 automated tests guard the parsers and calculations.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Status</h2>
+  <p>Work version v0.9.0 (June 2026), 47 automated tests. A local web app (Vite) — I launch it via a WebLauncher on my PC. <strong>Private, with no public hosting and no downloadable installer</strong> — real data and personal info never go on the web. Not investment advice, just an analytical and record-keeping tool for me.</p>
+</section>
+
+  <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Dev diary</button></section>
+</main>
+<!-- DEV DIARY — popup -->
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Dev diary" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head">
+      <h2 style="margin:0">📖 Dev diary — Portfolio Tracker</h2>
+      <button class="diary-close" aria-label="Zavřít">✕</button>
+    </div>
+    <div class="diary-body">
+      <ul style="line-height:1.8">
+        <li><strong>v0.9.0 — road to beta (June 2026)</strong> — git repo + 47 automated tests (vitest), explanations and warnings across the app, a fair-value screener wired to Finnhub (Beta/consensus/P-E fill in with a single key).</li>
+        <li><strong>Digrin-style features</strong> — monthly returns (year × month), sector heatmap, earnings calendar, 6 valuation models + my own score (deliberately NOT a proprietary "QUANT").</li>
+        <li><strong>Transaction core + taxes</strong> — transactions as the source of truth, FIFO, the Czech 3-year time test and the CZK 100,000 value test, conversion to CZK at the historical rate.</li>
+        <li><strong>Multi-broker import</strong> — XTB / eToro / Trading 212 / Interactive Brokers, idempotent dedup, XTB split by currency.</li>
+      </ul>
+      <p style="color:var(--text-mut,#777);font-size:.85rem">Note: the app runs locally only; real data and personal info never go on the web. Not investment advice.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.diary-btn, .diary-link {
+  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
+  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
+}
+.diary-btn:hover { background:#e6c75a; }
+.diary-link { background:none; color:#a07d12; text-decoration:underline; padding:0; font-weight:600; }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel {
+  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
+  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
+  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
+}
+.diary-head {
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
+  position:sticky; top:0; background:var(--bg,#fff);
+}
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
+.diary-close:hover { color:var(--text,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
+</style>
+<script>
+(function(){
+  var modal = document.getElementById('diary');
+  if (!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  ['openDeník','openDeník2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Budinský Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://github.com/bludek69-lgtm" target="_blank" rel="noopener">GitHub</a>
+      <a href="/smart-home/kontakt.html">Kontakt</a>
+      <a href="../../smart-home/">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Tracker — Moje aplikace — Luděk</title>
+  <meta name="description" content="Lokální tracker investičního portfolia — pozice, zisk/ztráta, dividendy, daně, férová hodnota a výkonnost. Vše v prohlížeči, bez cloudu, bez účtu.">
+  <link rel="canonical" href="https://cestovatel69.cz/aplikace/portfolio-tracker.html">
+  <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/aplikace/portfolio-tracker.html">
+  <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/portfolio-tracker.html">
+  <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/portfolio-tracker.html">
+  <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/portfolio-tracker.html">
+  <meta property="og:title" content="Portfolio Tracker — Moje aplikace — Luděk">
+  <meta property="og:description" content="Lokální tracker investičního portfolia — pozice, zisk/ztráta, dividendy, daně, férová hodnota a výkonnost. Vše v prohlížeči, bez cloudu, bez účtu.">
+  <meta property="og:url" content="https://cestovatel69.cz/aplikace/portfolio-tracker.html">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="/favicon.ico">
+</head>
+<body class="theme-finance">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a><button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Hlavní navigace">
+    <a href="../">Domů</a>
+    <a href="../aplikace/" aria-current="page">Moje aplikace</a>
+    <a href="../finance/">Finance</a>
+    <a href="../cestovani/">Cestování</a>
+    <a href="../cestovani/italie/">Itálie</a>
+    <a href="../zaliby/rybareni/">Rybaření</a>
+    <a href="../smart-home/">Smart Home</a>
+    <a href="../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #2e9e6b;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#2e9e6b">Portfolio Tracker</span>
+  <h1><span style="margin-right:.4rem">📊</span>Portfolio Tracker</h1>
+  <p class="hero-sub">Vlastní tracker investičního portfolia, který běží celý jen u mě v prohlížeči. Eviduje pozice napříč brokery, počítá zisk/ztrátu, dividendy, daně a férovou hodnotu akcií — a ukazuje, jak si portfolio reálně vede. Žádný účet, žádný cloud, žádné sdílení mých pozic ven.</p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#2e9e6b1a;color:#2e9e6b;border:1px solid #2e9e6b40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">React</span> <span class="pill" style="background:#2e9e6b1a;color:#2e9e6b;border:1px solid #2e9e6b40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">TypeScript</span> <span class="pill" style="background:#2e9e6b1a;color:#2e9e6b;border:1px solid #2e9e6b40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vite</span> <span class="pill" style="background:#2e9e6b1a;color:#2e9e6b;border:1px solid #2e9e6b40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Recharts</span> <span class="pill" style="background:#2e9e6b1a;color:#2e9e6b;border:1px solid #2e9e6b40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">localStorage (bez cloudu)</span></p>
+  <p style="margin-top:.8rem"><a href="../index.html">← Zpět na Moje aplikace</a></p>
+</section>
+
+<section>
+  <h2>Co to dělá</h2>
+  <p>Mám účetní knihu, která <em>eviduje</em> peníze, a analytika, který <em>radí</em> u jednotlivých akcií. Portfolio Tracker je třetí dílek: <em>sleduje, jak si celé investiční portfolio vede v čase</em> — na jednom místě, bez přihlašování kamkoliv. Inspiroval jsem se nástroji jako Digrin, ale postavil si vlastní, který nikam neposílá moje pozice.</p>
+  <p><strong>Transakce jsou zdroj pravdy.</strong> Místo abych ručně psal „mám 10 akcií", aplikace si drží jednotlivé nákupy, prodeje a dividendy — a pozice, průměrnou cenu i realizovaný zisk si z nich sama odvodí (FIFO). Díky tomu sedí daně i historie.</p>
+  <p><strong>Načte výpisy od brokerů sama.</strong> Přetáhnu CSV / XLSX / PDF z XTB, eToro, Trading 212 nebo Interactive Brokers, aplikace pozná brokera, normalizuje formát a opakovaný import nezduplikuje (otisk každé transakce). XTB účty si umí rozdělit podle měny (USD/EUR/CZK zvlášť).</p>
+  <p><strong>Daně podle českých pravidel.</strong> FIFO párování prodejů, <strong>3letý časový test</strong> (osvobození při dlouhé držbě) i <strong>hodnotový test § 4</strong> (příjmy z prodeje ≤ 100 000 Kč/rok). Souhrn počítá vždy v korunách, i když mám portfolio třeba v dolarech (přepočet historickým kurzem k datu obchodu).</p>
+  <p><strong>Výkonnost i férová hodnota.</strong> XIRR, CAGR, TWR, volatilita, Sharpe, graf hodnoty v čase a <strong>měsíční výnosy</strong> (rok × měsíc). U jednotlivých titulů pak 6 valuačních modelů (DCF, Graham, Lynch, DDM, EV/EBITDA, Multiples), screener s vlastním kompozitním skóre, sektorová heatmapa a kalendář výsledků (earnings).</p>
+  <p><strong>Data z veřejných zdrojů, klíče jen u mě.</strong> Živé ceny z Yahoo Finance, fundamenty ze SEC EDGAR a Finnhubu, volitelný AI analytik přes Gemini. Případné API klíče zůstávají lokálně v prohlížeči — nikdy nejdou do kódu ani ven. Celá appka běží lokálně, žádný server moje pozice nevidí.</p>
+</section>
+
+<section>
+  <h2>Klíčové funkce</h2>
+  <ul style="line-height:1.7">
+      <li><strong>Pozice, P/L a alokace</strong> — přehled hodnoty portfolia, nerealizovaný i realizovaný zisk, rozložení podle sektoru, typu, pozice a měny, hlídání koncentrace.</li>
+      <li><strong>Import z 4 brokerů</strong> — XTB, eToro, Trading 212, Interactive Brokers (CSV/XLSX/PDF), idempotentní dedup, model broker → účet → transakce, rozdělení XTB podle měny.</li>
+      <li><strong>České daně (FIFO)</strong> — 3letý časový test i hodnotový test 100 000 Kč, přehled kolik dní zbývá k osvobození, export obchodů pro přiznání. Orientační, ne daňové poradenství.</li>
+      <li><strong>Výkonnost</strong> — XIRR, CAGR, TWR, volatilita, max drawdown, Sharpe, graf hodnoty v čase a měsíční výnosy (kapitálový zisk po měsících).</li>
+      <li><strong>Férová hodnota &amp; screener</strong> — 6 valuačních modelů, přepínač modelu, vlastní kompozitní skóre, Beta a konsensus analytiků (Finnhub), P/E a Fwd P/E.</li>
+      <li><strong>Heatmapa, kalendář, AI analytik</strong> — sektorová tepelná mapa portfolia, kalendář výsledků a AI analytik (Gemini) nad daty portfolia — vše s upozorněním, že nejde o investiční doporučení.</li>
+      <li><strong>Bez účtu, bez cloudu, 47 testů</strong> — vše v prohlížeči (localStorage), data neopouštějí zařízení. Pod kapotou 47 automatických testů hlídá parsery a výpočty.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Stav</h2>
+  <p>Pracovní (work) verze v0.9.0 (červen 2026), 47 automatických testů. Lokální webová aplikace (Vite) — spouštím ji přes WebLauncher na svém PC. <strong>Soukromá, bez veřejného hostingu a bez instalátoru ke stažení</strong> — reálná data ani osobní údaje nejdou na web. Není to investiční doporučení ani poradenství, jen analytická a evidenční pomůcka pro mě.</p>
+</section>
+
+  <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Vývojový deník</button></section>
+</main>
+<!-- VÝVOJOVÝ DENÍK — popup -->
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Vývojový deník" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head">
+      <h2 style="margin:0">📖 Vývojový deník — Portfolio Tracker</h2>
+      <button class="diary-close" aria-label="Zavřít">✕</button>
+    </div>
+    <div class="diary-body">
+      <ul style="line-height:1.8">
+        <li><strong>v0.9.0 — cesta k betě (červen 2026)</strong> — git repo + 47 automatických testů (vitest), vysvětlivky a upozornění napříč appkou, screener s férovou hodnotou napojený na Finnhub (Beta/konsensus/P-E se doplní jedním klíčem).</li>
+        <li><strong>Funkce po vzoru Digrinu</strong> — měsíční výnosy (rok × měsíc), sektorová heatmapa, kalendář výsledků, 6 valuačních modelů + vlastní skóre (záměrně NE cizí proprietární „QUANT").</li>
+        <li><strong>Transakční jádro + daně</strong> — transakce jako zdroj pravdy, FIFO, český 3letý časový test a hodnotový test 100 000 Kč, přepočet do CZK historickým kurzem.</li>
+        <li><strong>Multi-broker import</strong> — XTB / eToro / Trading 212 / Interactive Brokers, idempotentní dedup, rozdělení XTB podle měny.</li>
+      </ul>
+      <p style="color:var(--text-mut,#777);font-size:.85rem">Pozn.: aplikace běží jen lokálně, reálná data ani osobní údaje nejdou na web. Není to investiční doporučení.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.diary-btn, .diary-link {
+  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
+  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
+}
+.diary-btn:hover { background:#e6c75a; }
+.diary-link { background:none; color:#a07d12; text-decoration:underline; padding:0; font-weight:600; }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel {
+  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
+  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
+  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
+}
+.diary-head {
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
+  position:sticky; top:0; background:var(--bg,#fff);
+}
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
+.diary-close:hover { color:var(--text,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
+</style>
+<script>
+(function(){
+  var modal = document.getElementById('diary');
+  if (!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  ['openDeník','openDeník2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Budinský Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://github.com/bludek69-lgtm" target="_blank" rel="noopener">GitHub</a>
+      <a href="/smart-home/kontakt.html">Kontakt</a>
+      <a href="../smart-home/">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
