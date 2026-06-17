@@ -990,9 +990,9 @@ def render_downloads(lang: str, dl_apps: list[dict]) -> str:
 
 
 HUB_SECTIONS = {
-    1: {"cs": ("Aplikace pro lidi", "co používám a sdílím s lidmi"),
-        "en": ("Apps for people", "what I use and share"),
-        "it": ("App per le persone", "che uso e condivido")},
+    1: {"cs": ("Aplikace pro mě a kamarády", "nedělám je na prodej — vznikly pro vlastní potřebu a pár lidí kolem mě"),
+        "en": ("Apps for me and friends", "not commercial — built for my own use and a few people around me"),
+        "it": ("App per me e gli amici", "non commerciali — nate per uso personale e per poche persone vicine")},
     2: {"cs": ("Nástroje pro můj ekosystém", "řízení, diagnostika a testování chytré domácnosti a aplikací"),
         "en": ("Tools for my ecosystem", "control, diagnostics and testing of the smart home and apps"),
         "it": ("Strumenti per il mio ecosistema", "controllo, diagnostica e test della casa intelligente e delle app")},

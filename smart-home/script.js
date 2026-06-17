@@ -136,3 +136,18 @@
     counters.forEach((c) => obs.observe(c));
   }
 })();
+
+
+/* Drobna ochrana fotek: vypne "ulozit obrazek" (prave tlacitko) a tazeni mysi na obrazcich.
+   Neni neprustrelne (screenshot / DevTools to obejdou), jen odstrasi bezne stazeni. */
+(function () {
+  document.addEventListener('contextmenu', function (e) {
+    if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+  });
+  document.addEventListener('dragstart', function (e) {
+    if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+  });
+  var st = document.createElement('style');
+  st.textContent = 'img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}';
+  document.head.appendChild(st);
+})();
