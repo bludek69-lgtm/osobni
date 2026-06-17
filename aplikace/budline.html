@@ -92,7 +92,7 @@
 <section>
   <h2>Stažení (beta)</h2>
   <p style="margin:.4rem 0 .8rem"><a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel-v1.2.17-Setup.exe" data-bl-dl download style="display:inline-block;background:#2d6ad5;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600">⬇ Stáhnout instalátor (Windows)</a>
-  <a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel-v1.2.24-mac.dmg" download style="display:inline-block;background:#111;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600;margin-left:.5rem">⬇ Stáhnout pro Mac (v1.2.24, .dmg)</a></p>
+  <a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel-v1.2.25-mac.dmg" data-bl-dl-mac download style="display:inline-block;background:#111;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600;margin-left:.5rem">⬇ Stáhnout pro Mac (<span data-bl-ver="v{v}">v1.2.25</span>, .dmg)</a></p>
   <p style="font-size:.9rem;line-height:1.6">🔒 <strong>Instalátor je chráněný heslem</strong> — heslo dávám osobně, na webu není a nebude.</p>
   <p style="font-size:.9rem;line-height:1.6">🍏 <strong>macOS:</strong> při prvním spuštění klikni na aplikaci <strong>pravým tlačítkem → Otevřít</strong> (je nepodepsaná, je naše vlastní). Kdyby psalo „poškozený", spusť v Terminálu <code>xattr -cr "/Applications/BudLine Panel.app"</code>.</p>
   <p style="font-size:.9rem;line-height:1.6">🛡️ Windows může zobrazit upozornění SmartScreen (unsigned beta instalátor). Pokud aplikaci znáš a čekáš ji ode mě, klikni „Další informace" → „Přesto spustit".</p>
@@ -180,6 +180,6 @@
 
 <script src="../assets/js/main.js"></script>
 
-<script>/* BudLine verze dynamicky z latest.json (nikdy nedrift) */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var b=d&&d.budline;if(!b||!b.version)return;var v=b.version;document.querySelectorAll("[data-bl-ver]").forEach(function(el){el.textContent=el.getAttribute("data-bl-ver").replace("{v}",v);});document.querySelectorAll("[data-bl-dl]").forEach(function(a){if(b.url)a.href=b.url;});}).catch(function(){});})();</script>
+<script>/* BudLine verze dynamicky z latest.json (nikdy nedrift) */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var b=d&&d.budline;if(!b||!b.version)return;var v=b.version;document.querySelectorAll("[data-bl-ver]").forEach(function(el){el.textContent=el.getAttribute("data-bl-ver").replace("{v}",v);});document.querySelectorAll("[data-bl-dl]").forEach(function(a){if(b.url)a.href=b.url;});document.querySelectorAll("[data-bl-dl-mac]").forEach(function(a){if(b.url_mac)a.href=b.url_mac;});}).catch(function(){});})();</script>
 </body>
 </html>
