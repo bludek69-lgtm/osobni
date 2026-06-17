@@ -764,6 +764,19 @@ APPS.append({
     },
 })
 
+# Portfolio Tracker — hub_only: builder generuje JEN kartu (přežije regeneraci),
+# podstránku portfolio-tracker.html udržuji ručně (builder ji nepřepisuje).
+APPS.append({
+    "slug": "portfolio-tracker", "icon": "📊", "color": "#2e9e6b",
+    "hub_only": True, "hub_langs": ["cs", "en", "it"],
+    "screens": [], "stack": [],
+    "i18n": {
+        "cs": {"name": "Portfolio Tracker", "lead": "Vlastní tracker investičního portfolia — pozice napříč brokery, zisk/ztráta, dividendy, české daně (FIFO + 3letý test), výkonnost (XIRR/CAGR/měsíční výnosy), férová hodnota a screener. Vše v prohlížeči, bez účtu, bez cloudu."},
+        "en": {"name": "Portfolio Tracker", "lead": "My own investment portfolio tracker — positions across brokers, profit/loss, dividends, Czech taxes (FIFO + 3-year test), performance (XIRR/CAGR/monthly returns), fair value and a screener. All in the browser, no account, no cloud."},
+        "it": {"name": "Portfolio Tracker", "lead": "Il mio tracker del portafoglio di investimenti — posizioni tra broker, profitti/perdite, dividendi, tasse ceche (FIFO + test di 3 anni), performance (XIRR/CAGR/rendimenti mensili), valore equo e uno screener. Tutto nel browser, senza account, senza cloud."},
+    },
+})
+
 
 def lang_prefix(lang: str) -> str:
     return "" if lang == "cs" else f"{lang}/"
@@ -1000,13 +1013,14 @@ HUB_SECTIONS = {
 HUB_GROUPS = {
     "budline": (1, 10), "krabickova-dieta": (1, 20), "italia-travel": (1, 30),
     "tenispark": (1, 40), "sbirka": (1, 50), "ucetni-kniha": (1, 60),
-    "finance-analytik": (1, 70), "ridic-turnusy-mzdy": (1, 80),
+    "finance-analytik": (1, 70), "portfolio-tracker": (1, 75), "ridic-turnusy-mzdy": (1, 80),
     "config-center": (2, 10), "energy-dashboard": (2, 20), "rpi-kiosk": (2, 30),
     "app-tester": (2, 40), "resident-auditor": (2, 50),
 }
 HUB_CARD_TAG = {
     "ucetni-kniha": {"cs": "jen pro mě", "en": "personal", "it": "solo per me"},
     "finance-analytik": {"cs": "jen pro mě", "en": "personal", "it": "solo per me"},
+    "portfolio-tracker": {"cs": "jen pro mě", "en": "personal", "it": "solo per me"},
 }
 
 
