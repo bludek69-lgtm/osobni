@@ -1,7 +1,7 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "stage": "beta",
-  "releaseDate": "2026-06-11",
+  "releaseDate": "2026-06-23",
   "downloadUrl": "https://bludek69-lgtm.github.io/osobni/aplikace/italia-travel.html",
-  "notes": "1.0.1 beta — funkčně shodné s 1.0.0 (11 exportů, itinerář s kontrolou konfliktů, zálohy s kontrolním součtem, offline režim, AI asistent), status sjednocen na BETA dle governance. NENÍ finální release — BETA / NOT_FINAL."
+  "notes": "1.0.2 beta — nově popup „Co je nového" po aktualizaci (přehled změn + historie) a tlačítko „Nahlásit problém" pro snadné hlášení chyb. NENÍ finální release — BETA / NOT_FINAL."
 }
