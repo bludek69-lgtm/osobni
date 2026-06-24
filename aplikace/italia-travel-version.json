@@ -1,7 +1,7 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3",
   "stage": "beta",
-  "releaseDate": "2026-06-23",
+  "releaseDate": "2026-06-24",
   "downloadUrl": "https://bludek69-lgtm.github.io/osobni/aplikace/italia-travel.html",
-  "notes": "1.0.2 beta — nově popup Co je nového po aktualizaci (přehled změn + historie) a tlačítko Nahlásit problém pro snadné hlášení chyb. NENÍ finální release — BETA / NOT_FINAL."
+  "notes": "1.0.3 beta — nový hub Příprava na cestu (doklady s kontrolou platnosti, rozpočtový dashboard, packing list, souhrn připravenosti), strukturované zastávky v itineráři a plánovač Cesta autem do Itálie. NENÍ finální release — BETA / NOT_FINAL."
 }
