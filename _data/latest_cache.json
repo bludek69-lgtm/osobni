@@ -1,34 +1,34 @@
 {
  "meal-planner": {
-  "version": "0.9.2",
+  "version": "0.9.4",
   "stage": "beta",
-  "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/MealPlanner-v0.9.2-Setup.exe",
-  "sha256": "780ccdbd2bc535a0a8e27dff8645614190a6d5a99c05bc8753bb9237dd1f4298"
+  "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/MealPlanner-v0.9.4-Setup.exe",
+  "sha256": "518dcb0b5fe84284448fd1f297965761451f323b61920c7d731d8323adee4a8e"
  },
  "budline": {
-  "version": "1.2.41",
+  "version": "1.2.42",
   "stage": "beta",
-  "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel-v1.2.41-Setup.exe",
-  "sha256": "9b74e08ef3aaee79ce26226b1a1a8586ee9188f92b0616837a66953a8df9c38a",
+  "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel-v1.2.42-Setup.exe",
+  "sha256": "304b7a3db01cc3f65da8cafece429ef0d45d29fa16479809c593faaace7c2f2a",
   "url_mac": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel.dmg",
-  "sha256_mac": "70689d4610b267f41c8efa586ba28618df7aa41e533b248d02ca3261c0077ada"
+  "sha256_mac": "638c46f995a6e40f61eae79f3f464217f077f5985e10b09ad7fe4440a325ab83"
  },
  "italia": {
-  "version": "1.0.1",
+  "version": "1.0.3",
   "stage": "beta",
-  "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/ItaliaTravel-v1.0.1-Setup.exe",
-  "sha256": "59d191074b32f510498e675b7aac0712170e8d96ea7aa12990eb051720b50dc0"
+  "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/ItaliaTravel-v1.0.3-Setup.exe",
+  "sha256": "e697e5b333959ddf2c187785c1d5ea2eeb1d99b4319bf363132071cc07010547"
  },
  "collection": {
-  "version": "1.1.14",
+  "version": "1.1.15",
   "stage": "beta",
-  "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/Collection-v1.1.14-Setup.exe",
-  "sha256": "4ac7bb404968ce06268d6dfe8859e33129dde9ca3317d87c1f0ed47ce34374b3"
+  "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/Collection-v1.1.15-Setup.exe",
+  "sha256": "4cead00f44fb5a4cfc70800284e360e1128464bbd452e9b3618e59af0d3354af"
  },
  "tenispark": {
-  "version": "0.2.2",
+  "version": "0.2.4",
   "stage": "beta",
-  "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/TenisPark-v0.2.2-Setup.exe",
-  "sha256": "1744f68f802cebf3ed4811971c4615193ac507d5d389ced36508157859765fc6"
+  "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/TenisPark-v0.2.4-Setup.exe",
+  "sha256": "00167dbb76703c133c77c1ec5131112944df15512d11023977f6ea3af53c0d05"
  }
 }
