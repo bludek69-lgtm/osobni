@@ -30,5 +30,11 @@
   "stage": "beta",
   "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/TenisPark-v0.2.4-Setup.exe",
   "sha256": "00167dbb76703c133c77c1ec5131112944df15512d11023977f6ea3af53c0d05"
+ },
+ "finance-analytik": {
+  "version": "0.3.0",
+  "stage": "beta",
+  "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/FinanceAnalytik-v0.3.0-Setup.exe",
+  "sha256": "8229304f6d91ef4a0ca8bc80cc9ae29964031ed622304d57319e05a06761cba3"
  }
 }
