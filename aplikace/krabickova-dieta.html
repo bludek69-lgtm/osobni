@@ -78,7 +78,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Funkční, Phase 4C + 5A + 5B + 5C + 6 (květen 2026). Lokální PWA, 21 receptů, 157 unit testů, 8 architektonických ADR. Bez cloudu, bez účtu, bez telemetrie.</p>
+  <p><strong>Vydáno 0.9.8 beta</strong> (červenec 2026, <em>NOT_FINAL</em>). Nová navigace (cockpit), import receptů z textu, nákup podle oddělení obchodu, průchod týdnem a Centrum důvěry (co je živá cena vs. odhad). Lokální aplikace pro Windows (installer + automatická aktualizace), běží bez cloudu a bez účtu. 597 unit testů, e2e sada 27 testů. Bez telemetrie.</p>
 </section>
 
   <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Vývojový deník</button></section>
@@ -93,11 +93,12 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
+        <li><strong>0.9.8 beta — nová navigace, chytřejší nákup a Centrum důvěry (červenec 2026)</strong> — sjednocená navigace (cockpit) a pět novinek: <em>import receptu z textu</em> (vložím recept z webu nebo zprávy a aplikace ho rozloží na suroviny a postup, co si není jistá, označí ke kontrole); <em>nákup podle oddělení obchodu</em> (seznam seřazený jak procházím obchodem); <em>průchod týdnem</em> na Přehledu (Naplánovat → Lednice → Nákup → Příprava → Dnes jím); <em>Centrum důvěry</em> (aplikace jasně říká, co je živá cena vs. odhad a co je ověřené makro vs. interní výpočet); a <em>trvalé mapování surovina → Rohlík produkt</em> s odkazem na hledání (nikdy ale sama neobjedná). Pod kapotou: 597 unit testů, opravená e2e sada (27 prošlo). <strong>Beta / NOT_FINAL</strong> — vydáno přes automatickou aktualizaci, plné ověření přeinstalace ještě probíhá.</li>
         <li><strong>Phase 6 — Rohlík integrace, volitelná (květen 2026)</strong> — agent (Claude) připraví z týdenního plánu návrh košíku jako JSON; aplikace ukáže cenu vs. minimum objednávky vs. doručení. Objednávku ale <strong>vždy potvrzuješ ručně v Rohlíku</strong> — aplikace fyzicky neumí objednat ani zaplatit (defense-in-depth: 5 vrstev ochrany, 14 PII pravidel).</li>
         <li><strong>Phase 5 — optimizer a doporučený cíl</strong> — když se podle váhy a aktivity posune doporučený kalorický cíl, aplikace nabídne jeho použití (nikdy tichá změna bez tvého vědomí). Optimizer vybírá recepty s vyšším podílem bílkovin pro hubnutí i nabírání.</li>
         <li><strong>Phase 4 — týdenní plán a nákupní seznam</strong> — combo-search poskládá 7 dní × 5 jídel tak, aby denní kalorie padly do ±10 % cíle, s penalizací opakování receptů kvůli pestrosti. Nákupní seznam sečte ingredience za celý týden do kategorií + export CSV nebo tisk.</li>
         <li><strong>Jádro — kalorický cíl a váha</strong> — výpočet potřeby kalorií (Mifflin-St Jeor + multiplier podle aktivity, asymetrický deficit/surplus) a sledování váhy vlastním SVG grafem. Vše jen v paměti prohlížeče (localStorage).</li>
-        <li><strong>PWA, offline a soukromí</strong> — po prvním načtení funguje bez internetu, jde nainstalovat jako desktopová aplikace přes Edge. Žádný účet, žádný cloud, žádná telemetrie. 21 receptů, 157 unit testů, 8 architektonických rozhodnutí (ADR).</li>
+        <li><strong>PWA a soukromí</strong> — jde nainstalovat jako desktopová aplikace na Windows (installer), běží plně lokálně bez cloudu. Žádný účet, žádná telemetrie. 597 unit testů, 8+ architektonických rozhodnutí (ADR).</li>
       </ul>
       <p style="color:var(--text-mut,#777);font-size:.85rem">Pozn.: aplikace běží jen lokálně, reálná data ani osobní údaje nejdou na web.</p>
     </div>

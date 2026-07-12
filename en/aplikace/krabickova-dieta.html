@@ -56,6 +56,7 @@
 <section>
   <h2>Key features</h2>
   <ul style="line-height:1.7">
+      <li><strong>0.9.8 beta — new navigation, smarter shopping &amp; Trust Center (July 2026)</strong> — unified cockpit navigation plus: recipe import from text, shopping grouped by store aisle, a week flow on the overview (Plan → Fridge → Shop → Prep → Eat today), a Trust Center (the app clearly states what is a live price vs estimate, verified vs internal macros), and persistent ingredient → Rohlík product mapping (never orders by itself). Under the hood: 597 unit tests, fixed e2e suite (27 passing). <strong>Beta / NOT_FINAL</strong> — shipped via auto-update, full re-install verification still pending.</li>
       <li><strong>Auto-generated weekly plan</strong> — Combo search for 7×5 meals, daily kcal within ±10% target. Repeat-recipe penalty for variety.</li>
       <li><strong>BMR/TDEE calculator</strong> — Mifflin-St Jeor formula + activity multiplier. Asymmetric deficit/surplus by weekly weight change.</li>
       <li><strong>Recommended target banner</strong> — When metrics shift the recommended kcal, app offers &bdquo;Use recommended&ldquo; (never a silent change).</li>
@@ -63,7 +64,7 @@
       <li><strong>Loss/gain optimizer</strong> — Weight loss → prefers higher-protein recipes. Muscle gain → same plus tighter kcal target.</li>
       <li><strong>Rohlík integration (optional)</strong> — Agent prepares cart JSON, you see total vs minimum vs delivery price. Order always confirmed manually.</li>
       <li><strong>Shopping list with export</strong> — Aggregates ingredients from weekly plan, groups by category, CSV or print.</li>
-      <li><strong>PWA + offline</strong> — Works without internet after first load. Installable as desktop app via Edge/Chrome.</li>
+      <li><strong>PWA &amp; privacy</strong> — Installable as a desktop app on Windows (installer), runs fully locally with no cloud. No account, no telemetry.</li>
   </ul>
 </section>
 
@@ -78,7 +79,7 @@
 
 <section>
   <h2>Status</h2>
-  <p>Working, Phase 4C + 5A + 5B + 5C + 6 (May 2026). Local PWA, 21 recipes, 157 unit tests, 8 architecture ADRs. No cloud, no account, no telemetry.</p>
+  <p><strong>Released 0.9.8 beta</strong> (July 2026, <em>NOT_FINAL</em>). New navigation (cockpit), recipe import from text, shopping by store aisle, a week flow and a Trust Center (live price vs estimate). Local Windows app (installer + auto-update), runs with no cloud and no account. 597 unit tests, 27 e2e tests. No telemetry.</p>
 </section>
 
 </main>
