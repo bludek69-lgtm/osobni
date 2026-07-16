@@ -57,6 +57,11 @@ code {
   border-radius: 5px;
   border: 1px solid var(--border);
   color: var(--accent);
+  /* Inline code (script/file names in body text) must wrap instead of
+     forcing horizontal page overflow on narrow viewports; <pre> blocks
+     already scroll safely via `overflow-x: auto` below, unaffected. */
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .container {
@@ -928,6 +933,14 @@ code {
   font-size: 13px;
   line-height: 1.6;
   margin: 24px 0;
+}
+.post-content table {
+  /* Safe horizontal scroll for the table itself on narrow viewports,
+     instead of forcing the whole page wider (or hiding columns). */
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .post-content pre code {
   background: transparent;
