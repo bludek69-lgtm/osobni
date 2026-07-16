@@ -20,6 +20,7 @@
   <meta property="og:type" content="website">
 </head>
 <body>
+  <a href="#main" class="skip-link">Přeskočit na obsah</a>
   <header class="site-header">
     <div class="container header-inner">
       <a href="../index.html" class="brand" aria-label="SMART HOME – home">
@@ -34,7 +35,7 @@
     </div>
   </header>
 
-  <main class="post-page">
+  <main class="post-page" id="main">
     <div class="container">
       <a href="../blog.html" class="post-page-back">← Všechny příspěvky</a>
 
@@ -67,7 +68,7 @@
           EventLog z demand cronu každé 2 min:
         </p>
 
-        <pre><code>06:14:00 demand=on  jidelna=21.0/21.0  koupelna=22.1/22.0  → boiler_request=on
+        <pre tabindex="0"><code>06:14:00 demand=on  jidelna=21.0/21.0  koupelna=22.1/22.0  → boiler_request=on
 06:16:00 demand=on  ...                                  → boiler_request=on
 06:21:00 demand=off jidelna=21.0/21.0  koupelna=22.0/22.0 → boiler_request=off
 06:23:00 demand=on  jidelna=20.4/21.0                    → hold_off_180s_left=180
@@ -87,7 +88,7 @@
           <code>sh_heating_demand_v1 v1.1</code> měl tento check:
         </p>
 
-        <pre><code>// v1.1
+        <pre tabindex="0"><code>// v1.1
 const sinceTs = parseInt(await getVar('sh_heating_boiler_since_ts'), 10);
 const elapsed = Math.floor((Date.now() - sinceTs) / 1000);
 const minOfftimeS = parseInt(await getVar('sh_cfg_heating_min_offtime_s'), 10);
@@ -126,7 +127,7 @@ if (boilerState === 'off' && elapsed &lt; minOfftimeS) {
           a default value byl 0 z initialization).
         </p>
 
-        <pre><code>// since_ts = 0
+        <pre tabindex="0"><code>// since_ts = 0
 elapsed = Math.floor((1697123456000 - 0) / 1000)
        = 1697123456
 // 1697123456 &lt; 180 ? FALSE!
@@ -144,7 +145,7 @@ elapsed = Math.floor((1697123456000 - 0) / 1000)
           ale jiný kus kódu níže:
         </p>
 
-        <pre><code>// Safety cutoff
+        <pre tabindex="0"><code>// Safety cutoff
 if (sinceTs > 0) {
   // Validation runtime checks
   ...
@@ -172,7 +173,7 @@ if (boilerState === 'off') {
 
         <h2>Fix v1.2</h2>
 
-        <pre><code>// v1.2 — explicit cold-start escape
+        <pre tabindex="0"><code>// v1.2 — explicit cold-start escape
 if (boilerState === 'off') {
   const safeElapsed = sinceTs > 0
     ? elapsed
@@ -199,7 +200,7 @@ if (boilerState === 'off') {
           ručně:
         </p>
 
-        <pre><code>06:30:00 (cold start) demand=on jidelna=18.0/21.0 → boiler_request=on
+        <pre tabindex="0"><code>06:30:00 (cold start) demand=on jidelna=18.0/21.0 → boiler_request=on
 06:30:00 since_ts=&lt;set&gt;
 06:32:00 demand=on  jidelna=18.5/21.0 → boiler_request=on (still cold)
 ...
@@ -267,5 +268,6 @@ if (boilerState === 'off') {
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script src="../script.js"></script>
 </body>
 </html>

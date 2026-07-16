@@ -20,6 +20,7 @@
   <meta property="og:type" content="website">
 </head>
 <body>
+  <a href="#main" class="skip-link">Přeskočit na obsah</a>
   <header class="site-header">
     <div class="container header-inner">
       <a href="../index.html" class="brand" aria-label="SMART HOME – home">
@@ -34,7 +35,7 @@
     </div>
   </header>
 
-  <main class="post-page">
+  <main class="post-page" id="main">
     <div class="container">
       <a href="../blog.html" class="post-page-back">← Všechny příspěvky</a>
 
@@ -106,7 +107,7 @@
           Diagnostika přes EventLog:
         </p>
 
-        <pre><code>03:03:00  motion bedroom (SNZB-03) — TRUE
+        <pre tabindex="0"><code>03:03:00  motion bedroom (SNZB-03) — TRUE
 03:03:02  sh_morning_brain_v1  → brain_invoked (motion, briefing2 audit)
 03:03:02  sh_morning_brain_v1  → morning_score_bypass (score=85, bypass 180s debounce)
 03:03:05  sh_audio_brain_v2    → audio_dispatch (radio_kitchen)
@@ -119,7 +120,7 @@
           Rozpis:
         </p>
 
-        <pre><code>+2  cas&gt;=03:00 (morning window)
+        <pre tabindex="0"><code>+2  cas&gt;=03:00 (morning window)
 +10 wake_confidence_score=50          ← bedroom motion
 +1  jsem_vstal=yes
 +3  open_space_dual (FP2+motion)      ← BUG
@@ -132,7 +133,7 @@
           ukázal něco děsivého:
         </p>
 
-        <pre><code>00:04 UTC  snzb06p=TRUE  fibaro_motion=TRUE  idle_open_space_s=17161
+        <pre tabindex="0"><code>00:04 UTC  snzb06p=TRUE  fibaro_motion=TRUE  idle_open_space_s=17161
 00:14 UTC  snzb06p=TRUE  fibaro_motion=TRUE  idle_open_space_s=17761
 00:24 UTC  snzb06p=TRUE  fibaro_motion=TRUE  idle_open_space_s=18361
 ...
@@ -158,7 +159,7 @@
           skriptu:
         </p>
 
-        <pre><code>function buildIntro(hour) {
+        <pre tabindex="0"><code>function buildIntro(hour) {
   if (hour &lt; 6) return 'Dobré ráno, Luďku.';
   if (hour &lt; 12) return 'Dobré ráno, Luďku.';
   ...
@@ -213,7 +214,7 @@
           <code>sh_morning_score_v1</code> bumpnut na v1.6 s novými ochranami:
         </p>
 
-        <pre><code>// Před: value === true OR ageS &lt;= 300
+        <pre tabindex="0"><code>// Před: value === true OR ageS &lt;= 300
 const recent = (info, windowS) =&gt; info.exists &amp;&amp; (info.value === true || info.ageS &lt;= windowS);
 
 // Po: jen čerstvá detekce (motion fired v posledních 300s)
@@ -227,7 +228,7 @@ const isStuckPresence = (info) =&gt; info.exists &amp;&amp; info.value === true 
           Pokud byly TRUE od večera (stuck), bonus se neuplatní:
         </p>
 
-        <pre><code>+0  open_space_stuck_skipped (FP2_age=111315s, kitch_age=337s)</code></pre>
+        <pre tabindex="0"><code>+0  open_space_stuck_skipped (FP2_age=111315s, kitch_age=337s)</code></pre>
 
         <p>
           Plus PRE_ALARM_HARD_CAP — pokud je hodina 3 a nejbližší alarm víc jak 5 min daleko,
@@ -242,7 +243,7 @@ const isStuckPresence = (info) =&gt; info.exists &amp;&amp; info.value === true 
           skript <code>sh_location_time_context_v1.js</code>, který každých 5 minut počítá:
         </p>
 
-        <pre><code>{
+        <pre tabindex="0"><code>{
   "timezone":      "Europe/Prague",
   "is_dst":        true,
   "utc_offset":    "+02:00",
@@ -273,7 +274,7 @@ const isStuckPresence = (info) =&gt; info.exists &amp;&amp; info.value === true 
 
         <h3>Krok 4: Briefing greeting guard</h3>
 
-        <pre><code>function buildIntroByPhase(phase, hour) {
+        <pre tabindex="0"><code>function buildIntroByPhase(phase, hour) {
   if (phase === 'night')   return 'Vítej, Luďku.';       // NIKDY "dobré ráno" v noci
   if (phase === 'morning') return 'Dobré ráno, Luďku.';
   if (phase === 'day')     return 'Dobrý den, Luďku.';
@@ -296,7 +297,7 @@ const isStuckPresence = (info) =&gt; info.exists &amp;&amp; info.value === true 
           se ignoruje:
         </p>
 
-        <pre><code>if (event === 'motion_detected' && alreadyTriggered !== 'yes') {
+        <pre tabindex="0"><code>if (event === 'motion_detected' && alreadyTriggered !== 'yes') {
   if (dayPhase === 'night' && !alarmFiredToday) {
     return 'PHASE_GUARD_BLOCKED';
     // Log EventLog: event='morning_routine_blocked_wrong_phase'
@@ -305,7 +306,7 @@ const isStuckPresence = (info) =&gt; info.exists &amp;&amp; info.value === true 
 
         <h2>Před / Po</h2>
 
-        <table style="width:100%;border-collapse:collapse;margin:20px 0;font-family:var(--mono);font-size:14px;">
+        <table tabindex="0" style="width:100%;border-collapse:collapse;margin:20px 0;font-family:var(--mono);font-size:14px;">
           <thead>
             <tr style="border-bottom:2px solid var(--bd);">
               <th style="text-align:left;padding:8px;">Aspekt</th>
@@ -443,5 +444,6 @@ const isStuckPresence = (info) =&gt; info.exists &amp;&amp; info.value === true 
       <p>SMART HOME — Homey Pro 2026 + osobní deníky bugů a oprav. <a href="../blog.html">Blog</a> · <a href="../index.html">Hlavní</a></p>
     </div>
   </footer>
+  <script src="../script.js"></script>
 </body>
 </html>

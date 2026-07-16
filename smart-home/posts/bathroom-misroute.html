@@ -20,6 +20,7 @@
   <meta property="og:type" content="website">
 </head>
 <body>
+  <a href="#main" class="skip-link">Přeskočit na obsah</a>
   <header class="site-header">
     <div class="container header-inner">
       <a href="../index.html" class="brand" aria-label="SMART HOME – home">
@@ -34,7 +35,7 @@
     </div>
   </header>
 
-  <main class="post-page">
+  <main class="post-page" id="main">
     <div class="container">
       <a href="../blog.html" class="post-page-back">← Všechny příspěvky</a>
 
@@ -67,7 +68,7 @@
 
         <h2>State při bugu</h2>
 
-        <pre><code>sh_audio_current_mode = 'radio_bathroom'
+        <pre tabindex="0"><code>sh_audio_current_mode = 'radio_bathroom'
 sh_audio_active_speaker = 'Speaker koupelna'
 sh_audio_playing = 'yes'
 sh_audio_request = 'idle'           ← nikdo nepožádal o radio
@@ -112,7 +113,7 @@ sh_tts_resume_target = 'idle'       ← ditto</code></pre>
           který se volá automaticky po každém TTS completion, měl fallback handler:
         </p>
 
-        <pre><code>// BEFORE v1.8
+        <pre tabindex="0"><code>// BEFORE v1.8
 if (target === 'idle' && currentMode === 'radio_bathroom') {
   // Resume bathroom radio
   await dispatchAudio({mode: 'radio_bathroom', speaker: 'Speaker koupelna'});
@@ -133,7 +134,7 @@ if (target === 'idle' && currentMode === 'radio_bathroom') {
 
         <h2>Fix v1.8 — prev_playing guard</h2>
 
-        <pre><code>// AFTER v1.8
+        <pre tabindex="0"><code>// AFTER v1.8
 if (target === 'idle' && currentMode === 'radio_bathroom') {
   if (sh_audio_prev_playing !== 'yes') {
     logEvent({event: 'tts_resume_skip_no_prev_playing'});
@@ -220,5 +221,6 @@ if (target === 'idle' && currentMode === 'radio_bathroom') {
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script src="../script.js"></script>
 </body>
 </html>

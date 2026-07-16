@@ -24,6 +24,28 @@
     });
   }
 
+  // ── Keyboard-focusable overflow regions (WCAG 2.1.1) ──────────
+  // Blog posts' <pre> code blocks scroll horizontally (CSS overflow-x: auto)
+  // when content is wider than the viewport, but a plain scrollable <pre>
+  // isn't in the Tab order by default, so keyboard-only users have no way
+  // to reach the hidden content. Only elements that ACTUALLY overflow get
+  // tabindex="0" (checked after layout), so non-overflowing blocks don't
+  // gain an unnecessary tab stop. (.hw-table-wrap already has a static
+  // tabindex in hardware-komplet.html -- this skips anything already set.)
+  function makeOverflowingRegionsFocusable() {
+    document.querySelectorAll('.post-content pre, .hw-table-wrap').forEach((el) => {
+      if (el.scrollWidth > el.clientWidth && !el.hasAttribute('tabindex')) {
+        el.setAttribute('tabindex', '0');
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', makeOverflowingRegionsFocusable);
+  } else {
+    makeOverflowingRegionsFocusable();
+  }
+  window.addEventListener('resize', makeOverflowingRegionsFocusable);
+
   // ── Year in footer ───────────────────────────────────────────
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

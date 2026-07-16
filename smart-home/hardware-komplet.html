@@ -37,7 +37,7 @@
 .hw-photo { aspect-ratio:16/10; background:rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; overflow:hidden; }
 .hw-photo img { width:100%; height:100%; object-fit:contain; padding:0.5rem; }
 .hw-photo img.hw-photo-svg-icon { padding:1rem; opacity:0.92; }
-.hw-photo-ph { color:rgba(255,255,255,0.45); font-size:0.8rem; font-style:italic; text-align:center; }
+.hw-photo-ph { color:rgba(255,255,255,0.55); font-size:0.8rem; font-style:italic; text-align:center; }
 .hw-card-body { padding:0.9rem 1rem 1rem; }
 .hw-card-title { font-size:0.98rem; margin:0 0 0.25rem; line-height:1.25; }
 .hw-model { font-size:0.78rem; opacity:0.7; margin:0 0 0.5rem; line-height:1.35; }
@@ -1381,7 +1381,7 @@
   <section aria-labelledby="hw-zone-h">
     <h2 id="hw-zone-h" class="hw-section-h2">Hardware podle zón</h2>
     <p style="opacity:0.85; max-width:780px;">Hardware je distribuovaný po reálných obytných zónách. Zóny jako <em>TOPENI</em>, <em>SMART HOME</em>, <em>Home</em> jsou meta-skupiny pro logiku a nepočítají se mezi obytné prostory.</p>
-    <div class="hw-table-wrap">
+    <div class="hw-table-wrap" tabindex="0">
       <table class="hw-table">
         <thead><tr><th>Zóna</th><th>Počet zařízení</th><th>Co tam je</th></tr></thead>
         <tbody>
@@ -1402,7 +1402,7 @@
 
   <section aria-labelledby="hw-proto-h">
     <h2 id="hw-proto-h" class="hw-section-h2">Použité protokoly</h2>
-    <div class="hw-table-wrap">
+    <div class="hw-table-wrap" tabindex="0">
       <table class="hw-table">
         <thead><tr><th>Protokol</th><th>Počet zařízení</th><th>K čemu / co na něm běží</th></tr></thead>
         <tbody>
@@ -1423,7 +1423,7 @@
   <section aria-labelledby="hw-table-h">
     <h2 id="hw-table-h" class="hw-section-h2">Detailní tabulka (všechna zařízení)</h2>
     <p style="opacity:0.85;">Filtry nahoře platí i pro tuto tabulku.</p>
-    <div class="hw-table-wrap">
+    <div class="hw-table-wrap" tabindex="0">
       <table class="hw-table" id="hw-table">
         <thead><tr>
           <th>Zařízení</th><th>Kategorie</th><th>Zóna</th><th>Protokol</th><th>Poznámka</th><th>Automat.</th><th>Energie</th><th>Stav</th>
