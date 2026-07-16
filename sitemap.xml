@@ -14,49 +14,61 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/budline.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/config-center.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/energy-dashboard.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/finance-analytik.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/italia-travel.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/krabickova-dieta.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/meal-planner.html</loc>
     <lastmod>2026-06-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cestovatel69.cz/aplikace/media-hub.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cestovatel69.cz/aplikace/portfolio-tracker.html</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -68,31 +80,31 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/ridic-turnusy-mzdy.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/rpi-kiosk.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/sbirka.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/tenispark.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/ucetni-kniha.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -296,7 +308,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/budline.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -314,13 +326,13 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/finance-analytik.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -332,7 +344,19 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/krabickova-dieta.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cestovatel69.cz/en/aplikace/media-hub.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cestovatel69.cz/en/aplikace/portfolio-tracker.html</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -356,13 +380,13 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/sbirka.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/tenispark.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -608,7 +632,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/budline.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -626,13 +650,13 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/finance-analytik.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -644,7 +668,19 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/krabickova-dieta.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cestovatel69.cz/it/aplikace/media-hub.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cestovatel69.cz/it/aplikace/portfolio-tracker.html</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -668,13 +704,13 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/sbirka.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/tenispark.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -926,7 +962,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/blog.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

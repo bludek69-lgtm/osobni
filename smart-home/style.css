@@ -12,7 +12,7 @@
   --border-strong: rgba(255, 255, 255, 0.12);
   --text: #e8eef5;
   --text-soft: #aab4c2;
-  --text-dim: #6b7686;
+  --text-dim: #778292; /* was #6b7686 — lightened to clear 4.5:1 on --bg-soft/--surface (WCAG contrast fix) */
   --accent: #00e5ff;
   --accent-2: #7c3aed;
   --accent-glow: rgba(0, 229, 255, 0.35);
@@ -857,7 +857,7 @@ code {
   color: var(--text-dim);
 }
 .footer-inner p { margin: 0; }
-.footer-meta { font-size: 13px; opacity: 0.7; }
+.footer-meta { font-size: 13px; opacity: 1; } /* was 0.7 — diluted --text-dim below WCAG contrast on dark footer bg */
 
 /* ─── POST PAGE ─── */
 .post-page {

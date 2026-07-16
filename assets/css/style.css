@@ -44,6 +44,8 @@ body.theme-home {
   --text-mut:  #cbd5e1;
   --accent:    #d6a84f;
   --accent-2:  #e9c179;
+  --accent-text: #cf9930; /* AA-safe text variant of --accent for use as foreground text (WCAG contrast fix) */
+  --on-accent: #111111; /* readable text color when placed ON TOP of an --accent background (WCAG contrast fix) */
   --border:    rgba(255,255,255,0.08);
 }
 
@@ -57,6 +59,11 @@ body.theme-finance {
   --text-mut:  #b8c5d6;
   --accent:    #d4af37;
   --accent-2:  #e8c95a;
+  --accent-text: #d2ab2d; /* AA-safe text variant of --accent for use as foreground text (WCAG contrast fix) */
+  --on-accent: #111111; /* readable text color when placed ON TOP of an --accent background (WCAG contrast fix) */
+  --risk-low:  #2f9d5c;
+  --risk-mid:  #b88014;
+  --risk-high: #d66b6b;
   --border:    rgba(255,255,255,0.06);
 }
 
@@ -70,6 +77,8 @@ body.theme-travel {
   --text-mut:  #6b5644;
   --accent:    #0e7490;
   --accent-2:  #b85c38;
+  --accent-text: #0e7490; /* AA-safe text variant of --accent for use as foreground text (WCAG contrast fix) */
+  --on-accent: #ffffff; /* readable text color when placed ON TOP of an --accent background (WCAG contrast fix) */
   --border:    rgba(45, 27, 18, 0.08);
 }
 
@@ -85,6 +94,8 @@ body.theme-italy {
   --accent-2:  #c82e2e;     /* červená */
   --accent-3:  #b85c38;     /* terakota */
   --accent-4:  #6f7f3f;     /* oliva */
+  --accent-text: #157a39; /* AA-safe text variant of --accent for use as foreground text (WCAG contrast fix) */
+  --on-accent: #ffffff; /* readable text color when placed ON TOP of an --accent background (WCAG contrast fix) */
   --border:    rgba(31, 41, 51, 0.10);
 }
 
@@ -98,6 +109,8 @@ body.theme-smart-home {
   --text-mut:  #a4b5cb;
   --accent:    #22d3ee;
   --accent-2:  #4dffd0;
+  --accent-text: #12d0ed; /* AA-safe text variant of --accent for use as foreground text (WCAG contrast fix) */
+  --on-accent: #111111; /* readable text color when placed ON TOP of an --accent background (WCAG contrast fix) */
   --border:    rgba(34, 211, 238, 0.12);
 }
 
@@ -116,6 +129,7 @@ html[data-theme-mode="dark"] body.theme-travel {
   --panel-hi:  #3a2f25;
   --text:      #f4ebe0;
   --text-mut:  #c4b0a0;
+  --accent-text: #17bbe8; /* lightened teal for foreground text on dark bg (WCAG contrast fix) */
   --border:    rgba(255,247,237,0.08);
   /* accent (#0e7490 teal, #b85c38 terakota) preserved */
 }
@@ -126,6 +140,7 @@ html[data-theme-mode="dark"] body.theme-italy {
   --panel-hi:  #3a3527;
   --text:      #f4f1e6;
   --text-mut:  #c0b8a4;
+  --accent-text: #25da66; /* lightened green for foreground text on dark bg (WCAG contrast fix) */
   --border:    rgba(255,247,230,0.08);
   /* italian green/red/terracotta accents preserved */
 }
@@ -138,6 +153,7 @@ html[data-theme-mode="light"] body.theme-home {
   --panel-hi:  #f0f4fa;
   --text:      #1a2233;
   --text-mut:  #5a6478;
+  --accent-text: #896520; /* darkened gold for foreground text on light bg (WCAG contrast fix) */
   --border:    rgba(26,34,51,0.10);
   /* gold accent preserved */
 }
@@ -148,6 +164,10 @@ html[data-theme-mode="light"] body.theme-finance {
   --panel-hi:  #f0f2f8;
   --text:      #1a2030;
   --text-mut:  #545d70;
+  --accent-text: #7e671b; /* darkened gold for foreground text on light bg (WCAG contrast fix) */
+  --risk-low:  #28864e;
+  --risk-mid:  #9c6c11;
+  --risk-high: #c83737;
   --border:    rgba(26,32,48,0.10);
   /* gold accent preserved */
 }
@@ -158,6 +178,7 @@ html[data-theme-mode="light"] body.theme-smart-home {
   --panel-hi:  #e5f4fa;
   --text:      #0a1828;
   --text-mut:  #4a5868;
+  --accent-text: #0a7485; /* darkened cyan for foreground text on light bg (WCAG contrast fix) */
   --border:    rgba(34,211,238,0.18);
   /* cyan accent preserved */
 }
@@ -186,17 +207,17 @@ html[data-theme-mode="light"] body.theme-smart-home {
   border-color: var(--accent);
 }
 .lang-switcher a[aria-current="page"] {
-  color: var(--text);
+  color: var(--on-accent, var(--text));
   background: var(--accent);
   border-color: var(--accent);
 }
 .lang-switcher a[aria-current="page"]:hover {
-  color: var(--text);
+  color: var(--on-accent, var(--text));
   background: var(--accent);
 }
 .lang-tag {
   font-size: 0.6rem;
-  opacity: 0.6;
+  opacity: 0.88; /* was 0.6 — diluted text-mut below WCAG contrast; 0.88 keeps a subdued look while staying AA-safe */
   margin-left: 0.25rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -230,6 +251,24 @@ html[data-theme-mode="light"] body.theme-smart-home {
   outline-offset: 2px;
 }
 
+/* ── SKIP LINK (WCAG 2.4.1 Bypass Blocks) ───────────────── */
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 0.5rem;
+  z-index: 10000;
+  background: var(--accent, #1a73e8);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 6px 6px;
+  font: 600 14px/1 system-ui, sans-serif;
+  text-decoration: none;
+  transition: top 120ms ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 /* ── HEADER + NAVIGATION ─────────────────────────────────── */
 .site-header {
   background: var(--panel);
@@ -252,7 +291,7 @@ html[data-theme-mode="light"] body.theme-smart-home {
   font-weight: 700;
   font-size: 1.1rem;
   letter-spacing: 0.5px;
-  color: var(--accent);
+  color: var(--accent-text);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -280,7 +319,7 @@ html[data-theme-mode="light"] body.theme-smart-home {
 }
 .nav a:hover { color: var(--text); background: var(--panel-hi); }
 .nav a[aria-current="page"] {
-  color: var(--accent);
+  color: var(--accent-text);
   background: var(--panel-hi);
   border-bottom: 2px solid var(--accent);
 }
@@ -306,11 +345,11 @@ main {
 section { margin-bottom: var(--gap-large); }
 h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
 h1 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; }
-h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 1.2rem; color: var(--accent); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 1.2rem; color: var(--accent-text); }
 h3 { font-size: 1.3rem; margin-bottom: 0.8rem; }
 p { margin-bottom: 1rem; color: var(--text-mut); }
 p strong, p b { color: var(--text); }
-a.link, .prose a { color: var(--accent); border-bottom: 1px dashed var(--accent); }
+a.link, .prose a { color: var(--accent-text); border-bottom: 1px dashed var(--accent); }
 a.link:hover { border-bottom-style: solid; }
 
 /* ── HERO ────────────────────────────────────────────────── */
@@ -332,7 +371,7 @@ a.link:hover { border-bottom-style: solid; }
   padding: 0.3rem 1rem;
   border-radius: 999px;
   background: var(--panel-hi);
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -371,7 +410,7 @@ a.link:hover { border-bottom-style: solid; }
 .card .card-cta {
   margin-top: auto;
   padding-top: 1rem;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
@@ -389,7 +428,7 @@ a.link:hover { border-bottom-style: solid; }
   font-weight: 600;
   font-size: 1rem;
   border: 1px solid var(--accent);
-  color: var(--accent);
+  color: var(--accent-text);
   background: transparent;
   cursor: pointer;
   transition: all var(--transition);
@@ -472,9 +511,9 @@ a.link:hover { border-bottom-style: solid; }
 .fin-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
 /* Risk pills inside table */
-.risk-low    { color: #2f9f5d; font-weight: 600; }
-.risk-mid    { color: #d49317; font-weight: 600; }
-.risk-high   { color: #d05656; font-weight: 600; }
+.risk-low    { color: var(--risk-low, #28864e); font-weight: 600; }
+.risk-mid    { color: var(--risk-mid, #9c6c11); font-weight: 600; }
+.risk-high   { color: var(--risk-high, #c83737); font-weight: 600; }
 
 /* ── FINANCE: CHECKLIST ───────────────────────────────────── */
 .checklist {
@@ -497,7 +536,7 @@ a.link:hover { border-bottom-style: solid; }
   position: absolute;
   left: 0.2rem;
   top: 0.45rem;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 700;
 }
 .checklist.compact li {
@@ -580,7 +619,7 @@ a.link:hover { border-bottom-style: solid; }
   margin-top: 0.7rem;
   padding: 0.45rem 0.95rem;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent, #fff);
   text-decoration: none;
   border-radius: 999px;
   font-size: 0.85rem;
@@ -590,7 +629,7 @@ a.link:hover { border-bottom-style: solid; }
 .tool-cta:hover { opacity: 0.92; transform: translateY(-1px); }
 .tool-cta.alt {
   background: transparent;
-  color: var(--accent);
+  color: var(--accent-text);
   border: 1px solid var(--accent);
 }
 
@@ -655,7 +694,7 @@ body.theme-italy .italy-flag-bar > span:nth-child(3) { background: var(--accent-
   justify-content: space-between;
   gap: 1rem;
 }
-.site-footer a { color: var(--accent); }
+.site-footer a { color: var(--accent-text); }
 .site-footer .footer-links {
   display: flex;
   gap: 1rem;
@@ -680,7 +719,7 @@ body.theme-italy .italy-flag-bar > span:nth-child(3) { background: var(--accent-
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
   margin-bottom: 0.5rem;
 }
 .youtube-section h2 { color: var(--text); margin-bottom: 0.6rem; }
@@ -803,7 +842,7 @@ body.theme-italy .italy-flag-bar > span:nth-child(3) { background: var(--accent-
   padding: 0.4rem 0.7rem;
   border: 1px solid var(--accent);
   background: transparent;
-  color: var(--accent);
+  color: var(--accent-text);
   border-radius: 6px;
   font-size: 0.78rem;
   font-weight: 600;
@@ -843,7 +882,7 @@ body.theme-italy .italy-flag-bar > span:nth-child(3) { background: var(--accent-
   align-items: center;
   gap: 0.6rem;
   padding: 0.8rem 1.8rem;
-  background: #ff0000;
+  background: #eb0000; /* was #ff0000 — nudged down so white label text clears 4.5:1 (WCAG contrast fix) */
   color: #fff;
   border: none;
   border-radius: var(--radius-button);
@@ -857,14 +896,14 @@ body.theme-italy .italy-flag-bar > span:nth-child(3) { background: var(--accent-
 .btn-youtube::before { content: "▶"; }
 
 /* Italy variant — elegantní zelená+červená+krém */
-body.theme-italy .youtube-section .eyebrow { color: var(--accent); /* green */ }
+body.theme-italy .youtube-section .eyebrow { color: var(--accent-text); /* green */ }
 body.theme-italy .video-card { border-color: rgba(22, 128, 60, 0.18); }
 body.theme-italy .video-card:hover { border-color: var(--accent); }
 body.theme-italy .video-card.is-active {
   border-color: var(--accent-2); /* red */
   box-shadow: 0 0 0 2px var(--accent-2);
 }
-body.theme-italy .video-card .btn-mini { border-color: var(--accent); color: var(--accent); }
+body.theme-italy .video-card .btn-mini { border-color: var(--accent); color: var(--accent-text); }
 body.theme-italy .video-card .btn-mini:hover { background: var(--accent); color: #fff; }
 body.theme-italy .youtube-subscribe {
   background: linear-gradient(135deg, #fff7e6, #fff 60%);
@@ -910,7 +949,7 @@ body.theme-italy .youtube-subscribe::before {
 .youtube-promo p { margin: 0; color: var(--text-mut); font-size: 0.9rem; }
 .youtube-promo .promo-cta {
   padding: 0.5rem 1rem;
-  background: #ff0000;
+  background: #eb0000; /* was #ff0000 — nudged down so white label text clears 4.5:1 (WCAG contrast fix) */
   color: #fff;
   border-radius: 6px;
   text-decoration: none;
@@ -936,7 +975,7 @@ body.theme-italy .youtube-subscribe::before {
   margin-top: var(--gap-medium);
 }
 .external-cta h2 {
-  color: var(--accent);
+  color: var(--accent-text);
   margin-bottom: 1rem;
 }
 
