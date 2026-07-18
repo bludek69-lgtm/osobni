@@ -12,7 +12,7 @@
   --border-strong: rgba(255, 255, 255, 0.12);
   --text: #e8eef5;
   --text-soft: #aab4c2;
-  --text-dim: #6b7686;
+  --text-dim: #778292; /* was #6b7686 — lightened to clear 4.5:1 on --bg-soft/--surface (WCAG contrast fix) */
   --accent: #00e5ff;
   --accent-2: #7c3aed;
   --accent-glow: rgba(0, 229, 255, 0.35);
@@ -57,6 +57,11 @@ code {
   border-radius: 5px;
   border: 1px solid var(--border);
   color: var(--accent);
+  /* Inline code (script/file names in body text) must wrap instead of
+     forcing horizontal page overflow on narrow viewports; <pre> blocks
+     already scroll safely via `overflow-x: auto` below, unaffected. */
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .container {
@@ -434,7 +439,13 @@ code {
 /* ─── BLOG ─── */
 .post-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  /* minmax(320px, 1fr) never shrinks below 320px even when the container
+     itself is narrower (e.g. a 320px-wide viewport with any padding/border),
+     which forces horizontal page overflow on exactly the narrowest phones.
+     min(320px, 100%) caps the track's minimum at the container's own width,
+     so it can never demand more space than is actually available (mobile
+     overflow fix). */
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 24px;
 }
 .post-card {
@@ -484,7 +495,13 @@ code {
 }
 .post-card-thumb-soon .post-card-badge {
   border-color: var(--text-dim);
-  color: var(--text-dim);
+  /* var(--text-dim) alone clears 4.5:1 elsewhere, but this badge additionally
+     sits inside .post-card-placeholder's opacity:0.7 card-level dilution,
+     which compounds and drops the rendered contrast well below threshold.
+     Ancestor opacity can't be un-done by a child's own opacity (compositing
+     is multiplicative down the tree), so this needs its own brighter base
+     color that still clears 4.5:1 AFTER the 0.7 dilution (WCAG contrast fix). */
+  color: #b8c0cc;
 }
 
 .post-card-body {
@@ -494,6 +511,12 @@ code {
   font-size: 13px;
   color: var(--text-dim);
   margin: 0 0 8px;
+}
+/* Same .post-card-placeholder opacity:0.7 dilution issue as .post-card-badge
+   above -- var(--text-dim) alone isn't enough once the ancestor's opacity
+   compounds on top of it (WCAG contrast fix). */
+.post-card-placeholder .post-card-meta {
+  color: #b8c0cc;
 }
 .post-card-title {
   font-size: 20px;
@@ -857,7 +880,7 @@ code {
   color: var(--text-dim);
 }
 .footer-inner p { margin: 0; }
-.footer-meta { font-size: 13px; opacity: 0.7; }
+.footer-meta { font-size: 13px; opacity: 1; } /* was 0.7 — diluted --text-dim below WCAG contrast on dark footer bg */
 
 /* ─── POST PAGE ─── */
 .post-page {
@@ -876,6 +899,13 @@ code {
 .post-content {
   max-width: 720px;
   margin: 0 auto;
+  /* Applied at the container level (not just .post-content p) so it covers
+     every text-bearing descendant -- inline <code> runs mixed into prose
+     (e.g. "node -v → v24.14.1") could still force page-level horizontal
+     overflow on narrow viewports without this, even with min-width:0 and
+     overflow-x:auto already applied elsewhere for block-level <pre>/<table>
+     (mobile overflow fix, T7). */
+  overflow-wrap: break-word;
 }
 .post-content h1 {
   font-size: clamp(28px, 4vw, 44px);
@@ -924,10 +954,27 @@ code {
   border-radius: var(--radius-sm);
   padding: 20px;
   overflow-x: auto;
+  /* overflow-x:auto alone doesn't reliably cap a <pre>'s own box width to its
+     container on every browser/content combination -- a very long unbroken
+     line inside <code> could still push the box (and the page) wider before
+     the internal scrollbar kicks in. max-width:100% + box-sizing guarantees
+     the box itself never exceeds its container, so any overflow is always
+     the INTERNAL scrollbar, never page-level horizontal scroll (mobile
+     overflow fix, T7). */
+  max-width: 100%;
+  box-sizing: border-box;
   font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
   line-height: 1.6;
   margin: 24px 0;
+}
+.post-content table {
+  /* Safe horizontal scroll for the table itself on narrow viewports,
+     instead of forcing the whole page wider (or hiding columns). */
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .post-content pre code {
   background: transparent;
@@ -2834,6 +2881,13 @@ img.zoomable:hover { opacity: 0.85; }
   border-radius: 10px;
   padding: 22px 26px;
   transition: transform .2s, border-color .2s, box-shadow .2s;
+  /* Flex items default to min-width:auto, which refuses to shrink below the
+     content's intrinsic min-content width (e.g. a long inline <code> string)
+     even in a column flex container -- this silently overflows the page on
+     narrow viewports regardless of word-break/overflow-wrap on the text
+     itself. min-width:0 lets the item actually shrink to fit (mobile
+     overflow fix, T7). */
+  min-width: 0;
 }
 .buildlog-entry:hover {
   transform: translateX(4px);
@@ -2856,12 +2910,22 @@ img.zoomable:hover { opacity: 0.85; }
   letter-spacing: 1.2px;
   padding: 2px 8px;
   background: var(--bl-bg, rgba(34,211,238,.1));
-  color: var(--bl-accent, var(--accent));
+  /* --bl-accent-text falls back to --bl-accent for categories whose accent
+     already clears 4.5:1 as text on this tag's background; .bl-fix's red
+     needed a lighter text-only variant (WCAG contrast fix, see below). */
+  color: var(--bl-accent-text, var(--bl-accent, var(--accent)));
   border-radius: 4px;
   font-weight: 700;
 }
-.buildlog-entry h3 { font-size: 20px; margin: 0 0 10px; font-weight: 700; color: var(--text); }
-.buildlog-entry p { margin: 0 0 10px; color: var(--text-soft); line-height: 1.55; }
+.buildlog-entry h3 { font-size: 20px; margin: 0 0 10px; font-weight: 700; color: var(--text); overflow-wrap: break-word; }
+/* This paragraph's own overflow-wrap was never set (default "normal"), so a
+   long unbroken run anywhere in its long-form prose (dense with /-joined
+   lists, hyphenated identifiers, etc.) could force the box -- and the whole
+   page -- wider on narrow viewports, even with min-width:0 already applied
+   at the flex-item level above (that fixes the box's ALLOWED width, not
+   whether its own text content actually wraps within it) (mobile overflow
+   fix, T7). */
+.buildlog-entry p { margin: 0 0 10px; color: var(--text-soft); line-height: 1.55; overflow-wrap: break-word; }
 .buildlog-entry p:last-child { margin-bottom: 0; }
 .buildlog-entry ul { margin: 8px 0 0 18px; padding: 0; color: var(--text-soft); font-size: 14px; }
 .buildlog-entry ul li { margin-bottom: 4px; }
@@ -2874,7 +2938,7 @@ img.zoomable:hover { opacity: 0.85; }
   color: var(--accent);
 }
 .buildlog-entry.bl-feature { --bl-accent: #22d3ee; --bl-bg: rgba(34,211,238,.1); }
-.buildlog-entry.bl-fix     { --bl-accent: #ef4444; --bl-bg: rgba(239,68,68,.1); }
+.buildlog-entry.bl-fix     { --bl-accent: #ef4444; --bl-bg: rgba(239,68,68,.1); --bl-accent-text: #f16565; }
 .buildlog-entry.bl-deploy  { --bl-accent: #4ade80; --bl-bg: rgba(74,222,128,.1); }
 .buildlog-entry.bl-roadmap { --bl-accent: #a78bfa; --bl-bg: rgba(167,139,250,.1); }
 .buildlog-entry.bl-perf    { --bl-accent: #fbbf24; --bl-bg: rgba(251,191,36,.1); }

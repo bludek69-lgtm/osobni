@@ -5,6 +5,47 @@
 (function () {
   'use strict';
 
+  // ── Skip-link focus wiring (WCAG 2.4.1 Bypass Blocks) ────────
+  // The smart-home section pre-dates the shared assets/js/main.js skip-link
+  // (which it doesn't load) and ships its own static `<a href="#main"
+  // class="skip-link">` markup on every page. That markup alone only moves
+  // the URL hash + scroll position — an <a href="#main"> jump does not give
+  // an element actual DOM focus unless the target is focusable. This wires
+  // up the existing static link to the same behavior the site-wide fix
+  // uses, without changing its text/markup/position (no visual regression).
+  const skipLink = document.querySelector('.skip-link');
+  const main = document.getElementById('main');
+  if (skipLink && main) {
+    if (!main.hasAttribute('tabindex')) main.setAttribute('tabindex', '-1');
+    skipLink.addEventListener('click', () => {
+      // href="#main" alone only scrolls; explicitly focus it too so
+      // keyboard/screen-reader users actually land there, not on <body>.
+      setTimeout(() => main.focus(), 0);
+    });
+  }
+
+  // ── Keyboard-focusable overflow regions (WCAG 2.1.1) ──────────
+  // Blog posts' <pre> code blocks scroll horizontally (CSS overflow-x: auto)
+  // when content is wider than the viewport, but a plain scrollable <pre>
+  // isn't in the Tab order by default, so keyboard-only users have no way
+  // to reach the hidden content. Only elements that ACTUALLY overflow get
+  // tabindex="0" (checked after layout), so non-overflowing blocks don't
+  // gain an unnecessary tab stop. (.hw-table-wrap already has a static
+  // tabindex in hardware-komplet.html -- this skips anything already set.)
+  function makeOverflowingRegionsFocusable() {
+    document.querySelectorAll('.post-content pre, .hw-table-wrap').forEach((el) => {
+      if (el.scrollWidth > el.clientWidth && !el.hasAttribute('tabindex')) {
+        el.setAttribute('tabindex', '0');
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', makeOverflowingRegionsFocusable);
+  } else {
+    makeOverflowingRegionsFocusable();
+  }
+  window.addEventListener('resize', makeOverflowingRegionsFocusable);
+
   // ── Year in footer ───────────────────────────────────────────
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

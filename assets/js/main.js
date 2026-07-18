@@ -22,6 +22,37 @@
   }
 })();
 
+/* Skip-to-main-content link — WCAG 2.4.1 Bypass Blocks.
+   Injected as the very first element inside <body> so it's the first Tab stop on every page. */
+(function () {
+  'use strict';
+  function installSkipLink() {
+    if (document.querySelector('.skip-link')) return;
+    var main = document.getElementById('main');
+    if (!main) return;
+    // Without tabindex, an <a href="#main"> jump moves the URL hash and
+    // scroll position but NOT actual DOM focus (only focusable elements can
+    // receive focus) — screen reader users land visually at #main but their
+    // focus context stays wherever it was. tabindex="-1" makes #main
+    // programmatically focusable (still not in the normal Tab order).
+    if (!main.hasAttribute('tabindex')) main.setAttribute('tabindex', '-1');
+    var link = document.createElement('a');
+    link.className = 'skip-link';
+    link.href = '#main';
+    link.textContent = 'Přeskočit na hlavní obsah';
+    link.addEventListener('click', function () {
+      // href="#main" alone only scrolls; explicitly focus it too.
+      setTimeout(function () { main.focus(); }, 0);
+    });
+    document.body.insertBefore(link, document.body.firstChild);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', installSkipLink);
+  } else {
+    installSkipLink();
+  }
+})();
+
 (function () {
   'use strict';
 
@@ -179,15 +210,51 @@
     document.head.appendChild(style);
     var lb = document.createElement('div');
     lb.id = '__lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Zvětšený obrázek');
-    lb.innerHTML = '<img id="__lbimg" alt=""><span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>';
+    lb.innerHTML = '<img id="__lbimg" alt=""><button type="button" id="__lbclose" class="__lbclose" aria-label="Zavřít zvětšený obrázek">✕</button><span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>';
     document.body.appendChild(lb);
+    var closeStyle = document.createElement('style');
+    closeStyle.textContent = '.__lbclose{position:absolute;top:1rem;right:1rem;width:2.5rem;height:2.5rem;border:none;border-radius:50%;background:rgba(255,255,255,0.15);color:#fff;font-size:1.25rem;line-height:1;cursor:pointer}.__lbclose:hover,.__lbclose:focus-visible{background:rgba(255,255,255,0.3)}.__lbclose:focus-visible{outline:2px solid #fff;outline-offset:2px}';
+    document.head.appendChild(closeStyle);
     var lbimg = document.getElementById('__lbimg');
-    function open(src, alt) { lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function close() { lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
+    var lbclose = document.getElementById('__lbclose');
+    var lastTrigger = null;
+
+    function focusables() {
+      return [lbclose].filter(function (el) { return el; });
+    }
+
+    function open(src, alt, trigger) {
+      lastTrigger = trigger || null;
+      lbimg.src = src; lbimg.alt = alt || '';
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('keydown', onKeydown);
+      lbclose.focus();
+    }
+    function close() {
+      lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKeydown);
+      if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
+      lastTrigger = null;
+    }
+    function onKeydown(e) {
+      if (e.key === 'Escape') { close(); return; }
+      if (e.key === 'Tab') {
+        // Single focusable element (close button) — keep focus trapped inside it.
+        var els = focusables();
+        if (!els.length) { e.preventDefault(); return; }
+        e.preventDefault();
+        els[0].focus();
+      }
+    }
     lb.addEventListener('click', close);
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
     imgs.forEach(function (img) {
-      img.addEventListener('click', function (e) { e.stopPropagation(); open(img.src, img.alt); });
+      // A plain <img> isn't focusable, so lastTrigger.focus() on close would
+      // silently no-op. tabindex="-1" makes it a valid programmatic focus
+      // target without adding it to the normal Tab order (clicking already
+      // opens the lightbox; this only matters for focus restoration on close).
+      if (!img.hasAttribute('tabindex')) img.setAttribute('tabindex', '-1');
+      img.addEventListener('click', function (e) { e.stopPropagation(); open(img.src, img.alt, img); });
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

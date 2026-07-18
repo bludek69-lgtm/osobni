@@ -9,7 +9,7 @@
 :root {
   --bg: #0d1117; --bg-2: #161b22; --bg-3: #21262d;
   --border: #30363d; --border-soft: #21262d;
-  --text: #e6edf3; --text-muted: #8b949e; --text-dim: #484f58;
+  --text: #e6edf3; --text-muted: #8b949e; --text-dim: #7b8693;
   --accent: #58a6ff; --accent-2: #79c0ff;
   --green: #3fb950; --green-dim: #1f6feb;
   --red: #f85149; --red-dim: #da3633;
@@ -23,9 +23,9 @@
 [data-theme="light"] {
   --bg: #ffffff; --bg-2: #f6f8fa; --bg-3: #eef1f4;
   --border: #d0d7de; --border-soft: #eaecf0;
-  --text: #1f2328; --text-muted: #59636e; --text-dim: #87929d;
+  --text: #1f2328; --text-muted: #59636e; --text-dim: #67737e;
   --accent: #0969da; --accent-2: #0550ae;
-  --green: #1f883d; --red: #cf222e; --yellow: #9a6700; --purple: #8250df;
+  --green: #1b7836; --red: #cf222e; --yellow: #8f6000; --purple: #8250df;
   --shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -232,8 +232,8 @@ input[type="text"]:focus, select:focus { outline: 2px solid var(--accent); outli
       </div>
       
       <div class="ctrl">
-        <span>Období</span>
-        <select id="period-select">
+        <span id="period-select-label">Období</span>
+        <select id="period-select" aria-labelledby="period-select-label">
           <option value="L12M">Posledních 12M</option>
           <option value="L6M">Posledních 6M</option>
           <option value="L3M">Posledních 3M</option>
@@ -244,7 +244,7 @@ input[type="text"]:focus, select:focus { outline: 2px solid var(--accent); outli
       </div>
       <div class="ctrl">
         <span>Zobrazení demo čísel</span>
-        <select onchange="document.querySelectorAll('[name=anon-mode]')[this.selectedIndex].click()" title="Všechna čísla jsou fiktivní (seed=42). Tento přepínač jen mění zobrazení.">
+        <select onchange="document.querySelectorAll('[name=anon-mode]')[this.selectedIndex].click()" aria-label="Zobrazení demo čísel" title="Všechna čísla jsou fiktivní (seed=42). Tento přepínač jen mění zobrazení.">
           <option value="off">Plná čísla</option>
           <option value="full">Rozmazat</option>
           <option value="strong">Skrýt</option>
@@ -2023,8 +2023,8 @@ renderers.kb = () => {
 // === REFRESH BUTTONS ===
 async function _refreshCommon(endpoint, label, durationHint, btnId, originalText) {
   if (location.protocol === 'file:') {
-    showToast('error', 'Pro refresh musíš spustit lokální server', 
-      'V terminálu spusť:<br><code>cd C:\\FINANCE && python tools\\serve.py</code><br><br>Pak otevři: <code>http://localhost:8080/Ucetni_kniha_v4.html</code>');
+    showToast('error', 'Pro refresh musíš spustit lokální server',
+      'V terminálu ve složce projektu spusť:<br><code>python tools/serve.py</code><br><br>Pak otevři: <code>http://localhost:8080/Ucetni_kniha_v4.html</code>');
     document.getElementById('refresh-info')?.classList.add('visible');
     return;
   }
@@ -2087,7 +2087,7 @@ window.refreshOnly = (kind) => {
 };
 
 
-// --- Inbox notifikace (Gmail watcher) ---
+// --- Inbox notifikace ---
 renderers.inbox = async () => {
   const el = document.getElementById('page-inbox');
   el.innerHTML = '<h2 class="page-title">📨 Inbox notifikace</h2><div class="muted">Načítám...</div>';
@@ -2116,7 +2116,7 @@ renderers.inbox = async () => {
   
   el.innerHTML = `
     <h2 class="page-title">📨 Inbox notifikace</h2>
-    <div class="page-sub">Z Gmail watcheru. Aktualizováno ${new Date(data.timestamp).toLocaleString('cs-CZ')}. <button class="btn-mini" onclick="renderers.inbox._rendered=false; renderers.inbox()" style="margin-left:8px">🔄 Obnovit</button></div>
+    <div class="page-sub">Automatické sledování příchozí pošty. Aktualizováno ${new Date(data.timestamp).toLocaleString('cs-CZ')}. <button class="btn-mini" onclick="renderers.inbox._rendered=false; renderers.inbox()" style="margin-left:8px">🔄 Obnovit</button></div>
     
     <div class="cards">
       <div class="card kpi ${pf.length>0?'red':'green'}"><div class="label">Ke stažení (URGENT)</div><div class="value">${pf.length}</div><div class="sub">PDF přílohy v Gmailu</div></div>
@@ -2172,8 +2172,8 @@ renderers.inbox = async () => {
     </table></div>
     
     <div class="info-box" style="margin-top:16px">
-      <strong>Jak to funguje:</strong> Gmail watcher běží každou hodinu (15. minuta) a kontroluje email podle 7 kritérií.
-      Přílohy nelze stáhnout přes MCP, takže URGENT seznam ti dává linky → klikni → stáhni do <code>C:\FINANCE\nove\</code> ručně.
+      <strong>Jak to funguje:</strong> systém kontroluje příchozí poštu jednou za hodinu podle nastavených pravidel.
+      Přílohy, které vyžadují pozornost, se objeví v seznamu „Ke stažení" výše s odkazem — otevřou se v poště, stažení a uložení proběhne ručně.
     </div>
   `;
 };

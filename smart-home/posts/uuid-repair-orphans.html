@@ -20,6 +20,7 @@
   <meta property="og:type" content="website">
 </head>
 <body>
+  <a href="#main" class="skip-link">Přeskočit na obsah</a>
   <header class="site-header">
     <div class="container header-inner">
       <a href="../index.html" class="brand" aria-label="SMART HOME – home">
@@ -34,7 +35,7 @@
     </div>
   </header>
 
-  <main class="post-page">
+  <main class="post-page" id="main">
     <div class="container">
       <a href="../blog.html" class="post-page-back">← Všechny příspěvky</a>
 
@@ -93,7 +94,7 @@
           Zkusil jsem několik checků:
         </p>
 
-        <pre><code># Senzor existuje?
+        <pre tabindex="0"><code># Senzor existuje?
 GET /api/manager/devices/device/&lt;jidelna1_uuid_in_flow&gt;
 → 404 Not Found
 
@@ -135,7 +136,7 @@ real_uuid: 9f4c2e88-3a7d-4f5b-b2e6-1c8a9d5e7f3b</code></pre>
           Pro budoucí incidenty (a budoucí výměny baterek) chce automatizaci.
         </p>
 
-        <pre><code># 1. Najdi všechny flows referencující old UUID
+        <pre tabindex="0"><code># 1. Najdi všechny flows referencující old UUID
 flows = GET /api/manager/flow/advancedflow
 broken = [f for f in flows if old_uuid in str(f.cards)]
 
@@ -165,7 +166,7 @@ for flow in broken:
           porovnává device IDs s current device list, hlásí orphan refs.
         </p>
 
-        <pre><code># tools/find_orphan_device_refs.py (návrh)
+        <pre tabindex="0"><code># tools/find_orphan_device_refs.py (návrh)
 from homey_api import get_devices, get_flows
 
 def main():
@@ -229,5 +230,6 @@ def main():
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script src="../script.js"></script>
 </body>
 </html>

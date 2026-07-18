@@ -20,6 +20,7 @@
   <meta property="og:type" content="website">
 </head>
 <body>
+  <a href="#main" class="skip-link">Přeskočit na obsah</a>
   <header class="site-header">
     <div class="container header-inner">
       <a href="../index.html" class="brand" aria-label="SMART HOME – home">
@@ -34,7 +35,7 @@
     </div>
   </header>
 
-  <main class="post-page">
+  <main class="post-page" id="main">
     <div class="container">
       <a href="../blog.html" class="post-page-back">← Všechny příspěvky</a>
 
@@ -65,7 +66,7 @@
           neodfoukne.
         </p>
 
-        <pre><code># Before
+        <pre tabindex="0"><code># Before
 apks: ["python3"]
 # After (LIVE, persistent přes Supervisor)
 apks: ["python3", "nodejs", "npm"]</code></pre>
@@ -96,7 +97,7 @@ apks: ["python3", "nodejs", "npm"]</code></pre>
           HomeyScript crash resilience.
         </p>
 
-        <pre><code>[PASS] T1_dashboard_schema           — 26 keys present, 0 missing
+        <pre tabindex="0"><code>[PASS] T1_dashboard_schema           — 26 keys present, 0 missing
 [PASS] T2_bathroom_vacancy           — proposed light_off + audio_stop
 [PASS] T3_morning_prague_date        — 4/4 Prague vs UTC correct
 [PASS] T4_light_router_guards        — 8/8 guards enforced
@@ -113,7 +114,7 @@ PASS 20/20  FAIL 0</code></pre>
           úsměvným způsobem.
         </p>
 
-        <pre><code>2026-05-14 07:00:00.341 ERROR (MainThread)
+        <pre tabindex="0"><code>2026-05-14 07:00:00.341 ERROR (MainThread)
   [shell_command] Error running command:
   `node /config/smart-home/sandbox/runner/sandbox_runner.js`,
   return code: 127</code></pre>
@@ -133,7 +134,7 @@ PASS 20/20  FAIL 0</code></pre>
           přeskočilo z 4 na 5 v 06:00:00.956Z přesně na hraně minuty:
         </p>
 
-        <pre><code>[runner_py] runs=5 tests=16/16 replay=OK
+        <pre tabindex="0"><code>[runner_py] runs=5 tests=16/16 replay=OK
             blockers=0 gate=DEPLOY_GATE_OPEN</code></pre>
 
         <p>
@@ -176,7 +177,7 @@ PASS 20/20  FAIL 0</code></pre>
           raise immediately bez retry.
         </p>
 
-        <pre><code>RETRY_STATUSES = {0, 417, 502, 503, 504}
+        <pre tabindex="0"><code>RETRY_STATUSES = {0, 417, 502, 503, 504}
 RETRY_BACKOFFS = (0.5, 1.5)  # 3 total attempts</code></pre>
 
         <p>
@@ -318,5 +319,6 @@ RETRY_BACKOFFS = (0.5, 1.5)  # 3 total attempts</code></pre>
       <p>© 2026 Smart Home build log — Luděk Budínský. Postaveno jako product, ne jako koníček.</p>
     </div>
   </footer>
+  <script src="../script.js"></script>
 </body>
 </html>
