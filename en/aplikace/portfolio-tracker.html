@@ -61,18 +61,19 @@
   <h2>Key features</h2>
   <ul style="line-height:1.7">
       <li><strong>Positions, P/L and allocation</strong> — portfolio value overview, unrealized and realized gain, breakdown by sector, type, position and currency, concentration warnings.</li>
-      <li><strong>Import from 4 brokers</strong> — XTB, eToro, Trading 212, Interactive Brokers (CSV/XLSX/PDF), idempotent dedup, a broker → account → transaction model, XTB split by currency.</li>
+      <li><strong>Import from 4 brokers + live API</strong> — XTB, eToro, Trading 212, Interactive Brokers (CSV/XLSX/PDF); plus a <strong>live IBKR connection via Flex Web Service</strong> and the Trading 212 API. Idempotent dedup, a broker → account → transaction model, XTB split by currency.</li>
       <li><strong>Czech taxes (FIFO)</strong> — 3-year time test and the CZK 100,000 value test, days remaining to exemption, trade export for the tax return. Indicative, not tax advice.</li>
       <li><strong>Performance</strong> — XIRR, CAGR, TWR, volatility, max drawdown, Sharpe, a value-over-time chart and monthly returns (capital gain by month).</li>
       <li><strong>Fair value &amp; screener</strong> — 6 valuation models, a model switch, my own composite score, Beta and analyst consensus (Finnhub), P/E and Fwd P/E.</li>
       <li><strong>Heatmap, calendar, AI analyst</strong> — a sector heatmap of the portfolio, an earnings calendar and an AI analyst (Gemini) over the portfolio data — all clearly flagged as not investment advice.</li>
-      <li><strong>No account, no cloud, 47 tests</strong> — everything in the browser (localStorage), data never leaves the device. Under the hood 47 automated tests guard the parsers and calculations.</li>
+      <li><strong>Bridge to my ledger</strong> — dividends and realized gains flow into my home accounting book (one-way, investment events only — cash and net worth stay there).</li>
+      <li><strong>No account, no cloud, 329 tests</strong> — everything local (localStorage), data never leaves the device. Under the hood 329 automated tests guard the parsers, calculations and the ledger bridge.</li>
   </ul>
 </section>
 
 <section>
   <h2>Status</h2>
-  <p>Work version v0.9.0 (June 2026), 47 automated tests. A local web app (Vite) — I launch it via a WebLauncher on my PC. <strong>Private, with no public hosting and no downloadable installer</strong> — real data and personal info never go on the web. Not investment advice, just an analytical and record-keeping tool for me.</p>
+  <p>Beta version <strong>v0.19.9</strong> (July 2026), <strong>329 automated tests</strong>. A local desktop app (React/Vite in its own window via pywebview) with silent auto-update — runs only on my PC. <strong>Private, with no public hosting and no public downloadable installer</strong> — real data and personal info never go on the web. Not investment advice, just an analytical and record-keeping tool for me.</p>
 </section>
 
   <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Dev diary</button></section>
@@ -87,6 +88,7 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
+        <li><strong>v0.19.9 — beta (July 2026)</strong> — <strong>live connection to Interactive Brokers</strong> (Flex Web Service) and the Trading 212 API, a dividend calendar and a statistics tab, a <strong>bridge to my accounting book</strong> (dividends and realized gains), a desktop app with silent auto-update. Absorbed the earlier "Finance Analytik" (fair value + screener). 329 automated tests, bridge resilience verified even against a disk write failure.</li>
         <li><strong>v0.9.0 — road to beta (June 2026)</strong> — git repo + 47 automated tests (vitest), explanations and warnings across the app, a fair-value screener wired to Finnhub (Beta/consensus/P-E fill in with a single key).</li>
         <li><strong>Digrin-style features</strong> — monthly returns (year × month), sector heatmap, earnings calendar, 6 valuation models + my own score (deliberately NOT a proprietary "QUANT").</li>
         <li><strong>Transaction core + taxes</strong> — transactions as the source of truth, FIFO, the Czech 3-year time test and the CZK 100,000 value test, conversion to CZK at the historical rate.</li>
