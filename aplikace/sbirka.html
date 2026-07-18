@@ -83,6 +83,7 @@
     <li><strong>Katalogy přímo v aplikaci</strong> — prohlížení českých i zahraničních katalogů a obchodů (mince, známky) v okně aplikace: název, cena, obrázek, odkaz na zdroj. Ceny v cizí měně přepočítané na koruny (kurz ČNB), historie cen položky v čase. Pravidlo „realizovaná cena má přednost před nabídkou".</li>
     <li><strong>Nápověda pro začátečníky</strong> — stránka, která vysvětlí AI klíč (Gemini), focení, zálohy i bezpečnost; u každého napojení na internet/AI je tlačítko ℹ s vysvětlením.</li>
     <li><strong>Co ovlivňuje cenu</strong> — faktory ↑/↓ zvlášť pro mince a zvlášť pro známky + jak se cena skládá (katalog vs. aukce vs. odhad).</li>
+    <li><strong>Expertiza a posudky (nově)</strong> — k položce lze vést posudek jako neměnný záznam s auditní stopou (nic nejde přepsat, jen doplnit nový posudek). Zatím jen ruční zadání — AI vizuální ověření pravosti (real-vision) ještě NENÍ k dispozici ani ověřené.</li>
     <li><strong>Oceňování s důkazy</strong> — k položce přidám zdroj (katalog / realizovaná aukce / posudek), aktivní nabídka se do průměru nezapočítává.</li>
     <li><strong>Fotky položek</strong> — přední/zadní strana, zobrazení v kartě i detailu.</li>
     <li><strong>Import / export</strong> — hromadný import z CSV/Excelu, export CSV / Excel / PDF / ZIP.</li>
@@ -132,7 +133,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Aktuální verze <strong>1.1.16 BETA</strong> (červenec 2026), ke stažení na stránce <a href="index.html">Moje aplikace</a>. Veřejné demo + plná lokální verze (web i Windows .exe). Soukromé pro vlastní použití — žádný public hosting reálných dat, žádné účty, žádné platby. Detailní průběh vývoje je ve <button class="diary-link" id="openDeník2">vývojovém deníku</button>.</p>
+  <p>Aktuální verze <strong>1.1.24 BETA</strong> (červenec 2026), ke stažení na stránce <a href="index.html">Moje aplikace</a>. Veřejné demo + plná lokální verze (web i Windows .exe). Soukromé pro vlastní použití — žádný public hosting reálných dat, žádné účty, žádné platby. Detailní průběh vývoje je ve <button class="diary-link" id="openDeník2">vývojovém deníku</button>.</p>
 </section>
 </main>
 
@@ -146,6 +147,7 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
+        <li><strong>v1.1.24 — modul Expertiza a posudky (18. 7. 2026)</strong> — Nová sekce pro vedení posudků k položkám: neměnný záznam s auditní stopou (nic nejde přepsat, jen přidat nový posudek), vlastní stránka „Expertiza" v menu. Zatím funguje jen <strong>ruční zadání</strong> — AI vizuální ověření pravosti (real-vision) zatím NENÍ implementováno ani kalibrováno, appka to nikde netvrdí.</li>
         <li><strong>v1.1.7 — katalogy přímo v aplikaci a nápověda (12. 6. 2026)</strong> — Velký krok: české i zahraniční katalogy a obchody (Numista, Pofis, Colnect, Delcampe…) se teď prohlížejí <strong>přímo v aplikaci</strong> — u nálezu vidíš název, cenu, obrázek i odkaz na zdroj, do sbírky se nic nepřidá bez potvrzení. Přibyla <strong>historie cen</strong> položky v čase, <strong>přepočet cizích měn na koruny</strong> podle kurzu ČNB, <strong>kategorie a vlastní vlastnosti</strong> položek a nová stránka <strong>Nápověda</strong> (jak na AI klíč Gemini a kolik stojí, focení telefonem, zálohy, bezpečnost). AI klíč jde nově vložit přímo v aplikaci.</li>
         <li><strong>v1.1.8 — opravy katalogů a náhledů (13. 6. 2026)</strong> — Opravené adresy katalogů (Macho &amp; Chlapovič, MA-Shops), náhledové obrázky u nabídek (Delcampe). Katalogy, které nešlo automaticky číst (eBay, TopZnamky), nahrazeny radou „otevři ve webovém prohlížeči" místo strohé chyby.</li>
         <li><strong>Údržba a stabilita (1.1.4–1.1.6)</strong> — jen jedno okno aplikace (druhé spuštění vytáhne to existující), konec opakované nabídky aktualizace po updatu, patička vždy ukazuje skutečnou nainstalovanou verzi, bezpečnější tichá aktualizace (po sobě uklízí dočasné soubory).</li>
