@@ -62,18 +62,20 @@
   <ul style="line-height:1.7">
       <li><strong>Posizioni, P/L e allocazione</strong> — panoramica del valore del portafoglio, utile non realizzato e realizzato, ripartizione per settore, tipo, posizione e valuta, avvisi di concentrazione.</li>
       <li><strong>Import da 4 broker + API live</strong> — XTB, eToro, Trading 212, Interactive Brokers (CSV/XLSX/PDF); in più una <strong>connessione live a IBKR tramite Flex Web Service</strong> e l'API di Trading 212. Dedup idempotente, modello broker → conto → transazione, divisione XTB per valuta.</li>
-      <li><strong>Tasse ceche (FIFO)</strong> — test temporale di 3 anni e test di valore di 100 000 CZK, giorni rimanenti all'esenzione, export delle operazioni per la dichiarazione. Indicativo, non consulenza fiscale.</li>
-      <li><strong>Performance</strong> — XIRR, CAGR, TWR, volatilità, max drawdown, Sharpe, grafico del valore nel tempo e rendimenti mensili (utile di capitale per mese).</li>
+      <li><strong>Tasse ceche (FIFO)</strong> — test temporale di 3 anni e test di valore di 100 000 CZK, giorni rimanenti all'esenzione, <strong>raccolta delle minusvalenze</strong> (tax-loss harvesting, con distinzione tra parte deducibile ed esente per test temporale), export delle operazioni per la dichiarazione. Indicativo, non consulenza fiscale.</li>
+      <li><strong>Performance</strong> — XIRR, CAGR, TWR, volatilità, max drawdown, Sharpe, grafico del valore nel tempo con <strong>confronto contro S&amp;P 500 / NASDAQ</strong> e rendimenti mensili (utile di capitale per mese).</li>
+      <li><strong>Dividendi</strong> — reddito annuo e rendimento per posizione, <strong>reddito effettivo per mese</strong> (TTM + confronto anno su anno) e un calendario dividendi con proiezione a 12 mesi.</li>
+      <li><strong>Mercato e notizie nell'app</strong> — notizie inline (portafoglio e intero mercato), <strong>Market Pulse</strong> (VIX, Fear &amp; Greed, settori, maggiori movimenti) e un <strong>calendario macro</strong> di eventi economici — tutto da dati pubblici gratuiti, senza API a pagamento.</li>
       <li><strong>Valore equo &amp; screener</strong> — 6 modelli di valutazione, switch del modello, mio punteggio composito, Beta e consenso degli analisti (Finnhub), P/E e Fwd P/E.</li>
       <li><strong>Heatmap, calendario, analista AI</strong> — una heatmap settoriale del portafoglio, un calendario degli utili e un analista AI (Gemini) sui dati del portafoglio — tutto chiaramente segnalato come non consulenza d'investimento.</li>
       <li><strong>Ponte verso il mio libro contabile</strong> — dividendi e plusvalenze realizzate confluiscono nel mio libro contabile domestico (unidirezionale, solo eventi d'investimento — liquidità e patrimonio netto restano lì).</li>
-      <li><strong>Senza account, senza cloud, 329 test</strong> — tutto in locale (localStorage), i dati non lasciano mai il dispositivo. Sotto il cofano 329 test automatici proteggono parser, calcoli e il ponte contabile.</li>
+      <li><strong>Senza account, senza cloud, 349 test</strong> — tutto in locale (localStorage), i dati non lasciano mai il dispositivo. Sotto il cofano 349 test automatici proteggono parser, calcoli e il ponte contabile.</li>
   </ul>
 </section>
 
 <section>
   <h2>Stato</h2>
-  <p>Versione beta <strong>v0.19.9</strong> (luglio 2026), <strong>329 test automatici</strong>. App desktop locale (React/Vite in una propria finestra tramite pywebview) con aggiornamento automatico silenzioso — gira solo sul mio PC. <strong>Privata, senza hosting pubblico e senza installer pubblico scaricabile</strong> — dati reali e informazioni personali non vanno mai sul web. Non è consulenza d'investimento, solo uno strumento analitico e di registrazione per me.</p>
+  <p>Versione beta <strong>v0.19.10</strong> (luglio 2026), <strong>349 test automatici</strong>. App desktop locale (React/Vite in una propria finestra tramite pywebview) con aggiornamento automatico silenzioso — gira solo sul mio PC. <strong>Privata, senza hosting pubblico e senza installer pubblico scaricabile</strong> — dati reali e informazioni personali non vanno mai sul web. Non è consulenza d'investimento, solo uno strumento analitico e di registrazione per me.</p>
 </section>
 
   <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Diario di sviluppo</button></section>
@@ -88,6 +90,7 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
+        <li><strong>v0.19.10 — beta (luglio 2026)</strong> — <strong>confronto della performance contro S&amp;P 500 / NASDAQ</strong>, <strong>reddito da dividendi effettivo per mese</strong> (TTM + anno su anno), <strong>raccolta delle minusvalenze</strong> (tax-loss harvesting), un <strong>calendario macro</strong> di eventi economici e notizie inline + <strong>Market Pulse</strong> (VIX / Fear &amp; Greed / settori) — tutto da dati pubblici gratuiti. 349 test automatici (+15).</li>
         <li><strong>v0.19.9 — beta (luglio 2026)</strong> — <strong>connessione live a Interactive Brokers</strong> (Flex Web Service) e all'API di Trading 212, un calendario dividendi e una scheda statistiche, un <strong>ponte verso il mio libro contabile</strong> (dividendi e plusvalenze), un'app desktop con aggiornamento automatico silenzioso. Ha assorbito il precedente "Finance Analytik" (fair value + screener). 329 test automatici, resilienza del ponte verificata anche contro un errore di scrittura su disco.</li>
         <li><strong>v0.9.0 — verso la beta (giugno 2026)</strong> — repo git + 47 test automatici (vitest), spiegazioni e avvisi in tutta l'app, screener del valore equo collegato a Finnhub (Beta/consenso/P-E si riempiono con una sola chiave).</li>
         <li><strong>Funzioni in stile Digrin</strong> — rendimenti mensili (anno × mese), heatmap settoriale, calendario degli utili, 6 modelli di valutazione + un mio punteggio (volutamente NON un "QUANT" proprietario).</li>

@@ -62,12 +62,14 @@
   <ul style="line-height:1.7">
       <li><strong>Pozice, P/L a alokace</strong> — přehled hodnoty portfolia, nerealizovaný i realizovaný zisk, rozložení podle sektoru, typu, pozice a měny, hlídání koncentrace.</li>
       <li><strong>Import z 4 brokerů + živé API</strong> — XTB, eToro, Trading 212, Interactive Brokers (CSV/XLSX/PDF); navíc <strong>živé napojení na IBKR přes Flex Web Service</strong> a Trading 212 API. Idempotentní dedup, model broker → účet → transakce, rozdělení XTB podle měny.</li>
-      <li><strong>České daně (FIFO)</strong> — 3letý časový test i hodnotový test 100 000 Kč, přehled kolik dní zbývá k osvobození, export obchodů pro přiznání. Orientační, ne daňové poradenství.</li>
-      <li><strong>Výkonnost</strong> — XIRR, CAGR, TWR, volatilita, max drawdown, Sharpe, graf hodnoty v čase a měsíční výnosy (kapitálový zisk po měsících).</li>
+      <li><strong>České daně (FIFO)</strong> — 3letý časový test i hodnotový test 100 000 Kč, přehled kolik dní zbývá k osvobození, <strong>sklízení daňových ztrát</strong> (tax-loss harvesting s rozlišením uznatelné vs osvobozené části), export obchodů pro přiznání. Orientační, ne daňové poradenství.</li>
+      <li><strong>Výkonnost</strong> — XIRR, CAGR, TWR, volatilita, max drawdown, Sharpe, graf hodnoty v čase se <strong>srovnáním proti S&amp;P 500 / NASDAQ</strong> a měsíční výnosy (kapitálový zisk po měsících).</li>
+      <li><strong>Dividendy</strong> — roční příjem a výnos podle pozic, <strong>skutečný příjem po měsících</strong> (TTM + meziroční srovnání) a dividendový kalendář s projekcí 12 měsíců dopředu.</li>
       <li><strong>Férová hodnota &amp; screener</strong> — 6 valuačních modelů, přepínač modelu, vlastní kompozitní skóre, Beta a konsensus analytiků (Finnhub), P/E a Fwd P/E.</li>
       <li><strong>Heatmapa, kalendář, AI analytik</strong> — sektorová tepelná mapa portfolia, kalendář výsledků a AI analytik (Gemini) nad daty portfolia — vše s upozorněním, že nejde o investiční doporučení.</li>
       <li><strong>Most do Účetní knihy</strong> — dividendy a realizované zisky se přenášejí do mé domácí účetní knihy (jednosměrně, jen investiční události — hotovost a čisté jmění zůstávají tam).</li>
-      <li><strong>Bez účtu, bez cloudu, 329 testů</strong> — vše lokálně (localStorage), data neopouštějí zařízení. Pod kapotou 329 automatických testů hlídá parsery, výpočty i most do Účetní knihy.</li>
+      <li><strong>Trh &amp; zprávy přímo v appce</strong> — inline zprávy (portfolio i celý trh), <strong>Market Pulse</strong> (VIX, Fear &amp; Greed, sektory, největší pohyby) a <strong>makro kalendář</strong> ekonomických událostí — vše z veřejných dat zdarma, bez placeného API.</li>
+      <li><strong>Bez účtu, bez cloudu, 349 testů</strong> — vše lokálně (localStorage), data neopouštějí zařízení. Pod kapotou 349 automatických testů hlídá parsery, výpočty i most do Účetní knihy.</li>
   </ul>
 </section>
 
@@ -85,7 +87,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Beta verze <strong>v0.19.9</strong> (červenec 2026), <strong>329 automatických testů</strong>. Lokální desktopová aplikace (React/Vite ve vlastním okně přes pywebview) s tichou auto-aktualizací — běží jen u mě na PC. <strong>Soukromá, bez veřejného hostingu a bez veřejného instalátoru ke stažení</strong> — reálná data ani osobní údaje nejdou na web. Není to investiční doporučení ani poradenství, jen analytická a evidenční pomůcka pro mě.</p>
+  <p>Beta verze <strong>v0.19.10</strong> (červenec 2026), <strong>349 automatických testů</strong>. Lokální desktopová aplikace (React/Vite ve vlastním okně přes pywebview) s tichou auto-aktualizací — běží jen u mě na PC. <strong>Soukromá, bez veřejného hostingu a bez veřejného instalátoru ke stažení</strong> — reálná data ani osobní údaje nejdou na web. Není to investiční doporučení ani poradenství, jen analytická a evidenční pomůcka pro mě.</p>
 </section>
 
   <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Vývojový deník</button></section>
@@ -100,6 +102,7 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
+        <li><strong>v0.19.10 — beta (červenec 2026)</strong> — <strong>srovnání výkonnosti proti S&amp;P 500 / NASDAQ</strong>, <strong>skutečný dividendový příjem po měsících</strong> (TTM + meziroční srovnání), <strong>sklízení daňových ztrát</strong> (tax-loss harvesting), <strong>makro kalendář</strong> ekonomických událostí a inline zprávy + <strong>Market Pulse</strong> (VIX / Fear &amp; Greed / sektory) — vše z veřejných dat zdarma. 349 automatických testů (+15).</li>
         <li><strong>v0.19.9 — beta (červenec 2026)</strong> — <strong>živé napojení na Interactive Brokers</strong> (Flex Web Service) i Trading 212 API, dividendový kalendář a záložka statistika, <strong>most do Účetní knihy</strong> (dividendy a realizované zisky), desktopová appka s tichou auto-aktualizací. Pohltil funkce dřívějšího „Finance Analytika" (férová hodnota + screener). 329 automatických testů, odolnost mostu ověřená i proti chybě zápisu na disk.</li>
         <li><strong>v0.9.0 — cesta k betě (červen 2026)</strong> — git repo + 47 automatických testů (vitest), vysvětlivky a upozornění napříč appkou, screener s férovou hodnotou napojený na Finnhub (Beta/konsensus/P-E se doplní jedním klíčem).</li>
         <li><strong>Funkce po vzoru Digrinu</strong> — měsíční výnosy (rok × měsíc), sektorová heatmapa, kalendář výsledků, 6 valuačních modelů + vlastní skóre (záměrně NE cizí proprietární „QUANT").</li>
