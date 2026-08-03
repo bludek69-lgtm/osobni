@@ -78,7 +78,8 @@
 
 <section>
   <h2>Stav</h2>
-  <p><strong>Vydáno 0.9.14 beta</strong> (srpen 2026, <em>NOT_FINAL</em>). Poslední novinky: <strong>bezpečnější práce s daty</strong> (0.9.14 — do lokální databáze smí zapisovat jen samotná aplikace a nedokončená obnova zálohy se dokončí sama při dalším startu) a <strong>velká vlna spolehlivosti</strong> (0.9.13 — vlastní recepty jde naplánovat na konkrétní den, zálohy se dají opravdu obnovit, na počítači znovu fungují aktualizace i ceny z Rohlíku). Dřív: Sledování plánu, Spíž, nová navigace, import receptů z textu, nákup podle oddělení, Centrum důvěry. Lokální aplikace pro Windows (installer + automatická aktualizace), běží bez cloudu a bez účtu. 820 unit testů, e2e sada 43 testů. Bez telemetrie.</p>
+  <p><strong data-mp-ver="Vydáno {v} {s}">Vydáno 0.9.14 beta</strong> (srpen 2026, <em>NOT_FINAL</em>). Poslední novinky: <strong>bezpečnější práce s daty</strong> (0.9.14 — do lokální databáze smí zapisovat jen samotná aplikace a nedokončená obnova zálohy se dokončí sama při dalším startu) a <strong>velká vlna spolehlivosti</strong> (0.9.13 — vlastní recepty jde naplánovat na konkrétní den, zálohy se dají opravdu obnovit, na počítači znovu fungují aktualizace i ceny z Rohlíku). Dřív: Sledování plánu, Spíž, nová navigace, import receptů z textu, nákup podle oddělení, Centrum důvěry. Lokální aplikace pro Windows (installer + automatická aktualizace), běží bez cloudu a bez účtu. 820 unit testů, e2e sada 43 testů. Bez telemetrie.</p>
+  <p style="margin:.4rem 0 .8rem"><a href="https://github.com/bludek69-lgtm/aplikace/releases" data-mp-dl style="display:inline-block;background:#2e7d32;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600">⬇ Stáhnout instalátor (Windows, <span data-mp-ver="{v}">aktuální verze</span>)</a></p>
 </section>
 
   <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Vývojový deník</button></section>
@@ -189,5 +190,8 @@ main img:hover { transform:scale(1.005) }
   });
 })();
 </script>
+
+<script>/* Meal Planner verze dynamicky z latest.json (nikdy nedrift) — stejny vzor jako budline.html.
+   Natvrdo psane texty v HTML zustavaji jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var m=d&&d["meal-planner"];if(!m||!m.version)return;var v=m.version,s=m.stage||"";document.querySelectorAll("[data-mp-ver]").forEach(function(el){el.textContent=el.getAttribute("data-mp-ver").replace("{v}",v).replace("{s}",s);});document.querySelectorAll("[data-mp-dl]").forEach(function(a){if(m.url){a.href=m.url;a.setAttribute("download","");}});}).catch(function(){});})();</script>
 </body>
 </html>
