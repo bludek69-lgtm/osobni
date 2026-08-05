@@ -87,10 +87,33 @@
 
 <section>
   <h2>Stav</h2>
-  <p><strong>Verze 1.6.4 — beta</strong> (srpen 2026). Série oprav distribuce, které se navzájem odkrývaly. Aplikace <strong>si teď opravdu ukládá data</strong> — do verze 1.6.1 běžel vestavěný prohlížeč v soukromém režimu a profil končil v dočasném adresáři, takže nic nepřežilo zavření okna; navenek to vypadalo jako appka s ukázkovými daty, ne jako ztráta. <strong>Tichá aktualizace se konečně provede</strong> — instalační skript se předtím při zavírání aplikace omylem ukončil dřív, než stihl spustit instalátor, a hlásil přitom úspěch. A <strong>aplikace sama oznámí, že vyšla nová verze</strong> — proužek s nabídkou aktualizace do té doby zahazovalo bezpečnostní nastavení stránky, takže se serveru nikdy nikdo nezeptal; tím byly zamaskované i obě předchozí opravy. Z funkcí přibyla <strong>záloha včetně fotek a stavu checklistu</strong> a obnova ze zálohy přímo z aplikace.</p>
+  <p><strong data-app-version>Verze 1.6.4 — beta</strong> (<span data-app-date>srpen 2026</span>). Série oprav distribuce, které se navzájem odkrývaly. Aplikace <strong>si teď opravdu ukládá data</strong> — do verze 1.6.1 běžel vestavěný prohlížeč v soukromém režimu a profil končil v dočasném adresáři, takže nic nepřežilo zavření okna; navenek to vypadalo jako appka s ukázkovými daty, ne jako ztráta. <strong>Tichá aktualizace se konečně provede</strong> — instalační skript se předtím při zavírání aplikace omylem ukončil dřív, než stihl spustit instalátor, a hlásil přitom úspěch. A <strong>aplikace sama oznámí, že vyšla nová verze</strong> — proužek s nabídkou aktualizace do té doby zahazovalo bezpečnostní nastavení stránky, takže se serveru nikdy nikdo nezeptal; tím byly zamaskované i obě předchozí opravy. Z funkcí přibyla <strong>záloha včetně fotek a stavu checklistu</strong> a obnova ze zálohy přímo z aplikace.</p>
   <p>Ve verzi 1.5.0 přibyla velká mapová aktualizace: <strong>plánovač trasy přímo na mapě</strong> (klikáním přidáš body, přetáhneš je, přeuspořádáš — trasa se uloží do cesty a zůstane i po zavření), <strong>zastávky podél trasy</strong> teď ukazují u kterého úseku leží, jak daleko po trase a jakou zajížďku, a jsou vidět jako body na mapě. Přibyl <strong>výběr ubytování z mapy</strong> (najde hotely/kempy poblíž trasy z OpenStreetMap a přidá je na konkrétní noc) a <strong>import trasy</strong> ze souboru GPX / KML / GeoJSON i z odkazu Google Maps. Vše bez API klíče (OpenStreetMap / Overpass / Nominatim), bez vymyšlených cen a bez automatických rezervací.</p>
   <p>Předchozí základ zůstává: <strong>Příprava na cestu</strong> (doklady, rozpočtový dashboard, packing list), plánovač <strong>Cesta autem do Itálie</strong>, camper režim s varováním před ZTL zónami, itinerář s kontrolou konfliktů, 11 exportů (PDF, Word, KML/GPX, checklist…), online hledání zastávek (palivo, WC, jídlo, lékárny) z OpenStreetMap, zálohy s kontrolním součtem, offline režim, AI asistent. Windows installer + PWA + web launcher. Soukromé pro vlastní cesty — žádné public hosting, žádné účty, žádné platby přes aplikaci.</p>
 </section>
+<script>
+/* Verze se čte z distribučního manifestu, aby stránka nezůstávala pozadu za vydáním —
+   do 1.6.4 tu natvrdo stálo 1.5.0, tedy pět vydání zpět.
+   Když fetch selže (offline, GitHub nedostupný, rozbitý manifest), zůstane text z HTML,
+   proto v něm musí být vždycky poslední známá verze. */
+(function () {
+  var el = document.querySelector('[data-app-version]');
+  var dt = document.querySelector('[data-app-date]');
+  if (!el) return;
+  var MESICE = ['leden','únor','březen','duben','květen','červen',
+                'červenec','srpen','září','říjen','listopad','prosinec'];
+  fetch('https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json', { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) {
+      var e = j && j.italia;
+      if (!e || !/^\d+\.\d+\.\d+$/.test(e.version || '')) return;
+      el.textContent = 'Verze ' + e.version + (e.stage ? ' — ' + e.stage : '');
+      var m = /^(\d{4})-(\d{2})/.exec(e.date || '');
+      if (m && dt) dt.textContent = MESICE[+m[2] - 1] + ' ' + m[1];
+    })
+    .catch(function () { /* necháme text z HTML */ });
+})();
+</script>
 
   <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Vývojový deník</button></section>
 </main>
