@@ -82,7 +82,8 @@
 
 <section>
   <h2>Stato</h2>
-  <p><strong>Rilasciato 0.9.12 beta</strong> (luglio 2026, <em>NOT_FINAL</em>). Ultime novità: <strong>aggiornamento automatico più affidabile</strong> (0.9.11–0.9.12 — basta cicli infiniti e l'update si installa da solo anche con la finestra aperta) e <strong>Aderenza al piano</strong> (per ogni pasto segno se l'ho mangiato / sostituito / saltato). Prima: Dispensa, nuova navigazione, import ricette da testo, spesa per reparto, Centro di fiducia. App locale per Windows (installer + aggiornamento automatico), gira senza cloud e senza account. 605 test unitari, 27 test e2e. Niente telemetria.</p>
+  <p><strong data-mp-ver="Rilasciato {v} {s}">Rilasciato 0.9.17 beta</strong> (agosto 2026, <em>NOT_FINAL</em>). Ultima novità: <strong>dati dall'orologio e dal telefono</strong> (0.9.16) — esporto i dati da Apple Health o Health Connect, carico il file e l'app usa l'energia attiva <em>misurata</em> invece della propria stima (la stima non sovrascrive mai una misurazione). Prima: il <strong>modulo Fitness</strong> (0.9.15) — allenamento e cibo nello stesso posto. Pianifico l'allenamento o me lo faccio proporre, registro le serie fatte e nel giorno di allenamento posso avere più energia senza cambiare l'apporto settimanale. Prima del primo piano c'è un breve questionario di prontezza; in gravidanza, con problemi cardiaci, in riabilitazione o con un disturbo alimentare l'app non crea alcun piano e rimanda a uno specialista. <em>I contenuti degli esercizi non sono ancora stati revisionati da un trainer o da un fisioterapista, e l'app lo scrive su ogni esercizio.</em> Prima: gestione dei dati più sicura (0.9.14), grande ondata di affidabilità (0.9.13), Aderenza al piano, Dispensa, import ricette da testo, Centro di fiducia. App locale per Windows (installer + aggiornamento automatico), gira senza cloud e senza account. 1077 test unitari, 73 test e2e. Niente telemetria.</p>
+  <p style="margin:.6rem 0 .8rem;padding:.7rem .95rem;border-left:3px solid #e2722e;background:#e2722e14;border-radius:6px;font-size:.93rem">🔒 <strong>Non è scaricabile pubblicamente.</strong> Qui non trovi di proposito il link all'installer — lo condivido personalmente con chi riceve l'app. Il numero di versione qui sopra resta: viene compilato in automatico dalla stessa fonte da cui l'app installata prende gli aggiornamenti.</p>
 </section>
 
 </main>
@@ -127,5 +128,7 @@ main img:hover { transform:scale(1.005) }
   });
 })();
 </script>
+<script>/* Meal Planner verze dynamicky z latest.json (nikdy nedrift). Natvrdo psany text
+   zustava jako fallback. ZAMERNE jen verze/stage — z webu se nestahuje. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var m=d&&d["meal-planner"];if(!m||!m.version)return;var v=m.version,s=m.stage||"";document.querySelectorAll("[data-mp-ver]").forEach(function(el){el.textContent=el.getAttribute("data-mp-ver").replace("{v}",v).replace("{s}",s);});}).catch(function(){});})();</script>
 </body>
 </html>

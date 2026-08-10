@@ -82,7 +82,8 @@
 
 <section>
   <h2>Status</h2>
-  <p><strong>Released 0.9.12 beta</strong> (July 2026, <em>NOT_FINAL</em>). Latest: <strong>more reliable auto-update</strong> (0.9.11–0.9.12 — no more update loop, and the update installs itself even with the window open) and <strong>Plan adherence</strong> (for each meal I mark whether I ate it / swapped it / skipped it). Earlier: Pantry, new navigation, recipe import from text, shopping by store aisle, a Trust Center. Local Windows app (installer + auto-update), runs with no cloud and no account. 605 unit tests, 27 e2e tests. No telemetry.</p>
+  <p><strong data-mp-ver="Released {v} {s}">Released 0.9.17 beta</strong> (August 2026, <em>NOT_FINAL</em>). Latest: <strong>data from a watch or phone</strong> (0.9.16) — export Apple Health or Health Connect, upload the file, and the app uses your measured active energy instead of its own estimate (the estimate never overwrites a measurement). Before that: the <strong>Fitness module</strong> (0.9.15) — training and food in one place. Plan a workout or have one suggested, log the sets you did, and on a training day you can have more energy without changing the weekly intake. A short readiness questionnaire comes first; with pregnancy, a heart condition, rehabilitation or an eating disorder the app builds no plan at all and points to a professional. <em>The exercise content has not yet been reviewed by a trainer or physiotherapist, and the app says so on every exercise.</em> Earlier: safer data handling (0.9.14), a big reliability wave (0.9.13), Plan adherence, Pantry, recipe import from text, a Trust Center. Local Windows app (installer + auto-update), runs with no cloud and no account. 1077 unit tests, 73 e2e tests. No telemetry.</p>
+  <p style="margin:.6rem 0 .8rem;padding:.7rem .95rem;border-left:3px solid #e2722e;background:#e2722e14;border-radius:6px;font-size:.93rem">🔒 <strong>Not publicly downloadable.</strong> There is deliberately no installer link here — I share it personally with whoever I give the app to. The version number above stays: it is filled in automatically from the same place the installed app takes its updates from.</p>
 </section>
 
 </main>
@@ -127,5 +128,7 @@ main img:hover { transform:scale(1.005) }
   });
 })();
 </script>
+<script>/* Meal Planner verze dynamicky z latest.json (nikdy nedrift). Natvrdo psany text
+   zustava jako fallback. ZAMERNE jen verze/stage — z webu se nestahuje. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var m=d&&d["meal-planner"];if(!m||!m.version)return;var v=m.version,s=m.stage||"";document.querySelectorAll("[data-mp-ver]").forEach(function(el){el.textContent=el.getAttribute("data-mp-ver").replace("{v}",v).replace("{s}",s);});}).catch(function(){});})();</script>
 </body>
 </html>
