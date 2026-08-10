@@ -131,7 +131,7 @@
 
 <section>
   <h2>Stato</h2>
-  <p>Versione attuale <strong>1.1.24 BETA</strong> (luglio 2026), scaricabile dalla pagina <a href="index.html">Le mie app</a>. Demo pubblica + versione completa locale (web e Windows .exe). Privata, per uso personale — nessun hosting pubblico di dati reali, nessun account, nessun pagamento. <em>Nota: l'app cataloga e dà valutazioni indicative — non è una perizia professionale. Verifica sempre i prezzi reali su un mercato.</em></p>
+  <p>Versione attuale <strong data-col-ver="{v} BETA">1.1.31 BETA</strong> (luglio 2026), scaricabile dalla pagina <a href="index.html">Le mie app</a>. Demo pubblica + versione completa locale (web e Windows .exe). Privata, per uso personale — nessun hosting pubblico di dati reali, nessun account, nessun pagamento. <em>Nota: l'app cataloga e dà valutazioni indicative — non è una perizia professionale. Verifica sempre i prezzi reali su un mercato.</em></p>
 </section>
 </main>
 
@@ -175,5 +175,6 @@ main img:hover { transform:scale(1.005) }
   });
 })();
 </script>
+<script>/* Verze z latest.json (nikdy nedrift) — natvrdo psane cislo v HTML zustava jen jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var o=d&&d["collection"];if(!o||!o.version)return;var v=o.version;document.querySelectorAll("[data-col-ver]").forEach(function(el){el.textContent=el.getAttribute("data-col-ver").replace("{v}",v);});document.querySelectorAll("[data-col-dl]").forEach(function(a){if(o.url){a.href=o.url;a.setAttribute("download","");}});}).catch(function(){});})();</script>
 </body>
 </html>

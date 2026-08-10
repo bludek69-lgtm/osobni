@@ -99,7 +99,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p><strong>BETA — soukromá beta pro kamarády</strong> (verze 0.2.8, červen 2026). Windows aplikace s instalátorem.</p>
+  <p><strong>BETA — soukromá beta pro kamarády</strong> (verze <span data-tp-ver="{v}">0.2.8</span>, červen 2026). Windows aplikace s instalátorem.</p>
   <ul style="line-height:1.7">
     <li><strong>Instalátor je chráněný heslem</strong> — aplikaci dostanou jen lidé, kterým heslo osobně dám. Na webu žádné heslo není a nebude.</li>
     <li><strong>Aktualizace fungují stejně jako u mých ostatních aplikací</strong> — appka si sama hlídá novou verzi a po potvrzení se tiše aktualizuje. Nic se nemusí stahovat ručně.</li>
@@ -204,5 +204,6 @@
 })();
 </script>
 <script src="../assets/js/main.js"></script>
+<script>/* Verze z latest.json (nikdy nedrift) — natvrdo psane cislo v HTML zustava jen jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var o=d&&d["tenispark"];if(!o||!o.version)return;var v=o.version;document.querySelectorAll("[data-tp-ver]").forEach(function(el){el.textContent=el.getAttribute("data-tp-ver").replace("{v}",v);});document.querySelectorAll("[data-tp-dl]").forEach(function(a){if(o.url){a.href=o.url;a.setAttribute("download","");}});}).catch(function(){});})();</script>
 </body>
 </html>

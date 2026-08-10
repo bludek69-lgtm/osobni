@@ -131,7 +131,7 @@
 
 <section>
   <h2>Status</h2>
-  <p>Current version <strong>1.1.24 BETA</strong> (July 2026), available for download on the <a href="index.html">My apps</a> page. Public demo + full local version (web and Windows .exe). Private, for personal use — no public hosting of real data, no accounts, no payments. <em>Note: the app catalogues and gives indicative valuations — it is not a professional appraisal. Always verify real prices on a marketplace.</em></p>
+  <p>Current version <strong data-col-ver="{v} BETA">1.1.31 BETA</strong> (July 2026), available for download on the <a href="index.html">My apps</a> page. Public demo + full local version (web and Windows .exe). Private, for personal use — no public hosting of real data, no accounts, no payments. <em>Note: the app catalogues and gives indicative valuations — it is not a professional appraisal. Always verify real prices on a marketplace.</em></p>
 </section>
 </main>
 
@@ -175,5 +175,6 @@ main img:hover { transform:scale(1.005) }
   });
 })();
 </script>
+<script>/* Verze z latest.json (nikdy nedrift) — natvrdo psane cislo v HTML zustava jen jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var o=d&&d["collection"];if(!o||!o.version)return;var v=o.version;document.querySelectorAll("[data-col-ver]").forEach(function(el){el.textContent=el.getAttribute("data-col-ver").replace("{v}",v);});document.querySelectorAll("[data-col-dl]").forEach(function(a){if(o.url){a.href=o.url;a.setAttribute("download","");}});}).catch(function(){});})();</script>
 </body>
 </html>

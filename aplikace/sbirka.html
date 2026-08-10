@@ -133,7 +133,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Aktuální verze <strong>1.1.24 BETA</strong> (červenec 2026), ke stažení na stránce <a href="index.html">Moje aplikace</a>. Veřejné demo + plná lokální verze (web i Windows .exe). Soukromé pro vlastní použití — žádný public hosting reálných dat, žádné účty, žádné platby. Detailní průběh vývoje je ve <button class="diary-link" id="openDeník2">vývojovém deníku</button>.</p>
+  <p>Aktuální verze <strong data-col-ver="{v} BETA">1.1.31 BETA</strong> (červenec 2026), ke stažení na stránce <a href="index.html">Moje aplikace</a>. Veřejné demo + plná lokální verze (web i Windows .exe). Soukromé pro vlastní použití — žádný public hosting reálných dat, žádné účty, žádné platby. Detailní průběh vývoje je ve <button class="diary-link" id="openDeník2">vývojovém deníku</button>.</p>
 </section>
 </main>
 
@@ -242,5 +242,6 @@ main img:hover { transform:scale(1.005) }
   });
 })();
 </script>
+<script>/* Verze z latest.json (nikdy nedrift) — natvrdo psane cislo v HTML zustava jen jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var o=d&&d["collection"];if(!o||!o.version)return;var v=o.version;document.querySelectorAll("[data-col-ver]").forEach(function(el){el.textContent=el.getAttribute("data-col-ver").replace("{v}",v);});document.querySelectorAll("[data-col-dl]").forEach(function(a){if(o.url){a.href=o.url;a.setAttribute("download","");}});}).catch(function(){});})();</script>
 </body>
 </html>
