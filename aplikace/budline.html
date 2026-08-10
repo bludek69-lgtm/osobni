@@ -94,9 +94,8 @@
 </section>
 
 <section>
-  <h2>Stažení (beta)</h2>
-  <p style="margin:.4rem 0 .8rem"><a href="https://github.com/bludek69-lgtm/aplikace/releases" data-bl-dl style="display:inline-block;background:#2d6ad5;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600">⬇ Stáhnout instalátor (Windows)</a>
-  <a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel.dmg" data-bl-dl-mac download style="display:inline-block;background:#111;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600;margin-left:.5rem">⬇ Stáhnout pro Mac (<span data-bl-ver="v{v}">aktuální verze</span>, .dmg)</a></p>
+  <h2>Instalace (beta)</h2>
+  <p style="margin:.6rem 0 .9rem;padding:.7rem .95rem;border-left:3px solid #2d6ad5;background:#2d6ad514;border-radius:6px;font-size:.93rem">🔒 <strong>Aplikace není veřejně ke stažení.</strong> Instalátor tady záměrně nenajdeš — odkaz posílám osobně tomu, komu aplikaci dávám. Číslo verze na téhle stránce zůstává: doplňuje se samo ze stejného místa, odkud si už nainstalovaná aplikace bere automatické aktualizace.</p>
   <p style="font-size:.9rem;line-height:1.6">🔒 <strong>Instalátor je chráněný heslem</strong> — heslo dávám osobně, na webu není a nebude.</p>
   <p style="font-size:.9rem;line-height:1.6">🍏 <strong>macOS:</strong> při prvním spuštění klikni na aplikaci <strong>pravým tlačítkem → Otevřít</strong> (je nepodepsaná, je naše vlastní). Kdyby psalo „poškozený", spusť v Terminálu <code>xattr -cr "/Applications/BudLine Panel.app"</code>.</p>
   <p style="font-size:.9rem;line-height:1.6">🛡️ Windows může zobrazit upozornění SmartScreen (unsigned beta instalátor). Pokud aplikaci znáš a čekáš ji ode mě, klikni „Další informace" → „Přesto spustit".</p>
@@ -105,7 +104,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Verze <strong data-bl-ver="{v} BETA">aktuální beta</strong> — přesné číslo verze se natáhne automaticky z vydání výše. Aplikaci aktivně používáme dva, vyvíjí se podle reálných výplatních pásek. Beta = funguje, ale stále se ladí; instalátor je nepodepsaný a zaheslovaný.</p>
+  <p>Verze <strong data-bl-ver="{v} BETA">1.2.86 BETA</strong> — přesné číslo verze se natáhne automaticky z manifestu vydání (stejný zdroj, ze kterého si aplikace bere tiché aktualizace). Aplikaci aktivně používáme dva, vyvíjí se podle reálných výplatních pásek. Beta = funguje, ale stále se ladí; instalátor je nepodepsaný a zaheslovaný.</p>
   <p style="margin-top:.6rem">Detailní průběh vývoje je ve <button class="diary-link" id="openDeník2">vývojovém deníku</button>. <button id="openDeník" class="diary-btn" style="margin-left:.4rem">📖 Vývojový deník</button></p>
 </section>
 
@@ -187,6 +186,7 @@
 
 <script src="../assets/js/main.js"></script>
 
-<script>/* BudLine verze dynamicky z latest.json (nikdy nedrift) */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var b=d&&d.budline;if(!b||!b.version)return;var v=b.version;document.querySelectorAll("[data-bl-ver]").forEach(function(el){el.textContent=el.getAttribute("data-bl-ver").replace("{v}",v);});document.querySelectorAll("[data-bl-dl]").forEach(function(a){if(b.url){a.href=b.url;a.setAttribute("download","");}});document.querySelectorAll("[data-bl-dl-mac]").forEach(function(a){if(b.url_mac)a.href=b.url_mac;});}).catch(function(){});})();</script>
+<script>/* BudLine verze dynamicky z latest.json (nikdy nedrift) */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var b=d&&d.budline;if(!b||!b.version)return;var v=b.version;document.querySelectorAll("[data-bl-ver]").forEach(function(el){el.textContent=el.getAttribute("data-bl-ver").replace("{v}",v);});/* ZAMERNE se necte b.url: BudLine se z webu nestahuje, odkaz predavam osobne.
+   Manifest zustava kvuli verzovani a tichym aktualizacim. *//* ZAMERNE se necte url: BudLine se z webu nestahuje, odkaz predavam osobne. Manifest zustava kvuli verzovani a tichym aktualizacim. */}).catch(function(){});})();</script>
 </body>
 </html>

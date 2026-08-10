@@ -93,9 +93,8 @@
 </section>
 
 <section>
-  <h2>Download (beta)</h2>
-  <p style="margin:.4rem 0 .8rem"><a href="https://github.com/bludek69-lgtm/aplikace/releases" data-bl-dl download style="display:inline-block;background:#2d6ad5;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600">⬇ Download installer (Windows)</a>
-  <a href="https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel.dmg" data-bl-dl-mac download style="display:inline-block;background:#111;color:#fff;text-decoration:none;padding:.6rem 1.2rem;border-radius:8px;font-weight:600;margin-left:.5rem">⬇ Download for Mac (<span data-bl-ver="v{v}">current version</span>, .dmg)</a></p>
+  <h2>Installation (beta)</h2>
+  <p style="margin:.6rem 0 .9rem;padding:.7rem .95rem;border-left:3px solid #2d6ad5;background:#2d6ad514;border-radius:6px;font-size:.93rem">🔒 <strong>The app is not publicly downloadable.</strong> You will not find an installer here on purpose — I send the link personally to whoever I give the app to. The version number on this page stays: it fills in automatically from the same place the installed app uses for its silent updates.</p>
   <p style="font-size:.9rem;line-height:1.6">🔒 <strong>The installer is password-protected</strong> — I share the password personally; it is not and will not be on the web.</p>
   <p style="font-size:.9rem;line-height:1.6">🍏 <strong>macOS:</strong> on first launch, <strong>right-click the app → Open</strong> (it is unsigned, it's our own app). If it says "damaged", run <code>xattr -cr "/Applications/BudLine Panel.app"</code> in Terminal.</p>
   <p style="font-size:.9rem;line-height:1.6">🛡️ Windows may show a SmartScreen warning (unsigned beta installer). If you know the app and expect it from me, click "More info" → "Run anyway".</p>
@@ -104,7 +103,7 @@
 
 <section>
   <h2>Status</h2>
-  <p>Version <strong data-bl-ver="{v} BETA">1.2.63 BETA</strong> (July 2026). Two of us use the app actively; it is developed against real payslips. Beta = it works, but it is still being polished; the installer is unsigned and password-protected.</p>
+  <p>Version <strong data-bl-ver="{v} BETA">1.2.86 BETA</strong> (August 2026). Two of us use the app actively; it is developed against real payslips. Beta = it works, but it is still being polished; the installer is unsigned and password-protected.</p>
 </section>
 
 </main>
@@ -123,6 +122,6 @@
 
 <script src="../../assets/js/main.js"></script>
 
-<script>/* BudLine verze dynamicky z latest.json (nikdy nedrift) */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var b=d&&d.budline;if(!b||!b.version)return;var v=b.version;document.querySelectorAll("[data-bl-ver]").forEach(function(el){el.textContent=el.getAttribute("data-bl-ver").replace("{v}",v);});document.querySelectorAll("[data-bl-dl]").forEach(function(a){if(b.url)a.href=b.url;});}).catch(function(){});})();</script>
+<script>/* BudLine verze dynamicky z latest.json (nikdy nedrift) */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var b=d&&d.budline;if(!b||!b.version)return;var v=b.version;document.querySelectorAll("[data-bl-ver]").forEach(function(el){el.textContent=el.getAttribute("data-bl-ver").replace("{v}",v);});/* ZAMERNE se necte url: BudLine se z webu nestahuje, odkaz predavam osobne. Manifest zustava kvuli verzovani a tichym aktualizacim. */}).catch(function(){});})();</script>
 </body>
 </html>
