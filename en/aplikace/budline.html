@@ -49,7 +49,7 @@
   <span class="hero-accent" style="color:#2d6ad5">BudLine Panel</span>
   <h1><span style="margin-right:.4rem">🚍</span>BudLine Panel</h1>
   <p class="hero-sub">An app for bus drivers that keeps track of shifts, rosters and pay. Instead of paper notes and mental arithmetic: I log my shifts and the app calculates what should arrive on the payslip — and at the end of the month I check whether it matches. Everything runs locally on the computer, no cloud, no accounts.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">macOS</span> <span class="pill" style="background:#e8731a1f;color:#c25e10;border:1px solid #e8731a66;padding:.2rem .6rem;border-radius:6px;font-size:.78rem" data-bl-ver="v{v} BETA">v1.2.63 BETA</span></p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">macOS</span> <span class="pill" style="background:#e8731a1f;color:#c25e10;border:1px solid #e8731a66;padding:.2rem .6rem;border-radius:6px;font-size:.78rem" data-bl-ver="v{v} BETA">v1.2.93 BETA</span></p>
   <p style="margin-top:.8rem"><a href="index.html">← Back to My apps</a></p>
 </section>
 
@@ -73,12 +73,58 @@
     <li><strong>Plan vs reality from the driver card</strong> — next to the planned roster you see what the card actually recorded (driving, work, rest) and where it differs; rest periods are evaluated continuously across midnight and card times are converted from UTC to local time.</li>
     <li><strong>Overall monthly assessment</strong> — payslip, driven rosters and the driver card in one view: how much was really driven, how it matches what was paid, and a summary of all breaches.</li>
     <li><strong>Driving-time checks (AETR)</strong> — shifts that may breach road-transport rules are flagged for review; pay is never changed.</li>
+    <li><strong>Bonuses and benefits on the check payslip</strong> — bonuses from the uploaded payslip (fuel, takings, regular), pension contributions, phone and laundry; the check gross pay now matches to the last koruna.</li>
+    <li><strong>Recalculating closed months after a roster fix</strong> — the app finds the closed months a roster change affects and offers to recalculate them. The roster is never rewritten backwards: every day is calculated with the roster version that was valid on that date.</li>
+    <li><strong>Month picker and a background-work indicator</strong> — switch months in the pay overview with a dropdown or arrows; when the app is calculating in the background you can see it in the bottom right.</li>
+    <li><strong>Yearly public-holiday overview</strong> — which ones were driven and what they paid extra, and which fell on a roster rest day where no entitlement arises.</li>
     <li><strong>Driver card import</strong> — chip card data via a reader (since v1.2.13).</li>
     <li><strong>MPV Live / Operations</strong> — real-time operation of Semily rosters: currently running trips, trip detail (delay, occupancy), a vehicle-position map and live delays (since v1.2.14, read-only).</li>
     <li><strong>Entry validation</strong> — time and value checks so a typo never reaches the payroll.</li>
     <li><strong>Silent auto-update</strong> — new versions install themselves; config and data are kept.</li>
     <li><strong>No cloud</strong> — no account, no server, data only on the computer.</li>
   </ul>
+</section>
+
+<section>
+  <h2>How it works in practice</h2>
+  <p>A bus driver gets a payslip every month with a single number on it. Verifying that number means going through the rosters, adding up driving hours, waiting time, night and weekend bonuses and meal allowances — by the collective agreement, not by feel. BudLine Panel does exactly that: it keeps a record of what was actually driven, calculates what <em>should</em> arrive, and puts it next to what really did.</p>
+
+  <h3 style="margin-top:1.2rem">1. Logging a day</h3>
+  <p>A day comes from two sources. The <strong>roster</strong> says what was supposed to be driven — trips, times, kilometres, breaks. The <strong>DZVA</strong> (the daily vehicle operation log) is the dispatcher's paper: document number, bus, tachograph and odometer readings. The app combines both and works out the rest, so you only enter what differs from the plan.</p>
+  <ul>
+    <li><strong>Swapping the bus mid-day</strong> — just say which route you switched at. Times and kilometres for both vehicles are derived from the roster, and when the counter readings are filled in, actual figures win over the plan.</li>
+    <li><strong>Two shifts in one day</strong> — if the dispatcher issues a new DZVA for the afternoon, the day splits into two shifts. Pay is apportioned by driving time; the meal allowance stays whole, because the whole day was spent at work.</li>
+    <li><strong>Extra or dropped trips</strong> — the difference in driving time, time at work and kilometres is calculated; duration and distance come from the timetable, nothing is guessed.</li>
+  </ul>
+
+  <h3 style="margin-top:1.2rem">2. The calculation</h3>
+  <p>On top of the records runs the payroll calculation per the collective agreement: base rate, performance component, waiting time, difficult conditions, night, weekend and holiday bonuses, and the meal allowance by shift length. The result is visible day by day and for the whole month.</p>
+  <ul>
+    <li><strong>Monthly pay overview</strong> — a day-by-day breakdown: hours worked, how much of that was driving, which bonuses, how many koruna. Months are switched with a picker at the top.</li>
+    <li><strong>Reports</strong> — my own payslip and a <strong>shift sheet</strong> in the same shape as the employer's paper, so they can be compared line by line.</li>
+    <li><strong>Payroll check</strong> — item by item against the uploaded payslip, including bonuses and benefits; anything that does not match shows up straight away.</li>
+    <li><strong>Roster check</strong> — an indicative estimate of what a given roster will bring, before it is driven.</li>
+  </ul>
+
+  <h3 style="margin-top:1.2rem">3. Checks and honest numbers</h3>
+  <p>The app is not supposed to invent figures. When it cannot be sure, it says so and would rather show nothing than show something wrong.</p>
+  <ul>
+    <li><strong>An implausible reading is not used</strong> — if an odometer reading works out to 50,000 km in a shift, or far beyond the plan, the app treats it as a typo and stays with the plan. It does not pass a typo off as a detour.</li>
+    <li><strong>An empty field says why</strong> — whether the value is missing from the DZVA, or only one of the two readings is filled in. A reversed counter (end lower than start) is marked red.</li>
+    <li><strong>The payroll truth stays with the employer's payslip</strong> — the app is a checking aid, not a replacement for the payroll office, and it says so on its own outputs.</li>
+    <li><strong>Month close</strong> — once a month is closed the figures are locked into a snapshot so they cannot drift. If a roster later turns out to have been different from a certain date, the app offers a recalculation and records why.</li>
+  </ul>
+
+  <h3 style="margin-top:1.2rem">4. Data stays at home</h3>
+  <ul>
+    <li>Runs locally on Windows (and macOS), <strong>no cloud, no account, no telemetry</strong>. Data lives on the computer.</li>
+    <li><strong>Backups</strong> with a single button, optionally encrypted with a password. A restore can first be tried as a <strong>dry run</strong> into an isolated copy — you see what the backup contains and live data is never touched.</li>
+    <li><strong>Updates</strong> download and install themselves; data and settings are kept.</li>
+    <li>Pages regenerate themselves whenever the data changes — there is nothing to refresh by hand.</li>
+  </ul>
+
+  <h3 style="margin-top:1.2rem">What the app does not do</h3>
+  <p>It is not a payroll system and it does not replace the payroll office. It does not calculate other people, it sends nothing to the employer and it has no web version. It is one driver's tool for checking his own pay — and it is written that way.</p>
 </section>
 
 <section>
@@ -109,10 +155,76 @@
 
 <section>
   <h2>Status</h2>
-  <p>Version <strong data-bl-ver="{v} BETA">1.2.86 BETA</strong> (August 2026). Two of us use the app actively; it is developed against real payslips. Beta = it works, but it is still being polished; the installer is unsigned and password-protected.</p>
+  <p>Version <strong data-bl-ver="{v} BETA">1.2.93 BETA</strong> (August 2026). The exact version number is pulled automatically from the release manifest — the same source the installed app uses for its silent updates. Two of us use the app actively; it is developed against real payslips. Beta = it works, but it is still being polished; the installer is unsigned and password-protected.</p>
+  <p style="margin-top:.6rem">The detailed history is in the <button class="diary-link" id="openDiary2">development diary</button>. <button id="openDiary" class="diary-btn" style="margin-left:.4rem">📖 Development diary</button></p>
 </section>
 
 </main>
+
+<!-- ═══ DEVELOPMENT DIARY — popup (keeps the page short) ═══ -->
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Development diary" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head">
+      <h2 style="margin:0">📖 Development diary — BudLine Panel</h2>
+      <button class="diary-close" aria-label="Close">✕</button>
+    </div>
+    <div class="diary-body">
+      <ul style="line-height:1.8">
+        <li><strong>v1.2.88–1.2.93 — bonuses on the payslip, recalculating closed months and month switching (11–14 Aug 2026)</strong> — <strong>The check payslip handles bonuses and benefits</strong>: bonuses are read from the uploaded payslip including their breakdown (fuel, takings, regular) and counted into the check gross pay — without them the total never matched. New lines: pension contributions and phone as deductions, laundry as an untaxed allowance, and a <em>transfer to account</em> line at the bottom. <strong>Recalculating months that are already closed</strong>: when it turns out a roster was different from a certain date, the app finds the closed months affected and offers to recalculate them. The roster itself is never rewritten backwards — each day is calculated with the roster version valid on that date; months that would need a roster "from the future" are skipped with the reason stated. <strong>The pay overview now has a month picker</strong> (a dropdown plus previous/next arrows; months with no shifts are marked), and when the app is working in the background an indicator in the bottom right shows what it is doing and for how long. <strong>The roster editor</strong> can save an edit as a <em>new version valid from a new date</em> — the original stays in the archive, so older months keep being calculated with it; if the validity date is left unchanged the app warns that it would overwrite that same version. Also: a <strong>yearly public-holiday overview</strong> (which ones were driven and what they paid extra, and which fell on a roster rest day where no entitlement arises), the shift sheet can be laid next to the employer's paper and compared day by day, and a closed month no longer shows zeros. <strong>macOS fix:</strong> on a Mac a manually edited roster or a changed rate never reached the calculation — the app saved them somewhere other than where the calculation read them. Nothing changes on Windows and no amount moves.</li>
+        <li><strong>v1.2.80–1.2.87 — shift sheet, catching typos and controls (1–10 Aug 2026)</strong> — A new <strong>shift-sheet report</strong> in the same shape as the employer's payroll paperwork but with the app's own figures — it can be compared line by line. <strong>Stricter odometer checks:</strong> a typo in the digits produced 459 km against a plan of 188 km and the app used to let it through as a detour; now it flags it as a typo and stays with the plan. <strong>A day with a bus swap splits into two shifts</strong> when the dispatcher issues a new DZVA for the rest of the day — pay is apportioned by driving time, the meal allowance stays whole for the full day at work. <strong>The map in MPV works again</strong> (broken since 1.2.74, claiming you were offline — it was actually fetching the map library from the internet and the app's security policy blocked it; it is now bundled inside). Smaller things from daily use: a missing page no longer ends in a cryptic error, empty counter columns say why they are empty, day states are in plain language with tooltips, kilometres driven can be shown for the whole period, the left panel can be collapsed and roster rest days are finally visible in the calendar. Pages now <strong>regenerate themselves</strong> whenever the data changes, and a <strong>restore can be tried as a dry run</strong> into an isolated copy before live data is overwritten.</li>
+        <li><strong>v1.2.72–1.2.79 — swapping the bus mid-shift and an independent audit (29 Jul – 1 Aug 2026)</strong> — <strong>Swapping the bus mid-shift</strong>: more than one vehicle can be recorded in a single shift (typically when one breaks down halfway). You enter only that one change — which route you switched at — and the app derives times and kilometres for both legs; the counter reading is recorded at the start and end of both vehicles, so kilometres come from an actual reading. The bus is picked from a catalogue dropdown rather than typed from memory, and <strong>extra or dropped trips</strong> feed through into driving time, time at work and kilometres. The home page shows how much was driven in total and per bus. <strong>Security and data hotfix after an independent audit:</strong> a corrupted data file can no longer lead to shifts being silently lost, an update will not overwrite your rosters, and a closed month stays locked — plus safer backups, cleanup of old files and better keyboard control.</li>
+        <li><strong>v1.2.64–1.2.71 — statutory assessment, driver card and fixes (July 2026)</strong> — <strong>A new Assessment module</strong>: it evaluates a single roster and a whole month against AETR/561 and Czech Gov. Reg. 589/2006, showing <em>plan (rosters)</em> next to <em>reality (driver card)</em> for the month; everything in a full and a short version, printable to PDF. <strong>The overall monthly assessment</strong> brings the payslip, the driven rosters and the card into one view. <strong>Limits verified against official sources</strong> (Ministry of Transport, State Labour Inspection Office) — on routes up to 50 km the shift limit is 13 hours including positioning runs. <strong>Fixes:</strong> the pay overview opens the newest month with data (it used to point hard-coded at April) and shows figures from the locked month-end snapshot instead of zeros; a manual item on the own payslip no longer raises an error; restoring a backup from another computer no longer bounces back with a "corrupted data" message; card times are converted from UTC to local time (summer and winter).</li>
+        <li><strong>v1.2.30–1.2.63 — month close, roster editor and driving-time checks (June–July 2026)</strong> — <strong>Month close</strong>: the home page shows which past month is still open; on closing, the items that are not on the standard roster are filled in (fuel and regular bonuses, takings, laundry, CNG) — and when a payslip is uploaded, one <strong>"Fill from payslip"</strong> button populates the fields from its code breakdown. <strong>A roster editor inside the app</strong>: a new roster in a table or an edit of an existing one, batch import (HTML/XML/ZIP), stop autocomplete and a <strong>vehicle (V-code)</strong> field — e.g. "3-axle bus". <strong>Driving-time checks</strong> under the road transport act (561/2006, AETR): shifts with a possible breach are flagged for review, pay is left untouched. Clearer lists (roster sorting and row separation) and easier payslip import. The protected payroll calculation is unchanged; historical months are calculated with the roster version valid on that date; no personal data or pay ever goes to the web or to GitHub.</li>
+        <li><strong>v1.2.24–1.2.28 — roster comparison and backups (June 2026)</strong> — A new standalone <strong>Backup and restore</strong> page: backup by period (a single month or a from–to range) and folder selection without typing paths (presets and browsing), backup history, verification and a restore preview. <strong>Roster import</strong> shows how a newly imported set differs from the current one (times, routes, kilometres and amounts) — preview only, nothing is overwritten. Also: overtime calculated from the logged shifts, the driver profile and tax card together in Settings, and a "How it works" page. A backup never contains the personnel number or passwords.</li>
+        <li><strong>v1.2.23 — Archive and net pay calculation (15 Jun 2026)</strong> — A new <strong>Archive</strong> page (closed months plus archived shifts: view and correct the record only, they are never rewritten). <strong>Payslip comparison</strong> finally fills in for closed months (bonuses, hours, gross) and, once tax rates are confirmed, works out <strong>net pay, tax and contributions</strong> — tax is correctly calculated from the base excluding meal allowances. 2026 tax rates <strong>verified from official sources</strong> (ČSSZ, VZP, Financial Administration). Mandatory tax fields in the driver card.</li>
+        <li><strong>v1.2.20–1.2.22 — timetable watch (14 Jun 2026)</strong> — The "Timetable changes to verify" and "Trip stop changes" pages: the app compares official timetables (CIS JŘ) against the recorded rosters and flags changes for review — it never changes anything itself.</li>
+        <li><strong>v1.2.14–1.2.19 — live operations and the driver card (13–14 Jun 2026)</strong> — The <strong>MPV Live / Operations</strong> page: currently running Semily trips, trip detail (delay, occupancy), a vehicle map and live delays (read-only). Reading data directly from the <strong>driver chip card</strong> via a reader. Recording absences (holiday, sickness, doctor…).</li>
+        <li><strong>Silent updates and security</strong> — new versions install themselves in the background with visible progress; user data and settings are never overwritten during an upgrade. The installer is password-protected; no personal data or pay ever goes to the web or to GitHub.</li>
+        <li><strong>The core — records and pay checking</strong> — logging driven shifts with validation (HH:MM times, no negative numbers), rolling them up into a monthly overview, calculating the pay basis by the rules (hours, night/weekend/holiday bonuses) and comparing it with the payslip. All local (SQLite), no cloud and no accounts.</li>
+      </ul>
+      <p style="color:var(--text-mut,#777);font-size:.85rem">Note: the app is an indicative checking aid, not accounting or tax advice. The employer's payslip is what counts.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.diary-btn, .diary-link {
+  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
+  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
+}
+.diary-btn:hover { background:#e6c75a; }
+.diary-link { background:none; color:#8a6a0f; text-decoration:underline; padding:0; font-weight:600; }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel {
+  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
+  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
+  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
+}
+.diary-head {
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
+  position:sticky; top:0; background:var(--bg,#fff);
+}
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
+.diary-close:hover { color:var(--text,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
+</style>
+<script>
+(function(){
+  var modal = document.getElementById('diary');
+  if (!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  ['openDiary','openDiary2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
 
 <footer class="site-footer">
   <div class="site-footer__inner">

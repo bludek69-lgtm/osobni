@@ -49,7 +49,7 @@
   <span class="hero-accent" style="color:#2d6ad5">BudLine Panel</span>
   <h1><span style="margin-right:.4rem">🚍</span>BudLine Panel</h1>
   <p class="hero-sub">Un'app per autisti di autobus che tiene sotto controllo turni, rotazioni e stipendio. Niente foglietti e calcoli a mente: registro i turni e l'app calcola quanto deve arrivare in busta paga — a fine mese verifico che torni tutto. Gira solo sul computer, senza cloud e senza account.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">macOS</span> <span class="pill" style="background:#e8731a1f;color:#c25e10;border:1px solid #e8731a66;padding:.2rem .6rem;border-radius:6px;font-size:.78rem" data-bl-ver="v{v} BETA">v1.2.63 BETA</span></p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows</span> <span class="pill" style="background:#2d6ad51a;color:#2d6ad5;border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">macOS</span> <span class="pill" style="background:#e8731a1f;color:#c25e10;border:1px solid #e8731a66;padding:.2rem .6rem;border-radius:6px;font-size:.78rem" data-bl-ver="v{v} BETA">v1.2.93 BETA</span></p>
   <p style="margin-top:.8rem"><a href="index.html">← Torna a Le mie app</a></p>
 </section>
 
@@ -73,12 +73,58 @@
     <li><strong>Piano vs realtà dalla carta del conducente</strong> — accanto al piano del turno vedi ciò che la carta ha realmente registrato (guida, lavoro, riposo) e dove differisce; i riposi sono valutati in continuo oltre la mezzanotte e gli orari della carta sono convertiti da UTC all’ora locale.</li>
     <li><strong>Valutazione mensile complessiva</strong> — busta paga, turni effettuati e carta del conducente in un’unica schermata: quanto si è realmente guidato, come corrisponde a quanto pagato e il riepilogo di tutte le violazioni.</li>
     <li><strong>Controllo dei tempi di guida (AETR)</strong> — i turni che potrebbero violare le regole del trasporto stradale vengono segnalati per la verifica; lo stipendio non viene mai modificato.</li>
+    <li><strong>Premi e benefit nella busta paga di controllo</strong> — i premi dalla busta paga caricata (carburante, incassi, ordinari), la previdenza integrativa, il telefono e il lavaggio degli indumenti; il lordo di controllo torna alla corona.</li>
+    <li><strong>Ricalcolo dei mesi già chiusi dopo la correzione di un turno</strong> — l'app trova da sola i mesi chiusi interessati e propone il ricalcolo. Il turno non viene mai riscritto a ritroso: ogni giornata si calcola con la versione del turno valida a quella data.</li>
+    <li><strong>Selettore del mese e indicatore di lavoro in corso</strong> — nel riepilogo retributivo il mese si cambia con un menù a tendina o con le frecce; quando l'app calcola in background lo si vede in basso a destra.</li>
+    <li><strong>Riepilogo annuale delle festività</strong> — quali sono state guidate e quanto hanno fruttato in più, e quali sono cadute in un giorno di riposo del turno, dove non matura alcun diritto.</li>
     <li><strong>Import dalla carta del conducente</strong> — dati dalla carta a chip via lettore (dalla v1.2.13).</li>
     <li><strong>MPV Live / Esercizio</strong> — esercizio in tempo reale dei turni di Semily: corse in marcia, dettaglio corsa (ritardo, occupazione), mappa delle posizioni dei veicoli e ritardi istantanei (dalla v1.2.14, sola lettura).</li>
     <li><strong>Controlli di inserimento</strong> — validazione di orari e valori, così un errore di battitura non finisce nello stipendio.</li>
     <li><strong>Aggiornamento automatico silenzioso</strong> — le nuove versioni si installano da sole; configurazione e dati restano.</li>
     <li><strong>Senza cloud</strong> — nessun account, nessun server, dati solo sul computer.</li>
   </ul>
+</section>
+
+<section>
+  <h2>Come funziona nella pratica</h2>
+  <p>Ogni mese l'autista riceve una busta paga con sopra un solo numero. Verificarlo significa ripercorrere i turni e sommare ore di guida, attese, maggiorazioni notturne e del fine settimana e le indennità di trasferta — secondo il contratto collettivo, non a occhio. BudLine Panel fa esattamente questo: tiene il registro di ciò che è stato guidato, calcola quanto <em>dovrebbe</em> arrivare e lo mette accanto a quanto è arrivato davvero.</p>
+
+  <h3 style="margin-top:1.2rem">1. Registrare la giornata</h3>
+  <p>La giornata nasce da due fonti. Il <strong>turno</strong> dice che cosa era previsto — corse, orari, chilometri, pause. Il <strong>DZVA</strong> (registro giornaliero di esercizio del veicolo) è il foglio del capomovimento: numero del documento, autobus, letture del cronotachigrafo e del contachilometri. L'app unisce le due cose e calcola il resto, così a mano si inserisce solo ciò che si discosta dal piano.</p>
+  <ul>
+    <li><strong>Cambio dell'autobus a metà giornata</strong> — basta indicare da quale linea si è passati all'altro mezzo. Orari e chilometri delle due tratte l'app li ricava dal turno e, se le letture dei contatori ci sono, usa il dato reale al posto del piano.</li>
+    <li><strong>Due turni in una giornata</strong> — se il capomovimento emette un nuovo DZVA per il pomeriggio, la giornata si divide in due turni. Il compenso si ripartisce in base al tempo di guida; l'indennità resta intera, perché la giornata di lavoro è stata una sola.</li>
+    <li><strong>Corse in più o non effettuate</strong> — vengono calcolate le differenze di tempo di guida, di tempo al lavoro e di chilometri; durata e distanza arrivano dall'orario ufficiale, niente viene stimato.</li>
+  </ul>
+
+  <h3 style="margin-top:1.2rem">2. Il calcolo</h3>
+  <p>Sopra il registro gira il calcolo retributivo secondo il contratto collettivo: tariffa base, quota di produttività, attese, condizioni disagiate, maggiorazioni notturne, festive e del fine settimana, indennità in base alla durata del turno. Il risultato si vede giorno per giorno e per l'intero mese.</p>
+  <ul>
+    <li><strong>Riepilogo retributivo del mese</strong> — dettaglio per giornata: quante ore, quante di guida, quali maggiorazioni, quante corone. Il mese si cambia dal selettore in alto.</li>
+    <li><strong>Report</strong> — busta paga propria e <strong>foglio turni</strong> nello stesso formato del documento del datore di lavoro, per confrontarli riga per riga.</li>
+    <li><strong>Verifica della busta paga</strong> — voce per voce rispetto alla busta caricata, premi e benefit compresi; ciò che non torna salta subito all'occhio.</li>
+    <li><strong>Verifica dei turni</strong> — stima indicativa di quanto renderà un turno, prima ancora di guidarlo.</li>
+  </ul>
+
+  <h3 style="margin-top:1.2rem">3. Controlli e numeri onesti</h3>
+  <p>L'app non deve inventare numeri. Quando non può esserne certa lo dice, e preferisce non mostrare un valore piuttosto che mostrarne uno sbagliato.</p>
+  <ul>
+    <li><strong>Un dato implausibile non viene usato</strong> — se la lettura del contachilometri produce 50 000 km in un turno, o molto più del previsto, l'app la tratta come un errore di battitura e resta sul piano. Non spaccia un refuso per una deviazione.</li>
+    <li><strong>Un campo vuoto dice perché</strong> — se il dato manca sul DZVA o se è compilata una sola delle due letture. Un contatore invertito (fine inferiore all'inizio) è segnato in rosso.</li>
+    <li><strong>La verità retributiva resta la busta paga del datore di lavoro</strong> — l'app serve al controllo, non sostituisce l'ufficio paghe, e lo scrive sui propri output.</li>
+    <li><strong>Chiusura del mese</strong> — una volta chiuso, i numeri vengono bloccati in uno snapshot e non si muovono più. Se in seguito emerge che un turno era diverso da una certa data, l'app propone il ricalcolo e ne registra il motivo.</li>
+  </ul>
+
+  <h3 style="margin-top:1.2rem">4. I dati restano a casa</h3>
+  <ul>
+    <li>Gira in locale su Windows (e su Mac), <strong>senza cloud, senza account, senza telemetria</strong>. I dati stanno sul computer.</li>
+    <li><strong>Backup</strong> con un solo pulsante, volendo cifrati con password. Il ripristino si può prima provare <strong>a vuoto</strong> in una copia isolata — si vede che cosa contiene il backup e i dati reali non vengono toccati.</li>
+    <li>Gli <strong>aggiornamenti</strong> si scaricano e si installano da soli; dati e impostazioni restano.</li>
+    <li>Le pagine si rigenerano da sole a ogni modifica dei dati — non c'è nulla da aggiornare a mano.</li>
+  </ul>
+
+  <h3 style="margin-top:1.2rem">Che cosa l'app non fa</h3>
+  <p>Non è un gestionale paghe e non sostituisce l'ufficio del personale. Non calcola altre persone, non invia nulla al datore di lavoro e non ha una versione web. È lo strumento di un autista per controllare il proprio stipendio — ed è scritta così.</p>
 </section>
 
 <section>
@@ -109,10 +155,76 @@
 
 <section>
   <h2>Stato</h2>
-  <p>Versione <strong data-bl-ver="{v} BETA">1.2.86 BETA</strong> (agosto 2026). La usiamo attivamente in due; si sviluppa sulla base di buste paga reali. Beta = funziona, ma è ancora in rifinitura; l'installer non è firmato ed è protetto da password.</p>
+  <p>Versione <strong data-bl-ver="{v} BETA">1.2.93 BETA</strong> (agosto 2026). Il numero esatto di versione viene letto automaticamente dal manifest delle release — la stessa fonte che l'app installata usa per gli aggiornamenti silenziosi. La usiamo attivamente in due; si sviluppa sulla base di buste paga reali. Beta = funziona, ma è ancora in rifinitura; l'installer non è firmato ed è protetto da password.</p>
+  <p style="margin-top:.6rem">Lo storico dettagliato è nel <button class="diary-link" id="openDiary2">diario di sviluppo</button>. <button id="openDiary" class="diary-btn" style="margin-left:.4rem">📖 Diario di sviluppo</button></p>
 </section>
 
 </main>
+
+<!-- ═══ DIARIO DI SVILUPPO — popup (tiene corta la pagina) ═══ -->
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Diario di sviluppo" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head">
+      <h2 style="margin:0">📖 Diario di sviluppo — BudLine Panel</h2>
+      <button class="diary-close" aria-label="Chiudi">✕</button>
+    </div>
+    <div class="diary-body">
+      <ul style="line-height:1.8">
+        <li><strong>v1.2.88–1.2.93 — premi in busta paga, ricalcolo dei mesi chiusi e cambio del mese (11–14 agosto 2026)</strong> — <strong>La busta paga di controllo gestisce premi e benefit</strong>: i premi vengono letti dalla busta caricata con tutto il dettaglio (carburante, incassi, ordinari) e conteggiati nel lordo di controllo — senza di essi il totale non tornava mai. Nuove righe: previdenza integrativa e telefono come trattenute, lavaggio degli indumenti come rimborso non tassato e, in fondo, il <em>bonifico sul conto</em>. <strong>Ricalcolo dei mesi già chiusi</strong>: quando emerge che un turno era diverso da una certa data, l'app trova da sola i mesi chiusi interessati e propone il ricalcolo. Il turno non viene mai riscritto a ritroso — ogni giornata si calcola con la versione valida a quella data; i mesi che richiederebbero una versione „dal futuro" vengono saltati indicandone il motivo. <strong>Il riepilogo retributivo ha un selettore del mese</strong> (menù a tendina e frecce precedente/successivo; i mesi senza turni sono contrassegnati) e, quando l'app lavora in background, in basso a destra compare un indicatore con la descrizione e il tempo trascorso. <strong>L'editor dei turni</strong> può salvare una modifica come <em>nuova versione valida da una nuova data</em> — l'originale resta in archivio, così i mesi precedenti continuano a essere calcolati con quella; se la data di validità resta la stessa, l'app avvisa che sovrascriverebbe la medesima versione. Inoltre: <strong>riepilogo annuale delle festività</strong> (quali sono state guidate e quanto hanno fruttato in più, e quali sono cadute in un riposo del turno, dove non matura alcun diritto), il foglio turni si può affiancare al documento del datore di lavoro e confrontare giorno per giorno, e un mese chiuso non mostra più zeri. <strong>Correzione per macOS:</strong> su Mac un turno modificato a mano o una tariffa cambiata non arrivavano al calcolo — l'app li salvava in un posto diverso da quello in cui il calcolo li leggeva. Su Windows non cambia nulla e nessun importo si muove.</li>
+        <li><strong>v1.2.80–1.2.87 — foglio turni, refusi sotto controllo e comandi (1–10 agosto 2026)</strong> — Nuovo <strong>report foglio turni</strong> nello stesso formato dei documenti retributivi del datore di lavoro, ma con i calcoli dell'app — si confronta riga per riga. <strong>Controllo più severo del contachilometri:</strong> un refuso nelle cifre produceva 459 km contro i 188 previsti e l'app lo lasciava passare come deviazione; ora lo segna come errore di battitura e resta sul piano. <strong>La giornata con cambio autobus si divide in due turni</strong> quando il capomovimento emette un nuovo DZVA per il resto della giornata — il compenso si ripartisce in base al tempo di guida, l'indennità resta intera per l'intera giornata al lavoro. <strong>La mappa in MPV funziona di nuovo</strong> (rotta dalla 1.2.74, sosteneva che si fosse offline — in realtà scaricava la libreria delle mappe da internet e la policy di sicurezza dell'app lo impediva; ora è inclusa all'interno). Dettagli dall'uso quotidiano: una pagina mancante non finisce più in un messaggio incomprensibile, le colonne vuote dei contatori spiegano perché sono vuote, gli stati della giornata sono in parole chiare e hanno una spiegazione, i chilometri si possono vedere anche per l'intero periodo, il pannello di sinistra si può nascondere e i riposi del turno sono finalmente visibili nel calendario. Le pagine ora <strong>si rigenerano da sole</strong> a ogni modifica dei dati e il <strong>ripristino di un backup si può provare a vuoto</strong> in una copia isolata, prima di sovrascrivere i dati reali.</li>
+        <li><strong>v1.2.72–1.2.79 — cambio dell'autobus nel turno e audit indipendente (29 luglio – 1 agosto 2026)</strong> — <strong>Cambio dell'autobus a metà turno</strong>: in un solo turno si possono registrare più mezzi (tipicamente quando uno si guasta a metà). Si inserisce solo quell'unica variazione — da quale linea si è passati al secondo autobus — e l'app ricava orari e chilometri di entrambe le tratte; per ciascun mezzo si annota la lettura del contatore a inizio e fine, così i chilometri derivano da una lettura reale. L'autobus si sceglie da un menù a tendina anziché digitarlo a memoria, e le <strong>corse in più o non effettuate</strong> si riflettono sul tempo di guida, sul tempo al lavoro e sui chilometri. La pagina iniziale mostra quanti chilometri sono stati percorsi in totale e per singolo autobus. <strong>Hotfix di sicurezza e dati dopo un audit indipendente:</strong> un file di dati danneggiato non porta più alla perdita silenziosa dei turni, un aggiornamento non sovrascrive i tuoi turni e un mese chiuso resta bloccato — più backup più sicuri, pulizia dei vecchi file e migliore uso da tastiera.</li>
+        <li><strong>v1.2.64–1.2.71 — valutazione secondo la legge, carta del conducente e correzioni (luglio 2026)</strong> — <strong>Nuovo modulo Valutazione</strong>: esamina il singolo turno e l'intero mese secondo AETR/561 e il regolamento governativo 589/2006, affiancando per il mese <em>piano (turni)</em> e <em>realtà (carta del conducente)</em>; tutto in versione estesa e sintetica, stampabile in PDF. <strong>La valutazione complessiva del mese</strong> unisce busta paga, turni effettuati e carta in un'unica schermata. <strong>Limiti verificati presso fonti ufficiali</strong> (Ministero dei Trasporti, Ispettorato del lavoro) — sulle linee fino a 50 km la durata del turno è di 13 ore, trasferimenti di servizio compresi. <strong>Correzioni:</strong> il riepilogo retributivo apre il mese più recente con dati (prima puntava fisso ad aprile) e per un mese chiuso mostra i numeri della chiusura bloccata invece degli zeri; una voce inserita a mano nella busta propria non genera più errore; il ripristino di un backup da un altro computer non viene più rifiutato con un messaggio di dati danneggiati; gli orari della carta vengono convertiti da UTC all'ora locale (estiva e invernale).</li>
+        <li><strong>v1.2.30–1.2.63 — chiusura del mese, editor dei turni e controllo dei tempi di guida (giugno–luglio 2026)</strong> — <strong>Chiusura del mese</strong>: in home si vede quale mese passato non è ancora chiuso; alla chiusura si integrano le voci che non stanno sul turno standard (premi carburante e ordinari, incassi, lavaggio, CNG) — e con la busta paga caricata un solo pulsante <strong>„Compila dalla busta"</strong> riempie i campi dal dettaglio a codici. <strong>Editor dei turni dentro l'app</strong>: nuovo turno in tabella o modifica di uno esistente, import massivo (HTML/XML/ZIP), completamento automatico delle fermate e campo <strong>veicolo (codice V)</strong> — ad esempio „autobus a 3 assi". <strong>Controllo dei tempi di guida</strong> secondo la legge sul trasporto stradale (561/2006, AETR): i turni con possibile violazione vengono segnalati per la verifica, lo stipendio resta intatto. Elenchi più leggibili (ordinamento dei turni e separazione delle righe) e import della busta paga più semplice. Il calcolo retributivo protetto resta invariato; i mesi storici si calcolano con la versione del turno valida a quella data; dati personali e stipendi non finiscono né sul web né su GitHub.</li>
+        <li><strong>v1.2.24–1.2.28 — confronto dei turni e backup (giugno 2026)</strong> — Nuova pagina autonoma <strong>Backup e ripristino</strong>: backup per periodo (un mese o un intervallo da–a) e scelta della cartella senza digitare percorsi (preferiti e navigazione), storico dei backup, verifica e anteprima del ripristino. L'<strong>import dei turni</strong> mostra le differenze del set appena importato rispetto a quello esistente (orari, linee, chilometri e importi) — solo anteprima, nulla viene sovrascritto. Inoltre: straordinario calcolato dai turni inseriti, profilo del conducente e scheda fiscale insieme nelle Impostazioni, pagina „Come funziona". Il backup non contiene mai il numero di matricola né le password.</li>
+        <li><strong>v1.2.23 — Archivio e calcolo del netto (15 giugno 2026)</strong> — Nuova pagina <strong>Archivio</strong> (mesi chiusi e turni archiviati: solo consultazione e correzione del registro, non vengono riscritti). Il <strong>confronto delle buste</strong> per i mesi chiusi finalmente si popola (maggiorazioni, ore, lordo) e, dopo la conferma delle aliquote, calcola anche <strong>netto, imposta e contributi</strong> — l'imposta si calcola correttamente sull'imponibile al netto delle indennità. Aliquote 2026 <strong>verificate da fonti ufficiali</strong> (ČSSZ, VZP, Amministrazione finanziaria). Campi fiscali obbligatori nella scheda del conducente.</li>
+        <li><strong>v1.2.20–1.2.22 — sorveglianza degli orari (14 giugno 2026)</strong> — Le pagine „Modifiche orario da verificare" e „Modifiche delle fermate": l'app confronta gli orari ufficiali (CIS JŘ) con i turni registrati e segnala le variazioni da controllare — da sola non modifica nulla.</li>
+        <li><strong>v1.2.14–1.2.19 — esercizio in tempo reale e carta del conducente (13–14 giugno 2026)</strong> — Pagina <strong>MPV Live / Esercizio</strong>: corse di Semily in circolazione, dettaglio della corsa (ritardo, occupazione), mappa dei mezzi e ritardi in tempo reale (sola lettura). Lettura dei dati direttamente dalla <strong>carta a chip del conducente</strong> tramite lettore. Registrazione delle assenze (ferie, malattia, medico…).</li>
+        <li><strong>Aggiornamenti silenziosi e sicurezza</strong> — le nuove versioni si installano da sole in background con avanzamento visibile; dati e impostazioni non vengono mai sovrascritti durante un aggiornamento. L'installer è protetto da password; dati personali e stipendi non finiscono né sul web né su GitHub.</li>
+        <li><strong>Il nucleo — registro e verifica dello stipendio</strong> — registrazione dei turni effettuati con controlli (orari HH:MM, nessun numero negativo), composizione nel riepilogo mensile, calcolo della base retributiva secondo le regole (ore, maggiorazioni notturne/festive/fine settimana) e confronto con la busta paga. Tutto in locale (SQLite), senza cloud e senza account.</li>
+      </ul>
+      <p style="color:var(--text-mut,#777);font-size:.85rem">Nota: l'app è un ausilio di controllo indicativo, non consulenza contabile o fiscale. Fa fede la busta paga del datore di lavoro.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.diary-btn, .diary-link {
+  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
+  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
+}
+.diary-btn:hover { background:#e6c75a; }
+.diary-link { background:none; color:#8a6a0f; text-decoration:underline; padding:0; font-weight:600; }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel {
+  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
+  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
+  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
+}
+.diary-head {
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
+  position:sticky; top:0; background:var(--bg,#fff);
+}
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
+.diary-close:hover { color:var(--text,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
+</style>
+<script>
+(function(){
+  var modal = document.getElementById('diary');
+  if (!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  ['openDiary','openDiary2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
 
 <footer class="site-footer">
   <div class="site-footer__inner">
