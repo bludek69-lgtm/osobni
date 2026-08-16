@@ -75,7 +75,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Denně používané. Verze v1.7.5 (květen 2026). Běží lokálně v prohlížeči na PC i na malém panelu na zdi (RPi kiosk). 100+ proměnných je živě editovatelných.</p>
+  <p>Denně používané. Verze <strong>v1.8.0 · beta</strong> (srpen 2026). Běží lokálně v prohlížeči na PC i na malém panelu na zdi (RPi kiosk) — nově i jako <strong>samostatná appka k instalaci (.exe)</strong>, stejně jako ostatní moje aplikace. 100+ proměnných je živě editovatelných.</p>
 </section>
 
   <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Vývojový deník</button></section>
@@ -90,6 +90,7 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
+        <li><strong>v1.8.0 — samostatný installer + nové knoby (srpen 2026)</strong> — Config Center je nově k instalaci jako samostatná appka (.exe, jako Portfolio Tracker): okno + lokální server, token v localStorage, <strong>s tichou auto-aktualizací</strong> (nová verze se nainstaluje sama). Přibylo 7 dříve skrytých nastavení (auto-úklid vysavače — časové okno a min. baterie, odchodový přehled, držení přítomnosti v open space, ranní rádio) a verze se řídí přes <code>version.json</code> (SemVer + fáze, viditelné v hlavičce).</li>
         <li><strong>v1.7.5 — centrum chytré domácnosti (květen 2026)</strong> — 100+ proměnných živě editovatelných z prohlížeče (PC i panel na zdi): kdy začíná ranní rutina, jak rychle náběh světla (ramp), prahy senzorů, časové režimy a scény.</li>
         <li><strong>Hlasové zprávy a plán topení</strong> — 22 stránek pro každý režim (ranní/denní/večerní/noční/pryč/doma/spánek) a plán topení den po dni, hodinu po hodině pro 4 zóny (jídelna, ložnice, koupelna, toaleta).</li>
         <li><strong>Bezpečná zkouška s 10min navrácením</strong> — než se změna potvrdí, je 10 minut na test; pokud nepotvrdíš, sama se vrátí. Hard-block pro citlivá zařízení (třeba audio v ložnici během spánku).</li>
