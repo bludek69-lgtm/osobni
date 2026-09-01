@@ -217,6 +217,105 @@
     </div>
   </section>
 
+  <section id="how-apps-are-built">
+    <h2>How my apps really come to be</h2>
+    <p>
+      This isn't theory — it's the process I've actually run dozens of times on real changes to
+      my apps and this website. It's not "write a prompt and it's done". It's a loop where AI
+      does a lot of the work independently, but within clear boundaries and gates it must not skip.
+    </p>
+    <div class="ai-vibe-list">
+      <div class="ai-vibe-item"><span class="num">1</span><span class="txt"><strong>Idea / request.</strong> I state what I want and why — the goal, not the technical solution.</span></div>
+      <div class="ai-vibe-item"><span class="num">2</span><span class="txt"><strong>AI maps the real state.</strong> It reads the code, config and docs first — it doesn't guess how the app works.</span></div>
+      <div class="ai-vibe-item"><span class="num">3</span><span class="txt"><strong>Audit and gap analysis.</strong> What's true, what's stale, what's missing, what's a risk. No fix without an audit.</span></div>
+      <div class="ai-vibe-item"><span class="num">4</span><span class="txt"><strong>Safe implementation plan.</strong> What's in scope, what won't change, what the rollback is if something breaks.</span></div>
+      <div class="ai-vibe-item"><span class="num">5</span><span class="txt"><strong>RED.</strong> I reproduce the bug with a test that genuinely fails first — otherwise I can't tell if the fix actually fixed this.</span></div>
+      <div class="ai-vibe-item"><span class="num">6</span><span class="txt"><strong>Implementation.</strong> The smallest reasonable fix — not a rewrite of everything around it "because it could be nicer".</span></div>
+      <div class="ai-vibe-item"><span class="num">7</span><span class="txt"><strong>PASS.</strong> The same test that was RED must now pass.</span></div>
+      <div class="ai-vibe-item"><span class="num">8</span><span class="txt"><strong>Regression.</strong> Checking the fix didn't break anything else nearby.</span></div>
+      <div class="ai-vibe-item"><span class="num">9</span><span class="txt"><strong>Runtime test.</strong> The app actually runs and the behaviour is verified live, not just in a test.</span></div>
+      <div class="ai-vibe-item"><span class="num">10</span><span class="txt"><strong>Visual / E2E.</strong> AI walks the app like a user would — pages, dialogs, mobile and desktop.</span></div>
+      <div class="ai-vibe-item"><span class="num">11</span><span class="txt"><strong>Diagnostics.</strong> Checking the console, network requests, performance and accessibility.</span></div>
+      <div class="ai-vibe-item"><span class="num">12</span><span class="txt"><strong>Final report.</strong> What changed, why, what was tested, what passed, and what remains a watch item.</span></div>
+      <div class="ai-vibe-item"><span class="num">13</span><span class="txt"><strong>GO / NO-GO.</strong> Nothing ships without my explicit approval — never automatically.</span></div>
+    </div>
+    <div class="ai-callout-info">
+      This exact process is what a recent audit of this website went through: AI first verified
+      whether the version numbers shown on the site matched reality (they didn't), wrote tests that
+      provably catch that mismatch, fixed the root cause, and ran real browser and accessibility
+      checks before and after the fix — only with that evidence in hand did anything go live.
+    </div>
+  </section>
+
+  <section id="dev-environment">
+    <h2>My development environment</h2>
+    <p>
+      I split my work between two computers and a home NAS. It's not a strict necessity — it's a
+      way to keep "the app I actually use" separate from "the app currently being worked on".
+    </p>
+    <div class="ai-cards">
+      <div class="ai-card">
+        <h3><span class="icn">💻</span> Laptop</h3>
+        <ul>
+          <li>actual day-to-day use of finished apps</li>
+          <li>beta testing — this is where an app meets real situations</li>
+          <li>where real bug reports originate</li>
+        </ul>
+      </div>
+      <div class="ai-card">
+        <h3><span class="icn">🖥</span> Mini PC (development)</h3>
+        <ul>
+          <li>source code for all my projects</li>
+          <li>Claude Code — my main AI tool for working with code</li>
+          <li>testing, audits, builds, reports</li>
+          <li>a small, low-power machine — the AI runs in the cloud, the machine just orchestrates</li>
+        </ul>
+      </div>
+      <div class="ai-card">
+        <h3><span class="icn">🗄</span> Home NAS</h3>
+        <ul>
+          <li>shared storage between the laptop, mini PC and home network</li>
+          <li>distributing updates for apps that aren't publicly on GitHub</li>
+          <li>laptop backups</li>
+          <li>reachable from anywhere over a private encrypted network (Tailscale) — never exposed to the public internet</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ai-flow" role="img" aria-label="Diagram: laptop, NAS and mini PC connected over a private network; the mini PC is where AI works">
+      <div class="node">Laptop<span class="sub">real app usage</span></div>
+      <div class="arrow">↔</div>
+      <div class="node">Home NAS<span class="sub">shared storage, backups, distribution</span></div>
+      <div class="arrow">↔</div>
+      <div class="node">Mini PC<span class="sub">Claude Code, development, tests</span></div>
+    </div>
+    <p style="font-size:.9rem;color:#5a6b80">
+      I'm deliberately not listing IP addresses, credentials or exact network paths here —
+      this is information about the principle, not a manual for my home network.
+    </p>
+  </section>
+
+  <section id="diagnostic-loop">
+    <h2>How a bug on another machine reaches me</h2>
+    <p>
+      When an app crashes or misbehaves on the laptop, I need to find out about it where I
+      actually work — on the mini PC, with AI at hand. The principle is simple:
+    </p>
+    <div class="ai-flow vertical" role="img" aria-label="Diagram: an error on the laptop travels via the NAS to the mini PC, where AI analyzes and fixes it">
+      <div class="node">Laptop<span class="sub">app crashes / misbehaves</span></div>
+      <div class="arrow">↓</div>
+      <div class="node">App diagnostics<span class="sub">log / error message</span></div>
+      <div class="arrow">↓</div>
+      <div class="node">Home NAS<span class="sub">shared storage between machines</span></div>
+      <div class="arrow">↓</div>
+      <div class="node">Mini PC + AI<span class="sub">analysis, reproduction, fix</span></div>
+    </div>
+    <p>
+      AI gets the error report, tries to reproduce it on the mini PC, finds the root cause and
+      proposes the smallest safe fix — following the same RED → FIX → PASS process as regular
+      development work. Nothing gets "fixed by guessing" without reproduction.
+    </p>
+  </section>
+
   <section id="projects">
     <h2>My projects where AI helps</h2>
     <p>A few concrete examples where AI works in practice — and where I'm careful.</p>
@@ -287,19 +386,21 @@
       </article>
 
       <article class="ai-project">
-        <h3>🧰 My apps <span class="tag">8 tools</span></h3>
+        <h3>🧰 My apps <span class="tag">own tools</span></h3>
         <p>
-          Eight custom apps I've built (or am building) over the past year.
+          Custom apps I've built (or am building) over the past year.
           AI helps from idea through architecture, code, tests and documentation.
           Nothing in the cloud — everything runs locally on my machine or a small home server.
+          The apps page always has the current full list — this is just a selection.
         </p>
         <ul>
-          <li><strong>Config Center</strong> — web control panel for the smart home (22 sections, 100+ variables)</li>
+          <li><strong>BudLine</strong> — an operations/scheduling panel, publicly available with automatic updates</li>
           <li><strong>Italia Travel Planner</strong> — Italy trip planner with ZTL warnings and camper mode</li>
-          <li><strong>Ledger</strong> — home finance across 17 platforms + automatic Gmail invoice intake</li>
-          <li><strong>Finance Analyst</strong> — own buy/hold/sell signal for stocks &amp; ETFs (4 fair-value methods)</li>
+          <li><strong>Ledger</strong> — home finance across multiple platforms + automatic Gmail invoice intake</li>
+          <li><strong>Portfolio Tracker</strong> — investment portfolio tracking across brokers (positions, dividends, Czech tax, performance) + fair-value estimates and an AI analyst</li>
           <li><strong>Meal Planner</strong> — weekly menu with calorie target + shopping list</li>
-          <li><strong>Energy Dashboard</strong> — live home consumption on PC, NT/VT tariff badge</li>
+          <li><strong>Collection</strong> — coin and stamp collection tracker</li>
+          <li><strong>Config Center</strong> — web control panel for the smart home</li>
           <li><strong>Home wall panel</strong> — RPi kiosk to control lights, audio, scenes with one thumb</li>
           <li><strong>Driver work</strong> — shift schedule parsing + payslip cross-check <em>(in development)</em></li>
         </ul>
@@ -435,6 +536,76 @@
       <div class="ai-prompt-box">
         <h3>🔍 For AI answer review</h3>
         <code>Review your own answer. Tell me what's certain, what's an estimate, and what needs verification.</code>
+      </div>
+    </div>
+  </section>
+
+  <section id="testing">
+    <h2>How I know an app actually works</h2>
+    <p>
+      Green tests aren't proof an app is fine. So no change counts as done here until it
+      passes through all of these steps:
+    </p>
+    <div class="ai-flow" role="img" aria-label="Diagram: RED, FIX, PASS, regression, runtime test, visual test">
+      <div class="node">RED<span class="sub">bug reproduced by a test</span></div>
+      <div class="arrow">→</div>
+      <div class="node">FIX<span class="sub">smallest safe fix</span></div>
+      <div class="arrow">→</div>
+      <div class="node">PASS<span class="sub">the test now passes</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Regression<span class="sub">nothing else broke</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Runtime + visual<span class="sub">actually run it, walk it like a user</span></div>
+    </div>
+    <p>
+      Before anything ships, it also has to clear a completion gate — an app is either
+      <strong>GO</strong> (done and tested), <strong>PASS_WITH_WATCH</strong> (working, but with a
+      small thing to keep an eye on), or <strong>BLOCKED</strong> (can't ship until something is
+      resolved). I take the difference between "the implementation is done" and "the app is
+      allowed to ship" seriously — they're two different things.
+    </p>
+    <p>
+      For apps that crunch numbers (finance, portfolio), one more rule applies: if the app
+      doesn't have enough reliable data for a confident conclusion, <strong>it must not make up
+      a result</strong>. It should show "unavailable" or "needs review" rather than a made-up
+      number. And totals and subtotals must reconcile mathematically — it's not enough that a
+      result "somehow came out right".
+    </p>
+    <div class="ai-callout-warn">
+      Real data (bank statements, invoices, investment records) is never copied into development
+      or into AI in its final form — apps are built and tested on test/anonymized data, real data
+      stays out of the source code.
+    </div>
+  </section>
+
+  <section id="ai-vs-me">
+    <h2>What AI does and what I decide</h2>
+    <p>
+      AI works quite independently — but only within limits I set. Decisions with real
+      consequences (deploy, delete, anything irreversible) are always mine.
+    </p>
+    <div class="ai-split">
+      <div class="col">
+        <h3>AI does on its own</h3>
+        <ul>
+          <li>explores the app's code and documentation</li>
+          <li>proposes the audit and finds discrepancies</li>
+          <li>writes and runs tests (both RED and PASS)</li>
+          <li>implements the fix within the agreed scope</li>
+          <li>walks the app like a user (visual/E2E)</li>
+          <li>writes up what changed and why</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>I decide</h3>
+        <ul>
+          <li>the brief and priority — what to fix and why</li>
+          <li>approving the implementation plan and its scope</li>
+          <li>the final GO/NO-GO before deployment</li>
+          <li>what's sensitive and must never leave my machine</li>
+          <li>what becomes public content</li>
+          <li>any touch of production/real data</li>
+        </ul>
       </div>
     </div>
   </section>

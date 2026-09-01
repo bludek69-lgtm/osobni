@@ -217,6 +217,106 @@
     </div>
   </section>
 
+  <section id="come-nasce">
+    <h2>Come nasce davvero una mia applicazione</h2>
+    <p>
+      Non è teoria — è il processo che ho verificato su decine di interventi reali sulle mie
+      app e su questo sito. Non è "scrivo un prompt ed è fatto". È un ciclo in cui l'AI lavora
+      molto in autonomia, ma dentro confini chiari e con controlli che non può saltare.
+    </p>
+    <div class="ai-vibe-list">
+      <div class="ai-vibe-item"><span class="num">1</span><span class="txt"><strong>Idea / richiesta.</strong> Dico cosa voglio e perché — l'obiettivo, non la soluzione tecnica.</span></div>
+      <div class="ai-vibe-item"><span class="num">2</span><span class="txt"><strong>L'AI mappa lo stato reale.</strong> Prima legge codice, configurazione e documentazione — non indovina come funziona l'app.</span></div>
+      <div class="ai-vibe-item"><span class="num">3</span><span class="txt"><strong>Audit e gap analysis.</strong> Cosa è vero, cosa è superato, cosa manca, cosa è un rischio. Senza audit non si corregge nulla.</span></div>
+      <div class="ai-vibe-item"><span class="num">4</span><span class="txt"><strong>Piano di implementazione sicuro.</strong> Qual è il perimetro, cosa NON cambierà, qual è il rollback se qualcosa si rompe.</span></div>
+      <div class="ai-vibe-item"><span class="num">5</span><span class="txt"><strong>RED.</strong> Riproduco prima l'errore con un test che fallisce davvero — altrimenti non so se la correzione ha davvero risolto questo caso.</span></div>
+      <div class="ai-vibe-item"><span class="num">6</span><span class="txt"><strong>Implementazione.</strong> La correzione minima ragionevole — non riscrivere tutto intorno solo perché "sarebbe più elegante".</span></div>
+      <div class="ai-vibe-item"><span class="num">7</span><span class="txt"><strong>PASS.</strong> Lo stesso test che era RED ora deve passare.</span></div>
+      <div class="ai-vibe-item"><span class="num">8</span><span class="txt"><strong>Regressione.</strong> Verifica che la correzione non abbia rotto altro nei dintorni.</span></div>
+      <div class="ai-vibe-item"><span class="num">9</span><span class="txt"><strong>Test runtime.</strong> L'app viene davvero avviata e il comportamento è verificato dal vivo, non solo nel test.</span></div>
+      <div class="ai-vibe-item"><span class="num">10</span><span class="txt"><strong>Visual / E2E.</strong> L'AI percorre l'app come un utente — pagine, dialoghi, mobile e desktop.</span></div>
+      <div class="ai-vibe-item"><span class="num">11</span><span class="txt"><strong>Diagnostica.</strong> Controllo di console, richieste di rete, prestazioni e accessibilità.</span></div>
+      <div class="ai-vibe-item"><span class="num">12</span><span class="txt"><strong>Report finale.</strong> Cosa è cambiato, perché, cosa è stato testato, cosa ha superato il test e cosa resta da tenere d'occhio.</span></div>
+      <div class="ai-vibe-item"><span class="num">13</span><span class="txt"><strong>GO / NO-GO.</strong> Il deploy parte solo dopo la mia approvazione esplicita — mai automaticamente.</span></div>
+    </div>
+    <div class="ai-callout-info">
+      Esattamente questo processo è stato seguito in un recente audit di questo sito: l'AI ha
+      prima verificato se le versioni delle app mostrate sul sito corrispondevano alla realtà
+      (non corrispondevano), ha scritto test che rilevano in modo dimostrabile la discrepanza,
+      ha corretto la causa alla radice e ha eseguito veri controlli da browser e di accessibilità
+      prima e dopo la correzione — solo con queste prove in mano qualcosa è andato in produzione.
+    </div>
+  </section>
+
+  <section id="ambiente-sviluppo">
+    <h2>Il mio ambiente di sviluppo</h2>
+    <p>
+      Divido il lavoro tra due computer e un NAS di casa. Non è una necessità stretta — è un
+      modo per tenere separata "l'app che uso davvero" da "l'app su cui sto lavorando ora".
+    </p>
+    <div class="ai-cards">
+      <div class="ai-card">
+        <h3><span class="icn">💻</span> Notebook</h3>
+        <ul>
+          <li>uso quotidiano reale delle app finite</li>
+          <li>beta test — qui l'app incontra situazioni reali</li>
+          <li>da qui nascono le vere segnalazioni di errori</li>
+        </ul>
+      </div>
+      <div class="ai-card">
+        <h3><span class="icn">🖥</span> Mini PC (sviluppo)</h3>
+        <ul>
+          <li>codice sorgente di tutti i miei progetti</li>
+          <li>Claude Code — il mio principale strumento AI per lavorare sul codice</li>
+          <li>test, audit, build, report</li>
+          <li>una macchina piccola e poco potente — l'AI gira nel cloud, il computer fa solo da orchestratore</li>
+        </ul>
+      </div>
+      <div class="ai-card">
+        <h3><span class="icn">🗄</span> NAS di casa</h3>
+        <ul>
+          <li>storage condiviso tra notebook, mini PC e rete domestica</li>
+          <li>distribuzione degli aggiornamenti per le app non pubbliche su GitHub</li>
+          <li>backup del notebook</li>
+          <li>raggiungibile da qualsiasi luogo tramite una rete privata cifrata (Tailscale) — mai esposto su internet pubblico</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ai-flow" role="img" aria-label="Diagramma: notebook, NAS e mini PC collegati tramite una rete privata; il mini PC è dove lavora l'AI">
+      <div class="node">Notebook<span class="sub">uso reale delle app</span></div>
+      <div class="arrow">↔</div>
+      <div class="node">NAS di casa<span class="sub">storage condiviso, backup, distribuzione</span></div>
+      <div class="arrow">↔</div>
+      <div class="node">Mini PC<span class="sub">Claude Code, sviluppo, test</span></div>
+    </div>
+    <p style="font-size:.9rem;color:#5a6b80">
+      Non riporto qui deliberatamente indirizzi IP, credenziali o percorsi di rete esatti —
+      è un'informazione sul principio, non un manuale della mia rete domestica.
+    </p>
+  </section>
+
+  <section id="ciclo-diagnostica">
+    <h2>Come vengo a sapere di un errore su un'altra macchina</h2>
+    <p>
+      Quando un'app si blocca o si comporta in modo strano sul notebook, ho bisogno di saperlo
+      dove lavoro davvero — sul mini PC, con l'AI a portata di mano. Il principio è semplice:
+    </p>
+    <div class="ai-flow vertical" role="img" aria-label="Diagramma: un errore sul notebook passa tramite il NAS al mini PC, dove l'AI lo analizza e lo corregge">
+      <div class="node">Notebook<span class="sub">l'app si blocca / si comporta in modo strano</span></div>
+      <div class="arrow">↓</div>
+      <div class="node">Diagnostica dell'app<span class="sub">log / messaggio di errore</span></div>
+      <div class="arrow">↓</div>
+      <div class="node">NAS di casa<span class="sub">storage condiviso tra le macchine</span></div>
+      <div class="arrow">↓</div>
+      <div class="node">Mini PC + AI<span class="sub">analisi, riproduzione, correzione</span></div>
+    </div>
+    <p>
+      L'AI riceve la segnalazione dell'errore, prova a riprodurlo sul mini PC, trova la causa
+      e propone la correzione minima sicura — seguendo lo stesso processo RED → FIX → PASS del
+      normale lavoro di sviluppo. Senza riproduzione non si "corregge a occhio".
+    </p>
+  </section>
+
   <section id="progetti">
     <h2>I miei progetti dove l'AI aiuta</h2>
     <p>Alcuni esempi concreti dove l'AI funziona nella pratica — e dove sto attento.</p>
@@ -288,19 +388,21 @@
       </article>
 
       <article class="ai-project">
-        <h3>🧰 Le mie app <span class="tag">8 strumenti</span></h3>
+        <h3>🧰 Le mie app <span class="tag">strumenti propri</span></h3>
         <p>
-          Otto applicazioni che mi sono costruito (o che sto costruendo) nell'ultimo anno.
+          App personali che mi sono costruito (o che sto costruendo) nell'ultimo anno.
           L'AI aiuta dall'idea attraverso architettura, codice, test e documentazione.
           Niente nel cloud — tutto gira in locale sul mio computer o su un piccolo server di casa.
+          L'elenco completo e aggiornato è sempre nella pagina delle app — qui c'è solo una selezione.
         </p>
         <ul>
-          <li><strong>Config Center</strong> — pannello web di controllo per smart home (22 sezioni, 100+ variabili)</li>
+          <li><strong>BudLine</strong> — pannello per operazioni e pianificazione, pubblico con aggiornamento automatico</li>
           <li><strong>Italia Travel Planner</strong> — pianificatore viaggi in Italia con avvisi ZTL e modalità camper</li>
-          <li><strong>Libro contabile</strong> — finanze domestiche su 17 piattaforme + intake automatico fatture da Gmail</li>
-          <li><strong>Finance Analyst</strong> — segnale proprio compra/tieni/vendi per azioni ed ETF (4 metodi fair value)</li>
+          <li><strong>Libro contabile</strong> — finanze domestiche su più piattaforme + intake automatico fatture da Gmail</li>
+          <li><strong>Portfolio Tracker</strong> — tracciamento del portafoglio investimenti su più broker (posizioni, dividendi, tasse ceche, performance) + stima del fair value e analista AI</li>
           <li><strong>Meal Planner</strong> — menu settimanale con obiettivo calorico + lista della spesa</li>
-          <li><strong>Energy Dashboard</strong> — consumo casa live su PC, badge tariffa NT/VT</li>
+          <li><strong>Collezione</strong> — gestione della collezione numismatica e filatelica</li>
+          <li><strong>Config Center</strong> — pannello web di controllo per smart home</li>
           <li><strong>Pannello a muro</strong> — kiosk RPi per controllare luci, audio, scene con un pollice</li>
           <li><strong>Lavoro autista</strong> — parsing turni + confronto busta paga <em>(in sviluppo)</em></li>
         </ul>
@@ -437,6 +539,77 @@
       <div class="ai-prompt-box">
         <h3>🔍 Per controllare la risposta dell'AI</h3>
         <code>Controlla la tua stessa risposta. Scrivi cosa è sicuro, cosa è una stima e cosa va verificato.</code>
+      </div>
+    </div>
+  </section>
+
+  <section id="test">
+    <h2>Come so che un'app funziona davvero</h2>
+    <p>
+      Che i test siano andati verdi non significa che l'app sia a posto. Per questo nessuna
+      modifica è considerata finita finché non passa tutti questi passaggi:
+    </p>
+    <div class="ai-flow" role="img" aria-label="Diagramma: RED, FIX, PASS, regressione, test runtime, test visivo">
+      <div class="node">RED<span class="sub">errore riprodotto da un test</span></div>
+      <div class="arrow">→</div>
+      <div class="node">FIX<span class="sub">correzione minima sicura</span></div>
+      <div class="arrow">→</div>
+      <div class="node">PASS<span class="sub">il test ora passa</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Regressione<span class="sub">i dintorni restano intatti</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Runtime + visivo<span class="sub">avvio reale, verifica come un utente</span></div>
+    </div>
+    <p>
+      Prima che qualcosa venga distribuito, deve superare anche un controllo finale — un'app
+      è <strong>GO</strong> (finita e testata), <strong>PASS_WITH_WATCH</strong> (funziona, ma
+      c'è un dettaglio da tenere d'occhio), oppure <strong>BLOCKED</strong> (non può uscire
+      finché qualcosa non viene risolto). Prendo sul serio la differenza tra "l'implementazione
+      è finita" e "l'app può uscire" — sono due cose diverse.
+    </p>
+    <p>
+      Per le app che fanno calcoli (finanza, portafoglio) vale una regola in più: se l'app non
+      ha dati abbastanza affidabili per una conclusione certa, <strong>non deve inventarsi un
+      risultato</strong>. Meglio mostrare "non disponibile" o "richiede verifica" che un numero
+      inventato. E totali e subtotali devono tornare matematicamente — non basta che il risultato
+      "in qualche modo" sia venuto giusto.
+    </p>
+    <div class="ai-callout-warn">
+      I dati reali (estratti bancari, fatture, dati di investimento) non vengono mai copiati
+      nello sviluppo o nell'AI nella loro forma finale — le app vengono costruite e testate su
+      dati di test/anonimizzati, i dati reali restano fuori dal codice sorgente.
+    </div>
+  </section>
+
+  <section id="ai-vs-io">
+    <h2>Cosa fa l'AI e cosa decido io</h2>
+    <p>
+      L'AI lavora in modo abbastanza autonomo — ma solo entro i limiti che le do. Le decisioni
+      con conseguenze reali (deploy, cancellazione, qualsiasi cosa irreversibile) le prendo
+      sempre io.
+    </p>
+    <div class="ai-split">
+      <div class="col">
+        <h3>Fa l'AI da sola</h3>
+        <ul>
+          <li>esplora codice e documentazione dell'app</li>
+          <li>propone l'audit e trova le incongruenze</li>
+          <li>scrive ed esegue i test (sia RED che PASS)</li>
+          <li>implementa la correzione nel perimetro concordato</li>
+          <li>percorre l'app come un utente (visual/E2E)</li>
+          <li>scrive cosa è cambiato e perché</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Decido io</h3>
+        <ul>
+          <li>la richiesta e la priorità — cosa risolvere e perché</li>
+          <li>l'approvazione del piano di implementazione e del suo perimetro</li>
+          <li>il GO/NO-GO finale prima del deploy</li>
+          <li>cosa è sensibile e non deve mai lasciare il mio computer</li>
+          <li>cosa diventa contenuto pubblico</li>
+          <li>qualsiasi intervento su dati di produzione/reali</li>
+        </ul>
       </div>
     </div>
   </section>

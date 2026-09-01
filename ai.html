@@ -219,6 +219,110 @@
     </div>
   </section>
 
+  <!-- 4b-2. Jak skutečně vzniká moje aplikace -->
+  <section id="jak-vznika">
+    <h2>Jak skutečně vzniká moje aplikace</h2>
+    <p>
+      Tohle není teorie — je to postup, který jsem si ověřil na desítkách reálných zásahů do
+      vlastních appek a webu. Není to „napíšu prompt a je hotovo". Je to smyčka, kde AI hodně
+      pracuje samostatně, ale v jasně daných mantinelech a s kontrolními branami, které nesmí
+      přeskočit.
+    </p>
+    <div class="ai-vibe-list">
+      <div class="ai-vibe-item"><span class="num">1</span><span class="txt"><strong>Nápad / zadání.</strong> Řeknu, co chci a proč — cíl, ne technické řešení.</span></div>
+      <div class="ai-vibe-item"><span class="num">2</span><span class="txt"><strong>AI zmapuje skutečný stav.</strong> Nejdřív si přečte kód, konfiguraci a dokumentaci — nehádá, jak appka funguje.</span></div>
+      <div class="ai-vibe-item"><span class="num">3</span><span class="txt"><strong>Audit a gap analýza.</strong> Co je pravda, co je zastaralé, co chybí, co je riziko. Bez auditu se nic neopravuje.</span></div>
+      <div class="ai-vibe-item"><span class="num">4</span><span class="txt"><strong>Bezpečný implementační plán.</strong> Jaký je scope, co se NEBUDE měnit, jaký je rollback, pokud se něco pokazí.</span></div>
+      <div class="ai-vibe-item"><span class="num">5</span><span class="txt"><strong>RED.</strong> Chybu nejdřív reprodukuju testem, který skutečně selže — jinak nevím, jestli oprava opravdu opravila tohle.</span></div>
+      <div class="ai-vibe-item"><span class="num">6</span><span class="txt"><strong>Implementace.</strong> Nejmenší rozumná oprava — ne přepis okolí jen proto, že „by to šlo líp".</span></div>
+      <div class="ai-vibe-item"><span class="num">7</span><span class="txt"><strong>PASS.</strong> Ten samý test, co byl RED, musí teď projít.</span></div>
+      <div class="ai-vibe-item"><span class="num">8</span><span class="txt"><strong>Regrese.</strong> Ověření, že se opravou nerozbilo něco jiného okolo.</span></div>
+      <div class="ai-vibe-item"><span class="num">9</span><span class="txt"><strong>Runtime test.</strong> Appka se skutečně spustí a chování se ověří naživo, ne jen v testu.</span></div>
+      <div class="ai-vibe-item"><span class="num">10</span><span class="txt"><strong>Visual / E2E.</strong> AI appku projde jako uživatel — prokliká stránky, dialogy, mobil i desktop.</span></div>
+      <div class="ai-vibe-item"><span class="num">11</span><span class="txt"><strong>Diagnostika.</strong> Kontrola chyb v konzoli, síťových požadavků, výkonu a přístupnosti.</span></div>
+      <div class="ai-vibe-item"><span class="num">12</span><span class="txt"><strong>Finální report.</strong> Co se změnilo, proč, co bylo testováno, co prošlo a co zůstává watch.</span></div>
+      <div class="ai-vibe-item"><span class="num">13</span><span class="txt"><strong>GO / NO-GO.</strong> Nasazení jde ven jen po mém výslovném schválení — nikdy automaticky.</span></div>
+    </div>
+    <div class="ai-callout-info">
+      Přesně tímhle postupem prošel i nedávný audit tohohle webu: AI nejdřív ověřila, jestli
+      informace o verzích appek na webu odpovídají realitě (neodpovídaly), pak napsala testy,
+      které tu neshodu prokazatelně odhalí, opravila zdroj problému a spustila skutečné
+      prohlížečové a přístupnostní testy před i po opravě — a teprve s tímhle důkazem šlo cokoli
+      do produkce.
+    </div>
+  </section>
+
+  <!-- 4b-3. Moje vývojové prostředí -->
+  <section id="prostredi">
+    <h2>Moje vývojové prostředí</h2>
+    <p>
+      Práci si rozděluji mezi dva počítače a domácí NAS. Není to nutnost — je to způsob, jak
+      mám odděleně „appku, kterou skutečně používám" od „appku, na které se zrovna pracuje".
+    </p>
+    <div class="ai-cards">
+      <div class="ai-card">
+        <h3><span class="icn">💻</span> Notebook</h3>
+        <ul>
+          <li>skutečné každodenní používání hotových appek</li>
+          <li>beta testování — tady appka narazí na reálné situace</li>
+          <li>odsud vznikají reálné hlášky o chybách</li>
+        </ul>
+      </div>
+      <div class="ai-card">
+        <h3><span class="icn">🖥</span> Mini PC (vývoj)</h3>
+        <ul>
+          <li>zdrojové kódy všech mých projektů</li>
+          <li>Claude Code — hlavní AI nástroj pro práci nad kódem</li>
+          <li>testování, audity, buildy, reporty</li>
+          <li>malý „mini" stroj bez velkého výkonu — AI běží v cloudu, počítač jen orchestruje</li>
+        </ul>
+      </div>
+      <div class="ai-card">
+        <h3><span class="icn">🗄</span> Domácí NAS</h3>
+        <ul>
+          <li>sdílené úložiště mezi notebookem, mini PC a domácí sítí</li>
+          <li>distribuce aktualizací pro appky, které nejsou veřejně na GitHubu</li>
+          <li>zálohy notebooku</li>
+          <li>dostupný odkudkoli přes soukromou šifrovanou síť (Tailscale) — nikdy vystavený na veřejný internet</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ai-flow" role="img" aria-label="Diagram: notebook, NAS a mini PC jsou propojené přes soukromou síť; mini PC je místo, kde pracuje AI">
+      <div class="node">Notebook<span class="sub">reálné používání appek</span></div>
+      <div class="arrow">↔</div>
+      <div class="node">Domácí NAS<span class="sub">sdílené úložiště, zálohy, distribuce</span></div>
+      <div class="arrow">↔</div>
+      <div class="node">Mini PC<span class="sub">Claude Code, vývoj, testy</span></div>
+    </div>
+    <p style="font-size:.9rem;color:#5a6b80">
+      Žádné IP adresy, přihlašovací údaje ani přesné síťové cesty tu záměrně neuvádím —
+      to je informace o principu, ne návod na moji domácí síť.
+    </p>
+  </section>
+
+  <!-- 4b-4. Diagnostický feedback loop -->
+  <section id="diagnostika-loop">
+    <h2>Jak se dozvím o chybě z jiného stroje</h2>
+    <p>
+      Když appka na notebooku spadne nebo se zachová divně, potřebuju se o tom dozvědět tam,
+      kde skutečně pracuju — na mini PC, s AI po ruce. Princip je jednoduchý:
+    </p>
+    <div class="ai-flow vertical" role="img" aria-label="Diagram: chyba na notebooku putuje přes NAS na mini PC, kde ji AI analyzuje a opraví">
+      <div class="node">Notebook<span class="sub">appka spadne / zachová se divně</span></div>
+      <div class="arrow">↓</div>
+      <div class="node">Diagnostika appky<span class="sub">log / chybová zpráva</span></div>
+      <div class="arrow">↓</div>
+      <div class="node">Domácí NAS<span class="sub">sdílené úložiště mezi stroji</span></div>
+      <div class="arrow">↓</div>
+      <div class="node">Mini PC + AI<span class="sub">analýza, reprodukce, oprava</span></div>
+    </div>
+    <p>
+      AI dostane hlášku o chybě, zkusí ji na mini PC reprodukovat, najde příčinu a navrhne
+      nejmenší bezpečnou opravu — podle stejného RED → FIX → PASS postupu jako u běžné
+      vývojové práce. Bez reprodukce se nic „neopraví od oka".
+    </p>
+  </section>
+
   <!-- 4c. Moje projekty, kde mi AI pomáhá -->
   <section id="projekty">
     <h2>Moje projekty, kde mi AI pomáhá</h2>
@@ -295,19 +399,21 @@
 
       <!-- Moje aplikace - hub link -->
       <article class="ai-project">
-        <h3>🧰 Moje aplikace <span class="tag">8 nástrojů</span></h3>
+        <h3>🧰 Moje aplikace <span class="tag">vlastní nástroje</span></h3>
         <p>
-          Osm vlastních aplikací co jsem si postavil (nebo postavit chystám) za poslední rok.
+          Vlastní aplikace, které jsem si postavil (nebo postavit chystám) za poslední rok.
           AI mi pomáhá od nápadu přes architekturu, kód, testy až po dokumentaci.
-          Nic v cloudu, vše lokálně u mě nebo na malém serveru doma.
+          Nic v cloudu, vše lokálně u mě nebo na malém serveru doma. Aktuální kompletní
+          přehled je vždy na stránce s aplikacemi — tady je jen výběr.
         </p>
         <ul>
-          <li><strong>Config Center</strong> — webový ovládací panel pro chytrou domácnost (22 sekcí, 100+ proměnných)</li>
+          <li><strong>BudLine</strong> — panel pro provoz a plánování, veřejně dostupný s automatickou aktualizací</li>
           <li><strong>Italia Travel Planner</strong> — plánovač cest po Itálii s ZTL varováními a camper režimem</li>
-          <li><strong>Účetní kniha</strong> — domácí finance přes 17 platforem + automatický intake faktur z Gmailu</li>
+          <li><strong>Účetní kniha</strong> — domácí finance přes více platforem + automatický intake faktur z Gmailu</li>
           <li><strong>Portfolio Tracker</strong> — evidence investičního portfolia napříč brokery (pozice, dividendy, české daně, výkonnost) + férová hodnota akcií a AI analytik</li>
           <li><strong>Krabičková dieta</strong> — týdenní jídelníček s kalorickým cílem + nákupní seznam</li>
-          <li><strong>Energy Dashboard</strong> — živá spotřeba domu na PC, tarif NT/VT badge</li>
+          <li><strong>Sbírka</strong> — evidence numismatické a filatelistické sbírky</li>
+          <li><strong>Config Center</strong> — webový ovládací panel pro chytrou domácnost</li>
           <li><strong>Domácí panel na zdi</strong> — RPi kiosk pro ovládání světel, audio, scén jedním palcem</li>
           <li><strong>Práce řidiče</strong> — zpracování turnusů a porovnání s výplatou <em>(ve vývoji)</em></li>
         </ul>
@@ -447,6 +553,76 @@
       <div class="ai-prompt-box">
         <h3>🔍 Pro kontrolu AI odpovědi</h3>
         <code>Zkontroluj vlastní odpověď. Napiš, co je jisté, co je odhad a co je potřeba ověřit.</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8b. Testování a jak poznám, že appka funguje -->
+  <section id="testovani">
+    <h2>Jak poznám, že appka opravdu funguje</h2>
+    <p>
+      Že testy proběhly zeleně, ještě neznamená, že appka je v pořádku. Proto se u mě
+      žádná změna nepovažuje za hotovou, dokud neprojde všemi těmito kroky:
+    </p>
+    <div class="ai-flow" role="img" aria-label="Diagram: RED, FIX, PASS, regrese, runtime test, visual test">
+      <div class="node">RED<span class="sub">chyba reprodukovaná testem</span></div>
+      <div class="arrow">→</div>
+      <div class="node">FIX<span class="sub">nejmenší bezpečná oprava</span></div>
+      <div class="arrow">→</div>
+      <div class="node">PASS<span class="sub">test teď prochází</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Regrese<span class="sub">okolí appky beze změny</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Runtime + visual<span class="sub">skutečné spuštění, prohlídka jako uživatel</span></div>
+    </div>
+    <p>
+      Než se cokoliv nasadí, musí projít i takzvanou kontrolní branou — appka je buď
+      <strong>GO</strong> (hotovo a otestováno), <strong>PASS_WITH_WATCH</strong> (funguje, ale je tu
+      drobnost ke sledování), nebo <strong>BLOCKED</strong> (nejde nasadit, dokud se něco nedořeší).
+      Rozdíl mezi „implementace je hotová" a „appka smí jít ven" beru vážně — jsou to dvě různé věci.
+    </p>
+    <p>
+      U appek, kde počítám čísla (finance, portfolio), navíc platí jedno pravidlo: pokud appka
+      nemá dost spolehlivých dat na jistý závěr, <strong>nesmí si výsledek vymyslet</strong>. Radši
+      ukáže „nedostupné" nebo „vyžaduje kontrolu" než smyšlené číslo. A součty a mezisoučty musí
+      sedět matematicky — nestačí, že výsledek „nějak vyšel".
+    </p>
+    <div class="ai-callout-warn">
+      Reálná data (bankovní výpisy, faktury, investiční přehledy) se do vývoje a do AI nikdy
+      nekopírují ve finální podobě — appky se vyvíjí a testují na testovacích/anonymizovaných
+      datech, ostrá data zůstávají mimo zdrojový kód.
+    </div>
+  </section>
+
+  <!-- 8c. Co dělá AI a co rozhoduji já -->
+  <section id="ai-vs-ja">
+    <h2>Co dělá AI a co rozhoduju já</h2>
+    <p>
+      AI pracuje dost samostatně — ale jen v mezích, které jí dám. Rozhodnutí s dopadem
+      (nasazení, smazání, cokoliv nevratného) dělám vždy sám.
+    </p>
+    <div class="ai-split">
+      <div class="col">
+        <h3>Dělá AI samostatně</h3>
+        <ul>
+          <li>prozkoumá kód a dokumentaci appky</li>
+          <li>navrhne audit a najde nesrovnalosti</li>
+          <li>napíše a spustí testy (RED i PASS)</li>
+          <li>implementuje opravu v daném rozsahu</li>
+          <li>projde appku jako uživatel (visual/E2E)</li>
+          <li>sepíše report o tom, co se změnilo a proč</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Rozhoduju já</h3>
+        <ul>
+          <li>zadání a priorita — co se má řešit a proč</li>
+          <li>schválení implementačního plánu a rozsahu</li>
+          <li>finální GO/NO-GO před nasazením</li>
+          <li>co je citlivé a nesmí opustit můj počítač</li>
+          <li>co jde ven jako veřejný obsah</li>
+          <li>zásahy do produkčních/reálných dat</li>
+        </ul>
       </div>
     </div>
   </section>

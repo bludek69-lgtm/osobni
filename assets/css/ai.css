@@ -320,6 +320,57 @@
 .ai-project ul li { color: #2d3a4f; font-size: 0.92rem; line-height: 1.55; margin: 0.25rem 0; }
 .ai-project .ai-callout-disclaimer { margin-top: auto; }
 
+/* ─── Simple flow / architecture diagram (HTML/CSS only, no SVG lib) ── */
+.ai-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.2rem 0;
+  padding: 1rem;
+  background: #f7fafc;
+  border: 1px solid #d0dae6;
+  border-radius: 12px;
+}
+.ai-flow .node {
+  background: #ffffff;
+  border: 1px solid #d0dae6;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  font-size: 0.88rem;
+  color: #1e2837;
+  font-weight: 600;
+  text-align: center;
+  flex: 1 1 auto;
+  min-width: 140px;
+}
+.ai-flow .node .sub {
+  display: block;
+  font-weight: 400;
+  color: #5a6b80;
+  font-size: 0.78rem;
+  margin-top: 0.2rem;
+}
+.ai-flow .arrow {
+  color: #8ba0b8;
+  font-size: 1.2rem;
+  flex: 0 0 auto;
+}
+.ai-flow.vertical { flex-direction: column; align-items: stretch; }
+.ai-flow.vertical .arrow { align-self: center; }
+
+/* ─── Split "AI vs. já" columns ─────────────────────────────── */
+.ai-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.2rem 0; }
+.ai-split .col {
+  background: #ffffff;
+  border: 1px solid #d0dae6;
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+}
+.ai-split .col h3 { margin-top: 0; color: #1e2837; }
+.ai-split .col ul { padding-left: 1.2rem; margin: 0.6rem 0 0; }
+.ai-split .col li { margin: 0.35rem 0; font-size: 0.92rem; color: #2d3a4f; line-height: 1.5; }
+
 /* ─── Responsive ───────────────────────────────────────────── */
 @media (max-width: 720px) {
   .ai-page h2 { font-size: 1.35rem; }
@@ -332,6 +383,9 @@
   .ai-prompts { grid-template-columns: 1fr; }
   .ai-cta-row { flex-direction: column; align-items: stretch; }
   .ai-cta-row .btn { text-align: center; }
+  .ai-flow { flex-direction: column; align-items: stretch; }
+  .ai-flow .arrow { align-self: center; transform: rotate(90deg); }
+  .ai-split { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
