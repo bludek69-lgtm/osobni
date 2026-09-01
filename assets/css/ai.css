@@ -208,6 +208,7 @@
   color: #1e2837;
   line-height: 1.6;
 }
+.ai-callout-info a { color: #2d5d85; text-decoration: underline; }
 .ai-callout-disclaimer {
   background: #f5f0f9;
   border: 1px solid #ddc8e8;
