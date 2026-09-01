@@ -95,6 +95,16 @@
           <li>delší texty</li>
           <li>kontrola logiky</li>
         </ul>
+        <p class="note">Hlavní partner pro přemýšlení a zadání — podrobně níže.</p>
+      </div>
+      <div class="ai-card">
+        <h3><span class="icn">🔍</span> Codex</h3>
+        <ul>
+          <li>hloubkové audity mých appek</li>
+          <li>zmapování skutečného stavu kódu</li>
+          <li>gap analýza — co je pravda, co je zastaralé</li>
+        </ul>
+        <p class="note">Používám ho specificky na rozsáhlé audity, ne na běžné úpravy.</p>
       </div>
       <div class="ai-card">
         <h3><span class="icn">📁</span> Claude / Claude Code</h3>
@@ -104,6 +114,7 @@
           <li>reporty a dokumentace</li>
           <li>kontrola změn před nasazením</li>
         </ul>
+        <p class="note">Podle fáze volím i konkrétní model — audit vs. implementace, viz níže.</p>
       </div>
       <div class="ai-card">
         <h3><span class="icn">✨</span> Gemini</h3>
@@ -134,6 +145,81 @@
         </ul>
         <p class="note">AI v roli kontrolora pipeline — hlídá, že tok dat funguje a ráno je vše připravené.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- 3b. Kdo dělá co: ChatGPT, Codex, Claude Code -->
+  <section id="rozdeleni-nastroju">
+    <h2>Jak si rozděluju práci mezi ChatGPT, Codex a Claude Code</h2>
+    <p>
+      ChatGPT používám hlavně jako partnera pro přemýšlení nad vývojem appek — ne jen na napsání
+      kusu kódu. Používám ho už ve chvíli, kdy mám jen nápad nebo problém. Nejdřív s ním řeším,
+      co vlastně chci vytvořit a jak by to mělo fungovat — rozebíráme požadavky, hledáme slabá
+      místa současného řešení, navrhujeme architekturu. Z toho pak často vznikne přesný pracovní
+      prompt pro Claude Code nebo Codex, který pracuje přímo nad zdrojovým kódem appky.
+    </p>
+    <p>
+      Codex používám specificky na <strong>hloubkové audity</strong> — zmapování skutečného stavu appky
+      dřív, než se cokoliv mění. Claude Code pak dělá <strong>implementaci a opravy</strong> přímo v kódu.
+      I uvnitř Claude Code si navíc podle fáze vybírám model: na audit a hloubkovou analýzu Fable 5,
+      na samotnou implementaci a práci v kódu Opus 5.
+    </p>
+    <div class="ai-flow" role="img" aria-label="Diagram: nápad, diskuze s ChatGPT, zadání, audit přes Codex nebo Claude Code s Fable 5, implementace v Claude Code s Opus 5, testy a report, vyhodnocení zpět v ChatGPT">
+      <div class="node">Nápad<span class="sub">diskuze s ChatGPT</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Zadání<span class="sub">přesný prompt</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Audit<span class="sub">Codex / Claude Code (Fable 5)</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Implementace<span class="sub">Claude Code (Opus 5)</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Testy a report<span class="sub">RED → FIX → PASS</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Vyhodnocení<span class="sub">zpět v ChatGPT</span></div>
+    </div>
+    <p>
+      Když třeba Codex dokončí rozsáhlý audit appky, výsledek přinesu zpět do ChatGPT. Společně
+      projdeme, co audit skutečně zjistil, co je kritické a co jen doporučení, a ChatGPT mi pak
+      pomůže sestavit nový opravný prompt, který už vychází ze skutečného stavu appky. Vzniká tak
+      opakující se smyčka: <strong>nápad → návrh → implementace → testování → skutečné používání →
+      diagnostika → analýza → další zlepšení.</strong>
+    </p>
+    <div class="ai-cards">
+      <div class="ai-card">
+        <h3><span class="icn">🧠</span> ChatGPT — řídicí a analytická vrstva</h3>
+        <ul>
+          <li>návrh nových funkcí a modulů</li>
+          <li>rozbor problémů v existujících appkách</li>
+          <li>návrh architektury a bezpečných migračních postupů</li>
+          <li>příprava podrobných auditů a implementačních promptů</li>
+          <li>vyhodnocení auditních a testovacích reportů</li>
+          <li>rozhodování, co opravit jako první</li>
+          <li>návrh testovacích scénářů, UI/workflow a diagnostiky</li>
+        </ul>
+        <p class="note">ChatGPT mi pomáhá rozhodnout, co a proč udělat. Samotnou práci nad zdrojovým kódem pak dělá Claude Code nebo Codex.</p>
+      </div>
+      <div class="ai-card">
+        <h3><span class="icn">🔍</span> Codex — hloubkový audit</h3>
+        <ul>
+          <li>prozkoumá skutečný stav appky (kód, databáze, moduly, testy, dokumentace)</li>
+          <li>gap analýza — co je pravda, co je zastaralé, co chybí</li>
+          <li>výstup se vrací do ChatGPT k vyhodnocení a prioritizaci</li>
+        </ul>
+      </div>
+      <div class="ai-card">
+        <h3><span class="icn">🛠</span> Claude Code — implementace</h3>
+        <ul>
+          <li><strong>Fable 5</strong> — audit a hloubková analýza kódu</li>
+          <li><strong>Opus 5</strong> — samotná implementace, opravy, refactoring</li>
+          <li>testování, reporty, kontrola změn před nasazením</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ai-callout-info">
+      V rámci zadaného rozsahu pracují Claude Code i Codex dost autonomně — sami appku prozkoumají,
+      navrhnou audit, implementují opravu a otestují ji ve smyčce (viz <a href="#testovani">jak poznám,
+      že appka funguje</a>). Autonomie ale končí na kontrolní bráně: dál to jde jen po mém výslovném
+      GO, nikdy automaticky.
     </div>
   </section>
 

@@ -94,6 +94,16 @@
           <li>longer texts</li>
           <li>logic checking</li>
         </ul>
+        <p class="note">My main thinking partner and brief-writer — details below.</p>
+      </div>
+      <div class="ai-card">
+        <h3><span class="icn">🔍</span> Codex</h3>
+        <ul>
+          <li>deep audits of my apps</li>
+          <li>mapping the real state of the code</li>
+          <li>gap analysis — what's true, what's stale</li>
+        </ul>
+        <p class="note">I use it specifically for large audits, not routine edits.</p>
       </div>
       <div class="ai-card">
         <h3><span class="icn">📁</span> Claude / Claude Code</h3>
@@ -103,6 +113,7 @@
           <li>reports and documentation</li>
           <li>change review before deploy</li>
         </ul>
+        <p class="note">I also pick the model by phase — audit vs. implementation, see below.</p>
       </div>
       <div class="ai-card">
         <h3><span class="icn">✨</span> Gemini</h3>
@@ -133,6 +144,81 @@
         </ul>
         <p class="note">AI as a pipeline supervisor — ensures the data flow works and morning info is ready.</p>
       </div>
+    </div>
+  </section>
+
+  <section id="who-does-what">
+    <h2>How I split the work between ChatGPT, Codex and Claude Code</h2>
+    <p>
+      I use ChatGPT mainly as a partner for thinking through app development — not just for
+      writing a piece of code. I bring it in the moment I have only an idea or a problem. First
+      we work out what I actually want to build and how it should behave — breaking down
+      requirements, finding weak spots in the current solution, sketching architecture. That
+      often turns into a precise working prompt for Claude Code or Codex, which then works
+      directly on the app's source code.
+    </p>
+    <p>
+      I use Codex specifically for <strong>deep audits</strong> — mapping the real state of an app
+      before anything changes. Claude Code then does the <strong>implementation and fixes</strong>
+      directly in the code. Within Claude Code I also pick the model by phase: Fable 5 for audit
+      and deep analysis, Opus 5 for the actual implementation work.
+    </p>
+    <div class="ai-flow" role="img" aria-label="Diagram: idea, discussion with ChatGPT, brief, audit via Codex or Claude Code with Fable 5, implementation in Claude Code with Opus 5, tests and report, evaluation back in ChatGPT">
+      <div class="node">Idea<span class="sub">discussion with ChatGPT</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Brief<span class="sub">precise prompt</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Audit<span class="sub">Codex / Claude Code (Fable 5)</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Implementation<span class="sub">Claude Code (Opus 5)</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Tests &amp; report<span class="sub">RED → FIX → PASS</span></div>
+      <div class="arrow">→</div>
+      <div class="node">Evaluation<span class="sub">back in ChatGPT</span></div>
+    </div>
+    <p>
+      When Codex finishes a large audit of an app, I bring the result back into ChatGPT. Together
+      we go through what the audit actually found, what's critical versus just a recommendation,
+      and ChatGPT helps me put together a new fix prompt grounded in the app's real state. That
+      creates a repeating loop: <strong>idea → design → implementation → testing → real use →
+      diagnostics → analysis → next improvement.</strong>
+    </p>
+    <div class="ai-cards">
+      <div class="ai-card">
+        <h3><span class="icn">🧠</span> ChatGPT — the control &amp; analysis layer</h3>
+        <ul>
+          <li>designing new features and modules</li>
+          <li>breaking down problems in existing apps</li>
+          <li>architecture and safe migration design</li>
+          <li>preparing detailed audits and implementation prompts</li>
+          <li>evaluating audit and test reports</li>
+          <li>deciding what to fix first</li>
+          <li>designing test scenarios, UI/workflow and diagnostics</li>
+        </ul>
+        <p class="note">ChatGPT helps me decide what and why. The actual work on the source code is done by Claude Code or Codex.</p>
+      </div>
+      <div class="ai-card">
+        <h3><span class="icn">🔍</span> Codex — deep audit</h3>
+        <ul>
+          <li>explores the app's real state (code, database, modules, tests, docs)</li>
+          <li>gap analysis — what's true, what's stale, what's missing</li>
+          <li>the output goes back to ChatGPT for evaluation and prioritization</li>
+        </ul>
+      </div>
+      <div class="ai-card">
+        <h3><span class="icn">🛠</span> Claude Code — implementation</h3>
+        <ul>
+          <li><strong>Fable 5</strong> — audit and deep code analysis</li>
+          <li><strong>Opus 5</strong> — the actual implementation, fixes, refactoring</li>
+          <li>testing, reports, change review before deploy</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ai-callout-info">
+      Within the scope I give them, both Claude Code and Codex work quite autonomously — they
+      explore the app themselves, propose the audit, implement the fix and test it in a loop (see
+      <a href="#testing">how I know an app actually works</a>). But the autonomy stops at the
+      completion gate: nothing moves forward without my explicit GO, never automatically.
     </div>
   </section>
 
