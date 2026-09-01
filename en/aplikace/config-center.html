@@ -61,11 +61,15 @@
       <li><strong>10-min preview safety</strong> — Change applies first, 10 min to test, auto-reverts if I don't confirm. Can't break the house with one typo.</li>
       <li><strong>100+ knobs to tune</strong> — When morning starts, how fast lights ramp up, how long audio stays on, how loud the morning briefing is, …</li>
       <li><strong>Token in browser only</strong> — Hub access stored only in this browser's localStorage. No server, no clouds, no &bdquo;sign in with Google&ldquo;.</li>
+      <li><strong>Its own Windows app</strong> — Since v1.8.0 Config Center ships with an installer and starts like a normal program instead of a browser page. It finds and installs new versions by itself.</li>
+      <li><strong>Watches for drift</strong> — It compares what is actually set against what should be set. Differences show up as a count and a list, so nothing quietly diverges.</li>
       <li><strong>Hard-block for sensitive gear</strong> — Some devices can't be accidentally on. E.g. bedroom audio while sleeping, purifier during mold treatment, etc.</li>
   </ul>
 </section>
 
-<section><h2>Screenshots</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/live_overview.png" alt="Přihlášení tokenem — token zůstává jen v prohlížeči (localStorage)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Přihlášení tokenem — token zůstává jen v prohlížeči (localStorage)</figcaption></figure>
+<section><h2>Screenshots</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/ai_kontrola.png" alt="AI control — what the system is allowed to decide on its own" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">AI control — what the system is allowed to decide on its own</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/devices.png" alt="Devices — 84 devices, what each supports and which settings make sense" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Devices — 84 devices, what each supports and which settings make sense</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/live_overview.png" alt="Přihlášení tokenem — token zůstává jen v prohlížeči (localStorage)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Přihlášení tokenem — token zůstává jen v prohlížeči (localStorage)</figcaption></figure>
       <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/overview.png" alt="Přehled — všechny módy a parametry na jednom místě" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Přehled — všechny módy a parametry na jednom místě</figcaption></figure>
       <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/heating.png" alt="Topení — TRV zóny, hystereze, boost, pre-wake plán" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Topení — TRV zóny, hystereze, boost, pre-wake plán</figcaption></figure>
       <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/zones.png" alt="Zóny — světla, motion sensors, audio per místnost" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Zóny — světla, motion sensors, audio per místnost</figcaption></figure>
@@ -75,7 +79,7 @@
 
 <section>
   <h2>Status</h2>
-  <p>In daily use. Version v1.7.5 (May 2026). Runs locally in a browser on PC and on a small wall panel (RPi kiosk). 100+ variables editable live.</p>
+  <p>In daily use. Version <strong>v1.8.0 beta</strong> (August 2026) — now a standalone Windows app with its own installer and silent updates. Runs locally on PC; 100+ variables editable live. No data leaves the machine.</p>
 </section>
 
 </main>
