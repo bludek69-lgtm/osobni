@@ -112,14 +112,14 @@
     <p class="hw-source-note">📊 Zdroj pravdy: <code>data/hardware_inventory.json</code> — generováno z live Homey REST API exportu (2026-05-11), <strong>read-only přístup</strong>, bez device IDs/IP/tokenů.</p>
     
   <div class="hw-stats">
-    <div class="hw-stat"><div class="hw-stat-val">79</div><div class="hw-stat-lbl">zařízení</div></div>
+    <div class="hw-stat"><div class="hw-stat-val">84</div><div class="hw-stat-lbl">zařízení</div></div>
     <div class="hw-stat"><div class="hw-stat-val">10</div><div class="hw-stat-lbl">zón</div></div>
     <div class="hw-stat"><div class="hw-stat-val">9</div><div class="hw-stat-lbl">protokolů</div></div>
-    <div class="hw-stat"><div class="hw-stat-val">26</div><div class="hw-stat-lbl">senzorů</div></div>
-    <div class="hw-stat"><div class="hw-stat-val">19</div><div class="hw-stat-lbl">světel</div></div>
+    <div class="hw-stat"><div class="hw-stat-val">27</div><div class="hw-stat-lbl">senzorů</div></div>
+    <div class="hw-stat"><div class="hw-stat-val">21</div><div class="hw-stat-lbl">světel</div></div>
     <div class="hw-stat"><div class="hw-stat-val">3</div><div class="hw-stat-lbl">reproduktorů</div></div>
     <div class="hw-stat"><div class="hw-stat-val">16</div><div class="hw-stat-lbl">zásuvek</div></div>
-    <div class="hw-stat"><div class="hw-stat-val">3</div><div class="hw-stat-lbl">TRV</div></div>
+    <div class="hw-stat"><div class="hw-stat-val">4</div><div class="hw-stat-lbl">TRV</div></div>
     <div class="hw-stat"><div class="hw-stat-val">5</div><div class="hw-stat-lbl">tlačítek</div></div>
   </div>
   </div>
@@ -156,6 +156,7 @@
 <option value="Pracovna">Pracovna</option>
 <option value="Prádelna">Prádelna</option>
 <option value="Předsíň">Předsíň</option>
+<option value="připraveno ale zatim nezařazeno">připraveno ale zatim nezařazeno</option>
 <option value="Spolecne">Spolecne</option>
 <option value="Toaleta">Toaleta</option>
 <option value="nefunkcni">nefunkcni</option>
@@ -184,7 +185,7 @@
       </select>
     </label>
     <input type="search" id="hw-search" placeholder="Hledat (název, model, výrobce, poznámka)" aria-label="Hledat zařízení" />
-    <span class="hw-count"><span id="hw-count-num">79</span> z 79</span>
+    <span class="hw-count"><span id="hw-count-num">84</span> z 84</span>
   </div>
 
   <section aria-labelledby="hw-grid-h">
@@ -535,6 +536,21 @@
     </div>
   </div>
 </article>
+<article class="hw-card" data-category="sensor" data-zone="připraveno ale zatim nezařazeno" data-protocol="Zigbee" data-state="active" data-search="pohybove cidlo open space snzb-06p presence (mmwave 24ghz) sonoff připraveno, ale zatím nezařazeno do zóny — odlišné od primárního snzb-06p openspace senzoru.">
+  <div class="hw-photo"><img src="assets/hardware/icons/motion-sensor-pracovna.svg" alt="SNZB-06P Presence (mmWave 24GHz)" loading="lazy" class="hw-photo-svg-icon" /></div>
+  <div class="hw-card-body">
+    <h3 class="hw-card-title">Pohybove cidlo OPEN SPACE</h3>
+    <p class="hw-model">Sonoff · SNZB-06P Presence (mmWave 24GHz)</p>
+    <p class="hw-note-line">Připraveno, ale zatím nezařazeno do zóny — odlišné od primárního SNZB-06P openspace senzoru.</p>
+    <div class="hw-badges">
+      <span class="hw-badge hw-proto">Zigbee</span>
+      <span class="hw-badge hw-cat">Senzor</span>
+      <span class="hw-badge hw-zone">📍 připraveno ale zatim nezařazeno</span>
+
+      <span class="hw-badge hw-state-active">active</span>
+    </div>
+  </div>
+</article>
 <article class="hw-card" data-category="sensor" data-zone="nefunkcni" data-protocol="Wi-Fi (HA)" data-state="legacy" data-search="backup ha bridge device home assistant ">
   <div class="hw-photo"><img src="assets/hardware/icons/backup.svg" alt="HA bridge device" loading="lazy" class="hw-photo-svg-icon" /></div>
   <div class="hw-card-body">
@@ -865,6 +881,36 @@
     </div>
   </div>
 </article>
+<article class="hw-card" data-category="light" data-zone="Home" data-protocol="Zigbee" data-state="active" data-search="away generic zigbee (virtual) zigbee virtual device virtuální přepínač — nastavuje režim domácnosti na away.">
+  <div class="hw-photo"><img src="assets/hardware/icons/button-away-home.svg" alt="Zigbee virtual device" loading="lazy" class="hw-photo-svg-icon" /></div>
+  <div class="hw-card-body">
+    <h3 class="hw-card-title">Away</h3>
+    <p class="hw-model">Generic Zigbee (virtual) · Zigbee virtual device</p>
+    <p class="hw-note-line">Virtuální přepínač — nastavuje režim domácnosti na Away.</p>
+    <div class="hw-badges">
+      <span class="hw-badge hw-proto">Zigbee</span>
+      <span class="hw-badge hw-cat">Světlo</span>
+      <span class="hw-badge hw-zone">📍 Home</span>
+
+      <span class="hw-badge hw-state-active">active</span>
+    </div>
+  </div>
+</article>
+<article class="hw-card" data-category="light" data-zone="Home" data-protocol="Zigbee" data-state="active" data-search="home generic zigbee (virtual) zigbee virtual device virtuální přepínač — nastavuje režim domácnosti na home.">
+  <div class="hw-photo"><img src="assets/hardware/icons/button-away-home.svg" alt="Zigbee virtual device" loading="lazy" class="hw-photo-svg-icon" /></div>
+  <div class="hw-card-body">
+    <h3 class="hw-card-title">HOME</h3>
+    <p class="hw-model">Generic Zigbee (virtual) · Zigbee virtual device</p>
+    <p class="hw-note-line">Virtuální přepínač — nastavuje režim domácnosti na Home.</p>
+    <div class="hw-badges">
+      <span class="hw-badge hw-proto">Zigbee</span>
+      <span class="hw-badge hw-cat">Světlo</span>
+      <span class="hw-badge hw-zone">📍 Home</span>
+
+      <span class="hw-badge hw-state-active">active</span>
+    </div>
+  </div>
+</article>
 <article class="hw-card" data-category="plug" data-zone="Kitchen" data-protocol="Wi-Fi (Cloud)" data-state="active" data-search="forno ad aria calda shelly plug / pro series shelly ">
   <div class="hw-photo"><img src="assets/hardware/icons/forno-ad-aria-calda.svg" alt="Shelly Plug / Pro series" loading="lazy" class="hw-photo-svg-icon" /></div>
   <div class="hw-card-body">
@@ -1030,17 +1076,17 @@
     </div>
   </div>
 </article>
-<article class="hw-card" data-category="plug" data-zone="Pc Setup" data-protocol="Zigbee" data-state="active" data-search="zasuvka počítač smart plug (zigbee) lidl silvercrest ">
-  <div class="hw-photo"><img src="assets/hardware/icons/zasuvka-pocitac.svg" alt="Smart Plug (Zigbee)" loading="lazy" class="hw-photo-svg-icon" /></div>
+<article class="hw-card" data-category="plug" data-zone="Pc Setup" data-protocol="Matter" data-state="active" data-search="moes matter plug matter smart plug moes moes matter plug — nahradila starší zigbee zásuvku počítač.">
+  <div class="hw-photo"><img src="assets/hardware/icons/zasuvka-pocitac.svg" alt="Matter Smart Plug" loading="lazy" class="hw-photo-svg-icon" /></div>
   <div class="hw-card-body">
-    <h3 class="hw-card-title">zasuvka počítač</h3>
-    <p class="hw-model">Lidl Silvercrest · Smart Plug (Zigbee)</p>
-    
+    <h3 class="hw-card-title">MOES Matter Plug</h3>
+    <p class="hw-model">MOES · Matter Smart Plug</p>
+    <p class="hw-note-line">MOES Matter Plug — nahradila starší Zigbee zásuvku počítač.</p>
     <div class="hw-badges">
-      <span class="hw-badge hw-proto">Zigbee</span>
+      <span class="hw-badge hw-proto">Matter</span>
       <span class="hw-badge hw-cat">Zásuvka</span>
       <span class="hw-badge hw-zone">📍 Pc Setup</span>
-      
+
       <span class="hw-badge hw-state-active">active</span>
     </div>
   </div>
@@ -1195,6 +1241,21 @@
     </div>
   </div>
 </article>
+<article class="hw-card" data-category="heating" data-zone="Ložnice" data-protocol="Z-Wave" data-state="active" data-search="fibaro radiator loznice fgt-001 heat controller (trv) fibaro trv hlavice — termostatická regulace zóny.">
+  <div class="hw-photo"><img src="assets/hardware/icons/fibaro-radiator-loznice.svg" alt="FGT-001 Heat Controller (TRV)" loading="lazy" class="hw-photo-svg-icon" /></div>
+  <div class="hw-card-body">
+    <h3 class="hw-card-title">Fibaro Radiator Loznice</h3>
+    <p class="hw-model">Fibaro · FGT-001 Heat Controller (TRV)</p>
+    <p class="hw-note-line">TRV hlavice — termostatická regulace zóny.</p>
+    <div class="hw-badges">
+      <span class="hw-badge hw-proto">Z-Wave</span>
+      <span class="hw-badge hw-cat">Termostat / TRV</span>
+      <span class="hw-badge hw-zone">📍 Ložnice</span>
+
+      <span class="hw-badge hw-state-active">active</span>
+    </div>
+  </div>
+</article>
 <article class="hw-card" data-category="heating" data-zone="Jídelna " data-protocol="Z-Wave" data-state="active" data-search="fibaro radiator jidelna fgt-001 heat controller (trv) fibaro trv hlavice — termostatická regulace zóny.">
   <div class="hw-photo"><img src="assets/hardware/icons/fibaro-radiator-jidelna.svg" alt="FGT-001 Heat Controller (TRV)" loading="lazy" class="hw-photo-svg-icon" /></div>
   <div class="hw-card-body">
@@ -1330,6 +1391,21 @@
     </div>
   </div>
 </article>
+<article class="hw-card" data-category="infrastructure" data-zone="Home" data-protocol="Wi-Fi (Cloud)" data-state="active" data-search="shelly pro 3em triphase energy monitor shelly třífázový energy monitor — měření spotřeby celé domácnosti.">
+  <div class="hw-photo"><img src="assets/hardware/icons/zasuvka-pracovna.svg" alt="Energy Monitor" loading="lazy" class="hw-photo-svg-icon" /></div>
+  <div class="hw-card-body">
+    <h3 class="hw-card-title">Shelly Pro 3EM Triphase</h3>
+    <p class="hw-model">Shelly · Energy Monitor</p>
+    <p class="hw-note-line">Třífázový energy monitor — měření spotřeby celé domácnosti.</p>
+    <div class="hw-badges">
+      <span class="hw-badge hw-proto">Wi-Fi (Cloud)</span>
+      <span class="hw-badge hw-cat">Ostatní</span>
+      <span class="hw-badge hw-zone">📍 Home</span>
+      <span class="hw-badge hw-energy-real">⚡ REAL</span>
+      <span class="hw-badge hw-state-active">active</span>
+    </div>
+  </div>
+</article>
 <article class="hw-card" data-category="infrastructure" data-zone="Ložnice" data-protocol="Wi-Fi" data-state="active" data-search="indoor pan/tilt camera foscam ">
   <div class="hw-photo"><img src="assets/hardware/icons/indoor.svg" alt="Pan/Tilt camera" loading="lazy" class="hw-photo-svg-icon" /></div>
   <div class="hw-card-body">
@@ -1388,7 +1464,7 @@
 <tr><td><strong>Jídelna </strong></td><td>9</td><td>4× Světlo, 2× Senzor, 1× Tlačítko, 1× Termostat / TRV, 1× Roleta</td></tr>
 <tr><td><strong>Kitchen</strong></td><td>17</td><td>7× Zásuvka, 4× Senzor, 4× Světlo, 1× Tlačítko, 1× Reproduktor</td></tr>
 <tr><td><strong>Koupelna</strong></td><td>7</td><td>3× Senzor, 1× Světlo, 1× Termostat / TRV, 1× Reproduktor, 1× Robot vysavač</td></tr>
-<tr><td><strong>Ložnice</strong></td><td>17</td><td>5× Světlo, 4× Senzor, 4× Zásuvka, 1× Tlačítko, 1× Reproduktor, 1× TV, 1× Ostatní</td></tr>
+<tr><td><strong>Ložnice</strong></td><td>18</td><td>5× Světlo, 4× Senzor, 4× Zásuvka, 1× Tlačítko, 1× Reproduktor, 1× TV, 1× Ostatní, 1× Termostat / TRV</td></tr>
 <tr><td><strong>Pc Setup</strong></td><td>3</td><td>1× Zásuvka, 1× Tlačítko, 1× Ostatní</td></tr>
 <tr><td><strong>Pracovna</strong></td><td>3</td><td>1× Senzor, 1× Světlo, 1× Zásuvka</td></tr>
 <tr><td><strong>Prádelna</strong></td><td>6</td><td>3× Zásuvka, 2× Světlo, 1× Senzor</td></tr>
@@ -1408,12 +1484,12 @@
         <tbody>
 <tr><td><strong>Cloud (web)</strong></td><td>1</td><td>Yr.no weather forecast feed (text).</td></tr>
 <tr><td><strong>Google Cast (Wi-Fi)</strong></td><td>3</td><td>Google Nest Mini / Hub Max — TTS, briefing, audio scény.</td></tr>
-<tr><td><strong>Matter</strong></td><td>8</td><td>Nový standard přes Homey Matter bridge. Meross plug + virtuální RGBTW bulby.</td></tr>
+<tr><td><strong>Matter</strong></td><td>9</td><td>Nový standard přes Homey Matter bridge. Meross plug, MOES plug + virtuální RGBTW bulby.</td></tr>
 <tr><td><strong>Wi-Fi</strong></td><td>6</td><td>Spotřebiče (čistička, vysavač, HP tiskárna, kamery Foscam, AndroidTV).</td></tr>
-<tr><td><strong>Wi-Fi (Cloud)</strong></td><td>7</td><td>Shelly Plug S přes cloud relay (Pro řada). Měřené zásuvky.</td></tr>
+<tr><td><strong>Wi-Fi (Cloud)</strong></td><td>8</td><td>Shelly Plug S přes cloud relay (Pro řada). Měřené zásuvky + Shelly Pro 3EM energy monitor.</td></tr>
 <tr><td><strong>Wi-Fi (HA)</strong></td><td>2</td><td>Home Assistant bridge — Sun + Person device pro presence.</td></tr>
-<tr><td><strong>Z-Wave</strong></td><td>10</td><td>Stabilní mesh pro kritická zařízení — TRV hlavice, Fibaro motion, kotel relé.</td></tr>
-<tr><td><strong>Zigbee</strong></td><td>37</td><td>Mesh síť, baterie + USB hub. Hlavně senzory, tlačítka, některá světla, Sonoff Zigbee.</td></tr>
+<tr><td><strong>Z-Wave</strong></td><td>11</td><td>Stabilní mesh pro kritická zařízení — TRV hlavice, Fibaro motion, kotel relé.</td></tr>
+<tr><td><strong>Zigbee</strong></td><td>39</td><td>Mesh síť, baterie + USB hub. Hlavně senzory, tlačítka, některá světla, Sonoff Zigbee.</td></tr>
 <tr><td><strong>Zigbee (Hue Bridge)</strong></td><td>5</td><td>Philips Hue žárovky přes Hue Bridge.</td></tr>
         </tbody>
       </table>
@@ -1452,6 +1528,7 @@
 <tr data-category="sensor" data-zone="Spolecne" data-protocol="Zigbee" data-state="active"><td>Termometro SNZB-02P Open Space</td><td>Senzor</td><td>Spolecne</td><td>Zigbee</td><td></td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="sensor" data-zone="Spolecne" data-protocol="Cloud (web)" data-state="active"><td>Weather</td><td>Senzor</td><td>Spolecne</td><td>Cloud (web)</td><td>Yr.no — předpověď počasí pro topení a briefing.</td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="sensor" data-zone="Toaleta" data-protocol="Zigbee" data-state="active"><td>pohybove cidlo toaleta</td><td>Senzor</td><td>Toaleta</td><td>Zigbee</td><td></td><td>yes</td><td>—</td><td>active</td></tr>
+<tr data-category="sensor" data-zone="připraveno ale zatim nezařazeno" data-protocol="Zigbee" data-state="active"><td>Pohybove cidlo OPEN SPACE</td><td>Senzor</td><td>připraveno ale zatim nezařazeno</td><td>Zigbee</td><td>Připraveno, ale zatím nezařazeno do zóny — odlišné od primárního SNZB-06P openspace senzoru.</td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="sensor" data-zone="nefunkcni" data-protocol="Wi-Fi (HA)" data-state="legacy"><td>Backup</td><td>Senzor</td><td>nefunkcni</td><td>Wi-Fi (HA)</td><td></td><td>yes</td><td>—</td><td>legacy</td></tr>
 <tr data-category="sensor" data-zone="nefunkcni" data-protocol="Z-Wave" data-state="legacy"><td>Button</td><td>Senzor</td><td>nefunkcni</td><td>Z-Wave</td><td></td><td>yes</td><td>—</td><td>legacy</td></tr>
 <tr data-category="sensor" data-zone="nefunkcni" data-protocol="Wi-Fi (HA)" data-state="legacy"><td>Sun</td><td>Senzor</td><td>nefunkcni</td><td>Wi-Fi (HA)</td><td>Home Assistant device — východ/západ slunce pro fázi dne.</td><td>yes</td><td>—</td><td>legacy</td></tr>
@@ -1474,6 +1551,8 @@
 <tr data-category="light" data-zone="Prádelna" data-protocol="Zigbee (Hue Bridge)" data-state="active"><td>Pradelna zarovka</td><td>Světlo</td><td>Prádelna</td><td>Zigbee (Hue Bridge)</td><td></td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="light" data-zone="Předsíň" data-protocol="Zigbee (Hue Bridge)" data-state="active"><td>Predsin</td><td>Světlo</td><td>Předsíň</td><td>Zigbee (Hue Bridge)</td><td>Předsíňové tlačítko — odchod/příchod scéna.</td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="light" data-zone="Toaleta" data-protocol="Zigbee (Hue Bridge)" data-state="active"><td>Toaleta</td><td>Světlo</td><td>Toaleta</td><td>Zigbee (Hue Bridge)</td><td></td><td>yes</td><td>—</td><td>active</td></tr>
+<tr data-category="light" data-zone="Home" data-protocol="Zigbee" data-state="active"><td>Away</td><td>Světlo</td><td>Home</td><td>Zigbee</td><td>Virtuální přepínač — nastavuje režim domácnosti na Away.</td><td>yes</td><td>—</td><td>active</td></tr>
+<tr data-category="light" data-zone="Home" data-protocol="Zigbee" data-state="active"><td>HOME</td><td>Světlo</td><td>Home</td><td>Zigbee</td><td>Virtuální přepínač — nastavuje režim domácnosti na Home.</td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="plug" data-zone="Kitchen" data-protocol="Wi-Fi (Cloud)" data-state="active"><td>Forno ad aria calda</td><td>Zásuvka</td><td>Kitchen</td><td>Wi-Fi (Cloud)</td><td></td><td>yes</td><td>REAL</td><td>active</td></tr>
 <tr data-category="plug" data-zone="Kitchen" data-protocol="Wi-Fi (Cloud)" data-state="active"><td>Kuchyn zasuvka Mycka</td><td>Zásuvka</td><td>Kitchen</td><td>Wi-Fi (Cloud)</td><td></td><td>yes</td><td>REAL</td><td>active</td></tr>
 <tr data-category="plug" data-zone="Kitchen" data-protocol="Wi-Fi (Cloud)" data-state="active"><td>Lednice</td><td>Zásuvka</td><td>Kitchen</td><td>Wi-Fi (Cloud)</td><td></td><td>yes</td><td>REAL</td><td>active</td></tr>
@@ -1485,7 +1564,7 @@
 <tr data-category="plug" data-zone="Ložnice" data-protocol="Z-Wave" data-state="active"><td>Zasuvka TV Loznice</td><td>Zásuvka</td><td>Ložnice</td><td>Z-Wave</td><td></td><td>yes</td><td>REAL</td><td>active</td></tr>
 <tr data-category="plug" data-zone="Ložnice" data-protocol="Zigbee" data-state="active"><td>Zvlhčovač1</td><td>Zásuvka</td><td>Ložnice</td><td>Zigbee</td><td></td><td>yes</td><td>REAL</td><td>active</td></tr>
 <tr data-category="plug" data-zone="Ložnice" data-protocol="Zigbee" data-state="active"><td>zasuvka kamera</td><td>Zásuvka</td><td>Ložnice</td><td>Zigbee</td><td></td><td>yes</td><td>—</td><td>active</td></tr>
-<tr data-category="plug" data-zone="Pc Setup" data-protocol="Zigbee" data-state="active"><td>zasuvka počítač</td><td>Zásuvka</td><td>Pc Setup</td><td>Zigbee</td><td></td><td>yes</td><td>—</td><td>active</td></tr>
+<tr data-category="plug" data-zone="Pc Setup" data-protocol="Matter" data-state="active"><td>MOES Matter Plug</td><td>Zásuvka</td><td>Pc Setup</td><td>Matter</td><td>MOES Matter Plug — nahradila starší Zigbee zásuvku počítač.</td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="plug" data-zone="Pracovna" data-protocol="Wi-Fi (Cloud)" data-state="active"><td>Zasuvka pracovna</td><td>Zásuvka</td><td>Pracovna</td><td>Wi-Fi (Cloud)</td><td></td><td>yes</td><td>REAL</td><td>active</td></tr>
 <tr data-category="plug" data-zone="Prádelna" data-protocol="Wi-Fi (Cloud)" data-state="active"><td>Boiler zasuvka</td><td>Zásuvka</td><td>Prádelna</td><td>Wi-Fi (Cloud)</td><td></td><td>yes</td><td>REAL</td><td>active</td></tr>
 <tr data-category="plug" data-zone="Prádelna" data-protocol="Z-Wave" data-state="active"><td>Fibaro Kotel</td><td>Zásuvka</td><td>Prádelna</td><td>Z-Wave</td><td>Z-Wave relé pro elektrický kotel 9 kW — řízeno přes sh_heati</td><td>yes</td><td>—</td><td>active</td></tr>
@@ -1496,6 +1575,7 @@
 <tr data-category="button" data-zone="Pc Setup" data-protocol="Zigbee" data-state="active"><td>Xiaomi</td><td>Tlačítko</td><td>Pc Setup</td><td>Zigbee</td><td></td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="button" data-zone="Spolecne" data-protocol="Zigbee" data-state="active"><td>Interruttore Telecomando Senza Fili H1 Doppio</td><td>Tlačítko</td><td>Spolecne</td><td>Zigbee</td><td></td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="heating" data-zone="Home" data-protocol="Wi-Fi" data-state="active"><td>Air Purifier 4 Lite (zhimi.airp.rmb1)</td><td>Čistička</td><td>Home</td><td>Wi-Fi</td><td>Xiaomi čistička s PM2.5 měřením.</td><td>yes</td><td>—</td><td>active</td></tr>
+<tr data-category="heating" data-zone="Ložnice" data-protocol="Z-Wave" data-state="active"><td>Fibaro Radiator Loznice</td><td>Termostat / TRV</td><td>Ložnice</td><td>Z-Wave</td><td>TRV hlavice — termostatická regulace zóny.</td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="heating" data-zone="Jídelna " data-protocol="Z-Wave" data-state="active"><td>Fibaro Radiator jidelna</td><td>Termostat / TRV</td><td>Jídelna </td><td>Z-Wave</td><td>TRV hlavice — termostatická regulace zóny.</td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="heating" data-zone="Koupelna" data-protocol="Z-Wave" data-state="active"><td>Fibaro Radiator koupelna</td><td>Termostat / TRV</td><td>Koupelna</td><td>Z-Wave</td><td>TRV hlavice — baterie 7 %, vyžaduje výměnu.</td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="heating" data-zone="Toaleta" data-protocol="Z-Wave" data-state="active"><td>Fibaro Radiator toaleta</td><td>Termostat / TRV</td><td>Toaleta</td><td>Z-Wave</td><td>TRV hlavice.</td><td>yes</td><td>—</td><td>active</td></tr>
@@ -1505,6 +1585,7 @@
 <tr data-category="blind" data-zone="Jídelna " data-protocol="Zigbee" data-state="active"><td>Roleta Fyrtur1</td><td>Roleta</td><td>Jídelna </td><td>Zigbee</td><td>Privacy guard — při otevřené roletě se světla v open space n</td><td>yes</td><td>—</td><td>active</td></tr>
 <tr data-category="appliance" data-zone="Koupelna" data-protocol="Wi-Fi" data-state="legacy"><td>Giuseppe</td><td>Robot vysavač</td><td>Koupelna</td><td>Wi-Fi</td><td>Viomi V7 — robot vysavač (Wi-Fi).</td><td>unknown</td><td>—</td><td>legacy</td></tr>
 <tr data-category="appliance" data-zone="Ložnice" data-protocol="Wi-Fi" data-state="active"><td>Televize v ložnici</td><td>TV</td><td>Ložnice</td><td>Wi-Fi</td><td>Android TV remote — Wi-Fi.</td><td>unknown</td><td>—</td><td>active</td></tr>
+<tr data-category="infrastructure" data-zone="Home" data-protocol="Wi-Fi (Cloud)" data-state="active"><td>Shelly Pro 3EM Triphase</td><td>Ostatní</td><td>Home</td><td>Wi-Fi (Cloud)</td><td>Třífázový energy monitor — měření spotřeby celé domácnosti.</td><td>unknown</td><td>REAL</td><td>active</td></tr>
 <tr data-category="infrastructure" data-zone="Ložnice" data-protocol="Wi-Fi" data-state="active"><td>indoor</td><td>Ostatní</td><td>Ložnice</td><td>Wi-Fi</td><td></td><td>unknown</td><td>—</td><td>active</td></tr>
 <tr data-category="infrastructure" data-zone="Pc Setup" data-protocol="Wi-Fi" data-state="active"><td>HP Printer</td><td>Ostatní</td><td>Pc Setup</td><td>Wi-Fi</td><td>Síťová tiskárna — non-automated, viditelná pro Homey.</td><td>unknown</td><td>—</td><td>active</td></tr>
 <tr data-category="infrastructure" data-zone="Předsíň" data-protocol="Wi-Fi" data-state="active"><td>camera 1</td><td>Ostatní</td><td>Předsíň</td><td>Wi-Fi</td><td></td><td>unknown</td><td>—</td><td>active</td></tr>
