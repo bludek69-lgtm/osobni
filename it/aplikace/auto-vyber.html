@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUTO VÝBĚR — Le mie app — Luděk</title>
+  <meta name="description" content="App locale per cercare un'auto usata — unisce gli annunci, calcola un punteggio, trova i rischi e verifica il VIN da sola. Senza cloud, senza account, senza database a pagamento.">
+  <link rel="canonical" href="https://cestovatel69.cz/it/aplikace/auto-vyber.html">
+  <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/aplikace/auto-vyber.html">
+  <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/auto-vyber.html">
+  <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/auto-vyber.html">
+  <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/auto-vyber.html">
+  <meta property="og:title" content="AUTO VÝBĚR — Le mie app — Luděk">
+  <meta property="og:description" content="App locale per cercare un'auto usata — unisce gli annunci, calcola un punteggio, trova i rischi e verifica il VIN da sola. Senza cloud, senza account, senza database a pagamento.">
+  <meta property="og:url" content="https://cestovatel69.cz/it/aplikace/auto-vyber.html">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="/favicon.ico">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../" class="brand">
+      <span class="brand-dot"></span>
+      Luděk
+    </a>
+    <div class="lang-switcher" aria-label="Lingua">
+      <a href="../../aplikace/auto-vyber.html" hreflang="cs" title="Česky">CS</a>
+      <a href="../../en/aplikace/auto-vyber.html" hreflang="en" title="English">EN</a>
+      <a href="auto-vyber.html" hreflang="it" aria-current="page" title="Italiano">IT</a>
+    </div><button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Navigazione principale">
+      <a href="../">Home</a>
+      <a href="../aplikace/" aria-current="page">Le mie app</a>
+      <a href="../finance/">Finanze</a>
+      <a href="../cestovani/">Viaggi</a>
+      <a href="../cestovani/italie/">Italia</a>
+      <a href="../zaliby/rybareni/">Pesca</a>
+      <a href="../smart-home/">Smart Home</a>
+      <a href="../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" style="border-left:4px solid #d97706;padding-left:1.2rem">
+  <span class="hero-accent" style="color:#d97706">AUTO VÝBĚR</span>
+  <h1><span style="margin-right:.4rem">🚗</span>AUTO VÝBĚR — ricerca di auto usate</h1>
+  <p class="hero-sub">La mia app per cercare un'auto usata. Raccoglie gli annunci, li uniforma, assegna un punteggio deterministico da 0 a 100, trova rischi e contraddizioni — e per ogni auto con il VIN pubblicato <strong>avvia da sola la verifica dello storico</strong>, senza dover cliccare. Gira solo sul mio computer, non manda niente fuori e non usa nessun database a pagamento. <strong>165 test automatici.</strong></p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:#d977061a;color:#d97706;border:1px solid #d9770640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python 3.14</span> <span class="pill" style="background:#d977061a;color:#d97706;border:1px solid #d9770640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">FastAPI</span> <span class="pill" style="background:#d977061a;color:#d97706;border:1px solid #d9770640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> <span class="pill" style="background:#d977061a;color:#d97706;border:1px solid #d9770640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SPA in JS puro</span> <span class="pill" style="background:#d977061a;color:#d97706;border:1px solid #d9770640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">pywebview (desktop)</span> <span class="pill" style="background:#d977061a;color:#d97706;border:1px solid #d9770640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">PyInstaller + Inno Setup</span> <span class="pill" style="background:#d977061a;color:#d97706;border:1px solid #d9770640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">165 test</span></p>
+  <p style="margin-top:.8rem"><a href="index.html">← Torna a Le mie app</a></p>
+</section>
+
+<section>
+  <h2>Che cosa fa</h2>
+  <p>Comprare un'auto usata si riduce a due domande: <em>il prezzo è ragionevole</em> e <em>che cosa non so di quest'auto</em>. I portali di annunci rispondono solo alla prima, e pure male — ogni sito ha campi diversi, la stessa auto compare su tre siti con tre chilometraggi diversi e un dato mancante sembra innocuo quanto uno compilato. Questa app unisce tutto questo e soprattutto <strong>tiene ben separato ciò che è documentato da ciò che non lo è</strong>.</p>
+  <ul>
+    <li>Da un profilo di ricerca (marca, modello, anno, chilometraggio, prezzo, dotazione, zona) trova le offerte sulle fonti che lo <strong>consentono nel robots.txt</strong> — per le altre apre la ricerca nel browser o accetta un'importazione. Il robots.txt non si aggira e i CAPTCHA non si risolvono.</li>
+    <li>Ogni offerta viene <strong>uniformata</strong> (unità, alimentazione, cambio, dotazione), <strong>deduplicata</strong> per VIN e somiglianza e confrontata con la <strong>mediana delle auto comparabili</strong>, con correzione per il chilometraggio diverso.</li>
+    <li>Calcola un <strong>punteggio 0–100</strong> su sei aree, dove ogni punto mostra da dove arriva. Un dato mancante <strong>non alza mai</strong> il punteggio — è una lacuna, non un pregio.</li>
+    <li>Trova i <strong>rischi</strong>: prezzo sospettosamente basso rispetto al mercato, importazione senza storico, caparra richiesta prima di vedere l'auto, contraddizioni fra annunci e punti deboli noti del modello e del motore (27 voci, ognuna con fonte e data).</li>
+    <li>Per un'auto con il VIN pubblicato <strong>verifica lo storico da sola</strong> e riporta i riscontri nei rischi, nel punteggio e nella lista dei preferiti.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Funzioni principali</h2>
+  <ul>
+    <li><strong>Verifica automatica del VIN.</strong> Il controllo si mette in coda <strong>da solo</strong> per ogni via con cui un'offerta entra nell'app — connettore live, risultato dell'agente AI, URL incollato, importazione CSV/JSON e inserimento manuale del VIN. La coda sta nel database, quindi sopravvive a un riavvio; lo stesso VIN in cinque annunci significa <strong>un</strong> controllo, non cinque.</li>
+    <li><strong>Stati onesti, non zeri rassicuranti.</strong> Un timeout, un blocco o un errore del parser non vengono mai salvati come «nessun riscontro». E accanto a «nessun riscontro nelle fonti verificate» c'è scritto che questo <strong>non significa che l'auto sia a posto</strong>. L'ora in cui è stata scaricata la pagina non viene mai spacciata per la data dell'evento.</li>
+    <li><strong>Fonti come sono davvero.</strong> In automatico funzionano l'archivio annunci dell'app e <strong>NHTSA vPIC</strong> — ed è scritto chiaramente che vPIC decodifica il VIN ma non fornisce lo storico. I registri cechi (controllo del contachilometri, ricerca veicoli della Polizia, dati sui veicoli) sono dietro un CAPTCHA o non hanno un'interfaccia pubblica, quindi restano un <strong>passaggio manuale</strong> con link e istruzioni. Niente di tutto questo è a pagamento.</li>
+    <li><strong>Contraddizioni che meritano attenzione.</strong> Chilometraggio in calo fra un annuncio e l'altro, due annunci contemporanei della stessa auto con chilometraggi diversi, anno o marca decodificati dal VIN che non corrispondono all'annuncio. Per ognuna è scritto che cos'altro potrebbe essere — <strong>da sola non è una prova di manomissione</strong>.</li>
+    <li><strong>Elenchi a discesa invece di scrivere.</strong> Marca, modello, generazione, colore e località di partenza si <strong>scelgono</strong> (39 marche, 303 modelli, 79 città). L'elenco dei modelli segue la marca scelta e ovunque c'è la via d'uscita «altro (scrivi a mano)», così il catalogo non blocca mai un'auto insolita.</li>
+    <li><strong>Preferiti e avvisi.</strong> Monitoraggio di prezzo e disponibilità, storico delle modifiche, avvisi locali per un nuovo rischio o un calo di prezzo. L'app <strong>non contatta mai il venditore</strong>, non prenota nulla e non paga caparre.</li>
+    <li><strong>Stima della distanza senza servizi esterni.</strong> La distanza dal venditore si calcola da una tabella offline di città e CAP; verificata su dieci tragitti noti con uno scarto entro il 12 %. È sempre indicata come stima, non come percorso esatto.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Anteprime</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:1.2rem;margin-top:1rem">
+    <figure style="margin:0"><img src="../../aplikace/img/auto-vyber/01_prehled.png" alt="Panoramica — numero di offerte, novità in 24 ore, auto a rischio e tabella delle prime 10 per punteggio (dati dimostrativi)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Panoramica — quante offerte sono attive, quante nuove, quante a rischio e le prime 10 per punteggio (dati dimostrativi)</figcaption></figure>
+    <figure style="margin:0"><img src="../../aplikace/img/auto-vyber/02_profil_rolety.png" alt="Profilo di ricerca — marca e modello come elenchi a discesa, i modelli seguono la marca scelta (dati dimostrativi)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Profilo di ricerca — marca, modello, generazione e colore si scelgono dal catalogo, così niente errori di battitura (dati dimostrativi)</figcaption></figure>
+    <figure style="margin:0"><img src="../../aplikace/img/auto-vyber/03_vysledky.png" alt="Tabella dei risultati con punteggio, livello di rischio, confronto col mercato e stato della verifica VIN (dati dimostrativi)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Risultati — punteggio, rischio, confronto col mercato e stato della verifica VIN per ogni offerta (dati dimostrativi)</figcaption></figure>
+    <figure style="margin:0"><img src="../../aplikace/img/auto-vyber/04_detail_skore.png" alt="Dettaglio auto con il punteggio suddiviso per area e l'elenco delle detrazioni (dati dimostrativi)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Dettaglio auto — punteggio suddiviso per area; ogni punto e ogni detrazione è spiegata (dati dimostrativi)</figcaption></figure>
+    <figure style="margin:0"><img src="../../aplikace/img/auto-vyber/05_detail_vin.png" alt="Sezione Storico e verifica VIN — tabella delle fonti con lo stato, riscontri documentati con prova e limiti, elenco dei passaggi manuali (dati dimostrativi)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Storico e verifica VIN — ogni fonte mostra stato e motivo, ogni riscontro la sua prova e i suoi limiti (dati dimostrativi)</figcaption></figure>
+    <figure style="margin:0"><img src="../../aplikace/img/auto-vyber/06_provereni_vin.png" alt="Pagina autonoma di verifica VIN con inserimento del VIN e risultato (dati dimostrativi)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Verifica VIN autonoma — stesso servizio e stessi dati della verifica automatica degli annunci (dati dimostrativi)</figcaption></figure>
+    <figure style="margin:0"><img src="../../aplikace/img/auto-vyber/07_zdroje_vin.png" alt="Registro delle fonti VIN con modalità, data di verifica e il motivo per cui una fonte è solo manuale (dati dimostrativi)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Registro delle fonti e coda — ogni fonte dice se funziona in automatico o solo a mano, e perché (dati dimostrativi)</figcaption></figure>
+    <figure style="margin:0"><img src="../../aplikace/img/auto-vyber/08_health.png" alt="Health Center con lo stato di database, migrazioni, connettori e coda di verifica VIN (dati dimostrativi)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Health Center — database, migrazioni, connettori, coda di verifica VIN e freschezza dei dati (dati dimostrativi)</figcaption></figure>
+  </div>
+  <p style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.6rem">Le anteprime usano dati dimostrativi — annunci reali e note su auto specifiche non stanno sul web.</p>
+</section>
+
+<section>
+  <h2>Stato</h2>
+  <p>Versione beta <strong>v0.3.0</strong> (settembre 2026), <strong>165 test automatici</strong> più il controllo visivo di 22 schermate e un percorso interattivo nell'app. <strong>Applicazione completamente autonoma</strong> — gira solo sul mio PC in una finestra propria (pywebview), i dati restano in un file SQLite locale e gli aggiornamenti arrivano in silenzio dal NAS di casa. <strong>Privata, senza hosting pubblico e senza installer da scaricare.</strong> Non è una perizia né un'ispezione del veicolo — è uno strumento che mette ordine nelle offerte e soprattutto mostra che cosa è documentato e che cosa no.</p>
+  <p style="font-size:.9rem;color:var(--txt-muted,#666)">Non ancora pronto: il modulo «Vendi l'auto» e la valutazione della propria vettura (lo schema del database c'è, manca il livello applicativo) e il riconoscimento del VIN da fotografia. Funziona dal vivo una sola fonte esterna e fornisce la <em>decodifica del VIN</em>, non lo storico di manutenzione — i registri cechi richiedono un passaggio manuale.</p>
+</section>
+
+  <section style="margin:1.2rem 0"><button id="openDenik" class="diary-btn">📖 Diario di sviluppo</button></section>
+</main>
+
+<!-- DIARIO DI SVILUPPO — popup -->
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Diario di sviluppo" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head">
+      <h2 style="margin:0">📖 Diario di sviluppo — AUTO VÝBĚR</h2>
+      <button class="diary-close" aria-label="Chiudi">✕</button>
+    </div>
+    <div class="diary-body">
+      <ul style="line-height:1.8">
+        <li><strong>v0.3.0 — elenchi a discesa e verifica automatica del VIN (settembre 2026)</strong> — due cose. Primo: marca, modello, generazione, colore e località di partenza hanno smesso di essere campi di testo e sono diventati elenchi a discesa (39 marche, 303 modelli, 79 città), perché un errore di battitura nella marca rompeva in silenzio il confronto col mercato. Le chiavi del catalogo coincidono di proposito con ciò a cui l'app normalizza i dati in arrivo, così la scelta combacia con i dati salvati — lo garantisce un test. Secondo: <strong>la verifica del VIN parte da sola</strong>; il gancio sta nell'unico punto attraversato da ogni via d'ingresso di un'offerta, così nessuna può sfuggire. La coda sta nel database (sopravvive a un riavvio), un lavoro per VIN, cache per fonte. La cosa più importante è però ciò che <em>non deve</em> succedere: un timeout o un errore del parser non vengono mai salvati come «nessun riscontro». La ricognizione delle fonti è finita in modo sobrio — in automatico vanno l'archivio dell'app e NHTSA vPIC (che decodifica il VIN ma non dà lo storico), i registri cechi hanno un CAPTCHA o non hanno API pubbliche e quindi restano un passaggio manuale; gli endpoint non me li invento. Strada facendo sono emersi quattro miei errori, fra cui che il catalogo delle marche <strong>non era finito nell'installer</strong> — nell'app installata gli elenchi sarebbero stati vuoti e nessuno avrebbe capito perché. Il controllo dopo la compilazione ora verifica anche che le schermate chiave restituiscano davvero dei dati, non solo che il server sia partito. <strong>165 test.</strong> Il modulo «Vendi l'auto» in questa versione non c'è ancora.</li>
+        <li><strong>v0.2.1 — l'errore che ha lasciato l'app invisibile (settembre 2026)</strong> — la protezione che impedisce a un <code>print()</code> di far cadere il server in modalità senza finestra era legata solo alla versione impacchettata. L'avvio di lavoro tramite <code>pythonw.exe</code> quindi non l'aveva e l'app continuava a girare come <strong>processo senza finestra e senza server</strong> — tenendo un lucchetto per cui poi l'installazione silenziosa falliva. Si è scoperto solo perché il launcher, dopo averlo scritto, l'ho anche davvero avviato.</li>
+        <li><strong>v0.2.0 — prima release (settembre 2026)</strong> — l'app ha avuto un installer, l'aggiornamento silenzioso dal NAS di casa (con controllo obbligatorio dell'impronta del file scaricato) e un proprio repository. L'aggiornamento è stato verificato <strong>percorrendolo davvero</strong> dalla vecchia alla nuova versione, non lanciando l'installer a mano. Il test della versione impacchettata ha subito rivelato che tre cartelle di dati erano finite nel percorso sbagliato e l'app si bloccava all'avvio — cosa che i test normali non avrebbero mai trovato, perché nel codice sorgente era tutto a posto.</li>
+        <li><strong>Aggiunte dopo la prima release (settembre 2026)</strong> — il livello di rischio complessivo ha smesso di etichettare <em>ogni</em> auto come «medio» per un solo dato mancante (un dato mancante è una lacuna, non un campanello d'allarme); è arrivata la stima offline della distanza dal venditore, verificata su dieci tragitti noti con uno scarto entro il 12 %; la base di conoscenza dei punti deboli dei modelli è passata da 10 a 27 voci — soprattutto i fratelli di piattaforma del Trafic, che sono di fatto le stesse vetture con un altro marchio — ed è stato aggiunto un modello CSV per l'importazione manuale.</li>
+        <li><strong>v0.1.0 — il nucleo (settembre 2026)</strong> — normalizzazione dei dati, deduplicazione per VIN e somiglianza, confronto di mercato con mediana e correzione per il chilometraggio, punteggio deterministico su sei aree, regole di rischio, lista dei preferiti, storico dei prezzi e Health Center. Fin dall'inizio vale la regola che <strong>l'agente non scrive mai direttamente nel database</strong> — tutto passa da un contratto validato, così nessun dato non controllato può entrare nell'archivio.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+.diary-btn { font:inherit; cursor:pointer; background:#d97706; color:#fff; border:none; padding:.6rem 1rem; border-radius:8px; font-weight:600; }
+.diary-btn:hover { filter:brightness(1.08); }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel { position:relative; margin:4vh auto; max-width:900px; max-height:90vh; overflow:auto; background:#fff; color:#111; border-radius:12px; box-shadow:0 12px 48px rgba(0,0,0,.35); }
+.diary-head { position:sticky; top:0; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 1.4rem; border-bottom:1px solid rgba(127,127,127,.2); background:#fff; }
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
+.diary-close:hover { color:var(--text,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
+</style>
+<script>
+(function(){
+  var modal = document.getElementById('diary');
+  if (!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  var b = document.getElementById('openDenik'); if (b) b.addEventListener('click', open);
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Budinský Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="https://github.com/bludek69-lgtm" target="_blank" rel="noopener">GitHub</a>
+      <a href="/smart-home/kontakt.html">Kontakt</a>
+      <a href="../smart-home/">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
