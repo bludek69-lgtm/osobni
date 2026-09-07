@@ -139,7 +139,8 @@
 
 <section>
   <h2>Status</h2>
-  <p>Current version <strong data-col-ver="{v} {s}">1.2.3 FINAL</strong> (September 2026), available for download on the <a href="index.html">My apps</a> page. Public demo + full local version (web and Windows .exe). Private, for personal use — no public hosting of real data, no accounts, no payments. <em>Note: the app catalogues and gives indicative valuations — it is not a professional appraisal. Always verify real prices on a marketplace.</em></p>
+  <p style="margin:.6rem 0 .9rem;padding:.7rem .95rem;border-left:3px solid #9b59b6;background:#9b59b614;border-radius:6px;font-size:.93rem">🔒 <strong>The app is not publicly downloadable.</strong> You will not find an installer here, on purpose — I send the link personally to whoever I give the app to. The version number on this page stays: it fills itself in from the same place the installed app takes its silent updates from.</p>
+  <p>Current version <strong data-col-ver="{v} {s}">1.2.3 FINAL</strong> (September 2026). The app overview is on the <a href="index.html">My apps</a> page. Public demo + full local version (web and Windows .exe). Private, for personal use — no public hosting of real data, no accounts, no payments. <em>Note: the app catalogues and gives indicative valuations — it is not a professional appraisal. Always verify real prices on a marketplace.</em></p>
 </section>
 </main>
 
@@ -183,6 +184,6 @@ main img:hover { transform:scale(1.005) }
   });
 })();
 </script>
-<script>/* Verze z latest.json (nikdy nedrift) — natvrdo psane cislo v HTML zustava jen jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var o=d&&d["collection"];if(!o||!o.version)return;var v=o.version;var s=({final:"FINAL",beta:"BETA",work:"WORK"})[o.stage]||(o.stage||"").toUpperCase();document.querySelectorAll("[data-col-ver]").forEach(function(el){el.textContent=el.getAttribute("data-col-ver").replace("{v}",v).replace("{s}",s);});document.querySelectorAll("[data-col-dl]").forEach(function(a){if(o.url){a.href=o.url;a.setAttribute("download","");}});}).catch(function(){});})();</script>
+<script>/* Verze z latest.json (nikdy nedrift) — natvrdo psane cislo v HTML zustava jen jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var o=d&&d["collection"];if(!o||!o.version)return;var v=o.version;var s=({final:"FINAL",beta:"BETA",work:"WORK"})[o.stage]||(o.stage||"").toUpperCase();document.querySelectorAll("[data-col-ver]").forEach(function(el){el.textContent=el.getAttribute("data-col-ver").replace("{v}",v).replace("{s}",s);});/* Odkaz ke stazeni se zamerne nedosazuje - aplikace se nedistribuuje pres web (predava se osobne). */}).catch(function(){});})();</script>
 </body>
 </html>
