@@ -39,7 +39,7 @@ Idempotentní — projde všechny stránky, extrahuje `<main>` block, znovu obal
 
 ## Externí odkazy
 
-- Smart Home web: https://bludek69-lgtm.github.io/smart-home-website/
+- Smart Home web: https://cestovatel69.cz/smart-home/
 - YouTube: https://www.youtube.com/@cestovatel69
 
 ## Pravidla

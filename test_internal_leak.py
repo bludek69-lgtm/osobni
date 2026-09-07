@@ -30,6 +30,12 @@ PATTERNS = [
      "internal/private IP address"),
     (re.compile(r"\b(?:api[_-]?key|secret|token|password)\s*[:=]\s*['\"][A-Za-z0-9_\-]{8,}['\"]", re.I),
      "possible embedded credential/token"),
+    # The site must not link to the author's GitHub account or to the old
+    # GitHub Pages copy of the smart-home site. Deliberately does NOT match
+    # raw.githubusercontent.com -- that URL is the silent-update manifest the
+    # version badges read, and it stays.
+    (re.compile(r"github\.com/|[A-Za-z0-9-]+\.github\.io", re.I),
+     "public GitHub account/repo URL"),
 ]
 
 # file -> set of pattern descriptions that are known-OK there, with rationale.
@@ -37,6 +43,9 @@ ALLOWLIST = {
     # personal devlog entry describing the author's own local project layout;
     # editorial/narrative content, not a leaked operational path or secret.
     "smart-home/blog.html": {"worapp workstation root path"},
+    # bundled third-party chart library keeps its upstream attribution URL;
+    # it points at the library's author, not at this site's own account.
+    "finance/demo/Ucetni_kniha_v4.html": {"public GitHub account/repo URL"},
 }
 
 
