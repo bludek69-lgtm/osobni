@@ -76,7 +76,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Funkční verze v0.9.90 (srpen 2026). Lokální Windows aplikace, ~8 měsíců aktivního vývoje, tichá aktualizace. Soukromá — žádné public hosting, žádné API pro cizí.</p>
+  <p>Funkční verze v0.9.93 (září 2026). Lokální Windows aplikace, ~8 měsíců aktivního vývoje, tichá aktualizace. Soukromá — žádné public hosting, žádné API pro cizí.</p>
 </section>
 
   <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Vývojový deník</button></section>
@@ -91,6 +91,8 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
+        <li><strong>v0.9.93 — aplikace si práci najde sama (září 2026)</strong> — doklad, který ještě není v knize, si aplikace sama najde ve sledovaných složkách i v e-mailové schránce; co je jednoznačné, zaúčtuje sama a už zaúčtovanou duplicitu vyřadí. Přehledy se přepočítají samy, jakmile se rozejdou s knihou. Úvěry: ručně zadaný úvěr už nezmizí ze splátkového kalendáře, mimořádná splátka i předčasné doplacení sedí na doklad z banky na haléř. Párování spojí samo jen to, co je doložené — variabilní symbol, protiúčet, číslo smlouvy; shoda pouhé částky nestačí. A dodavatel může změnit číslo účtu i symbol, přitom je to pořád táž firma. Přibyla evidence odpracovaných dob z ČSSZ; daňový modul mluví česky místo strojových zkratek a tam, kde zákon odpověď nedává, raději nevydá číslo.</li>
+        <li><strong>v0.9.91–0.9.92 — dvě kola odladění (září 2026)</strong> — 126 odladěných bodů: jednotný vizuální jazyk a navigace, daňová pravidla s odkazem na paragraf a datum ověření, účet i nový výpis se do knihy zapojí bez zásahu do kódu, finanční rezerva se počítá z pravidelných výdajů posledních uzavřených měsíců a nová dlaždice ukazuje, jak daleko je krypto ke splacení úvěru.</li>
         <li><strong>v0.9 — kompletní krypto a přehlednější import (léto 2026)</strong> — krypto pokryté do posledního satoshi (i staré peněženky dopočítané z blockchainu), živé připojení burz, semafor aktuálnosti (kdy naposledy pohyb vs. kdy nahraný výpis) a přepracovaná stránka importů s chytrým přetažením souboru.</li>
         <li><strong>v0.9.14 — kompletní krypto evidence a vydání (červenec 2026)</strong> — úplná historie kryptoměn: každý převod mezi burzami a peněženkami dohledán on-chain a spárován (Trezor, TrustWallet, Exodus, Anycoin, CoinBank, Binance, OKX), automatické párování vkladů a výběrů s bankou včetně mezičlánků PayPal a Wise, daně z krypta se směnami potvrzeny, výplatní pásky načítané přímo z PDF, jednotné ocenění s Portfolio Trackerem a rychlejší diagnostika. Tichá aktualizace.</li>
         <li><strong>v0.9.13 — přesnější párování a napojení na broker most (červenec 2026)</strong> — přepsané párování bankovních plateb s brokerskými převody (deterministické, žádné náhodné shody), přímé napojení na Interactive Brokers pro hotovostní pohyby, sjednocená fronta ke schválení pro všechny domény, posílené srovnávání s Portfolio Trackerem (dividendy se nikdy nezapočtou dvakrát). Tichá aktualizace — appka se sama upozorní a updatne.</li>
