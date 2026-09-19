@@ -31,12 +31,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cestovatel69.cz/aplikace/finance-analytik.html</loc>
-    <lastmod>2026-07-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://cestovatel69.cz/aplikace/</loc>
     <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -51,12 +45,6 @@
   <url>
     <loc>https://cestovatel69.cz/aplikace/krabickova-dieta.html</loc>
     <lastmod>2026-09-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cestovatel69.cz/aplikace/meal-planner.html</loc>
-    <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -315,12 +303,6 @@
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/energy-dashboard.html</loc>
     <lastmod>2026-09-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cestovatel69.cz/en/aplikace/finance-analytik.html</loc>
-    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -633,12 +615,6 @@
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/energy-dashboard.html</loc>
     <lastmod>2026-09-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cestovatel69.cz/it/aplikace/finance-analytik.html</loc>
-    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
