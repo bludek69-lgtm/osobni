@@ -2,10 +2,12 @@
 (local Windows paths, internal tool/workflow names, private IPs, token-shaped
 strings) that shouldn't be on a public showcase site.
 
-Precise patterns + a small allowlist for files/lines that are legitimately
-public (e.g. a personal devlog post describing local project paths, or a
-finance-demo page whose local dev-server instructions were intentionally
-generalized). New allowlist entries must be justified with a comment.
+Precise patterns + a small allowlist. The allowlist does NOT waive a whole
+pattern for a whole file -- it names the exact matched strings that are
+legitimately public there (e.g. a bundled library's upstream attribution URL).
+Any other hit of the same pattern in the same file still fails, so an entry
+cannot quietly cover a future leak. New entries must be justified with a
+comment.
 
 Usage: python test_internal_leak.py
 Exit 0 = PASS (no unallowlisted leaks), 1 = FAIL.
@@ -33,19 +35,27 @@ PATTERNS = [
     # The site must not link to the author's GitHub account or to the old
     # GitHub Pages copy of the smart-home site. Deliberately does NOT match
     # raw.githubusercontent.com -- that URL is the silent-update manifest the
-    # version badges read, and it stays.
-    (re.compile(r"github\.com/|[A-Za-z0-9-]+\.github\.io", re.I),
+    # version badges read, and it stays. The owner/repo part is captured as
+    # well, so the allowlist can name one concrete URL instead of the whole file.
+    (re.compile(r"github\.com/(?:[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)?)?"
+                r"|[A-Za-z0-9-]+\.github\.io(?:/[A-Za-z0-9._-]+)?", re.I),
      "public GitHub account/repo URL"),
 ]
 
-# file -> set of pattern descriptions that are known-OK there, with rationale.
+# file -> pattern description -> exact matched strings that are known-OK there
+# (compared case-insensitively, and they must equal what the pattern captures).
 ALLOWLIST = {
-    # personal devlog entry describing the author's own local project layout;
-    # editorial/narrative content, not a leaked operational path or secret.
-    "smart-home/blog.html": {"worapp workstation root path"},
-    # bundled third-party chart library keeps its upstream attribution URL;
-    # it points at the library's author, not at this site's own account.
-    "finance/demo/Ucetni_kniha_v4.html": {"public GitHub account/repo URL"},
+    # Bundled third-party chart library keeps its upstream attribution comment
+    # (https://github.com/kurkle/color#readme) -- it points at the library's
+    # author, not at this site's own account. If the bundle is ever rebuilt and
+    # that URL changes, this test fails on purpose: re-check it, then update.
+    "finance/demo/Ucetni_kniha_v4.html": {
+        "public GitHub account/repo URL": {"github.com/kurkle/color"},
+    },
+    # smart-home/blog.html used to be allowlisted for a workstation path from a
+    # devlog entry. The text no longer contains it (re-checked 2026-09-12, zero
+    # occurrences anywhere in the repo), so the entry was dropped rather than
+    # left standing as a blanket waiver.
 }
 
 
@@ -66,14 +76,20 @@ def main():
         except Exception as e:
             findings.append((rel, "ERROR", f"could not read: {e}"))
             continue
-        allowed = ALLOWLIST.get(rel, set())
+        allowed = ALLOWLIST.get(rel, {})
         for regex, desc in PATTERNS:
-            if desc in allowed:
-                continue
-            m = regex.search(text)
-            if m:
+            ok = {v.lower() for v in allowed.get(desc, ())}
+            # Report every distinct value, not just the first hit -- two
+            # different leaks of the same class in one file are two findings.
+            reported = set()
+            for m in regex.finditer(text):
+                value = m.group(0)
+                key = value.lower()
+                if key in ok or key in reported:
+                    continue
+                reported.add(key)
                 line_no = text.count("\n", 0, m.start()) + 1
-                findings.append((rel, f"L{line_no}", f"{desc}: {m.group(0)!r}"))
+                findings.append((rel, f"L{line_no}", f"{desc}: {value!r}"))
 
     if findings:
         print(f"RESULT: FAIL ({len(findings)} leak(s))")
