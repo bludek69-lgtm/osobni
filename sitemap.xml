@@ -79,12 +79,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cestovatel69.cz/aplikace/ridic-turnusy-mzdy.html</loc>
-    <lastmod>2026-09-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://cestovatel69.cz/aplikace/rpi-kiosk.html</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
@@ -362,12 +356,6 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/resident-auditor.html</loc>
-    <lastmod>2026-09-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cestovatel69.cz/en/aplikace/ridic-turnusy-mzdy.html</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -686,12 +674,6 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/resident-auditor.html</loc>
-    <lastmod>2026-09-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cestovatel69.cz/it/aplikace/ridic-turnusy-mzdy.html</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
