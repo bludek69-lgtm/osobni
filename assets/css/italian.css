@@ -68,5 +68,19 @@
 .it-muted {color:var(--text-mut);}
 #it-status {margin:.5rem 0;color:var(--text);font-weight:600;}
 html[data-theme-mode="dark"] .it-page {--it-green:#9cdbc1;}
+.it-picture {display:block;width:100%;max-width:440px;height:auto;aspect-ratio:320/220;object-fit:contain;border-radius:14px;background:var(--it-paper);margin:1rem auto;}
+.it-photo-credit {font-size:.75rem;text-align:center;line-height:1.5;color:var(--text-mut);overflow-wrap:anywhere;}
+.it-photo-credit a {text-decoration:underline;text-underline-offset:.15em;}
+.it-photo-note {font-size:.8rem;margin-top:1rem;color:var(--text-mut);}
+.it-flashcard {max-width:540px;margin:1rem auto;text-align:center;}
+.it-page .it-flip {display:block;width:100%;border:2px solid var(--it-line);padding:1rem;border-radius:20px;}
+.it-flip .it-picture {margin:0 auto 1rem;max-width:440px;}
+.it-flip-label {display:block;font-size:.9rem;font-weight:650;}
+.it-card-clue {display:flex;min-height:200px;align-items:center;justify-content:center;font-size:1.8rem;}
+#it-card-answer {padding:1rem;text-align:left;}
+#it-card-answer h3 {font-size:1.8rem;text-align:center;}
+.it-card-controls {justify-content:center;}
+.it-picture-description {margin:1rem 0;font-size:.85rem;}
+.it-picture-description summary {cursor:pointer;min-height:44px;padding:.7rem 0;}
 @media(max-width:900px) {.it-lessons,.it-words {grid-template-columns:repeat(2,minmax(0,1fr));}.it-hero{grid-template-columns:1fr;}.it-hero-aside{display:flex;gap:2rem;flex-wrap:wrap;}}
 @media(max-width:600px) {.it-page{padding:0 .8rem;}.it-lessons,.it-words,.it-stats,.it-options{grid-template-columns:1fr;}.it-audio-settings{display:block;}.it-audio-settings p{margin-top:.7rem;}.it-quiz-top{align-items:start;flex-direction:column;}.it-hero-aside{display:block;}.it-toolbar>label{min-width:0;flex-basis:100%;}.it-import{max-width:100%;overflow-wrap:anywhere;}}

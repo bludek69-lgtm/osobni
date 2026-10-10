@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- Original local educational pictograms. No labels or embedded answers. -->
+  <symbol id="caffe" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="24" fill="#f6ecd9"/>
+    <g stroke="#234e41" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="156" cy="178" rx="95" ry="14" fill="#dfc389"/>
+      <path d="M219 88h17c38 0 38 49 0 49h-18" fill="none"/>
+      <path d="M88 84h135v49c0 59-135 59-135 0z" fill="#fffdf5"/>
+      <ellipse cx="156" cy="84" rx="67" ry="14" fill="#785039"/>
+      <path d="M134 57c-15-17 12-18 0-35m43 35c-15-17 12-18 0-35" fill="none" stroke="#aa8560"/>
+    </g>
+  </symbol>
+  <symbol id="acqua" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="24" fill="#e4f3f1"/>
+    <g stroke="#234e41" stroke-width="6" stroke-linejoin="round">
+      <path d="M94 63h112l-15 119H109z" fill="#fff"/>
+      <path d="M99 99q25-10 50 0t51 0l-10 81h-80z" fill="#93d4e6"/>
+      <path d="M249 44c-35 43-31 62 0 62s35-19 0-62z" fill="#6ebbd3"/>
+    </g>
+  </symbol>
+  <symbol id="cornetto" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="24" fill="#f6ecd9"/>
+    <g stroke="#85542e" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M52 168C29 28 282 28 268 168l-51-35c-22-42-94-42-114 0z" fill="#e7ad53"/>
+      <path d="M85 87l22 39m31-64l8 45m39-45l-8 45m51-20l-20 39" fill="none"/>
+    </g>
+  </symbol>
+  <symbol id="spremuta" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="24" fill="#fff0d5"/>
+    <g stroke="#85542e" stroke-width="6" stroke-linejoin="round">
+      <path d="M88 50h112l-17 136h-78z" fill="#fff"/>
+      <path d="M93 88h101l-12 96h-75z" fill="#efb241"/>
+      <path d="M155 118l20-86h36" fill="none" stroke="#234e41"/>
+      <circle cx="238" cy="149" r="42" fill="#f49b35"/>
+      <circle cx="238" cy="149" r="29" fill="#ffd678"/>
+      <path d="M238 120v58m-27-29h54m-46-20l38 40m0-40l-38 40" stroke="#fff0d5" stroke-width="4"/>
+    </g>
+  </symbol>
+  <symbol id="stazione" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="24" fill="#e5eee5"/>
+    <g stroke="#234e41" stroke-width="6" stroke-linejoin="round">
+      <path d="M27 184V77l50-32 50 32v107m-100-99h100" fill="#dfc389"/>
+      <circle cx="77" cy="84" r="19" fill="#fffdf5"/><path d="M77 73v12l9 6" fill="none"/>
+      <path d="M179 165l-18 29m90-29l18 29m-111-2h114" fill="none"/>
+      <rect x="159" y="47" width="112" height="117" rx="21" fill="#69a58c"/>
+      <rect x="175" y="63" width="80" height="46" rx="7" fill="#eef8f5"/>
+      <circle cx="182" cy="139" r="8" fill="#f4cb67"/><circle cx="247" cy="139" r="8" fill="#f4cb67"/>
+    </g>
+  </symbol>
+  <symbol id="biglietto" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="24" fill="#e4f3f1"/>
+    <g stroke="#234e41" stroke-width="6" stroke-linejoin="round">
+      <path d="M46 58h228v40c-25 0-25 25 0 25v40H46v-40c25 0 25-25 0-25z" fill="#f5d78c"/>
+      <path d="M213 65v90" stroke-dasharray="7 8"/>
+      <rect x="88" y="79" width="61" height="51" rx="8" fill="#fffdf5"/>
+      <path d="M98 95h40m-40 12h40m-40 23l-8 12m49-12l9 12" fill="none"/>
+    </g>
+  </symbol>
+  <symbol id="camera" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="24" fill="#f6ecd9"/>
+    <g stroke="#234e41" stroke-width="6" stroke-linejoin="round">
+      <rect x="48" y="54" width="222" height="99" rx="12" fill="#b8936a"/>
+      <rect x="61" y="68" width="84" height="40" rx="9" fill="#fffdf5"/><rect x="174" y="68" width="84" height="40" rx="9" fill="#fffdf5"/>
+      <path d="M44 111h230v55H44z" fill="#76b39b"/><path d="M160 112v54M48 167v25m219-25v25" fill="none"/>
+    </g>
+  </symbol>
+  <symbol id="chiave" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="24" fill="#e5eee5"/>
+    <g stroke="#85542e" stroke-width="7" stroke-linejoin="round">
+      <path d="M128 93h149v25h-22v27h-25v-27h-99" fill="#e8bd62"/>
+      <circle cx="88" cy="105" r="47" fill="#e8bd62"/><circle cx="88" cy="105" r="20" fill="#e5eee5"/>
+    </g>
+  </symbol>
+  <symbol id="asciugamano" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="24" fill="#e4f3f1"/>
+    <g stroke="#234e41" stroke-width="6" stroke-linejoin="round">
+      <path d="M36 62h248" stroke-linecap="round"/>
+      <path d="M82 57h162v125H82z" fill="#76b39b"/><path d="M244 57H82c-25 0-25 17-25 27h25" fill="#b3d7c8"/>
+      <path d="M88 145h150m-150 15h150" stroke="#fffdf5"/>
+    </g>
+  </symbol>
+  <symbol id="menu" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="24" fill="#f6ecd9"/>
+    <g stroke="#234e41" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M160 48L54 34v149l106 15 106-15V34z" fill="#fffdf5"/><path d="M160 48v149" fill="none"/>
+      <path d="M75 79v30m8-30v30m8-30v30m-8 0v31m23-58v60" fill="none"/>
+      <path d="M186 78h53m-53 22h53m-53 22h38m-38 22h53" stroke="#b8936a"/>
+    </g>
+  </symbol>
+  <symbol id="verdure" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="24" fill="#e5eee5"/>
+    <g stroke="#234e41" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="164" cy="173" rx="117" ry="18" fill="#dfc389"/>
+      <path d="M62 111l48 17-45 47z" fill="#ee9d44"/><path d="M67 103l-9-27m12 25l16-25m-14 23l31-4" fill="none"/>
+      <path d="M138 145v-40h41v40" fill="#76b39b"/>
+      <path d="M117 91c-21-27 16-50 34-33 9-27 44-17 45 5 32-7 43 40 10 46h-75c-15 0-20-9-14-18z" fill="#69a58c"/>
+      <circle cx="224" cy="139" r="35" fill="#d57559"/><path d="M222 104l-9-13m9 13l15-10" fill="none"/>
+    </g>
+  </symbol>
+  <symbol id="passeggiata" viewBox="0 0 320 220">
+    <rect width="320" height="220" rx="24" fill="#e4f3f1"/>
+    <g stroke="#234e41" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M58 191h215" fill="none"/><circle cx="151" cy="45" r="18" fill="#dfc389"/>
+      <path d="M152 68l-19 53 42 24 23 40m-65-64l-25 63m37-97l-32 22-24-3m55-27l22 26 31 2" fill="none"/>
+      <path d="M254 181v-66"/><path d="M254 70c-38 27-38 52 0 52s38-25 0-52z" fill="#76b39b"/>
+    </g>
+  </symbol>
+</svg>

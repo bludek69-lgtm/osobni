@@ -8,10 +8,18 @@
     en:{lessons:'Lessons',dictionary:'Dictionary',practice:'Practice',exam:'Exam',progress:'My progress',all:'All levels',level:'Level',lesson:'Lesson',allLessons:'All lessons',open:'Open lesson',back:'Back to lessons',study:'Words and examples',grammar:'Grammar',choice:'Choose the meaning',write:'Write in Italian',listen:'Listening',start:'Start',mode:'Exercise type',review:'Only mistakes to review',noQuestions:'No questions for this selection. Change the filter or complete a test first.',question:'Question',check:'Check answer',next:'Next question',finish:'Show result',correct:'Correct!',wrong:'Not yet.',answer:'Correct answer',placeholder:'Type your answer…',choose:'Choose an answer.',required:'Answer first.',play:'Play in Italian',slow:'Slower',stop:'Quit without saving',listenPrompt:'Listen to the expression and choose its meaning.',meaningPrompt:'Choose the meaning of the expression.',writePrompt:'Write the corresponding Italian expression. Pay attention to articles and accents.',grammarPrompt:'Complete the missing part of the sentence.',result:'Result',again:'New practice',saved:'The result was saved in this browser.',notSaved:'Progress could not be saved. It remains in memory for this visit; download a backup.',voice:'Italian voice',noVoice:'No Italian voice is available. Listening tests are disabled; other features work. Try installing an Italian device voice or another browser.',voiceReady:'Audio uses a device voice. Quality and availability vary; some voices may need internet.',speechError:'Audio could not be played. Try another voice or a text exercise. This question has not been graded.',listenFirst:'Start listening first.',search:'Search a word or meaning',favorites:'Only favorites',favorite:'Add to favorites',unfavorite:'Remove from favorites',empty:'Nothing found.',examInfo:'20 random questions from the selected level: meanings, writing and grammar. Optionally include listening. The result concerns this material only; it does not establish your overall language level.',withAudio:'Include listening questions',attempts:'Completed tests',mistakes:'Items to review',best:'Best exam result',history:'Recent results',export:'Download progress backup',import:'Upload progress backup',importConfirm:'This backup will replace progress in this browser. Continue?',importOk:'Backup loaded.',importBad:'Invalid backup or file too large (maximum 1 MB).',storageNote:'No account or synchronization. Progress belongs to this browser and everyone sharing it. Clearing site data can remove progress; export a backup.',badge:'Thematic level',example:'Example',count:'items',progressEmpty:'No completed tests yet. Start with a lesson.',selectVoice:'Default Italian voice',accent:'Accents',retry:'Review mistakes',reading:'Text and listening'},
     it:{lessons:'Lezioni',dictionary:'Glossario',practice:'Esercizi',exam:'Prova',progress:'I miei progressi',all:'Tutti i livelli',level:'Livello',lesson:'Lezione',allLessons:'Tutte le lezioni',open:'Apri la lezione',back:'Torna alle lezioni',study:'Espressioni ed esempi',grammar:'Grammatica',choice:'Scegli il significato',write:'Scrivi in italiano',listen:'Ascolto',start:'Inizia',mode:'Tipo di esercizio',review:'Solo errori da ripassare',noQuestions:'Nessuna domanda per questa selezione. Cambia filtro o completa prima una prova.',question:'Domanda',check:'Verifica',next:'Prossima domanda',finish:'Mostra il risultato',correct:'Corretto!',wrong:'Non ancora.',answer:'Risposta corretta',placeholder:'Scrivi la risposta…',choose:'Scegli una risposta.',required:'Rispondi prima.',play:'Ascolta in italiano',slow:'Più lentamente',stop:'Esci senza salvare',listenPrompt:'Ascolta l’espressione e scegli il significato.',meaningPrompt:'Scegli il significato dell’espressione.',writePrompt:'Scrivi l’espressione italiana corrispondente. Fai attenzione ad articoli e accenti.',grammarPrompt:'Completa la parte mancante della frase.',result:'Risultato',again:'Nuovo esercizio',saved:'Risultato salvato in questo browser.',notSaved:'Impossibile salvare i progressi. Restano in memoria per questa visita; scarica una copia.',voice:'Voce italiana',noVoice:'Nessuna voce italiana disponibile. Le prove di ascolto sono disattivate; le altre funzioni restano disponibili. Prova a installare una voce italiana o a cambiare browser.',voiceReady:'L’audio usa una voce del dispositivo. Qualità e disponibilità variano; alcune voci richiedono internet.',speechError:'Riproduzione non riuscita. Prova un’altra voce o un esercizio scritto. La domanda non è stata valutata.',listenFirst:'Avvia prima l’ascolto.',search:'Cerca espressione o significato',favorites:'Solo preferiti',favorite:'Aggiungi ai preferiti',unfavorite:'Rimuovi dai preferiti',empty:'Nessun risultato.',examInfo:'20 domande casuali del livello selezionato: significati, scrittura e grammatica. Puoi aggiungere l’ascolto. Il risultato riguarda solo questi materiali e non determina il livello linguistico generale.',withAudio:'Includi domande di ascolto',attempts:'Prove completate',mistakes:'Elementi da ripassare',best:'Miglior risultato nella prova',history:'Risultati recenti',export:'Scarica copia dei progressi',import:'Carica copia dei progressi',importConfirm:'La copia sostituirà i progressi in questo browser. Continuare?',importOk:'Copia caricata.',importBad:'Copia non valida o file troppo grande (massimo 1 MB).',storageNote:'Senza account né sincronizzazione. I progressi appartengono al browser e a chi lo condivide. Cancellare i dati del sito può eliminarli: scarica una copia.',badge:'Livello tematico',example:'Esempio',count:'elementi',progressEmpty:'Nessuna prova completata. Inizia da una lezione.',selectVoice:'Voce italiana predefinita',accent:'Accenti',retry:'Ripassa gli errori',reading:'Testo e ascolto'}
   };
+  Object.assign(copy.cs,{cards:'Kartičky',picture:'Obrázkový test',picturePrompt:'Co je na obrázku? Vyber správný italský výraz.',cardsInfo:'Prohlédni si obrázek, zkus si vybavit italský výraz a otoč kartičku. Obrázky jsou u 24 konkrétních výrazů A1–A2; ostatní kartičky jsou textové.',picturesOnly:'Jen obrázkové kartičky',flip:'Otočit kartičku',hide:'Skrýt odpověď',previousCard:'Předchozí kartička',nextCard:'Další kartička',card:'Kartička',pictureStart:'Vyzkoušet obrázkový test',noPictures:'V tomto výběru nejsou obrázky. Vyber A1/A2 nebo vypni filtr obrázků pro textové kartičky.',pictureFallback:'Textový popis obrázku (pro přístupnost)'});
+  Object.assign(copy.en,{cards:'Flashcards',picture:'Picture quiz',picturePrompt:'What is in the picture? Choose the Italian expression.',cardsInfo:'Look at the picture, recall the Italian expression and flip the card. Pictures cover 24 concrete A1–A2 expressions; the remaining cards use text.',picturesOnly:'Picture cards only',flip:'Flip card',hide:'Hide answer',previousCard:'Previous card',nextCard:'Next card',card:'Card',pictureStart:'Try the picture quiz',noPictures:'No pictures for this selection. Choose A1/A2 or disable the picture filter for text flashcards.',pictureFallback:'Picture description (accessibility)'});
+  Object.assign(copy.it,{cards:'Carte',picture:'Quiz illustrato',picturePrompt:'Che cosa c’è nell’immagine? Scegli l’espressione italiana.',cardsInfo:'Guarda l’immagine, ricorda l’espressione italiana e gira la carta. Le immagini coprono 24 espressioni concrete A1–A2; le altre carte usano il testo.',picturesOnly:'Solo carte illustrate',flip:'Gira la carta',hide:'Nascondi la risposta',previousCard:'Carta precedente',nextCard:'Carta successiva',card:'Carta',pictureStart:'Prova il quiz illustrato',noPictures:'Nessuna immagine per questa selezione. Scegli A1/A2 o disattiva il filtro immagini per le carte testuali.',pictureFallback:'Descrizione dell’immagine (accessibilità)'});
   const T = copy[lang], app = document.getElementById('italian-app');
+  const pictureDirectory = new URL('../img/italian/ai/', document.currentScript.src).href;
+  Object.assign(copy.cs,{photoCredit:'AI ilustrace',photoInfo:'24 realistických ilustrací vytvořených pomocí AI pro tuto výuku. Nejde o skutečné fotografie míst či produktů. Abstraktní výrazy zůstávají textové.'});
+  Object.assign(copy.en,{photoCredit:'AI illustration',photoInfo:'24 realistic AI-generated illustrations for these lessons. They are not actual photographs of places or products. Abstract expressions remain text-only.'});
+  Object.assign(copy.it,{photoCredit:'Illustrazione IA',photoInfo:'24 illustrazioni realistiche generate con IA per queste lezioni. Non sono fotografie reali di luoghi o prodotti. Le espressioni astratte restano testuali.'});
   const key = 'cestovatel69_italian_progress_v1';
   let progress = C.emptyProgress(), storageOK = true, voices = [], selectedVoice = '', active = 'lessons', currentLevel = 'all', currentLesson = 'all', mode = 'choice', session = null;
   let search = '', onlyFavorites = false, reviewOnly = false;
+  let cardIndex = 0, cardFlipped = false, picturesOnly = true;
   const words = D.lessons.flatMap(l=>l.words.map(w=>({...w,level:l.level,lessonId:l.id})));
   const esc = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const el = id => document.getElementById(id);
@@ -25,8 +33,24 @@
   function lessonSelect() {return '<label>'+T.lesson+'<select id="it-lesson">'+options([['all',T.allLessons],...D.lessons.filter(l=>currentLevel==='all'||l.level===currentLevel).map(l=>[l.id,l.title[lang]])],currentLesson)+'</select></label>';}
   function audio(text) { return '<span class="it-audio">'+button('speak','▶ '+T.play,'data-speech="'+esc(text)+'"')+button('slow',T.slow,'data-speech="'+esc(text)+'"')+'</span>'; }
   function favorite(w) {const yes=progress.favorites.includes(w.id); return button('favorite',yes?'★':'☆','data-word="'+w.id+'" aria-label="'+esc(yes?T.unfavorite:T.favorite)+'" aria-pressed="'+yes+'"');}
+  function picture(w) {
+    return '<img class="it-picture" src="'+esc(pictureDirectory+D.illustrations[w.picture].file)+'" alt="'+esc(w.pictureDescription||w.meaning[lang])+'" decoding="async">';
+  }
+  function photoCredit(w) {
+    if(!D.illustrations[w.picture])return '';
+    return '<p class="it-photo-credit">'+esc(T.photoCredit)+' · OpenAI</p>';
+  }
+  function cardDeck() {return words.filter(w=>(currentLevel==='all'||w.level===currentLevel)&&(!picturesOnly||w.picture));}
+  function renderCards() {
+    const deck=cardDeck(); cardIndex=deck.length?((cardIndex%deck.length)+deck.length)%deck.length:0;
+    const w=deck[cardIndex];
+    el('it-view').innerHTML='<section class="it-panel"><h2>'+T.cards+'</h2><p>'+T.cardsInfo+'</p><div class="it-toolbar">'+levelSelect()+'<label class="it-check"><input type="checkbox" id="it-pictures-only"'+(picturesOnly?' checked':'')+'>'+T.picturesOnly+'</label></div>'+(w?'<div class="it-flashcard"><p class="it-muted">'+T.card+' '+(cardIndex+1)+' / '+deck.length+' · '+w.level+'</p><button type="button" class="it-flip" data-action="flip" aria-expanded="'+cardFlipped+'" aria-controls="it-card-answer">'+(w.picture?picture(w):'<span class="it-card-clue">'+esc(w.meaning[lang])+'</span>')+'<span class="it-flip-label">'+(cardFlipped?T.hide:T.flip)+'</span></button><div id="it-card-answer"'+(cardFlipped?'':' hidden')+'>'+(cardFlipped?'<h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian)+favorite(w):'')+'</div><div class="it-toolbar it-card-controls">'+button('card-previous',T.previousCard)+button('card-next',T.nextCard)+'</div>'+button('picture-start',T.pictureStart,'class="it-primary"'+(!deck.some(x=>x.picture)?' disabled':''))+'</div>':'<p>'+T.noPictures+'</p>')+'</section>';
+    if(w?.picture)el('it-view').querySelector('.it-flip').insertAdjacentHTML('afterend',photoCredit(w));
+    el('it-view').insertAdjacentHTML('beforeend','<p class="it-photo-note">'+T.photoInfo+'</p>');
+    updateAudioButtons();
+  }
   function renderShell() {
-    app.innerHTML='<nav class="it-tabs" aria-label="'+esc(T.mode)+'">'+['lessons','dictionary','practice','exam','progress'].map(name=>button('tab',T[name],'data-tab="'+name+'" aria-pressed="'+(active===name)+'"')).join('')+'</nav><div class="it-audio-settings"><label>'+T.voice+'<select id="it-voice"></select></label><p id="it-voice-note"></p></div><p id="it-status" role="status" aria-live="polite"></p><div id="it-view"></div>';
+    app.innerHTML='<nav class="it-tabs" aria-label="'+esc(T.mode)+'">'+['lessons','cards','dictionary','practice','exam','progress'].map(name=>button('tab',T[name],'data-tab="'+name+'" aria-pressed="'+(active===name)+'"')).join('')+'</nav><div class="it-audio-settings"><label>'+T.voice+'<select id="it-voice"></select></label><p id="it-voice-note"></p></div><p id="it-status" role="status" aria-live="polite"></p><div id="it-view"></div>';
     updateVoiceControls();
   }
   function render() {
@@ -35,11 +59,13 @@
     if (session) {renderQuestion(); return;}
     if (active==='lessons') {
       view.innerHTML='<div class="it-toolbar">'+levelSelect()+'</div><div class="it-lessons">'+D.lessons.filter(l=>currentLevel==='all'||l.level===currentLevel).map(l=>'<article class="it-card"><span class="it-level">'+l.level+'</span><h2>'+esc(l.title[lang])+'</h2><p>'+esc(l.note[lang])+'</p>'+button('lesson',T.open,'data-lesson="'+l.id+'"')+'</article>').join('')+'</div>';
+    } else if (active==='cards') {
+      renderCards();
     } else if (active==='dictionary') {
       view.innerHTML='<div class="it-toolbar">'+levelSelect()+'<label>'+T.search+'<input type="search" id="it-search" value="'+esc(search)+'"></label><label class="it-check"><input type="checkbox" id="it-favorites"'+(onlyFavorites?' checked':'')+'>'+T.favorites+'</label></div><div id="it-dictionary"></div>';
       renderDictionary();
     } else if (active==='practice') {
-      view.innerHTML='<section class="it-panel"><h2>'+T.practice+'</h2><div class="it-toolbar">'+levelSelect()+lessonSelect()+'<label>'+T.mode+'<select id="it-mode">'+options(['choice','write','listen','grammar'].map(m=>[m,T[m]]),mode)+'</select></label></div><label class="it-check"><input type="checkbox" id="it-review"'+(reviewOnly?' checked':'')+'>'+T.review+'</label>'+button('start',T.start)+'</section>';
+      view.innerHTML='<section class="it-panel"><h2>'+T.practice+'</h2><div class="it-toolbar">'+levelSelect()+lessonSelect()+'<label>'+T.mode+'<select id="it-mode">'+options(['choice','picture','write','listen','grammar'].map(m=>[m,T[m]]),mode)+'</select></label></div><label class="it-check"><input type="checkbox" id="it-review"'+(reviewOnly?' checked':'')+'>'+T.review+'</label>'+button('start',T.start)+'</section>';
       el('it-mode').querySelector('option[value="listen"]').disabled=!voices.length;
     } else if (active==='exam') {
       view.innerHTML='<section class="it-panel"><h2>'+T.exam+'</h2><p>'+T.examInfo+'</p><div class="it-toolbar">'+levelSelect()+'</div><label class="it-check"><input type="checkbox" id="it-with-audio"'+(!voices.length?' disabled':'')+'>'+T.withAudio+'</label>'+button('exam',T.start)+'</section>';
@@ -71,15 +97,16 @@
         return kind==='write'?{...q,kind,prompt:words.find(w=>w.id===q.id).meaning[lang],answers:[q.italian],options:[]}:{...q,kind};
       }).concat(C.questions(selected,'grammar',lang));
     } else pool=C.questions(selected,mode,lang).filter(q=>!reviewOnly||progress.mistakes[q.id]);
-    if(!pool.length){status(T.noQuestions);return;}
+    if(!pool.length){status(!isExam&&mode==='picture'?T.noPictures:T.noQuestions);return;}
     if(!isExam&&mode==='listen'&&!voices.length){status(T.noVoice);return;}
     session={questions:C.shuffle(pool).slice(0,isExam?20:12),index:0,correct:0,answered:false,played:false,type:isExam?'exam':'practice',level:currentLevel,changes:[]};
     render();
   }
   function renderQuestion() {
     const s=session,q=s.questions[s.index],choice=q.kind!=='write';
-    const prompt=q.kind==='listen'?T.listenPrompt:q.kind==='write'?T.writePrompt:q.kind==='grammar'?T.grammarPrompt:T.meaningPrompt;
-    el('it-view').innerHTML='<section class="it-panel it-quiz"><div class="it-quiz-top"><span>'+T.question+' '+(s.index+1)+' / '+s.questions.length+'</span>'+button('quit',T.stop)+'</div><progress value="'+s.index+'" max="'+s.questions.length+'" aria-label="'+T.progress+'"></progress><h2 id="it-focus" tabindex="-1">'+esc(prompt)+'</h2>'+(q.kind==='listen'?audio(q.italian):'<p class="it-prompt"'+(q.kind==='write'?'':' lang="it"')+'>'+esc(q.prompt)+'</p>')+'<form id="it-answer-form">'+(choice?'<fieldset><legend class="it-muted">'+T.choose+'</legend><div class="it-options">'+C.shuffle(q.options).map((a,i)=>'<label><input type="radio" name="answer" value="'+esc(a)+'"><span>'+esc(a)+'</span></label>').join('')+'</div></fieldset>':'<label>'+T.write+'<input id="it-written" name="answer" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="'+T.placeholder+'"></label><div class="it-accent-bar" aria-label="'+T.accent+'">'+['à','è','é','ì','ò','ù','’'].map(c=>button('accent',c,'data-char="'+c+'"')).join('')+'</div>')+'<button type="submit" class="it-primary">'+T.check+'</button></form><div id="it-feedback" role="status" aria-live="polite"></div><div id="it-next"></div></section>';
+    const prompt=q.kind==='picture'?T.picturePrompt:q.kind==='listen'?T.listenPrompt:q.kind==='write'?T.writePrompt:q.kind==='grammar'?T.grammarPrompt:T.meaningPrompt;
+    const visual=q.kind==='picture'?picture(q)+photoCredit(q)+'<details class="it-picture-description"><summary>'+T.pictureFallback+'</summary><p>'+esc(q.pictureDescription)+'</p></details>':q.kind==='listen'?audio(q.italian):'<p class="it-prompt"'+(q.kind==='write'?'':' lang="it"')+'>'+esc(q.prompt)+'</p>';
+    el('it-view').innerHTML='<section class="it-panel it-quiz"><div class="it-quiz-top"><span>'+T.question+' '+(s.index+1)+' / '+s.questions.length+'</span>'+button('quit',T.stop)+'</div><progress value="'+s.index+'" max="'+s.questions.length+'" aria-label="'+T.progress+'"></progress><h2 id="it-focus" tabindex="-1">'+esc(prompt)+'</h2>'+visual+'<form id="it-answer-form">'+(choice?'<fieldset><legend class="it-muted">'+T.choose+'</legend><div class="it-options"'+(q.kind==='picture'?' lang="it"':'')+'>'+C.shuffle(q.options).map((a,i)=>'<label><input type="radio" name="answer" value="'+esc(a)+'"><span>'+esc(a)+'</span></label>').join('')+'</div></fieldset>':'<label>'+T.write+'<input id="it-written" name="answer" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="'+T.placeholder+'"></label><div class="it-accent-bar" aria-label="'+T.accent+'">'+['à','è','é','ì','ò','ù','’'].map(c=>button('accent',c,'data-char="'+c+'"')).join('')+'</div>')+'<button type="submit" class="it-primary">'+T.check+'</button></form><div id="it-feedback" role="status" aria-live="polite"></div><div id="it-next"></div></section>';
     updateAudioButtons(); el('it-focus').focus();
   }
   function submit(event) {
@@ -139,7 +166,8 @@
   app.addEventListener('input',event=>{if(event.target.id==='it-search'){search=event.target.value;renderDictionary();}});
   app.addEventListener('change',async event=>{
     const target=event.target;
-    if(target.id==='it-level'){currentLevel=target.value;currentLesson='all';render();}
+    if(target.id==='it-level'){currentLevel=target.value;currentLesson='all';cardIndex=0;cardFlipped=false;render();}
+    if(target.id==='it-pictures-only'){picturesOnly=target.checked;cardIndex=0;cardFlipped=false;renderCards();}
     if(target.id==='it-lesson')currentLesson=target.value;
     if(target.id==='it-mode')mode=target.value;
     if(target.id==='it-voice')selectedVoice=target.value;
@@ -157,6 +185,9 @@
   app.addEventListener('click',event=>{
     const b=event.target.closest('button[data-action]');if(!b||b.disabled)return;
     const action=b.dataset.action;
+    if(action==='flip'){cardFlipped=!cardFlipped;renderCards();app.querySelector('[data-action="flip"]')?.focus();return;}
+    if(action==='card-next'||action==='card-previous'){cardIndex+=action==='card-next'?1:-1;cardFlipped=false;renderCards();app.querySelector('[data-action="'+action+'"]')?.focus();return;}
+    if(action==='picture-start'){active='practice';mode='picture';currentLesson='all';reviewOnly=false;start();return;}
     if(action==='speak'||action==='slow'){speak(b.dataset.speech,action==='slow');return;}
     if(action==='accent'){
       const input=el('it-written');if(!input||input.disabled)return;
@@ -168,7 +199,7 @@
       b.textContent=yes?'☆':'★';b.setAttribute('aria-pressed',String(!yes));b.setAttribute('aria-label',yes?T.favorite:T.unfavorite);
       if(active==='dictionary')renderDictionary();if(!storageOK)status(T.notSaved);return;
     }
-    if(action==='tab'){if(session)window.speechSynthesis?.cancel();session=null;active=b.dataset.tab;render();}
+    if(action==='tab'){window.speechSynthesis?.cancel();session=null;active=b.dataset.tab;cardFlipped=false;render();}
     if(action==='lesson')showLesson(b.dataset.lesson);
     if(action==='back'){currentLesson='all';render();}
     if(action==='lesson-practice'){mode=b.dataset.mode;reviewOnly=false;active='practice';start();}

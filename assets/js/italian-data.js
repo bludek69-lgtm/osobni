@@ -23,7 +23,10 @@
       word('conto','il conto','účet','the bill','somma da pagare al ristorante','Il conto, per favore.'),
       word('cornetto','un cornetto','croissant / sladký rohlík','a croissant','dolce da colazione a forma di mezzaluna','Un cornetto e un cappuccino.'),
       word('spremuta','una spremuta','čerstvě vymačkaná šťáva','a freshly squeezed juice','succo ottenuto spremendo la frutta','Una spremuta d’arancia, grazie.'),
-      word('per-favore','per favore','prosím','please','formula per una richiesta cortese','Un bicchiere, per favore.')],[
+      word('per-favore','per favore','prosím','please','formula per una richiesta cortese','Un bicchiere, per favore.'),
+      word('pane','il pane','chléb','bread','alimento preparato con farina, acqua e lievito','Vorrei del pane, per favore.'),
+      word('latte','il latte','mléko','milk','bevanda bianca usata anche nel cappuccino','Prendo un bicchiere di latte.'),
+      word('gelato','un gelato','zmrzlina','an ice cream','dolce freddo e cremoso','Vorrei un gelato alla vaniglia.')],[
       grammar('articolo','Vorrei ___ spremuta.',['una'],['una','un','uno','il'],'Spremuta je ženského rodu: una spremuta.','Spremuta is feminine: una spremuta.','Spremuta è femminile: una spremuta.'),
       grammar('vorrei','___ un caffè, per favore. (richiesta cortese)',['Vorrei'],['Vorrei','Vorremmo','Vorrebbero','Vorresti'],'Vorrei je 1. osoba podmiňovacího způsobu.','Vorrei is the first-person singular conditional.','Vorrei è il condizionale, prima persona singolare.')]),
     lesson('citta','A1',t('Orientace ve městě','Finding your way','Orientarsi in città'),
@@ -33,7 +36,10 @@
       word('sinistra','a sinistra','vlevo','to the left','nella direzione opposta alla destra','La farmacia è a sinistra.'),
       word('dritto','sempre dritto','stále rovně','straight ahead','senza girare lungo il percorso','Vada sempre dritto.'),
       word('biglietto','un biglietto','jízdenka / vstupenka','a ticket','documento per viaggiare o entrare','Un biglietto per Roma.'),
-      word('vicino','vicino','blízko','nearby','a poca distanza','Il museo è vicino.')],[
+      word('vicino','vicino','blízko','nearby','a poca distanza','Il museo è vicino.'),
+      word('autobus','l’autobus','autobus','the bus','mezzo pubblico su strada per molti passeggeri','Dove si prende l’autobus?'),
+      word('farmacia','la farmacia','lékárna','the pharmacy','negozio in cui si vendono medicinali','Cerco una farmacia aperta.'),
+      word('museo','il museo','muzeum','the museum','luogo in cui si conservano ed espongono opere e oggetti','Il museo apre alle nove.')],[
       grammar('dove','Dov’___ la farmacia?',['è'],['è','e','sei','sono'],'È s přízvukem je „je“, e bez přízvuku je „a“.','È with an accent means “is”; e means “and”.','È è una forma di essere; e è una congiunzione.'),
       grammar('luogo','Vado ___ Roma.',['a'],['a','in','da','su'],'U měst používáme v tomto významu a: a Roma.','For cities in this use: a Roma.','Con il nome della città: a Roma.')]),
     lesson('hotel','A2',t('Ubytování a domluva','Accommodation','Alloggio'),
@@ -43,7 +49,10 @@
       word('colazione','la colazione','snídaně','breakfast','primo pasto della giornata','La colazione è inclusa?'),
       word('chiave','la chiave','klíč','the key','oggetto per aprire una serratura','La chiave non funziona.'),
       word('asciugamano','un asciugamano','ručník','a towel','tessuto usato per asciugarsi','Mi serve un asciugamano.'),
-      word('partenza','la partenza','odjezd','departure','momento in cui si lascia un luogo','La partenza è domani.')],[
+      word('partenza','la partenza','odjezd','departure','momento in cui si lascia un luogo','La partenza è domani.'),
+      word('valigia','la valigia','kufr','the suitcase','bagaglio usato per trasportare vestiti e oggetti','La mia valigia è pesante.'),
+      word('letto','il letto','postel','the bed','mobile su cui si dorme','Il letto è comodo.'),
+      word('doccia','la doccia','sprcha','the shower','impianto che permette di lavarsi con acqua corrente','La camera ha una doccia.')],[
       grammar('prenotato','Ieri ho ___ una camera.',['prenotato'],['prenotato','prenotare','prenoto','prenotando'],'Po ho zde následuje příčestí prenotato.','Ho is followed here by the participle prenotato.','Dopo ho serve il participio prenotato.'),
       grammar('arrivata','Anna è ___ ieri.',['arrivata'],['arrivata','arrivato','arrivare','arrivano'],'S essere se příčestí shoduje s podmětem: Anna è arrivata.','With essere, the participle agrees with the subject: Anna è arrivata.','Con essere il participio concorda con Anna: arrivata.')]),
     lesson('ristorante','A2',t('Jídlo a požadavky','Food and requests','Cibo e richieste'),
@@ -53,7 +62,10 @@
       word('allergia','un’allergia','alergie','an allergy','reazione allergica a una sostanza','Ho un’allergia alle arachidi.'),
       word('verdure','le verdure','zelenina','vegetables','ortaggi usati come alimenti','Prendo le verdure alla griglia.'),
       word('piccante','piccante','pálivý','spicy','dal sapore che brucia in bocca','Questo piatto è piccante?'),
-      word('prenotare','prenotare un tavolo','rezervovat stůl','to book a table','riservare posti al ristorante','Vorrei prenotare un tavolo.')],[
+      word('prenotare','prenotare un tavolo','rezervovat stůl','to book a table','riservare posti al ristorante','Vorrei prenotare un tavolo.'),
+      word('pasta','la pasta','těstoviny','pasta','alimento di farina e acqua, spesso servito con un sugo','Prendo la pasta al pomodoro.'),
+      word('pizza','una pizza','pizza','a pizza','disco di pasta cotto al forno con vari condimenti','Vorrei una pizza margherita.'),
+      word('pesce','il pesce','ryba','fish','animale acquatico, anche usato come alimento','Oggi mangiamo pesce alla griglia.')],[
       grammar('negazione','Io ___ mangio carne. (negazione)',['non'],['non','no','niente','nessuno'],'Non stojí před mangio.','Non goes before mangio.','La negazione è non mangio.'),
       grammar('allergico','Sono allergico ___ latte.',['al'],['al','il','nel','dal'],'A + il = al.','A + il = al.','La preposizione articolata è al.')]),
     lesson('passato','A2',t('Co se stalo včera','Talking about yesterday','Raccontare ieri'),
@@ -127,7 +139,32 @@
       grammar('formale','___ ringrazio per la risposta. (Lei, oggetto diretto)',['La'],['La','Ti','Gli','Ci'],'Zdvořilé oslovení Lei má přímý předmět La.','The direct object for polite Lei is La.','Il pronome diretto di cortesia è La.'),
       grammar('passivo','Il documento è stato ___ ieri. (inviare)',['inviato'],['inviato','inviata','inviare','inviando'],'Příčestí v pasivu se shoduje s il documento: inviato.','The passive participle agrees with il documento: inviato.','Il participio concorda con documento: inviato.')])
   ];
-  const data = {version:1, lessons};
+  // Concrete vocabulary only: abstract B1/B2 expressions remain text flashcards.
+  const pictures = ['caffe','acqua','cornetto','spremuta','stazione','biglietto','camera','chiave','asciugamano','menu','verdure','passeggiata','pane','latte','gelato','autobus','farmacia','museo','valigia','letto','doccia','pasta','pizza','pesce'];
+  for (const l of lessons) for (const w of l.words) if (pictures.includes(w.id)) w.picture = w.id;
+  // Do not offer another object visibly contained in the same illustrated scene.
+  const pictureExclusions = {camera:['letto'],letto:['camera'],menu:['pasta','pizza','pesce','verdure']};
+  for (const l of lessons) for (const w of l.words) if (pictureExclusions[w.id]) w.pictureExcludes = pictureExclusions[w.id];
+  const photo = (title,author,license,licenseUrl) => ({title,author,license,licenseUrl,source:'https://commons.wikimedia.org/wiki/'+encodeURIComponent('File:'+title.replace(/ /g,'_'))});
+  // Real photographs; metadata checked against Commons imageinfo on 2026-10-10.
+  // Each photo retains its own license. Only Commons-provided scaled versions are used.
+  const photos = {
+    caffe:photo('A cup of espresso.jpg','Vee Satayamas','CC BY-SA 4.0','https://creativecommons.org/licenses/by-sa/4.0/'),
+    acqua:photo('Glass-of-water.jpg','Derek Jensen (Tysto)','Public domain',null),
+    cornetto:photo('Cornetti2.JPG','exeair','CC BY-SA 3.0','https://creativecommons.org/licenses/by-sa/3.0/'),
+    spremuta:photo('Orangejuice.jpg','rawpixel.com','CC0','https://creativecommons.org/publicdomain/zero/1.0/'),
+    stazione:photo('Palermo Notarbartolo train station.01.jpg','Nenea hartia','CC BY-SA 4.0','https://creativecommons.org/licenses/by-sa/4.0/'),
+    biglietto:photo('Ticket train.jpg','Macholi','CC BY-SA 4.0','https://creativecommons.org/licenses/by-sa/4.0/'),
+    camera:photo('Double room of Conscious Hotel The Tire Staion 2024-11-26.jpg','Andy Li','CC0','https://creativecommons.org/publicdomain/zero/1.0/'),
+    chiave:photo('Standard-lock-key.jpg','Evan-Amos','Public domain',null),
+    asciugamano:photo('HSY- Folded Towels.jpg','HanSangYoon','CC BY-SA 4.0','https://creativecommons.org/licenses/by-sa/4.0/'),
+    menu:photo('Restaurant menus.jpg','E4024','CC BY-SA 4.0','https://creativecommons.org/licenses/by-sa/4.0/'),
+    verdure:photo('Vegetables, 2025 - Massachusetts.jpg','Daderot','CC0','https://creativecommons.org/publicdomain/zero/1.0/'),
+    passeggiata:photo('Couple walking in park.jpg','Bill Branson / National Cancer Institute','Public domain',null)
+  };
+  // The old photographs retain their provenance for archival use, but are not displayed.
+  const illustrations = Object.fromEntries(pictures.map(id=>[id,{file:id+'.webp',kind:'ai',generator:'OpenAI image generation',created:'2026-10-10'}]));
+  const data = {version:1, lessons, photos, illustrations};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;
 })(typeof window !== 'undefined' ? window : globalThis);

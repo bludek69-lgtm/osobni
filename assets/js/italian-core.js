@@ -14,11 +14,15 @@
   }
   function questions(lessons, mode, lang) {
     const words = lessons.flatMap(l => l.words);
+    const illustrated = words.filter(w=>w.picture);
+    const optionWords = mode==='picture' && illustrated.length>=4 ? illustrated : words;
     if (mode === 'grammar') return lessons.flatMap(l => l.questions.map(q => ({...q, kind:'grammar', lessonId:l.id})));
-    return lessons.flatMap(l => l.words.map(w => {
-      const answers = mode === 'write' ? [w.italian] : [w.meaning[lang]];
-      const distractors = [...new Set(words.filter(x => x.id !== w.id).map(x => x.meaning[lang]))].filter(x => !answers.includes(x));
+    return lessons.flatMap(l => l.words.filter(w=>mode!=='picture'||w.picture).map(w => {
+      const italianAnswer = mode === 'write' || mode === 'picture';
+      const answers = italianAnswer ? [w.italian] : [w.meaning[lang]];
+      const distractors = [...new Set(optionWords.filter(x => x.id !== w.id && (mode !== 'picture' || !(w.pictureExcludes || []).includes(x.id))).map(x => italianAnswer ? x.italian : x.meaning[lang]))].filter(x => !answers.includes(x));
       return {id:w.id, lessonId:l.id, kind:mode, italian:w.italian, prompt:mode === 'write' ? w.meaning[lang] : w.italian,
+        picture:w.picture, pictureDescription:w.meaning[lang],
         answers, options:mode === 'write' ? [] : shuffle([answers[0], ...shuffle(distractors).slice(0,3)]),
         explanation:w.example};
     }));
