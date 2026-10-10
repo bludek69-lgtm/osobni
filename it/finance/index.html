@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finanza &amp; investimenti — Luděk</title>
-  <meta name="description" content="Prospettiva personale su finanza e investimenti. Punto di partenza educativo, checklist e strumenti pratici. Nessun dato privato — solo principi ed esempi.">
+  <meta name="description" content="Portfolio Tracker (PT) e Libro contabile: le applicazioni che ho sviluppato e uso per seguire investimenti e finanze personali. Funzioni, anteprime e storia.">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💰%3C/text%3E%3C/svg%3E">
   <link rel="canonical" href="https://cestovatel69.cz/it/finance/">
@@ -13,8 +13,8 @@
   <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/finance/">
   <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/finance/">
 
-  <meta property="og:title" content="Finanza &amp;amp; investimenti — Luděk">
-  <meta property="og:description" content="Prospettiva personale su finanza e investimenti. Punto di partenza educativo, checklist e strumenti pratici. Nessun dato privato — solo principi ed esempi.">
+  <meta property="og:title" content="Finanza &amp; investimenti — Luděk">
+  <meta property="og:description" content="Portfolio Tracker (PT) e Libro contabile: le applicazioni che ho sviluppato e uso per seguire investimenti e finanze personali. Funzioni, anteprime e storia.">
   <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
   <meta property="og:url" content="https://cestovatel69.cz/it/finance/">
   <meta property="og:type" content="website">
@@ -48,12 +48,8 @@
 <main id="main">
   <section class="hero">
     <span class="hero-accent">Finanza &amp; investimenti</span>
-    <h1>Prospettiva personale sulla finanza</h1>
-    <p class="hero-sub">
-      La finanza mi appassiona perché voglio capire dove vanno i miei soldi. Investire non è
-      uno sprint — mi interessa più capire i principi che inseguire speculazioni a breve.
-      Questa pagina è un <strong>punto di partenza educativo</strong>, non consulenza finanziaria.
-    </p>
+    <h1>Finanza con le mie applicazioni</h1>
+    <p class="hero-sub">Per seguire le mie finanze uso due applicazioni che ho sviluppato: <strong>Portfolio Tracker (PT)</strong> per il portafoglio di investimenti e <strong>Účetní kniha (Libro contabile)</strong> per il quadro finanziario generale. Le sviluppo in base al mio lavoro quotidiano con i dati. Qui racconto come si completano e il mio approccio alla finanza.</p>
     <p class="disclaimer" style="margin-top:1.2rem; padding:0.9rem 1.1rem; border-left:4px solid #d49317; background:rgba(212,147,23,0.08); font-size:0.95rem;">
       <strong>⚠️ Disclaimer:</strong> Questa pagina è una prospettiva personale e una demo tecnica.
       Non è consulenza di investimento. Tutti i numeri negli esempi sono illustrativi e servono
@@ -61,9 +57,32 @@
     </p>
   </section>
 
+  <section aria-labelledby="fin-apps">
+    <h2 id="fin-apps">Le mie applicazioni finanziarie</h2>
+    <div class="cards-grid">
+      <article class="card">
+        <div class="card-icon" aria-hidden="true">📊</div>
+        <h3>Portfolio Tracker (PT)</h3>
+        <p><strong>Gli investimenti nel tempo</strong></p>
+        <p>Uso PT per seguire gli investimenti. Gestisce transazioni, posizioni, dividendi, commissioni e rendimento, con importazione degli estratti e viste analitiche per esaminare il portafoglio.</p>
+        <a class="tool-cta" href="../aplikace/portfolio-tracker.html">Dettagli e anteprime →</a>
+      </article>
+      <article class="card">
+        <div class="card-icon" aria-hidden="true">📒</div>
+        <h3>Účetní kniha</h3>
+        <p><strong>Il quadro finanziario generale</strong></p>
+        <p>Uso il Libro contabile per una registrazione più ampia. Collega documenti e transazioni a entrate, uscite, patrimonio e debiti. Per me conta poter risalire alla fonte di ogni cifra.</p>
+        <a class="tool-cta" href="../aplikace/ucetni-kniha.html">Dettagli e anteprime →</a>
+      </article>
+    </div>
+    <h3>Come le uso insieme</h3>
+    <p>Il Libro contabile offre il quadro complessivo. PT approfondisce il portafoglio di investimenti, dalle singole transazioni al rendimento nel tempo.</p>
+    <p>Il sito presenta le funzioni e le anteprime delle applicazioni. I dati finanziari privati restano fuori dalla presentazione pubblica.</p>
+  </section>
+
   <section>
     <div class="page-intro">
-      <p><strong>Per chi è questa pagina:</strong> chi vuole orientarsi a lungo termine nelle proprie finanze — ETF, azioni, crypto, oro — senza la pressione del "compra subito questo". 11 capitoli e una demo interattiva di libro contabile.</p>
+      <p>Le mie applicazioni, i loro ruoli e le anteprime dettagliate, seguite dal mio approccio alla finanza e da un esempio storico del progetto originale.</p>
       <p><strong>Cosa non troverai qui:</strong> consigli di investimento specifici, numeri del mio portafoglio, link affiliati. Nessun "questo sarà il prossimo Bitcoin". È un punto di partenza educativo, non un segnale.</p>
     </div>
   </section>
@@ -71,6 +90,7 @@
   <nav class="page-toc-sticky" aria-label="Vai alla sezione">
     <span class="toc-label">Vai a:</span>
     <ul>
+      <li><a href="#fin-apps">Le mie applicazioni finanziarie</a></li>
       <li><a href="#fin-1-pristup">1. Approccio</a></li>
       <li><a href="#fin-2-mapa">2. Mappa</a></li>
       <li><a href="#fin-3-nastroje">3. Strumenti</a></li>
@@ -82,7 +102,7 @@
       <li><a href="#fin-9-bezpecnost">9. Sicurezza</a></li>
       <li><a href="#fin-10-rutina">10. Routine mensile</a></li>
       <li><a href="#fin-11-audit">11. Audit annuale</a></li>
-      <li><a href="#fin-12-demo">🧪 Demo libro contabile</a></li>
+      <li><a href="#fin-12-demo">Demo HTML storica</a></li>
     </ul>
   </nav>
 
@@ -147,8 +167,8 @@
   </section>
 
   <section class="prose">
-    <h2 id="fin-3-nastroje">3. Strumenti per l'investitore</h2>
-    <p>Alcuni strumenti che uso o seguo — non affiliati, solo panoramica.</p>
+    <h2 id="fin-3-nastroje">3. Altri strumenti e fonti</h2>
+    <p>Questi sono esempi di strumenti di terzi. Per i miei dati uso PT e il Libro contabile, presentati sopra.</p>
     <div class="cards-grid">
       <div class="card">
         <h3>Portfolio Performance</h3>
@@ -263,7 +283,7 @@
     <ol>
       <li>Controllo riserva — ancora 3–6 mesi di spese?</li>
       <li>Acquisto regolare di ETF nel giorno concordato (DCA).</li>
-      <li>Aggiornamento diario — cosa comprato, cosa osservato, cosa letto.</li>
+      <li>Importare e verificare le transazioni in PT e nel Libro contabile; annotare le ragioni delle decisioni.</li>
       <li>Controllo dividendi in arrivo e reinvestimento.</li>
       <li>15 min di lettura news — ma niente decisioni impulsive.</li>
     </ol>
@@ -298,25 +318,18 @@
   <section class="prose">
     <h2>📸 Setup di investimento</h2>
     <p>
-      Diversi monitor, un server, Portfolio Performance per il tracking, un diario in Markdown
-      e una dashboard Sheets con panoramica. Tutto in locale, con backup. Non faccio trading attivo — la maggior parte del tempo gli schermi mostrano solo
-      "siamo ancora vivi" e tanto basta.
+      Le mie applicazioni sono il centro del mio setup: PT per esaminare gli investimenti e il Libro contabile per la registrazione complessiva. Le rispettive pagine mostrano funzioni e anteprime; la demo HTML qui sotto documenta una fase precedente del progetto.
     </p>
   </section>
 
   <section class="prose">
-    <h2 id="fin-12-demo">🧪 Libro contabile interattivo — DEMO</h2>
-    <p>
-      Un esempio di come tengo il conto delle finanze personali. Demo anonimizzata con dati
-      di modello, non i miei numeri veri. Il punto non è mostrare cosa fare — è mostrare che
-      un foglio ben fatto copre la maggior parte dei bisogni di finanza personale.
-    </p>
-    <a href="../../finance/demo/Ucetni_kniha_v4.html" class="card card-link" style="display:block; max-width:520px; margin:1.5rem 0;" lang="cs">
-      <div class="card-icon">📊</div>
-      <h3>Apri la demo del libro contabile <span class="lang-tag">CS</span></h3>
-      <p>App interattiva anonimizzata: entrate, uscite, investimenti, portafoglio, tasse. Clicca "Nascondi valori" per un'anteprima anonima.</p>
-      <div class="card-cta">Apri demo →</div>
-    </a>
+    <h2 id="fin-12-demo">Demo HTML storica</h2>
+    <p>Questa anteprima mostra una fase precedente del progetto, non il Libro contabile che uso oggi. Contiene dati di esempio; i calcoli e le informazioni fiscali non attestano le regole attuali.</p>
+    <p><a href="../aplikace/ucetni-kniha.html">Dettagli e anteprime: Účetní kniha →</a></p>
+    <details>
+      <summary>Apri la demo storica</summary>
+      <p><a href="../../finance/demo/Ucetni_kniha_v4.html" lang="cs">Apri la demo storica (CS) →</a></p>
+    </details>
   </section>
 </main>
 

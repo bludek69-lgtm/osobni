@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI in practice — how I use artificial intelligence | Luděk Budínský</title>
-  <meta name="description" content="How I use AI for travel, web building, smart home, finance and everyday planning. Practical, human, no hype.">
+  <meta name="description" content="I build my own apps, maintain this website and refine my smart home. AI helps me turn an everyday need into a working solution: read the project, make a change, find a bug and check the result.">
   <link rel="canonical" href="https://cestovatel69.cz/en/ai.html">
   <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/ai.html">
   <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/ai.html">
   <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/ai.html">
   <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/ai.html">
   <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/ai.css?v=2026-09-01">
+  <link rel="stylesheet" href="../assets/css/ai.css?v=2026-10-10-2">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🤖%3C/text%3E%3C/svg%3E">
   <meta property="og:type" content="article">
   <meta property="og:title" content="AI in practice — how I use artificial intelligence">
-  <meta property="og:description" content="A practical look at AI: travel, web, smart home, finance, daily life. No hype.">
+  <meta property="og:description" content="I build my own apps, maintain this website and refine my smart home. AI helps me turn an everyday need into a working solution: read the project, make a change, find a bug and check the result.">
   <meta property="og:url" content="https://cestovatel69.cz/en/ai.html">
   <meta property="og:locale" content="en_GB">
   <meta property="og:locale:alternate" content="cs_CZ">
@@ -51,677 +51,115 @@
 
 <main id="main">
 <div class="ai-page">
-
-  <section class="ai-hero">
-    <div>
-      <h1>AI in practice: how it helps me in life, work and projects</h1>
-      <p class="perex">
-        For me, AI isn't a magic black box or a replacement for thinking.
-        It's a partner that helps me write, plan, find bugs, build websites,
-        run my smart home and orient myself in complex topics.
-      </p>
-      <div class="ai-cta-row">
-        <a href="#projects" class="btn">My AI projects</a>
-        <a href="#vibe-coding" class="btn ghost">Vibe coding</a>
-        <a href="#why-not-working" class="btn ghost">Why AI doesn't work for you</a>
-      </div>
+  <section class="ai-hero" aria-labelledby="ai-title">
+    <div class="ai-hero-copy">
+      <p class="ai-eyebrow">My workflow · AI in practice</p>
+      <h1 id="ai-title">The idea is mine.<br><span>AI helps me make it real.</span></h1>
+      <p class="ai-lead">I build my own apps, maintain this website and refine my smart home. AI helps me turn an everyday need into a working solution: read the project, make a change, find a bug and check the result.</p>
+      <div class="ai-cta-row"><a class="ai-button" href="#how-apps-are-built">How I work <span aria-hidden="true">↗</span></a><a class="ai-button ai-button-secondary" href="#projects">Real projects</a></div>
+      <p class="ai-updated">Updated in October 2026</p>
     </div>
-    <div>
-      <img decoding="async" src="../assets/img/ai/ai-hero.svg" alt="Illustration of practical AI use for travel, web, smart home, finance and writing." width="800" height="360">
-    </div>
+    <aside class="ai-workbench" aria-label="From everyday need to my own app">
+      <p class="ai-workbench-heading">From everyday need to my own app</p>
+      <ol><li><span class="ai-step-index">01</span><div><strong>Describe the problem</strong><p>What I need and what a good result looks like.</p></div></li>
+<li><span class="ai-step-index">02</span><div><strong>Work in the project</strong><p>Read the files, propose and implement a change.</p></div></li>
+<li><span class="ai-step-index">03</span><div><strong>Check the behavior</strong><p>Tests, previews and everyday use.</p></div></li></ol>
+      <div class="ai-workbench-bottom"><span>ChatGPT</span><span>Codex</span><span>Claude Code</span></div>
+    </aside>
   </section>
 
-  <section>
-    <h2>What AI means to me</h2>
-    <p>
-      I treat AI as a smart work tool. Something like a mix of notebook, consultant, proofreader,
-      programmer and that annoying colleague who keeps asking "do you really mean that?" Used well,
-      it saves time and helps me work more systematically. Used badly, it just quickly produces chaos.
-    </p>
+  <nav class="ai-jump" aria-label="How I work">
+    <a href="#who-does-what">Tools and their roles</a><a href="#how-apps-are-built">How I work</a><a href="#projects">Real projects</a><a href="#examples">A brief that leads to a concrete result</a>
+    <a href="#demo-vs-praxe">Demo vs. reality</a><a href="#modely">Models</a><a href="#zdarma-placene">Free vs. paid</a><a href="#skills-mcp">Skills and MCP</a>
+  </nav>
+
+  <section id="who-does-what" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">01 /</span><h2>Tools and their roles</h2></div>
+    <p class="ai-section-intro">The roles overlap. I choose according to the task and access to the project, rather than assigning one tool only to audits and another only to code.</p>
+    <div class="ai-tools"><article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">↗</span><h3>ChatGPT</h3><p class="ai-tool-role">Thinking and defining the task</p><p>I discuss ideas, requirements and reports. It helps me name the problem, choose a next step and prepare a clear brief.</p></article>
+<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">⌘</span><h3>Codex</h3><p class="ai-tool-role">Development, audit and verification</p><p>Direct work with files: examining the current state, implementation, website edits, tests and browser previews. This update follows that approach.</p></article>
+<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">✳</span><h3>Claude / Claude Code</h3><p class="ai-tool-role">Another project collaborator</p><p>I use it for code, fixes, documentation and project analysis. I can compare results with another tool and follow up with a new task.</p></article>
+<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">◇</span><h3>Gemini</h3><p class="ai-tool-role">AI inside some of my apps</p><p>In Collection it helps read and identify objects from photos. PT offers an optional AI analyst. The specific use depends on the app.</p></article></div>
   </section>
 
-  <section>
-    <h2>Which AIs I use</h2>
-    <p>No single tool is "best" universally. Each fits different tasks.</p>
-    <img decoding="async" src="../assets/img/ai/ai-tools.svg" alt="Overview of AI tools used for writing, code, analysis and planning." class="ai-illust" loading="lazy" width="800" height="220">
-    <div class="ai-cards">
-      <div class="ai-card">
-        <h3><span class="icn">💬</span> ChatGPT</h3>
-        <ul>
-          <li>ideas and project structure</li>
-          <li>explaining complex topics</li>
-          <li>prompt design</li>
-          <li>longer texts</li>
-          <li>logic checking</li>
-        </ul>
-        <p class="note">My main thinking partner and brief-writer — details below.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🔍</span> Codex</h3>
-        <ul>
-          <li>deep audits of my apps</li>
-          <li>mapping the real state of the code</li>
-          <li>gap analysis — what's true, what's stale</li>
-        </ul>
-        <p class="note">I use it specifically for large audits, not routine edits.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">📁</span> Claude / Claude Code</h3>
-        <ul>
-          <li>working with project files</li>
-          <li>web edits, code, refactoring</li>
-          <li>reports and documentation</li>
-          <li>change review before deploy</li>
-        </ul>
-        <p class="note">I also pick the model by phase — audit vs. implementation, see below.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">✨</span> Gemini</h3>
-        <ul>
-          <li>Google ecosystem integration</li>
-          <li>helper analyses</li>
-          <li>smart home experiments</li>
-          <li>voice / diagnostic ideas</li>
-        </ul>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🛠</span> Other tools</h3>
-        <ul>
-          <li>code and quick checks</li>
-          <li>comparing ideas</li>
-          <li>text review</li>
-        </ul>
-        <p class="note">I use additional helper AI tools depending on the task.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🗂</span> Cowork &amp; morning overview</h3>
-        <ul>
-          <li>24/7 automatic email fetching</li>
-          <li>sorting invoices and documents into folders</li>
-          <li>morning briefing (calendar, mail, weather)</li>
-          <li>sync between laptop, PC and server</li>
-          <li>backup and versioning</li>
-        </ul>
-        <p class="note">AI as a pipeline supervisor — ensures the data flow works and morning info is ready.</p>
-      </div>
-    </div>
+  <section id="how-apps-are-built" class="ai-section">
+    <span id="vibe-coding" class="ai-anchor"></span>
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">02 /</span><h2>How an idea becomes a working change</h2></div>
+    <p class="ai-section-intro">I start with a need from everyday use. For a bug I first want to understand the cause; for a feature I define the behavior and scope.</p>
+    <ol class="ai-process"><li><span class="ai-process-index" aria-hidden="true">01</span><h3>Brief</h3><p>Describe the goal, evidence and expected behavior, including the project's rules.</p></li>
+<li><span class="ai-process-index" aria-hidden="true">02</span><h3>Current state</h3><p>AI reads the code and documentation. We separate evidence from assumptions.</p></li>
+<li><span class="ai-process-index" aria-hidden="true">03</span><h3>Change</h3><p>Build on the existing solution. The change has a clear scope and can be reviewed.</p></li>
+<li><span class="ai-process-index" aria-hidden="true">04</span><h3>Verification</h3><p>Use relevant tests, reproduce bugs and explore the interface. The original failure must disappear.</p></li>
+<li><span class="ai-process-index" aria-hidden="true">05</span><h3>Use and iterate</h3><p>I assess the result in practice. Bugs, logs and feedback inform the next task.</p></li></ol>
   </section>
 
-  <section id="who-does-what">
-    <h2>How I split the work between ChatGPT, Codex and Claude Code</h2>
-    <p>
-      I use ChatGPT mainly as a partner for thinking through app development — not just for
-      writing a piece of code. I bring it in the moment I have only an idea or a problem. First
-      we work out what I actually want to build and how it should behave — breaking down
-      requirements, finding weak spots in the current solution, sketching architecture. That
-      often turns into a precise working prompt for Claude Code or Codex, which then works
-      directly on the app's source code.
-    </p>
-    <p>
-      I use Codex specifically for <strong>deep audits</strong> — mapping the real state of an app
-      before anything changes. Claude Code then does the <strong>implementation and fixes</strong>
-      directly in the code. Within Claude Code I also pick the model by phase: Fable 5 for audit
-      and deep analysis, Opus 5 for the actual implementation work.
-    </p>
-    <div class="ai-flow" role="img" aria-label="Diagram: idea, discussion with ChatGPT, brief, audit via Codex or Claude Code with Fable 5, implementation in Claude Code with Opus 5, tests and report, evaluation back in ChatGPT">
-      <div class="node">Idea<span class="sub">discussion with ChatGPT</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Brief<span class="sub">precise prompt</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Audit<span class="sub">Codex / Claude Code (Fable 5)</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Implementation<span class="sub">Claude Code (Opus 5)</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Tests &amp; report<span class="sub">RED → FIX → PASS</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Evaluation<span class="sub">back in ChatGPT</span></div>
-    </div>
-    <p>
-      When Codex finishes a large audit of an app, I bring the result back into ChatGPT. Together
-      we go through what the audit actually found, what's critical versus just a recommendation,
-      and ChatGPT helps me put together a new fix prompt grounded in the app's real state. That
-      creates a repeating loop: <strong>idea → design → implementation → testing → real use →
-      diagnostics → analysis → next improvement.</strong>
-    </p>
-    <div class="ai-cards">
-      <div class="ai-card">
-        <h3><span class="icn">🧠</span> ChatGPT — the control &amp; analysis layer</h3>
-        <ul>
-          <li>designing new features and modules</li>
-          <li>breaking down problems in existing apps</li>
-          <li>architecture and safe migration design</li>
-          <li>preparing detailed audits and implementation prompts</li>
-          <li>evaluating audit and test reports</li>
-          <li>deciding what to fix first</li>
-          <li>designing test scenarios, UI/workflow and diagnostics</li>
-        </ul>
-        <p class="note">ChatGPT helps me decide what and why. The actual work on the source code is done by Claude Code or Codex.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🔍</span> Codex — deep audit</h3>
-        <ul>
-          <li>explores the app's real state (code, database, modules, tests, docs)</li>
-          <li>gap analysis — what's true, what's stale, what's missing</li>
-          <li>the output goes back to ChatGPT for evaluation and prioritization</li>
-        </ul>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🛠</span> Claude Code — implementation</h3>
-        <ul>
-          <li><strong>Fable 5</strong> — audit and deep code analysis</li>
-          <li><strong>Opus 5</strong> — the actual implementation, fixes, refactoring</li>
-          <li>testing, reports, change review before deploy</li>
-        </ul>
-      </div>
-    </div>
-    <div class="ai-callout-info">
-      Within the scope I give them, both Claude Code and Codex work quite autonomously — they
-      explore the app themselves, propose the audit, implement the fix and test it in a loop (see
-      <a href="#testing">how I know an app actually works</a>). But the autonomy stops at the
-      completion gate: nothing moves forward without my explicit GO, never automatically.
-    </div>
+  <section id="projects" class="ai-section">
+    <span id="how-i-use" class="ai-anchor"></span>
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">03 /</span><h2>What I actually build with AI</h2></div>
+    <p class="ai-section-intro">AI helps develop these projects. Some also use it within the app itself, for example for photo recognition or analysis.</p>
+    <div class="ai-projects"><article class="ai-project"><div class="ai-project-top"><span>01</span><span>Investments and analysis</span></div><h3>Portfolio Tracker</h3><p>I develop transaction records, performance views and analytical tools with AI. Tracing each number to its source and acknowledging missing data matter. PT also has an optional AI analyst.</p><a href="aplikace/portfolio-tracker.html">Explore the project <span aria-hidden="true">↗</span></a></article>
+<article class="ai-project"><div class="ai-project-top"><span>02</span><span>Documents and financial context</span></div><h3>Bookkeeping</h3><p>My financial records connect documents, transactions and summaries. AI helps develop imports, calculation checks, diagnostics and a clear interface.</p><a href="aplikace/ucetni-kniha.html">Explore the project <span aria-hidden="true">↗</span></a></article>
+<article class="ai-project"><div class="ai-project-top"><span>03</span><span>Trips around my needs</span></div><h3>Italia Travel Planner</h3><p>I develop route and itinerary planning. Autopilot uses places found in map data; availability and prices need verification. AI also helps with translations and content.</p><a href="aplikace/italia-travel.html">Explore the project <span aria-hidden="true">↗</span></a></article>
+<article class="ai-project"><div class="ai-project-top"><span>04</span><span>Photo → draft record</span></div><h3>Collection</h3><p>AI helps identify a coin or stamp and fill in fields from a photo. A person reviews the draft; indicative prices need supporting sources.</p><a href="aplikace/sbirka.html">Explore the project <span aria-hidden="true">↗</span></a></article>
+<article class="ai-project"><div class="ai-project-top"><span>05</span><span>Rules for a real home</span></div><h3>Smart Home</h3><p>I use AI to examine scenarios, find script bugs and prepare changes. My home operates on defined rules; a change must make sense to the person living there.</p><a href="smart-home/">Explore the project <span aria-hidden="true">↗</span></a></article>
+<article class="ai-project"><div class="ai-project-top"><span>06</span><span>Content, design and everyday tools</span></div><h3>This website and other apps</h3><p>AI helps maintain text, translations and links, design interfaces and review previews. Other projects cover driving work, meal planning and choosing a car.</p><a href="aplikace/">Explore the project <span aria-hidden="true">↗</span></a></article></div>
   </section>
 
-  <section id="how-i-use">
-    <h2>How I use AI</h2>
-    <div class="ai-cards">
-      <div class="ai-card">
-        <h3><span class="icn">✈</span> Travel</h3>
-        <ul>
-          <li>planning Italy routes</li>
-          <li>website texts and captions</li>
-          <li>video content ideas</li>
-          <li>translations and local customs</li>
-        </ul>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">💻</span> Web</h3>
-        <ul>
-          <li>page structure design</li>
-          <li>text fixes and SEO ideas</li>
-          <li>better navigation</li>
-          <li>"ordinary visitor" review</li>
-        </ul>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🏠</span> Smart home</h3>
-        <ul>
-          <li>scenario logic design</li>
-          <li>audit of existing scripts</li>
-          <li>pipeline documentation</li>
-          <li>careful change planning</li>
-        </ul>
-        <p class="note">AI helps with design and review, but the actual changes must be verified.
-        In a smart home, never deploy blindly.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">📊</span> Finance</h3>
-        <ul>
-          <li>idea sorting</li>
-          <li>logic review</li>
-          <li>risk warnings</li>
-          <li>record-keeping overview</li>
-        </ul>
-        <p class="note">Not investment advice. I use AI as an assistant for overview,
-        not as someone who makes money decisions for me.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">📝</span> Everyday life</h3>
-        <ul>
-          <li>email phrasing</li>
-          <li>day planning</li>
-          <li>explaining complex things</li>
-          <li>text preparation</li>
-        </ul>
-      </div>
-    </div>
+  <section id="dev-environment" class="ai-section ai-environment">
+    <span id="diagnostic-loop" class="ai-anchor"></span>
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">04 /</span><h2>My working environment</h2></div>
+    <p class="ai-section-intro">A development computer, a laptop for everyday use and home storage support my projects. AI tools work with the files and evidence I provide; the models can run at an external provider.</p>
+    <div class="ai-environment-grid"><div><h3>Development</h3><p>Projects, code, documentation and tests on the working computer.</p></div>
+<div><h3>Everyday use</h3><p>I use the app and notice where it needs improvement.</p></div>
+<div><h3>Continuity</h3><p>Backups, change history and context for the next session.</p></div></div>
   </section>
 
-  <section id="vibe-coding">
-    <h2>Vibe coding: when I describe an idea in plain language and AI helps with code</h2>
-    <p>
-      <strong>Vibe coding</strong> means a person describes what they want to build and AI helps
-      design or write the code. It does NOT mean blindly accepting whatever AI generates. In my
-      projects it's important: <strong>first the idea, then the design, then the review, then the
-      test, and only then deployment.</strong>
-    </p>
-    <img decoding="async" src="../assets/img/ai/ai-vibe-coding.svg" alt="Diagram of safe AI work when building your own tools: idea, prompt, code design, test, fix, deploy." class="ai-illust" loading="lazy" width="800" height="180">
-
-    <div class="ai-vibe-intro">
-      I don't treat it as <strong>"AI builds the app and I just click"</strong>. I treat it as
-      collaboration: I set direction, AI proposes solutions, then we test, fix and guard safety.
-      AI helps me turn ideas into code — but decisions, review and final deploy stay with me.
-    </div>
-
-    <div class="ai-vibe-list">
-      <div class="ai-vibe-item"><span class="num">1</span><span class="txt"><strong>AI helps turn ideas into code.</strong> I don't have to write everything from scratch.</span></div>
-      <div class="ai-vibe-item"><span class="num">2</span><span class="txt"><strong>AI can design structure.</strong> Before I start, it's good to see how it could look.</span></div>
-      <div class="ai-vibe-item"><span class="num">3</span><span class="txt"><strong>AI can find bugs in existing code.</strong> It often sees what I miss.</span></div>
-      <div class="ai-vibe-item"><span class="num">4</span><span class="txt"><strong>AI can produce a first version quickly.</strong> But it's a first version, not final.</span></div>
-      <div class="ai-vibe-item"><span class="num">5</span><span class="txt"><strong>A human must review, test and decide.</strong> Without that, vibe coding is chaos.</span></div>
-      <div class="ai-vibe-item"><span class="num">6</span><span class="txt"><strong>For sensitive things (finance, home, data) I insist on a rollback plan.</strong> If something breaks, I must be able to revert.</span></div>
-    </div>
+  <section id="examples" class="ai-section ai-brief">
+    <span id="why-not-working" class="ai-anchor"></span>
+    <div><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">05 /</span><h2>A brief that leads to a concrete result</h2></div><p>Context and a clear goal help most. This example resembles the task behind today's website update.</p></div>
+    <blockquote>Review the Finance page. It still shows the old bookkeeping demo, but I now use my own PT and Bookkeeping apps. Check what the website already says about them, update the text and translations, and verify links and previews. Prepare the changes locally; I will approve publication separately.</blockquote>
   </section>
 
-  <section id="how-apps-are-built">
-    <h2>How my apps really come to be</h2>
-    <p>
-      This isn't theory — it's the process I've actually run dozens of times on real changes to
-      my apps and this website. It's not "write a prompt and it's done". It's a loop where AI
-      does a lot of the work independently, but within clear boundaries and gates it must not skip.
-    </p>
-    <div class="ai-vibe-list">
-      <div class="ai-vibe-item"><span class="num">1</span><span class="txt"><strong>Idea / request.</strong> I state what I want and why — the goal, not the technical solution.</span></div>
-      <div class="ai-vibe-item"><span class="num">2</span><span class="txt"><strong>AI maps the real state.</strong> It reads the code, config and docs first — it doesn't guess how the app works.</span></div>
-      <div class="ai-vibe-item"><span class="num">3</span><span class="txt"><strong>Audit and gap analysis.</strong> What's true, what's stale, what's missing, what's a risk. No fix without an audit.</span></div>
-      <div class="ai-vibe-item"><span class="num">4</span><span class="txt"><strong>Safe implementation plan.</strong> What's in scope, what won't change, what the rollback is if something breaks.</span></div>
-      <div class="ai-vibe-item"><span class="num">5</span><span class="txt"><strong>RED.</strong> I reproduce the bug with a test that genuinely fails first — otherwise I can't tell if the fix actually fixed this.</span></div>
-      <div class="ai-vibe-item"><span class="num">6</span><span class="txt"><strong>Implementation.</strong> The smallest reasonable fix — not a rewrite of everything around it "because it could be nicer".</span></div>
-      <div class="ai-vibe-item"><span class="num">7</span><span class="txt"><strong>PASS.</strong> The same test that was RED must now pass.</span></div>
-      <div class="ai-vibe-item"><span class="num">8</span><span class="txt"><strong>Regression.</strong> Checking the fix didn't break anything else nearby.</span></div>
-      <div class="ai-vibe-item"><span class="num">9</span><span class="txt"><strong>Runtime test.</strong> The app actually runs and the behaviour is verified live, not just in a test.</span></div>
-      <div class="ai-vibe-item"><span class="num">10</span><span class="txt"><strong>Visual / E2E.</strong> AI walks the app like a user would — pages, dialogs, mobile and desktop.</span></div>
-      <div class="ai-vibe-item"><span class="num">11</span><span class="txt"><strong>Diagnostics.</strong> Checking the console, network requests, performance and accessibility.</span></div>
-      <div class="ai-vibe-item"><span class="num">12</span><span class="txt"><strong>Final report.</strong> What changed, why, what was tested, what passed, and what remains a watch item.</span></div>
-      <div class="ai-vibe-item"><span class="num">13</span><span class="txt"><strong>GO / NO-GO.</strong> Nothing ships without my explicit approval — never automatically.</span></div>
-    </div>
-    <div class="ai-callout-info">
-      This exact process is what a recent audit of this website went through: AI first verified
-      whether the version numbers shown on the site matched reality (they didn't), wrote tests that
-      provably catch that mismatch, fixed the root cause, and ran real browser and accessibility
-      checks before and after the fix — only with that evidence in hand did anything go live.
-    </div>
+  <section id="ai-vs-me" class="ai-section">
+    <span id="testing" class="ai-anchor"></span><span id="where-careful" class="ai-anchor"></span>
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">06 /</span><h2>What AI does and what I decide</h2></div>
+    <div class="ai-ownership"><article><h3>AI helps carry out the work</h3><ul><li>Reads provided evidence and finds inconsistencies.</li><li>Proposes solutions and edits code and text.</li><li>Runs relevant checks and summarizes the result.</li></ul></article><article><h3>I set the direction</h3><ul><li>Define the need, priorities and scope.</li><li>Decide whether the result works well in practice.</li><li>Approve publication and operational changes according to the task.</li></ul></article></div>
+    <p class="ai-data-note">A local app and a cloud AI model are different things. Recognizing a photo through Gemini, for example, involves sending that selected photo to an external service. What I provide to AI matters.</p>
   </section>
 
-  <section id="dev-environment">
-    <h2>My development environment</h2>
-    <p>
-      I split my work between two computers and a home NAS. It's not a strict necessity — it's a
-      way to keep "the app I actually use" separate from "the app currently being worked on".
-    </p>
-    <div class="ai-cards">
-      <div class="ai-card">
-        <h3><span class="icn">💻</span> Laptop</h3>
-        <ul>
-          <li>actual day-to-day use of finished apps</li>
-          <li>beta testing — this is where an app meets real situations</li>
-          <li>where real bug reports originate</li>
-        </ul>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🖥</span> Mini PC (development)</h3>
-        <ul>
-          <li>source code for all my projects</li>
-          <li>Claude Code — my main AI tool for working with code</li>
-          <li>testing, audits, builds, reports</li>
-          <li>a small, low-power machine — the AI runs in the cloud, the machine just orchestrates</li>
-        </ul>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🗄</span> Home NAS</h3>
-        <ul>
-          <li>shared storage between the laptop, mini PC and home network</li>
-          <li>distributing updates for apps that aren't publicly on GitHub</li>
-          <li>laptop backups</li>
-          <li>reachable from anywhere over a private encrypted network (Tailscale) — never exposed to the public internet</li>
-        </ul>
-      </div>
-    </div>
-    <div class="ai-flow" role="img" aria-label="Diagram: laptop, NAS and mini PC connected over a private network; the mini PC is where AI works">
-      <div class="node">Laptop<span class="sub">real app usage</span></div>
-      <div class="arrow">↔</div>
-      <div class="node">Home NAS<span class="sub">shared storage, backups, distribution</span></div>
-      <div class="arrow">↔</div>
-      <div class="node">Mini PC<span class="sub">Claude Code, development, tests</span></div>
-    </div>
-    <p style="font-size:.9rem;color:#5a6b80">
-      I'm deliberately not listing IP addresses, credentials or exact network paths here —
-      this is information about the principle, not a manual for my home network.
-    </p>
+  <section id="demo-vs-praxe" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">07 /</span><h2>An app in an evening? A demo is not a finished product.</h2></div>
+    <p class="ai-section-intro">AI can quickly create a screen, form or chart. “No manual coding” does not mean “no work, understanding or responsibility”. A short demonstration does not prove that the whole application is reliable.</p>
+    <div class="ai-ownership"><article class="ai-project"><h3>What a quick prototype does</h3><p>Shows the idea, design and a basic flow with sample data. Useful for choosing a direction, not automatically suitable for real financial records.</p></article><article class="ai-project"><h3>What a real application must do</h3><p>Handle correct calculations, failures, repeated imports, storage, updates and restoring backups. Verification continues during everyday use.</p></article></div>
+    <div class="ai-callout"><h3>In finance, the numbers must work—not just the design.</h3><p>PT and Účetní kniha need checks for fees, currencies, rounding and the meaning of returns. Transfers between my own accounts must not create false income. Importing the same statement twice must not duplicate transactions. A backup matters only if I can restore the data.</p><p><strong>AI helps produce the code. Tests and checked results must establish correctness—not the model saying “done”.</strong></p></div>
+    <details class="ai-details"><summary>How to assess courses and easy-development promises</summary><p>A paid course or Discord can provide structure and support. I look for debugging, version control, security and testing, not just a first successful demonstration. Video duration is not the time required to finish my project.</p><p>AI is not an automatic shortcut to understanding: an Anthropic experiment highlights the importance of actively asking for explanations and learning with AI. This is not a universal verdict against AI. <a href="https://www.anthropic.com/research/AI-assistance-coding-skills">Anthropic research</a></p></details>
   </section>
 
-  <section id="diagnostic-loop">
-    <h2>How a bug on another machine reaches me</h2>
-    <p>
-      When an app crashes or misbehaves on the laptop, I need to find out about it where I
-      actually work — on the mini PC, with AI at hand. The principle is simple:
-    </p>
-    <div class="ai-flow vertical" role="img" aria-label="Diagram: an error on the laptop travels via the NAS to the mini PC, where AI analyzes and fixes it">
-      <div class="node">Laptop<span class="sub">app crashes / misbehaves</span></div>
-      <div class="arrow">↓</div>
-      <div class="node">App diagnostics<span class="sub">log / error message</span></div>
-      <div class="arrow">↓</div>
-      <div class="node">Home NAS<span class="sub">shared storage between machines</span></div>
-      <div class="arrow">↓</div>
-      <div class="node">Mini PC + AI<span class="sub">analysis, reproduction, fix</span></div>
-    </div>
-    <p>
-      AI gets the error report, tries to reproduce it on the mini PC, finds the root cause and
-      proposes the smallest safe fix — following the same RED → FIX → PASS process as regular
-      development work. Nothing gets "fixed by guessing" without reproduction.
-    </p>
+  <section id="modely" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">08 /</span><h2>Which model fits which task?</h2></div>
+    <p class="ai-section-intro">A practical overview based on vendor descriptions, checked on 10 October 2026. Not an independent ranking or a list of models I personally use. Chat, development tools and API access may differ.</p>
+    <div class="ai-models"><article class="ai-project"><h3>OpenAI</h3><p><strong>GPT-6 Astra:</strong> difficult problems, deep analysis and complex design.</p><p><strong>GPT-6.1 Sol:</strong> complex work balancing time and cost.</p><p><strong>GPT-6 Luna:</strong> small scoped edits, triage and repeated tasks.</p><a href="https://learn.chatgpt.com/docs/model-selection">Official model selection ↗</a></article><article class="ai-project"><h3>Anthropic · Claude</h3><p><strong>Opus 5.5:</strong> demanding multi-step tasks and complex project work.</p><p><strong>Sonnet 5.5:</strong> a practical balance of capability, speed and cost for code and documents.</p><p><strong>Haiku 5.5:</strong> fast summaries, classification and smaller tasks.</p><p class="ai-source-links"><a href="https://www.anthropic.com/claude/opus">Opus</a> · <a href="https://www.anthropic.com/claude/sonnet">Sonnet</a> · <a href="https://www.anthropic.com/claude/haiku">Haiku</a></p></article><article class="ai-project"><h3>Google · Gemini</h3><p><strong>Pro:</strong> a family for demanding reasoning; the catalog includes Gemini 3.1 Pro Preview.</p><p><strong>Flash:</strong> fast work with text, code and multimodal inputs; the current catalog includes Gemini 3.8 Flash.</p><p><strong>Flash-Lite:</strong> a more economical family for high-volume simpler tasks. Preview is not the same as a stable release.</p><a href="https://ai.google.dev/gemini-api/docs/models">Official API catalog ↗</a></article></div>
+    <p class="ai-data-note"><strong>A model is not a tool.</strong> ChatGPT and Gemini are also applications; Codex and Claude Code are working environments with tool access. Results also depend on the brief, project context, permissions and verification. A stronger model or more reasoning does not guarantee correctness.</p>
   </section>
 
-  <section id="projects">
-    <h2>My projects where AI helps</h2>
-    <p>A few concrete examples where AI works in practice — and where I'm careful.</p>
-
-    <div class="ai-projects">
-
-      <article class="ai-project">
-        <h3>🌐 Personal website <span class="tag">live</span></h3>
-        <p>The page you're looking at now. AI helps keep text and structure tidy.</p>
-        <ul>
-          <li>page structure and navigation design</li>
-          <li>texts and SEO headings</li>
-          <li>"ordinary visitor" review</li>
-          <li>SVG illustrations and visual cards</li>
-          <li>typo and typography fixes</li>
-        </ul>
-      </article>
-
-      <article class="ai-project">
-        <h3>🏠 Smart Home <span class="tag">live</span></h3>
-        <p>A smart home built script-first on a home hub. Here AI mainly plays the role of auditor.</p>
-        <ul>
-          <li>scenario logic design</li>
-          <li>audit of existing scripts</li>
-          <li>pipeline and change documentation</li>
-          <li>safe change procedure with rollback plan</li>
-          <li>sandbox testing before deploy</li>
-        </ul>
-        <div class="ai-callout-disclaimer">
-          No internal details are published here — all changes go through sandbox testing
-          and explicit approval before touching production.
-        </div>
-      </article>
-
-      <article class="ai-project">
-        <h3>📒 Bookkeeping / personal finance <span class="tag">own tool</span></h3>
-        <p>
-          One example is my <strong>personal bookkeeping</strong> — a tool that helps gather
-          bank statements, payslips, investment overviews, insurance and deadlines into one view.
-          The goal isn't to replace an accountant or tax advisor, but to have better order in data
-          and see early what needs review.
-        </p>
-        <ul>
-          <li>automatic document sorting from email</li>
-          <li>dashboard with daily income / expense overview</li>
-          <li>investments and crypto overview across platforms</li>
-          <li>deadlines and reminders with status indicators</li>
-          <li>health check (reserve, debts, savings rate)</li>
-          <li>anonymized demo with sample data</li>
-          <li>local processing — data stays with me</li>
-        </ul>
-        <div class="ai-callout-disclaimer">
-          Not a banking app, accounting software for companies, investment advice or tax
-          consultancy. It's a personal tool and example of how AI can help with data tidiness.
-        </div>
-      </article>
-
-      <article class="ai-project">
-        <h3>✈ Travel and Italy <span class="tag">content</span></h3>
-        <p>YouTube channel and the Italy web section. AI helps with content prep, not with where to go.</p>
-        <ul>
-          <li>route and place ideas</li>
-          <li>texts and captions for the web</li>
-          <li>video content prep</li>
-          <li>translations and practical tips</li>
-          <li>typo and typography check</li>
-        </ul>
-      </article>
-
-      <article class="ai-project">
-        <h3>🧰 My apps <span class="tag">own tools</span></h3>
-        <p>
-          Custom apps I've built (or am building) over the past year.
-          AI helps from idea through architecture, code, tests and documentation.
-          Nothing in the cloud — everything runs locally on my machine or a small home server.
-          The apps page always has the current full list — this is just a selection.
-        </p>
-        <ul>
-          <li><strong>BudLine</strong> — shifts, rosters and payroll documents for a bus driver + payslip checking</li>
-          <li><strong>Italia Travel Planner</strong> — Italy trip planner with ZTL warnings and camper mode</li>
-          <li><strong>Ledger</strong> — home finance across multiple platforms + automatic Gmail invoice intake</li>
-          <li><strong>Portfolio Tracker</strong> — investment portfolio tracking across brokers (positions, dividends, Czech tax, performance) + fair-value estimates and an AI analyst</li>
-          <li><strong>Meal Planner</strong> — weekly menu with calorie target + shopping list</li>
-          <li><strong>Collection</strong> — coin and stamp collection tracker</li>
-          <li><strong>Config Center</strong> — web control panel for the smart home</li>
-          <li><strong>Home wall panel</strong> — RPi kiosk to control lights, audio, scenes with one thumb</li>
-        </ul>
-        <p style="margin-top:1rem"><a href="aplikace/" class="btn btn-primary">Open apps overview →</a></p>
-        <div class="ai-callout-disclaimer">
-          None of these are commercial products — they are personal tools with sample screenshots.
-          Real data is blurred or replaced with test values.
-        </div>
-      </article>
-
-      <article class="ai-project">
-        <h3>🗂 Cowork &amp; morning overview <span class="tag">daily routine</span></h3>
-        <p>
-          A work environment that connects laptop, PC and home server. The goal is to have a ready
-          morning overview every day — what happened overnight, what's on today's plate, what needs
-          attention. AI helps keep the data flow tidy so morning doesn't start by digging through
-          a full inbox.
-        </p>
-        <ul>
-          <li><strong>Automatic email fetching</strong> every hour — the home server checks the inbox even when the laptop is closed</li>
-          <li><strong>Document sorting</strong> — invoices, statements and contracts land in the right folders without manual moving</li>
-          <li><strong>Morning overview</strong> — calendar, mail processed overnight, weather, system status in one place</li>
-          <li><strong>Cross-device sync</strong> — work from laptop, PC or tablet without USB-copying files</li>
-          <li><strong>Backup &amp; versioning</strong> — every change has history, nothing gets lost</li>
-        </ul>
-        <div class="ai-callout-disclaimer">
-          No email contents, passwords or internal paths are mentioned here. Everything runs
-          locally within my network and encrypted storage — AI is mainly in the role of pipeline
-          supervisor, not content reader.
-        </div>
-      </article>
-
-    </div>
+  <section id="zdarma-placene" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">09 /</span><h2>Is free AI enough? It depends on the work.</h2></div>
+    <p class="ai-section-intro">Free does not automatically mean poor, and paid does not mean correct. Differences often concern available models, usage capacity and tools—not just one answer’s quality.</p>
+    <div class="ai-ownership"><article class="ai-project"><h3>Free: a useful starting point</h3><p>Concept explanations, translations, short texts, ideas and small prototypes. A capable model may be available with lower limits. If I can finish the task and verify it, a “Pro” label alone is no reason to pay.</p></article><article class="ai-project"><h3>Paid: room for sustained work</h3><p>May be useful for regular development, long analyses and many correction cycles. Depending on the plan, it adds higher limits, more models or development tools. A subscription does not generally mean unlimited usage.</p></article></div>
+    <div class="ai-callout"><h3>A chat subscription ≠ running AI in my application</h3><p>An AI analyst or photo recognition through an API has its own terms and billing. Do not assume a subscription pays for API calls; some plans may include credits. Hosting, storage and other data services may cost extra.</p><p><strong>Try my actual task first. Pay for a needed capability or a specific limit—not a promise of perfect answers.</strong></p></div>
+    <p class="ai-data-note">Prices, availability and limits vary by product, region and account. Current terms: <a href="https://learn.chatgpt.com/docs/pricing">OpenAI</a> · <a href="https://claude.com/pricing">Claude</a> · <a href="https://support.google.com/gemini/answer/16275805">Gemini</a> · <a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini API</a>. Payment alone does not guarantee privacy; I check the specific terms before providing sensitive data.</p>
   </section>
 
-  <section id="why-not-working">
-    <h2>Why AI often doesn't work for people</h2>
-    <p>It's not always AI's fault. Mostly it's about how you talk to it.</p>
-    <img decoding="async" src="../assets/img/ai/ai-prompt-before-after.svg" alt="Comparison of a generic AI prompt vs. a more concrete one with context." class="ai-illust" loading="lazy" width="800" height="280">
-
-    <div class="ai-reason">
-      <h3>1. They ask too generally</h3>
-      <p>"Write me something about Italy" leads nowhere. AI doesn't know who it's writing for, how
-      long, or what interests you. The more specific the question, the better the answer.</p>
-    </div>
-    <div class="ai-reason">
-      <h3>2. They don't give context</h3>
-      <p>AI doesn't know who you are, what you do, who it's for, or what the result should be.
-      A few sentences of context solve most problems.</p>
-    </div>
-    <div class="ai-reason">
-      <h3>3. They want a finished result without review</h3>
-      <p>AI can help, but the result needs to be read — especially for finance, health, law,
-      tech and smart homes.</p>
-    </div>
-    <div class="ai-reason">
-      <h3>4. They don't specify output format</h3>
-      <p>There's a difference between wanting a table, an article, a prompt, a checklist, a plan
-      or a tech procedure. If you don't say, AI guesses.</p>
-    </div>
-    <div class="ai-reason">
-      <h3>5. They don't continue the dialogue</h3>
-      <p>AI works best as a conversation. The first answer is often just the start — a follow-up
-      "now shorten it / focus on X / add examples" massively raises quality.</p>
-    </div>
-    <div class="ai-reason">
-      <h3>6. They believe everything</h3>
-      <p>AI can sound confident even when wrong. So facts need verification — especially numbers,
-      dates, names and quotes.</p>
-    </div>
+  <section id="skills-mcp" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">10 /</span><h2>Skills, plugins and MCP: workflows and access</h2></div>
+    <p class="ai-section-intro">These components can simplify work, but each serves a different purpose. A first application does not need every integration.</p>
+    <dl class="ai-glossary"><div><dt>Skill</dt><dd>Instructions for repeatable work, optionally with scripts and references. For example, checking imports or running tests. Not additional model training.</dd></div><div><dt>Plugin</dt><dd>An installable capability package. May contain skills, tools and MCP connections. Its origin and contents matter.</dd></div><div><dt>Connector</dt><dd>A connection to a service or account. Before connecting, I check which data it exposes and whether it can also write.</dd></div><div><dt>MCP server</dt><dd>Exposes tools and data through a common interface. Can run locally or remotely. MCP is not a security certificate.</dd></div></dl>
+    <p class="ai-data-note">My practical approach: choose a trusted source, read instructions, grant the minimum permissions and try a concrete task with test data. Separate writing, deleting and publishing from reading. More add-ons do not automatically improve results. <a href="https://developers.openai.com/plugins/concepts/plugins">Plugin documentation</a> · <a href="https://modelcontextprotocol.io/docs/draft/tutorials/security/security_best_practices">MCP security</a></p>
   </section>
 
-  <section>
-    <h2>How to ask AI better</h2>
-    <p>I have a simple formula that works for 90% of cases.</p>
-    <img decoding="async" src="../assets/img/ai/ai-prompt-formula.svg" alt="Diagram of the better-AI-prompt formula: role, goal, context, constraints, format." class="ai-illust" loading="lazy" width="800" height="200">
-
-    <div class="ai-pair">
-      <div class="good">
-        <div class="lbl">Example — web</div>
-        <code>You are an experienced personal website editor. Help me write a page about traveling to Italy for ordinary readers. The text should be human, practical, free of jargon. Output as a structure of headings, paragraphs and CTA buttons.</code>
-      </div>
-      <div class="good">
-        <div class="lbl">Example — smart home</div>
-        <code>You are a senior smart home architect. First do an audit, change nothing without my GO. Find risks, propose a safe procedure, prepare rollback and only then recommend the next step.</code>
-      </div>
-    </div>
+  <section class="ai-closing">
+    <h2>The best result is a tool I actually use.</h2><p>AI helps me keep developing my own solutions, from a small idea or fix to an app that fits into my day.</p><a class="ai-button" href="aplikace/">Explore my apps <span aria-hidden="true">↗</span></a>
   </section>
-
-  <section id="where-careful">
-    <h2>Where I'm careful</h2>
-    <p>
-      AI can't vouch for truth. It doesn't always see the current state of the world unless it has
-      data access. It doesn't know your files unless you give them to it. It can confuse links.
-      For important decisions, human review is needed.
-    </p>
-    <img decoding="async" src="../assets/img/ai/ai-safety-checklist.svg" alt="Checklist of areas where AI output needs verification: facts, money, health and law, personal data, technical changes." class="ai-illust" loading="lazy" width="800" height="240">
-
-    <div class="ai-vibe-list" style="margin-top:1rem">
-      <div class="ai-vibe-item"><span class="num">!</span><span class="txt"><strong>Vibe coding can create working but unsafe code.</strong> First versions often miss edge cases and security.</span></div>
-      <div class="ai-vibe-item"><span class="num">!</span><span class="txt"><strong>AI can overlook security flaws.</strong> Especially around auth, encryption and permissions.</span></div>
-      <div class="ai-vibe-item"><span class="num">!</span><span class="txt"><strong>AI can accidentally suggest exposing private data.</strong> Tokens, keys, emails, paths — review everything before commit.</span></div>
-      <div class="ai-vibe-item"><span class="num">!</span><span class="txt"><strong>For finance, taxes, health, law and electricity, human review is mandatory.</strong> AI is a tool, not a responsible expert.</span></div>
-      <div class="ai-vibe-item"><span class="num">!</span><span class="txt"><strong>For the web I check what goes public.</strong> No internal URLs, no tokens, no sensitive screenshots.</span></div>
-    </div>
-
-    <div class="ai-callout-warn">
-      <strong>The biggest mistake isn't using AI. The biggest mistake is not checking what you let through to the world.</strong><br>
-      Be especially careful with: finance · health · law · security · electricity · home automation · personal data.
-    </div>
-  </section>
-
-  <section id="examples">
-    <h2>Practical prompt examples</h2>
-    <p>5 templates you can try right now.</p>
-    <div class="ai-prompts">
-      <div class="ai-prompt-box">
-        <h3>📝 For text</h3>
-        <code>Rewrite this text to be understandable for an ordinary website visitor. Keep the meaning, shorten long sentences and suggest a better heading.</code>
-      </div>
-      <div class="ai-prompt-box">
-        <h3>✈ For travel</h3>
-        <code>Plan a one-day itinerary in Italy for someone who wants to see interesting places but doesn't want to rush from monument to monument.</code>
-      </div>
-      <div class="ai-prompt-box">
-        <h3>💻 For web</h3>
-        <code>Review this page as an ordinary visitor. Find unclear parts, weak headings, weak CTAs and parts that feel untrustworthy.</code>
-      </div>
-      <div class="ai-prompt-box">
-        <h3>🏠 For smart home</h3>
-        <code>First do an audit. Change nothing. Find risks, dependencies and the rollback plan. Only then propose a safe procedure.</code>
-      </div>
-      <div class="ai-prompt-box">
-        <h3>🔍 For AI answer review</h3>
-        <code>Review your own answer. Tell me what's certain, what's an estimate, and what needs verification.</code>
-      </div>
-    </div>
-  </section>
-
-  <section id="testing">
-    <h2>How I know an app actually works</h2>
-    <p>
-      Green tests aren't proof an app is fine. So no change counts as done here until it
-      passes through all of these steps:
-    </p>
-    <div class="ai-flow" role="img" aria-label="Diagram: RED, FIX, PASS, regression, runtime test, visual test">
-      <div class="node">RED<span class="sub">bug reproduced by a test</span></div>
-      <div class="arrow">→</div>
-      <div class="node">FIX<span class="sub">smallest safe fix</span></div>
-      <div class="arrow">→</div>
-      <div class="node">PASS<span class="sub">the test now passes</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Regression<span class="sub">nothing else broke</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Runtime + visual<span class="sub">actually run it, walk it like a user</span></div>
-    </div>
-    <p>
-      Before anything ships, it also has to clear a completion gate — an app is either
-      <strong>GO</strong> (done and tested), <strong>PASS_WITH_WATCH</strong> (working, but with a
-      small thing to keep an eye on), or <strong>BLOCKED</strong> (can't ship until something is
-      resolved). I take the difference between "the implementation is done" and "the app is
-      allowed to ship" seriously — they're two different things.
-    </p>
-    <p>
-      For apps that crunch numbers (finance, portfolio), one more rule applies: if the app
-      doesn't have enough reliable data for a confident conclusion, <strong>it must not make up
-      a result</strong>. It should show "unavailable" or "needs review" rather than a made-up
-      number. And totals and subtotals must reconcile mathematically — it's not enough that a
-      result "somehow came out right".
-    </p>
-    <div class="ai-callout-warn">
-      Real data (bank statements, invoices, investment records) is never copied into development
-      or into AI in its final form — apps are built and tested on test/anonymized data, real data
-      stays out of the source code.
-    </div>
-  </section>
-
-  <section id="ai-vs-me">
-    <h2>What AI does and what I decide</h2>
-    <p>
-      AI works quite independently — but only within limits I set. Decisions with real
-      consequences (deploy, delete, anything irreversible) are always mine.
-    </p>
-    <div class="ai-split">
-      <div class="col">
-        <h3>AI does on its own</h3>
-        <ul>
-          <li>explores the app's code and documentation</li>
-          <li>proposes the audit and finds discrepancies</li>
-          <li>writes and runs tests (both RED and PASS)</li>
-          <li>implements the fix within the agreed scope</li>
-          <li>walks the app like a user (visual/E2E)</li>
-          <li>writes up what changed and why</li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3>I decide</h3>
-        <ul>
-          <li>the brief and priority — what to fix and why</li>
-          <li>approving the implementation plan and its scope</li>
-          <li>the final GO/NO-GO before deployment</li>
-          <li>what's sensitive and must never leave my machine</li>
-          <li>what becomes public content</li>
-          <li>any touch of production/real data</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>My approach</h2>
-    <p>
-      I use AI gradually. First the idea, then the design, then the review, then the test. For
-      important things, I want a report, rollback plan and clear confirmation before anything is
-      deployed. Thanks to that, AI doesn't become chaos, it becomes a tool that helps keep order.
-    </p>
-    <img decoding="async" src="../assets/img/ai/ai-workflow.svg" alt="Workflow for safe AI use: from idea through review and test to deploy." class="ai-illust" loading="lazy" width="800" height="160">
-    <div class="ai-callout-info">
-      I use this approach for smart home, web and finance. Less surprise, more control. AI helps
-      me do each step faster, but I still make the decisions myself.
-    </div>
-  </section>
-
-  <section class="ai-cta-final">
-    <p>
-      <strong>AI isn't just for programmers.</strong> It can help anyone who wants to write better,
-      plan, learn, find errors or organize information. The most important thing isn't knowing all
-      the tools. The most important thing is asking well.
-    </p>
-    <div class="ai-cta-row" style="justify-content:center">
-      <a href="smart-home/" class="btn">🏠 My Smart Home projects</a>
-      <a href="cestovani/italie/" class="btn ghost">✈ Travel to Italy</a>
-      <a href="finance/" class="btn ghost">📊 Finance and records</a>
-    </div>
-  </section>
-
 </div>
 </main>
 

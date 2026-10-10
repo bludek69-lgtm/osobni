@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finance & investice — Luděk</title>
-  <meta name="description" content="Osobní pohled na finance — jak si Luděk vede vlastní přehled o penězích, investicích a účetnictví bez cloudu a bez cizích appek.">
+  <meta name="description" content="Vlastní Portfolio Tracker (PT) a Účetní kniha: jak je používám pro přehled investic a osobních financí. Funkce, náhledy a historie projektu.">
   <link rel="canonical" href="https://cestovatel69.cz/finance/">
   <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/finance/">
   <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/finance/">
   <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/finance/">
   <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/finance/">
   <meta property="og:title" content="Finance &amp; investice — Luděk">
-  <meta property="og:description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <meta property="og:description" content="Vlastní Portfolio Tracker (PT) a Účetní kniha: jak je používám pro přehled investic a osobních financí. Funkce, náhledy a historie projektu.">
   <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
   <meta property="og:url" content="https://cestovatel69.cz/finance/">
   <meta property="og:type" content="website">
@@ -49,12 +49,8 @@
   <!-- ──────── HERO ──────── -->
   <section class="hero">
     <span class="hero-accent">Finance &amp; investice</span>
-    <h1>Osobní pohled na finance</h1>
-    <p class="hero-sub">
-      Finance mě baví, protože chci rozumět tomu, kam dávám peníze. Investování není
-      sprint — víc mě zajímá pochopit principy než honit krátkodobé spekulace.
-      Tahle stránka je <strong>vzdělávací rozcestník</strong>, ne finanční poradenství.
-    </p>
+    <h1>Finance s vlastními aplikacemi</h1>
+    <p class="hero-sub">Pro přehled o financích používám vlastní aplikace: <strong>Portfolio Tracker (PT)</strong> pro investiční portfolio a <strong>Účetní knihu</strong> pro celkovou finanční evidenci. Stavím si je podle toho, co potřebuji při každodenní práci s daty. Tady ukazuji, jak se doplňují, a sdílím svůj přístup k financím.</p>
     <p class="disclaimer" style="margin-top:1.2rem; padding:0.9rem 1.1rem; border-left:4px solid #d49317; background:rgba(212,147,23,0.08); font-size:0.95rem;">
       <strong>⚠️ Disclaimer:</strong> Tato stránka je osobní pohled a technické demo.
       Nejde o investiční doporučení. Veškerá čísla v příkladech jsou modelová a slouží
@@ -62,10 +58,33 @@
     </p>
   </section>
 
+  <section aria-labelledby="fin-apps">
+    <h2 id="fin-apps">Moje finanční aplikace</h2>
+    <div class="cards-grid">
+      <article class="card">
+        <div class="card-icon" aria-hidden="true">📊</div>
+        <h3>Portfolio Tracker (PT)</h3>
+        <p><strong>Investiční portfolio v čase</strong></p>
+        <p>PT mi slouží k přehledu o investicích. Pracuje s transakcemi, pozicemi, dividendami, poplatky a výkonností. Nabízí importy výpisů, analytické pohledy a podklady pro kontrolu portfolia.</p>
+        <a class="tool-cta" href="../aplikace/portfolio-tracker.html">Detail aplikace a náhledy →</a>
+      </article>
+      <article class="card">
+        <div class="card-icon" aria-hidden="true">📒</div>
+        <h3>Účetní kniha</h3>
+        <p><strong>Celkový přehled o financích</strong></p>
+        <p>Účetní knihu používám pro širší evidenci. Spojuje doklady a transakce s přehledem příjmů, výdajů, majetku a závazků. Důležitá je pro mě dohledatelnost: z čeho konkrétní číslo vzniklo.</p>
+        <a class="tool-cta" href="../aplikace/ucetni-kniha.html">Detail aplikace a náhledy →</a>
+      </article>
+    </div>
+    <h3>Jak je používám společně</h3>
+    <p>Účetní kniha odpovídá na otázku, jak vypadají finance jako celek. PT jde více do hloubky investičního portfolia: od jednotlivých transakcí po jeho vývoj v čase.</p>
+    <p>Na webu představuji funkce a ukázky aplikací. Soukromé finanční údaje zůstávají mimo veřejnou prezentaci.</p>
+  </section>
+
   <!-- Phase 2 intro box -->
   <section>
     <div class="page-intro">
-      <p><strong>Pro koho je tato stránka:</strong> kdo se chce dlouhodobě orientovat ve vlastních financích — ETF, akcie, krypto, zlato — a chce to bez tlaku „nakup tohle hned teď". 11 kapitol a interaktivní účetní kniha jako demo.</p>
+      <p>Vlastní aplikace, jejich role a odkazy na podrobné náhledy. Níže také můj přístup k financím a historická ukázka původního projektu.</p>
       <p><strong>Co tady nenajdeš:</strong> konkrétní investiční tipy, čísla mého portfolia, affiliate odkazy. Žádné „toto bude další Bitcoin". Je to vzdělávací rozcestník, ne signál.</p>
     </div>
   </section>
@@ -74,6 +93,7 @@
   <nav class="page-toc-sticky" aria-label="Skok na sekci">
     <span class="toc-label">Skok na:</span>
     <ul>
+      <li><a href="#fin-apps">Moje finanční aplikace</a></li>
       <li><a href="#fin-1-pristup">1. Přístup</a></li>
       <li><a href="#fin-2-mapa">2. Mapa</a></li>
       <li><a href="#fin-3-nastroje">3. Nástroje</a></li>
@@ -85,7 +105,7 @@
       <li><a href="#fin-9-bezpecnost">9. Bezpečnost</a></li>
       <li><a href="#fin-10-rutina">10. Měsíční rutina</a></li>
       <li><a href="#fin-11-audit">11. Roční audit</a></li>
-      <li><a href="#fin-12-demo">🧪 Účetní kniha demo</a></li>
+      <li><a href="#fin-12-demo">Historické HTML demo</a></li>
     </ul>
   </nav>
 
@@ -211,11 +231,8 @@
 
   <!-- ──────── 4. NÁSTROJE PRO INVESTORA ──────── -->
   <section>
-    <h2 id="fin-3-nastroje">3. Nástroje pro investora</h2>
-    <p>
-      Žádné z těchto názvů nejsou doporučení — jen se s nimi v praxi nejčastěji potkávám.
-      Pro každý nástroj je krátce, k čemu slouží, pro koho je vhodný a na co si dát pozor.
-    </p>
+    <h2 id="fin-3-nastroje">3. Další nástroje a zdroje</h2>
+    <p>Tady jsou příklady nástrojů třetích stran. Pro vlastní evidenci používám PT a Účetní knihu popsané výše.</p>
 
     <div class="tool-group">
       <h3>📊 Evidence portfolia</h3>
@@ -617,8 +634,8 @@
   <section>
     <h2 id="fin-9-bezpecnost">9. Bezpečnostní minimum investora</h2>
     <p>
-      Většina ztrát v digitálním investování není kvůli trhu — je kvůli ztracenému přístupu,
-      phishingu nebo SIM swapu. Můj minimální checklist:
+      Vedle tržního rizika řeším také ochranu přístupu a dokladů.
+      Můj minimální checklist:
     </p>
     <ul class="checklist">
       <li>Silné, unikátní heslo na každou službu</li>
@@ -645,7 +662,7 @@
     </p>
     <ul class="checklist compact">
       <li>Stáhnout exporty z brokerů a burz</li>
-      <li>Zapsat nákupy a prodeje do tabulky</li>
+      <li>Načíst a zkontrolovat transakce ve vlastních aplikacích — PT a Účetní knize</li>
       <li>Aktualizovat ceny v portfoliu</li>
       <li>Zkontrolovat rozložení tříd aktiv</li>
       <li>Zkontrolovat hotovostní rezervu</li>
@@ -698,7 +715,7 @@
   <!-- ──────── Section heading: technické demo ──────── -->
   <section class="prose">
     <h2 style="margin-top:1.5rem; border-bottom:1px solid var(--border, #2a2f3a); padding-bottom:0.4rem;">🧪 Technické demo a evidence</h2>
-    <p style="opacity:0.92; margin-top:-0.2rem;">Setup, nástroje a interaktivní účetní kniha — bez konkrétních soukromých čísel.</p>
+    <p style="opacity:0.92; margin-top:-0.2rem;">Historická fotografie pracovního místa a původní HTML demo projektu.</p>
   </section>
 
   <!-- ──────── INVESTIČNÍ SETUP (zachováno) ──────── -->
@@ -719,71 +736,14 @@
   </section>
 
   <!-- ──────── DEMO ÚČETNÍ KNIHA ──────── -->
-  <section>
-    <h2 id="fin-12-demo">🧪 Interaktivní účetní kniha — DEMO</h2>
-
-    <!-- Bezpečnostní banner -->
-    <div class="callout warn" style="font-size:1rem;">
-      🔒 <strong>Toto je veřejné demo s fiktivními daty.</strong>
-      Neobsahuje žádné skutečné bankovní, brokerské, krypto ani daňové údaje.
-      Všechna čísla, jména a transakce jsou deterministicky vygenerované
-      ukázkovým skriptem (seed=42) a nemají vazbu na realitu.
-    </div>
-
-    <p>
-      Vlastní evidence spojuje různé finanční zdroje do jednoho přehledu — banku, brokera, krypto
-      a daňové podklady. Místo skákání mezi pěti aplikacemi vidím KPI, cashflow, portfolio
-      a daňové prahy v jedné HTML stránce. <strong>Ve veřejné ukázce jsou použita pouze anonymní demo data.</strong>
-    </p>
-
-    <div class="cards-grid" style="margin-top:1.2rem;">
-      <a href="demo/Ucetni_kniha_v4.html" class="card" style="text-decoration:none; color:inherit; border-left:4px solid var(--accent);">
-        <div class="card-icon">🔍</div>
-        <h3>Otevřít interaktivní demo →</h3>
-        <p>
-          25+ stránek (KPI dashboard, cashflow, portfolio, daňové prahy, lock-in tracker…).
-          Single-file HTML, ~390 KB, vanilla JS + Chart.js. Otevře se v novém okně.
-        </p>
-        <p style="font-size:0.85rem; color:var(--text-mut); margin-top:0.6rem;">
-          🔒 Modelová data — nejde o skutečné finance.
-        </p>
-      </a>
-    </div>
-
-    <h3 style="margin-top:2rem;">Jak to funguje pod kapotou (obecně)</h3>
-    <p>
-      Architektura je úmyslně jednoduchá a popisuju ji jen <strong>obecně</strong> — bez detailů
-      o reálné domácí síti, repozitářích nebo bezpečnostních klíčích:
-    </p>
-    <ol>
-      <li>
-        <strong>Master tabulka</strong> agreguje různé zdroje (bankovní výpisy, brokerské
-        statementy, krypto exporty) do jednoho formátu.
-      </li>
-      <li>
-        <strong>Skript připraví JSON snapshot</strong> s modelovými KPI per období,
-        net worth time series, breakdown podle třídy aktiv, měny a regionu.
-      </li>
-      <li>
-        <strong>JSON je embedded přímo do HTML</strong> — single-file deployment.
-        Veřejně publikovaná verze má vždy <em>jen ukázková data</em>.
-      </li>
-      <li>
-        <strong>Auto-verify skript</strong> hlídá platnost dat (rolling periody, lock-in dny,
-        blížící se daňové termíny).
-      </li>
-      <li>
-        <strong>Volitelně lokální server</strong> přidává tlačítka „obnovit ceny" —
-        např. <a href="https://www.coingecko.com/" target="_blank" rel="noopener noreferrer">CoinGecko</a> pro krypto, veřejné zdroje pro akcie.
-      </li>
-    </ol>
-
-    <div class="callout">
-      🛡️ <strong>Privacy first.</strong> Reálná data zůstávají soukromá.
-      Veřejně sdílím <em>jen demo s fiktivními čísly</em>. Bezpečnostní detaily
-      vlastního systému (sítě, klíče, repozitáře) na webu záměrně neuvádím —
-      to nepatří do veřejné prezentace, i kdyby vypadaly cool.
-    </div>
+  <section class="prose">
+    <h2 id="fin-12-demo">Historické HTML demo</h2>
+    <p>Tato ukázka zachycuje dřívější podobu projektu. Není to současná Účetní kniha, kterou používám. Demo obsahuje modelová data; jeho výpočty a daňové informace nejsou ověřením aktuálních pravidel.</p>
+    <p><a href="../aplikace/ucetni-kniha.html">Detail aplikace a náhledy: Účetní kniha →</a></p>
+    <details>
+      <summary>Otevřít historické demo</summary>
+      <p><a href="demo/Ucetni_kniha_v4.html" lang="cs">Otevřít historické demo (CS) →</a></p>
+    </details>
   </section>
 
   <!-- ──────── DISCLAIMER (rozšířený) ──────── -->

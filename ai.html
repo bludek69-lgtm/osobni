@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI v praxi — jak používám umělou inteligenci | Luděk Budínský</title>
-  <meta name="description" content="AI v praxi — jak Luděk používá umělou inteligenci u kódu, projektů i běžného života, s konkrétními příklady a nástroji.">
+  <meta name="description" content="Vyvíjím vlastní aplikace, udržuji web a ladím chytrou domácnost. AI mi pomáhá přejít od „tohle potřebuji“ ke konkrétnímu řešení: přečíst projekt, napsat změnu, najít chybu a ověřit výsledek.">
   <link rel="canonical" href="https://cestovatel69.cz/ai.html">
   <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/ai.html">
   <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/ai.html">
   <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/ai.html">
   <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/ai.html">
   <meta property="og:title" content="AI v praxi — jak používám umělou inteligenci | Luděk Budínský">
-  <meta property="og:description" content="Osobní web Luďka — řidič, cestovatel, milovník Itálie, technologií a chytré domácnosti.">
+  <meta property="og:description" content="Vyvíjím vlastní aplikace, udržuji web a ladím chytrou domácnost. AI mi pomáhá přejít od „tohle potřebuji“ ke konkrétnímu řešení: přečíst projekt, napsat změnu, najít chybu a ověřit výsledek.">
   <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
   <meta property="og:url" content="https://cestovatel69.cz/ai.html">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/ai.css?v=2026-09-01">
+  <link rel="stylesheet" href="assets/css/ai.css?v=2026-10-10-2">
   <link rel="icon" href="/favicon.ico">
 </head>
 <body class="theme-home">
@@ -28,7 +28,7 @@
       Luděk
     </a>
     <div class="lang-switcher" aria-label="Jazyk">
-      <a href="./" hreflang="cs" aria-current="page" title="Česky">CS</a>
+      <a href="ai.html" hreflang="cs" aria-current="page" title="Česky">CS</a>
       <a href="en/ai.html" hreflang="en" title="English">EN</a>
       <a href="it/ai.html" hreflang="it" title="Italiano">IT</a>
     </div>
@@ -48,699 +48,115 @@
 
 <main id="main">
 <div class="ai-page">
-
-  <!-- 1. HERO -->
-  <section class="ai-hero">
-    <div>
-      <h1>AI v praxi: jak mi pomáhá v životě, práci a projektech</h1>
-      <p class="perex">
-        Umělá inteligence pro mě není kouzelná krabička ani náhrada myšlení.
-        Je to parťák, který mi pomáhá psát, plánovat, hledat chyby, tvořit weby,
-        stavět chytrou domácnost a lépe se orientovat ve složitých tématech.
-      </p>
-      <div class="ai-cta-row">
-        <a href="#projekty" class="btn">Moje projekty s AI</a>
-        <a href="#vibe-coding" class="btn ghost">Vibe coding</a>
-        <a href="#proc-nefunguje" class="btn ghost">Proč vám AI nefunguje</a>
-      </div>
+  <section class="ai-hero" aria-labelledby="ai-title">
+    <div class="ai-hero-copy">
+      <p class="ai-eyebrow">Můj pracovní postup · AI v praxi</p>
+      <h1 id="ai-title">Nápad je můj.<br><span>S AI ho dostávám do praxe.</span></h1>
+      <p class="ai-lead">Vyvíjím vlastní aplikace, udržuji web a ladím chytrou domácnost. AI mi pomáhá přejít od „tohle potřebuji“ ke konkrétnímu řešení: přečíst projekt, napsat změnu, najít chybu a ověřit výsledek.</p>
+      <div class="ai-cta-row"><a class="ai-button" href="#jak-vznika">Jak pracuji <span aria-hidden="true">↗</span></a><a class="ai-button ai-button-secondary" href="#projekty">Konkrétní projekty</a></div>
+      <p class="ai-updated">Aktualizováno v říjnu 2026</p>
     </div>
-    <div>
-      <img decoding="async" src="assets/img/ai/ai-hero.svg" alt="Ilustrace praktického používání AI pro cestování, web, chytrou domácnost, finance a texty." width="800" height="360">
-    </div>
+    <aside class="ai-workbench" aria-label="Od běžné potřeby k vlastní aplikaci">
+      <p class="ai-workbench-heading">Od běžné potřeby k vlastní aplikaci</p>
+      <ol><li><span class="ai-step-index">01</span><div><strong>Popíšu problém</strong><p>Co potřebuji a jak poznám výsledek.</p></div></li>
+<li><span class="ai-step-index">02</span><div><strong>AI pracuje v projektu</strong><p>Projde soubory, navrhne a upraví řešení.</p></div></li>
+<li><span class="ai-step-index">03</span><div><strong>Ověříme chování</strong><p>Testy, náhled a skutečné používání.</p></div></li></ol>
+      <div class="ai-workbench-bottom"><span>ChatGPT</span><span>Codex</span><span>Claude Code</span></div>
+    </aside>
   </section>
 
-  <!-- 2. Co pro mě AI znamená -->
-  <section>
-    <h2>Co pro mě AI znamená</h2>
-    <p>
-      AI beru jako chytrý pracovní nástroj. Něco jako kombinaci zápisníku, konzultanta, korektora,
-      programátora a protivného kolegy, který se pořád ptá, jestli to myslím vážně. Když se používá
-      dobře, šetří čas a pomáhá dělat věci systematičtěji. Když se používá špatně, jen rychle vyrábí
-      zmatek.
-    </p>
+  <nav class="ai-jump" aria-label="Jak pracuji">
+    <a href="#rozdeleni-nastroju">Nástroje a jejich role</a><a href="#jak-vznika">Jak pracuji</a><a href="#projekty">Konkrétní projekty</a><a href="#priklady">Zadání, které vede ke konkrétnímu výsledku</a>
+    <a href="#demo-vs-praxe">Demo vs. praxe</a><a href="#modely">Modely</a><a href="#zdarma-placene">Zdarma vs. placené</a><a href="#skills-mcp">Skills a MCP</a>
+  </nav>
+
+  <section id="rozdeleni-nastroju" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">01 /</span><h2>Nástroje a jejich role</h2></div>
+    <p class="ai-section-intro">Role se překrývají. Vybírám podle úkolu a přístupu k projektu, ne podle pevného rozdělení „jeden jen audituje, druhý jen píše kód“.</p>
+    <div class="ai-tools"><article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">↗</span><h3>ChatGPT</h3><p class="ai-tool-role">Přemýšlení a zadání</p><p>Rozebírám nápady, požadavky a reporty. Pomáhá mi pojmenovat problém, navrhnout další krok a připravit srozumitelné zadání.</p></article>
+<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">⌘</span><h3>Codex</h3><p class="ai-tool-role">Vývoj, audit a ověření</p><p>Práce přímo se soubory: kontrola skutečného stavu, implementace, úpravy webu, testy a náhled v prohlížeči. Tak vzniká i tato aktualizace.</p></article>
+<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">✳</span><h3>Claude / Claude Code</h3><p class="ai-tool-role">Další partner nad projektem</p><p>Používám ho pro práci s kódem, opravy, dokumentaci a rozbor projektů. Výstupy můžu porovnat s jiným nástrojem a navázat dalším zadáním.</p></article>
+<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">◇</span><h3>Gemini</h3><p class="ai-tool-role">AI uvnitř některých aplikací</p><p>V projektu Sbírka pomáhá číst a rozpoznávat předmět z fotografie. PT nabízí volitelného AI analytika. Konkrétní použití záleží na aplikaci.</p></article></div>
   </section>
 
-  <!-- 3. Jaké AI používám -->
-  <section>
-    <h2>Jaké AI používám</h2>
-    <p>Žádný nástroj není „nejlepší“ paušálně. Každý se hodí na jiné věci.</p>
-    <img decoding="async" src="assets/img/ai/ai-tools.svg" alt="Přehled AI nástrojů používaných pro psaní, kód, analýzu a plánování." class="ai-illust" loading="lazy" width="800" height="220">
-    <div class="ai-cards">
-      <div class="ai-card">
-        <h3><span class="icn">💬</span> ChatGPT</h3>
-        <ul>
-          <li>nápady a struktura projektů</li>
-          <li>vysvětlování složitých témat</li>
-          <li>návrh promptů</li>
-          <li>delší texty</li>
-          <li>kontrola logiky</li>
-        </ul>
-        <p class="note">Hlavní partner pro přemýšlení a zadání — podrobně níže.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🔍</span> Codex</h3>
-        <ul>
-          <li>hloubkové audity mých appek</li>
-          <li>zmapování skutečného stavu kódu</li>
-          <li>gap analýza — co je pravda, co je zastaralé</li>
-        </ul>
-        <p class="note">Používám ho specificky na rozsáhlé audity, ne na běžné úpravy.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">📁</span> Claude / Claude Code</h3>
-        <ul>
-          <li>práce se soubory v projektech</li>
-          <li>úpravy webu, kód, refactoring</li>
-          <li>reporty a dokumentace</li>
-          <li>kontrola změn před nasazením</li>
-        </ul>
-        <p class="note">Podle fáze volím i konkrétní model — audit vs. implementace, viz níže.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">✨</span> Gemini</h3>
-        <ul>
-          <li>propojení s Google ekosystémem</li>
-          <li>pomocné analýzy</li>
-          <li>experimenty pro chytrou domácnost</li>
-          <li>hlasové / diagnostické nápady</li>
-        </ul>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🛠</span> Další nástroje</h3>
-        <ul>
-          <li>kód a rychlé kontroly</li>
-          <li>porovnání nápadů</li>
-          <li>kontrola textu</li>
-        </ul>
-        <p class="note">Používám i další pomocné AI nástroje podle konkrétního úkolu.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🗂</span> Cowork &amp; ranní přehled</h3>
-        <ul>
-          <li>automatické stahování e-mailů 24/7</li>
-          <li>třídění faktur a dokumentů do složek</li>
-          <li>ranní přehled (kalendář, e-maily, počasí)</li>
-          <li>sync mezi notebookem, PC a serverem</li>
-          <li>backup a verzování</li>
-        </ul>
-        <p class="note">AI v roli kontrolora pipeline — hlídá, že tok dat funguje a ráno je vše připravené.</p>
-      </div>
-    </div>
+  <section id="jak-vznika" class="ai-section">
+    <span id="vibe-coding" class="ai-anchor"></span>
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">02 /</span><h2>Jak z nápadu vzniká funkční změna</h2></div>
+    <p class="ai-section-intro">Začínám potřebou z běžného používání. U chyby chci nejdřív zjistit příčinu; u nové funkce si ujasním chování a hranice zadání.</p>
+    <ol class="ai-process"><li><span class="ai-process-index" aria-hidden="true">01</span><h3>Zadání</h3><p>Popíšu cíl, podklady a očekávané chování. AI dostane i pravidla projektu.</p></li>
+<li><span class="ai-process-index" aria-hidden="true">02</span><h3>Skutečný stav</h3><p>AI přečte kód a dokumentaci. Rozlišujeme, co je doložené a co je jen předpoklad.</p></li>
+<li><span class="ai-process-index" aria-hidden="true">03</span><h3>Úprava</h3><p>Navážeme na existující řešení. Změna má konkrétní rozsah a dá se zkontrolovat.</p></li>
+<li><span class="ai-process-index" aria-hidden="true">04</span><h3>Ověření</h3><p>Podle změny testy, reprodukce chyby a proklikání rozhraní. U opravy musí původní problém zmizet.</p></li>
+<li><span class="ai-process-index" aria-hidden="true">05</span><h3>Používání a další kolo</h3><p>Výsledek posoudím v praxi. Zjištěná chyba, log nebo připomínka se vrací do dalšího zadání.</p></li></ol>
   </section>
 
-  <!-- 3b. Kdo dělá co: ChatGPT, Codex, Claude Code -->
-  <section id="rozdeleni-nastroju">
-    <h2>Jak si rozděluju práci mezi ChatGPT, Codex a Claude Code</h2>
-    <p>
-      ChatGPT používám hlavně jako partnera pro přemýšlení nad vývojem appek — ne jen na napsání
-      kusu kódu. Používám ho už ve chvíli, kdy mám jen nápad nebo problém. Nejdřív s ním řeším,
-      co vlastně chci vytvořit a jak by to mělo fungovat — rozebíráme požadavky, hledáme slabá
-      místa současného řešení, navrhujeme architekturu. Z toho pak často vznikne přesný pracovní
-      prompt pro Claude Code nebo Codex, který pracuje přímo nad zdrojovým kódem appky.
-    </p>
-    <p>
-      Codex používám specificky na <strong>hloubkové audity</strong> — zmapování skutečného stavu appky
-      dřív, než se cokoliv mění. Claude Code pak dělá <strong>implementaci a opravy</strong> přímo v kódu.
-      I uvnitř Claude Code si navíc podle fáze vybírám model: na audit a hloubkovou analýzu Fable 5,
-      na samotnou implementaci a práci v kódu Opus 5.
-    </p>
-    <div class="ai-flow" role="img" aria-label="Diagram: nápad, diskuze s ChatGPT, zadání, audit přes Codex nebo Claude Code s Fable 5, implementace v Claude Code s Opus 5, testy a report, vyhodnocení zpět v ChatGPT">
-      <div class="node">Nápad<span class="sub">diskuze s ChatGPT</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Zadání<span class="sub">přesný prompt</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Audit<span class="sub">Codex / Claude Code (Fable 5)</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Implementace<span class="sub">Claude Code (Opus 5)</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Testy a report<span class="sub">RED → FIX → PASS</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Vyhodnocení<span class="sub">zpět v ChatGPT</span></div>
-    </div>
-    <p>
-      Když třeba Codex dokončí rozsáhlý audit appky, výsledek přinesu zpět do ChatGPT. Společně
-      projdeme, co audit skutečně zjistil, co je kritické a co jen doporučení, a ChatGPT mi pak
-      pomůže sestavit nový opravný prompt, který už vychází ze skutečného stavu appky. Vzniká tak
-      opakující se smyčka: <strong>nápad → návrh → implementace → testování → skutečné používání →
-      diagnostika → analýza → další zlepšení.</strong>
-    </p>
-    <div class="ai-cards">
-      <div class="ai-card">
-        <h3><span class="icn">🧠</span> ChatGPT — řídicí a analytická vrstva</h3>
-        <ul>
-          <li>návrh nových funkcí a modulů</li>
-          <li>rozbor problémů v existujících appkách</li>
-          <li>návrh architektury a bezpečných migračních postupů</li>
-          <li>příprava podrobných auditů a implementačních promptů</li>
-          <li>vyhodnocení auditních a testovacích reportů</li>
-          <li>rozhodování, co opravit jako první</li>
-          <li>návrh testovacích scénářů, UI/workflow a diagnostiky</li>
-        </ul>
-        <p class="note">ChatGPT mi pomáhá rozhodnout, co a proč udělat. Samotnou práci nad zdrojovým kódem pak dělá Claude Code nebo Codex.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🔍</span> Codex — hloubkový audit</h3>
-        <ul>
-          <li>prozkoumá skutečný stav appky (kód, databáze, moduly, testy, dokumentace)</li>
-          <li>gap analýza — co je pravda, co je zastaralé, co chybí</li>
-          <li>výstup se vrací do ChatGPT k vyhodnocení a prioritizaci</li>
-        </ul>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🛠</span> Claude Code — implementace</h3>
-        <ul>
-          <li><strong>Fable 5</strong> — audit a hloubková analýza kódu</li>
-          <li><strong>Opus 5</strong> — samotná implementace, opravy, refactoring</li>
-          <li>testování, reporty, kontrola změn před nasazením</li>
-        </ul>
-      </div>
-    </div>
-    <div class="ai-callout-info">
-      V rámci zadaného rozsahu pracují Claude Code i Codex dost autonomně — sami appku prozkoumají,
-      navrhnou audit, implementují opravu a otestují ji ve smyčce (viz <a href="#testovani">jak poznám,
-      že appka funguje</a>). Autonomie ale končí na kontrolní bráně: dál to jde jen po mém výslovném
-      GO, nikdy automaticky.
-    </div>
+  <section id="projekty" class="ai-section">
+    <span id="jak-pouzivam" class="ai-anchor"></span>
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">03 /</span><h2>Co s AI skutečně stavím</h2></div>
+    <p class="ai-section-intro">AI je součást vývoje těchto projektů. U některých je navíc přímo v aplikaci — například při rozpoznávání fotografie nebo analýze.</p>
+    <div class="ai-projects"><article class="ai-project"><div class="ai-project-top"><span>01</span><span>Investice a analýza</span></div><h3>Portfolio Tracker</h3><p>S AI rozvíjím přehled transakcí, výkonnosti a analytických pohledů. Důležité je dohledat zdroj čísla a přiznat chybějící data. Volitelný AI analytik je jedna z funkcí PT.</p><a href="aplikace/portfolio-tracker.html">Podívat se na projekt <span aria-hidden="true">↗</span></a></article>
+<article class="ai-project"><div class="ai-project-top"><span>02</span><span>Doklady a souvislosti</span></div><h3>Účetní kniha</h3><p>Vlastní finanční evidence spojuje doklady, pohyby a přehledy. AI pomáhá při vývoji importů, kontrol výpočtů, diagnostiky a srozumitelného rozhraní.</p><a href="aplikace/ucetni-kniha.html">Podívat se na projekt <span aria-hidden="true">↗</span></a></article>
+<article class="ai-project"><div class="ai-project-top"><span>03</span><span>Cesty podle mých potřeb</span></div><h3>Italia Travel Planner</h3><p>Rozvíjím plánování tras a itinerářů. Autopilot pracuje s dohledanými místy; dostupnost a ceny potřebují ověření. AI mi také pomáhá s překlady a přípravou obsahu.</p><a href="aplikace/italia-travel.html">Podívat se na projekt <span aria-hidden="true">↗</span></a></article>
+<article class="ai-project"><div class="ai-project-top"><span>04</span><span>Fotografie → návrh záznamu</span></div><h3>Sbírka</h3><p>AI pomáhá identifikovat minci či známku a předvyplnit údaje z fotografie. Návrh pak kontroluje člověk; orientační ocenění ověřuji podle zdrojů.</p><a href="aplikace/sbirka.html">Podívat se na projekt <span aria-hidden="true">↗</span></a></article>
+<article class="ai-project"><div class="ai-project-top"><span>05</span><span>Pravidla pro skutečný byt</span></div><h3>Smart Home</h3><p>S AI rozebírám logiku scénářů, hledám chyby ve skriptech a připravuji změny. Provoz domácnosti stojí na vlastních pravidlech; zásah musí dávat smysl i obyvateli.</p><a href="smart-home/">Podívat se na projekt <span aria-hidden="true">↗</span></a></article>
+<article class="ai-project"><div class="ai-project-top"><span>06</span><span>Obsah, vzhled, každodenní nástroje</span></div><h3>Tento web a další aplikace</h3><p>AI mi pomáhá udržovat texty, překlady a odkazy, navrhovat rozhraní a kontrolovat náhledy. Další projekty řeší práci řidiče, jídelníček nebo výběr auta.</p><a href="aplikace/">Podívat se na projekt <span aria-hidden="true">↗</span></a></article></div>
   </section>
 
-  <!-- 4. Jak AI používám já -->
-  <section id="jak-pouzivam">
-    <h2>Jak AI používám já</h2>
-    <div class="ai-cards">
-      <div class="ai-card">
-        <h3><span class="icn">✈</span> Cestování</h3>
-        <ul>
-          <li>plánování tras po Itálii</li>
-          <li>texty a popisky pro web</li>
-          <li>nápady na obsah videí</li>
-          <li>překlady a zvyky v cizině</li>
-        </ul>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">💻</span> Web</h3>
-        <ul>
-          <li>návrh struktury stránek</li>
-          <li>opravy textů a SEO nápady</li>
-          <li>lepší navigace</li>
-          <li>kontrola jako „běžný návštěvník"</li>
-        </ul>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🏠</span> Chytrá domácnost</h3>
-        <ul>
-          <li>návrh logiky scénářů</li>
-          <li>audit existujících skriptů</li>
-          <li>dokumentace pipeline</li>
-          <li>opatrné plánování změn</li>
-        </ul>
-        <p class="note">AI pomáhá s návrhem a kontrolou, ale samotné změny musí být ověřené.
-        U chytré domácnosti nikdy nenasazovat naslepo.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">📊</span> Finance</h3>
-        <ul>
-          <li>třídění nápadů</li>
-          <li>kontrola logiky</li>
-          <li>upozornění na rizika</li>
-          <li>přehled v evidenci</li>
-        </ul>
-        <p class="note">Nejde o investiční doporučení. AI používám jako pomocníka pro přehled,
-        ne jako někoho, kdo za mě rozhoduje o penězích.</p>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">📝</span> Běžný život</h3>
-        <ul>
-          <li>formulace e-mailů</li>
-          <li>plánování dne</li>
-          <li>vysvětlení složitých věcí</li>
-          <li>příprava textů</li>
-        </ul>
-      </div>
-    </div>
+  <section id="prostredi" class="ai-section ai-environment">
+    <span id="diagnostika-loop" class="ai-anchor"></span>
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">04 /</span><h2>Moje pracovní zázemí</h2></div>
+    <p class="ai-section-intro">Vývojový počítač, notebook pro běžné používání a domácí úložiště tvoří zázemí projektů. AI nástroje pracují nad zpřístupněnými soubory a podklady; jejich modely mohou běžet u externího poskytovatele.</p>
+    <div class="ai-environment-grid"><div><h3>Vývoj</h3><p>Projekt, kód, dokumentace a testy na pracovním počítači.</p></div>
+<div><h3>Praxe</h3><p>Hotovou aplikaci používám a sleduji, kde potřebuje zlepšit.</p></div>
+<div><h3>Návaznost</h3><p>Zálohy, historie změn a předání kontextu pro příští práci.</p></div></div>
   </section>
 
-  <!-- 4b. Vibe coding / práce s AI na projektech -->
-  <section id="vibe-coding">
-    <h2>Vibe coding: když nápad popíšu lidsky a AI pomůže s kódem</h2>
-    <p>
-      <strong>Vibe coding</strong> znamená, že člověk popíše, co chce vytvořit, a AI pomůže navrhnout
-      nebo napsat kód. Neznamená to ale slepě přijmout všechno, co AI vygeneruje. U mých projektů je
-      důležité: <strong>nejdřív nápad, potom návrh, potom kontrola, potom test a teprve potom nasazení.</strong>
-    </p>
-    <img decoding="async" src="assets/img/ai/ai-vibe-coding.svg" alt="Diagram bezpečné práce s AI při tvorbě vlastních nástrojů: nápad, prompt, návrh kódu, test, oprava a nasazení." class="ai-illust" loading="lazy" width="800" height="180">
-
-    <div class="ai-vibe-intro">
-      Já to neberu jako <strong>„AI udělá aplikaci a já jen kliknu"</strong>. Beru to jako spolupráci:
-      já říkám směr, AI navrhne řešení, potom se testuje, opravuje a hlídá bezpečnost. AI mi pomáhá
-      převést nápad do kódu — ale rozhodování, kontrola a finální nasazení jsou pořád na mně.
-    </div>
-
-    <div class="ai-vibe-list">
-      <div class="ai-vibe-item"><span class="num">1</span><span class="txt"><strong>AI mi pomáhá převést nápad do kódu.</strong> Nemusím psát všechno ručně od nuly.</span></div>
-      <div class="ai-vibe-item"><span class="num">2</span><span class="txt"><strong>AI umí navrhnout strukturu.</strong> Než začnu, je dobré vidět, jak by to mohlo vypadat.</span></div>
-      <div class="ai-vibe-item"><span class="num">3</span><span class="txt"><strong>AI umí najít chyby v existujícím kódu.</strong> Často vidí to, co já přehlížím.</span></div>
-      <div class="ai-vibe-item"><span class="num">4</span><span class="txt"><strong>AI umí vytvořit první verzi rychle.</strong> Ale je to první verze, ne finální.</span></div>
-      <div class="ai-vibe-item"><span class="num">5</span><span class="txt"><strong>Člověk musí kontrolovat, testovat a rozhodnout.</strong> Bez toho je vibe coding chaos.</span></div>
-      <div class="ai-vibe-item"><span class="num">6</span><span class="txt"><strong>U citlivých věcí (finance, dům, data) trvám na rollback plánu.</strong> Pokud se něco rozbije, musím se umět vrátit.</span></div>
-    </div>
+  <section id="priklady" class="ai-section ai-brief">
+    <span id="proc-nefunguje" class="ai-anchor"></span>
+    <div><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">05 /</span><h2>Zadání, které vede ke konkrétnímu výsledku</h2></div><p>Nejvíc pomáhá kontext a jasný cíl. Takhle může vypadat zadání podobné tomu, kterým vznikla dnešní úprava webu.</p></div>
+    <blockquote>Projdi stránku Finance. Stále ukazuje starou účetní knihu, ale dnes používám vlastní PT a Účetní knihu. Zjisti, co už web o aplikacích uvádí, aktualizuj texty a překlady a ověř odkazy i náhled. Změny připrav lokálně; publikaci schválím zvlášť.</blockquote>
   </section>
 
-  <!-- 4b-2. Jak skutečně vzniká moje aplikace -->
-  <section id="jak-vznika">
-    <h2>Jak skutečně vzniká moje aplikace</h2>
-    <p>
-      Tohle není teorie — je to postup, který jsem si ověřil na desítkách reálných zásahů do
-      vlastních appek a webu. Není to „napíšu prompt a je hotovo". Je to smyčka, kde AI hodně
-      pracuje samostatně, ale v jasně daných mantinelech a s kontrolními branami, které nesmí
-      přeskočit.
-    </p>
-    <div class="ai-vibe-list">
-      <div class="ai-vibe-item"><span class="num">1</span><span class="txt"><strong>Nápad / zadání.</strong> Řeknu, co chci a proč — cíl, ne technické řešení.</span></div>
-      <div class="ai-vibe-item"><span class="num">2</span><span class="txt"><strong>AI zmapuje skutečný stav.</strong> Nejdřív si přečte kód, konfiguraci a dokumentaci — nehádá, jak appka funguje.</span></div>
-      <div class="ai-vibe-item"><span class="num">3</span><span class="txt"><strong>Audit a gap analýza.</strong> Co je pravda, co je zastaralé, co chybí, co je riziko. Bez auditu se nic neopravuje.</span></div>
-      <div class="ai-vibe-item"><span class="num">4</span><span class="txt"><strong>Bezpečný implementační plán.</strong> Jaký je scope, co se NEBUDE měnit, jaký je rollback, pokud se něco pokazí.</span></div>
-      <div class="ai-vibe-item"><span class="num">5</span><span class="txt"><strong>RED.</strong> Chybu nejdřív reprodukuju testem, který skutečně selže — jinak nevím, jestli oprava opravdu opravila tohle.</span></div>
-      <div class="ai-vibe-item"><span class="num">6</span><span class="txt"><strong>Implementace.</strong> Nejmenší rozumná oprava — ne přepis okolí jen proto, že „by to šlo líp".</span></div>
-      <div class="ai-vibe-item"><span class="num">7</span><span class="txt"><strong>PASS.</strong> Ten samý test, co byl RED, musí teď projít.</span></div>
-      <div class="ai-vibe-item"><span class="num">8</span><span class="txt"><strong>Regrese.</strong> Ověření, že se opravou nerozbilo něco jiného okolo.</span></div>
-      <div class="ai-vibe-item"><span class="num">9</span><span class="txt"><strong>Runtime test.</strong> Appka se skutečně spustí a chování se ověří naživo, ne jen v testu.</span></div>
-      <div class="ai-vibe-item"><span class="num">10</span><span class="txt"><strong>Visual / E2E.</strong> AI appku projde jako uživatel — prokliká stránky, dialogy, mobil i desktop.</span></div>
-      <div class="ai-vibe-item"><span class="num">11</span><span class="txt"><strong>Diagnostika.</strong> Kontrola chyb v konzoli, síťových požadavků, výkonu a přístupnosti.</span></div>
-      <div class="ai-vibe-item"><span class="num">12</span><span class="txt"><strong>Finální report.</strong> Co se změnilo, proč, co bylo testováno, co prošlo a co zůstává watch.</span></div>
-      <div class="ai-vibe-item"><span class="num">13</span><span class="txt"><strong>GO / NO-GO.</strong> Nasazení jde ven jen po mém výslovném schválení — nikdy automaticky.</span></div>
-    </div>
-    <div class="ai-callout-info">
-      Přesně tímhle postupem prošel i nedávný audit tohohle webu: AI nejdřív ověřila, jestli
-      informace o verzích appek na webu odpovídají realitě (neodpovídaly), pak napsala testy,
-      které tu neshodu prokazatelně odhalí, opravila zdroj problému a spustila skutečné
-      prohlížečové a přístupnostní testy před i po opravě — a teprve s tímhle důkazem šlo cokoli
-      do produkce.
-    </div>
+  <section id="ai-vs-ja" class="ai-section">
+    <span id="testovani" class="ai-anchor"></span><span id="kde-pozor" class="ai-anchor"></span>
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">06 /</span><h2>Co dělá AI a co rozhoduji já</h2></div>
+    <div class="ai-ownership"><article><h3>AI pomáhá provést práci</h3><ul><li>Čte zpřístupněné podklady a hledá nesoulady.</li><li>Navrhuje řešení, upravuje kód a texty.</li><li>Spouští odpovídající kontroly a shrnuje výsledek.</li></ul></article><article><h3>Já držím směr</h3><ul><li>Určuji potřebu, priority a rozsah práce.</li><li>Posuzuji, jestli se výsledek dobře používá.</li><li>Schvaluji publikaci a zásahy do provozu podle zadání.</li></ul></article></div>
+    <p class="ai-data-note">Lokální aplikace a cloudový AI model jsou dvě různé věci. Například rozpoznání fotografie přes Gemini znamená zpracování vybrané fotografie externí službou. Při práci s AI záleží na tom, jaké podklady jí zpřístupním.</p>
   </section>
 
-  <!-- 4b-3. Moje vývojové prostředí -->
-  <section id="prostredi">
-    <h2>Moje vývojové prostředí</h2>
-    <p>
-      Práci si rozděluji mezi dva počítače a domácí NAS. Není to nutnost — je to způsob, jak
-      mám odděleně „appku, kterou skutečně používám" od „appku, na které se zrovna pracuje".
-    </p>
-    <div class="ai-cards">
-      <div class="ai-card">
-        <h3><span class="icn">💻</span> Notebook</h3>
-        <ul>
-          <li>skutečné každodenní používání hotových appek</li>
-          <li>beta testování — tady appka narazí na reálné situace</li>
-          <li>odsud vznikají reálné hlášky o chybách</li>
-        </ul>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🖥</span> Mini PC (vývoj)</h3>
-        <ul>
-          <li>zdrojové kódy všech mých projektů</li>
-          <li>Claude Code — hlavní AI nástroj pro práci nad kódem</li>
-          <li>testování, audity, buildy, reporty</li>
-          <li>malý „mini" stroj bez velkého výkonu — AI běží v cloudu, počítač jen orchestruje</li>
-        </ul>
-      </div>
-      <div class="ai-card">
-        <h3><span class="icn">🗄</span> Domácí NAS</h3>
-        <ul>
-          <li>sdílené úložiště mezi notebookem, mini PC a domácí sítí</li>
-          <li>distribuce aktualizací pro appky, které nejsou veřejně na GitHubu</li>
-          <li>zálohy notebooku</li>
-          <li>dostupný odkudkoli přes soukromou šifrovanou síť (Tailscale) — nikdy vystavený na veřejný internet</li>
-        </ul>
-      </div>
-    </div>
-    <div class="ai-flow" role="img" aria-label="Diagram: notebook, NAS a mini PC jsou propojené přes soukromou síť; mini PC je místo, kde pracuje AI">
-      <div class="node">Notebook<span class="sub">reálné používání appek</span></div>
-      <div class="arrow">↔</div>
-      <div class="node">Domácí NAS<span class="sub">sdílené úložiště, zálohy, distribuce</span></div>
-      <div class="arrow">↔</div>
-      <div class="node">Mini PC<span class="sub">Claude Code, vývoj, testy</span></div>
-    </div>
-    <p style="font-size:.9rem;color:#5a6b80">
-      Žádné IP adresy, přihlašovací údaje ani přesné síťové cesty tu záměrně neuvádím —
-      to je informace o principu, ne návod na moji domácí síť.
-    </p>
+  <section id="demo-vs-praxe" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">07 /</span><h2>Aplikace za večer? Demo není hotový produkt.</h2></div>
+    <p class="ai-section-intro">První obrazovka, formulář nebo graf mohou s AI vzniknout rychle. „Bez ručního psaní kódu“ ale neznamená „bez práce, znalostí a odpovědnosti“. Krátká ukázka není důkaz spolehlivosti celé aplikace.</p>
+    <div class="ai-ownership"><article class="ai-project"><h3>Co zvládne rychlý prototyp</h3><p>Ukáže nápad, vzhled a základní průchod na ukázkových datech. Je dobrý pro ověření směru, ne automaticky pro vlastní finanční evidenci.</p></article><article class="ai-project"><h3>Co musí zvládnout skutečná aplikace</h3><p>Správné výpočty, chybové stavy, opakované importy, ukládání, aktualizace a obnovu zálohy. Ověření pokračuje i při běžném používání.</p></article></div>
+    <div class="ai-callout"><h3>U financí musí sedět čísla, nejen design.</h3><p>U PT a Účetní knihy je potřeba ověřovat poplatky, měny, zaokrouhlení a význam výnosu. Převod mezi vlastními účty nesmí vytvořit falešný příjem. Opakovaný import stejného výpisu nesmí zdvojit pohyby. Záloha má hodnotu až tehdy, když z ní dokážu data obnovit.</p><p><strong>AI pomáhá kód vytvořit. Správnost musí doložit testy a kontrola výsledků — ne tvrzení modelu „hotovo“.</strong></p></div>
+    <details class="ai-details"><summary>Jak se dívat na kurzy a sliby snadného vývoje</summary><p>Placený kurz nebo Discord může přinést strukturu a užitečnou podporu. Dívám se ale, jestli učí i opravy, verzování, bezpečnost a testování, nejen první úspěšnou ukázku. Délka videa není doba potřebná pro dokončení vlastního projektu.</p><p>AI není automatická zkratka k porozumění: konkrétní experiment Anthropicu ukázal význam aktivního vysvětlování a učení při práci s AI. Nejde o univerzální verdikt proti AI. <a href="https://www.anthropic.com/research/AI-assistance-coding-skills">Výzkum Anthropicu</a></p></details>
   </section>
 
-  <!-- 4b-4. Diagnostický feedback loop -->
-  <section id="diagnostika-loop">
-    <h2>Jak se dozvím o chybě z jiného stroje</h2>
-    <p>
-      Když appka na notebooku spadne nebo se zachová divně, potřebuju se o tom dozvědět tam,
-      kde skutečně pracuju — na mini PC, s AI po ruce. Princip je jednoduchý:
-    </p>
-    <div class="ai-flow vertical" role="img" aria-label="Diagram: chyba na notebooku putuje přes NAS na mini PC, kde ji AI analyzuje a opraví">
-      <div class="node">Notebook<span class="sub">appka spadne / zachová se divně</span></div>
-      <div class="arrow">↓</div>
-      <div class="node">Diagnostika appky<span class="sub">log / chybová zpráva</span></div>
-      <div class="arrow">↓</div>
-      <div class="node">Domácí NAS<span class="sub">sdílené úložiště mezi stroji</span></div>
-      <div class="arrow">↓</div>
-      <div class="node">Mini PC + AI<span class="sub">analýza, reprodukce, oprava</span></div>
-    </div>
-    <p>
-      AI dostane hlášku o chybě, zkusí ji na mini PC reprodukovat, najde příčinu a navrhne
-      nejmenší bezpečnou opravu — podle stejného RED → FIX → PASS postupu jako u běžné
-      vývojové práce. Bez reprodukce se nic „neopraví od oka".
-    </p>
+  <section id="modely" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">08 /</span><h2>Který model se hodí na jakou práci</h2></div>
+    <p class="ai-section-intro">Orientační přehled podle popisu výrobců, ověřený 10. října 2026. Není to nezávislý žebříček ani seznam modelů, které všechny osobně používám. Nabídka v chatu, vývojovém nástroji a API se může lišit.</p>
+    <div class="ai-models"><article class="ai-project"><h3>OpenAI</h3><p><strong>GPT-6 Astra:</strong> obtížné problémy, hlubší analýza a složitý návrh.</p><p><strong>GPT-6.1 Sol:</strong> komplexní práce s ohledem na čas a náklady.</p><p><strong>GPT-6 Luna:</strong> malé vymezené úpravy, třídění a opakované úkoly.</p><a href="https://learn.chatgpt.com/docs/model-selection">Oficiální výběr modelů ↗</a></article><article class="ai-project"><h3>Anthropic · Claude</h3><p><strong>Opus 5.5:</strong> náročné více-krokové úkoly a složitá práce s projektem.</p><p><strong>Sonnet 5.5:</strong> praktický kompromis výkonu, rychlosti a nákladů pro kód i dokumenty.</p><p><strong>Haiku 5.5:</strong> rychlé souhrny, klasifikace a dílčí úkoly.</p><p class="ai-source-links"><a href="https://www.anthropic.com/claude/opus">Opus</a> · <a href="https://www.anthropic.com/claude/sonnet">Sonnet</a> · <a href="https://www.anthropic.com/claude/haiku">Haiku</a></p></article><article class="ai-project"><h3>Google · Gemini</h3><p><strong>Pro:</strong> řada pro náročné uvažování; katalog uvádí i Gemini 3.1 Pro Preview.</p><p><strong>Flash:</strong> rychlá práce s textem, kódem a multimodálními podklady; aktuální katalog uvádí Gemini 3.8 Flash.</p><p><strong>Flash-Lite:</strong> úspornější řada pro velký objem jednodušší práce. Preview není totéž co stabilní vydání.</p><a href="https://ai.google.dev/gemini-api/docs/models">Oficiální katalog API ↗</a></article></div>
+    <p class="ai-data-note"><strong>Model není totéž co nástroj.</strong> ChatGPT a Gemini jsou také aplikace; Codex a Claude Code jsou pracovní prostředí s přístupem k nástrojům. Výsledek závisí i na zadání, kontextu projektu, oprávněních a ověření. Silnější model ani delší přemýšlení nezaručí správnost.</p>
   </section>
 
-  <!-- 4c. Moje projekty, kde mi AI pomáhá -->
-  <section id="projekty">
-    <h2>Moje projekty, kde mi AI pomáhá</h2>
-    <p>Pár konkrétních příkladů, kde AI funguje v praxi — a kde si dávám pozor.</p>
-
-    <div class="ai-projects">
-
-      <!-- Osobní web -->
-      <article class="ai-project">
-        <h3>🌐 Osobní web <span class="tag">live</span></h3>
-        <p>Tahle stránka, na kterou se právě díváš. AI pomáhá držet pořádek v textech a struktuře.</p>
-        <ul>
-          <li>návrh struktury stránek a navigace</li>
-          <li>texty a SEO nadpisy</li>
-          <li>kontrola jako „běžný návštěvník"</li>
-          <li>SVG ilustrace a vizuální karty</li>
-          <li>opravy chyb a typografie</li>
-        </ul>
-      </article>
-
-      <!-- Smart Home -->
-      <article class="ai-project">
-        <h3>🏠 Smart Home <span class="tag">live</span></h3>
-        <p>Chytrá domácnost, kde většina rozhodování běží ve vlastních pravidlech — ne v desítkách klikacích automatizací. AI tady hraje hlavně roli auditora a kontroly před nasazením.</p>
-        <ul>
-          <li>návrh logiky scénářů</li>
-          <li>audit existujících skriptů</li>
-          <li>dokumentace pipeline a změn</li>
-          <li>bezpečný postup změn s rollback plánem</li>
-          <li>testování v sandboxu před nasazením</li>
-        </ul>
-        <div class="ai-callout-disclaimer">
-          Žádné interní detaily zde nezveřejňuju — všechny změny prochází sandbox testem
-          a explicitním schválením, než se dotknou produkce.
-        </div>
-      </article>
-
-      <!-- Účetní kniha / osobní finance -->
-      <article class="ai-project">
-        <h3>📒 Účetní kniha / osobní finance <span class="tag">vlastní nástroj</span></h3>
-        <p>
-          Jedním z příkladů je <strong>osobní účetní kniha</strong> — nástroj, který má pomáhat dát dohromady
-          bankovní výpisy, výplatní pásky, investiční přehledy, pojistky a termíny do jednoho přehledu.
-          Cílem není nahradit účetního nebo daňového poradce, ale mít lepší pořádek v datech a včas vidět,
-          co je potřeba zkontrolovat.
-        </p>
-        <ul>
-          <li>automatické třídění dokumentů z e-mailu</li>
-          <li>dashboard s denním přehledem příjmů a výdajů</li>
-          <li>investice a krypto přehled napříč platformami</li>
-          <li>termíny a upomínky se semaforem stavu</li>
-          <li>kontrolní semafor (rezerva, dluhy, savings rate)</li>
-          <li>anonymizované demo s ukázkovými daty</li>
-          <li>lokální zpracování — data zůstávají u mě</li>
-        </ul>
-        <div class="ai-callout-disclaimer">
-          Nejde o bankovní aplikaci, účetní software pro firmy, investiční doporučení ani daňové
-          poradenství. Je to osobní nástroj a ukázka toho, jak může AI pomoci s pořádkem v datech.
-        </div>
-      </article>
-
-      <!-- Cestování -->
-      <article class="ai-project">
-        <h3>✈ Cestování a Itálie <span class="tag">obsah</span></h3>
-        <p>YouTube kanál a webová sekce o Itálii. AI pomáhá s přípravou obsahu, ne s tím, kam jet.</p>
-        <ul>
-          <li>nápady na trasy a místa</li>
-          <li>texty a popisky pro web</li>
-          <li>příprava obsahu videí</li>
-          <li>překlady a praktické tipy</li>
-          <li>kontrola chyb a typografie</li>
-        </ul>
-      </article>
-
-      <!-- Moje aplikace - hub link -->
-      <article class="ai-project">
-        <h3>🧰 Moje aplikace <span class="tag">vlastní nástroje</span></h3>
-        <p>
-          Vlastní aplikace, které jsem si postavil (nebo postavit chystám) za poslední rok.
-          AI mi pomáhá od nápadu přes architekturu, kód, testy až po dokumentaci.
-          Nic v cloudu, vše lokálně u mě nebo na malém serveru doma. Aktuální kompletní
-          přehled je vždy na stránce s aplikacemi — tady je jen výběr.
-        </p>
-        <ul>
-          <li><strong>BudLine</strong> — směny, turnusy a podklady pro mzdu řidiče autobusu + kontrola výplatní pásky</li>
-          <li><strong>Italia Travel Planner</strong> — plánovač cest po Itálii s ZTL varováními a camper režimem</li>
-          <li><strong>Účetní kniha</strong> — domácí finance přes více platforem + automatický intake faktur z Gmailu</li>
-          <li><strong>Portfolio Tracker</strong> — evidence investičního portfolia napříč brokery (pozice, dividendy, české daně, výkonnost) + férová hodnota akcií a AI analytik</li>
-          <li><strong>Krabičková dieta</strong> — týdenní jídelníček s kalorickým cílem + nákupní seznam</li>
-          <li><strong>Sbírka</strong> — evidence numismatické a filatelistické sbírky</li>
-          <li><strong>Config Center</strong> — webový ovládací panel pro chytrou domácnost</li>
-          <li><strong>Domácí panel na zdi</strong> — RPi kiosk pro ovládání světel, audio, scén jedním palcem</li>
-        </ul>
-        <p style="margin-top:1rem"><a href="aplikace/" class="btn btn-primary">Otevřít přehled aplikací →</a></p>
-        <div class="ai-callout-disclaimer">
-          Žádná z těchto aplikací není komerční produkt — jsou to mé osobní nástroje s ukázkovými screenshoty.
-          Reálná data jsou rozmazaná nebo nahrazena testovacími hodnotami.
-        </div>
-      </article>
-
-      <!-- Cowork / Ranní přehled -->
-      <article class="ai-project">
-        <h3>🗂 Cowork &amp; ranní přehled <span class="tag">denní rutina</span></h3>
-        <p>
-          Pracovní prostředí, které propojuje notebook, PC a domácí server. Cílem je mít každé ráno
-          připravený přehled — co se v noci stalo, co je dnes na řadě a co potřebuje pozornost.
-          AI pomáhá držet tok dat v pořádku, aby ráno nezačínalo přebíráním plné schránky.
-        </p>
-        <ul>
-          <li><strong>Automatické stahování e-mailů</strong> každou hodinu — domácí server kontroluje schránku i když je notebook zavřený</li>
-          <li><strong>Třídění dokumentů</strong> — faktury, výpisy a smlouvy padají do správných složek bez ručního přesouvání</li>
-          <li><strong>Ranní přehled</strong> — kalendář, e-maily zpracované přes noc, počasí, status systému na jednom místě</li>
-          <li><strong>Sync mezi zařízeními</strong> — práce z notebooku, PC i tabletu bez kopírování souborů přes USB</li>
-          <li><strong>Backup &amp; verze</strong> — všechny změny mají historii, nic se neztratí</li>
-        </ul>
-        <div class="ai-callout-disclaimer">
-          Žádné e-mailové údaje, hesla ani interní cesty zde neuvádím. Vše běží
-          lokálně v rámci vlastní sítě a šifrovaného úložiště — AI je hlavně
-          v roli kontrolora pipeline, ne čtenáře obsahu.
-        </div>
-      </article>
-
-    </div>
+  <section id="zdarma-placene" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">09 /</span><h2>Stačí AI zdarma? Záleží na práci.</h2></div>
+    <p class="ai-section-intro">Zdarma není automaticky špatně a placené není automaticky správně. Rozdíl bývá v dostupných modelech, objemu použití a nástrojích — ne jen v kvalitě jedné odpovědi.</p>
+    <div class="ai-ownership"><article class="ai-project"><h3>Zdarma: dobrý začátek</h3><p>Vysvětlení pojmu, překlad, krátký text, nápad nebo malý prototyp. Někdy je dostupný i schopný model, ale s nižšími limity. Pokud úkol dokončím a výsledek ověřím, není důvod platit jen kvůli štítku „Pro“.</p></article><article class="ai-project"><h3>Placené: prostor pro soustavnou práci</h3><p>Smysl může mít při pravidelném vývoji, dlouhých analýzách a mnoha kolech oprav. Podle tarifu přidává vyšší limity, další modely či vývojové nástroje. Ani předplatné však obecně neznamená neomezené použití.</p></article></div>
+    <div class="ai-callout"><h3>Předplatné chatu ≠ provoz AI v mé aplikaci</h3><p>AI analytik nebo rozpoznání fotografie přes API má vlastní podmínky a účtování. Předplatné nelze automaticky považovat za zaplacené API volání; některé tarify mohou zahrnout kredity. Navíc mohou vznikat náklady na hosting, úložiště nebo jiné datové služby.</p><p><strong>Nejdřív vyzkoušet vlastní úkol. Platit za potřebnou schopnost nebo odstranění konkrétního limitu, ne za příslib bezchybnosti.</strong></p></div>
+    <p class="ai-data-note">Ceny, dostupnost a limity se mění podle produktu, regionu a účtu. Aktuální podmínky: <a href="https://learn.chatgpt.com/docs/pricing">OpenAI</a> · <a href="https://claude.com/pricing">Claude</a> · <a href="https://support.google.com/gemini/answer/16275805">Gemini</a> · <a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini API</a>. Placený tarif sám o sobě není zárukou soukromí; před vložením citlivých dat kontroluji konkrétní podmínky.</p>
   </section>
 
-  <!-- 5. Proč lidem AI často nefunguje -->
-  <section id="proc-nefunguje">
-    <h2>Proč lidem AI často nefunguje</h2>
-    <p>Není to vždy chyba AI. Většinou je to o tom, jak se s ní mluví.</p>
-    <img decoding="async" src="assets/img/ai/ai-prompt-before-after.svg" alt="Porovnání obecného dotazu na AI a konkrétnějšího promptu s kontextem." class="ai-illust" loading="lazy" width="800" height="280">
-
-    <div class="ai-reason">
-      <h3>1. Ptají se moc obecně</h3>
-      <p>Otázka „Napiš mi něco o Itálii" nikam nevede. AI neví, pro koho píše, jak dlouhé to má být,
-      ani co tě zajímá. Čím konkrétnější otázka, tím lepší odpověď.</p>
-    </div>
-    <div class="ai-reason">
-      <h3>2. Nedají kontext</h3>
-      <p>AI neví, kdo jsi, co děláš, pro koho to je a jaký má být výsledek.
-      Pár vět kontextu vyřeší většinu problémů.</p>
-    </div>
-    <div class="ai-reason">
-      <h3>3. Chtějí hotový výsledek bez kontroly</h3>
-      <p>AI umí pomoct, ale výsledek je potřeba číst — hlavně u financí, zdraví,
-      práva, techniky a chytré domácnosti.</p>
-    </div>
-    <div class="ai-reason">
-      <h3>4. Neřeknou formát výstupu</h3>
-      <p>Je rozdíl chtít tabulku, článek, prompt, checklist, plán nebo technický postup.
-      Když to neřekneš, AI hádá.</p>
-    </div>
-    <div class="ai-reason">
-      <h3>5. Nepokračují v dialogu</h3>
-      <p>AI funguje nejlépe jako rozhovor. První odpověď je často jen začátek — druhá
-      otázka „A teď to zkrať / zaměř na X / přidej příklady" výrazně zvedne kvalitu.</p>
-    </div>
-    <div class="ai-reason">
-      <h3>6. Věří všemu</h3>
-      <p>AI může znít sebejistě i ve chvíli, kdy se plete. Proto je potřeba ověřovat fakta —
-      hlavně čísla, data, jména a citace.</p>
-    </div>
+  <section id="skills-mcp" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">10 /</span><h2>Skills, pluginy a MCP: postupy a přístupy</h2></div>
+    <p class="ai-section-intro">Tyto součásti mohou práci zjednodušit, ale každá má jinou roli. Pro první aplikaci nemusím instalovat všechny.</p>
+    <dl class="ai-glossary"><div><dt>Skill</dt><dd>Návod pro opakovanou práci, případně se skripty a podklady. Například kontrola importu nebo postup testování. Není to dodatečné vytrénování modelu.</dd></div><div><dt>Plugin</dt><dd>Instalovatelný balíček schopností. Může obsahovat skills, nástroje a MCP napojení. Důležitý je původ a obsah balíčku.</dd></div><div><dt>Konektor</dt><dd>Napojení na konkrétní službu nebo účet. Před připojením zjišťuji, jaká data zpřístupňuje a zda umožňuje i zápis.</dd></div><div><dt>MCP server</dt><dd>Poskytuje AI nástroje a data přes společné rozhraní. Může běžet lokálně nebo vzdáleně. MCP není bezpečnostní certifikát.</dd></div></dl>
+    <p class="ai-data-note">Praktický postup: vybrat důvěryhodný zdroj, přečíst instrukce, nastavit nejmenší potřebná oprávnění a vyzkoušet konkrétní úkol na testovacích datech. Zápis, mazání a publikaci oddělit od čtení. Více doplňků automaticky neznamená lepší výsledek. <a href="https://developers.openai.com/plugins/concepts/plugins">Dokumentace pluginů</a> · <a href="https://modelcontextprotocol.io/docs/draft/tutorials/security/security_best_practices">Bezpečnost MCP</a></p>
   </section>
 
-  <!-- 6. Jak se AI ptát lépe -->
-  <section>
-    <h2>Jak se AI ptát lépe</h2>
-    <p>Mám jednoduchý vzorec, který funguje na 90 % případů.</p>
-    <img decoding="async" src="assets/img/ai/ai-prompt-formula.svg" alt="Diagram vzorce pro lepší dotazování AI: role, cíl, kontext, omezení a formát." class="ai-illust" loading="lazy" width="800" height="200">
-
-    <div class="ai-pair">
-      <div class="good">
-        <div class="lbl">Příklad — web</div>
-        <code>Jsi zkušený editor osobního webu. Pomoz mi napsat stránku o cestování do Itálie pro běžné čtenáře. Text má být lidský, praktický, bez odborného žargonu. Výstup dej jako strukturu nadpisů, odstavců a CTA tlačítek.</code>
-      </div>
-      <div class="good">
-        <div class="lbl">Příklad — smart home</div>
-        <code>Jsi senior smart home architekt. Nejdřív proveď audit, nic neměň bez mého GO. Najdi rizika, navrhni bezpečný postup, připrav rollback a až potom doporuč další krok.</code>
-      </div>
-    </div>
+  <section class="ai-closing">
+    <h2>Nejlepší výsledek je nástroj, který opravdu používám.</h2><p>AI mi umožňuje průběžně rozvíjet vlastní řešení: od malého nápadu přes opravu až po aplikaci, která zapadne do mého dne.</p><a class="ai-button" href="aplikace/">Prohlédnout moje aplikace <span aria-hidden="true">↗</span></a>
   </section>
-
-  <!-- 7. Co AI neumí -->
-  <section id="kde-pozor">
-    <h2>Kde si dávám pozor</h2>
-    <p>
-      AI neumí ručit za pravdu. Nevidí vždy aktuální stav světa, pokud nemá přístup k datům.
-      Nezná tvoje soubory, pokud jí je nedáš. Může si splést souvislosti. U důležitých rozhodnutí
-      je potřeba kontrola.
-    </p>
-    <img decoding="async" src="assets/img/ai/ai-safety-checklist.svg" alt="Kontrolní seznam oblastí, kde je potřeba výstupy AI ověřovat: fakta, peníze, zdraví a právo, osobní údaje, technické změny." class="ai-illust" loading="lazy" width="800" height="240">
-
-    <div class="ai-vibe-list" style="margin-top:1rem">
-      <div class="ai-vibe-item"><span class="num">!</span><span class="txt"><strong>Vibe coding může vytvořit funkční, ale nebezpečný kód.</strong> První verze často přehlíží edge cases a bezpečnost.</span></div>
-      <div class="ai-vibe-item"><span class="num">!</span><span class="txt"><strong>AI může přehlédnout bezpečnostní chybu.</strong> Hlavně u autentizace, šifrování a oprávnění.</span></div>
-      <div class="ai-vibe-item"><span class="num">!</span><span class="txt"><strong>AI může omylem navrhnout zveřejnění soukromých dat.</strong> Tokeny, klíče, e-maily, cesty — vše kontrolovat před commitem.</span></div>
-      <div class="ai-vibe-item"><span class="num">!</span><span class="txt"><strong>U financí, daní, zdraví, práva a elektřiny musí být lidská kontrola.</strong> AI je nástroj, ne odpovědný odborník.</span></div>
-      <div class="ai-vibe-item"><span class="num">!</span><span class="txt"><strong>U webu kontroluji, co jde veřejně ven.</strong> Žádné interní URL, žádné tokeny, žádné citlivé screenshoty.</span></div>
-    </div>
-
-    <div class="ai-callout-warn">
-      <strong>Největší chyba není používat AI. Největší chyba je nekontrolovat, co po ní pouštím do světa.</strong><br>
-      Pozor zejména u: financí · zdraví · práva · bezpečnosti · elektřiny · automatizace domu · osobních údajů.
-    </div>
-  </section>
-
-  <!-- 8. Praktické příklady promptů -->
-  <section id="priklady">
-    <h2>Praktické příklady promptů</h2>
-    <p>5 ukázek, které si můžeš vyzkoušet hned teď.</p>
-    <div class="ai-prompts">
-      <div class="ai-prompt-box">
-        <h3>📝 Pro text</h3>
-        <code>Přepiš tento text tak, aby byl srozumitelný pro běžného návštěvníka webu. Zachovej význam, zkrať dlouhé věty a navrhni lepší nadpis.</code>
-      </div>
-      <div class="ai-prompt-box">
-        <h3>✈ Pro cestování</h3>
-        <code>Připrav mi jednodenní plán v Itálii pro člověka, který chce vidět zajímavá místa, ale nechce běhat od památky k památce.</code>
-      </div>
-      <div class="ai-prompt-box">
-        <h3>💻 Pro web</h3>
-        <code>Zkontroluj tuto stránku jako běžný návštěvník. Najdi nejasnosti, špatné nadpisy, slabé CTA a části, které působí nedůvěryhodně.</code>
-      </div>
-      <div class="ai-prompt-box">
-        <h3>🏠 Pro chytrou domácnost</h3>
-        <code>Nejdřív proveď audit. Nic neměň. Najdi rizika, závislosti a rollback plán. Teprve potom navrhni bezpečný postup.</code>
-      </div>
-      <div class="ai-prompt-box">
-        <h3>🔍 Pro kontrolu AI odpovědi</h3>
-        <code>Zkontroluj vlastní odpověď. Napiš, co je jisté, co je odhad a co je potřeba ověřit.</code>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8b. Testování a jak poznám, že appka funguje -->
-  <section id="testovani">
-    <h2>Jak poznám, že appka opravdu funguje</h2>
-    <p>
-      Že testy proběhly zeleně, ještě neznamená, že appka je v pořádku. Proto se u mě
-      žádná změna nepovažuje za hotovou, dokud neprojde všemi těmito kroky:
-    </p>
-    <div class="ai-flow" role="img" aria-label="Diagram: RED, FIX, PASS, regrese, runtime test, visual test">
-      <div class="node">RED<span class="sub">chyba reprodukovaná testem</span></div>
-      <div class="arrow">→</div>
-      <div class="node">FIX<span class="sub">nejmenší bezpečná oprava</span></div>
-      <div class="arrow">→</div>
-      <div class="node">PASS<span class="sub">test teď prochází</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Regrese<span class="sub">okolí appky beze změny</span></div>
-      <div class="arrow">→</div>
-      <div class="node">Runtime + visual<span class="sub">skutečné spuštění, prohlídka jako uživatel</span></div>
-    </div>
-    <p>
-      Než se cokoliv nasadí, musí projít i takzvanou kontrolní branou — appka je buď
-      <strong>GO</strong> (hotovo a otestováno), <strong>PASS_WITH_WATCH</strong> (funguje, ale je tu
-      drobnost ke sledování), nebo <strong>BLOCKED</strong> (nejde nasadit, dokud se něco nedořeší).
-      Rozdíl mezi „implementace je hotová" a „appka smí jít ven" beru vážně — jsou to dvě různé věci.
-    </p>
-    <p>
-      U appek, kde počítám čísla (finance, portfolio), navíc platí jedno pravidlo: pokud appka
-      nemá dost spolehlivých dat na jistý závěr, <strong>nesmí si výsledek vymyslet</strong>. Radši
-      ukáže „nedostupné" nebo „vyžaduje kontrolu" než smyšlené číslo. A součty a mezisoučty musí
-      sedět matematicky — nestačí, že výsledek „nějak vyšel".
-    </p>
-    <div class="ai-callout-warn">
-      Reálná data (bankovní výpisy, faktury, investiční přehledy) se do vývoje a do AI nikdy
-      nekopírují ve finální podobě — appky se vyvíjí a testují na testovacích/anonymizovaných
-      datech, ostrá data zůstávají mimo zdrojový kód.
-    </div>
-  </section>
-
-  <!-- 8c. Co dělá AI a co rozhoduji já -->
-  <section id="ai-vs-ja">
-    <h2>Co dělá AI a co rozhoduju já</h2>
-    <p>
-      AI pracuje dost samostatně — ale jen v mezích, které jí dám. Rozhodnutí s dopadem
-      (nasazení, smazání, cokoliv nevratného) dělám vždy sám.
-    </p>
-    <div class="ai-split">
-      <div class="col">
-        <h3>Dělá AI samostatně</h3>
-        <ul>
-          <li>prozkoumá kód a dokumentaci appky</li>
-          <li>navrhne audit a najde nesrovnalosti</li>
-          <li>napíše a spustí testy (RED i PASS)</li>
-          <li>implementuje opravu v daném rozsahu</li>
-          <li>projde appku jako uživatel (visual/E2E)</li>
-          <li>sepíše report o tom, co se změnilo a proč</li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3>Rozhoduju já</h3>
-        <ul>
-          <li>zadání a priorita — co se má řešit a proč</li>
-          <li>schválení implementačního plánu a rozsahu</li>
-          <li>finální GO/NO-GO před nasazením</li>
-          <li>co je citlivé a nesmí opustit můj počítač</li>
-          <li>co jde ven jako veřejný obsah</li>
-          <li>zásahy do produkčních/reálných dat</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 9. Můj přístup -->
-  <section>
-    <h2>Můj přístup</h2>
-    <p>
-      AI používám postupně. Nejdřív nápad, potom návrh, potom kontrola, potom test. U důležitých
-      věcí chci report, rollback a jasné potvrzení, než se něco nasadí. Díky tomu se AI nestává
-      chaosem, ale nástrojem, který pomáhá držet pořádek.
-    </p>
-    <img decoding="async" src="assets/img/ai/ai-workflow.svg" alt="Postup bezpečného používání AI od nápadu přes kontrolu a test až po nasazení." class="ai-illust" loading="lazy" width="800" height="160">
-    <div class="ai-callout-info">
-      Tenhle přístup používám u chytré domácnosti, webu i u financí. Méně překvapení,
-      více kontroly. AI mi pomáhá udělat každý krok rychleji, ale rozhodnutí dělám pořád sám.
-    </div>
-  </section>
-
-  <!-- 10. CTA závěr -->
-  <section class="ai-cta-final">
-    <p>
-      <strong>AI není jen pro programátory.</strong> Může pomoct každému, kdo chce lépe psát,
-      plánovat, učit se, kontrolovat chyby nebo si udělat pořádek v informacích. Nejdůležitější
-      není znát všechny nástroje. Nejdůležitější je umět se dobře ptát.
-    </p>
-    <div class="ai-cta-row" style="justify-content:center">
-      <a href="smart-home/" class="btn">🏠 Moje Smart Home projekty</a>
-      <a href="cestovani/italie/" class="btn ghost">✈ Cestování do Itálie</a>
-      <a href="finance/" class="btn ghost">📊 Finance a evidence</a>
-    </div>
-  </section>
-
 </div>
 </main>
 

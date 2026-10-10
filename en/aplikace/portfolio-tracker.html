@@ -49,7 +49,7 @@
 
 <section>
   <h2>What it does</h2>
-  <p>I have a bookkeeping app that <em>records</em> money and an analyst that <em>advises</em> on individual stocks. Portfolio Tracker is the third piece: it <em>tracks how the whole investment portfolio performs over time</em> — in one place, without logging in anywhere. Inspired by tools like Digrin, but built so my positions never get sent out.</p>
+  <p>I use <a href="ucetni-kniha.html">Bookkeeping</a> for the overall financial picture and Portfolio Tracker to follow investments over time. The former Finance Analytik is now part of PT, bringing portfolio tracking and stock analysis together in one app.</p>
   <p><strong>Transactions are the source of truth.</strong> Instead of typing "I own 10 shares", the app keeps individual buys, sells and dividends — and derives positions, average price and realized gain from them (FIFO). That keeps taxes and history consistent.</p>
   <p><strong>It reads broker statements itself.</strong> Drop in a CSV / XLSX / PDF from XTB, eToro, Trading 212 or Interactive Brokers; the app detects the broker, normalizes the format and de-duplicates repeated imports (a fingerprint per transaction). XTB accounts can be split by currency (USD/EUR/CZK separately).</p>
   <p><strong>Taxes by Czech rules.</strong> FIFO matching of sales, the <strong>3-year time test</strong> (exemption for long holding) and the <strong>§4 value test</strong> (sale proceeds ≤ CZK 100,000/year). The summary is always computed in CZK even when the portfolio base is e.g. USD (converted at the historical rate on the trade date).</p>
