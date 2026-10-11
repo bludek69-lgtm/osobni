@@ -48,6 +48,17 @@
   <p style="margin-top:.8rem"><a href="../index.html">← Zpět na Moje aplikace</a></p>
 </section>
 
+  <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
+    <div class="container">
+      <h2 id="video-heading">Praktická prohlídka na videu</h2>
+      <p>Meal Planner — jídelníček, krabičky a nákup · 9:44. Video s českým komentářem.</p>
+      <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+        <iframe src="https://www.youtube-nocookie.com/embed/jBI9H_MD_Cw?rel=0" title="Meal Planner — jídelníček, krabičky a nákup" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <p><a href="https://www.youtube.com/watch?v=jBI9H_MD_Cw" target="_blank" rel="noopener">YouTube ↗</a></p>
+    </div>
+  </section>
+
 <section>
   <h2>Co to dělá</h2>
   <p><strong>Proč vznikl:</strong> zkoušel jsem několik dietních aplikací (MyFitnessPal, Yazio, Lifesum…) a všechny mě naštvaly. Buď chtěly účet a posílaly mi reklamy, nebo neuměly česká jídla, nebo tlačily konkrétní výživovou filozofii. Tahle aplikace běží <strong>jen u mě v prohlížeči</strong> — profil žije v localStorage (paměti prohlížeče), žádný server nevidí moji váhu, kalorie, ani co dnes jím.</p><p><strong>Jak funguje:</strong> Zadám svoji výšku, váhu, věk, aktivitu. Aplikace spočítá kolik kalorií denně potřebuju (vzorec Mifflin-St Jeor pro klidový metabolismus + multiplier podle aktivity). Pokud chci zhubnout, doporučí asymetrický deficit (lehčí o pár stovek kcal). Pokud nabrat svaly, navíc se snaží vybírat recepty s vyšším protein ratio.</p><p><strong>Týdenní plán krabiček:</strong> Aplikace projde databázi cca 21 receptů a sestaví 7 dní × 5 jídel (snídaně, svačina, oběd, svačina, večeře) tak, aby denní suma kcal padla do ±10 % cíle. Pak vygeneruje nákupní seznam — sečte všechny ingredience za týden a rozdělí do kategorií (masa, mléčné, zelenina, …). Export do CSV nebo tisku.</p><p><strong>Volitelně Rohlík:</strong> Pokud mám zákazníka u Rohlíka, můžu si nechat agentem (Claude) připravit návrh košíku z týdenního plánu, vložit JSON do Nastavení a aplikace zobrazí cenu vs minimum objednávky vs cenu doručení. <em>Objednávku ale vždy potvrzuji ručně v Rohlík UI</em> — aplikace fyzicky neumí objednat ani zaplatit (defense-in-depth, 5 vrstev ochrany, 14 PII blacklist pravidel).</p><p><strong>PWA = funguje offline:</strong> Po prvním otevření se uloží do prohlížeče a funguje i bez internetu. Můžu si ji nainstalovat jako desktopovou aplikaci na Windows přes Edge. Žádné aktualizace přes app store, žádné notifikace, žádná telemetrie.</p>

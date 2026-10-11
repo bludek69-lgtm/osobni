@@ -48,6 +48,17 @@
   <p style="margin-top:.8rem"><a href="../index.html">← Torna alle Mie app</a></p>
 </section>
 
+  <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
+    <div class="container">
+      <h2 id="video-heading">Una visita pratica in video</h2>
+      <p>Meal Planner — menu, pasti e spesa · 9:44. Video con commento in ceco.</p>
+      <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+        <iframe src="https://www.youtube-nocookie.com/embed/jBI9H_MD_Cw?rel=0" title="Meal Planner — menu, pasti e spesa" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <p><a href="https://www.youtube.com/watch?v=jBI9H_MD_Cw" target="_blank" rel="noopener">YouTube ↗</a></p>
+    </div>
+  </section>
+
 <section>
   <h2>Cosa fa</h2>
   <p><strong>Perché esiste:</strong> ho provato diverse app dietetiche mainstream (MyFitnessPal, Yazio, Lifesum…) e tutte mi hanno infastidito. O volevano un account e mostravano pubblicità, o non conoscevano piatti cechi, o forzavano un'ideologia nutrizionale. Questa gira <strong>solo nel browser</strong> — il profilo vive in localStorage, nessun server vede peso, calorie, o cosa mangio oggi.</p><p><strong>Come funziona:</strong> inserisco altezza, peso, età, attività. L'app calcola il fabbisogno calorico (Mifflin-St Jeor + moltiplicatore attività). Per perdere peso raccomanda un deficit asimmetrico. Per massa muscolare privilegia ricette ad alta proteina.</p><p><strong>Piano settimanale di porzioni:</strong> Cerca tra ~21 ricette e costruisce 7 giorni × 5 pasti così che le kcal giornaliere stiano entro ±10% dell'obiettivo. Genera la lista della spesa — somma tutti gli ingredienti per la settimana, divide per categorie. Esporta in CSV o stampa.</p><p><strong>Rohlík opzionale:</strong> Se sono cliente Rohlík, un agente può preparare proposta carrello dal piano settimanale, incollo JSON in Impostazioni e vedo prezzo vs minimo vs spedizione. <em>L'ordine si conferma sempre manualmente in Rohlík UI</em> — l'app non può fisicamente ordinare o pagare (5 strati di difesa).</p><p><strong>PWA = funziona offline:</strong> Dopo il primo caricamento è in cache e funziona senza internet. Installabile come app desktop su Windows via Edge. Niente aggiornamenti app store, niente notifiche, niente telemetria.</p>

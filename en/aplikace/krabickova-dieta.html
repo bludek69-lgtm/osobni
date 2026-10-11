@@ -48,6 +48,17 @@
   <p style="margin-top:.8rem"><a href="../index.html">← Back to My apps</a></p>
 </section>
 
+  <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
+    <div class="container">
+      <h2 id="video-heading">A practical video tour</h2>
+      <p>Meal Planner — menus, meal prep and shopping · 9:44. Video with Czech commentary.</p>
+      <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+        <iframe src="https://www.youtube-nocookie.com/embed/jBI9H_MD_Cw?rel=0" title="Meal Planner — menus, meal prep and shopping" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <p><a href="https://www.youtube.com/watch?v=jBI9H_MD_Cw" target="_blank" rel="noopener">YouTube ↗</a></p>
+    </div>
+  </section>
+
 <section>
   <h2>What it does</h2>
   <p><strong>Why it exists:</strong> I tried several mainstream diet apps (MyFitnessPal, Yazio, Lifesum…) and they all annoyed me. Either they wanted an account and pushed ads, or didn't know Czech meals, or forced a specific nutrition ideology. This one runs <strong>only in my browser</strong> — profile lives in localStorage, no server sees my weight, calories, or what I'm eating today.</p><p><strong>How it works:</strong> I enter my height, weight, age, activity. The app computes my daily calorie need (Mifflin-St Jeor for resting metabolism + activity multiplier). For weight loss it recommends an asymmetric deficit. For muscle gain it also prioritizes higher-protein recipes.</p><p><strong>Weekly meal-box plan:</strong> The app searches a database of ~21 recipes and builds 7 days × 5 meals (breakfast, snack, lunch, snack, dinner) so the daily kcal lands within ±10% of target. Then it generates a shopping list — sums all ingredients for the week and groups them by category. Export to CSV or print.</p><p><strong>Optional Rohlík:</strong> If I'm a Rohlík customer, I can have an agent (Claude) prepare a cart proposal from the weekly plan, paste JSON into Settings and see the cart preview with totals vs minimum vs delivery price. <em>The order is always confirmed manually in Rohlík UI</em> — the app physically cannot order or pay (5-layer defense-in-depth).</p><p><strong>PWA = works offline:</strong> After first load it caches and works without internet. Installable as a desktop app on Windows via Edge. No app store updates, no notifications, no telemetry.</p>

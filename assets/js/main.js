@@ -138,9 +138,9 @@
           src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0"
           title="${(title || '').replace(/"/g,'&quot;')}"
           loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
-        ${title ? `<div class="meta"><h3>${title}</h3>${description ? `<p>${description}</p>` : ''}</div>` : ''}
       `;
     };
 
@@ -157,7 +157,6 @@
 
     // Cards swap into featured player
     document.querySelectorAll('.video-card').forEach(card => {
-      const playBtn = card.querySelector('.btn-play');
       const handler = (e) => {
         if (e) e.preventDefault();
         const id    = card.dataset.videoId;
@@ -175,7 +174,6 @@
         if (e.target.closest('a.btn-mini.secondary')) return; // let external link work
         handler(e);
       });
-      if (playBtn) playBtn.addEventListener('click', handler);
     });
   }
 })();
