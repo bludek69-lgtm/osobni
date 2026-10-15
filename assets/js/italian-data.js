@@ -353,7 +353,36 @@
     grammar('racconto-realised','Anna si è ___ che non aveva il telefono. (accorgersi)',['accorta'],['accorta','accorto','accorti','accorgere'],'S essere se příčestí shoduje s Annou: accorta.','With essere, the participle agrees with Anna: accorta.','Il participio concorda con Anna: accorta.'),
     grammar('racconto-state','Il telefono ___ nella tasca della giacca. (essere, imperfetto)',['era'],['era','ero','erano','essere'],'Popis stavu v minulosti: il telefono era.','A past state: il telefono era.','Uno stato nel passato: il telefono era.')
   );
+  const plans=lessons.find(l=>l.id==='progetti');
+  plans.goal=t('Navrhnu společný výlet, zdvořile požádám o pomoc a domluvím čas odjezdu.','Suggest a trip together, politely ask for help and agree on a departure time.','Proporre una gita, chiedere aiuto con cortesia e concordare la partenza.');
+  plans.dialogue=[
+    ['Anna, che programmi hai per domani?','Anno, jaké máš plány na zítřek?','Anna, what are your plans for tomorrow?'],
+    ['Ho intenzione di visitare Lucca. Ti piacerebbe venire con me?','Mám v úmyslu navštívit Luccu. Chtěl bys jet se mnou?','I intend to visit Lucca. Would you like to come with me?'],
+    ['Verrei volentieri! Potremmo prendere il treno.','Rád bych jel! Mohli bychom jet vlakem.','I would love to! We could take the train.'],
+    ['Ottima idea. Potresti controllare gli orari?','Výborný nápad. Mohl bys zkontrolovat jízdní řád?','Great idea. Could you check the timetable?'],
+    ['Certo. C’è un treno alle nove. Dovremmo comprare i biglietti prima.','Jistě. V devět jede vlak. Měli bychom si koupit jízdenky předem.','Of course. There is a train at nine. We should buy the tickets in advance.'],
+    ['D’accordo. Li comprerò online stasera.','Dobře. Koupím je dnes večer online.','All right. I will buy them online this evening.'],
+    ['Ti andrebbe di fare una passeggiata sulle mura?','Chtěla by ses projít po hradbách?','Would you like to take a walk on the city walls?'],
+    ['Sì, volentieri. Magari potremmo anche visitare il centro.','Ano, ráda. Třeba bychom mohli navštívit i centrum.','Yes, gladly. Perhaps we could also visit the centre.'],
+    ['Se piove, possiamo visitare un museo.','Jestli bude pršet, můžeme navštívit muzeum.','If it rains, we can visit a museum.'],
+    ['Va bene. A che ora ci incontreremo?','Dobře. V kolik se sejdeme?','All right. What time will we meet?'],
+    ['Ci incontreremo alle otto e mezza davanti alla stazione.','Sejdeme se v půl deváté před nádražím.','We will meet at half past eight in front of the station.'],
+    ['Perfetto. Allora partiremo alle nove!','Výborně. Tak vyrazíme v devět!','Perfect. Then we will leave at nine!']
+  ].map((row,i)=>({id:'progetti-'+String(i+1).padStart(2,'0'),role:i%2?'barista':'customer',it:row[0],translation:t(row[1],row[2],row[0])}));
+  plans.guide={
+    cs:{cafeTitle:'Plány a zdvořilé návrhy',cafeTime:'Plány a zdvořilé návrhy · B1 · asi 7 minut',cafeContext:'Anna a Marco plánují výlet do Luccy. Nejdřív si navrhují možnosti, potom se domluví na konkrétním čase. V rozhovoru si tykají.',ruleText:'Condizionale změkčuje návrh či prosbu: potremmo = mohli bychom, potresti = mohl/a bys, dovremmo = měli bychom. Při vykání jedné osobě použij potrebbe: Potrebbe aiutarmi? Ti piacerebbe…? a Ti andrebbe di…? nabízejí společnou aktivitu. Verrei volentieri = rád/a bych jel/a. Futuro semplice vyjadřuje budoucí děj: comprerò = koupím, ci incontreremo = sejdeme se, partiremo = vyrazíme. Ho intenzione di + infinitiv = mám v úmyslu. Magari zde znamená třeba / možná. V reálné podmínce lze použít přítomný čas: Se piove, possiamo visitare un museo.',completed:'Navrhni společný výlet pomocí Potremmo…, požádej kamaráda o pomoc pomocí Potresti… a domluv odjezd větou Partiremo alle… Potom změň prosbu na zdvořilé vykání s Potrebbe…',practiceCafe:'Procvičit plány a návrhy',barista:'Anna',customer:'Marco'},
+    en:{cafeTitle:'Plans and polite suggestions',cafeTime:'Plans and polite suggestions · B1 · about 7 minutes',cafeContext:'Anna and Marco plan a trip to Lucca. First they suggest possibilities, then agree on a specific time. They address each other informally.',ruleText:'The conditional softens suggestions and requests: potremmo = we could, potresti = could you (informal), dovremmo = we should. Use potrebbe to address one person formally: Potrebbe aiutarmi? Ti piacerebbe…? and Ti andrebbe di…? suggest an activity together. Verrei volentieri = I would gladly come. The simple future expresses future actions: comprerò = I will buy, ci incontreremo = we will meet, partiremo = we will leave. Ho intenzione di + infinitive = I intend to. Magari here means perhaps. Real conditions can use the present tense: Se piove, possiamo visitare un museo.',completed:'Suggest a trip with Potremmo…, ask a friend for help with Potresti… and agree on departure with Partiremo alle… Then make the request formal using Potrebbe…',practiceCafe:'Practise plans and suggestions',barista:'Anna',customer:'Marco'},
+    it:{cafeTitle:'Progetti e proposte',cafeTime:'Progetti e proposte · B1 · circa 7 minuti',cafeContext:'Anna e Marco organizzano una gita a Lucca e si danno del tu.',ruleText:'Il condizionale attenua proposte e richieste: potremmo, potresti, potrebbe. Il futuro esprime azioni future: comprerò, ci incontreremo, partiremo.',completed:'Proponi una gita, chiedi aiuto e concorda l’orario.',practiceCafe:'Esercitati con le proposte',barista:'Anna',customer:'Marco'}
+  };
+  plans.questions.push(
+    grammar('progetti-request','___ controllare gli orari? (tu, potere, condizionale)',['Potresti'],['Potresti','Potrebbe','Potremmo','Potrebbero'],'Při tykání: potresti. Při vykání: potrebbe.','Informal tu: potresti. Formal Lei: potrebbe.','Con tu: potresti. Con Lei: potrebbe.'),
+    grammar('progetti-suggestion','Noi ___ prendere il treno. (potere, condizionale)',['potremmo'],['potremmo','potrebbe','potresti','potrebbero'],'Návrh pro nás: potremmo = mohli bychom.','A suggestion for us: potremmo = we could.','Con noi: potremmo.'),
+    grammar('progetti-future','Stasera io ___ i biglietti. (comprare, futuro semplice)',['comprerò'],['comprerò','comprerei','compravo','comprare'],'Budoucí čas slovesa comprare pro io: comprerò.','Simple future of comprare with io: comprerò.','Futuro semplice, io: comprerò.'),
+    grammar('progetti-intention','Ho intenzione ___ visitare Lucca.',['di'],['di','a','da','per'],'Vazba avere intenzione di + infinitiv.','Use avere intenzione di + infinitive.','Avere intenzione di + infinito.')
+  );
   const audioFiles = {};
+  for(const w of plans.words){audioFiles[w.italian]='progetti-'+w.id+'-word.mp3';audioFiles[w.example]='progetti-'+w.id+'-example.mp3';}
+  for(const line of plans.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for(const w of story.words){audioFiles[w.italian]='racconto-'+w.id+'-word.mp3';audioFiles[w.example]='racconto-'+w.id+'-example.mp3';}
   for(const line of story.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for(const w of yesterday.words){audioFiles[w.italian]='passato-'+w.id+'-word.mp3';audioFiles[w.example]='passato-'+w.id+'-example.mp3';}
