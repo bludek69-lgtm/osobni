@@ -2037,6 +2037,73 @@
       {id:'bus',title:{cs:'Zeptat se na autobus',en:'Ask about a bus'},lines:[cityBranchRows[3],cityBranchRows[4]]}
     ]},cityBranchRows[2],cityBranchRows[5],cityBranchRows[6]
   ]});
+  const greetingBranchRows=[
+  {
+    "id": "saluti-branch-1",
+    "role": "customer",
+    "it": "Scusa, non ho capito il tuo nome. Puoi ripeterlo più lentamente?",
+    "translation": {
+      "cs": "Promiň, nerozuměl jsem tvému jménu. Můžeš ho zopakovat pomaleji?",
+      "en": "Sorry, I did not catch your name. Can you repeat it more slowly?",
+      "it": "Scusa, non ho capito il tuo nome. Puoi ripeterlo più lentamente?"
+    },
+    "situation": {
+      "cs": "Při představování jsi nezachytil/a jméno. Požádej o jeho pomalejší zopakování.",
+      "en": "You did not catch the name during introductions. Ask for it to be repeated more slowly."
+    }
+  },
+  {
+    "id": "saluti-branch-2",
+    "role": "barista",
+    "it": "Certo. Mi chiamo Anna.",
+    "translation": {
+      "cs": "Jistě. Jmenuji se Anna.",
+      "en": "Of course. My name is Anna.",
+      "it": "Certo. Mi chiamo Anna."
+    },
+    "situation": {
+      "cs": "Druhý člověk nezachytil tvé jméno. Zopakuj klidně a pomalu, že se jmenuješ Anna.",
+      "en": "The other person did not catch your name. Calmly and slowly repeat that your name is Anna."
+    }
+  },
+  {
+    "id": "saluti-branch-3",
+    "role": "customer",
+    "it": "Scusa, come si scrive il tuo nome? Puoi fare lo spelling?",
+    "translation": {
+      "cs": "Promiň, jak se píše tvoje jméno? Můžeš ho vyhláskovat?",
+      "en": "Sorry, how do you write your name? Can you spell it?",
+      "it": "Scusa, come si scrive il tuo nome? Puoi fare lo spelling?"
+    },
+    "situation": {
+      "cs": "Nejsi si jistý/á jménem. Zeptej se, jak se píše, a požádej o vyhláskování.",
+      "en": "You are unsure of the name. Ask how it is written and request the spelling."
+    }
+  },
+  {
+    "id": "saluti-branch-4",
+    "role": "barista",
+    "it": "Certo: a, enne, enne, a. Anna.",
+    "translation": {
+      "cs": "Jistě: A, N, N, A. Anna.",
+      "en": "Of course: A, N, N, A. Anna.",
+      "it": "Certo: a, enne, enne, a. Anna."
+    },
+    "situation": {
+      "cs": "Druhý člověk potřebuje znát zápis tvého jména. Vyhláskuj jméno Anna.",
+      "en": "The other person needs to know how your name is written. Spell the name Anna."
+    }
+  }
+];
+  for(const line of greetingBranchRows)audioFiles[line.it]=line.id+'.mp3';
+  const greetingBranchLesson=lessons.find(l=>l.id==='saluti');
+  greetingBranchLesson.dialogueVariants.push({id:'saluti-v2',title:{cs:'Nerozumím jménu · dvě cesty',en:'Did not catch the name · two paths'},lines:[
+    greetingBranchLesson.dialogue[0],
+    {...greetingBranchRows[0],branchTitle:{cs:'Nezachytil/a jsi jméno. Jak pokračovat?',en:'You did not catch the name. What next?'},branches:[
+      {id:'repeat',title:{cs:'Požádat o zopakování',en:'Ask to repeat it'},lines:[greetingBranchRows[0],greetingBranchRows[1]]},
+      {id:'spell',title:{cs:'Požádat o vyhláskování',en:'Ask to spell it'},lines:[greetingBranchRows[2],greetingBranchRows[3]]}
+    ]},greetingBranchRows[1],...greetingBranchLesson.dialogue.slice(1,4)
+  ]});
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;
