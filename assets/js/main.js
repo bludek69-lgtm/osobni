@@ -138,6 +138,98 @@
     });
   });
 
+  // One screen wake lock for the currently selected cooking instructions.
+  const cookingSteps = document.querySelectorAll('.recipe-steps');
+  if (cookingSteps.length) {
+    const wakeLabels = {
+      cs: ['Nezhasínat displej', 'Povolit zhasnutí', 'Platí jen při otevřeném postupu a zobrazené stránce.', 'Displej zůstává zapnutý.', 'Zapínám…', 'Po návratu do stránky se zapne znovu.', 'Tento prohlížeč nezhasínání displeje nepodporuje.', 'Nepodařilo se zapnout. Zkus to znovu; překážkou může být úsporný režim.', 'Zařízení nezhasínání vypnulo. Můžeš ho zkusit zapnout znovu.'],
+      en: ['Keep screen on', 'Allow screen to sleep', 'Only while these instructions are open and the page is visible.', 'The screen is staying on.', 'Turning on…', 'Will resume when you return to this page.', 'This browser does not support keeping the screen on.', 'Could not turn on. Try again; battery saving may prevent it.', 'The device stopped keeping the screen on. You can try again.'],
+      it: ['Mantieni lo schermo acceso', 'Consenti spegnimento schermo', 'Solo con il procedimento aperto e la pagina visibile.', 'Lo schermo rimane acceso.', 'Attivazione…', 'Si riattiverà al ritorno su questa pagina.', 'Questo browser non supporta lo schermo sempre acceso.', 'Attivazione non riuscita. Riprova; il risparmio energetico potrebbe impedirla.', 'Il dispositivo ha disattivato la funzione. Puoi riprovare.']
+    };
+    const labels = wakeLabels[document.documentElement.lang.split('-')[0]] || wakeLabels.cs;
+    const supported = window.isSecureContext && typeof navigator.wakeLock?.request === 'function';
+    const controls = [];
+    let owner = null;
+    let sentinel = null;
+    let generation = 0;
+    const render = message => controls.forEach(control => {
+      const selected = owner === control;
+      control.button.textContent = labels[selected ? 1 : 0];
+      control.button.setAttribute('aria-pressed', String(selected && !!sentinel));
+      control.status.textContent = selected ? message : labels[supported ? 2 : 6];
+    });
+    const release = () => {
+      generation++;
+      const previous = sentinel;
+      sentinel = null;
+      if (previous) previous.release().catch(() => {});
+    };
+    const stop = () => { owner = null; release(); render(); };
+    const acquire = async () => {
+      if (!owner || !owner.details.open || document.visibilityState !== 'visible') return;
+      const selected = owner;
+      const requestGeneration = ++generation;
+      render(labels[4]);
+      try {
+        const lock = await navigator.wakeLock.request('screen');
+        if (requestGeneration !== generation || owner !== selected || !selected.details.open || document.visibilityState !== 'visible') {
+          await lock.release();
+          return;
+        }
+        if (lock.released) throw new Error('Wake lock already released');
+        sentinel = lock;
+        lock.addEventListener('release', () => {
+          if (sentinel !== lock) return;
+          sentinel = null;
+          if (document.visibilityState !== 'visible') render(labels[5]);
+          else {
+            owner = null;
+            render();
+            selected.status.textContent = labels[8];
+          }
+        });
+        render(labels[3]);
+      } catch (_) {
+        if (requestGeneration !== generation) return;
+        owner = null;
+        render();
+        selected.status.textContent = labels[7];
+      }
+    };
+    cookingSteps.forEach((details, index) => {
+      const container = document.createElement('div');
+      container.className = 'recipe-wake';
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.disabled = !supported;
+      const status = document.createElement('p');
+      status.id = `recipe-wake-status-${index}`;
+      status.setAttribute('role', 'status');
+      button.setAttribute('aria-describedby', status.id);
+      container.append(button, status);
+      details.querySelector('summary').after(container);
+      const control = { details, button, status };
+      controls.push(control);
+      button.addEventListener('click', () => {
+        if (owner === control) { stop(); return; }
+        release();
+        owner = control;
+        acquire();
+      });
+      details.addEventListener('toggle', () => {
+        if (!details.open && owner === control) stop();
+      });
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (!owner) return;
+      if (document.visibilityState !== 'visible') { release(); render(labels[5]); }
+      else if (owner.details.open) acquire();
+      else stop();
+    });
+    window.addEventListener('pagehide', stop);
+    render();
+  }
+
   // Recipe videos stay beside their dish; only the selected player is loaded.
   const recipeLabels = {
     cs: ['▶ Přehrát video · GialloZafferano', 'Zavřít video', 'Otevřít na YouTube'],

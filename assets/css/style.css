@@ -1061,6 +1061,12 @@ button.recipe-video { width:100%; background:transparent; color:inherit; font-fa
 .recipe-steps summary:focus-visible { outline:2px solid currentColor; outline-offset:2px; }
 .recipe-steps ol { list-style:decimal; padding:0 1rem 0 2.3rem; margin:.25rem 0 1rem; font-size:.9rem; }
 .recipe-steps li { margin:.7rem 0; padding-left:.15rem; }
+.recipe-wake { margin:0 .75rem .75rem; }
+.recipe-wake button { min-height:44px; max-width:100%; padding:.5rem .75rem; border:1px solid rgba(0,140,69,.5); border-radius:6px; background:transparent; color:inherit; font:inherit; font-size:.85rem; cursor:pointer; }
+.recipe-wake button[aria-pressed="true"] { background:rgba(0,140,69,.15); font-weight:600; }
+.recipe-wake button:focus-visible { outline:2px solid currentColor; outline-offset:3px; }
+.recipe-wake button:disabled { opacity:.65; cursor:default; }
+.recipe-wake p { margin:.4rem 0 0; font-size:.8rem; opacity:.8; }
 .recipe-source:hover { background: rgba(0,140,69,0.1); }
 .recipe-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.6rem; }
 .recipe-tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 3px; background: rgba(255,255,255,0.06); }
