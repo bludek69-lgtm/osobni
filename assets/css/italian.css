@@ -132,3 +132,5 @@ html[data-theme-mode="dark"] .it-page {--it-green:#9cdbc1;}
 .it-freya summary {cursor:pointer;font-weight:650;}
 .it-freya details p[lang="it"] {font-weight:600;margin-bottom:.3rem;}
 .it-freya details p.it-muted {margin-top:0;}
+
+.it-lesson-thumb{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:10px;margin-bottom:1rem}

@@ -516,7 +516,8 @@
     audioFiles[w.example] = 'bar-'+w.id+'-example.mp3';
   }
   for (const line of cafe.dialogue) audioFiles[line.it] = line.id+'.mp3';
-  const data = {version:1, lessons, photos, illustrations, audioFiles};
+  const lessonIllustrations=Object.fromEntries(lessons.map(l=>[l.id,{file:l.id+'.webp',kind:'ai',generator:'OpenAI image generation',created:'2026-10-15'}]));
+  const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;
 })(typeof window !== 'undefined' ? window : globalThis);

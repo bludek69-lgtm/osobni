@@ -164,6 +164,20 @@ test('city directions lesson has translated dialogue and audio without a Freya v
   assert.equal(C.reviewQuestions([l],{mistakes:{'citta-repeat':1},mistakeKinds:{}},'cs')[0].answers[0],'ripetere');
 });
 
+test('all lessons have distinct local thematic illustrations',()=>{
+  const fs=require('node:fs'),crypto=require('node:crypto');
+  const hashes=new Set();
+  assert.equal(Object.keys(D.lessonIllustrations).length,D.lessons.length);
+  for(const l of D.lessons){
+    const asset=D.lessonIllustrations[l.id];assert.equal(asset.kind,'ai');
+    const bytes=fs.readFileSync(__dirname+'/assets/img/italian/lessons/'+asset.file);
+    assert.equal(bytes.toString('ascii',8,12),'WEBP');
+    assert.ok(bytes.length>10000&&bytes.length<300000);
+    hashes.add(crypto.createHash('sha256').update(bytes).digest('hex'));
+  }
+  assert.equal(hashes.size,D.lessons.length);
+});
+
 test('every offered exercise answer is unique and distractors fail grading',()=>{
   for(const lang of ['cs','en'])for(const mode of ['choice','write','listen','grammar']){
     for(const l of D.lessons)for(const q of C.questions([l],mode,lang)){
