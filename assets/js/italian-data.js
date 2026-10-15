@@ -380,7 +380,36 @@
     grammar('progetti-future','Stasera io ___ i biglietti. (comprare, futuro semplice)',['comprerò'],['comprerò','comprerei','compravo','comprare'],'Budoucí čas slovesa comprare pro io: comprerò.','Simple future of comprare with io: comprerò.','Futuro semplice, io: comprerò.'),
     grammar('progetti-intention','Ho intenzione ___ visitare Lucca.',['di'],['di','a','da','per'],'Vazba avere intenzione di + infinitiv.','Use avere intenzione di + infinitive.','Avere intenzione di + infinito.')
   );
+  const pronouns=lessons.find(l=>l.id==='pronomi');
+  pronouns.goal=t('Nahradím už zmíněnou věc, množství nebo místo zájmeny lo, la, ne a ci.','Replace a previously mentioned object, quantity or place with lo, la, ne and ci.','Riprendere un oggetto, una quantità o un luogo con lo, la, ne e ci.');
+  pronouns.dialogue=[
+    ['Anna, hai il biglietto per il museo?','Anno, máš lístek do muzea?','Anna, do you have the museum ticket?'],
+    ['No, lo compro alla cassa. E tu?','Ne, koupím ho u pokladny. A ty?','No, I’ll buy it at the ticket office. And you?'],
+    ['Io ce l’ho già. Hai anche la mappa della città?','Já už ho mám. Máš i mapu města?','I already have it. Do you also have the city map?'],
+    ['Sì, la porto nello zaino. Il museo è vicino alla stazione.','Ano, nesu ji v batohu. Muzeum je blízko nádraží.','Yes, I’m carrying it in my backpack. The museum is near the station.'],
+    ['Vedi la stazione da qui?','Vidíš odtud nádraží?','Can you see the station from here?'],
+    ['Sì, la vedo. Andiamo prima al bar?','Ano, vidím ho. Půjdeme nejdřív do kavárny?','Yes, I can see it. Shall we go to the café first?'],
+    ['Volentieri, ci vado spesso. Vuoi un cornetto?','Rád, chodím tam často. Chceš croissant?','Gladly, I go there often. Would you like a croissant?'],
+    ['Sì, ne prendo uno. E tu, quanti ne vuoi?','Ano, vezmu si jeden. A ty, kolik jich chceš?','Yes, I’ll have one. And you, how many do you want?'],
+    ['Ne vorrei due. Poi andiamo al museo a piedi?','Chtěl bych dva. Pak půjdeme do muzea pěšky?','I would like two. Shall we then walk to the museum?'],
+    ['Sì, ci andiamo a piedi. Sono solo dieci minuti.','Ano, půjdeme tam pěšky. Je to jen deset minut.','Yes, we’ll walk there. It’s only ten minutes.'],
+    ['Con questo zaino pesante non è facile, ma ce la faccio!','S tímhle těžkým batohem to není snadné, ale zvládnu to!','With this heavy backpack it isn’t easy, but I can manage!'],
+    ['Dopo il museo me ne vado in albergo. Ci vediamo stasera!','Po muzeu odejdu do hotelu. Uvidíme se večer!','After the museum I’m heading back to the hotel. See you this evening!']
+  ].map((row,i)=>({id:'pronomi-'+String(i+1).padStart(2,'0'),role:i%2?'barista':'customer',it:row[0],translation:t(row[1],row[2],row[0])}));
+  pronouns.guide={
+    cs:{cafeTitle:'Zájmena lo, la, ne, ci',cafeTime:'Zájmena lo, la, ne, ci · B1 · asi 7 minut',cafeContext:'Anna a Marco míří do muzea a cestou se zastaví v kavárně. Sleduj, co nahrazují krátká slova před slovesem: lístek, mapu, nádraží, croissanty nebo místo.',ruleText:'Lo nahrazuje přímý předmět mužského rodu: il biglietto → lo compro. La nahrazuje ženský rod: la mappa → la porto, la stazione → la vedo. Řiď se italským rodem: nádraží je česky středního rodu, ale la stazione je italsky ženského rodu. Ne vyjadřuje množství z už zmíněné věci: i cornetti → ne prendo uno / ne vorrei due. Ci zde nahrazuje místo: al bar → ci vado, al museo → ci andiamo. Před časovaným slovesem stojí lo, la, ne, ci. Výrazy ce l’ho = mám ho/ji/to, ce la faccio = zvládnu to a me ne vado = odcházím se uč jako celky. V ci vediamo znamená ci vzájemnost: uvidíme se, nikoli tam.',completed:'Odpověz bez opakování podstatného jména: Compri il biglietto? Porti la mappa? Quanti cornetti vuoi? Vai al museo? Použij postupně lo, la, ne a ci. Potom řekni vlastní větu s ce la faccio.',practiceCafe:'Procvičit zájmena',barista:'Anna',customer:'Marco'},
+    en:{cafeTitle:'Pronouns lo, la, ne, ci',cafeTime:'Pronouns lo, la, ne, ci · B1 · about 7 minutes',cafeContext:'Anna and Marco are going to a museum and stop at a café on the way. Follow what the short words before the verb refer to: a ticket, a map, the station, croissants or a place.',ruleText:'Lo replaces a masculine direct object: il biglietto → lo compro. La replaces a feminine one: la mappa → la porto, la stazione → la vedo. Follow the Italian noun’s gender. Ne expresses a quantity of something already mentioned: i cornetti → ne prendo uno / ne vorrei due. Ci here replaces a place: al bar → ci vado, al museo → ci andiamo. Lo, la, ne and ci go before the conjugated verb in these examples. Learn ce l’ho = I have it, ce la faccio = I can manage and me ne vado = I am leaving as complete expressions. In ci vediamo, ci is reciprocal: we see each other, not there.',completed:'Answer without repeating the noun: Compri il biglietto? Porti la mappa? Quanti cornetti vuoi? Vai al museo? Use lo, la, ne and ci respectively. Then make your own sentence with ce la faccio.',practiceCafe:'Practise pronouns',barista:'Anna',customer:'Marco'},
+    it:{cafeTitle:'Pronomi lo, la, ne, ci',cafeTime:'Pronomi · B1 · circa 7 minuti',cafeContext:'Anna e Marco vanno al museo passando dal bar.',ruleText:'Lo e la riprendono un oggetto diretto. Ne indica una quantità; ci può riprendere un luogo. In ci vediamo, ci è reciproco. Impara ce la faccio e me ne vado come espressioni complete.',completed:'Rispondi usando lo, la, ne e ci.',practiceCafe:'Esercitati con i pronomi',barista:'Anna',customer:'Marco'}
+  };
+  pronouns.questions.push(
+    grammar('pronomi-ticket','Il biglietto? ___ compro alla cassa.',['Lo'],['Lo','La','Ne','Ci'],'Il biglietto je mužského rodu: lo.','Il biglietto is masculine: lo.','Il biglietto è maschile: lo.'),
+    grammar('pronomi-map','La mappa? ___ porto nello zaino.',['La'],['La','Lo','Ne','Ci'],'La mappa je ženského rodu: la.','La mappa is feminine: la.','La mappa è femminile: la.'),
+    grammar('pronomi-quantity','Quanti cornetti vuoi? ___ vorrei due.',['Ne'],['Ne','Ci','Lo','La'],'Ne zastupuje cornetti ve spojení s množstvím due.','Ne refers to cornetti with the quantity due.','Ne riprende i cornetti con la quantità due.'),
+    grammar('pronomi-place','Andate al museo? Sì, ___ andiamo a piedi.',['ci'],['ci','ne','lo','la'],'Ci zde nahrazuje al museo.','Ci replaces al museo here.','Ci sostituisce al museo.')
+  );
   const audioFiles = {};
+  for(const w of pronouns.words){audioFiles[w.italian]='pronomi-'+w.id+'-word.mp3';audioFiles[w.example]='pronomi-'+w.id+'-example.mp3';}
+  for(const line of pronouns.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for(const w of plans.words){audioFiles[w.italian]='progetti-'+w.id+'-word.mp3';audioFiles[w.example]='progetti-'+w.id+'-example.mp3';}
   for(const line of plans.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for(const w of story.words){audioFiles[w.italian]='racconto-'+w.id+'-word.mp3';audioFiles[w.example]='racconto-'+w.id+'-example.mp3';}
