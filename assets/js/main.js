@@ -125,6 +125,59 @@
     }
   });
 
+  // Recipe videos stay beside their dish; only the selected player is loaded.
+  const recipeLabels = {
+    cs: ['▶ Přehrát video · GialloZafferano', 'Zavřít video', 'Otevřít na YouTube'],
+    en: ['▶ Play video · GialloZafferano', 'Close video', 'Open on YouTube'],
+    it: ['▶ Riproduci video · GialloZafferano', 'Chiudi video', 'Apri su YouTube']
+  };
+  const recipeText = recipeLabels[document.documentElement.lang.split('-')[0]] || recipeLabels.cs;
+  let closeRecipeVideo = null;
+  document.querySelectorAll('a.recipe-video').forEach((link, index) => {
+    const videoId = new URL(link.href).searchParams.get('v');
+    if (!/^[\w-]{11}$/.test(videoId || '')) return;
+    const title = link.closest('.recipe-card').querySelector('h3').textContent;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = link.className;
+    button.textContent = recipeText[0];
+    button.setAttribute('aria-label', `${recipeText[0]} — ${title}`);
+    button.setAttribute('aria-expanded', 'false');
+    const panel = document.createElement('div');
+    panel.className = 'recipe-player';
+    panel.id = `recipe-player-${index}`;
+    panel.hidden = true;
+    button.setAttribute('aria-controls', panel.id);
+    link.replaceWith(button, panel);
+    const close = () => {
+      panel.replaceChildren();
+      panel.hidden = true;
+      button.textContent = recipeText[0];
+      button.setAttribute('aria-label', `${recipeText[0]} — ${title}`);
+      button.setAttribute('aria-expanded', 'false');
+      closeRecipeVideo = null;
+    };
+    button.addEventListener('click', () => {
+      if (!panel.hidden) { close(); return; }
+      if (closeRecipeVideo) closeRecipeVideo();
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`;
+      iframe.title = `${title} · GialloZafferano`;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allow = 'autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      link.className = 'recipe-player-fallback';
+      link.textContent = recipeText[2];
+      link.setAttribute('aria-label', `${recipeText[2]} — ${title}`);
+      panel.append(iframe, link);
+      panel.hidden = false;
+      button.textContent = recipeText[1];
+      button.setAttribute('aria-label', `${recipeText[1]} — ${title}`);
+      button.setAttribute('aria-expanded', 'true');
+      closeRecipeVideo = close;
+    });
+  });
+
   // YouTube section — click-to-swap featured video
   // Pattern: each .video-card has data-video-id + data-title + data-description.
   // Click swaps the .featured-video iframe. "Otevřít na YouTube" link je separátní (anchor inside card).
