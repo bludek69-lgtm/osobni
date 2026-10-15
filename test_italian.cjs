@@ -713,3 +713,19 @@ test('formal branches clarify or change appointments while preserving review',()
  for(const replies of [1,2]){const excerpt=C.dialogueExcerpt(l.dialogue,v.lines,replies);assert.ok(excerpt.some(x=>x.branches));assert.equal(excerpt.filter(x=>x.role==='customer').length,replies);}
  assert.equal(C.dialogueEntries(D).find(x=>x.id===fork.id).branches,undefined);
 });
+
+test('early independent speaking practice never postpones the due review',()=>{
+ for(const lesson of D.lessons){
+  const p=C.emptyProgress(),id=lesson.dialogue[0].id;
+  C.rateSpeaking(p,id,'easy','2026-10-15T10:00:00Z');
+  const due=p.speakingReview[id].due;
+  C.rateSpeaking(p,id,'easy','2026-10-15T20:00:00Z');
+  assert.equal(p.speakingReview[id].due,due);assert.equal(p.speakingReview[id].step,1);
+  assert.equal(C.dailyPlan(D.lessons,p,'cs',lesson.id,due).sentenceId,id);
+  const restored=C.validateProgress(JSON.parse(JSON.stringify(p)),D);
+  assert.equal(restored.speakingReview[id].due,due);
+  C.rateSpeaking(p,id,'easy',due);assert.equal(p.speakingReview[id].step,2);
+  C.rateSpeaking(p,id,'hint','2026-10-16T12:00:00Z');
+  assert.equal(p.speakingReview[id].due,'2026-10-17T12:00:00.000Z');assert.equal(p.speakingReview[id].step,0);
+ }
+});

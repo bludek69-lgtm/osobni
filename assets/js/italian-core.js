@@ -108,7 +108,11 @@
   function rateSpeaking(progress, id, rating, date=new Date().toISOString()) {
     if(!['easy','hint','again'].includes(rating)||!Number.isFinite(Date.parse(date)))return;
     const now=Date.parse(date),old=progress.speakingReview?.[id];
-    const step=rating==='easy'?Math.min((old?.step||0)+(old&&now<Date.parse(old.due)?0:1),reviewDays.length):0;
+    // Practising early must not postpone an already scheduled review.
+    if(rating==='easy'&&old&&now<Date.parse(old.due)){
+      progress.speakingReview[id]={...old,rating,last:new Date(now).toISOString()};return;
+    }
+    const step=rating==='easy'?Math.min((old?.step||0)+1,reviewDays.length):0;
     const days=rating==='easy'?reviewDays[Math.max(0,step-1)]:1;
     progress.speakingReview=progress.speakingReview||{};
     progress.speakingReview[id]={rating,step,last:new Date(now).toISOString(),due:new Date(now+days*dayMs).toISOString()};
