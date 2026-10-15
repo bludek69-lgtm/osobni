@@ -23,3 +23,5 @@ Planning alternatives (2026-10-15): eight progetti-branch-*.mp3 recordings gener
 Opinion disagreement (2026-10-15): eight opinioni-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for Anna and DiegoNeural for the proposer. Original teaching dialogue: asking for reasons or suggesting a compromise about guided tours.
 
 Weather hypotheses (2026-10-15): eight ipotesi-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for Anna and DiegoNeural for the questioner. Original teaching dialogue: hypothetical rain with a museum visit or sunshine with a boat trip, conditional on opening hours and calm seas.
+
+Formal appointment dialogue (2026-10-15): eight registro-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for Ms Novak and DiegoNeural for Marco Rossi. Original teaching dialogue: clarifying a day and time or offering a later date, with formal address and written confirmation.

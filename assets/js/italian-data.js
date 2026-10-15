@@ -2691,6 +2691,129 @@
       {id:'sun',title:{cs:'Kdyby svítilo slunce',en:'If it were sunny'},lines:[weatherBranchRows[4],weatherBranchRows[5]]}
     ]},weatherBranchRows[3],weatherBranchRows[6],weatherBranchRows[7]
   ]});
+  const formalBranchRows=[
+  {
+    "id": "registro-branch-1",
+    "role": "customer",
+    "it": "Buongiorno, signora Novák. Sono Marco Rossi. Quando desidera fissare un appuntamento?",
+    "translation": {
+      "cs": "Dobrý den, paní Novák. Jsem Marco Rossi. Kdy si přejete domluvit schůzku?",
+      "en": "Good morning, Ms Novák. I am Marco Rossi. When would you like to arrange an appointment?",
+      "it": "Buongiorno, signora Novák. Sono Marco Rossi. Quando desidera fissare un appuntamento?"
+    },
+    "situation": {
+      "cs": "Jsi Marco Rossi. Formálně oslov paní Novák a zeptej se na termín schůzky.",
+      "en": "You are Marco Rossi. Address Ms Novák formally and ask about an appointment date."
+    }
+  },
+  {
+    "id": "registro-branch-2",
+    "role": "barista",
+    "it": "Buongiorno. Vorrei fissare un appuntamento la prossima settimana.",
+    "translation": {
+      "cs": "Dobrý den. Ráda bych si domluvila schůzku na příští týden.",
+      "en": "Good morning. I would like to arrange an appointment next week.",
+      "it": "Buongiorno. Vorrei fissare un appuntamento la prossima settimana."
+    },
+    "situation": {
+      "cs": "Formálně požádej o schůzku na příští týden, zatím bez konkrétního dne.",
+      "en": "Formally request an appointment next week without specifying a day yet."
+    }
+  },
+  {
+    "id": "registro-branch-3",
+    "role": "customer",
+    "it": "Potrebbe precisare quale giorno e a che ora Le sarebbe più comodo?",
+    "translation": {
+      "cs": "Mohla byste upřesnit, který den a v kolik hodin by Vám to nejlépe vyhovovalo?",
+      "en": "Could you clarify which day and time would be most convenient for you?",
+      "it": "Potrebbe precisare quale giorno e a che ora Le sarebbe più comodo?"
+    },
+    "situation": {
+      "cs": "Odpověď je příliš obecná. S vykáním požádej o konkrétní den a čas.",
+      "en": "The answer is too general. Formally request a specific day and time."
+    }
+  },
+  {
+    "id": "registro-branch-4",
+    "role": "barista",
+    "it": "Martedì alle dieci sarebbe perfetto, se per Lei va bene.",
+    "translation": {
+      "cs": "Úterý v deset by bylo ideální, pokud Vám to vyhovuje.",
+      "en": "Tuesday at ten would be perfect, if that suits you.",
+      "it": "Martedì alle dieci sarebbe perfetto, se per Lei va bene."
+    },
+    "situation": {
+      "cs": "Upřesni, že by ti vyhovovalo úterý v deset, a zohledni druhou stranu.",
+      "en": "Specify Tuesday at ten as your preference and check that it suits the other person."
+    }
+  },
+  {
+    "id": "registro-branch-5",
+    "role": "customer",
+    "it": "La prossima settimana non abbiamo disponibilità. Le andrebbe bene il lunedì successivo alle quindici?",
+    "translation": {
+      "cs": "Příští týden nemáme volný termín. Vyhovovalo by Vám následující pondělí v patnáct hodin?",
+      "en": "We have no availability next week. Would the following Monday at three p.m. suit you?",
+      "it": "La prossima settimana non abbiamo disponibilità. Le andrebbe bene il lunedì successivo alle quindici?"
+    },
+    "situation": {
+      "cs": "Příští týden je obsazený. Zdvořile nabídni pondělí následujícího týdne v patnáct hodin.",
+      "en": "Next week is fully booked. Politely offer Monday of the following week at three p.m."
+    }
+  },
+  {
+    "id": "registro-branch-6",
+    "role": "barista",
+    "it": "Sì, quel lunedì alle quindici mi va bene. La ringrazio per la proposta.",
+    "translation": {
+      "cs": "Ano, to pondělí v patnáct hodin mi vyhovuje. Děkuji Vám za návrh.",
+      "en": "Yes, that Monday at three p.m. suits me. Thank you for the suggestion.",
+      "it": "Sì, quel lunedì alle quindici mi va bene. La ringrazio per la proposta."
+    },
+    "situation": {
+      "cs": "Přijmi navržené pondělí v patnáct hodin a formálně poděkuj.",
+      "en": "Accept the proposed Monday at three p.m. and thank the other person formally."
+    }
+  },
+  {
+    "id": "registro-branch-7",
+    "role": "customer",
+    "it": "Perfetto, confermo l’appuntamento. Le invierò una conferma scritta con la data e l’orario.",
+    "translation": {
+      "cs": "Výborně, schůzku potvrzuji. Zašlu Vám písemné potvrzení s datem a časem.",
+      "en": "Perfect, I confirm the appointment. I will send you written confirmation with the date and time.",
+      "it": "Perfetto, confermo l’appuntamento. Le invierò una conferma scritta con la data e l’orario."
+    },
+    "situation": {
+      "cs": "Potvrď domluvenou schůzku a přislíb písemné potvrzení data a času.",
+      "en": "Confirm the agreed appointment and promise written confirmation of the date and time."
+    }
+  },
+  {
+    "id": "registro-branch-8",
+    "role": "barista",
+    "it": "La ringrazio. Resto in attesa della conferma. Arrivederci.",
+    "translation": {
+      "cs": "Děkuji Vám. Očekávám potvrzení. Na shledanou.",
+      "en": "Thank you. I look forward to the confirmation. Goodbye.",
+      "it": "La ringrazio. Resto in attesa della conferma. Arrivederci."
+    },
+    "situation": {
+      "cs": "Formálně poděkuj, potvrď očekávání písemného potvrzení a rozluč se.",
+      "en": "Thank the other person formally, acknowledge that you await confirmation and say goodbye."
+    }
+  }
+];
+  for(const line of formalBranchRows)audioFiles[line.it]=line.id+'.mp3';
+  const formalBranchLesson=lessons.find(l=>l.id==='registro');
+  formalBranchLesson.dialogueVariants.push({id:'registro-v2',title:{cs:'Upřesnění nebo jiný termín · dvě cesty',en:'Clarification or another date · two paths'},lines:[
+    formalBranchRows[0],formalBranchRows[1],
+    {...formalBranchRows[2],branchTitle:{cs:'Příští týden. Co potřebuješ domluvit?',en:'Next week. What do you need to arrange?'},branches:[
+      {id:'clarify',title:{cs:'Požádat o upřesnění',en:'Ask for clarification'},lines:[formalBranchRows[2],formalBranchRows[3]]},
+      {id:'reschedule',title:{cs:'Navrhnout jiný termín',en:'Suggest another date'},lines:[formalBranchRows[4],formalBranchRows[5]]}
+    ]},formalBranchRows[3],formalBranchRows[6],formalBranchRows[7]
+  ]});
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;
