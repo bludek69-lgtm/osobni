@@ -81,7 +81,7 @@
     if(!line){if(r.dailySaved){daily.phase='role';saveDraft();}if(r.daily){daily={lesson:r.lesson,phase:'done',date:new Date().toLocaleDateString('sv')};saveDraft();}renderRole();return;}
     if(line.branches&&!r.saved){
       r.phase='branch';
-      el('it-role-stage').innerHTML='<h4 tabindex="-1" id="it-branch-title">'+(lang==='cs'?'Jídlo došlo. Jak pokračovat?':'The dish is unavailable. What next?')+'</h4><p class="it-muted">'+(lang==='cs'?'Vyber směr rozhovoru. Svou repliku pak řekni nahlas.':'Choose a direction, then say your reply aloud.')+'</p><div class="it-toolbar">'+line.branches.map(branch=>button('role-branch',branch.title[lang==='cs'?'cs':'en'],'data-branch="'+branch.id+'"')).join('')+'</div>'+button('role-stop',roleText.stop);
+      el('it-role-stage').innerHTML='<h4 tabindex="-1" id="it-branch-title">'+esc(line.branchTitle?.[lang==='cs'?'cs':'en']||(lang==='cs'?'Jak pokračovat?':'What next?'))+'</h4><p class="it-muted">'+(lang==='cs'?'Vyber směr rozhovoru. Svou repliku pak řekni nahlas.':'Choose a direction, then say your reply aloud.')+'</p><div class="it-toolbar">'+line.branches.map(branch=>button('role-branch',branch.title[lang==='cs'?'cs':'en'],'data-branch="'+branch.id+'"')).join('')+'</div>'+button('role-stop',roleText.stop);
       el('it-branch-title').focus();return;
     }
     if(line.role===r.role){r.phase='waiting';renderRole();return;}

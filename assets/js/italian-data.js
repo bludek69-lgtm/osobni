@@ -1733,10 +1733,105 @@
   for(const line of restaurantBranchRows)audioFiles[line.it]=line.id+'.mp3';
   restaurant.dialogueVariants.push({id:'ristorante-v3',title:{cs:'Vybrané jídlo došlo · dvě cesty',en:'Dish unavailable · two paths'},lines:[
     ...restaurant.dialogue.slice(0,6),restaurantBranchRows[0],
-    {...restaurantBranchRows[1],branches:[
+    {...restaurantBranchRows[1],branchTitle:{cs:'Jídlo došlo. Jak pokračovat?',en:'The dish is unavailable. What next?'},branches:[
       {id:'recommend',title:{cs:'Požádat o doporučení',en:'Ask for a recommendation'},lines:[restaurantBranchRows[1],restaurantBranchRows[2]]},
       {id:'fish',title:{cs:'Vybrat grilovanou rybu',en:'Choose grilled fish'},lines:[restaurantBranchRows[3],restaurantBranchRows[4]]}
     ]},restaurantBranchRows[2],restaurantBranchRows[5],...restaurant.dialogue.slice(10)
+  ]});
+  const hotelBranchRows=[
+  {
+    "id": "hotel-branch-1",
+    "role": "customer",
+    "it": "No, non ho prenotato. Avete una camera per questa notte?",
+    "translation": {
+      "cs": "Ne, nemám rezervaci. Máte pokoj na dnešní noc?",
+      "en": "No, I have not booked. Do you have a room for tonight?",
+      "it": "No, non ho prenotato. Avete una camera per questa notte?"
+    },
+    "situation": {
+      "cs": "Přicházíš bez rezervace. Zjisti, zda se můžeš ubytovat na dnešní noc.",
+      "en": "You arrive without a booking. Ask whether you can stay tonight."
+    }
+  },
+  {
+    "id": "hotel-branch-2",
+    "role": "barista",
+    "it": "Mi dispiace, per questa notte siamo al completo.",
+    "translation": {
+      "cs": "Je mi líto, na dnešní noc máme obsazeno.",
+      "en": "I am sorry, we are fully booked tonight.",
+      "it": "Mi dispiace, per questa notte siamo al completo."
+    },
+    "situation": {
+      "cs": "Všechny pokoje na dnešní noc jsou obsazené. Zdvořile to vysvětli hostovi.",
+      "en": "All rooms are booked tonight. Politely explain this to the guest."
+    }
+  },
+  {
+    "id": "hotel-branch-3",
+    "role": "customer",
+    "it": "Può consigliarmi un altro albergo qui vicino?",
+    "translation": {
+      "cs": "Můžete mi doporučit jiný hotel poblíž?",
+      "en": "Can you recommend another hotel nearby?",
+      "it": "Può consigliarmi un altro albergo qui vicino?"
+    },
+    "situation": {
+      "cs": "Dnes se tu neubytuješ. Požádej o doporučení jiného hotelu poblíž.",
+      "en": "You cannot stay here tonight. Ask for another hotel nearby."
+    }
+  },
+  {
+    "id": "hotel-branch-4",
+    "role": "barista",
+    "it": "Può provare nell’albergo qui accanto. Se vuole, chiamo per chiedere se hanno una camera libera.",
+    "translation": {
+      "cs": "Můžete to zkusit v hotelu hned vedle. Jestli chcete, zavolám a zeptám se, zda mají volný pokoj.",
+      "en": "You can try the hotel next door. If you like, I can call to ask whether they have a room available.",
+      "it": "Può provare nell’albergo qui accanto. Se vuole, chiamo per chiedere se hanno una camera libera."
+    },
+    "situation": {
+      "cs": "Doporuč hotel vedle a nabídni ověření dostupnosti po telefonu.",
+      "en": "Suggest the hotel next door and offer to phone to check availability."
+    }
+  },
+  {
+    "id": "hotel-branch-5",
+    "role": "customer",
+    "it": "E per domani notte avete una camera libera?",
+    "translation": {
+      "cs": "A na zítřejší noc máte volný pokoj?",
+      "en": "And do you have a room available for tomorrow night?",
+      "it": "E per domani notte avete una camera libera?"
+    },
+    "situation": {
+      "cs": "Můžeš přijet o den později. Ověř dostupnost pokoje na zítřejší noc.",
+      "en": "You can arrive a day later. Check room availability for tomorrow night."
+    }
+  },
+  {
+    "id": "hotel-branch-6",
+    "role": "barista",
+    "it": "Sì, per domani notte abbiamo una camera doppia disponibile.",
+    "translation": {
+      "cs": "Ano, na zítřejší noc máme volný dvoulůžkový pokoj.",
+      "en": "Yes, we have a double room available for tomorrow night.",
+      "it": "Sì, per domani notte abbiamo una camera doppia disponibile."
+    },
+    "situation": {
+      "cs": "Zítra je volný dvoulůžkový pokoj. Sděl hostovi tuto možnost.",
+      "en": "A double room is available tomorrow. Tell the guest about this option."
+    }
+  }
+];
+  for(const line of hotelBranchRows)audioFiles[line.it]=line.id+'.mp3';
+  const hotelBranchLesson=lessons.find(l=>l.id==='hotel');
+  hotelBranchLesson.dialogueVariants.push({id:'hotel-v3',title:{cs:'Hotel je obsazený · dvě cesty',en:'Hotel fully booked · two paths'},lines:[
+    hotelBranchLesson.dialogue[0],hotelBranchRows[0],hotelBranchRows[1],
+    {...hotelBranchRows[2],branchTitle:{cs:'Hotel je obsazený. Jak pokračovat?',en:'The hotel is fully booked. What next?'},branches:[
+      {id:'another-hotel',title:{cs:'Zeptat se na jiný hotel',en:'Ask about another hotel'},lines:[hotelBranchRows[2],hotelBranchRows[3]]},
+      {id:'tomorrow',title:{cs:'Zeptat se na zítřejší noc',en:'Ask about tomorrow night'},lines:[hotelBranchRows[4],hotelBranchRows[5]]}
+    ]},hotelBranchRows[3],hotelBranchLesson.dialogue[11]
   ]});
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;

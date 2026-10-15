@@ -437,7 +437,7 @@ test('all dialogue variants keep roles, translations, cues and local audio',()=>
  for(const l of D.lessons){
   assert.ok(l.dialogueVariants.length>=1,l.id);
   for(const v of l.dialogueVariants){
-   count++;assert.equal(v.lines.length,l.dialogue.length);
+   count++;assert.ok(v.lines.length>=4);
    assert.ok(v.lines.some((line,i)=>line.it!==l.dialogue[i].it));
    v.lines.forEach((line,i)=>{
     assert.equal(line.role,l.dialogue[i].role);
@@ -449,7 +449,7 @@ test('all dialogue variants keep roles, translations, cues and local audio',()=>
    assert.ok(excerpt.some(line=>!l.dialogue.some(base=>base.it===line.it)),v.id);
   }
  }
- assert.equal(count,16);
+ assert.equal(count,17);
 });
 
 function recorderFixture(){
@@ -581,4 +581,18 @@ test('restaurant branches keep distinct responses, trusted IDs and reviewable re
  assert.equal(Object.keys(restored.speakingReview).length,4);
  for(const replies of [1,2])assert.ok(C.dialogueExcerpt(l.dialogue,v.lines,replies).some(x=>x.branches));
  assert.equal(entries.find(x=>x.id===fork.id).branches,undefined);
+});
+
+test('hotel branches retain coherent paths, review IDs and short daily excerpts',()=>{
+ const fs=require('fs'),l=D.lessons.find(l=>l.id==='hotel'),v=l.dialogueVariants.find(v=>v.id==='hotel-v3');
+ const fork=v.lines.find(x=>x.branches),p=C.emptyProgress();
+ assert.match(v.lines[1].it,/non ho prenotato/);assert.match(v.lines[2].it,/al completo/);
+ assert.equal(fork.branches.length,2);assert.ok(fork.branchTitle.cs&&fork.branchTitle.en);
+ for(const b of fork.branches){
+  assert.deepEqual(b.lines.map(x=>x.role),['customer','barista']);
+  for(const x of b.lines){p.savedSentences.push(x.id);C.rateSpeaking(p,x.id,'again','2026-10-15T10:00:00Z');assert.ok(fs.statSync('assets/audio/italian/'+D.audioFiles[x.it]).size>1000);}
+ }
+ const restored=C.validateProgress(p,D);assert.equal(restored.savedSentences.length,4);assert.equal(Object.keys(restored.speakingReview).length,4);
+ for(const replies of [1,2]){const excerpt=C.dialogueExcerpt(l.dialogue,v.lines,replies);assert.ok(excerpt.some(x=>x.branches));assert.equal(excerpt.filter(x=>x.role==='customer').length,replies);}
+ assert.equal(C.dialogueEntries(D).find(x=>x.id===fork.id).branches,undefined);
 });
