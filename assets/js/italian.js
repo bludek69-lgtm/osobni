@@ -127,6 +127,7 @@
   function freyaTitle(){if(openedLesson==='hotel')return {cs:'V hotelu s Freyou',en:'At a hotel with Freya',it:'In hotel con Freya'}[lang];return openedLesson==='ristorante'?({cs:'V restauraci s Freyou',en:'At a restaurant with Freya',it:'Al ristorante con Freya'}[lang]):freyaCopy[lang].title;}
   function freyaLessonVideo(){
     const t=freyaCopy[lang],video=currentVideo();
+    if(!video.id)return '';
     return '<section class="it-freya" aria-labelledby="it-freya-title"><h3 id="it-freya-title">'+esc(freyaTitle())+'</h3><p>'+(video.id?t.intro:({cs:'Připravený scénář videa k procvičení hotelových situací.',en:'Prepared video script for practising hotel situations.',it:'Testo preparato per esercitarsi in hotel.'}[lang]))+'</p><div id="it-freya-player" class="it-freya-player'+(video.id?'':' is-unavailable')+'">'+freyaPlaceholder()+'</div>'+(video.id?'<p class="it-muted">'+t.note+'</p>':'')+'<details><summary>'+t.transcript+'</summary>'+video.transcript.map(row=>'<p lang="it">'+esc(row[0])+'</p>'+(lang==='it'?'':'<p class="it-muted">'+esc(row[lang==='cs'?1:2])+'</p>')).join('')+'</details></section>';
   }
   function showLesson(id) {
