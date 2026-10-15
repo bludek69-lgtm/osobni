@@ -164,7 +164,32 @@
   };
   // The old photographs retain their provenance for archival use, but are not displayed.
   const illustrations = Object.fromEntries(pictures.map(id=>[id,{file:id+'.webp',kind:'ai',generator:'OpenAI image generation',created:'2026-10-10'}]));
-  const data = {version:1, lessons, photos, illustrations};
+  const cafe = lessons.find(l=>l.id==='bar');
+  cafe.goal = t('Objednám si kávu a něco k snídani, odpovím obsluze a požádám o účet.','Order coffee and breakfast, reply to the barista and ask for the bill.','Ordinare un caffè e la colazione, rispondere al barista e chiedere il conto.');
+  cafe.dialogue = [
+    {id:'bar-01',role:'barista',it:'Buongiorno! Che cosa desidera?',translation:t('Dobrý den! Co si přejete?','Good morning! What would you like?','Il barista chiede che cosa vuoi ordinare.')},
+    {id:'bar-02',role:'customer',it:'Buongiorno! Vorrei un caffè e un cornetto, per favore.',translation:t('Dobrý den! Chtěl bych kávu a croissant, prosím.','Good morning! I would like a coffee and a croissant, please.','Il cliente ordina un caffè e un cornetto in modo cortese.')},
+    {id:'bar-03',role:'barista',it:'Certo. Al banco o al tavolo?',translation:t('Jistě. U baru, nebo u stolu?','Of course. At the counter or at a table?','Il barista chiede dove vuoi consumare.')},
+    {id:'bar-04',role:'customer',it:'Al banco, grazie. Anche un bicchiere d’acqua naturale.',translation:t('U baru, děkuji. A ještě sklenici neperlivé vody.','At the counter, thank you. Also a glass of still water.','Il cliente sceglie il banco e chiede anche acqua senza bollicine.')},
+    {id:'bar-05',role:'barista',it:'Ecco il caffè, il cornetto e l’acqua.',translation:t('Tady je káva, croissant a voda.','Here are your coffee, croissant and water.','Il barista serve l’ordinazione.')},
+    {id:'bar-06',role:'customer',it:'Grazie. Il conto, per favore.',translation:t('Děkuji. Účet, prosím.','Thank you. The bill, please.','Il cliente chiede di pagare.')},
+    {id:'bar-07',role:'barista',it:'Sono quattro euro e cinquanta.',translation:t('Jsou to čtyři eura a padesát centů.','That is four euros fifty.','Il totale di questo esempio è 4,50 euro.')},
+    {id:'bar-08',role:'customer',it:'Posso pagare con la carta?',translation:t('Mohu zaplatit kartou?','Can I pay by card?','Il cliente chiede se può usare la carta.')}
+  ];
+  cafe.questions.push(
+    grammar('bar-order','___ un caffè e un cornetto, per favore. (io, richiesta cortese)',['Vorrei'],['Vorrei','Vorresti','Vorrebbero','Vorremmo'],'Vorrei znamená „chtěl/a bych“. Per favore dělá objednávku zdvořilou.','Vorrei means “I would like”. Per favore makes the order polite.','Vorrei è la forma di cortesia per ordinare in prima persona.'),
+    grammar('bar-counter','Al banco o al tavolo? — ___ banco, grazie.',['Al'],['Al','Nel','Dal','Del'],'Al banco = u baru. A + il se spojuje v al.','Al banco means at the counter. A + il becomes al.','A + il diventa al: al banco.'),
+    grammar('bar-bill','Per chiedere di pagare: Il ___, per favore.',['conto'],['conto','cornetto','latte','pane'],'Il conto je účet. Cornetto je sladké pečivo.','Il conto is the bill. Cornetto is a pastry.','Il conto indica la somma da pagare.'),
+    grammar('bar-price','Sono quattro euro e cinquanta. → ___',['4,50 €'],['4,50 €','14,50 €','4,15 €','5,40 €'],'Quattro euro e cinquanta = 4 eura a 50 centů. Jde o cenu v modelovém dialogu.','Quattro euro e cinquanta = 4 euros and 50 cents, the price in this sample dialogue.','Quattro euro e cinquanta corrisponde a 4,50 euro nel dialogo di esempio.')
+  );
+  // Bundled synthetic Italian audio: no device voice needed for this lesson.
+  const audioFiles = {};
+  for (const w of cafe.words) {
+    audioFiles[w.italian] = 'bar-'+w.id+'-word.mp3';
+    audioFiles[w.example] = 'bar-'+w.id+'-example.mp3';
+  }
+  for (const line of cafe.dialogue) audioFiles[line.it] = line.id+'.mp3';
+  const data = {version:1, lessons, photos, illustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;
 })(typeof window !== 'undefined' ? window : globalThis);

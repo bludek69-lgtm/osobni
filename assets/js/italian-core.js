@@ -27,7 +27,7 @@
         explanation:w.example};
     }));
   }
-  function emptyProgress() { return {version:1,favorites:[],mistakes:{},results:[]}; }
+  function emptyProgress() { return {version:1,favorites:[],mistakes:{},mistakeKinds:{},results:[]}; }
   function validateProgress(value, data) {
     if (!value || value.version !== 1 || !Array.isArray(value.favorites) || !Array.isArray(value.results) ||
       !value.mistakes || typeof value.mistakes !== 'object' || Array.isArray(value.mistakes)) throw new Error('Invalid progress');
@@ -36,6 +36,10 @@
     const result = emptyProgress();
     result.favorites = [...new Set(value.favorites.filter(id=>wordIds.has(id)))];
     for (const [id,count] of Object.entries(value.mistakes)) if (allIds.has(id) && Number.isInteger(count) && count > 0) result.mistakes[id] = Math.min(count,10000);
+    for (const id of Object.keys(result.mistakes)) {
+      const kind = value.mistakeKinds?.[id];
+      if (['choice','write','listen','picture','grammar'].includes(kind)) result.mistakeKinds[id] = kind;
+    }
     result.results = value.results.slice(-50).map(r=>{
       if (!r || !Number.isInteger(r.total) || r.total < 1 || r.total > 100 || !Number.isInteger(r.correct) ||
         r.correct < 0 || r.correct > r.total || typeof r.date !== 'string' || !Number.isFinite(Date.parse(r.date)) ||
@@ -44,7 +48,29 @@
     });
     return result;
   }
-  const api = {normalize,grade,shuffle,questions,emptyProgress,validateProgress};
+  function reviewQuestions(lessons, progress, lang) {
+    const pools = Object.fromEntries(['choice','write','listen','picture','grammar'].map(kind=>[kind,questions(lessons,kind,lang)]));
+    return Object.keys(progress.mistakes).map(id=> {
+      const kind = progress.mistakeKinds?.[id] || (pools.grammar.some(q=>q.id===id)?'grammar':'choice');
+      return pools[kind]?.find(q=>q.id===id) || pools.choice.find(q=>q.id===id);
+    }).filter(Boolean);
+  }
+  // Rebuild questions from trusted lesson data; do not trust stored prompts or HTML.
+  function restoreSession(raw, lessons, lang) {
+    if (!raw || !['practice','exam'].includes(raw.type) || !['A1','A2','B1','B2','all'].includes(raw.level) ||
+        !Array.isArray(raw.questions) || !raw.questions.length || raw.questions.length>100 ||
+        !Number.isInteger(raw.index) || raw.index<0 || raw.index>=raw.questions.length || !Array.isArray(raw.changes)) return null;
+    const pools = Object.fromEntries(['choice','write','listen','picture','grammar'].map(kind=>[kind,questions(lessons,kind,lang)]));
+    const restored = raw.questions.map(q=>pools[q.kind]?.find(x=>x.id===q.id));
+    if (restored.some(q=>!q)) return null;
+    const answered=raw.answered===true;
+    if(raw.changes.length!==raw.index+Number(answered))return null;
+    const changes=raw.changes.map((c,i)=>({id:restored[i].id,kind:restored[i].kind,correct:c.correct===true}));
+    if(raw.changes.some((c,i)=>c.id!==restored[i].id||typeof c.correct!=='boolean'))return null;
+    return {questions:restored,index:raw.index,answered,correct:changes.filter(c=>c.correct).length,
+      played:false,type:raw.type,level:raw.level,changes,answer:typeof raw.answer==='string'?raw.answer.slice(0,500):''};
+  }
+  const api = {normalize,grade,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.ItalianCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);

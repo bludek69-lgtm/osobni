@@ -17,6 +17,16 @@
   Object.assign(copy.en,{photoCredit:'AI illustration',photoInfo:'24 realistic AI-generated illustrations for these lessons. They are not actual photographs of places or products. Abstract expressions remain text-only.'});
   Object.assign(copy.it,{photoCredit:'Illustrazione IA',photoInfo:'24 illustrazioni realistiche generate con IA per queste lezioni. Non sono fotografie reali di luoghi o prodotti. Le espressioni astratte restano testuali.'});
   const key = 'cestovatel69_italian_progress_v1';
+  const extra = {
+    cs:{quick:'Začít na 5 minut',resume:'Pokračovat v učení',resumeNote:'Máš rozpracované učení.',settings:'Zvuk a výslovnost',localAudio:'Lekce V kavárně má vlastní syntetické nahrávky. Hlas zařízení je potřeba jen pro ostatní lekce.',textCards:'Zobrazit textové kartičky',goal:'Dnes se naučíš',dialogue:'1. Poslechni si rozhovor',vocabulary:'2. Slova a příklady',rules:'3. Jak to funguje',tryIt:'4. Vyzkoušej si to',playAll:'Přehrát celý dialog',stopAudio:'Zastavit zvuk',translation:'Ukázat překlad / vysvětlení',barista:'Obsluha',customer:'Zákazník',wordAudio:'Poslechnout výraz',sentenceAudio:'Poslechnout větu',lineAudio:'Přehrát repliku',slowLine:'Přehrát pomalu',cafeTime:'V kavárně · A1 · asi 5 minut',cafeContext:'Jsi v italské kavárně. Objednej si u baru, zjisti cenu a požádej o účet.',ruleText:'Vorrei… = chtěl/a bych… Přidej per favore. Al banco znamená u baru, al tavolo u stolu. Il conto, per favore je prosba o účet. Částka v dialogu je modelový příklad.',practiceCafe:'Procvičit objednávku',completed:'Po procvičení si zkus bez nápovědy objednat nápoj a požádat o účet.',savedDraft:'Průběžně ukládáno v tomto prohlížeči.',newAttempt:'Nový test nahradí rozpracovaný test. Pokračovat?',reviewMixed:'Opakování zahrnuje slovíčka i gramatiku; zachová typ poslední chyby.',audioUnavailable:'Tento poslech nyní nemá dostupný zvuk. Zvol jiný hlas nebo jinou lekci.',audioCredit:'Syntetické italské hlasy · předem připravené nahrávky',cafeTitle:'Objednám si v kavárně',noMistakes:'Nemáš žádné chyby k opakování.'},
+    en:{quick:'Start a 5-minute lesson',resume:'Continue learning',resumeNote:'You have unfinished learning.',settings:'Audio and pronunciation',localAudio:'At a café has bundled synthetic recordings. A device voice is only needed for other lessons.',textCards:'Show text flashcards',goal:'Today you will learn to',dialogue:'1. Listen to the conversation',vocabulary:'2. Words and examples',rules:'3. How it works',tryIt:'4. Try it yourself',playAll:'Play the whole dialogue',stopAudio:'Stop audio',translation:'Show translation / explanation',barista:'Barista',customer:'Customer',wordAudio:'Listen to the expression',sentenceAudio:'Listen to the sentence',lineAudio:'Play this line',slowLine:'Play slowly',cafeTime:'At a café · A1 · about 5 minutes',cafeContext:'You are in an Italian café. Order at the counter, find out the price and ask for the bill.',ruleText:'Vorrei… means I would like… Add per favore. Al banco means at the counter; al tavolo means at a table. Il conto, per favore asks for the bill. The price in the dialogue is an example.',practiceCafe:'Practise ordering',completed:'After practising, try ordering a drink and asking for the bill without hints.',savedDraft:'Saved as you go in this browser.',newAttempt:'A new test will replace your unfinished test. Continue?',reviewMixed:'Review includes vocabulary and grammar and preserves the last mistake’s exercise type.',audioUnavailable:'Audio is unavailable for this question. Choose another voice or lesson.',audioCredit:'Synthetic Italian voices · prerecorded audio',cafeTitle:'Order at a café',noMistakes:'No mistakes to review.'},
+    it:{quick:'Inizia una lezione di 5 minuti',resume:'Continua a imparare',resumeNote:'Hai un’attività da completare.',settings:'Audio e pronuncia',localAudio:'Al bar include registrazioni sintetiche. La voce del dispositivo serve solo per le altre lezioni.',textCards:'Mostra le carte testuali',goal:'Oggi impari a',dialogue:'1. Ascolta la conversazione',vocabulary:'2. Espressioni ed esempi',rules:'3. Come funziona',tryIt:'4. Prova tu',playAll:'Ascolta tutto il dialogo',stopAudio:'Ferma l’audio',translation:'Mostra traduzione / spiegazione',barista:'Barista',customer:'Cliente',wordAudio:'Ascolta l’espressione',sentenceAudio:'Ascolta la frase',lineAudio:'Ascolta la battuta',slowLine:'Ascolta lentamente',cafeTime:'Al bar · A1 · circa 5 minuti',cafeContext:'Sei in un bar italiano. Ordina al banco, scopri il prezzo e chiedi il conto.',ruleText:'Vorrei… rende cortese la richiesta. Aggiungi per favore. Puoi consumare al banco oppure al tavolo. Il conto, per favore serve per chiedere di pagare. Il prezzo del dialogo è un esempio.',practiceCafe:'Esercitati a ordinare',completed:'Dopo gli esercizi, prova a ordinare una bevanda e chiedere il conto senza suggerimenti.',savedDraft:'Salvataggio automatico in questo browser.',newAttempt:'La nuova prova sostituirà quella in corso. Continuare?',reviewMixed:'Il ripasso include lessico e grammatica e mantiene il tipo dell’ultimo errore.',audioUnavailable:'Audio non disponibile per questa domanda. Scegli un’altra voce o lezione.',audioCredit:'Voci italiane sintetiche · audio preregistrato',cafeTitle:'Ordinare al bar',noMistakes:'Nessun errore da ripassare.'}
+  };
+  Object.assign(T,extra[lang]);
+  const draftKey='cestovatel69_italian_draft_v1';
+  const audioDirectory=new URL('../audio/italian/',document.currentScript.src).href;
+  let pausedSession=null,lastLesson=null,openedLesson=null,media=null,audioGeneration=0;
+  const canSpeak=text=>!!D.audioFiles?.[text]||voices.length>0;
   let progress = C.emptyProgress(), storageOK = true, voices = [], selectedVoice = '', active = 'lessons', currentLevel = 'all', currentLesson = 'all', mode = 'choice', session = null;
   let search = '', onlyFavorites = false, reviewOnly = false;
   let cardIndex = 0, cardFlipped = false, picturesOnly = true;
@@ -25,13 +35,24 @@
   const el = id => document.getElementById(id);
   const levels = ['A1','A2','B1','B2'];
   try { const stored = localStorage.getItem(key); if (stored) progress = C.validateProgress(JSON.parse(stored),D); } catch (_) { storageOK = false; }
+  try {
+    const draft=JSON.parse(localStorage.getItem(draftKey)||'null');
+    if(draft?.version===1) {
+      pausedSession=C.restoreSession(draft.session,D.lessons,lang);
+      if(D.lessons.some(l=>l.id===draft.lesson))lastLesson=draft.lesson;
+    }
+  } catch (_) { /* A malformed draft must not prevent lessons from loading. */ }
+  function saveDraft() {
+    try {localStorage.setItem(draftKey,JSON.stringify({version:1,lesson:lastLesson,session:session||pausedSession}));}
+    catch(_){storageOK=false;status(T.notSaved);}
+  }
   function save() { try {localStorage.setItem(key,JSON.stringify(progress)); storageOK=true;} catch (_) {storageOK=false;} }
   function status(text) { el('it-status').textContent = text; }
   function button(action,text,extra='') {return '<button type="button" data-action="'+action+'" '+extra+'>'+esc(text)+'</button>';}
   const options = (items,value) => items.map(([v,label])=>'<option value="'+esc(v)+'"'+(v===value?' selected':'')+'>'+esc(label)+'</option>').join('');
   function levelSelect() {return '<label>'+T.level+'<select id="it-level">'+options([['all',T.all],...levels.map(l=>[l,l])],currentLevel)+'</select></label>';}
   function lessonSelect() {return '<label>'+T.lesson+'<select id="it-lesson">'+options([['all',T.allLessons],...D.lessons.filter(l=>currentLevel==='all'||l.level===currentLevel).map(l=>[l.id,l.title[lang]])],currentLesson)+'</select></label>';}
-  function audio(text) { return '<span class="it-audio">'+button('speak','▶ '+T.play,'data-speech="'+esc(text)+'"')+button('slow',T.slow,'data-speech="'+esc(text)+'"')+'</span>'; }
+  function audio(text,label=T.wordAudio) { return '<span class="it-audio">'+button('speak','▶ '+label,'data-speech="'+esc(text)+'"')+button('slow',T.slow,'data-speech="'+esc(text)+'" aria-label="'+esc(T.slowLine+': '+text)+'"')+'</span>'; }
   function favorite(w) {const yes=progress.favorites.includes(w.id); return button('favorite',yes?'★':'☆','data-word="'+w.id+'" aria-label="'+esc(yes?T.unfavorite:T.favorite)+'" aria-pressed="'+yes+'"');}
   function picture(w) {
     return '<img class="it-picture" src="'+esc(pictureDirectory+D.illustrations[w.picture].file)+'" alt="'+esc(w.pictureDescription||w.meaning[lang])+'" decoding="async">';
@@ -46,17 +67,19 @@
     const w=deck[cardIndex];
     el('it-view').innerHTML='<section class="it-panel"><h2>'+T.cards+'</h2><p>'+T.cardsInfo+'</p><div class="it-toolbar">'+levelSelect()+'<label class="it-check"><input type="checkbox" id="it-pictures-only"'+(picturesOnly?' checked':'')+'>'+T.picturesOnly+'</label></div>'+(w?'<div class="it-flashcard"><p class="it-muted">'+T.card+' '+(cardIndex+1)+' / '+deck.length+' · '+w.level+'</p><button type="button" class="it-flip" data-action="flip" aria-expanded="'+cardFlipped+'" aria-controls="it-card-answer">'+(w.picture?picture(w):'<span class="it-card-clue">'+esc(w.meaning[lang])+'</span>')+'<span class="it-flip-label">'+(cardFlipped?T.hide:T.flip)+'</span></button><div id="it-card-answer"'+(cardFlipped?'':' hidden')+'>'+(cardFlipped?'<h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian)+favorite(w):'')+'</div><div class="it-toolbar it-card-controls">'+button('card-previous',T.previousCard)+button('card-next',T.nextCard)+'</div>'+button('picture-start',T.pictureStart,'class="it-primary"'+(!deck.some(x=>x.picture)?' disabled':''))+'</div>':'<p>'+T.noPictures+'</p>')+'</section>';
     if(w?.picture)el('it-view').querySelector('.it-flip').insertAdjacentHTML('afterend',photoCredit(w));
+    if(!w&&picturesOnly)el('it-view').querySelector('.it-panel').insertAdjacentHTML('beforeend',button('text-cards',T.textCards,'class="it-primary"'));
     el('it-view').insertAdjacentHTML('beforeend','<p class="it-photo-note">'+T.photoInfo+'</p>');
     updateAudioButtons();
   }
   function renderShell() {
-    app.innerHTML='<nav class="it-tabs" aria-label="'+esc(T.mode)+'">'+['lessons','cards','dictionary','practice','exam','progress'].map(name=>button('tab',T[name],'data-tab="'+name+'" aria-pressed="'+(active===name)+'"')).join('')+'</nav><div class="it-audio-settings"><label>'+T.voice+'<select id="it-voice"></select></label><p id="it-voice-note"></p></div><p id="it-status" role="status" aria-live="polite"></p><div id="it-view"></div>';
+    app.innerHTML='<div class="it-start-row">'+button('quick',T.quick,'class="it-primary"')+((pausedSession||lastLesson)&&!session?button('resume',T.resume):'')+'</div><nav class="it-tabs" aria-label="'+esc(T.mode)+'">'+['lessons','cards','dictionary','practice','exam','progress'].map(name=>button('tab',T[name],'data-tab="'+name+'" aria-pressed="'+(active===name)+'"')).join('')+'</nav><details class="it-audio-disclosure"><summary>'+T.settings+'</summary><div class="it-audio-settings"><label>'+T.voice+'<select id="it-voice"></select></label><p id="it-voice-note"></p></div></details><p id="it-status" role="status" aria-live="polite"></p><div id="it-view"></div>';
     updateVoiceControls();
   }
   function render() {
     renderShell();
     const view=el('it-view');
     if (session) {renderQuestion(); return;}
+    if(active==='lessons'&&openedLesson){showLesson(openedLesson);return;}
     if (active==='lessons') {
       view.innerHTML='<div class="it-toolbar">'+levelSelect()+'</div><div class="it-lessons">'+D.lessons.filter(l=>currentLevel==='all'||l.level===currentLevel).map(l=>'<article class="it-card"><span class="it-level">'+l.level+'</span><h2>'+esc(l.title[lang])+'</h2><p>'+esc(l.note[lang])+'</p>'+button('lesson',T.open,'data-lesson="'+l.id+'"')+'</article>').join('')+'</div>';
     } else if (active==='cards') {
@@ -66,7 +89,8 @@
       renderDictionary();
     } else if (active==='practice') {
       view.innerHTML='<section class="it-panel"><h2>'+T.practice+'</h2><div class="it-toolbar">'+levelSelect()+lessonSelect()+'<label>'+T.mode+'<select id="it-mode">'+options(['choice','picture','write','listen','grammar'].map(m=>[m,T[m]]),mode)+'</select></label></div><label class="it-check"><input type="checkbox" id="it-review"'+(reviewOnly?' checked':'')+'>'+T.review+'</label>'+button('start',T.start)+'</section>';
-      el('it-mode').querySelector('option[value="listen"]').disabled=!voices.length;
+      el('it-mode').querySelector('option[value="listen"]').disabled=!selectedLessons().some(l=>l.words.some(w=>canSpeak(w.italian)));
+      if(reviewOnly)view.querySelector('.it-panel').insertAdjacentHTML('beforeend','<p class="it-muted">'+T.reviewMixed+'</p>');
     } else if (active==='exam') {
       view.innerHTML='<section class="it-panel"><h2>'+T.exam+'</h2><p>'+T.examInfo+'</p><div class="it-toolbar">'+levelSelect()+'</div><label class="it-check"><input type="checkbox" id="it-with-audio"'+(!voices.length?' disabled':'')+'>'+T.withAudio+'</label>'+button('exam',T.start)+'</section>';
     } else renderProgress();
@@ -79,27 +103,51 @@
     el('it-dictionary').innerHTML='<p class="it-muted">'+filtered.length+' '+T.count+'</p><div class="it-words">'+filtered.map(w=>'<article class="it-card"><div class="it-word-top"><span class="it-level">'+w.level+'</span>'+favorite(w)+'</div><h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian)+'</article>').join('')+'</div>'+(filtered.length?'':'<p>'+T.empty+'</p>');
     updateAudioButtons();
   }
+  const freyaVideoId='dcf1d9a305bd77187a7cf9e2db8cd677';
+  const freyaCopy={
+    cs:{title:'V kavárně s Freyou',intro:'Poslechni si objednávku a opakuj věty nahlas. Video můžeš kdykoliv pozastavit.',load:'Načíst video s Freyou',note:'AI lektorka a syntetický hlas · přehrávač HeyGen se připojí po kliknutí.',transcript:'Italský přepis a český překlad',link:'Otevřít video v HeyGen'},
+    en:{title:'At a café with Freya',intro:'Listen to the order and repeat the phrases aloud. Pause the video whenever you need.',load:'Load Freya’s video',note:'AI tutor and synthetic voice · HeyGen connects when you click.',transcript:'Italian transcript and English translation',link:'Open video in HeyGen'},
+    it:{title:'Al bar con Freya',intro:'Ascolta l’ordinazione e ripeti le frasi ad alta voce. Puoi mettere in pausa quando vuoi.',load:'Carica il video con Freya',note:'Tutor IA e voce sintetica · HeyGen si collega dopo il clic.',transcript:'Leggi la trascrizione',link:'Apri il video su HeyGen'}
+  };
+  const freyaTranscript=[
+    ['Ciao! Benvenuto alla lezione: al bar. Oggi impariamo a ordinare un caffè.','Ahoj! Vítej v lekci V kavárně. Dnes se naučíme objednat si kávu.','Hello! Welcome to the café lesson. Today we will learn to order a coffee.'],
+    ['Ascolta: Buongiorno! Vorrei un caffè e un cornetto, per favore. Ora ripeti: Vorrei un caffè e un cornetto, per favore.','Poslouchej: Dobrý den! Chtěl/a bych espresso a croissant, prosím. Teď opakuj: Chtěl/a bych espresso a croissant, prosím.','Listen: Good morning! I would like an espresso and a croissant, please. Now repeat: I would like an espresso and a croissant, please.'],
+    ['Il barista domanda: Al banco o al tavolo? Puoi rispondere: Al banco, grazie. Vuoi anche dell’acqua? Di’: Anche un bicchiere d’acqua naturale, per favore.','Obsluha se ptá: U baru, nebo u stolu? Můžeš odpovědět: U baru, děkuji. Chceš také vodu? Řekni: Ještě sklenici neperlivé vody, prosím.','The barista asks: At the counter or at a table? You can reply: At the counter, thank you. Would you like water too? Say: A glass of still water as well, please.'],
+    ['Quando vuoi pagare, chiedi: Il conto, per favore. Il barista risponde: Sono quattro euro e cinquanta. Questo è solo un prezzo di esempio. Per pagare con la carta, domanda: Posso pagare con la carta?','Když chceš zaplatit, požádej: Účet, prosím. Obsluha odpoví: Jsou to čtyři eura padesát. To je pouze příklad ceny. Pro platbu kartou se zeptej: Mohu platit kartou?','When you want to pay, ask: The bill, please. The barista replies: That is four euros fifty. This is just an example price. To pay by card, ask: Can I pay by card?'],
+    ['Ricorda: vorrei è una richiesta gentile. Adesso prova tu: ordina un caffè, chiedi dell’acqua e poi il conto. Buon caffè!','Pamatuj: vorrei je zdvořilá žádost. Teď to zkus ty: objednej si kávu, požádej o vodu a potom o účet. Užij si kávu!','Remember: vorrei is a polite request. Now try it yourself: order a coffee, ask for water and then the bill. Enjoy your coffee!']
+  ];
+  function freyaPlaceholder(){return button('freya-load','▶ '+freyaCopy[lang].load,'class="it-primary"');}
+  function freyaLessonVideo(){
+    const t=freyaCopy[lang];
+    return '<section class="it-freya" aria-labelledby="it-freya-title"><h3 id="it-freya-title">'+t.title+'</h3><p>'+t.intro+'</p><div id="it-freya-player" class="it-freya-player">'+freyaPlaceholder()+'</div><p class="it-muted">'+t.note+'</p><details><summary>'+t.transcript+'</summary>'+freyaTranscript.map(row=>'<p lang="it">'+esc(row[0])+'</p>'+(lang==='it'?'':'<p class="it-muted">'+esc(row[lang==='cs'?1:2])+'</p>')).join('')+'</details><p><a href="https://app.heygen.com/videos/'+freyaVideoId+'" target="_blank" rel="noopener noreferrer">'+t.link+'</a></p></section>';
+  }
   function showLesson(id) {
     const l=D.lessons.find(x=>x.id===id); if(!l)return;
-    currentLevel=l.level; currentLesson=id;
-    el('it-view').innerHTML='<section class="it-panel">'+button('back',T.back)+'<span class="it-level">'+l.level+'</span><h2 tabindex="-1" id="it-focus">'+esc(l.title[lang])+'</h2><p>'+esc(l.note[lang])+'</p><h3>'+T.study+'</h3><div class="it-words">'+l.words.map(w=>'<article class="it-card"><div class="it-word-top">'+favorite(w)+'</div><h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian)+audio(w.example)+'</article>').join('')+'</div><div class="it-toolbar">'+['choice','write','listen','grammar'].map(m=>button('lesson-practice',T[m],'data-mode="'+m+'"'+(m==='listen'&&!voices.length?' disabled':''))).join('')+'</div></section>';
-    updateAudioButtons(); el('it-focus').focus();
+    currentLevel=l.level; currentLesson=id;openedLesson=id;lastLesson=id;active='lessons';
+    const isCafe=id==='bar';
+    const dialogue=isCafe?'<div class="it-cafe-intro"><div><p class="it-eyebrow">'+T.cafeTime+'</p><h3>'+T.goal+'</h3><p>'+esc(l.goal[lang])+'</p><p>'+T.cafeContext+'</p></div><img src="'+esc(pictureDirectory+'caffe.webp')+'" alt="" width="320" height="220"></div><h3>'+T.dialogue+'</h3><div class="it-toolbar">'+button('dialogue-play','▶ '+T.playAll,'class="it-primary"')+button('audio-stop',T.stopAudio)+'</div><p class="it-muted">'+T.audioCredit+'</p><ol class="it-dialogue">'+l.dialogue.map(line=>'<li id="'+line.id+'" class="it-dialogue-line '+line.role+'"><span class="it-role">'+T[line.role]+'</span><p lang="it">'+esc(line.it)+'</p>'+audio(line.it,T.lineAudio)+'<details><summary>'+T.translation+'</summary><p>'+esc(line.translation[lang])+'</p></details></li>').join('')+'</ol>':'';
+    el('it-view').innerHTML='<section class="it-panel">'+button('back',T.back)+'<span class="it-level">'+l.level+'</span><h2 tabindex="-1" id="it-focus">'+esc(isCafe?T.cafeTitle:l.title[lang])+'</h2>'+(isCafe?freyaLessonVideo()+dialogue:'<p>'+esc(l.note[lang])+'</p>')+'<h3>'+(isCafe?T.vocabulary:T.study)+'</h3><div class="it-words">'+l.words.map(w=>'<article class="it-card"><div class="it-word-top">'+favorite(w)+'</div><h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian,T.wordAudio)+audio(w.example,T.sentenceAudio)+'</article>').join('')+'</div>'+(isCafe?'<h3>'+T.rules+'</h3><p class="it-rule">'+T.ruleText+'</p><h3>'+T.tryIt+'</h3><p>'+T.completed+'</p>'+button('lesson-practice',T.practiceCafe,'data-mode="grammar" class="it-primary"'):'')+'<div class="it-toolbar">'+['choice','write','listen','grammar'].map(m=>button('lesson-practice',T[m],'data-mode="'+m+'"'+(m==='listen'&&!l.words.some(w=>canSpeak(w.italian))?' disabled':''))).join('')+'</div><p class="it-muted">'+T.savedDraft+'</p></section>';
+    updateAudioButtons();saveDraft();el('it-focus').focus();
   }
   function selectedLessons() {return D.lessons.filter(l=>(currentLevel==='all'||l.level===currentLevel)&&(currentLesson==='all'||l.id===currentLesson));}
   function start(isExam=false) {
+    if(pausedSession&&!window.confirm(T.newAttempt))return;
     const selected=isExam?D.lessons.filter(l=>currentLevel==='all'||l.level===currentLevel):selectedLessons();
     let pool;
     if(isExam) {
-      const withAudio=!!el('it-with-audio')?.checked&&!!voices.length;
+      const withAudio=!!el('it-with-audio')?.checked;
       // Exactly one question per vocabulary item to avoid repeating the same answer in an exam.
       pool=C.questions(selected,'choice',lang).map((q,i)=>{
-        const kind=withAudio&&i%3===0?'listen':i%2===0?'write':'choice';
+        const kind=withAudio&&i%3===0&&canSpeak(q.italian)?'listen':i%2===0?'write':'choice';
         return kind==='write'?{...q,kind,prompt:words.find(w=>w.id===q.id).meaning[lang],answers:[q.italian],options:[]}:{...q,kind};
       }).concat(C.questions(selected,'grammar',lang));
-    } else pool=C.questions(selected,mode,lang).filter(q=>!reviewOnly||progress.mistakes[q.id]);
+    } else pool=reviewOnly?C.reviewQuestions(selected,progress,lang):C.questions(selected,mode,lang);
+    // Keep unavailable listening mistakes in the review list; never silently grade another mode.
+    if(!reviewOnly)pool=pool.filter(q=>q.kind!=='listen'||canSpeak(q.italian));
     if(!pool.length){status(!isExam&&mode==='picture'?T.noPictures:T.noQuestions);return;}
-    if(!isExam&&mode==='listen'&&!voices.length){status(T.noVoice);return;}
+    stopAudio();
     session={questions:C.shuffle(pool).slice(0,isExam?20:12),index:0,correct:0,answered:false,played:false,type:isExam?'exam':'practice',level:currentLevel,changes:[]};
+    pausedSession=null;openedLesson=null;saveDraft();
     render();
   }
   function renderQuestion() {
@@ -107,7 +155,11 @@
     const prompt=q.kind==='picture'?T.picturePrompt:q.kind==='listen'?T.listenPrompt:q.kind==='write'?T.writePrompt:q.kind==='grammar'?T.grammarPrompt:T.meaningPrompt;
     const visual=q.kind==='picture'?picture(q)+photoCredit(q)+'<details class="it-picture-description"><summary>'+T.pictureFallback+'</summary><p>'+esc(q.pictureDescription)+'</p></details>':q.kind==='listen'?audio(q.italian):'<p class="it-prompt"'+(q.kind==='write'?'':' lang="it"')+'>'+esc(q.prompt)+'</p>';
     el('it-view').innerHTML='<section class="it-panel it-quiz"><div class="it-quiz-top"><span>'+T.question+' '+(s.index+1)+' / '+s.questions.length+'</span>'+button('quit',T.stop)+'</div><progress value="'+s.index+'" max="'+s.questions.length+'" aria-label="'+T.progress+'"></progress><h2 id="it-focus" tabindex="-1">'+esc(prompt)+'</h2>'+visual+'<form id="it-answer-form">'+(choice?'<fieldset><legend class="it-muted">'+T.choose+'</legend><div class="it-options"'+(q.kind==='picture'?' lang="it"':'')+'>'+C.shuffle(q.options).map((a,i)=>'<label><input type="radio" name="answer" value="'+esc(a)+'"><span>'+esc(a)+'</span></label>').join('')+'</div></fieldset>':'<label>'+T.write+'<input id="it-written" name="answer" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="'+T.placeholder+'"></label><div class="it-accent-bar" aria-label="'+T.accent+'">'+['à','è','é','ì','ò','ù','’'].map(c=>button('accent',c,'data-char="'+c+'"')).join('')+'</div>')+'<button type="submit" class="it-primary">'+T.check+'</button></form><div id="it-feedback" role="status" aria-live="polite"></div><div id="it-next"></div></section>';
-    updateAudioButtons(); el('it-focus').focus();
+    updateAudioButtons();
+    if(session.answered)renderFeedback();
+    else if(session.answer){const input=el('it-written');if(input)input.value=session.answer;else el('it-answer-form').querySelectorAll('input[type="radio"]').forEach(i=>i.checked=i.value===session.answer);}
+    if(q.kind==='listen'&&!canSpeak(q.italian))status(T.audioUnavailable);
+    el('it-focus').focus();
   }
   function submit(event) {
     event.preventDefault(); if(!session||session.answered)return;
@@ -117,8 +169,14 @@
     if(!value||!String(value).trim()){status(T.required);return;}
     const correct=C.grade(value,q.answers);
     session.correct+=Number(correct);session.answered=true;
-    session.changes.push({id:q.id,correct});
-    event.target.querySelectorAll('input,button').forEach(e=>e.disabled=true);
+    session.answer=String(value);session.changes.push({id:q.id,kind:q.kind,correct});saveDraft();renderFeedback();
+    status('');
+  }
+  function renderFeedback() {
+    const q=session.questions[session.index],correct=session.changes[session.index].correct;
+    const form=el('it-answer-form');
+    form.querySelectorAll('input').forEach(i=>{if(i.type==='radio')i.checked=i.value===session.answer;else i.value=session.answer||'';});
+    form.querySelectorAll('input,button').forEach(e=>e.disabled=true);
     el('it-feedback').className='it-feedback '+(correct?'is-correct':'is-wrong');
     el('it-feedback').innerHTML='<h3>'+esc(correct?T.correct:T.wrong)+'</h3><p>'+T.answer+': <strong>'+esc(q.answers[0])+'</strong></p>'+(q.kind==='listen'?'<p lang="it">'+esc(q.italian)+'</p>':'')+'<p'+(q.kind==='grammar'?'':' lang="it"')+'>'+esc(q.kind==='grammar'?q.explanation[lang]:q.explanation)+'</p>';
     el('it-next').innerHTML=button('next',session.index===session.questions.length-1?T.finish:T.next);
@@ -126,9 +184,12 @@
   }
   function finish() {
     const s=session;
-    for(const item of s.changes) {if(item.correct)delete progress.mistakes[item.id];else progress.mistakes[item.id]=(progress.mistakes[item.id]||0)+1;}
+    for(const item of s.changes) {
+      if(item.correct){delete progress.mistakes[item.id];delete progress.mistakeKinds[item.id];}
+      else {progress.mistakes[item.id]=(progress.mistakes[item.id]||0)+1;progress.mistakeKinds[item.id]=item.kind;}
+    }
     progress.results.push({date:new Date().toISOString(),correct:s.correct,total:s.questions.length,type:s.type,level:s.level});
-    progress.results=progress.results.slice(-50);save(); session=null;
+    progress.results=progress.results.slice(-50);save(); session=null;pausedSession=null;saveDraft();
     el('it-view').innerHTML='<section class="it-panel it-result"><h2 id="it-focus" tabindex="-1">'+T.result+'</h2><p class="it-score">'+s.correct+' / '+s.questions.length+'</p><p>'+Math.round(s.correct/s.questions.length*100)+' %</p><p>'+esc(storageOK?T.saved:T.notSaved)+'</p><div class="it-toolbar">'+button('again',T.again)+button('retry',T.retry)+'</div></section>';
     el('it-focus').focus();
   }
@@ -137,30 +198,60 @@
     const best=exams.length?Math.max(...exams.map(r=>Math.round(r.correct/r.total*100)))+' %':'—';
     el('it-view').innerHTML='<section class="it-panel"><h2>'+T.progress+'</h2><p>'+T.storageNote+'</p><div class="it-stats"><div><strong>'+progress.results.length+'</strong><span>'+T.attempts+' (max. 50)</span></div><div><strong>'+Object.keys(progress.mistakes).length+'</strong><span>'+T.mistakes+'</span></div><div><strong>'+best+'</strong><span>'+T.best+'</span></div></div><div class="it-toolbar">'+button('export',T.export)+'<label class="it-import">'+T.import+'<input type="file" id="it-import" accept=".json,application/json"></label>'+button('retry',T.retry)+'</div><h3>'+T.history+'</h3><ol class="it-history">'+progress.results.slice(-10).reverse().map(r=>'<li>'+esc(new Date(r.date).toLocaleDateString(lang))+' · '+esc(T[r.type])+' · '+r.level+' <strong>'+r.correct+' / '+r.total+'</strong></li>').join('')+'</ol>'+(progress.results.length?'':'<p>'+T.progressEmpty+'</p>')+'</section>';
   }
-  function updateAudioButtons() {app.querySelectorAll('[data-action="speak"],[data-action="slow"]').forEach(b=>b.disabled=!voices.length);}
+  function updateAudioButtons() {app.querySelectorAll('[data-action="speak"],[data-action="slow"]').forEach(b=>b.disabled=!canSpeak(b.dataset.speech));}
   function updateVoiceControls() {
     const select=el('it-voice'); if(!select)return;
     select.innerHTML=options(voices.map(v=>[v.voiceURI,v.name+' ('+v.lang+')']),selectedVoice);
     select.disabled=!voices.length;
-    el('it-voice-note').textContent=voices.length?T.voiceReady:T.noVoice;
+    el('it-voice-note').textContent=T.localAudio+' '+(voices.length?T.voiceReady:({cs:'Italský hlas zařízení není dostupný; nahrávky kavárny přesto fungují.',en:'No Italian device voice is available; the café recordings still work.',it:'La voce italiana del dispositivo non è disponibile; le registrazioni del bar funzionano comunque.'}[lang]));
     updateAudioButtons();
-    const listeningOption=el('it-mode')?.querySelector('[value="listen"]');if(listeningOption)listeningOption.disabled=!voices.length;
-    const withAudio=el('it-with-audio');if(withAudio)withAudio.disabled=!voices.length;
-    app.querySelectorAll('[data-action="lesson-practice"][data-mode="listen"]').forEach(b=>b.disabled=!voices.length);
+    const listeningOption=el('it-mode')?.querySelector('[value="listen"]');
+    if(listeningOption)listeningOption.disabled=!selectedLessons().some(l=>l.words.some(w=>canSpeak(w.italian)));
+    const withAudio=el('it-with-audio');if(withAudio)withAudio.disabled=false;
+    app.querySelectorAll('[data-action="lesson-practice"][data-mode="listen"]').forEach(b=>b.disabled=!selectedLessons().some(l=>l.words.some(w=>canSpeak(w.italian))));
   }
   function loadVoices() {
     voices=window.speechSynthesis?window.speechSynthesis.getVoices().filter(v=>/^it(?:-|_)/i.test(v.lang)):[];
     if(!voices.some(v=>v.voiceURI===selectedVoice))selectedVoice=voices[0]?.voiceURI||'';
     updateVoiceControls();
   }
+  function stopAudio() {
+    const player=el('it-freya-player');
+    if(player?.querySelector('iframe'))player.innerHTML=freyaPlaceholder();
+    audioGeneration++;
+    if(media){media.pause();media.onended=null;media.onerror=null;media=null;}
+    window.speechSynthesis?.cancel();
+    app.querySelectorAll('.is-speaking').forEach(n=>n.classList.remove('is-speaking'));
+  }
+  function playRecording(text,slow,done,generation) {
+    const target=session;
+    media=new Audio(audioDirectory+D.audioFiles[text]);media.playbackRate=slow?0.75:1;
+    media.onplaying=()=>{if(generation===audioGeneration&&target&&session===target)target.played=true;};
+    media.onended=()=>{if(generation!==audioGeneration)return;media=null;done?.();};
+    media.onerror=()=>{if(generation!==audioGeneration)return;if(target&&session===target)target.played=false;stopAudio();status(T.speechError);};
+    media.play().catch(()=>{if(generation===audioGeneration){if(target&&session===target)target.played=false;stopAudio();status(T.speechError);}});
+  }
   function speak(text,slow=false) {
+    stopAudio();
+    if(D.audioFiles?.[text]){playRecording(text,slow,null,audioGeneration);return;}
     if(!voices.length){status(T.noVoice);return;}
-    window.speechSynthesis.cancel();
     const utterance=new SpeechSynthesisUtterance(text);utterance.lang='it-IT';utterance.voice=voices.find(v=>v.voiceURI===selectedVoice)||voices[0];utterance.rate=slow?0.72:0.95;
     const target=session;
     utterance.onstart=()=>{if(session===target&&target)target.played=true;};
     utterance.onerror=event=>{if(['canceled','interrupted'].includes(event.error))return;if(session===target&&target)target.played=false;status(T.speechError);};
     window.speechSynthesis.speak(utterance);
+  }
+  function playDialogue() {
+    stopAudio();const generation=audioGeneration,lines=D.lessons.find(l=>l.id==='bar').dialogue;
+    let index=0;
+    function next() {
+      if(generation!==audioGeneration)return;
+      app.querySelectorAll('.is-speaking').forEach(n=>n.classList.remove('is-speaking'));
+      if(index===lines.length)return;
+      const line=lines[index++];el(line.id)?.classList.add('is-speaking');
+      playRecording(line.it,false,next,generation);
+    }
+    next();
   }
   app.addEventListener('submit',submit);
   app.addEventListener('input',event=>{if(event.target.id==='it-search'){search=event.target.value;renderDictionary();}});
@@ -168,7 +259,7 @@
     const target=event.target;
     if(target.id==='it-level'){currentLevel=target.value;currentLesson='all';cardIndex=0;cardFlipped=false;render();}
     if(target.id==='it-pictures-only'){picturesOnly=target.checked;cardIndex=0;cardFlipped=false;renderCards();}
-    if(target.id==='it-lesson')currentLesson=target.value;
+    if(target.id==='it-lesson'){currentLesson=target.value;updateVoiceControls();}
     if(target.id==='it-mode')mode=target.value;
     if(target.id==='it-voice')selectedVoice=target.value;
     if(target.id==='it-favorites'){onlyFavorites=target.checked;renderDictionary();}
@@ -185,6 +276,21 @@
   app.addEventListener('click',event=>{
     const b=event.target.closest('button[data-action]');if(!b||b.disabled)return;
     const action=b.dataset.action;
+    if(action==='freya-load'){
+      stopAudio();
+      el('it-freya-player').innerHTML='<iframe src="https://app.heygen.com/embeds/'+freyaVideoId+'" title="'+esc(freyaCopy[lang].title)+'" allow="encrypted-media; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+      el('it-freya-player').querySelector('iframe').focus();return;
+    }
+    if(action==='audio-stop'){stopAudio();return;}
+    if(action==='dialogue-play'){playDialogue();return;}
+    if(action==='text-cards'){picturesOnly=false;cardIndex=0;renderCards();return;}
+    if(action==='quick'){stopAudio();if(session)pausedSession=session;session=null;active='lessons';openedLesson='bar';render();return;}
+    if(action==='resume'){
+      stopAudio();session=pausedSession;pausedSession=null;
+      if(session){active=session.type==='exam'?'exam':'practice';currentLevel=session.level;openedLesson=null;render();}
+      else if(lastLesson){active='lessons';openedLesson=lastLesson;render();}
+      saveDraft();return;
+    }
     if(action==='flip'){cardFlipped=!cardFlipped;renderCards();app.querySelector('[data-action="flip"]')?.focus();return;}
     if(action==='card-next'||action==='card-previous'){cardIndex+=action==='card-next'?1:-1;cardFlipped=false;renderCards();app.querySelector('[data-action="'+action+'"]')?.focus();return;}
     if(action==='picture-start'){active='practice';mode='picture';currentLesson='all';reviewOnly=false;start();return;}
@@ -199,14 +305,14 @@
       b.textContent=yes?'☆':'★';b.setAttribute('aria-pressed',String(!yes));b.setAttribute('aria-label',yes?T.favorite:T.unfavorite);
       if(active==='dictionary')renderDictionary();if(!storageOK)status(T.notSaved);return;
     }
-    if(action==='tab'){window.speechSynthesis?.cancel();session=null;active=b.dataset.tab;cardFlipped=false;render();}
-    if(action==='lesson')showLesson(b.dataset.lesson);
-    if(action==='back'){currentLesson='all';render();}
+    if(action==='tab'){stopAudio();if(session)pausedSession=session;session=null;openedLesson=null;active=b.dataset.tab;cardFlipped=false;saveDraft();render();}
+    if(action==='lesson'){stopAudio();showLesson(b.dataset.lesson);}
+    if(action==='back'){stopAudio();openedLesson=null;currentLesson='all';render();}
     if(action==='lesson-practice'){mode=b.dataset.mode;reviewOnly=false;active='practice';start();}
     if(action==='start')start();
     if(action==='exam'){currentLesson='all';start(true);}
-    if(action==='quit'){window.speechSynthesis?.cancel();session=null;render();}
-    if(action==='next'&&session?.answered){if(session.index===session.questions.length-1)finish();else{window.speechSynthesis?.cancel();session.index++;session.answered=false;session.played=false;renderQuestion();}}
+    if(action==='quit'){stopAudio();session=null;pausedSession=null;saveDraft();render();}
+    if(action==='next'&&session?.answered){if(session.index===session.questions.length-1)finish();else{stopAudio();session.index++;session.answered=false;session.played=false;session.answer='';saveDraft();renderQuestion();}}
     if(action==='again'){active='practice';reviewOnly=false;render();}
     if(action==='retry'){active='practice';currentLevel='all';currentLesson='all';mode='choice';reviewOnly=true;render();}
     if(action==='export'){
@@ -214,6 +320,12 @@
       const a=document.createElement('a');a.href=url;a.download='italian-progress.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
     }
   });
+  app.addEventListener('input',event=>{
+    if(session&&!session.answered&&event.target.name==='answer'){session.answer=event.target.value;saveDraft();}
+  });
+  window.addEventListener('pagehide',()=>{stopAudio();saveDraft();});
+  const requestedLesson=new URLSearchParams(location.search).get('lesson');
+  if(D.lessons.some(l=>l.id===requestedLesson))openedLesson=requestedLesson;
   render();loadVoices();
   window.speechSynthesis?.addEventListener('voiceschanged',loadVoices);
 })();

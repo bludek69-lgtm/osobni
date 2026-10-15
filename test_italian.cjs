@@ -3,10 +3,10 @@ const assert = require('node:assert/strict');
 const D = require('./assets/js/italian-data.js');
 const C = require('./assets/js/italian-core.js');
 
-test('12 lessons, 84 vocabulary items, 24 grammar questions, four levels', () => {
+test('12 lessons, 84 vocabulary items, 28 grammar questions, four levels', () => {
   assert.equal(D.lessons.length,12);
   assert.equal(D.lessons.flatMap(l=>l.words).length,84);
-  assert.equal(D.lessons.flatMap(l=>l.questions).length,24);
+  assert.equal(D.lessons.flatMap(l=>l.questions).length,28);
   for (const level of ['A1','A2','B1','B2']) assert.equal(D.lessons.filter(l=>l.level===level).length,3);
 });
 test('stable unique identifiers and complete localized content', () => {
@@ -30,7 +30,7 @@ test('grading preserves meaningful Italian accents and missing articles',()=>{
 });
 for(const lang of ['cs','en','it'])for(const mode of ['choice','write','listen','grammar'])test(lang+' / '+mode+' produces valid questions',()=>{
   const qs=C.questions(D.lessons,mode,lang);
-  assert.equal(qs.length,mode==='grammar'?24:84);
+  assert.equal(qs.length,mode==='grammar'?28:84);
   assert.equal(new Set(qs.map(q=>q.id)).size,qs.length);
   for(const q of qs) {
     assert.ok(C.grade(q.answers[0],q.answers));
@@ -90,4 +90,34 @@ test('backup keeps at most 50 results and rejects injected types',()=>{
   const r={total:20,correct:10,type:'exam',level:'B2',date:'2026-10-10'};
   assert.equal(C.validateProgress({...C.emptyProgress(),results:Array(80).fill(r)},D).results.length,50);
   assert.throws(()=>C.validateProgress({...C.emptyProgress(),results:[{...r,type:'<script>'}]},D));
+});
+
+test('review includes legacy grammar mistakes and preserves writing/listening types',()=>{
+  const p=C.validateProgress({...C.emptyProgress(),mistakes:{essere:2,caffe:1,acqua:1},mistakeKinds:{caffe:'write',acqua:'listen'}},D);
+  const qs=C.reviewQuestions(D.lessons,p,'cs');
+  assert.deepEqual(qs.map(q=>[q.id,q.kind]),[['essere','grammar'],['caffe','write'],['acqua','listen']]);
+  assert.equal(C.reviewQuestions(D.lessons.filter(l=>l.id==='bar'),p,'en').length,2);
+  assert.deepEqual(C.validateProgress(JSON.parse(JSON.stringify(p)),D).mistakeKinds,p.mistakeKinds);
+});
+
+test('resuming rebuilds questions, preserves checked answer and does not double-score',()=>{
+  const qs=C.questions(D.lessons,'grammar','cs').slice(0,2);
+  const raw={questions:qs,index:0,answered:true,answer:qs[0].answers[0],changes:[{id:qs[0].id,correct:true}],correct:999,type:'practice',level:'A1'};
+  raw.questions[0].prompt='<script>injected</script>';
+  const resumed=C.restoreSession(raw,D.lessons,'en');
+  assert.equal(resumed.correct,1);assert.equal(resumed.answered,true);assert.equal(resumed.played,false);
+  assert.equal(resumed.answer,qs[0].answers[0]);assert.ok(!resumed.questions[0].prompt.includes('<script>'));
+  assert.equal(resumed.changes[0].kind,'grammar');
+  assert.equal(C.restoreSession({...raw,index:9},D.lessons,'cs'),null);
+  assert.equal(C.restoreSession({...raw,changes:[]},D.lessons,'cs'),null);
+  assert.equal(C.restoreSession({...raw,questions:[{id:'missing',kind:'write'}]},D.lessons,'cs'),null);
+});
+
+test('café dialogue has translations, two roles and bundled audio for lines, words and examples',()=>{
+  const fs=require('node:fs');const cafe=D.lessons.find(l=>l.id==='bar');
+  assert.equal(cafe.dialogue.length,8);assert.equal(cafe.questions.length,6);
+  assert.deepEqual([...new Set(cafe.dialogue.map(l=>l.role))].sort(),['barista','customer']);
+  for(const line of cafe.dialogue)for(const lang of ['cs','en','it'])assert.ok(line.translation[lang]);
+  const texts=[...cafe.dialogue.map(l=>l.it),...cafe.words.flatMap(w=>[w.italian,w.example])];
+  for(const text of texts){assert.ok(D.audioFiles[text]);assert.ok(fs.statSync(__dirname+'/assets/audio/italian/'+D.audioFiles[text]).size>1000);}
 });
