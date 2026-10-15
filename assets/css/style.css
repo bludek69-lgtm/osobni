@@ -1040,6 +1040,7 @@ body.theme-italy .youtube-subscribe::before {
 .recipe-content ul { margin: 0; padding-left: 1.2rem; font-size: 0.9rem; }
 .recipe-note { margin-top: 0.8rem; font-size: 0.85rem; opacity: 0.75; font-style: italic; }
 .recipe-source { display: inline-block; margin-top: 0.8rem; font-size: 0.8rem; padding: 0.25rem 0.6rem; border: 1px solid rgba(0,140,69,0.4); border-radius: 4px; text-decoration: none; opacity: 0.85; }
+.recipe-video { display:flex; align-items:center; justify-content:center; min-height:44px; padding:.5rem .75rem; font-weight:600; opacity:1; }
 .recipe-source:hover { background: rgba(0,140,69,0.1); }
 .recipe-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.6rem; }
 .recipe-tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 3px; background: rgba(255,255,255,0.06); }
