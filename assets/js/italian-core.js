@@ -90,7 +90,7 @@
         explanation:w.example};
     }));
   }
-  function emptyProgress() { return {version:1,favorites:[],mistakes:{},mistakeKinds:{},results:[],lessonResults:{},schedule:{},savedSentences:[]}; }
+  function emptyProgress() { return {version:1,favorites:[],mistakes:{},mistakeKinds:{},results:[],lessonResults:{},schedule:{},savedSentences:[],sentencePractice:{}}; }
   const reviewDays=[1,3,7,14,30], dayMs=86400000;
   function dialogueEntries(data) {
     const entries=new Map();
@@ -118,12 +118,12 @@
     const pools=Object.fromEntries(['choice','write','listen','picture','grammar'].map(kind=>[kind,questions(lessons,kind,lang)]));
     return Object.values(progress.schedule||{}).filter(r=>Date.parse(r.due)<=Date.parse(date)).sort((a,b)=>Date.parse(a.due)-Date.parse(b.due)).map(r=>pools[r.kind]?.find(q=>q.id===r.id)).filter(Boolean);
   }
-  function dialogueExcerpt(base, lines) {
+  function dialogueExcerpt(base, lines, replies=2) {
     const changed=lines.findIndex((line,i)=>line.it!==base[i]?.it);
-    let start=Math.max(0,Math.min(changed-1,lines.length-4));
-    while(start>0&&lines.slice(start).filter(line=>line.role==='customer').length<2)start--;
+    let start=Math.max(0,Math.min(changed-1,lines.length-replies*2));
+    while(start>0&&lines.slice(start).filter(line=>line.role==='customer').length<replies)start--;
     let count=0,end=start;
-    for(;end<lines.length;end++)if(lines[end].role==='customer'&&++count===2){end++;break;}
+    for(;end<lines.length;end++)if(lines[end].role==='customer'&&++count===replies){end++;break;}
     while(end<lines.length&&lines[end].role!=='customer')end++;
     return lines.slice(start,end);
   }
@@ -136,7 +136,8 @@
     add(due,4,'due');add(mistakes,4,'mistake');
     const lesson=lessons.find(l=>l.id===picked[0]?.lessonId)||lessons.find(l=>l.id===lastLesson)||lessons[0];
     add(questions([lesson],'choice',lang).filter(q=>!progress.schedule?.[q.kind+':'+q.id]),4,'new');
-    return {questions:picked,lessonId:lesson.id};
+    const saved=savedDialogue({lessons},progress).sort((a,b)=>(Date.parse(progress.sentencePractice?.[a.id])||0)-(Date.parse(progress.sentencePractice?.[b.id])||0));
+    return {questions:picked,lessonId:lesson.id,sentenceId:saved[0]?.id||null};
   }
   function recordLessonResults(progress, session, date) {
     const grouped={};
@@ -155,6 +156,7 @@
     const result = emptyProgress();
     const sentenceIds=new Set(dialogueEntries(data).map(line=>line.id));
     result.savedSentences=Array.isArray(value.savedSentences)?[...new Set(value.savedSentences.filter(id=>sentenceIds.has(id)))]:[];
+    for(const id of result.savedSentences){const date=value.sentencePractice?.[id];if(typeof date==='string'&&Number.isFinite(Date.parse(date)))result.sentencePractice[id]=new Date(date).toISOString();}
     result.favorites = [...new Set(value.favorites.filter(id=>wordIds.has(id)))];
     for (const [id,count] of Object.entries(value.mistakes)) if (allIds.has(id) && Number.isInteger(count) && count > 0) result.mistakes[id] = Math.min(count,10000);
     for (const id of Object.keys(result.mistakes)) {
@@ -197,7 +199,7 @@
     const changes=raw.changes.map((c,i)=>({id:restored[i].id,kind:restored[i].kind,correct:c.correct===true}));
     if(raw.changes.some((c,i)=>c.id!==restored[i].id||typeof c.correct!=='boolean'))return null;
     return {questions:restored,index:raw.index,answered,correct:changes.filter(c=>c.correct).length,
-      dailyLesson:lessons.some(l=>l.id===raw.dailyLesson)?raw.dailyLesson:null,played:false,type:raw.type,level:raw.level,changes,answer:typeof raw.answer==='string'?raw.answer.slice(0,500):''};
+      dailySentence:dialogueEntries({lessons}).some(line=>line.id===raw.dailySentence)?raw.dailySentence:null,dailyLesson:lessons.some(l=>l.id===raw.dailyLesson)?raw.dailyLesson:null,played:false,type:raw.type,level:raw.level,changes,answer:typeof raw.answer==='string'?raw.answer.slice(0,500):''};
   }
   const api = {createAnswerRecorder,dialogueEntries,savedDialogue,normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults,recordSchedule,scheduledQuestions,dailyPlan,dialogueExcerpt};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;

@@ -501,3 +501,29 @@ test('saved dialogue catalog includes all lessons and variants without duplicati
  assert.equal(C.savedDialogue(D,C.validateProgress(p,D)).length,catalog.length);
  for(const line of catalog)assert.ok(line.situation.cs&&line.situation.en&&D.audioFiles[line.it]);
 });
+
+test('daily saved sentences rotate by completed practice, not by preview',()=>{
+ const p=C.emptyProgress();p.savedSentences=['bar-02','hotel-v1-2','ristorante-02'];
+ const pick=()=>C.dailyPlan(D.lessons,p,'cs','hotel').sentenceId;
+ assert.equal(pick(),'bar-02');assert.equal(pick(),'bar-02');
+ p.sentencePractice['bar-02']='2026-10-15T10:00:00Z';assert.equal(pick(),'hotel-v1-2');
+ p.sentencePractice['hotel-v1-2']='2026-10-15T11:00:00Z';assert.equal(pick(),'ristorante-02');
+ p.sentencePractice['ristorante-02']='2026-10-15T12:00:00Z';assert.equal(pick(),'bar-02');
+ p.savedSentences=[];assert.equal(pick(),null);
+});
+test('sentence practice history migrates and survives backup, daily selection survives draft',()=>{
+ const p=C.emptyProgress();p.savedSentences=['hotel-v1-2'];
+ delete p.sentencePractice;assert.deepEqual(C.validateProgress(p,D).sentencePractice,{});
+ p.sentencePractice={'hotel-v1-2':'2026-10-15T10:00:00Z','unknown':'2026-01-01'};
+ assert.deepEqual(C.validateProgress(p,D).sentencePractice,{'hotel-v1-2':'2026-10-15T10:00:00.000Z'});
+ const raw={questions:C.questions(D.lessons,'choice','cs').slice(0,1),changes:[],index:0,answered:false,type:'practice',level:'all',dailyLesson:'hotel',dailySentence:'hotel-v1-2'};
+ assert.equal(C.restoreSession(raw,D.lessons,'cs').dailySentence,'hotel-v1-2');
+ raw.dailySentence='unknown';assert.equal(C.restoreSession(raw,D.lessons,'cs').dailySentence,null);
+});
+test('one-reply daily excerpts retain the changed situation in every variant',()=>{
+ for(const l of D.lessons)for(const v of l.dialogueVariants){
+  const lines=C.dialogueExcerpt(l.dialogue,v.lines,1);
+  assert.equal(lines.filter(line=>line.role==='customer').length,1,v.id);
+  assert.ok(lines.some(line=>!l.dialogue.some(base=>base.it===line.it)),v.id);
+ }
+});
