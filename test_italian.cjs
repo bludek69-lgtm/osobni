@@ -3,10 +3,10 @@ const assert = require('node:assert/strict');
 const D = require('./assets/js/italian-data.js');
 const C = require('./assets/js/italian-core.js');
 
-test('12 lessons, 84 vocabulary items, 28 grammar questions, four levels', () => {
+test('12 lessons, 84 vocabulary items, 32 grammar questions, four levels', () => {
   assert.equal(D.lessons.length,12);
   assert.equal(D.lessons.flatMap(l=>l.words).length,84);
-  assert.equal(D.lessons.flatMap(l=>l.questions).length,28);
+  assert.equal(D.lessons.flatMap(l=>l.questions).length,32);
   for (const level of ['A1','A2','B1','B2']) assert.equal(D.lessons.filter(l=>l.level===level).length,3);
 });
 test('stable unique identifiers and complete localized content', () => {
@@ -30,7 +30,7 @@ test('grading preserves meaningful Italian accents and missing articles',()=>{
 });
 for(const lang of ['cs','en','it'])for(const mode of ['choice','write','listen','grammar'])test(lang+' / '+mode+' produces valid questions',()=>{
   const qs=C.questions(D.lessons,mode,lang);
-  assert.equal(qs.length,mode==='grammar'?28:84);
+  assert.equal(qs.length,mode==='grammar'?32:84);
   assert.equal(new Set(qs.map(q=>q.id)).size,qs.length);
   for(const q of qs) {
     assert.ok(C.grade(q.answers[0],q.answers));
@@ -120,4 +120,19 @@ test('café dialogue has translations, two roles and bundled audio for lines, wo
   for(const line of cafe.dialogue)for(const lang of ['cs','en','it'])assert.ok(line.translation[lang]);
   const texts=[...cafe.dialogue.map(l=>l.it),...cafe.words.flatMap(w=>[w.italian,w.example])];
   for(const text of texts){assert.ok(D.audioFiles[text]);assert.ok(fs.statSync(__dirname+'/assets/audio/italian/'+D.audioFiles[text]).size>1000);}
+});
+
+test('restaurant lesson preserves vocabulary and has playable dialogue and a separate Freya video',()=>{
+  const fs=require('node:fs'),l=D.lessons.find(l=>l.id==='ristorante');
+  assert.equal(l.level,'A2');assert.equal(l.words.length,9);assert.equal(l.questions.length,6);
+  assert.equal(l.dialogue.length,12);assert.equal(new Set(l.dialogue.map(x=>x.id)).size,12);
+  assert.equal(l.video.id,'d2b02d5cc883c753ed2c0558a9bce662');
+  assert.notEqual(l.video.id,'dcf1d9a305bd77187a7cf9e2db8cd677');
+  for(const row of l.video.transcript)assert.ok(row.length===3&&row.every(Boolean));
+  for(const row of l.dialogue){assert.ok(row.translation.cs&&row.translation.en);assert.ok(['barista','customer'].includes(row.role));}
+  for(const text of [...l.dialogue.map(x=>x.it),...l.words.flatMap(w=>[w.italian,w.example])]){
+    assert.ok(D.audioFiles[text]);assert.ok(fs.statSync(__dirname+'/assets/audio/italian/'+D.audioFiles[text]).size>1000);
+  }
+  const review=C.reviewQuestions([l],{mistakes:{'ristorante-table':1},mistakeKinds:{}},'cs');
+  assert.equal(review[0].kind,'grammar');assert.equal(review[0].answers[0],'per');
 });

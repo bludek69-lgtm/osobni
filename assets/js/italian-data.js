@@ -183,7 +183,40 @@
     grammar('bar-price','Sono quattro euro e cinquanta. → ___',['4,50 €'],['4,50 €','14,50 €','4,15 €','5,40 €'],'Quattro euro e cinquanta = 4 eura a 50 centů. Jde o cenu v modelovém dialogu.','Quattro euro e cinquanta = 4 euros and 50 cents, the price in this sample dialogue.','Quattro euro e cinquanta corrisponde a 4,50 euro nel dialogo di esempio.')
   );
   // Bundled synthetic Italian audio: no device voice needed for this lesson.
+  const restaurant = lessons.find(l=>l.id==='ristorante');
+  restaurant.title=t('V restauraci','At a restaurant','Al ristorante');
+  restaurant.goal=t('Požádám o stůl a jídelní lístek, objednám jídlo a pití a zaplatím.','Ask for a table and a menu, order food and drinks, and pay.','Chiedere un tavolo e il menù, ordinare e pagare.');
+  restaurant.dialogue=[
+    ['Buonasera! Avete prenotato?','Dobrý večer! Máte rezervaci?','Good evening! Have you booked?'],
+    ['Sì, ho prenotato un tavolo per due, a nome Novák.','Ano, rezervoval jsem stůl pro dva na jméno Novák.','Yes, I booked a table for two under the name Novák.'],
+    ['Prego, accomodatevi. Ecco il menù.','Prosím, posaďte se. Tady je jídelní lístek.','Please, take a seat. Here is the menu.'],
+    ['Grazie. Questo piatto è piccante?','Děkuji. Je toto jídlo pálivé?','Thank you. Is this dish spicy?'],
+    ['No, la pasta al pomodoro non è piccante. Che cosa prendete?','Ne, těstoviny s rajčatovou omáčkou nejsou pálivé. Co si dáte?','No, the pasta with tomato sauce is not spicy. What would you like?'],
+    ['Per me la pasta al pomodoro e le verdure alla griglia, per favore.','Pro mě těstoviny s rajčatovou omáčkou a grilovanou zeleninu, prosím.','For me, pasta with tomato sauce and grilled vegetables, please.'],
+    ['E da bere?','A k pití?','And to drink?'],
+    ['Una bottiglia d’acqua naturale, grazie.','Láhev neperlivé vody, děkuji.','A bottle of still water, thank you.'],
+    ['Ecco i vostri piatti. Buon appetito!','Tady jsou vaše jídla. Dobrou chuť!','Here are your dishes. Enjoy your meal!'],
+    ['Grazie! Il conto, per favore. Posso pagare con la carta?','Děkuji! Účet, prosím. Mohu platit kartou?','Thank you! The bill, please. Can I pay by card?'],
+    ['Certamente. Porto subito il conto.','Samozřejmě. Hned přinesu účet.','Of course. I will bring the bill right away.'],
+    ['Grazie, arrivederci!','Děkuji, na shledanou!','Thank you, goodbye!']
+  ].map((row,i)=>({id:'ristorante-'+String(i+1).padStart(2,'0'),role:i%2?'customer':'barista',it:row[0],translation:t(row[1],row[2],row[0])}));
+  restaurant.questions.push(
+    grammar('ristorante-table','Ho prenotato un tavolo ___ due.',['per'],['per','con','di','da'],'Per due = pro dvě osoby.','Per due means for two people.','Per due significa per due persone.'),
+    grammar('ristorante-menu','Posso vedere il ___, per favore?',['menù'],['menù','conto','tavolo','bicchiere'],'Před objednáním požádáš o menù, jídelní lístek.','Before ordering, ask for the menù, the menu.','Prima di ordinare chiedi il menù.'),
+    grammar('ristorante-order','Io ___ la pasta al pomodoro. (prendere)',['prendo'],['prendo','prendi','prendete','prendono'],'Prendo = dám si. Prendere má pro io tvar prendo.','Prendo means I will have. The io form of prendere is prendo.','Con io: prendo.'),
+    grammar('ristorante-drink','E da ___? — Acqua naturale, grazie.',['bere'],['bere','mangiare','pagare','prenotare'],'Da bere = k pití.','Da bere means to drink.','Da bere introduce le bevande.')
+  );
+  restaurant.video={id:'d2b02d5cc883c753ed2c0558a9bce662',transcript:[
+    ['Ciao! Oggi andiamo al ristorante. Cominciamo dalla prenotazione: Buonasera, ho prenotato un tavolo per due, a nome Novák.','Ahoj! Dnes jdeme do restaurace. Začneme rezervací: Dobrý večer, rezervoval/a jsem stůl pro dva na jméno Novák.','Hello! Today we are going to a restaurant. Let’s start with the reservation: Good evening, I booked a table for two under the name Novák.'],
+    ['Se non hai prenotato, puoi chiedere: Avete un tavolo per due? Ora chiedi il menù: Posso vedere il menù, per favore?','Pokud nemáš rezervaci, můžeš se zeptat: Máte stůl pro dva? Teď požádej o jídelní lístek: Mohu vidět jídelní lístek, prosím?','If you have not booked, you can ask: Do you have a table for two? Now ask for the menu: May I see the menu, please?'],
+    ['Per ordinare, puoi dire: Prendo la pasta al pomodoro e le verdure alla griglia. Da bere, una bottiglia d’acqua naturale.','Při objednávání můžeš říct: Dám si těstoviny s rajčatovou omáčkou a grilovanou zeleninu. K pití láhev neperlivé vody.','To order, you can say: I will have pasta with tomato sauce and grilled vegetables. To drink, a bottle of still water.'],
+    ['Vuoi sapere se un piatto è piccante? Chiedi: Questo piatto è piccante? Ascolta e ripeti: Prendo la pasta al pomodoro.','Chceš vědět, zda je jídlo pálivé? Zeptej se: Je toto jídlo pálivé? Poslouchej a opakuj: Dám si těstoviny s rajčatovou omáčkou.','Want to know whether a dish is spicy? Ask: Is this dish spicy? Listen and repeat: I will have pasta with tomato sauce.'],
+    ['Alla fine del pasto, chiedi: Il conto, per favore. E poi: Posso pagare con la carta? Ricorda: un tavolo per due significa un tavolo per due persone.','Na konci jídla požádej: Účet, prosím. A potom: Mohu platit kartou? Pamatuj: un tavolo per due znamená stůl pro dvě osoby.','At the end of the meal, ask: The bill, please. And then: Can I pay by card? Remember: un tavolo per due means a table for two people.'],
+    ['Adesso prova tu: chiedi un tavolo, ordina un piatto e chiedi il conto. Buon appetito!','Teď to zkus ty: požádej o stůl, objednej jídlo a požádej o účet. Dobrou chuť!','Now try it yourself: ask for a table, order a dish and ask for the bill. Enjoy your meal!']
+  ]};
   const audioFiles = {};
+  for(const w of restaurant.words){audioFiles[w.italian]='ristorante-'+w.id+'-word.mp3';audioFiles[w.example]='ristorante-'+w.id+'-example.mp3';}
+  for(const line of restaurant.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for (const w of cafe.words) {
     audioFiles[w.italian] = 'bar-'+w.id+'-word.mp3';
     audioFiles[w.example] = 'bar-'+w.id+'-example.mp3';
