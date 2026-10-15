@@ -305,3 +305,31 @@ test('greetings lesson keeps existing progress IDs and has complete audio withou
   }
   assert.equal(C.reviewQuestions([l],{mistakes:{'saluti-formal':1},mistakeKinds:{}},'cs')[0].answers[0],'si');
 });
+
+
+test('writing feedback distinguishes articles, accents, combined errors and other expressions',()=>{
+  for(const [input,expected,article,kind] of [
+    ['caffè','un caffè','un','article'],['un caffe','un caffè','un','accent'],
+    ['caffe','un caffè','un','article-accent'],['autobus','l’autobus','l’','article'],
+    ['allergia','un’allergia','un’','article'],['la disponibilita','la disponibilità','la','accent'],
+    ['vedo','la vedo','','expression'],['prendo','lo prendo','','expression'],
+    ['un gelato','un caffè','un','expression'],['un caffé','un caffè','un','accent'],
+    ['UN  CAFFÈ!','un caffè','un','correct'],["l'autobus",'l’autobus','l’','correct']
+  ])assert.equal(C.writtenFeedback(input,[expected],article).kind,kind,input);
+  assert.equal(C.writtenFeedback('menu',['menù','menu']).kind,'correct');
+});
+test('writing feedback covers every word in all twelve lessons without changing grading',()=>{
+  for(const lesson of D.lessons)for(const q of C.questions([lesson],'write','cs')){
+    assert.equal(C.writtenFeedback(q.answers[0],q.answers,q.article).kind,'correct',q.id);
+    assert.equal(C.writtenFeedback('xyz',q.answers,q.article).kind,'expression',q.id);
+    if(q.article){
+      const body=q.answers[0].slice(q.article.length).trim();
+      assert.equal(C.writtenFeedback(body,q.answers,q.article).kind,'article',q.id);
+      assert.equal(C.grade(body,q.answers),false,q.id);
+    }
+    const noAccent=q.answers[0].normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    if(noAccent!==q.answers[0]&&!C.grade(noAccent,q.answers))assert.equal(C.writtenFeedback(noAccent,q.answers,q.article).kind,'accent',q.id);
+  }
+});
+
+test('menu accepts both standard spellings in writing',()=>{const q=C.questions(D.lessons,'write','cs').find(q=>q.id==='menu');assert.ok(C.grade('il menu',q.answers));assert.ok(C.grade('il menù',q.answers));});

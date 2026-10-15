@@ -154,7 +154,7 @@
       // Exactly one question per vocabulary item to avoid repeating the same answer in an exam.
       pool=C.questions(selected,'choice',lang).map((q,i)=>{
         const kind=withAudio&&i%3===0&&canSpeak(q.italian)?'listen':i%2===0?'write':'choice';
-        return kind==='write'?{...q,kind,prompt:words.find(w=>w.id===q.id).meaning[lang],answers:[q.italian],options:[]}:{...q,kind};
+        return kind==='write'?{...q,kind,prompt:words.find(w=>w.id===q.id).meaning[lang],answers:[q.italian,...(words.find(w=>w.id===q.id).writingVariants||[])],options:[]}:{...q,kind};
       }).concat(C.questions(selected,'grammar',lang));
     } else pool=reviewOnly?C.reviewQuestions(selected,progress,lang):C.questions(selected,mode,lang);
     // Keep unavailable listening mistakes in the review list; never silently grade another mode.
@@ -187,6 +187,18 @@
     session.answer=String(value);session.changes.push({id:q.id,kind:q.kind,correct});saveDraft();renderFeedback();
     status('');
   }
+  function writingHint(q) {
+    const result=C.writtenFeedback(session.answer,q.answers,q.article);
+    const labels={
+      cs:{article:'Výraz máš správně, ale chybí člen',accent:'Pozor na přízvuk. Porovnej svůj zápis se správnou podobou.',both:'Chybí člen a zároveň je potřeba opravit přízvuk.',expression:'Odpověď neodpovídá očekávanému výrazu. Zkontroluj význam i pravopis.',meaning:'Tento výraz znamená',wanted:'Zadání požaduje',yours:'Tvoje odpověď'},
+      en:{article:'The expression is right, but the article is missing',accent:'Check the accent. Compare your spelling with the correct form.',both:'The article is missing and the accent also needs correcting.',expression:'Your answer does not match the expected expression. Check the meaning and spelling.',meaning:'This expression means',wanted:'The prompt asks for',yours:'Your answer'},
+      it:{article:'L’espressione è giusta, ma manca l’articolo',accent:'Controlla l’accento e confronta la grafia con la forma corretta.',both:'Mancano l’articolo e l’accento corretto.',expression:'La risposta non corrisponde all’espressione attesa. Controlla significato e ortografia.',meaning:'Questa espressione significa',wanted:'La domanda richiede',yours:'La tua risposta'}
+    }[lang];
+    const other=result.kind==='expression'?words.find(w=>C.grade(session.answer,[w.italian])&&w.meaning[lang]!==q.prompt):null;
+    const kind=other?'meaning':result.kind;
+    const message=other?labels.meaning+': '+other.meaning[lang]+'. '+labels.wanted+': '+q.prompt+'.':kind==='article'?labels.article+': '+result.article+'.':kind==='article-accent'?labels.both+' ('+result.article+')':labels[kind];
+    return '<div class="it-writing-hint" data-feedback-kind="'+kind+'"><p>'+esc(message)+'</p><p>'+labels.yours+': <strong lang="it">'+esc(session.answer)+'</strong></p></div>';
+  }
   function renderFeedback() {
     const q=session.questions[session.index],correct=session.changes[session.index].correct;
     const form=el('it-answer-form');
@@ -194,6 +206,7 @@
     form.querySelectorAll('input,button').forEach(e=>e.disabled=true);
     el('it-feedback').className='it-feedback '+(correct?'is-correct':'is-wrong');
     el('it-feedback').innerHTML='<h3>'+esc(correct?T.correct:T.wrong)+'</h3><p>'+T.answer+': <strong>'+esc(q.answers[0])+'</strong></p>'+(q.kind==='listen'?'<p lang="it">'+esc(q.italian)+'</p>':'')+'<p'+(q.kind==='grammar'?'':' lang="it"')+'>'+esc(q.kind==='grammar'?q.explanation[lang]:q.explanation)+'</p>';
+    if(q.kind==='write'&&!correct)el('it-feedback').querySelector('h3').insertAdjacentHTML('afterend',writingHint(q));
     el('it-next').innerHTML=button('next',session.index===session.questions.length-1?T.finish:T.next);
     status('');
   }

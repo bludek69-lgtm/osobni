@@ -4,6 +4,25 @@
     return String(value).normalize('NFC').toLocaleLowerCase('it').replace(/[’‘]/g, "'").trim().replace(/[.!?]+$/g, '').trim().replace(/\s+/g, ' ');
   }
   const grade = (value, answers) => answers.some(answer => normalize(answer) === normalize(value));
+  function writtenFeedback(value, answers, article = '') {
+    const input=normalize(value), plain=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    if(grade(value,answers))return {kind:'correct'};
+    for(const answer of answers) {
+      const expected=normalize(answer);
+      if(plain(input)===plain(expected))return {kind:'accent',expected:answer};
+    }
+    let combined=null;
+    if(article)for(const answer of answers) {
+      const expected=normalize(answer), prefix=normalize(article)+(article.endsWith('’')||article.endsWith("'")?'':' ');
+      if(!expected.startsWith(prefix))continue;
+      const body=expected.slice(prefix.length);
+      if(input===body)return {kind:'article',article,expected:answer};
+      if(plain(input)===plain(body))combined={kind:'article-accent',article,expected:answer};
+    }
+    if(combined)return combined;
+    // A different string alone cannot prove a different meaning (it may be a typo).
+    return {kind:'expression',expected:answers[0]};
+  }
   function shuffle(items, random = Math.random) {
     const result = items.slice();
     for (let i = result.length - 1; i > 0; i--) {
@@ -19,11 +38,11 @@
     if (mode === 'grammar') return lessons.flatMap(l => l.questions.map(q => ({...q, kind:'grammar', lessonId:l.id})));
     return lessons.flatMap(l => l.words.filter(w=>mode!=='picture'||w.picture).map(w => {
       const italianAnswer = mode === 'write' || mode === 'picture';
-      const answers = italianAnswer ? [w.italian] : [w.meaning[lang]];
+      const answers = mode === 'write' ? [w.italian,...(w.writingVariants||[])] : italianAnswer ? [w.italian] : [w.meaning[lang]];
       const distractors = [...new Set(optionWords.filter(x => x.id !== w.id && (mode !== 'picture' || !(w.pictureExcludes || []).includes(x.id))).map(x => italianAnswer ? x.italian : x.meaning[lang]))].filter(x => !answers.includes(x));
       return {id:w.id, lessonId:l.id, kind:mode, italian:w.italian, prompt:mode === 'write' ? w.meaning[lang] : w.italian,
         picture:w.picture, pictureDescription:w.meaning[lang],
-        answers, options:mode === 'write' ? [] : shuffle([answers[0], ...shuffle(distractors).slice(0,3)]),
+        article:w.article||'', answers, options:mode === 'write' ? [] : shuffle([answers[0], ...shuffle(distractors).slice(0,3)]),
         explanation:w.example};
     }));
   }
@@ -70,7 +89,7 @@
     return {questions:restored,index:raw.index,answered,correct:changes.filter(c=>c.correct).length,
       played:false,type:raw.type,level:raw.level,changes,answer:typeof raw.answer==='string'?raw.answer.slice(0,500):''};
   }
-  const api = {normalize,grade,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession};
+  const api = {normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.ItalianCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -517,6 +517,11 @@
   }
   for (const line of cafe.dialogue) audioFiles[line.it] = line.id+'.mp3';
   const lessonIllustrations=Object.fromEntries(lessons.map(l=>[l.id,{file:l.id+'.webp',kind:'ai',generator:'OpenAI image generation',created:'2026-10-15'}]));
+  // Explicit noun phrases: lo/la in pronoun lessons must not be treated as articles.
+  const articleWords=new Set('caffe conto cornetto spremuta pane latte gelato stazione biglietto autobus farmacia museo prenotazione camera colazione chiave asciugamano partenza valigia letto doccia menu allergia verdure pasta pizza pesce settimana viaggio passeggiata appuntamento vantaggio svantaggio riscontro chiarimento disponibilita'.split(' '));
+  for(const lesson of lessons)for(const word of lesson.words)if(articleWords.has(word.id))word.article=word.italian.match(/^(un’|l’|uno|una|un|gli|il|lo|la|le|i)(?:\s|(?<=’))/u)[1];
+  // Both spellings are valid: https://www.treccani.it/vocabolario/menu/
+  restaurant.words.find(w=>w.id==='menu').writingVariants=['il menu'];
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;
