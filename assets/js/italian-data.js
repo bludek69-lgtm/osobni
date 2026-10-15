@@ -299,7 +299,36 @@
     grammar('saluti-feeling','Come ___? (tu, stare)',['stai'],['stai','sta','sto','stiamo'],'Come stai? používáme při tykání.','Come stai? is informal.','Con tu si usa stai.'),
     grammar('saluti-origin','Sono italiano, ___ Roma.',['di'],['di','a','in','per'],'Di Roma vyjadřuje původ: z Říma.','Di Roma expresses origin: from Rome.','Di Roma indica la provenienza.')
   );
+  const yesterday=lessons.find(l=>l.id==='passato');
+  yesterday.goal=t('Povím, kde jsem včera byl/a, co jsem navštívil/a a kdy jsem se vrátil/a.','Say where I went yesterday, what I visited and when I returned.','Raccontare dove sono stato ieri, cosa ho visitato e quando sono tornato.');
+  yesterday.dialogue=[
+    ['Ciao, Anna! Che cosa hai fatto ieri?','Ahoj, Anno! Co jsi dělala včera?','Hi, Anna! What did you do yesterday?'],
+    ['Sono andata a Siena con un’amica.','Jela jsem do Sieny s kamarádkou.','I went to Siena with a friend.'],
+    ['Bello! Come siete andate?','To je hezké! Jak jste jely?','Lovely! How did you get there?'],
+    ['Abbiamo preso l’autobus. Il viaggio è stato piacevole.','Jely jsme autobusem. Cesta byla příjemná.','We took the bus. The journey was pleasant.'],
+    ['Che cosa avete visitato?','Co jste navštívily?','What did you visit?'],
+    ['Abbiamo visitato il duomo e poi abbiamo fatto una passeggiata in centro.','Navštívily jsme dóm a pak jsme se prošly po centru.','We visited the cathedral and then took a walk in the centre.'],
+    ['Avete mangiato in centro?','Jedly jste v centru?','Did you eat in the centre?'],
+    ['Sì, abbiamo mangiato in una piccola trattoria. E tu?','Ano, jedly jsme v malé trattorii. A ty?','Yes, we ate in a small trattoria. And you?'],
+    ['Io sono rimasto a Firenze. Ho visitato un museo.','Já jsem zůstal ve Florencii. Navštívil jsem muzeum.','I stayed in Florence. I visited a museum.'],
+    ['A che ora sei tornato a casa?','V kolik ses vrátil domů?','What time did you get home?'],
+    ['Sono tornato alle sei. E voi?','Vrátil jsem se v šest. A vy?','I got home at six. And you?'],
+    ['Siamo tornate alle otto, stanche ma contente!','Vrátily jsme se v osm, unavené, ale spokojené!','We got back at eight, tired but happy!']
+  ].map((row,i)=>({id:'passato-'+String(i+1).padStart(2,'0'),role:i%2?'barista':'customer',it:row[0],translation:t(row[1],row[2],row[0])}));
+  yesterday.guide={
+    cs:{cafeTitle:'Co se stalo včera',cafeTime:'Co se stalo včera · A2 · asi 6 minut',cafeContext:'Anna vypráví Marcovi o výletu do Sieny s kamarádkou. Marco strávil den ve Florencii. Poslouchej, kdy zazní ho / abbiamo a kdy sono / siamo.',ruleText:'Passato prossimo tvoří přítomný čas avere nebo essere + příčestí: ho visitato = navštívil/a jsem, abbiamo preso = jeli jsme / vzali jsme. Andare a tornare používají essere: Marco è andato / tornato, Anna è andata / tornata. Příčestí s essere se shoduje s podmětem: Anna a kamarádka sono andate / tornate; Marco a Paolo sono andati / tornati. U abbiamo visitato se podle rodu mluvčího koncovka nemění. Ieri = včera, poi = pak, alle sei = v šest.',completed:'Řekni tři věty o včerejšku: kam jsi šel/šla, co jsi navštívil/a a kdy ses vrátil/a. Zkus Sono andato/andata…, Ho visitato… a Sono tornato/tornata alle…',practiceCafe:'Procvičit minulý čas',barista:'Anna',customer:'Marco'},
+    en:{cafeTitle:'Talking about yesterday',cafeTime:'Talking about yesterday · A2 · about 6 minutes',cafeContext:'Anna tells Marco about a trip to Siena with a female friend. Marco spent the day in Florence. Listen for ho / abbiamo and sono / siamo.',ruleText:'The passato prossimo uses present-tense avere or essere + a past participle: ho visitato = I visited, abbiamo preso = we took. Andare and tornare use essere: Marco è andato / tornato, Anna è andata / tornata. With essere the participle agrees with the subject: Anna and her female friend sono andate / tornate; Marco and Paolo sono andati / tornati. In abbiamo visitato the ending does not change with the speaker’s gender. Ieri = yesterday, poi = then, alle sei = at six.',completed:'Say three sentences about yesterday: where you went, what you visited and when you returned. Try Sono andato/andata…, Ho visitato… and Sono tornato/tornata alle…',practiceCafe:'Practise the past tense',barista:'Anna',customer:'Marco'},
+    it:{cafeTitle:'Raccontare ieri',cafeTime:'Raccontare ieri · A2 · circa 6 minuti',cafeContext:'Anna racconta a Marco una gita a Siena con un’amica.',ruleText:'Passato prossimo: avere o essere + participio passato. Con essere il participio concorda con il soggetto: Anna è andata; le amiche sono tornate.',completed:'Racconta dove sei andato, cosa hai visitato e quando sei tornato.',practiceCafe:'Esercitati con il passato',barista:'Anna',customer:'Marco'}
+  };
+  yesterday.questions.push(
+    grammar('passato-auxiliary','Anna ___ andata a Siena.',['è'],['è','ha','sono','hai'],'Andare používá essere: Anna è andata.','Andare uses essere: Anna è andata.','Andare usa essere: Anna è andata.'),
+    grammar('passato-feminine','Anna e Lucia sono ___ alle otto. (tornare)',['tornate'],['tornate','tornati','tornata','tornato'],'Dvě ženy: sono tornate.','Two women: sono tornate.','Con Anna e Lucia: sono tornate.'),
+    grammar('passato-take','Abbiamo ___ l’autobus. (prendere)',['preso'],['preso','prenduto','prendere','presi'],'Příčestí slovesa prendere je preso: abbiamo preso.','The past participle of prendere is preso: abbiamo preso.','Il participio di prendere è preso.'),
+    grammar('passato-do','Ieri ho ___ una passeggiata. (fare)',['fatto'],['fatto','fare','fatta','faccio'],'Fare má nepravidelné příčestí fatto.','Fare has the irregular past participle fatto.','Il participio irregolare di fare è fatto.')
+  );
   const audioFiles = {};
+  for(const w of yesterday.words){audioFiles[w.italian]='passato-'+w.id+'-word.mp3';audioFiles[w.example]='passato-'+w.id+'-example.mp3';}
+  for(const line of yesterday.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for(const w of greetings.words){audioFiles[w.italian]='saluti-'+w.id+'-word.mp3';audioFiles[w.example]='saluti-'+w.id+'-example.mp3';}
   for(const line of greetings.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for(const w of city.words){audioFiles[w.italian]='citta-'+w.id+'-word.mp3';audioFiles[w.example]='citta-'+w.id+'-example.mp3';}
