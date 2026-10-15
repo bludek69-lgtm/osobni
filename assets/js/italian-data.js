@@ -2445,6 +2445,129 @@
       {id:'ask',title:{cs:'Zeptat se, kdy má čas',en:'Ask when she is free'},lines:[plansBranchRows[4],plansBranchRows[5]]}
     ]},plansBranchRows[3],plansBranchRows[6],plansBranchRows[7]
   ]});
+  const opinionBranchRows=[
+  {
+    "id": "opinioni-branch-1",
+    "role": "customer",
+    "it": "Secondo me, dovremmo visitare il centro con una guida. Credo che sia il modo migliore per conoscere la città.",
+    "translation": {
+      "cs": "Podle mě bychom si měli prohlédnout centrum s průvodcem. Myslím, že je to nejlepší způsob, jak poznat město.",
+      "en": "In my opinion, we should visit the centre with a guide. I think it is the best way to get to know the city.",
+      "it": "Secondo me, dovremmo visitare il centro con una guida. Credo che sia il modo migliore per conoscere la città."
+    },
+    "situation": {
+      "cs": "Vyjádři názor, že prohlídka s průvodcem je nejlepší způsob poznávání města.",
+      "en": "Express your opinion that a guided tour is the best way to get to know the city."
+    }
+  },
+  {
+    "id": "opinioni-branch-2",
+    "role": "barista",
+    "it": "Non sono del tutto d’accordo. Preferirei visitare il centro da sola.",
+    "translation": {
+      "cs": "Úplně nesouhlasím. Raději bych si centrum prohlédla sama.",
+      "en": "I do not entirely agree. I would prefer to explore the centre on my own.",
+      "it": "Non sono del tutto d’accordo. Preferirei visitare il centro da sola."
+    },
+    "situation": {
+      "cs": "Zdvořile vyjádři nesouhlas a řekni, že upřednostňuješ samostatnou prohlídku.",
+      "en": "Politely disagree and explain that you prefer exploring independently."
+    }
+  },
+  {
+    "id": "opinioni-branch-3",
+    "role": "customer",
+    "it": "Capisco. Potresti spiegarmi perché preferisci andare da sola?",
+    "translation": {
+      "cs": "Rozumím. Mohla bys mi vysvětlit, proč raději chodíš sama?",
+      "en": "I understand. Could you explain why you prefer going on your own?",
+      "it": "Capisco. Potresti spiegarmi perché preferisci andare da sola?"
+    },
+    "situation": {
+      "cs": "Druhá osoba nesouhlasí. Reaguj klidně a požádej ji o vysvětlení důvodů.",
+      "en": "The other person disagrees. Respond calmly and ask her to explain her reasons."
+    }
+  },
+  {
+    "id": "opinioni-branch-4",
+    "role": "barista",
+    "it": "Per me è importante poter scegliere il percorso e fermarmi quando voglio, senza seguire un orario fisso.",
+    "translation": {
+      "cs": "Pro mě je důležité moci si vybrat trasu a zastavit se, kdy chci, bez pevného časového programu.",
+      "en": "For me, it is important to choose my route and stop whenever I want, without following a fixed schedule.",
+      "it": "Per me è importante poter scegliere il percorso e fermarmi quando voglio, senza seguire un orario fisso."
+    },
+    "situation": {
+      "cs": "Vysvětli svůj důvod: chceš si volit trasu a zastávky bez pevného programu.",
+      "en": "Explain your reason: you want to choose your route and stops without a fixed schedule."
+    }
+  },
+  {
+    "id": "opinioni-branch-5",
+    "role": "customer",
+    "it": "Potremmo fare una visita guidata breve e poi continuare da soli. Che ne pensi?",
+    "translation": {
+      "cs": "Mohli bychom absolvovat krátkou prohlídku s průvodcem a pak pokračovat sami. Co si o tom myslíš?",
+      "en": "We could take a short guided tour and then continue on our own. What do you think?",
+      "it": "Potremmo fare una visita guidata breve e poi continuare da soli. Che ne pensi?"
+    },
+    "situation": {
+      "cs": "Navrhni kompromis: krátkou prohlídku s průvodcem a potom vlastní program.",
+      "en": "Suggest a compromise: a short guided tour followed by independent exploring."
+    }
+  },
+  {
+    "id": "opinioni-branch-6",
+    "role": "barista",
+    "it": "Mi sembra un buon compromesso, purché la visita non duri troppo.",
+    "translation": {
+      "cs": "To mi připadá jako dobrý kompromis, pokud prohlídka nebude trvat příliš dlouho.",
+      "en": "That seems like a good compromise, provided the tour does not last too long.",
+      "it": "Mi sembra un buon compromesso, purché la visita non duri troppo."
+    },
+    "situation": {
+      "cs": "Přijmi kompromis s podmínkou, že prohlídka nebude příliš dlouhá.",
+      "en": "Accept the compromise on condition that the tour is not too long."
+    }
+  },
+  {
+    "id": "opinioni-branch-7",
+    "role": "customer",
+    "it": "Prima di decidere, confrontiamo la durata e il prezzo delle visite.",
+    "translation": {
+      "cs": "Než se rozhodneme, porovnejme délku a cenu prohlídek.",
+      "en": "Before deciding, let’s compare the duration and price of the tours.",
+      "it": "Prima di decidere, confrontiamo la durata e il prezzo delle visite."
+    },
+    "situation": {
+      "cs": "Navrhni další krok před rozhodnutím: porovnat délku a cenu prohlídek.",
+      "en": "Suggest the next step before deciding: compare tour duration and price."
+    }
+  },
+  {
+    "id": "opinioni-branch-8",
+    "role": "barista",
+    "it": "D’accordo. Così potremo scegliere una soluzione che vada bene a entrambi.",
+    "translation": {
+      "cs": "Dobře. Tak budeme moci vybrat řešení, které bude vyhovovat nám oběma.",
+      "en": "All right. That way we can choose a solution that suits us both.",
+      "it": "D’accordo. Così potremo scegliere una soluzione che vada bene a entrambi."
+    },
+    "situation": {
+      "cs": "Souhlas s porovnáním možností a zdůrazni společné řešení pro oba.",
+      "en": "Agree to compare the options and emphasise finding a solution that suits both of you."
+    }
+  }
+];
+  for(const line of opinionBranchRows)audioFiles[line.it]=line.id+'.mp3';
+  const opinionBranchLesson=lessons.find(l=>l.id==='opinioni');
+  opinionBranchLesson.dialogueVariants.push({id:'opinioni-v2',title:{cs:'Nesouhlas s názorem · dvě cesty',en:'Disagreement · two paths'},lines:[
+    opinionBranchRows[0],opinionBranchRows[1],
+    {...opinionBranchRows[2],branchTitle:{cs:'Anna nesouhlasí. Jak zareaguješ?',en:'Anna disagrees. How will you respond?'},branches:[
+      {id:'reason',title:{cs:'Zeptat se na důvod',en:'Ask for the reason'},lines:[opinionBranchRows[2],opinionBranchRows[3]]},
+      {id:'compromise',title:{cs:'Navrhnout kompromis',en:'Suggest a compromise'},lines:[opinionBranchRows[4],opinionBranchRows[5]]}
+    ]},opinionBranchRows[3],opinionBranchRows[6],opinionBranchRows[7]
+  ]});
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;
