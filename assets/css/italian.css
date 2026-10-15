@@ -140,3 +140,9 @@ html[data-theme-mode="dark"] .it-page {--it-green:#9cdbc1;}
 .it-lesson-progress{border-top:1px solid var(--it-line);padding:.5rem 0;margin:.7rem 0;font-size:.9rem}.it-lesson-progress p{margin:.5rem 0}.it-lesson-progress button{margin-bottom:.5rem}
 
 .it-microphone{margin-top:1rem;padding:1rem;border:1px solid var(--it-line);border-radius:12px}.it-microphone audio{display:block;width:100%;max-width:100%;margin:.75rem 0}.it-microphone button{white-space:normal;max-width:100%}
+
+.it-rating { border: 0; padding: 0; margin: 1rem 0; }
+.it-rating legend { font-weight: 700; margin-bottom: .5rem; }
+.it-rating > div { display: flex; flex-wrap: wrap; gap: .5rem; }
+.it-rating button { min-height: 44px; margin: 0; }
+.it-rating .it-muted { font-size: .875rem; }

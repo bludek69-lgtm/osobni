@@ -91,7 +91,7 @@
         explanation:w.example};
     }));
   }
-  function emptyProgress() { return {version:1,favorites:[],mistakes:{},mistakeKinds:{},results:[],lessonResults:{},schedule:{},savedSentences:[],sentencePractice:{}}; }
+  function emptyProgress() { return {version:1,favorites:[],mistakes:{},mistakeKinds:{},results:[],lessonResults:{},schedule:{},savedSentences:[],sentencePractice:{},speakingReview:{}}; }
   const reviewDays=[1,3,7,14,30], dayMs=86400000;
   function dialogueEntries(data) {
     const entries=new Map();
@@ -103,6 +103,14 @@
   function savedDialogue(data,progress) {
     const entries=new Map(dialogueEntries(data).map(line=>[line.id,line]));
     return [...new Set(progress.savedSentences||[])].map(id=>entries.get(id)).filter(Boolean);
+  }
+  function rateSpeaking(progress, id, rating, date=new Date().toISOString()) {
+    if(!['easy','hint','again'].includes(rating)||!Number.isFinite(Date.parse(date)))return;
+    const now=Date.parse(date),old=progress.speakingReview?.[id];
+    const step=rating==='easy'?Math.min((old?.step||0)+(old&&now<Date.parse(old.due)?0:1),reviewDays.length):0;
+    const days=rating==='easy'?reviewDays[Math.max(0,step-1)]:1;
+    progress.speakingReview=progress.speakingReview||{};
+    progress.speakingReview[id]={rating,step,last:new Date(now).toISOString(),due:new Date(now+days*dayMs).toISOString()};
   }
   function recordSchedule(progress, changes, date) {
     const now=Date.parse(date);
@@ -137,8 +145,10 @@
     add(due,4,'due');add(mistakes,4,'mistake');
     const lesson=lessons.find(l=>l.id===picked[0]?.lessonId)||lessons.find(l=>l.id===lastLesson)||lessons[0];
     add(questions([lesson],'choice',lang).filter(q=>!progress.schedule?.[q.kind+':'+q.id]),4,'new');
-    const saved=savedDialogue({lessons},progress).sort((a,b)=>(Date.parse(progress.sentencePractice?.[a.id])||0)-(Date.parse(progress.sentencePractice?.[b.id])||0));
-    return {questions:picked,lessonId:lesson.id,sentenceId:saved[0]?.id||null};
+    const reviews=progress.speakingReview||{};
+    const speaking=dialogueEntries({lessons}).filter(line=>reviews[line.id]&&Date.parse(reviews[line.id].due)<=Date.parse(date)).sort((a,b)=>Date.parse(reviews[a.id].due)-Date.parse(reviews[b.id].due));
+    const saved=savedDialogue({lessons},progress).filter(line=>!reviews[line.id]).sort((a,b)=>(Date.parse(progress.sentencePractice?.[a.id])||0)-(Date.parse(progress.sentencePractice?.[b.id])||0));
+    return {questions:picked,lessonId:lesson.id,sentenceId:speaking[0]?.id||saved[0]?.id||null};
   }
   function recordLessonResults(progress, session, date) {
     const grouped={};
@@ -158,6 +168,10 @@
     const sentenceIds=new Set(dialogueEntries(data).map(line=>line.id));
     result.savedSentences=Array.isArray(value.savedSentences)?[...new Set(value.savedSentences.filter(id=>sentenceIds.has(id)))]:[];
     for(const id of result.savedSentences){const date=value.sentencePractice?.[id];if(typeof date==='string'&&Number.isFinite(Date.parse(date)))result.sentencePractice[id]=new Date(date).toISOString();}
+    for(const id of sentenceIds){
+      const r=value.speakingReview?.[id];
+      if(r&&['easy','hint','again'].includes(r.rating)&&Number.isInteger(r.step)&&r.step>=0&&r.step<=5&&typeof r.last==='string'&&typeof r.due==='string'&&Number.isFinite(Date.parse(r.last))&&Date.parse(r.due)>Date.parse(r.last))result.speakingReview[id]={rating:r.rating,step:r.step,last:new Date(r.last).toISOString(),due:new Date(r.due).toISOString()};
+    }
     result.favorites = [...new Set(value.favorites.filter(id=>wordIds.has(id)))];
     for (const [id,count] of Object.entries(value.mistakes)) if (allIds.has(id) && Number.isInteger(count) && count > 0) result.mistakes[id] = Math.min(count,10000);
     for (const id of Object.keys(result.mistakes)) {
@@ -202,7 +216,7 @@
     return {questions:restored,index:raw.index,answered,correct:changes.filter(c=>c.correct).length,
       dailySentence:dialogueEntries({lessons}).some(line=>line.id===raw.dailySentence)?raw.dailySentence:null,dailyLesson:lessons.some(l=>l.id===raw.dailyLesson)?raw.dailyLesson:null,played:false,type:raw.type,level:raw.level,changes,answer:typeof raw.answer==='string'?raw.answer.slice(0,500):''};
   }
-  const api = {createAnswerRecorder,dialogueEntries,savedDialogue,normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults,recordSchedule,scheduledQuestions,dailyPlan,dialogueExcerpt};
+  const api = {rateSpeaking,createAnswerRecorder,dialogueEntries,savedDialogue,normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults,recordSchedule,scheduledQuestions,dailyPlan,dialogueExcerpt};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.ItalianCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);

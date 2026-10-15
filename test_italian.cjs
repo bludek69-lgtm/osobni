@@ -536,3 +536,30 @@ test('very short recordings release the microphone without offering an unplayabl
  r.stop();await Promise.resolve();
  assert.equal(r.state.status,'idle');assert.equal(r.state.error,'short');assert.equal(r.state.url,'');assert.ok(f.stopped.length);
 });
+
+test('speaking self assessment schedules all lessons and variants and survives backup',()=>{
+ const p=C.emptyProgress(),date='2026-10-15T10:00:00Z';
+ for(const line of C.dialogueEntries(D))C.rateSpeaking(p,line.id,'again',date);
+ const restored=C.validateProgress(JSON.parse(JSON.stringify(p)),D);
+ assert.deepEqual(restored.speakingReview,p.speakingReview);
+ assert.equal(C.dailyPlan(D.lessons,p,'cs','hotel',date).sentenceId,null);
+ assert.ok(C.dailyPlan(D.lessons,p,'cs','hotel','2026-10-16T10:00:00Z').sentenceId);
+ delete p.speakingReview;assert.deepEqual(C.validateProgress(p,D).speakingReview,{});
+});
+test('speaking intervals grow only when due and reset after help or difficulty',()=>{
+ const p=C.emptyProgress(),id='hotel-v1-2';
+ C.rateSpeaking(p,id,'easy','2026-10-15T10:00:00Z');
+ C.rateSpeaking(p,id,'easy','2026-10-15T11:00:00Z');assert.equal(p.speakingReview[id].step,1);
+ C.rateSpeaking(p,id,'easy','2026-10-16T11:00:00Z');assert.equal(p.speakingReview[id].step,2);assert.equal(p.speakingReview[id].due,'2026-10-19T11:00:00.000Z');
+ C.rateSpeaking(p,id,'hint','2026-10-19T11:00:00Z');assert.equal(p.speakingReview[id].step,0);assert.equal(p.speakingReview[id].due,'2026-10-20T11:00:00.000Z');
+ C.rateSpeaking(p,id,'again','2026-10-20T11:00:00Z');assert.equal(p.speakingReview[id].step,0);
+});
+test('due speaking beats saved sentences and future rated sentences wait',()=>{
+ const p=C.emptyProgress();p.savedSentences=['bar-02'];
+ C.rateSpeaking(p,'hotel-v1-2','again','2026-10-14T10:00:00Z');
+ assert.equal(C.dailyPlan(D.lessons,p,'cs','hotel','2026-10-15T10:00:00Z').sentenceId,'hotel-v1-2');
+ C.rateSpeaking(p,'hotel-v1-2','easy','2026-10-15T10:00:00Z');
+ assert.equal(C.dailyPlan(D.lessons,p,'cs','hotel','2026-10-15T10:00:00Z').sentenceId,'bar-02');
+ p.speakingReview.fake={rating:'easy',step:1,last:'bad',due:'bad'};
+ assert.equal(C.validateProgress(p,D).speakingReview.fake,undefined);
+});
