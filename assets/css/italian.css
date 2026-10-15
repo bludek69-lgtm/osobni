@@ -134,3 +134,5 @@ html[data-theme-mode="dark"] .it-page {--it-green:#9cdbc1;}
 .it-freya details p.it-muted {margin-top:0;}
 
 .it-lesson-thumb{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:10px;margin-bottom:1rem}
+
+.it-role-practice{border:1px solid var(--it-line);border-radius:12px;padding:1.2rem;margin:1.5rem 0}.it-role-practice button{margin:.5rem .5rem .5rem 0}.it-role-practice select{display:block;margin:.5rem 0}.it-dialogue[hidden]{display:none}

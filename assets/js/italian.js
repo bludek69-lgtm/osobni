@@ -27,6 +27,33 @@
   const draftKey='cestovatel69_italian_draft_v1';
   const audioDirectory=new URL('../audio/italian/',document.currentScript.src).href;
   let pausedSession=null,lastLesson=null,openedLesson=null,media=null,audioGeneration=0;
+  let roleRun=null;
+  const roleText={
+    cs:{title:'Procvič jednu roli',intro:'Vyber svou postavu. Druhou uslyšíš; svou odpověď řekni nahlas a pak si přehraj vzor. Bez mikrofonu a automatického hodnocení.',choose:'Budu mluvit jako',start:'Začít rozhovor',turn:'Teď odpověz nahlas italsky. Až budeš připraven/a, zobraz vzor.',reveal:'Ukázat a přehrát vzor',next:'Pokračovat v rozhovoru',listening:'Poslouchej druhou postavu…',model:'Vzorová odpověď',stop:'Ukončit rozhovor',done:'Rozhovor dokončen. Zkus si příště druhou roli.',repeat:'Přehrát znovu',line:'Replika'},
+    en:{title:'Practise one role',intro:'Choose your character. Listen to the other speaker, answer aloud, then play the model answer. No microphone or automatic grading.',choose:'I will speak as',start:'Start the conversation',turn:'Answer aloud in Italian. Reveal the model when you are ready.',reveal:'Show and play the model',next:'Continue the conversation',listening:'Listen to the other speaker…',model:'Model answer',stop:'End the conversation',done:'Conversation complete. Try the other role next time.',repeat:'Play again',line:'Line'}
+  }[lang==='cs'?'cs':'en'];
+  function roleSetup(l,copy) {
+    return '<section class="it-role-practice" aria-labelledby="it-role-title"><h3 id="it-role-title">'+roleText.title+'</h3><p>'+roleText.intro+'</p><div id="it-role-setup"><label>'+roleText.choose+'<select id="it-role-choice">'+options([...new Set(l.dialogue.map(line=>line.role))].map(role=>[role,copy[role]]),'customer')+'</select></label>'+button('role-start',roleText.start,'class="it-primary"')+'</div><div id="it-role-stage" aria-live="polite"></div></section>';
+  }
+  function renderRole() {
+    if(!roleRun)return;
+    const r=roleRun,line=r.lines[r.index],done=!line;
+    el('it-role-stage').innerHTML=done?'<p>'+roleText.done+'</p>'+button('role-stop',roleText.stop):'<p>'+roleText.line+' '+(r.index+1)+' / '+r.lines.length+'</p><h4 tabindex="-1" id="it-role-turn">'+(r.phase==='waiting'?roleText.turn:r.phase==='other'?roleText.listening:roleText.model)+'</h4>'+(r.phase==='waiting'?'<p>'+esc(line.translation[lang])+'</p>'+button('role-reveal',roleText.reveal,'class="it-primary"'):'<p lang="it">'+esc(line.it)+'</p><p class="it-muted">'+esc(line.translation[lang])+'</p>'+(r.phase==='ready'?button('role-repeat',roleText.repeat)+button('role-next',roleText.next,'class="it-primary"'):''))+button('role-stop',roleText.stop);
+    if(r.phase==='waiting'||done)el('it-role-stage').scrollIntoView({block:'nearest'});
+  }
+  function roleStep() {
+    if(!roleRun)return;
+    const r=roleRun,line=r.lines[r.index];
+    if(!line){renderRole();return;}
+    if(line.role===r.role){r.phase='waiting';renderRole();return;}
+    r.phase='other';renderRole();
+    playRecording(line.it,false,()=>{if(roleRun!==r)return;r.index++;roleStep();},audioGeneration);
+  }
+  function roleModel() {
+    const r=roleRun;if(!r)return;
+    r.phase='model';renderRole();
+    playRecording(r.lines[r.index].it,false,()=>{if(roleRun!==r)return;r.phase='ready';renderRole();},audioGeneration);
+  }
   const canSpeak=text=>!!D.audioFiles?.[text]||voices.length>0;
   let progress = C.emptyProgress(), storageOK = true, voices = [], selectedVoice = '', active = 'lessons', currentLevel = 'all', currentLesson = 'all', mode = 'choice', session = null;
   let search = '', onlyFavorites = false, reviewOnly = false;
@@ -157,7 +184,7 @@
     };
     const lessonCopy=l.guide?{...T,...l.guide[lang]}:id==='ristorante'?{...T,...restaurantCopy[lang]}:T;
     const dialogue=isGuided?'<div class="it-cafe-intro"><div><p class="it-eyebrow">'+lessonCopy.cafeTime+'</p><h3>'+T.goal+'</h3><p>'+esc(l.goal[lang])+'</p><p>'+lessonCopy.cafeContext+'</p></div><img src="'+esc(lessonPictureDirectory+D.lessonIllustrations[id].file)+'" alt="" width="1200" height="800" decoding="async"></div><h3>'+T.dialogue+'</h3><div class="it-toolbar">'+button('dialogue-play','▶ '+T.playAll,'class="it-primary"')+button('audio-stop',T.stopAudio)+'</div><p class="it-muted">'+T.audioCredit+'</p><ol class="it-dialogue">'+l.dialogue.map(line=>'<li id="'+line.id+'" class="it-dialogue-line '+line.role+'"><span class="it-role">'+lessonCopy[line.role]+'</span><p lang="it">'+esc(line.it)+'</p>'+audio(line.it,T.lineAudio)+'<details><summary>'+T.translation+'</summary><p>'+esc(line.translation[lang])+'</p></details></li>').join('')+'</ol>':'';
-    el('it-view').innerHTML='<section class="it-panel">'+button('back',T.back)+'<span class="it-level">'+l.level+'</span><h2 tabindex="-1" id="it-focus">'+esc(isGuided?lessonCopy.cafeTitle:l.title[lang])+'</h2>'+(isGuided?((id==='bar'||l.video)?freyaLessonVideo():'')+dialogue:'<p>'+esc(l.note[lang])+'</p>')+'<h3>'+(isGuided?T.vocabulary:T.study)+'</h3><div class="it-words">'+l.words.map(w=>'<article class="it-card"><div class="it-word-top">'+favorite(w)+'</div><h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian,T.wordAudio)+audio(w.example,T.sentenceAudio)+'</article>').join('')+'</div>'+(isGuided?'<h3>'+T.rules+'</h3><p class="it-rule">'+lessonCopy.ruleText+'</p><h3>'+T.tryIt+'</h3><p>'+lessonCopy.completed+'</p>'+button('lesson-practice',lessonCopy.practiceCafe,'data-mode="grammar" class="it-primary"'):'')+'<div class="it-toolbar">'+['choice','write','listen','grammar'].map(m=>button('lesson-practice',T[m],'data-mode="'+m+'"'+(m==='listen'&&!l.words.some(w=>canSpeak(w.italian))?' disabled':''))).join('')+'</div><p class="it-muted">'+T.savedDraft+'</p></section>';
+    el('it-view').innerHTML='<section class="it-panel">'+button('back',T.back)+'<span class="it-level">'+l.level+'</span><h2 tabindex="-1" id="it-focus">'+esc(isGuided?lessonCopy.cafeTitle:l.title[lang])+'</h2>'+(isGuided?((id==='bar'||l.video)?freyaLessonVideo():'')+roleSetup(l,lessonCopy)+dialogue:'<p>'+esc(l.note[lang])+'</p>')+'<h3>'+(isGuided?T.vocabulary:T.study)+'</h3><div class="it-words">'+l.words.map(w=>'<article class="it-card"><div class="it-word-top">'+favorite(w)+'</div><h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian,T.wordAudio)+audio(w.example,T.sentenceAudio)+'</article>').join('')+'</div>'+(isGuided?'<h3>'+T.rules+'</h3><p class="it-rule">'+lessonCopy.ruleText+'</p><h3>'+T.tryIt+'</h3><p>'+lessonCopy.completed+'</p>'+button('lesson-practice',lessonCopy.practiceCafe,'data-mode="grammar" class="it-primary"'):'')+'<div class="it-toolbar">'+['choice','write','listen','grammar'].map(m=>button('lesson-practice',T[m],'data-mode="'+m+'"'+(m==='listen'&&!l.words.some(w=>canSpeak(w.italian))?' disabled':''))).join('')+'</div><p class="it-muted">'+T.savedDraft+'</p></section>';
     updateAudioButtons();saveDraft();el('it-focus').focus();
   }
   function selectedLessons() {return D.lessons.filter(l=>(currentLevel==='all'||l.level===currentLevel)&&(currentLesson==='all'||l.id===currentLesson));}
@@ -261,6 +288,7 @@
     updateVoiceControls();
   }
   function stopAudio() {
+    if(roleRun){roleRun=null;const stage=el('it-role-stage');if(stage)stage.innerHTML='';const setup=el('it-role-setup');if(setup)setup.hidden=false;app.querySelector('.it-dialogue')?.removeAttribute('hidden');}
     const player=el('it-freya-player');
     if(player?.querySelector('iframe'))player.innerHTML=freyaPlaceholder();
     audioGeneration++;
@@ -326,6 +354,15 @@
       el('it-freya-player').innerHTML='<iframe src="https://app.heygen.com/embeds/'+currentVideo().id+'" title="'+esc(freyaTitle())+'" allow="encrypted-media; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
       el('it-freya-player').querySelector('iframe').focus();return;
     }
+    if(action==='role-start'){
+      const role=el('it-role-choice').value;stopAudio();
+      roleRun={role,lines:D.lessons.find(l=>l.id===openedLesson).dialogue,index:0,phase:'other'};
+      el('it-role-setup').hidden=true;app.querySelector('.it-dialogue').hidden=true;roleStep();return;
+    }
+    if(action==='role-stop'){stopAudio();return;}
+    if(action==='role-reveal'&&roleRun?.phase==='waiting'){roleModel();return;}
+    if(action==='role-repeat'&&roleRun?.phase==='ready'){roleModel();return;}
+    if(action==='role-next'&&roleRun?.phase==='ready'){roleRun.index++;roleStep();return;}
     if(action==='audio-stop'){stopAudio();return;}
     if(action==='dialogue-play'){playDialogue();return;}
     if(action==='text-cards'){picturesOnly=false;cardIndex=0;renderCards();return;}
