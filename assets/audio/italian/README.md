@@ -9,3 +9,5 @@ Restaurant branching dialogue (2026-10-15): six additional ristorante-branch-*.m
 Hotel branching dialogue (2026-10-15): six hotel-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for reception and DiegoNeural for the guest. Original teaching dialogue: arriving without a reservation, asking about another hotel or availability tomorrow.
 
 Cafe branching dialogue (2026-10-15): six bar-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for the barista and DiegoNeural for the customer. Original teaching dialogue: milk unavailable, choosing espresso or tea instead of cappuccino.
+
+City road-closure dialogue (2026-10-15): seven citta-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for the passer-by and DiegoNeural for the visitor. Original teaching dialogue in a fictional town: walking detour or bus to the station.

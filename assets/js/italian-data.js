@@ -1928,6 +1928,115 @@
       {id:'tea',title:{cs:'Vybrat čaj',en:'Choose tea'},lines:[cafeBranchRows[4],cafeBranchRows[5]]}
     ]},cafeBranchRows[3],...cafeBranchLesson.dialogue.slice(5)
   ]});
+  const cityBranchRows=[
+  {
+    "id": "citta-branch-1",
+    "role": "barista",
+    "it": "La strada per la stazione è chiusa per lavori. Deve fare un altro percorso.",
+    "translation": {
+      "cs": "Ulice k nádraží je uzavřená kvůli opravám. Musíte jít jinudy.",
+      "en": "The road to the station is closed for roadworks. You need to take another route.",
+      "it": "La strada per la stazione è chiusa per lavori. Deve fare un altro percorso."
+    },
+    "situation": {
+      "cs": "Cesta k nádraží je uzavřená kvůli opravám. Vysvětli to návštěvníkovi.",
+      "en": "The road to the station is closed for roadworks. Explain this to the visitor."
+    }
+  },
+  {
+    "id": "citta-branch-2",
+    "role": "customer",
+    "it": "Come posso arrivare alla stazione a piedi evitando quella strada?",
+    "translation": {
+      "cs": "Jak se dostanu na nádraží pěšky, abych se té ulici vyhnul?",
+      "en": "How can I walk to the station while avoiding that road?",
+      "it": "Come posso arrivare alla stazione a piedi evitando quella strada?"
+    },
+    "situation": {
+      "cs": "Ulice je uzavřená a chceš pokračovat pěšky. Požádej o jinou cestu na nádraží.",
+      "en": "The road is closed and you want to walk. Ask for another route to the station."
+    }
+  },
+  {
+    "id": "citta-branch-3",
+    "role": "barista",
+    "it": "Passi per la piazza, poi giri a sinistra. La stazione è dopo il ponte.",
+    "translation": {
+      "cs": "Projděte přes náměstí a potom odbočte vlevo. Nádraží je za mostem.",
+      "en": "Go through the square, then turn left. The station is after the bridge.",
+      "it": "Passi per la piazza, poi giri a sinistra. La stazione è dopo il ponte."
+    },
+    "situation": {
+      "cs": "Popiš náhradní pěší cestu přes náměstí, doleva a za most.",
+      "en": "Describe the alternative walking route through the square, left and past the bridge."
+    }
+  },
+  {
+    "id": "citta-branch-4",
+    "role": "customer",
+    "it": "C’è un autobus che va alla stazione?",
+    "translation": {
+      "cs": "Jede na nádraží nějaký autobus?",
+      "en": "Is there a bus that goes to the station?",
+      "it": "C’è un autobus che va alla stazione?"
+    },
+    "situation": {
+      "cs": "Kvůli uzavřené ulici nechceš jít pěšky. Zjisti možnost dopravy autobusem.",
+      "en": "Because of the closed road, you would rather not walk. Ask about taking a bus."
+    }
+  },
+  {
+    "id": "citta-branch-5",
+    "role": "barista",
+    "it": "Sì, prenda l’autobus numero cinque. La fermata è qui di fronte. Scenda alla stazione.",
+    "translation": {
+      "cs": "Ano, jeďte autobusem číslo pět. Zastávka je tady naproti. Vystupte u nádraží.",
+      "en": "Yes, take bus number five. The stop is just opposite. Get off at the station.",
+      "it": "Sì, prenda l’autobus numero cinque. La fermata è qui di fronte. Scenda alla stazione."
+    },
+    "situation": {
+      "cs": "V tomto modelovém městě jede k nádraží autobus číslo pět. Ukaž zastávku naproti a řekni, kde vystoupit.",
+      "en": "In this fictional town, bus five goes to the station. Point out the stop opposite and explain where to get off."
+    }
+  },
+  {
+    "id": "citta-branch-6",
+    "role": "customer",
+    "it": "Ho capito, grazie per l’aiuto!",
+    "translation": {
+      "cs": "Rozumím, děkuji za pomoc!",
+      "en": "I understand, thank you for your help!",
+      "it": "Ho capito, grazie per l’aiuto!"
+    },
+    "situation": {
+      "cs": "Pokynům rozumíš. Poděkuj za pomoc.",
+      "en": "You understand the directions. Thank the speaker for helping."
+    }
+  },
+  {
+    "id": "citta-branch-7",
+    "role": "barista",
+    "it": "Prego, buon viaggio!",
+    "translation": {
+      "cs": "Není zač, šťastnou cestu!",
+      "en": "You are welcome, have a good trip!",
+      "it": "Prego, buon viaggio!"
+    },
+    "situation": {
+      "cs": "Návštěvník už ví, jak pokračovat. Popřej mu šťastnou cestu.",
+      "en": "The visitor now knows how to continue. Wish them a good trip."
+    }
+  }
+];
+  for(const line of cityBranchRows)audioFiles[line.it]=line.id+'.mp3';
+  const cityBranchLesson=lessons.find(l=>l.id==='citta');
+  cityBranchLesson.dialogueVariants.push({id:'citta-v2',title:{cs:'Cesta je uzavřená · dvě cesty',en:'Road closed · two paths'},lines:[
+    cityBranchLesson.dialogue[0],cityBranchRows[0],
+    {...cityBranchRows[1],branchTitle:{cs:'Cesta je uzavřená. Jak pokračovat?',en:'The road is closed. What next?'},branches:[
+      {id:'walk',title:{cs:'Zeptat se na cestu pěšky',en:'Ask for a walking route'},lines:[cityBranchRows[1],cityBranchRows[2]]},
+      {id:'bus',title:{cs:'Zeptat se na autobus',en:'Ask about a bus'},lines:[cityBranchRows[3],cityBranchRows[4]]}
+    ]},cityBranchRows[2],cityBranchRows[5],cityBranchRows[6]
+  ]});
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;

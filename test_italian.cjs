@@ -449,7 +449,7 @@ test('all dialogue variants keep roles, translations, cues and local audio',()=>
    assert.ok(excerpt.some(line=>!l.dialogue.some(base=>base.it===line.it)),v.id);
   }
  }
- assert.equal(count,18);
+ assert.equal(count,19);
 });
 
 function recorderFixture(){
@@ -607,5 +607,18 @@ test('cafe alternatives preserve cues, audio, saved sentences and daily review',
  p.savedSentences.push(x.id);C.rateSpeaking(p,x.id,'again','2026-10-15T10:00:00Z');}}
  const restored=C.validateProgress(p,D);assert.equal(restored.savedSentences.length,4);assert.equal(Object.keys(restored.speakingReview).length,4);
  for(const replies of [1,2])assert.ok(C.dialogueExcerpt(l.dialogue,v.lines,replies).some(x=>x.branches));
+ assert.equal(C.dialogueEntries(D).find(x=>x.id===fork.id).branches,undefined);
+});
+
+test('city road closure supports both roles, branches and daily excerpts',()=>{
+ const fs=require('fs'),l=D.lessons.find(l=>l.id==='citta'),v=l.dialogueVariants.find(v=>v.id==='citta-v2'),fork=v.lines.find(x=>x.branches),p=C.emptyProgress();
+ assert.equal(v.lines[0].role,'customer');assert.match(v.lines[1].it,/chiusa per lavori/);
+ assert.deepEqual(fork.branches.map(b=>b.id),['walk','bus']);
+ for(const b of fork.branches){assert.deepEqual(b.lines.map(x=>x.role),['customer','barista']);for(const x of b.lines){
+ assert.ok(x.translation.cs&&x.translation.en&&x.situation.cs&&x.situation.en);
+ assert.ok(fs.statSync('assets/audio/italian/'+D.audioFiles[x.it]).size>1000);
+ p.savedSentences.push(x.id);C.rateSpeaking(p,x.id,'again','2026-10-15T10:00:00Z');}}
+ const restored=C.validateProgress(p,D);assert.equal(restored.savedSentences.length,4);assert.equal(Object.keys(restored.speakingReview).length,4);
+ for(const replies of [1,2]){const excerpt=C.dialogueExcerpt(l.dialogue,v.lines,replies);assert.ok(excerpt.some(x=>x.branches));assert.equal(excerpt.filter(x=>x.role==='customer').length,replies);}
  assert.equal(C.dialogueEntries(D).find(x=>x.id===fork.id).branches,undefined);
 });
