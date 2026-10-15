@@ -390,3 +390,30 @@ test('all 12 lessons retain each scheduled question mode and oldest due order',(
   assert.equal(new Set(due.map(q=>q.lessonId)).size,12);
   for(let i=1;i<due.length;i++)assert.ok(Date.parse(restored.schedule[due[i-1].kind+':'+due[i-1].id].due)<=Date.parse(restored.schedule[due[i].kind+':'+due[i].id].due));
 });
+
+test('daily plan balances due questions and mistakes without repeating vocabulary',()=>{
+ const p=C.emptyProgress(),qs=C.questions(D.lessons,'write','cs');
+ C.recordSchedule(p,qs.slice(0,5).map(q=>({...q,correct:true})),'2026-01-01T00:00:00Z');
+ p.mistakes[qs[0].id]=1;p.mistakeKinds[qs[0].id]='write';
+ const grammar=C.questions(D.lessons,'grammar','cs')[0];p.mistakes[grammar.id]=1;p.mistakeKinds[grammar.id]='grammar';
+ const plan=C.dailyPlan(D.lessons,p,'cs','hotel','2026-02-01T00:00:00Z');
+ assert.equal(plan.questions.length,4);assert.equal(new Set(plan.questions.map(q=>q.id)).size,4);
+ assert.equal(plan.questions.filter(q=>q.source==='due').length,2);
+ assert.equal(plan.questions.filter(q=>q.source==='mistake').length,2);
+ assert.ok(plan.questions.some(q=>q.id===grammar.id&&q.kind==='grammar'));
+});
+test('daily plan handles new learners, future reviews and all twelve role lessons',()=>{
+ for(const l of D.lessons){
+  const p=C.emptyProgress(),plan=C.dailyPlan(D.lessons,p,'en',l.id);
+  assert.equal(plan.lessonId,l.id);assert.equal(plan.questions.length,4);
+  assert.ok(l.dialogue.filter(x=>x.role==='customer').length>=2);
+  C.recordSchedule(p,C.questions([l],'choice','en').map(q=>({...q,correct:true})),'2099-01-01T00:00:00Z');
+  assert.equal(C.dailyPlan(D.lessons,p,'en',l.id,'2026-01-01T00:00:00Z').questions.length,0);
+ }
+});
+test('resuming a daily test preserves its role destination and rejects unknown lessons',()=>{
+ const questions=C.dailyPlan(D.lessons,C.emptyProgress(),'cs','hotel').questions;
+ const raw={questions,index:0,answered:false,changes:[],level:'all',type:'practice',dailyLesson:'hotel'};
+ assert.equal(C.restoreSession(raw,D.lessons,'cs').dailyLesson,'hotel');
+ raw.dailyLesson='unknown';assert.equal(C.restoreSession(raw,D.lessons,'cs').dailyLesson,null);
+});

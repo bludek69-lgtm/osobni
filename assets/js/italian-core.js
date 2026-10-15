@@ -63,6 +63,17 @@
     const pools=Object.fromEntries(['choice','write','listen','picture','grammar'].map(kind=>[kind,questions(lessons,kind,lang)]));
     return Object.values(progress.schedule||{}).filter(r=>Date.parse(r.due)<=Date.parse(date)).sort((a,b)=>Date.parse(a.due)-Date.parse(b.due)).map(r=>pools[r.kind]?.find(q=>q.id===r.id)).filter(Boolean);
   }
+  function dailyPlan(lessons, progress, lang, lastLesson, date=new Date().toISOString()) {
+    const mistakes=reviewQuestions(lessons,progress,lang);
+    const due=scheduledQuestions(lessons,progress,lang,date).filter(q=>!progress.mistakes[q.id]);
+    const picked=[],seen=new Set();
+    function add(pool,limit,source){for(const q of pool){if(picked.length>=limit)break;if(seen.has(q.id))continue;seen.add(q.id);picked.push({...q,source});}}
+    add(due,2,'due');add(mistakes,picked.length+2,'mistake');
+    add(due,4,'due');add(mistakes,4,'mistake');
+    const lesson=lessons.find(l=>l.id===picked[0]?.lessonId)||lessons.find(l=>l.id===lastLesson)||lessons[0];
+    add(questions([lesson],'choice',lang).filter(q=>!progress.schedule?.[q.kind+':'+q.id]),4,'new');
+    return {questions:picked,lessonId:lesson.id};
+  }
   function recordLessonResults(progress, session, date) {
     const grouped={};
     session.questions.forEach((q,i)=>{
@@ -120,9 +131,9 @@
     const changes=raw.changes.map((c,i)=>({id:restored[i].id,kind:restored[i].kind,correct:c.correct===true}));
     if(raw.changes.some((c,i)=>c.id!==restored[i].id||typeof c.correct!=='boolean'))return null;
     return {questions:restored,index:raw.index,answered,correct:changes.filter(c=>c.correct).length,
-      played:false,type:raw.type,level:raw.level,changes,answer:typeof raw.answer==='string'?raw.answer.slice(0,500):''};
+      dailyLesson:lessons.some(l=>l.id===raw.dailyLesson)?raw.dailyLesson:null,played:false,type:raw.type,level:raw.level,changes,answer:typeof raw.answer==='string'?raw.answer.slice(0,500):''};
   }
-  const api = {normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults,recordSchedule,scheduledQuestions};
+  const api = {normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults,recordSchedule,scheduledQuestions,dailyPlan};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.ItalianCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);

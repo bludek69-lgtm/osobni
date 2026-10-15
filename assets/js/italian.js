@@ -27,7 +27,7 @@
   const draftKey='cestovatel69_italian_draft_v1';
   const audioDirectory=new URL('../audio/italian/',document.currentScript.src).href;
   let pausedSession=null,lastLesson=null,openedLesson=null,media=null,audioGeneration=0;
-  let roleRun=null;
+  let roleRun=null, daily=null;
   const roleText={
     cs:{title:'Procvič jednu roli',intro:'Vyber svou postavu. Druhou uslyšíš; svou odpověď řekni nahlas a pak si přehraj vzor. Bez mikrofonu a automatického hodnocení.',choose:'Budu mluvit jako',start:'Začít rozhovor',turn:'Teď odpověz nahlas italsky. Až budeš připraven/a, zobraz vzor.',reveal:'Ukázat a přehrát vzor',next:'Pokračovat v rozhovoru',listening:'Poslouchej druhou postavu…',model:'Vzorová odpověď',stop:'Ukončit rozhovor',done:'Rozhovor dokončen. Zkus si příště druhou roli.',repeat:'Přehrát znovu',line:'Replika'},
     en:{title:'Practise one role',intro:'Choose your character. Listen to the other speaker, answer aloud, then play the model answer. No microphone or automatic grading.',choose:'I will speak as',start:'Start the conversation',turn:'Answer aloud in Italian. Reveal the model when you are ready.',reveal:'Show and play the model',next:'Continue the conversation',listening:'Listen to the other speaker…',model:'Model answer',stop:'End the conversation',done:'Conversation complete. Try the other role next time.',repeat:'Play again',line:'Line'}
@@ -38,13 +38,13 @@
   function renderRole() {
     if(!roleRun)return;
     const r=roleRun,line=r.lines[r.index],done=!line;
-    el('it-role-stage').innerHTML=done?'<p>'+roleText.done+'</p>'+button('role-stop',roleText.stop):'<p>'+roleText.line+' '+(r.index+1)+' / '+r.lines.length+'</p><h4 tabindex="-1" id="it-role-turn">'+(r.phase==='waiting'?roleText.turn:r.phase==='other'?roleText.listening:roleText.model)+'</h4>'+(r.phase==='waiting'?'<p>'+esc(line.translation[lang])+'</p>'+button('role-reveal',roleText.reveal,'class="it-primary"'):'<p lang="it">'+esc(line.it)+'</p><p class="it-muted">'+esc(line.translation[lang])+'</p>'+(r.phase==='ready'?button('role-repeat',roleText.repeat)+button('role-next',roleText.next,'class="it-primary"'):''))+button('role-stop',roleText.stop);
+    el('it-role-stage').innerHTML=done?'<p>'+(r.daily?dailyText.roleDone:roleText.done)+'</p>'+(r.daily?'<p>'+dailyText.done+'</p>'+button('quick',dailyText.back):button('role-stop',roleText.stop)):'<p>'+roleText.line+' '+(r.index+1)+' / '+r.lines.length+'</p><h4 tabindex="-1" id="it-role-turn">'+(r.phase==='waiting'?roleText.turn:r.phase==='other'?roleText.listening:roleText.model)+'</h4>'+(r.phase==='waiting'?'<p>'+esc(line.translation[lang])+'</p>'+button('role-reveal',roleText.reveal,'class="it-primary"'):'<p lang="it">'+esc(line.it)+'</p><p class="it-muted">'+esc(line.translation[lang])+'</p>'+(r.phase==='ready'?button('role-repeat',roleText.repeat)+button('role-next',roleText.next,'class="it-primary"'):''))+button('role-stop',roleText.stop);
     if(r.phase==='waiting'||done)el('it-role-stage').scrollIntoView({block:'nearest'});
   }
   function roleStep() {
     if(!roleRun)return;
     const r=roleRun,line=r.lines[r.index];
-    if(!line){renderRole();return;}
+    if(!line){if(r.daily){daily={lesson:r.lesson,phase:'done',date:new Date().toLocaleDateString('sv')};saveDraft();}renderRole();return;}
     if(line.role===r.role){r.phase='waiting';renderRole();return;}
     r.phase='other';renderRole();
     playRecording(line.it,false,()=>{if(roleRun!==r)return;r.index++;roleStep();},audioGeneration);
@@ -67,11 +67,12 @@
     const draft=JSON.parse(localStorage.getItem(draftKey)||'null');
     if(draft?.version===1) {
       pausedSession=C.restoreSession(draft.session,D.lessons,lang);
+      if((draft.daily?.phase==='role'||(draft.daily?.phase==='done'&&draft.daily.date===new Date().toLocaleDateString('sv')))&&D.lessons.some(l=>l.id===draft.daily.lesson))daily={lesson:draft.daily.lesson,phase:draft.daily.phase,date:draft.daily.date};
       if(D.lessons.some(l=>l.id===draft.lesson))lastLesson=draft.lesson;
     }
   } catch (_) { /* A malformed draft must not prevent lessons from loading. */ }
   function saveDraft() {
-    try {localStorage.setItem(draftKey,JSON.stringify({version:1,lesson:lastLesson,session:session||pausedSession}));}
+    try {localStorage.setItem(draftKey,JSON.stringify({version:1,lesson:lastLesson,session:session||pausedSession,daily}));}
     catch(_){storageOK=false;status(T.notSaved);}
   }
   function save() { try {localStorage.setItem(key,JSON.stringify(progress)); storageOK=true;} catch (_) {storageOK=false;} }
@@ -103,6 +104,17 @@
     app.innerHTML='<div class="it-start-row">'+button('quick',T.quick,'class="it-primary"')+((pausedSession||lastLesson)&&!session?button('resume',T.resume):'')+'</div><nav class="it-tabs" aria-label="'+esc(T.mode)+'">'+['lessons','cards','dictionary','practice','exam','progress'].map(name=>button('tab',T[name],'data-tab="'+name+'" aria-pressed="'+(active===name)+'"')).join('')+'</nav><details class="it-audio-disclosure"><summary>'+T.settings+'</summary><div class="it-audio-settings"><label>'+T.voice+'<select id="it-voice"></select></label><p id="it-voice-note"></p></div></details><p id="it-status" role="status" aria-live="polite"></p><div id="it-view"></div>';
     updateVoiceControls();
   }
+  const dailyText=lang==='cs'?{roleDone:'Dvě vlastní repliky dokončené.',title:'Denní plán na 5 minut',intro:'Nejdřív krátký mix otázek, potom dvě vlastní repliky v dialogu. Tempo je na tobě.',due:'Starší otázky na řadě',mistake:'Tvoje chyby',fresh:'Další procvičení',role:'Krátký dialog',start:'Spustit denní plán',next:'Pokračovat krátkým dialogem',done:'Plán dokončen. Otázky jsou vyhodnocené; mluvení sis procvičil/a bez automatického známkování.',back:'Zpět na denní plán',pending:'Otázky máš hotové. Zbývá krátký dialog.',again:'Sestavit další krátký plán'}:{roleDone:'Two replies completed.',title:'Your five-minute daily plan',intro:'A short question mix, followed by two replies in a dialogue. Learn at your own pace.',due:'Older questions due',mistake:'Your mistakes',fresh:'Extra practice',role:'Short dialogue',start:'Start daily plan',next:'Continue with a short dialogue',done:'Plan completed. Questions are scored; speaking is practice without automatic grading.',back:'Back to daily plan',pending:'Questions completed. Your short dialogue is next.',again:'Build another short plan'};
+  function startDailyRole(){
+    if(!daily)return;
+    stopAudio();active='quick';openedLesson=daily.lesson;
+    const l=D.lessons.find(l=>l.id===daily.lesson);
+    renderShell();
+    el('it-view').innerHTML='<section class="it-panel"><h2>'+dailyText.role+': '+esc(l.title[lang])+'</h2><p>'+roleText.intro+'</p><div id="it-role-setup">'+button('daily-role',dailyText.next,'class="it-primary"')+'</div><div id="it-role-stage" aria-live="polite"></div><ol class="it-dialogue" hidden></ol></section>';
+    el('it-role-setup').hidden=true;
+    let count=0;const end=l.dialogue.findIndex(line=>line.role==='customer'&&++count===2);
+    roleRun={role:'customer',lines:l.dialogue.slice(0,end+1),index:0,phase:'other',daily:true,lesson:l.id};roleStep();
+  }
   function renderQuick() {
     const t={
       cs:{intro:'Vyber si krátké učení podle toho, kde jsi skončil/a. Pět minut je orientační čas; tempo je na tobě.',test:'Pokračovat v rozpracovaném testu',question:'Otázka',last:'Vrátit se k poslední lekci',review:'Zopakovat až 5 chyb',count:'Položky k opakování',replace:'Spuštění opakování nahradí rozpracovaný test až po potvrzení.',first:'Začít první lekcí',browse:'Vybrat jinou lekci'},
@@ -113,7 +125,10 @@
     const due=C.scheduledQuestions(D.lessons,progress,lang);
     const upcoming=Object.values(progress.schedule||{}).filter(r=>Date.parse(r.due)>Date.now()).sort((a,b)=>Date.parse(a.due)-Date.parse(b.due))[0];
     const spaced=lang==='cs'?{title:'Opakování po několika dnech',count:'Dnes na řadě',go:'Zopakovat až 5 otázek',info:'Správné odpovědi se vracejí za 1, 3, 7, 14 a 30 dní. Po chybě znovu za den. Plán se uloží po dokončení cvičení, pouze v tomto prohlížeči.',next:'Další opakování',empty:'Dokonči cvičení a otázky se zařadí do plánu opakování.'}:{title:'Spaced review',count:'Due now',go:'Review up to 5 questions',info:'Correct answers return after 1, 3, 7, 14 and 30 days. After a mistake, review again in one day. The schedule is saved when you finish an exercise, in this browser only.',next:'Next review',empty:'Finish an exercise to add its questions to your review schedule.'};
-    let choices='';
+    const plan=C.dailyPlan(D.lessons,progress,lang,lastLesson),plannedLesson=D.lessons.find(l=>l.id===plan.lessonId);
+    let choices='<article class="it-card it-daily"><h3>'+dailyText.title+'</h3><p>'+dailyText.intro+'</p><ul>'+[['due',dailyText.due],['mistake',dailyText.mistake],['new',dailyText.fresh]].map(([source,label])=>'<li>'+label+': '+plan.questions.filter(q=>q.source===source).length+'</li>').join('')+'<li>'+dailyText.role+': '+esc(plannedLesson.title[lang])+'</li></ul>'+button('daily-start',daily?.phase==='done'?dailyText.again:dailyText.start,'class="it-primary"')+'</article>';
+    if(daily?.phase==='role')choices='<article class="it-card"><h3>'+dailyText.title+'</h3><p>'+dailyText.pending+'</p>'+button('daily-role',dailyText.next,'class="it-primary"')+'</article>'+choices;
+    if(daily?.phase==='done')choices='<p>'+dailyText.done+'</p>'+choices;
     if(pausedSession)choices+='<article class="it-card"><h3>'+t.test+'</h3><p>'+t.question+' '+(pausedSession.index+1)+' / '+pausedSession.questions.length+'</p>'+button('resume',T.resume,'class="it-primary"')+'</article>';
     else if(last)choices+='<article class="it-card"><h3>'+t.last+'</h3><p>'+esc(last.title[lang])+'</p>'+button('resume',T.resume,'class="it-primary"')+'</article>';
     choices+='<article class="it-card it-spaced"><h3>'+spaced.title+'</h3><p>'+spaced.count+': <strong>'+due.length+'</strong></p><p>'+spaced.info+'</p>'+(due.length?button('quick-spaced',spaced.go,'class="it-primary"')+(pausedSession?'<p>'+t.replace+'</p>':''):'<p>'+(upcoming?spaced.next+': '+esc(new Date(upcoming.due).toLocaleString(lang)):spaced.empty)+'</p>')+'</article>';
@@ -266,6 +281,7 @@
   }
   function finish() {
     const s=session;
+    if(s.dailyLesson)daily={lesson:s.dailyLesson,phase:'role'};
     C.recordLessonResults(progress,s,new Date().toISOString());
     C.recordSchedule(progress,s.changes,new Date().toISOString());
     for(const item of s.changes) {
@@ -275,6 +291,7 @@
     progress.results.push({date:new Date().toISOString(),correct:s.correct,total:s.questions.length,type:s.type,level:s.level});
     progress.results=progress.results.slice(-50);save(); session=null;pausedSession=null;saveDraft();
     el('it-view').innerHTML='<section class="it-panel it-result"><h2 id="it-focus" tabindex="-1">'+T.result+'</h2><p class="it-score">'+s.correct+' / '+s.questions.length+'</p><p>'+Math.round(s.correct/s.questions.length*100)+' %</p><p>'+esc(storageOK?T.saved:T.notSaved)+'</p><div class="it-toolbar">'+button('again',T.again)+button('retry',T.retry)+'</div></section>';
+    if(s.dailyLesson)el('it-view').querySelector('.it-toolbar').insertAdjacentHTML('afterbegin',button('daily-role',dailyText.next,'class="it-primary"'));
     el('it-focus').focus();
   }
   function renderProgress() {
@@ -371,7 +388,7 @@
       roleRun={role,lines:D.lessons.find(l=>l.id===openedLesson).dialogue,index:0,phase:'other'};
       el('it-role-setup').hidden=true;app.querySelector('.it-dialogue').hidden=true;roleStep();return;
     }
-    if(action==='role-stop'){stopAudio();return;}
+    if(action==='role-stop'){const wasDaily=roleRun?.daily;stopAudio();if(wasDaily){active='quick';render();}return;}
     if(action==='role-reveal'&&roleRun?.phase==='waiting'){roleModel();return;}
     if(action==='role-repeat'&&roleRun?.phase==='ready'){roleModel();return;}
     if(action==='role-next'&&roleRun?.phase==='ready'){roleRun.index++;roleStep();return;}
@@ -379,6 +396,16 @@
     if(action==='dialogue-play'){playDialogue();return;}
     if(action==='text-cards'){picturesOnly=false;cardIndex=0;renderCards();return;}
     if(action==='quick'){stopAudio();if(session)pausedSession=session;session=null;active='quick';openedLesson=null;saveDraft();render();return;}
+    if(action==='daily-role'){startDailyRole();return;}
+    if(action==='daily-start'){
+      if(pausedSession&&!window.confirm(T.newAttempt))return;
+      const plan=C.dailyPlan(D.lessons,progress,lang,lastLesson);
+      daily=null;stopAudio();currentLevel='all';currentLesson='all';reviewOnly=false;active='practice';
+      session={questions:plan.questions,index:0,correct:0,answered:false,played:false,type:'practice',level:'all',changes:[],dailyLesson:plan.lessonId};
+      pausedSession=null;openedLesson=null;
+      if(!plan.questions.length){session=null;daily={lesson:plan.lessonId,phase:'role'};saveDraft();startDailyRole();return;}
+      saveDraft();render();return;
+    }
     if(action==='quick-spaced'){
       if(pausedSession&&!window.confirm(T.newAttempt))return;
       const pool=C.scheduledQuestions(D.lessons,progress,lang).slice(0,5);
