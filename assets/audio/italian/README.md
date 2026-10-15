@@ -7,3 +7,5 @@ Dialogue variants (2026-10-15): 33 additional MP3 files (*-v1-* and *-v2-*) gene
 Restaurant branching dialogue (2026-10-15): six additional ristorante-branch-*.mp3 recordings, generated with edge-tts 7.3.1, ElsaNeural for the waiter and DiegoNeural for the guest, default rate. Both paths share the opening and ending; each has its own response and waiter reply.
 
 Hotel branching dialogue (2026-10-15): six hotel-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for reception and DiegoNeural for the guest. Original teaching dialogue: arriving without a reservation, asking about another hotel or availability tomorrow.
+
+Cafe branching dialogue (2026-10-15): six bar-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for the barista and DiegoNeural for the customer. Original teaching dialogue: milk unavailable, choosing espresso or tea instead of cappuccino.

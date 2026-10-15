@@ -1833,6 +1833,101 @@
       {id:'tomorrow',title:{cs:'Zeptat se na zítřejší noc',en:'Ask about tomorrow night'},lines:[hotelBranchRows[4],hotelBranchRows[5]]}
     ]},hotelBranchRows[3],hotelBranchLesson.dialogue[11]
   ]});
+  const cafeBranchRows=[
+  {
+    "id": "bar-branch-1",
+    "role": "customer",
+    "it": "Vorrei un cappuccino, per favore.",
+    "translation": {
+      "cs": "Chtěl bych cappuccino, prosím.",
+      "en": "I would like a cappuccino, please.",
+      "it": "Vorrei un cappuccino, per favore."
+    },
+    "situation": {
+      "cs": "Přicházíš do kavárny a máš chuť na cappuccino. Zdvořile si ho objednej.",
+      "en": "You arrive at a café and feel like a cappuccino. Order politely."
+    }
+  },
+  {
+    "id": "bar-branch-2",
+    "role": "barista",
+    "it": "Mi dispiace, abbiamo finito il latte. Posso prepararle un caffè o un tè.",
+    "translation": {
+      "cs": "Je mi líto, došlo nám mléko. Mohu vám připravit espresso nebo čaj.",
+      "en": "I am sorry, we have run out of milk. I can make you an espresso or a tea.",
+      "it": "Mi dispiace, abbiamo finito il latte. Posso prepararle un caffè o un tè."
+    },
+    "situation": {
+      "cs": "Mléko došlo. Omluv se a nabídni espresso nebo čaj.",
+      "en": "You have run out of milk. Apologise and offer espresso or tea."
+    }
+  },
+  {
+    "id": "bar-branch-3",
+    "role": "customer",
+    "it": "Allora prendo un caffè, grazie.",
+    "translation": {
+      "cs": "Tak si dám espresso, děkuji.",
+      "en": "Then I will have an espresso, thank you.",
+      "it": "Allora prendo un caffè, grazie."
+    },
+    "situation": {
+      "cs": "Cappuccino není dostupné. Změň objednávku na espresso.",
+      "en": "Cappuccino is unavailable. Change your order to espresso."
+    }
+  },
+  {
+    "id": "bar-branch-4",
+    "role": "barista",
+    "it": "Certo, ecco il suo caffè.",
+    "translation": {
+      "cs": "Jistě, tady je vaše espresso.",
+      "en": "Certainly, here is your espresso.",
+      "it": "Certo, ecco il suo caffè."
+    },
+    "situation": {
+      "cs": "Zákazník si místo cappuccina vybral espresso. Podej mu ho.",
+      "en": "The customer chose espresso instead of cappuccino. Serve it."
+    }
+  },
+  {
+    "id": "bar-branch-5",
+    "role": "customer",
+    "it": "Preferisco un tè, per favore.",
+    "translation": {
+      "cs": "Raději si dám čaj, prosím.",
+      "en": "I would prefer a tea, please.",
+      "it": "Preferisco un tè, per favore."
+    },
+    "situation": {
+      "cs": "Cappuccino není dostupné. Vyber si místo něj čaj.",
+      "en": "Cappuccino is unavailable. Choose tea instead."
+    }
+  },
+  {
+    "id": "bar-branch-6",
+    "role": "barista",
+    "it": "Va bene, ecco il suo tè. Attenzione, è molto caldo.",
+    "translation": {
+      "cs": "Dobře, tady je váš čaj. Pozor, je velmi horký.",
+      "en": "All right, here is your tea. Be careful, it is very hot.",
+      "it": "Va bene, ecco il suo tè. Attenzione, è molto caldo."
+    },
+    "situation": {
+      "cs": "Podej objednaný čaj a upozorni, že je horký.",
+      "en": "Serve the tea and warn the customer that it is hot."
+    }
+  }
+];
+  for(const line of cafeBranchRows)audioFiles[line.it]=line.id+'.mp3';
+  const cafeBranchLesson=lessons.find(l=>l.id==='bar');
+  cafeBranchLesson.dialogueVariants.push({id:'bar-v3',title:{cs:'Cappuccino není dostupné · dvě cesty',en:'Cappuccino unavailable · two paths'},lines:[
+    cafeBranchLesson.dialogue[0],cafeBranchRows[0],cafeBranchRows[1],
+    {...cafeBranchRows[2],branchTitle:{cs:'Mléko došlo. Co si dáš místo cappuccina?',en:'No milk left. What will you have instead?'},branches:[
+      {id:'espresso',title:{cs:'Vybrat espresso',en:'Choose espresso'},lines:[cafeBranchRows[2],cafeBranchRows[3]]},
+      {id:'tea',title:{cs:'Vybrat čaj',en:'Choose tea'},lines:[cafeBranchRows[4],cafeBranchRows[5]]}
+    ]},cafeBranchRows[3],...cafeBranchLesson.dialogue.slice(5)
+  ]});
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;
