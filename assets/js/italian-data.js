@@ -274,7 +274,34 @@
     grammar('citta-walk','Sono dieci minuti a ___. (pěšky / on foot)',['piedi'],['piedi','piede','destra','treno'],'A piedi je ustálené spojení pro pěšky.','A piedi is the expression for on foot.','A piedi significa camminando.'),
     grammar('citta-repeat','Può ___ più lentamente? (ripetere)',['ripetere'],['ripetere','ripete','ripeto','ripetuto'],'Po può následuje infinitiv: ripetere.','Può is followed by an infinitive: ripetere.','Dopo può si usa l’infinito: ripetere.')
   );
+  const greetings=lessons.find(l=>l.id==='saluti');
+  greetings.goal=t('Pozdravím, představím se, zeptám se na jméno a rozloučím se.','Greet someone, introduce myself, ask their name and say goodbye.','Salutare, presentarsi, chiedere il nome e congedarsi.');
+  greetings.dialogue=[
+    ['Ciao! Mi chiamo Anna. E tu, come ti chiami?','Ahoj! Jmenuji se Anna. A ty, jak se jmenuješ?','Hi! My name is Anna. And you, what is your name?'],
+    ['Ciao, Anna! Mi chiamo Marco. Piacere!','Ahoj, Anno! Jmenuji se Marco. Těší mě!','Hi, Anna! My name is Marco. Nice to meet you!'],
+    ['Piacere! Come stai?','Těší mě! Jak se máš?','Nice to meet you! How are you?'],
+    ['Bene, grazie. E tu?','Dobře, děkuji. A ty?','Fine, thank you. And you?'],
+    ['Molto bene. Sono ceca. E tu, di dove sei?','Velmi dobře. Jsem Češka. A ty, odkud jsi?','Very well. I am Czech. And you, where are you from?'],
+    ['Sono italiano, di Roma. Sei qui in vacanza?','Jsem Ital, z Říma. Jsi tu na dovolené?','I am Italian, from Rome. Are you here on holiday?'],
+    ['Sì, sono in vacanza. Parlo un po’ italiano.','Ano, jsem na dovolené. Mluvím trochu italsky.','Yes, I am on holiday. I speak a little Italian.'],
+    ['Parli bene! Benvenuta in Italia!','Mluvíš dobře! Vítej v Itálii!','You speak well! Welcome to Italy!'],
+    ['Grazie, Marco! A presto!','Děkuji, Marku! Brzy na viděnou!','Thank you, Marco! See you soon!'],
+    ['A presto, Anna! Buona giornata!','Brzy na viděnou, Anno! Hezký den!','See you soon, Anna! Have a nice day!']
+  ].map((row,i)=>({id:'saluti-'+String(i+1).padStart(2,'0'),role:i%2?'customer':'barista',it:row[0],translation:t(row[1],row[2],row[0])}));
+  greetings.guide={
+    cs:{cafeTitle:'Pozdravy a představení',cafeTime:'Pozdravy a představení · A1 · asi 5 minut',cafeContext:'Anna se na dovolené seznamuje s Marcem. V rozhovoru si tykají. Na recepci nebo při zdvořilém oslovení použij buongiorno či buonasera.',ruleText:'Ciao = ahoj při setkání i loučení mezi lidmi, kteří si tykají. Mi chiamo… = jmenuji se… Come ti chiami? = jak se jmenuješ? Zdvořile: Come si chiama? Come stai? = jak se máš? Zdvořile: Come sta? Sono ceco / ceca = jsem Čech / Češka. Arrivederci = na shledanou; a presto = brzy na viděnou.',completed:'Bez nápovědy pozdrav, řekni své jméno a odkud jsi, zeptej se druhého na jméno a rozluč se.',practiceCafe:'Procvičit seznámení',barista:'Anna',customer:'Marco'},
+    en:{cafeTitle:'Greetings and introductions',cafeTime:'Greetings and introductions · A1 · about 5 minutes',cafeContext:'Anna meets Marco while on holiday. They use informal language. At reception or when greeting someone politely, use buongiorno or buonasera.',ruleText:'Ciao = hi or bye in informal situations. Mi chiamo… = my name is… Come ti chiami? = what is your name? Politely: Come si chiama? Come stai? = how are you? Politely: Come sta? Sono ceco / ceca = I am Czech (male / female). Arrivederci = goodbye; a presto = see you soon.',completed:'Without hints, greet someone, say your name and where you are from, ask their name and say goodbye.',practiceCafe:'Practise introductions',barista:'Anna',customer:'Marco'},
+    it:{cafeTitle:'Saluti e presentazioni',cafeTime:'Saluti · A1 · circa 5 minuti',cafeContext:'Anna incontra Marco. Si danno del tu.',ruleText:'Ciao è informale. Con Lei si dice: Come si chiama? Come sta? Arrivederci si usa per congedarsi.',completed:'Saluta, presentati e chiedi il nome.',practiceCafe:'Esercitati con le presentazioni',barista:'Anna',customer:'Marco'}
+  };
+  greetings.questions.push(
+    grammar('saluti-name','Io ___ chiamo Anna.',['mi'],['mi','ti','si','ci'],'Mi chiamo = jmenuji se.','Mi chiamo means my name is.','Con io: mi chiamo.'),
+    grammar('saluti-formal','Come ___ chiama? (Lei)',['si'],['si','ti','mi','vi'],'Při vykání jedné osobě: Come si chiama?','When addressing one person formally: Come si chiama?','Con Lei: Come si chiama?'),
+    grammar('saluti-feeling','Come ___? (tu, stare)',['stai'],['stai','sta','sto','stiamo'],'Come stai? používáme při tykání.','Come stai? is informal.','Con tu si usa stai.'),
+    grammar('saluti-origin','Sono italiano, ___ Roma.',['di'],['di','a','in','per'],'Di Roma vyjadřuje původ: z Říma.','Di Roma expresses origin: from Rome.','Di Roma indica la provenienza.')
+  );
   const audioFiles = {};
+  for(const w of greetings.words){audioFiles[w.italian]='saluti-'+w.id+'-word.mp3';audioFiles[w.example]='saluti-'+w.id+'-example.mp3';}
+  for(const line of greetings.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for(const w of city.words){audioFiles[w.italian]='citta-'+w.id+'-word.mp3';audioFiles[w.example]='citta-'+w.id+'-example.mp3';}
   for(const line of city.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for(const w of hotel.words){audioFiles[w.italian]='hotel-'+w.id+'-word.mp3';audioFiles[w.example]='hotel-'+w.id+'-example.mp3';}
