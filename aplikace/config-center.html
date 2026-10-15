@@ -48,6 +48,17 @@
   <p style="margin-top:.8rem"><a href="../index.html">← Zpět na Moje aplikace</a></p>
 </section>
 
+  <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
+    <div class="container">
+      <h2 id="video-heading">Praktická prohlídka na videu</h2>
+      <p>Config Center — topení, stínění a ranní rutina · 8:59. Video s českým komentářem.</p>
+      <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+        <iframe src="https://www.youtube-nocookie.com/embed/4yEMik6gE_I?rel=0" title="Config Center — topení, stínění a ranní rutina" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <p><a href="https://www.youtube.com/watch?v=4yEMik6gE_I" target="_blank" rel="noopener">YouTube ↗</a></p>
+    </div>
+  </section>
+
 <section>
   <h2>Co to dělá</h2>
   <p>Mám doma cca 60 zařízení (světla, motion senzory, termostatické hlavice, reproduktory, čistička, roleta, …) řízených systémem Homey Pro 2026. Ten umí spoustu věcí — má vlastní mobilní apku, web rozhraní, scripty, automatizace — ale je v něm strašně moc šuplíčků a nastavení je rozházené.</p><p><strong>Config Center to sjednocuje na jedno místo.</strong> Otevřu web v prohlížeči, přihlásím se vlastním tokenem (token zůstane jen v mém prohlížeči, nikam se neposílá), a vidím 22 přehledných stránek: pro každý &bdquo;režim domu&ldquo; jednu (ráno / den / večer / noc / pryč / doma / spánek), zvlášť topení, zvlášť světla, zvlášť audio, atd. Klikání po telefonu nikoho nebaví — tady je všechno na čtyřech sloupcích vidět najednou.</p><p><strong>Preview režim = bezpečná zkouška.</strong> Když chci něco vyzkoušet (např. teplejší světlo v kuchyni večer), aplikace to nejprve nastaví, dá mi 10 minut na test, a pokud do té doby neřeknu &bdquo;tak jo, ulož to&ldquo;, samo se to vrátí zpátky. Takže když omylem zadám blbost, dům se sám opraví.</p><p><strong>Chrání před omyly.</strong> Některá zařízení (audio v ložnici, citlivé senzory) mají &bdquo;hard-block&ldquo; — ani omylem se nedá zapnout když by to vadilo. Třeba reproduktor v ložnici se nesmí přehrát test, kdyby tam zrovna někdo spal.</p><p><strong>Lokální, vlastní, žádný cloud.</strong> Aplikace je jen HTML+CSS+JS soubor co se otevře v Edge nebo Chrome. Komunikuje přímo s Homey hubem doma, nic se neposílá na cizí server. Žádné předplatné, žádná závislost na cloudu výrobce.</p>

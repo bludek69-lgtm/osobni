@@ -48,6 +48,17 @@
   <p style="margin-top:.8rem"><a href="../index.html">← Back to My apps</a></p>
 </section>
 
+  <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
+    <div class="container">
+      <h2 id="video-heading">A practical video tour</h2>
+      <p>Config Center — heating, shading and morning routine · 8:59. Video with Czech commentary.</p>
+      <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+        <iframe src="https://www.youtube-nocookie.com/embed/4yEMik6gE_I?rel=0" title="Config Center — heating, shading and morning routine" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <p><a href="https://www.youtube.com/watch?v=4yEMik6gE_I" target="_blank" rel="noopener">YouTube ↗</a></p>
+    </div>
+  </section>
+
 <section>
   <h2>What it does</h2>
   <p>I have about 60 devices at home (lights, motion sensors, TRV heads, speakers, air purifier, blind, …) running on Homey Pro 2026. It can do a lot — has its own mobile app, web UI, scripts, automations — but there are far too many drawers and the settings are scattered.</p><p><strong>Config Center unifies everything in one place.</strong> Open the web in a browser, log in with my token (the token stays only in this browser, nothing is sent anywhere), and see 22 clean pages: one per &bdquo;house mode&ldquo; (morning / day / evening / night / away / home / sleep), separate for heating, lights, audio, etc.</p><p><strong>Preview mode = safe test.</strong> When I want to try something, the app applies it first, gives me 10 minutes to test, and if I don't say &bdquo;OK, save it&ldquo; in that window, it reverts itself. So even if I make a mistake, the house heals itself.</p><p><strong>Protects from mistakes.</strong> Some devices (bedroom audio, sensitive sensors) have a hard-block — they cannot be turned on accidentally. The bedroom speaker can't play a test if someone's sleeping there.</p><p><strong>Local, mine, no cloud.</strong> The app is just an HTML+CSS+JS file opened in Edge or Chrome. It talks directly to the Homey hub at home, nothing goes to a third-party server. No subscription, no vendor cloud dependency.</p>
