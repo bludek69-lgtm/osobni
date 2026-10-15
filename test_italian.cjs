@@ -431,3 +431,23 @@ test('every dialogue turn has a distinct situation cue in Czech and English',()=
  }
  assert.equal(count,136);
 });
+
+test('all dialogue variants keep roles, translations, cues and local audio',()=>{
+ const fs=require('fs');let count=0;
+ for(const l of D.lessons){
+  assert.ok(l.dialogueVariants.length>=1,l.id);
+  for(const v of l.dialogueVariants){
+   count++;assert.equal(v.lines.length,l.dialogue.length);
+   assert.ok(v.lines.some((line,i)=>line.it!==l.dialogue[i].it));
+   v.lines.forEach((line,i)=>{
+    assert.equal(line.role,l.dialogue[i].role);
+    for(const lang of ['cs','en'])assert.ok(line.translation[lang]&&line.situation[lang]);
+    assert.ok(fs.statSync('assets/audio/italian/'+D.audioFiles[line.it]).size>1000,line.id);
+   });
+   const excerpt=C.dialogueExcerpt(l.dialogue,v.lines);
+   assert.equal(excerpt.filter(line=>line.role==='customer').length,2,v.id);
+   assert.ok(excerpt.some(line=>!l.dialogue.some(base=>base.it===line.it)),v.id);
+  }
+ }
+ assert.equal(count,15);
+});

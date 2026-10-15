@@ -1094,6 +1094,556 @@
   ]
 };
   for(const l of lessons)l.dialogue.forEach((line,i)=>{line.situation=roleSituations[l.id][i];});
+  // Complete coherent variants reuse unchanged lines and their recordings.
+  const dialogueChanges={
+  "bar": [
+    {
+      "title": {
+        "cs": "Cappuccino u stolu",
+        "en": "Cappuccino at a table"
+      },
+      "changes": {
+        "1": {
+          "it": "Buongiorno! Vorrei un cappuccino e un cornetto, per favore.",
+          "translation": {
+            "cs": "Dobrý den! Chtěl bych cappuccino a croissant, prosím.",
+            "en": "Good morning! I would like a cappuccino and a croissant, please.",
+            "it": "Buongiorno! Vorrei un cappuccino e un cornetto, per favore."
+          },
+          "situation": {
+            "cs": "Objednej cappuccino a sladké pečivo.",
+            "en": "Order a cappuccino and a pastry."
+          }
+        },
+        "3": {
+          "it": "Al tavolo, grazie. Anche un bicchiere d’acqua frizzante.",
+          "translation": {
+            "cs": "U stolu, děkuji. A ještě sklenici perlivé vody.",
+            "en": "At a table, thank you. Also a glass of sparkling water.",
+            "it": "Al tavolo, grazie. Anche un bicchiere d’acqua frizzante."
+          },
+          "situation": {
+            "cs": "Chceš si sednout ke stolu a přidat perlivou vodu.",
+            "en": "Choose a table and add sparkling water."
+          }
+        },
+        "4": {
+          "it": "Ecco il cappuccino, il cornetto e l’acqua frizzante.",
+          "translation": {
+            "cs": "Tady je cappuccino, croissant a perlivá voda.",
+            "en": "Here are the cappuccino, croissant and sparkling water.",
+            "it": "Ecco il cappuccino, il cornetto e l’acqua frizzante."
+          },
+          "situation": {
+            "cs": "Předej objednané cappuccino, pečivo a vodu.",
+            "en": "Serve the ordered cappuccino, pastry and water."
+          }
+        }
+      }
+    },
+    {
+      "title": {
+        "cs": "Čaj a platba hotově",
+        "en": "Tea and cash payment"
+      },
+      "changes": {
+        "1": {
+          "it": "Buongiorno! Vorrei un tè e un cornetto, per favore.",
+          "translation": {
+            "cs": "Dobrý den! Chtěl bych čaj a croissant, prosím.",
+            "en": "Good morning! I would like tea and a croissant, please.",
+            "it": "Buongiorno! Vorrei un tè e un cornetto, per favore."
+          },
+          "situation": {
+            "cs": "Místo kávy si chceš dát čaj a pečivo. Objednej.",
+            "en": "Order tea instead of coffee, with a pastry."
+          }
+        },
+        "4": {
+          "it": "Ecco il tè, il cornetto e l’acqua.",
+          "translation": {
+            "cs": "Tady je čaj, croissant a voda.",
+            "en": "Here are the tea, croissant and water.",
+            "it": "Ecco il tè, il cornetto e l’acqua."
+          },
+          "situation": {
+            "cs": "Předej objednaný čaj, pečivo a vodu.",
+            "en": "Serve the ordered tea, pastry and water."
+          }
+        },
+        "7": {
+          "it": "Posso pagare in contanti?",
+          "translation": {
+            "cs": "Mohu zaplatit hotově?",
+            "en": "Can I pay in cash?",
+            "it": "Posso pagare in contanti?"
+          },
+          "situation": {
+            "cs": "Máš připravené mince. Ověř platbu hotově.",
+            "en": "You have coins ready. Ask about paying cash."
+          }
+        }
+      }
+    }
+  ],
+  "hotel": [
+    {
+      "title": {
+        "cs": "Tři noci a parkování",
+        "en": "Three nights and parking"
+      },
+      "changes": {
+        "1": {
+          "it": "Sì, a nome Novák. Ho prenotato una camera per tre notti.",
+          "translation": {
+            "cs": "Ano, na jméno Novák. Rezervoval jsem pokoj na tři noci.",
+            "en": "Yes, under Novák. I booked a room for three nights.",
+            "it": "Sì, a nome Novák. Ho prenotato una camera per tre notti."
+          },
+          "situation": {
+            "cs": "Přihlašuješ rezervaci Novák na tři noci.",
+            "en": "Check in for a three-night booking under Novák."
+          }
+        },
+        "5": {
+          "it": "Grazie. Dove posso parcheggiare la macchina?",
+          "translation": {
+            "cs": "Děkuji. Kde mohu zaparkovat auto?",
+            "en": "Thank you. Where can I park the car?",
+            "it": "Grazie. Dove posso parcheggiare la macchina?"
+          },
+          "situation": {
+            "cs": "Přijel/a jsi autem. Domluv místo k parkování.",
+            "en": "You arrived by car. Ask where to park."
+          }
+        },
+        "6": {
+          "it": "C’è un parcheggio dietro l’albergo. Ecco la chiave della camera.",
+          "translation": {
+            "cs": "Za hotelem je parkoviště. Tady je klíč od pokoje.",
+            "en": "There is a car park behind the hotel. Here is the room key.",
+            "it": "C’è un parcheggio dietro l’albergo. Ecco la chiave della camera."
+          },
+          "situation": {
+            "cs": "Nasměruj hosta na parkoviště za hotelem a předej klíč.",
+            "en": "Direct the guest to parking behind the hotel and give them the key."
+          }
+        }
+      }
+    },
+    {
+      "title": {
+        "cs": "Jedna noc a další ručník",
+        "en": "One night and an extra towel"
+      },
+      "changes": {
+        "1": {
+          "it": "Sì, a nome Novák. Ho prenotato una camera per una notte.",
+          "translation": {
+            "cs": "Ano, na jméno Novák. Rezervoval jsem pokoj na jednu noc.",
+            "en": "Yes, under Novák. I booked a room for one night.",
+            "it": "Sì, a nome Novák. Ho prenotato una camera per una notte."
+          },
+          "situation": {
+            "cs": "Máš rezervaci Novák pouze na jednu noc. Přihlas se.",
+            "en": "Check in for a one-night booking under Novák."
+          }
+        },
+        "5": {
+          "it": "Grazie. Potrei avere un altro asciugamano?",
+          "translation": {
+            "cs": "Děkuji. Mohl bych dostat ještě jeden ručník?",
+            "en": "Thank you. Could I have another towel?",
+            "it": "Grazie. Potrei avere un altro asciugamano?"
+          },
+          "situation": {
+            "cs": "V pokoji potřebuješ ručník navíc. Požádej zdvořile.",
+            "en": "Politely request an extra towel for your room."
+          }
+        },
+        "6": {
+          "it": "Certamente, lo portiamo subito in camera. Ecco la chiave.",
+          "translation": {
+            "cs": "Samozřejmě, hned ho přineseme na pokoj. Tady je klíč.",
+            "en": "Of course, we will bring it to your room right away. Here is the key.",
+            "it": "Certamente, lo portiamo subito in camera. Ecco la chiave."
+          },
+          "situation": {
+            "cs": "Potvrď donášku ručníku na pokoj a předej klíč.",
+            "en": "Confirm delivery of the towel and hand over the key."
+          }
+        }
+      }
+    }
+  ],
+  "ristorante": [
+    {
+      "title": {
+        "cs": "Čtyři hosté a pizza",
+        "en": "Four guests and pizza"
+      },
+      "changes": {
+        "1": {
+          "it": "Sì, ho prenotato un tavolo per quattro, a nome Novák.",
+          "translation": {
+            "cs": "Ano, rezervoval jsem stůl pro čtyři na jméno Novák.",
+            "en": "Yes, I booked a table for four under Novák.",
+            "it": "Sì, ho prenotato un tavolo per quattro, a nome Novák."
+          },
+          "situation": {
+            "cs": "Přicházíte ve čtyřech na rezervaci Novák.",
+            "en": "You arrive as a party of four booked under Novák."
+          }
+        },
+        "4": {
+          "it": "No, la pizza margherita non è piccante. Che cosa prendete?",
+          "translation": {
+            "cs": "Ne, pizza margherita není pálivá. Co si dáte?",
+            "en": "No, the margherita pizza is not spicy. What would you like?",
+            "it": "No, la pizza margherita non è piccante. Che cosa prendete?"
+          },
+          "situation": {
+            "cs": "Vysvětli chuť pizzy a přijmi objednávku.",
+            "en": "Describe the pizza and take the order."
+          }
+        },
+        "5": {
+          "it": "Per me una pizza margherita e un’insalata, per favore.",
+          "translation": {
+            "cs": "Pro mě pizzu margherita a salát, prosím.",
+            "en": "A margherita pizza and a salad for me, please.",
+            "it": "Per me una pizza margherita e un’insalata, per favore."
+          },
+          "situation": {
+            "cs": "Vyber si pizzu margherita a salát.",
+            "en": "Order a margherita pizza and a salad."
+          }
+        },
+        "7": {
+          "it": "Una bottiglia d’acqua frizzante, grazie.",
+          "translation": {
+            "cs": "Láhev perlivé vody, děkuji.",
+            "en": "A bottle of sparkling water, thank you.",
+            "it": "Una bottiglia d’acqua frizzante, grazie."
+          },
+          "situation": {
+            "cs": "Pro stůl chceš perlivou vodu.",
+            "en": "Order sparkling water for the table."
+          }
+        }
+      }
+    },
+    {
+      "title": {
+        "cs": "Tři hosté a jídlo bez masa",
+        "en": "Three guests and meat-free food"
+      },
+      "changes": {
+        "1": {
+          "it": "Sì, ho prenotato un tavolo per tre, a nome Novák.",
+          "translation": {
+            "cs": "Ano, rezervoval jsem stůl pro tři na jméno Novák.",
+            "en": "Yes, I booked a table for three under Novák.",
+            "it": "Sì, ho prenotato un tavolo per tre, a nome Novák."
+          },
+          "situation": {
+            "cs": "Máte rezervovaný stůl pro tři pod jménem Novák.",
+            "en": "Give the booking for three under Novák."
+          }
+        },
+        "3": {
+          "it": "Grazie. Avete un piatto senza carne?",
+          "translation": {
+            "cs": "Děkuji. Máte nějaké jídlo bez masa?",
+            "en": "Thank you. Do you have a dish without meat?",
+            "it": "Grazie. Avete un piatto senza carne?"
+          },
+          "situation": {
+            "cs": "Dnes nechceš maso. Zjisti vhodné jídlo.",
+            "en": "You do not want meat today. Ask about a suitable dish."
+          }
+        },
+        "4": {
+          "it": "Sì, abbiamo la pasta al pomodoro e le verdure alla griglia. Che cosa prendete?",
+          "translation": {
+            "cs": "Ano, máme těstoviny s rajčaty a grilovanou zeleninu. Co si dáte?",
+            "en": "Yes, we have tomato pasta and grilled vegetables. What would you like?",
+            "it": "Sì, abbiamo la pasta al pomodoro e le verdure alla griglia. Che cosa prendete?"
+          },
+          "situation": {
+            "cs": "Nabídni těstoviny s rajčaty a grilovanou zeleninu.",
+            "en": "Offer tomato pasta and grilled vegetables."
+          }
+        }
+      }
+    }
+  ],
+  "saluti": [
+    {
+      "title": {
+        "cs": "Pracovní cesta",
+        "en": "Business trip"
+      },
+      "changes": {
+        "6": {
+          "it": "No, sono qui per lavoro. Studio l’italiano da tre mesi.",
+          "translation": {
+            "cs": "Ne, jsem tu pracovně. Učím se italsky tři měsíce.",
+            "en": "No, I am here for work. I have studied Italian for three months.",
+            "it": "No, sono qui per lavoro. Studio l’italiano da tre mesi."
+          },
+          "situation": {
+            "cs": "Nejsi na dovolené: přijel/a jsi pracovně a učíš se tři měsíce.",
+            "en": "You are here for work, not on holiday, and have studied for three months."
+          }
+        }
+      }
+    }
+  ],
+  "citta": [
+    {
+      "title": {
+        "cs": "Pomalejší tempo chůze",
+        "en": "A slower walking pace"
+      },
+      "changes": {
+        "4": {
+          "it": "È lontano? Cammino abbastanza lentamente.",
+          "translation": {
+            "cs": "Je to daleko? Chodím docela pomalu.",
+            "en": "Is it far? I walk quite slowly.",
+            "it": "È lontano? Cammino abbastanza lentamente."
+          },
+          "situation": {
+            "cs": "Před chůzí se zeptej na vzdálenost a upozorni na své pomalé tempo.",
+            "en": "Ask about the distance and mention your slower walking pace."
+          }
+        },
+        "5": {
+          "it": "Non molto. Con calma, ci vogliono circa venti minuti a piedi.",
+          "translation": {
+            "cs": "Ne moc. Volným tempem to trvá asi dvacet minut pěšky.",
+            "en": "Not very far. At a leisurely pace it takes about twenty minutes on foot.",
+            "it": "Non molto. Con calma, ci vogliono circa venti minuti a piedi."
+          },
+          "situation": {
+            "cs": "Odhadni dvacet minut při pomalejším tempu.",
+            "en": "Estimate twenty minutes at a slower pace."
+          }
+        }
+      }
+    }
+  ],
+  "passato": [
+    {
+      "title": {
+        "cs": "Návrat pozdě večer",
+        "en": "Returning late in the evening"
+      },
+      "changes": {
+        "10": {
+          "it": "Sono tornato alle nove di sera. E voi?",
+          "translation": {
+            "cs": "Vrátil jsem se v devět večer. A vy?",
+            "en": "I returned at nine in the evening. And you?",
+            "it": "Sono tornato alle nove di sera. E voi?"
+          },
+          "situation": {
+            "cs": "Sděl návrat v devět večer a zeptej se druhých.",
+            "en": "Give a nine p.m. return time and ask the others."
+          }
+        },
+        "11": {
+          "it": "Siamo tornate alle dieci, molto stanche ma contente!",
+          "translation": {
+            "cs": "Vrátily jsme se v deset, velmi unavené, ale spokojené!",
+            "en": "We returned at ten, very tired but happy!",
+            "it": "Siamo tornate alle dieci, molto stanche ma contente!"
+          },
+          "situation": {
+            "cs": "Výlet skončil návratem v deset. Shrň své dojmy.",
+            "en": "Your trip ended with a ten p.m. return. Sum up your impressions."
+          }
+        }
+      }
+    }
+  ],
+  "racconto": [
+    {
+      "title": {
+        "cs": "Telefon v batohu",
+        "en": "Phone in the backpack"
+      },
+      "changes": {
+        "11": {
+          "it": "Per fortuna era nello zaino! Alla fine siamo arrivati in tempo e abbiamo visitato il museo.",
+          "translation": {
+            "cs": "Naštěstí byl v batohu! Nakonec jsme dorazili včas a navštívili muzeum.",
+            "en": "Luckily it was in the backpack! In the end we arrived on time and visited the museum.",
+            "it": "Per fortuna era nello zaino! Alla fine siamo arrivati in tempo e abbiamo visitato il museo."
+          },
+          "situation": {
+            "cs": "Telefon se našel v batohu. Uzavři příhodu úspěšnou návštěvou muzea.",
+            "en": "The phone was in the backpack. End with the successful museum visit."
+          }
+        }
+      }
+    }
+  ],
+  "progetti": [
+    {
+      "title": {
+        "cs": "Rezervace jízdenek společně",
+        "en": "Booking tickets together"
+      },
+      "changes": {
+        "3": {
+          "it": "Ottima idea. Potresti controllare gli orari e prenotare i biglietti?",
+          "translation": {
+            "cs": "Výborný nápad. Mohl bys zkontrolovat jízdní řád a rezervovat jízdenky?",
+            "en": "Great idea. Could you check the timetable and book the tickets?",
+            "it": "Ottima idea. Potresti controllare gli orari e prenotare i biglietti?"
+          },
+          "situation": {
+            "cs": "Požádej druhého o jízdní řád i rezervaci jízdenek.",
+            "en": "Ask your friend to check the timetable and book tickets."
+          }
+        },
+        "4": {
+          "it": "Certo. C’è un treno alle nove. Prenotiamo insieme stasera?",
+          "translation": {
+            "cs": "Jistě. V devět jede vlak. Zarezervujeme je spolu dnes večer?",
+            "en": "Sure. There is a train at nine. Shall we book together tonight?",
+            "it": "Certo. C’è un treno alle nove. Prenotiamo insieme stasera?"
+          },
+          "situation": {
+            "cs": "Našel/našla jsi vlak v devět. Navrhni společnou večerní rezervaci.",
+            "en": "You found a nine o’clock train. Suggest booking together tonight."
+          }
+        },
+        "5": {
+          "it": "Va bene. Ti chiamo dopo cena e li prenotiamo online.",
+          "translation": {
+            "cs": "Dobře. Zavolám ti po večeři a zarezervujeme je online.",
+            "en": "All right. I will call after dinner and we will book online.",
+            "it": "Va bene. Ti chiamo dopo cena e li prenotiamo online."
+          },
+          "situation": {
+            "cs": "Domluv telefonát po večeři pro společnou rezervaci.",
+            "en": "Arrange a call after dinner to book together."
+          }
+        }
+      }
+    }
+  ],
+  "pronomi": [
+    {
+      "title": {
+        "cs": "Bez pečiva",
+        "en": "No pastry"
+      },
+      "changes": {
+        "7": {
+          "it": "No, grazie, non ne voglio. E tu, quanti ne vuoi?",
+          "translation": {
+            "cs": "Ne, děkuji, žádný nechci. A ty, kolik jich chceš?",
+            "en": "No thanks, I do not want any. And you, how many do you want?",
+            "it": "No, grazie, non ne voglio. E tu, quanti ne vuoi?"
+          },
+          "situation": {
+            "cs": "Odmítni pečivo a zeptej se na množství pro druhého.",
+            "en": "Decline the pastry and ask how many your friend wants."
+          }
+        }
+      }
+    }
+  ],
+  "opinioni": [
+    {
+      "title": {
+        "cs": "Poslední dvě místa",
+        "en": "Last two places"
+      },
+      "changes": {
+        "7": {
+          "it": "Il sito indica solo due posti liberi, quindi dovremmo prenotare presto.",
+          "translation": {
+            "cs": "Web uvádí jen dvě volná místa, takže bychom měli brzy rezervovat.",
+            "en": "The website shows only two places left, so we should book soon.",
+            "it": "Il sito indica solo due posti liberi, quindi dovremmo prenotare presto."
+          },
+          "situation": {
+            "cs": "Zbývají dvě místa. Vyvoď doporučení k rezervaci.",
+            "en": "Only two places remain. Draw a conclusion about booking."
+          }
+        }
+      }
+    }
+  ],
+  "ipotesi": [
+    {
+      "title": {
+        "cs": "Obava z dlouhé plavby",
+        "en": "Concern about a long boat trip"
+      },
+      "changes": {
+        "3": {
+          "it": "Verrei con te a condizione che il viaggio in barca non durasse più di un’ora.",
+          "translation": {
+            "cs": "Jela bych s tebou pod podmínkou, že plavba nebude trvat déle než hodinu.",
+            "en": "I would come with you provided the boat trip lasted no more than an hour.",
+            "it": "Verrei con te a condizione che il viaggio in barca non durasse più di un’ora."
+          },
+          "situation": {
+            "cs": "Souhlas s výletem, pokud plavba nepřesáhne hodinu.",
+            "en": "Agree to the trip if the boat journey takes no more than an hour."
+          }
+        }
+      }
+    }
+  ],
+  "registro": [
+    {
+      "title": {
+        "cs": "Termín do pátku",
+        "en": "Deadline by Friday"
+      },
+      "changes": {
+        "7": {
+          "it": "La ringrazio. Sarebbe possibile ricevere una conferma scritta entro venerdì?",
+          "translation": {
+            "cs": "Děkuji Vám. Bylo by možné dostat písemné potvrzení do pátku?",
+            "en": "Thank you. Would it be possible to receive written confirmation by Friday?",
+            "it": "La ringrazio. Sarebbe possibile ricevere una conferma scritta entro venerdì?"
+          },
+          "situation": {
+            "cs": "Požaduj písemné potvrzení s termínem do pátku.",
+            "en": "Request written confirmation by Friday."
+          }
+        },
+        "8": {
+          "it": "Certamente. Le risponderò entro giovedì pomeriggio.",
+          "translation": {
+            "cs": "Samozřejmě. Odpovím Vám do čtvrtka odpoledne.",
+            "en": "Certainly. I will reply by Thursday afternoon.",
+            "it": "Certamente. Le risponderò entro giovedì pomeriggio."
+          },
+          "situation": {
+            "cs": "Slib odpověď už do čtvrtka odpoledne.",
+            "en": "Promise a reply by Thursday afternoon."
+          }
+        }
+      }
+    }
+  ]
+};
+  for(const l of lessons){
+    l.dialogueVariants=dialogueChanges[l.id].map((v,n)=>({id:l.id+'-v'+(n+1),title:v.title,lines:l.dialogue.map((line,i)=>{
+      const change=v.changes[i];if(!change)return line;
+      const result={...line,...change,id:l.id+'-v'+(n+1)+'-'+(i+1)};
+      audioFiles[result.it]=audioFiles[result.it]||result.id+'.mp3';return result;
+    })}));
+  }
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;

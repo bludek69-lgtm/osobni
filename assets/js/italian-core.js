@@ -63,6 +63,15 @@
     const pools=Object.fromEntries(['choice','write','listen','picture','grammar'].map(kind=>[kind,questions(lessons,kind,lang)]));
     return Object.values(progress.schedule||{}).filter(r=>Date.parse(r.due)<=Date.parse(date)).sort((a,b)=>Date.parse(a.due)-Date.parse(b.due)).map(r=>pools[r.kind]?.find(q=>q.id===r.id)).filter(Boolean);
   }
+  function dialogueExcerpt(base, lines) {
+    const changed=lines.findIndex((line,i)=>line.it!==base[i]?.it);
+    let start=Math.max(0,Math.min(changed-1,lines.length-4));
+    while(start>0&&lines.slice(start).filter(line=>line.role==='customer').length<2)start--;
+    let count=0,end=start;
+    for(;end<lines.length;end++)if(lines[end].role==='customer'&&++count===2){end++;break;}
+    while(end<lines.length&&lines[end].role!=='customer')end++;
+    return lines.slice(start,end);
+  }
   function dailyPlan(lessons, progress, lang, lastLesson, date=new Date().toISOString()) {
     const mistakes=reviewQuestions(lessons,progress,lang);
     const due=scheduledQuestions(lessons,progress,lang,date).filter(q=>!progress.mistakes[q.id]);
@@ -133,7 +142,7 @@
     return {questions:restored,index:raw.index,answered,correct:changes.filter(c=>c.correct).length,
       dailyLesson:lessons.some(l=>l.id===raw.dailyLesson)?raw.dailyLesson:null,played:false,type:raw.type,level:raw.level,changes,answer:typeof raw.answer==='string'?raw.answer.slice(0,500):''};
   }
-  const api = {normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults,recordSchedule,scheduledQuestions,dailyPlan};
+  const api = {normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults,recordSchedule,scheduledQuestions,dailyPlan,dialogueExcerpt};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.ItalianCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);
