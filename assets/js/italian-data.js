@@ -2322,6 +2322,129 @@
       {id:'effect',title:{cs:'Zjistit následek',en:'Ask about the consequence'},lines:[storyBranchRows[3],storyBranchRows[4]]}
     ]},storyBranchRows[2],storyBranchRows[5],storyBranchRows[6]
   ]});
+  const plansBranchRows=[
+  {
+    "id": "progetti-branch-1",
+    "role": "customer",
+    "it": "Ti andrebbe di andare a Lucca sabato mattina?",
+    "translation": {
+      "cs": "Chtěla bys jet do Luccy v sobotu ráno?",
+      "en": "Would you like to go to Lucca on Saturday morning?",
+      "it": "Ti andrebbe di andare a Lucca sabato mattina?"
+    },
+    "situation": {
+      "cs": "Zdvořile navrhni společný výlet do Luccy v sobotu ráno.",
+      "en": "Politely suggest a trip to Lucca together on Saturday morning."
+    }
+  },
+  {
+    "id": "progetti-branch-2",
+    "role": "barista",
+    "it": "Mi piacerebbe, ma sabato non posso. Ho già un impegno.",
+    "translation": {
+      "cs": "Ráda bych, ale v sobotu nemůžu. Už něco mám.",
+      "en": "I would like to, but I cannot on Saturday. I already have a commitment.",
+      "it": "Mi piacerebbe, ma sabato non posso. Ho già un impegno."
+    },
+    "situation": {
+      "cs": "O výlet stojíš, ale v sobotu už něco máš. Zdvořile odmítni tento termín.",
+      "en": "You would like to go, but already have plans on Saturday. Politely decline that date."
+    }
+  },
+  {
+    "id": "progetti-branch-3",
+    "role": "customer",
+    "it": "Potremmo andare domenica mattina. Ti andrebbe bene?",
+    "translation": {
+      "cs": "Mohli bychom jet v neděli ráno. Vyhovovalo by ti to?",
+      "en": "We could go on Sunday morning. Would that suit you?",
+      "it": "Potremmo andare domenica mattina. Ti andrebbe bene?"
+    },
+    "situation": {
+      "cs": "Sobota druhému nevyhovuje. Zdvořile nabídni nedělní ráno.",
+      "en": "Saturday does not suit your friend. Politely suggest Sunday morning."
+    }
+  },
+  {
+    "id": "progetti-branch-4",
+    "role": "barista",
+    "it": "Sì, domenica mattina va bene. Potremmo incontrarci alle nove.",
+    "translation": {
+      "cs": "Ano, nedělní ráno vyhovuje. Mohli bychom se sejít v devět.",
+      "en": "Yes, Sunday morning works. We could meet at nine.",
+      "it": "Sì, domenica mattina va bene. Potremmo incontrarci alle nove."
+    },
+    "situation": {
+      "cs": "Přijmi nedělní ráno a navrhni sraz v devět hodin.",
+      "en": "Accept Sunday morning and suggest meeting at nine."
+    }
+  },
+  {
+    "id": "progetti-branch-5",
+    "role": "customer",
+    "it": "Capisco. Quando saresti libera?",
+    "translation": {
+      "cs": "Rozumím. Kdy bys měla volno?",
+      "en": "I understand. When would you be free?",
+      "it": "Capisco. Quando saresti libera?"
+    },
+    "situation": {
+      "cs": "Sobota nevyhovuje. Nech druhou osobu navrhnout vhodný termín.",
+      "en": "Saturday does not work. Let the other person suggest a suitable time."
+    }
+  },
+  {
+    "id": "progetti-branch-6",
+    "role": "barista",
+    "it": "Sarei libera domenica pomeriggio. Potremmo incontrarci alle due.",
+    "translation": {
+      "cs": "Měla bych volno v neděli odpoledne. Mohli bychom se sejít ve dvě.",
+      "en": "I would be free on Sunday afternoon. We could meet at two.",
+      "it": "Sarei libera domenica pomeriggio. Potremmo incontrarci alle due."
+    },
+    "situation": {
+      "cs": "Nabídni nedělní odpoledne a navrhni sraz ve dvě hodiny.",
+      "en": "Offer Sunday afternoon and suggest meeting at two."
+    }
+  },
+  {
+    "id": "progetti-branch-7",
+    "role": "customer",
+    "it": "Perfetto, per me va bene. Ci vediamo davanti alla stazione.",
+    "translation": {
+      "cs": "Výborně, mně to vyhovuje. Uvidíme se před nádražím.",
+      "en": "Perfect, that works for me. See you in front of the station.",
+      "it": "Perfetto, per me va bene. Ci vediamo davanti alla stazione."
+    },
+    "situation": {
+      "cs": "Přijmi domluvený čas a upřesni místo srazu před nádražím.",
+      "en": "Accept the agreed time and specify meeting in front of the station."
+    }
+  },
+  {
+    "id": "progetti-branch-8",
+    "role": "barista",
+    "it": "D’accordo. Controllerò gli orari dei treni e ti manderò un messaggio.",
+    "translation": {
+      "cs": "Dobře. Zkontroluji časy vlaků a pošlu ti zprávu.",
+      "en": "All right. I will check the train times and send you a message.",
+      "it": "D’accordo. Controllerò gli orari dei treni e ti manderò un messaggio."
+    },
+    "situation": {
+      "cs": "Potvrď dohodu a převezmi ověření vlakového spojení.",
+      "en": "Confirm the arrangement and offer to check the train connections."
+    }
+  }
+];
+  for(const line of plansBranchRows)audioFiles[line.it]=line.id+'.mp3';
+  const plansBranchLesson=lessons.find(l=>l.id==='progetti');
+  plansBranchLesson.dialogueVariants.push({id:'progetti-v2',title:{cs:'Termín nevyhovuje · dvě cesty',en:'The time does not suit · two paths'},lines:[
+    plansBranchRows[0],plansBranchRows[1],
+    {...plansBranchRows[2],branchTitle:{cs:'Sobota nevyhovuje. Jak se domluvíte?',en:'Saturday does not work. How will you agree?'},branches:[
+      {id:'suggest',title:{cs:'Navrhnout jiný termín',en:'Suggest another time'},lines:[plansBranchRows[2],plansBranchRows[3]]},
+      {id:'ask',title:{cs:'Zeptat se, kdy má čas',en:'Ask when she is free'},lines:[plansBranchRows[4],plansBranchRows[5]]}
+    ]},plansBranchRows[3],plansBranchRows[6],plansBranchRows[7]
+  ]});
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;

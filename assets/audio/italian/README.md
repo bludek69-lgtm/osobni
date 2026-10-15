@@ -17,3 +17,5 @@ Greeting clarification (2026-10-15): four saluti-branch-*.mp3 recordings generat
 Past trip branching dialogue (2026-10-15): seven passato-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for Anna and DiegoNeural for the questioner. Original teaching dialogue: a missed bus, alternative museum visit and retrospective evaluation of the day.
 
 Story cause and consequence (2026-10-15): seven racconto-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for Anna and DiegoNeural for the questioner. Original teaching dialogue: rain delays a train, missing a guided tour and visiting independently.
+
+Planning alternatives (2026-10-15): eight progetti-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for Anna and DiegoNeural for the proposer. Original teaching dialogue: Saturday is unsuitable, suggesting Sunday morning or asking availability for Sunday afternoon.
