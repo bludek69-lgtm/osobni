@@ -90,8 +90,19 @@
         explanation:w.example};
     }));
   }
-  function emptyProgress() { return {version:1,favorites:[],mistakes:{},mistakeKinds:{},results:[],lessonResults:{},schedule:{}}; }
+  function emptyProgress() { return {version:1,favorites:[],mistakes:{},mistakeKinds:{},results:[],lessonResults:{},schedule:{},savedSentences:[]}; }
   const reviewDays=[1,3,7,14,30], dayMs=86400000;
+  function dialogueEntries(data) {
+    const entries=new Map();
+    for(const lesson of data.lessons)for(const line of [...lesson.dialogue,...(lesson.dialogueVariants||[]).flatMap(v=>v.lines)]){
+      if(!entries.has(line.id))entries.set(line.id,{...line,lessonId:lesson.id});
+    }
+    return [...entries.values()];
+  }
+  function savedDialogue(data,progress) {
+    const entries=new Map(dialogueEntries(data).map(line=>[line.id,line]));
+    return [...new Set(progress.savedSentences||[])].map(id=>entries.get(id)).filter(Boolean);
+  }
   function recordSchedule(progress, changes, date) {
     const now=Date.parse(date);
     progress.schedule=progress.schedule||{};
@@ -142,6 +153,8 @@
     const wordIds = new Set(data.lessons.flatMap(l=>l.words.map(w=>w.id)));
     const allIds = new Set([...wordIds,...data.lessons.flatMap(l=>l.questions.map(q=>q.id))]);
     const result = emptyProgress();
+    const sentenceIds=new Set(dialogueEntries(data).map(line=>line.id));
+    result.savedSentences=Array.isArray(value.savedSentences)?[...new Set(value.savedSentences.filter(id=>sentenceIds.has(id)))]:[];
     result.favorites = [...new Set(value.favorites.filter(id=>wordIds.has(id)))];
     for (const [id,count] of Object.entries(value.mistakes)) if (allIds.has(id) && Number.isInteger(count) && count > 0) result.mistakes[id] = Math.min(count,10000);
     for (const id of Object.keys(result.mistakes)) {
@@ -186,7 +199,7 @@
     return {questions:restored,index:raw.index,answered,correct:changes.filter(c=>c.correct).length,
       dailyLesson:lessons.some(l=>l.id===raw.dailyLesson)?raw.dailyLesson:null,played:false,type:raw.type,level:raw.level,changes,answer:typeof raw.answer==='string'?raw.answer.slice(0,500):''};
   }
-  const api = {createAnswerRecorder,normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults,recordSchedule,scheduledQuestions,dailyPlan,dialogueExcerpt};
+  const api = {createAnswerRecorder,dialogueEntries,savedDialogue,normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults,recordSchedule,scheduledQuestions,dailyPlan,dialogueExcerpt};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.ItalianCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);

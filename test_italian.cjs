@@ -482,3 +482,22 @@ test('recording handles denial, missing support and automatic time limit',async(
  const next=r.start();f.allow();await next;f.timers.at(-1)();await Promise.resolve();
  assert.equal(r.state.status,'ready');assert.ok(f.stopped.length);
 });
+
+test('saved sentences migrate legacy backups and retain only known unique dialogue ids',()=>{
+ const p=C.emptyProgress();delete p.savedSentences;
+ assert.deepEqual(C.validateProgress(p,D).savedSentences,[]);
+ p.savedSentences=['bar-02','hotel-v1-2','bar-02','<script>',null,42];
+ const restored=C.validateProgress(JSON.parse(JSON.stringify(p)),D);
+ assert.deepEqual(restored.savedSentences,['bar-02','hotel-v1-2']);
+ const lines=C.savedDialogue(D,restored);
+ assert.deepEqual(lines.map(l=>l.lessonId),['bar','hotel']);
+ assert.match(lines[1].it,/tre notti/);
+});
+test('saved dialogue catalog includes all lessons and variants without duplicating reused lines',()=>{
+ const catalog=C.dialogueEntries(D);
+ assert.equal(new Set(catalog.map(x=>x.id)).size,catalog.length);
+ assert.equal(new Set(catalog.map(x=>x.lessonId)).size,12);
+ const p=C.emptyProgress();p.savedSentences=catalog.map(x=>x.id);
+ assert.equal(C.savedDialogue(D,C.validateProgress(p,D)).length,catalog.length);
+ for(const line of catalog)assert.ok(line.situation.cs&&line.situation.en&&D.audioFiles[line.it]);
+});

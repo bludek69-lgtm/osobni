@@ -43,6 +43,21 @@
     panel.innerHTML='<h4>'+micText.title+'</h4><p class="it-muted">'+micText.privacy+'</p><p role="status">'+esc(s.error?micText[s.error]:micText[s.status]||'')+'</p>'+(s.status==='recording'?button('mic-stop',micText.stop,'class="it-primary"'):button('mic-start',s.url?micText.again:micText.start,busy?'disabled':''))+(s.url?(roleRun?.phase==='ready'?button('role-repeat',micText.model):'')+'<audio id="it-own-audio" controls preload="metadata" aria-label="'+micText.title+'" src="'+esc(s.url)+'"></audio>'+button('mic-delete',micText.remove):'');
     app.querySelectorAll('[data-action="role-reveal"],[data-action="role-repeat"],[data-action="role-next"]').forEach(b=>b.disabled=s.status==='recording'||s.status==='stopping');
   }
+  const sentenceText=lang==='cs'?{tab:'Moje věty',save:'Uložit do Mých vět',remove:'Odebrat z Mých vět',empty:'Zatím nemáš uložené věty. V dialogu použij „Uložit do Mých vět“ u repliky, kterou chceš procvičovat.',intro:'Tvůj výběr napříč lekcemi a variantami. Nejdřív zkus větu podle situace říct nahlas, potom ji porovnej se vzorem. Bez automatického známkování.',short:'Procvičit až 5 vět',all:'Procvičit všechny věty',back:'Zpět na Moje věty',done:'Procvičování uložených vět dokončeno.',count:'Uložených vět',browse:'Vybrat lekci'}:{tab:'My sentences',save:'Save to My sentences',remove:'Remove from My sentences',empty:'No saved sentences yet. Use “Save to My sentences” beside a dialogue line you want to practise.',intro:'Your selection across lessons and variants. Respond aloud to the situation, then compare with the model. No automatic grading.',short:'Practise up to 5 sentences',all:'Practise all sentences',back:'Back to My sentences',done:'Saved sentence practice completed.',count:'Saved sentences',browse:'Choose a lesson'};
+  T.sentences=sentenceText.tab;
+  function sentenceButton(id){return button('save-sentence',progress.savedSentences.includes(id)?sentenceText.remove:sentenceText.save,'data-sentence="'+esc(id)+'" aria-pressed="'+progress.savedSentences.includes(id)+'"');}
+  function renderSentences(){
+    const lines=C.savedDialogue(D,progress);
+    el('it-view').innerHTML='<section class="it-panel"><h2 id="it-focus" tabindex="-1">'+sentenceText.tab+'</h2><p>'+sentenceText.intro+'</p><p>'+sentenceText.count+': '+lines.length+'</p><p class="it-muted">'+T.storageNote+'</p>'+(lines.length?'<div class="it-toolbar">'+button('sentences-practice',sentenceText.short,'class="it-primary"')+button('sentences-practice',sentenceText.all,'data-all="true"')+'</div><div class="it-words">'+lines.map(line=>'<article class="it-card"><p class="it-muted">'+esc(D.lessons.find(l=>l.id===line.lessonId).title[lang])+'</p><h3 lang="it">'+esc(line.it)+'</h3><p>'+esc(line.translation[lang])+'</p>'+audio(line.it)+sentenceButton(line.id)+'</article>').join('')+'</div>':'<p>'+sentenceText.empty+'</p>'+button('tab',sentenceText.browse,'data-tab="lessons"'))+'</section>';
+    updateAudioButtons();
+  }
+  function startSentences(all){
+    const lines=C.shuffle(C.savedDialogue(D,progress)).slice(0,all?Infinity:5);
+    if(!lines.length){renderSentences();return;}
+    stopAudio();active='sentences';openedLesson=null;renderShell();
+    el('it-view').innerHTML='<section class="it-panel"><h2>'+sentenceText.tab+'</h2><p>'+sentenceText.intro+'</p><div id="it-role-setup" hidden>'+button('sentences-practice',sentenceText.short)+'</div><div id="it-role-stage" aria-live="polite"></div></section>';
+    roleRun={role:'learner',lines:lines.map(line=>({...line,role:'learner'})),index:0,phase:'waiting',mode:'situation',saved:true};roleStep();
+  }
   const variantText=lang==='cs'?{label:'Varianta situace',original:'Původní rozhovor',another:'Zkusit další variantu'}:{label:'Situation variant',original:'Original dialogue',another:'Try another variant'};
   function variants(l){return [{id:'original',title:{cs:variantText.original,en:variantText.original},lines:l.dialogue},...l.dialogueVariants];}
   function nextVariant(l){const list=variants(l),previous=list.findIndex(v=>v.id===variantHistory[l.id]);return list[(previous+1||1)%list.length];}
@@ -52,7 +67,8 @@
   function renderRole() {
     if(!roleRun)return;
     const r=roleRun,line=r.lines[r.index],done=!line;
-    el('it-role-stage').innerHTML=done?'<p>'+(r.daily?dailyText.roleDone:roleText.done)+'</p>'+(r.daily?'<p>'+dailyText.done+'</p>'+button('quick',dailyText.back):button('role-another',variantText.another,'class="it-primary"')+button('role-stop',roleText.stop)):'<p>'+roleText.line+' '+(r.index+1)+' / '+r.lines.length+'</p><h4 tabindex="-1" id="it-role-turn">'+(r.phase==='waiting'?roleText.turn:r.phase==='other'?roleText.listening:roleText.model)+'</h4>'+(r.phase==='waiting'?'<p class="it-role-cue">'+(r.mode==='situation'?'<strong>'+roleText.situationLabel+':</strong> '+esc(line.situation[lang==='cs'?'cs':'en']):esc(line.translation[lang]))+'</p>'+(r.mode==='situation'?'<p class="it-muted">'+roleText.noHint+'</p>':'')+button('role-reveal',r.mode==='situation'?roleText.answered:roleText.reveal,'class="it-primary"'):'<p lang="it">'+esc(line.it)+'</p><p class="it-muted">'+esc(line.translation[lang])+'</p>'+(r.phase==='ready'?'<p>'+roleText.compare+'</p>'+button('role-repeat',roleText.repeat)+button('role-next',roleText.next,'class="it-primary"'):''))+button('role-stop',roleText.stop);
+    el('it-role-stage').innerHTML=done?'<p>'+(r.saved?sentenceText.done:r.daily?dailyText.roleDone:roleText.done)+'</p>'+(r.saved?button('sentences-back',sentenceText.back,'class="it-primary"'):r.daily?'<p>'+dailyText.done+'</p>'+button('quick',dailyText.back):button('role-another',variantText.another,'class="it-primary"')+button('role-stop',roleText.stop)):'<p>'+roleText.line+' '+(r.index+1)+' / '+r.lines.length+'</p><h4 tabindex="-1" id="it-role-turn">'+(r.phase==='waiting'?roleText.turn:r.phase==='other'?roleText.listening:roleText.model)+'</h4>'+(r.phase==='waiting'?'<p class="it-role-cue">'+(r.mode==='situation'?'<strong>'+roleText.situationLabel+':</strong> '+esc(line.situation[lang==='cs'?'cs':'en']):esc(line.translation[lang]))+'</p>'+(r.mode==='situation'?'<p class="it-muted">'+roleText.noHint+'</p>':'')+button('role-reveal',r.mode==='situation'?roleText.answered:roleText.reveal,'class="it-primary"'):'<p lang="it">'+esc(line.it)+'</p><p class="it-muted">'+esc(line.translation[lang])+'</p>'+(r.phase==='ready'?'<p>'+roleText.compare+'</p>'+button('role-repeat',roleText.repeat)+button('role-next',roleText.next,'class="it-primary"'):''))+button('role-stop',roleText.stop);
+    if(!done){el('it-role-stage').insertAdjacentHTML('beforeend',sentenceButton(line.id));if(r.saved)el('it-role-stage').insertAdjacentHTML('afterbegin','<p class="it-muted">'+esc(D.lessons.find(l=>l.id===line.lessonId).title[lang])+'</p>');}
     if(!done&&['waiting','ready'].includes(r.phase)){el('it-role-stage').insertAdjacentHTML('beforeend','<section id="it-microphone" class="it-microphone"></section>');renderMic();}
     if(r.variantTitle)el('it-role-stage').insertAdjacentHTML('afterbegin','<p class="it-muted">'+variantText.label+': '+esc(r.variantTitle)+'</p>');
     if(r.phase==='waiting'||done)el('it-role-stage').scrollIntoView({block:'nearest'});
@@ -119,7 +135,7 @@
     updateAudioButtons();
   }
   function renderShell() {
-    app.innerHTML='<div class="it-start-row">'+button('quick',T.quick,'class="it-primary"')+((pausedSession||lastLesson)&&!session?button('resume',T.resume):'')+'</div><nav class="it-tabs" aria-label="'+esc(T.mode)+'">'+['lessons','cards','dictionary','practice','exam','progress'].map(name=>button('tab',T[name],'data-tab="'+name+'" aria-pressed="'+(active===name)+'"')).join('')+'</nav><details class="it-audio-disclosure"><summary>'+T.settings+'</summary><div class="it-audio-settings"><label>'+T.voice+'<select id="it-voice"></select></label><p id="it-voice-note"></p></div></details><p id="it-status" role="status" aria-live="polite"></p><div id="it-view"></div>';
+    app.innerHTML='<div class="it-start-row">'+button('quick',T.quick,'class="it-primary"')+((pausedSession||lastLesson)&&!session?button('resume',T.resume):'')+'</div><nav class="it-tabs" aria-label="'+esc(T.mode)+'">'+['lessons','sentences','cards','dictionary','practice','exam','progress'].map(name=>button('tab',T[name],'data-tab="'+name+'" aria-pressed="'+(active===name)+'"')).join('')+'</nav><details class="it-audio-disclosure"><summary>'+T.settings+'</summary><div class="it-audio-settings"><label>'+T.voice+'<select id="it-voice"></select></label><p id="it-voice-note"></p></div></details><p id="it-status" role="status" aria-live="polite"></p><div id="it-view"></div>';
     updateVoiceControls();
   }
   const dailyText=lang==='cs'?{roleDone:'Dvě vlastní repliky dokončené.',title:'Denní plán na 5 minut',intro:'Nejdřív krátký mix otázek, potom dvě vlastní repliky v dialogu. Tempo je na tobě.',due:'Starší otázky na řadě',mistake:'Tvoje chyby',fresh:'Další procvičení',role:'Krátký dialog',start:'Spustit denní plán',next:'Pokračovat krátkým dialogem',done:'Plán dokončen. Otázky jsou vyhodnocené; mluvení sis procvičil/a bez automatického známkování.',back:'Zpět na denní plán',pending:'Otázky máš hotové. Zbývá krátký dialog.',again:'Sestavit další krátký plán'}:{roleDone:'Two replies completed.',title:'Your five-minute daily plan',intro:'A short question mix, followed by two replies in a dialogue. Learn at your own pace.',due:'Older questions due',mistake:'Your mistakes',fresh:'Extra practice',role:'Short dialogue',start:'Start daily plan',next:'Continue with a short dialogue',done:'Plan completed. Questions are scored; speaking is practice without automatic grading.',back:'Back to daily plan',pending:'Questions completed. Your short dialogue is next.',again:'Build another short plan'};
@@ -165,6 +181,7 @@
     renderShell();
     const view=el('it-view');
     if (session) {renderQuestion(); return;}
+    if(active==='sentences'){renderSentences();return;}
     if(active==='quick'){renderQuick();return;}
     if(active==='lessons'&&openedLesson){showLesson(openedLesson);return;}
     if (active==='lessons') {
@@ -226,7 +243,7 @@
       it:{cafeTitle:'Al ristorante',cafeTime:'Al ristorante · A2 · circa 7 minuti',cafeContext:'Arrivi a cena in due. Chiedi un tavolo, scegli un piatto e chiedi il conto.',ruleText:'Un tavolo per due indica due persone. Ho prenotato indica una prenotazione. Prendo introduce una scelta. Non precede il verbo. Per le allergie verifica ingredienti e preparazione con il personale.',completed:'Chiedi un tavolo, ordina e chiedi il conto senza suggerimenti.',practiceCafe:'Esercitati al ristorante'}
     };
     const lessonCopy=l.guide?{...T,...l.guide[lang]}:id==='ristorante'?{...T,...restaurantCopy[lang]}:T;
-    const dialogue=isGuided?'<div class="it-cafe-intro"><div><p class="it-eyebrow">'+lessonCopy.cafeTime+'</p><h3>'+T.goal+'</h3><p>'+esc(l.goal[lang])+'</p><p>'+lessonCopy.cafeContext+'</p></div><img src="'+esc(lessonPictureDirectory+D.lessonIllustrations[id].file)+'" alt="" width="1200" height="800" decoding="async"></div><h3>'+T.dialogue+'</h3><div class="it-toolbar">'+button('dialogue-play','▶ '+T.playAll,'class="it-primary"')+button('audio-stop',T.stopAudio)+'</div><p class="it-muted">'+T.audioCredit+'</p><ol class="it-dialogue">'+l.dialogue.map(line=>'<li id="'+line.id+'" class="it-dialogue-line '+line.role+'"><span class="it-role">'+lessonCopy[line.role]+'</span><p lang="it">'+esc(line.it)+'</p>'+audio(line.it,T.lineAudio)+'<details><summary>'+T.translation+'</summary><p>'+esc(line.translation[lang])+'</p></details></li>').join('')+'</ol>':'';
+    const dialogue=isGuided?'<div class="it-cafe-intro"><div><p class="it-eyebrow">'+lessonCopy.cafeTime+'</p><h3>'+T.goal+'</h3><p>'+esc(l.goal[lang])+'</p><p>'+lessonCopy.cafeContext+'</p></div><img src="'+esc(lessonPictureDirectory+D.lessonIllustrations[id].file)+'" alt="" width="1200" height="800" decoding="async"></div><h3>'+T.dialogue+'</h3><div class="it-toolbar">'+button('dialogue-play','▶ '+T.playAll,'class="it-primary"')+button('audio-stop',T.stopAudio)+'</div><p class="it-muted">'+T.audioCredit+'</p><ol class="it-dialogue">'+l.dialogue.map(line=>'<li id="'+line.id+'" class="it-dialogue-line '+line.role+'"><span class="it-role">'+lessonCopy[line.role]+'</span><p lang="it">'+esc(line.it)+'</p>'+audio(line.it,T.lineAudio)+sentenceButton(line.id)+'<details><summary>'+T.translation+'</summary><p>'+esc(line.translation[lang])+'</p></details></li>').join('')+'</ol>':'';
     el('it-view').innerHTML='<section class="it-panel">'+button('back',T.back)+'<span class="it-level">'+l.level+'</span><h2 tabindex="-1" id="it-focus">'+esc(isGuided?lessonCopy.cafeTitle:l.title[lang])+'</h2>'+lessonProgress(l)+(isGuided?((id==='bar'||l.video)?freyaLessonVideo():'')+roleSetup(l,lessonCopy)+dialogue:'<p>'+esc(l.note[lang])+'</p>')+'<h3>'+(isGuided?T.vocabulary:T.study)+'</h3><div class="it-words">'+l.words.map(w=>'<article class="it-card"><div class="it-word-top">'+favorite(w)+'</div><h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian,T.wordAudio)+audio(w.example,T.sentenceAudio)+'</article>').join('')+'</div>'+(isGuided?'<h3>'+T.rules+'</h3><p class="it-rule">'+lessonCopy.ruleText+'</p><h3>'+T.tryIt+'</h3><p>'+lessonCopy.completed+'</p>'+button('lesson-practice',lessonCopy.practiceCafe,'data-mode="grammar" class="it-primary"'):'')+'<div class="it-toolbar">'+['choice','write','listen','grammar'].map(m=>button('lesson-practice',T[m],'data-mode="'+m+'"'+(m==='listen'&&!l.words.some(w=>canSpeak(w.italian))?' disabled':''))).join('')+'</div><p class="it-muted">'+T.savedDraft+'</p></section>';
     updateAudioButtons();saveDraft();el('it-focus').focus();
   }
@@ -402,6 +419,16 @@
       el('it-freya-player').innerHTML='<iframe src="https://app.heygen.com/embeds/'+currentVideo().id+'" title="'+esc(freyaTitle())+'" allow="encrypted-media; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
       el('it-freya-player').querySelector('iframe').focus();return;
     }
+    if(action==='sentences-practice'){startSentences(b.dataset.all==='true');return;}
+    if(action==='sentences-back'){stopAudio();active='sentences';render();return;}
+    if(action==='save-sentence'){
+      const id=b.dataset.sentence;if(!C.dialogueEntries(D).some(line=>line.id===id))return;
+      const saved=progress.savedSentences.includes(id);
+      progress.savedSentences=saved?progress.savedSentences.filter(x=>x!==id):[...progress.savedSentences,id];save();
+      app.querySelectorAll('[data-action="save-sentence"]').forEach(btn=>{if(btn.dataset.sentence===id){btn.textContent=saved?sentenceText.save:sentenceText.remove;btn.setAttribute('aria-pressed',String(!saved));}});
+      if(active==='sentences'&&!roleRun){stopAudio();renderSentences();}
+      if(!storageOK)status(T.notSaved);return;
+    }
     if(action==='mic-start'){pauseAnswer();answerRecorder.start();return;}
     if(action==='mic-stop'){answerRecorder.stop();return;}
     if(action==='mic-delete'){pauseAnswer();answerRecorder.reset();return;}
@@ -412,7 +439,7 @@
       roleRun={role,mode,lines:v.lines,index:0,phase:'other',variantTitle:v.title[lang==='cs'?'cs':'en']};
       el('it-role-setup').hidden=true;app.querySelector('.it-dialogue').hidden=true;roleStep();return;
     }
-    if(action==='role-stop'){const wasDaily=roleRun?.daily;stopAudio();if(wasDaily){active='quick';render();}return;}
+    if(action==='role-stop'){const wasDaily=roleRun?.daily,wasSaved=roleRun?.saved;stopAudio();if(wasDaily||wasSaved){active=wasSaved?'sentences':'quick';render();}return;}
     if(action==='role-reveal'&&roleRun?.phase==='waiting'){roleModel();return;}
     if(action==='role-repeat'&&roleRun?.phase==='ready'){roleModel();return;}
     if(action==='role-next'&&roleRun?.phase==='ready'){pauseAnswer();answerRecorder.reset();roleRun.index++;roleStep();return;}
