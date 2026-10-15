@@ -125,6 +125,19 @@
     }
   });
 
+  // Enhance the existing recipe checklist; the two-serving recipe works without JS.
+  document.querySelectorAll('.recipe-cooking').forEach(cooking => {
+    const portions = cooking.querySelector('.recipe-portions');
+    portions.hidden = false;
+    portions.addEventListener('change', event => {
+      const value = event.target.value;
+      if (value !== '2' && value !== '4') return;
+      cooking.querySelectorAll('[data-portion-2]').forEach(item => {
+        item.textContent = item.getAttribute(`data-portion-${value}`);
+      });
+    });
+  });
+
   // Recipe videos stay beside their dish; only the selected player is loaded.
   const recipeLabels = {
     cs: ['▶ Přehrát video · GialloZafferano', 'Zavřít video', 'Otevřít na YouTube'],
