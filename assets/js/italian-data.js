@@ -1644,6 +1644,100 @@
       audioFiles[result.it]=audioFiles[result.it]||result.id+'.mp3';return result;
     })}));
   }
+  const restaurantBranchRows=[
+  {
+    "id": "ristorante-branch-1",
+    "role": "barista",
+    "it": "Mi dispiace, la pasta al pomodoro è finita. Preferisce un altro piatto?",
+    "translation": {
+      "cs": "Je mi líto, těstoviny s rajčatovou omáčkou už došly. Dáte si jiné jídlo?",
+      "en": "Sorry, we have run out of tomato pasta. Would you prefer another dish?",
+      "it": "Mi dispiace, la pasta al pomodoro è finita. Preferisce un altro piatto?"
+    },
+    "situation": {
+      "cs": "Oznam hostovi, že těstoviny došly, a nabídni změnu objednávky.",
+      "en": "Tell the guest the pasta has run out and offer a different dish."
+    }
+  },
+  {
+    "id": "ristorante-branch-2",
+    "role": "customer",
+    "it": "Che cosa mi consiglia al posto della pasta?",
+    "translation": {
+      "cs": "Co mi doporučíte místo těstovin?",
+      "en": "What would you recommend instead of pasta?",
+      "it": "Che cosa mi consiglia al posto della pasta?"
+    },
+    "situation": {
+      "cs": "Těstoviny došly. Požádej obsluhu o doporučení jiného jídla.",
+      "en": "The pasta has run out. Ask the waiter to recommend another dish."
+    }
+  },
+  {
+    "id": "ristorante-branch-3",
+    "role": "barista",
+    "it": "Le consiglio il risotto ai funghi. Non è piccante.",
+    "translation": {
+      "cs": "Doporučuji houbové rizoto. Není pálivé.",
+      "en": "I recommend the mushroom risotto. It is not spicy.",
+      "it": "Le consiglio il risotto ai funghi. Non è piccante."
+    },
+    "situation": {
+      "cs": "Host chce doporučení. Nabídni houbové rizoto a ujisti ho, že není pálivé.",
+      "en": "The guest wants a recommendation. Suggest mushroom risotto and explain it is not spicy."
+    }
+  },
+  {
+    "id": "ristorante-branch-4",
+    "role": "customer",
+    "it": "Allora prendo il pesce alla griglia, per favore.",
+    "translation": {
+      "cs": "Tak si dám grilovanou rybu, prosím.",
+      "en": "Then I will have the grilled fish, please.",
+      "it": "Allora prendo il pesce alla griglia, per favore."
+    },
+    "situation": {
+      "cs": "Těstoviny došly. Změň objednávku na grilovanou rybu.",
+      "en": "The pasta has run out. Change your order to grilled fish."
+    }
+  },
+  {
+    "id": "ristorante-branch-5",
+    "role": "barista",
+    "it": "Va bene, un pesce alla griglia con le verdure.",
+    "translation": {
+      "cs": "Dobře, grilovaná ryba se zeleninou.",
+      "en": "Certainly, grilled fish with vegetables.",
+      "it": "Va bene, un pesce alla griglia con le verdure."
+    },
+    "situation": {
+      "cs": "Potvrď změnu objednávky na grilovanou rybu se zeleninou.",
+      "en": "Confirm the change to grilled fish with vegetables."
+    }
+  },
+  {
+    "id": "ristorante-branch-6",
+    "role": "customer",
+    "it": "Va bene, grazie. Una bottiglia d’acqua naturale, per favore.",
+    "translation": {
+      "cs": "Dobře, děkuji. Láhev neperlivé vody, prosím.",
+      "en": "All right, thank you. A bottle of still water, please.",
+      "it": "Va bene, grazie. Una bottiglia d’acqua naturale, per favore."
+    },
+    "situation": {
+      "cs": "Přijmi domluvené jídlo a objednej láhev neperlivé vody.",
+      "en": "Accept the agreed dish and order a bottle of still water."
+    }
+  }
+];
+  for(const line of restaurantBranchRows)audioFiles[line.it]=line.id+'.mp3';
+  restaurant.dialogueVariants.push({id:'ristorante-v3',title:{cs:'Vybrané jídlo došlo · dvě cesty',en:'Dish unavailable · two paths'},lines:[
+    ...restaurant.dialogue.slice(0,6),restaurantBranchRows[0],
+    {...restaurantBranchRows[1],branches:[
+      {id:'recommend',title:{cs:'Požádat o doporučení',en:'Ask for a recommendation'},lines:[restaurantBranchRows[1],restaurantBranchRows[2]]},
+      {id:'fish',title:{cs:'Vybrat grilovanou rybu',en:'Choose grilled fish'},lines:[restaurantBranchRows[3],restaurantBranchRows[4]]}
+    ]},restaurantBranchRows[2],restaurantBranchRows[5],...restaurant.dialogue.slice(10)
+  ]});
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;

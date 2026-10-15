@@ -97,6 +97,7 @@
     const entries=new Map();
     for(const lesson of data.lessons)for(const line of [...lesson.dialogue,...(lesson.dialogueVariants||[]).flatMap(v=>v.lines)]){
       if(!entries.has(line.id))entries.set(line.id,{...line,lessonId:lesson.id});
+      for(const branch of line.branches||[])for(const entry of branch.lines)entries.set(entry.id,{...entry,lessonId:lesson.id});
     }
     return [...entries.values()];
   }
@@ -128,6 +129,8 @@
     return Object.values(progress.schedule||{}).filter(r=>Date.parse(r.due)<=Date.parse(date)).sort((a,b)=>Date.parse(a.due)-Date.parse(b.due)).map(r=>pools[r.kind]?.find(q=>q.id===r.id)).filter(Boolean);
   }
   function dialogueExcerpt(base, lines, replies=2) {
+    const branch=lines.findIndex(line=>line.branches);
+    if(branch>=0&&replies===1)return lines.slice(Math.max(0,branch-1),branch+2);
     const changed=lines.findIndex((line,i)=>line.it!==base[i]?.it);
     let start=Math.max(0,Math.min(changed-1,lines.length-replies*2));
     while(start>0&&lines.slice(start).filter(line=>line.role==='customer').length<replies)start--;

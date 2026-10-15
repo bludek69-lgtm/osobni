@@ -79,6 +79,11 @@
     if(!roleRun)return;
     const r=roleRun,line=r.lines[r.index];
     if(!line){if(r.dailySaved){daily.phase='role';saveDraft();}if(r.daily){daily={lesson:r.lesson,phase:'done',date:new Date().toLocaleDateString('sv')};saveDraft();}renderRole();return;}
+    if(line.branches&&!r.saved){
+      r.phase='branch';
+      el('it-role-stage').innerHTML='<h4 tabindex="-1" id="it-branch-title">'+(lang==='cs'?'Jídlo došlo. Jak pokračovat?':'The dish is unavailable. What next?')+'</h4><p class="it-muted">'+(lang==='cs'?'Vyber směr rozhovoru. Svou repliku pak řekni nahlas.':'Choose a direction, then say your reply aloud.')+'</p><div class="it-toolbar">'+line.branches.map(branch=>button('role-branch',branch.title[lang==='cs'?'cs':'en'],'data-branch="'+branch.id+'"')).join('')+'</div>'+button('role-stop',roleText.stop);
+      el('it-branch-title').focus();return;
+    }
     if(line.role===r.role){r.phase='waiting';renderRole();return;}
     r.phase='other';renderRole();
     playRecording(line.it,false,()=>{if(roleRun!==r)return;r.index++;roleStep();},audioGeneration);
@@ -446,6 +451,10 @@
       el('it-role-setup').hidden=true;app.querySelector('.it-dialogue').hidden=true;roleStep();return;
     }
     if(action==='role-stop'){const wasDaily=roleRun?.daily||roleRun?.dailySaved,wasSaved=roleRun?.saved&&!roleRun?.dailySaved;stopAudio();if(wasDaily||wasSaved){active=wasSaved?'sentences':'quick';render();}return;}
+    if(action==='role-branch'&&roleRun?.phase==='branch'){
+      const r=roleRun,branch=r.lines[r.index].branches.find(x=>x.id===b.dataset.branch);if(!branch)return;
+      r.lines=[...r.lines.slice(0,r.index),...branch.lines,...r.lines.slice(r.index+branch.lines.length)];roleStep();return;
+    }
     if(action==='role-reveal'&&roleRun?.phase==='waiting'){roleModel();return;}
     if(action==='role-repeat'&&roleRun?.phase==='ready'){roleModel();return;}
     if(action==='role-rate'&&roleRun?.phase==='ready'&&['easy','hint','again'].includes(b.dataset.rating)&&!['recording','stopping'].includes(answerRecorder.state.status)){C.rateSpeaking(progress,roleRun.lines[roleRun.index].id,b.dataset.rating);save();pauseAnswer();answerRecorder.reset();if(roleRun.saved){const id=roleRun.lines[roleRun.index].id;if(progress.savedSentences.includes(id)){progress.sentencePractice[id]=new Date().toISOString();save();}}roleRun.index++;roleStep();return;}

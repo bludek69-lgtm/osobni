@@ -449,7 +449,7 @@ test('all dialogue variants keep roles, translations, cues and local audio',()=>
    assert.ok(excerpt.some(line=>!l.dialogue.some(base=>base.it===line.it)),v.id);
   }
  }
- assert.equal(count,15);
+ assert.equal(count,16);
 });
 
 function recorderFixture(){
@@ -562,4 +562,23 @@ test('due speaking beats saved sentences and future rated sentences wait',()=>{
  assert.equal(C.dailyPlan(D.lessons,p,'cs','hotel','2026-10-15T10:00:00Z').sentenceId,'bar-02');
  p.speakingReview.fake={rating:'easy',step:1,last:'bad',due:'bad'};
  assert.equal(C.validateProgress(p,D).speakingReview.fake,undefined);
+});
+
+test('restaurant branches keep distinct responses, trusted IDs and reviewable recordings',()=>{
+ const fs=require('fs'),l=D.lessons.find(l=>l.id==='ristorante'),v=l.dialogueVariants.find(v=>v.id==='ristorante-v3');
+ const fork=v.lines.find(line=>line.branches),entries=C.dialogueEntries(D),p=C.emptyProgress();
+ assert.equal(fork.branches.length,2);
+ for(const branch of fork.branches){
+  assert.deepEqual(branch.lines.map(x=>x.role),['customer','barista']);
+  for(const line of branch.lines){
+   assert.ok(line.translation.cs&&line.translation.en&&line.situation.cs&&line.situation.en);
+   assert.ok(fs.statSync('assets/audio/italian/'+D.audioFiles[line.it]).size>1000);
+   assert.ok(entries.some(x=>x.id===line.id));
+   p.savedSentences.push(line.id);C.rateSpeaking(p,line.id,'again','2026-10-15T10:00:00Z');
+  }
+ }
+ const restored=C.validateProgress(p,D);assert.equal(restored.savedSentences.length,4);
+ assert.equal(Object.keys(restored.speakingReview).length,4);
+ for(const replies of [1,2])assert.ok(C.dialogueExcerpt(l.dialogue,v.lines,replies).some(x=>x.branches));
+ assert.equal(entries.find(x=>x.id===fork.id).branches,undefined);
 });
