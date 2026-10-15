@@ -9,8 +9,15 @@
     "photoType": "domácí verze",
     "sourceName": "GialloZafferano + Accademia Italiana della Cucina",
     "sourceUrl": "https://ricette.giallozafferano.it/Spaghetti-alla-Carbonara.html",
-    "ingredients": ["spaghetti", "guanciale", "vejce (žloutky)", "pecorino romano", "černý pepř"],
-    "methodShort": "Guanciale orestovat na pánvi. Žloutky smíchat s pecorino a pepřem. Spaghetti uvařit al dente, smíchat s guanciale a vmíchat vaječnou směs MIMO oheň + trochu vody z těstovin pro krémovost.",
+    "ingredients": [
+      "320 g špaget",
+      "150 g guanciale",
+      "6 žloutků ze středních vajec",
+      "50 g pecorina romano, najemno",
+      "Černý pepř podle chuti",
+      "Sůl do vody na těstoviny"
+    ],
+    "methodShort": "Nakrájej guanciale na proužky a nastrouhej pecorino. Dej vařit vodu na těstoviny; osol ji střídmě, guanciale i sýr jsou slané. Guanciale opékej nasucho na středním plameni, až pustí tuk a zezlátne. Kousky vyndej a tuk nech v pánvi. Špagety uvař al dente podle obalu. Před scezením si odlož hrnek vody z těstovin. V misce rozmíchej žloutky s pecorinem a čerstvě mletým pepřem. Špagety promíchej s tukem v pánvi. Pánev odstav z plotny, nech krátce zchladnout a vmíchej žloutkovou směs. Po lžících přidávej odloženou vodu, dokud omáčka nebude krémová. Vrať guanciale, promíchej a ihned podávej. Po přidání žloutků už omáčku nevař, aby se vejce nesrazila.",
     "regionalNote": "Tradiční římská verze BEZ smetany, BEZ cibule, BEZ česneku. Severské domácí varianty občas přidávají pancettu.",
     "personalNote": "Klasika z mojí kuchyně.",
     "videoInspiration": "GialloZafferano",
@@ -19,7 +26,34 @@
     "videoChannel": "https://www.youtube.com/@GialloZafferanoTV",
     "videoChecked": "2026-10-15",
     "videoNote": "",
-    "status": "OVĚŘENO"
+    "status": "OVĚŘENO",
+    "ingredientsByServings": {
+      "2": [
+        "160 g špaget",
+        "75 g guanciale",
+        "3 žloutky ze středních vajec",
+        "25 g pecorina romano, najemno",
+        "Černý pepř podle chuti",
+        "Sůl do vody na těstoviny"
+      ],
+      "4": [
+        "320 g špaget",
+        "150 g guanciale",
+        "6 žloutků ze středních vajec",
+        "50 g pecorina romano, najemno",
+        "Černý pepř podle chuti",
+        "Sůl do vody na těstoviny"
+      ]
+    },
+    "steps": [
+      "Nakrájej guanciale na proužky a nastrouhej pecorino. Dej vařit vodu na těstoviny; osol ji střídmě, guanciale i sýr jsou slané.",
+      "Guanciale opékej nasucho na středním plameni, až pustí tuk a zezlátne. Kousky vyndej a tuk nech v pánvi.",
+      "Špagety uvař al dente podle obalu. Před scezením si odlož hrnek vody z těstovin.",
+      "V misce rozmíchej žloutky s pecorinem a čerstvě mletým pepřem.",
+      "Špagety promíchej s tukem v pánvi. Pánev odstav z plotny, nech krátce zchladnout a vmíchej žloutkovou směs. Po lžících přidávej odloženou vodu, dokud omáčka nebude krémová.",
+      "Vrať guanciale, promíchej a ihned podávej. Po přidání žloutků už omáčku nevař, aby se vejce nesrazila."
+    ],
+    "cookingNote": "Množství podle videa GialloZafferano. Připravené suroviny si odškrtni."
   },
   {
     "id": "amatriciana-20200402",
@@ -31,8 +65,17 @@
     "photoType": "domácí verze",
     "sourceName": "GialloZafferano",
     "sourceUrl": "https://ricette.giallozafferano.it/Spaghetti-all-Amatriciana.html",
-    "ingredients": ["spaghetti / bucatini / rigatoni", "guanciale", "loupaná rajčata San Marzano", "pecorino romano", "chilli", "suché bílé víno"],
-    "methodShort": "Guanciale orestovat. Přidat víno, redukovat. Přidat loupaná rajčata + chilli, vařit 10-15 min. Smíchat s těstovinami al dente, posypat pecorino romano.",
+    "ingredients": [
+      "320 g špaget",
+      "400 g loupaných rajčat",
+      "150 g guanciale",
+      "75 g pecorina romano, najemno",
+      "50 g suchého bílého vína",
+      "1 čerstvá chilli paprička (podle pálivosti)",
+      "Olivový olej podle potřeby",
+      "Sůl podle chuti"
+    ],
+    "methodShort": "Nakrájej guanciale na proužky, nastrouhej pecorino a rozmačkej loupaná rajčata. Připrav chilli; pro jemnější chuť odstraň semínka. Guanciale opeč v pánvi na středním plameni dozlatova. Podle potřeby přidej trochu olivového oleje. Přilij bílé víno a nech krátce odvařit. Guanciale vyndej stranou, tuk a šťávu nech v pánvi. Do pánve dej rajčata a chilli. Na mírném plameni vař asi 10–15 minut, až omáčka zhoustne. Osol podle chuti; sýr i guanciale jsou slané. Špagety uvař al dente podle obalu. Před scezením odlož hrnek vody z těstovin. Do omáčky vrať guanciale a vmíchej špagety. Odstav z plotny, přidej pecorino a promíchej. Podle potřeby přilévej vodu z těstovin po lžících. Podávej hned.",
     "regionalNote": "STG specifikace registrovaná v EU 2020. Tradice z městečka Amatrice. BEZ česneku a cibule v původním receptu.",
     "personalNote": "Občas s pancettou jako náhrada — guanciale není v ČR snadno k sehnání.",
     "videoInspiration": "GialloZafferano",
@@ -41,7 +84,38 @@
     "videoChannel": "https://www.youtube.com/@GialloZafferanoTV",
     "videoChecked": "2026-10-15",
     "videoNote": "",
-    "status": "OVĚŘENO"
+    "status": "OVĚŘENO",
+    "ingredientsByServings": {
+      "2": [
+        "160 g špaget",
+        "200 g loupaných rajčat",
+        "75 g guanciale",
+        "37,5 g pecorina romano, najemno",
+        "25 g suchého bílého vína",
+        "½ čerstvé chilli papričky (podle pálivosti)",
+        "Olivový olej podle potřeby",
+        "Sůl podle chuti"
+      ],
+      "4": [
+        "320 g špaget",
+        "400 g loupaných rajčat",
+        "150 g guanciale",
+        "75 g pecorina romano, najemno",
+        "50 g suchého bílého vína",
+        "1 čerstvá chilli paprička (podle pálivosti)",
+        "Olivový olej podle potřeby",
+        "Sůl podle chuti"
+      ]
+    },
+    "steps": [
+      "Nakrájej guanciale na proužky, nastrouhej pecorino a rozmačkej loupaná rajčata. Připrav chilli; pro jemnější chuť odstraň semínka.",
+      "Guanciale opeč v pánvi na středním plameni dozlatova. Podle potřeby přidej trochu olivového oleje.",
+      "Přilij bílé víno a nech krátce odvařit. Guanciale vyndej stranou, tuk a šťávu nech v pánvi.",
+      "Do pánve dej rajčata a chilli. Na mírném plameni vař asi 10–15 minut, až omáčka zhoustne. Osol podle chuti; sýr i guanciale jsou slané.",
+      "Špagety uvař al dente podle obalu. Před scezením odlož hrnek vody z těstovin. Do omáčky vrať guanciale a vmíchej špagety.",
+      "Odstav z plotny, přidej pecorino a promíchej. Podle potřeby přilévej vodu z těstovin po lžících. Podávej hned."
+    ],
+    "cookingNote": "Množství podle videa GialloZafferano. Připravené suroviny si odškrtni."
   },
   {
     "id": "ragu-bolognese-20200401",
@@ -53,8 +127,20 @@
     "photoType": "domácí verze",
     "sourceName": "GialloZafferano (ragù alla bolognese)",
     "sourceUrl": "https://ricette.giallozafferano.it/Ragu-alla-bolognese.html",
-    "ingredients": ["tagliatelle (vaječné)", "hovězí mleté maso", "pancetta", "cibule, mrkev, řapíkový celer (soffritto)", "rajčatový protlak / passata", "suché bílé víno", "mléko", "parmigiano reggiano"],
-    "methodShort": "Soffritto na másle. Pancetta, pak hovězí. Víno, redukovat. Rajčata + mléko (pro jemnost). Vařit 2+ hodiny pomalu. Servírovat s tagliatelle.",
+    "ingredients": [
+      "320 g sušených vaječných tagliatelle",
+      "300 g mletého hovězího masa",
+      "150 g pancetty",
+      "300 g rajčatové passaty",
+      "50 g mrkve",
+      "50 g řapíkatého celeru",
+      "50 g cibule",
+      "100 ml suchého červeného vína",
+      "1 lžíce olivového oleje",
+      "Horký zeleninový vývar podle potřeby",
+      "Sůl a černý pepř podle chuti"
+    ],
+    "methodShort": "Mrkev, celer a cibuli nakrájej nadrobno. Pancettu nasekej na malé kousky. Na oleji opeč pancettu, přidej zeleninu a nech ji na mírném ohni změknout. Přidej hovězí a dobře ho opeč; vařečkou rozbíjej hrudky. Přilij červené víno a nech ho odvařit. Vmíchej passatu a trochu horkého vývaru. Zvolna dus nejméně 2 hodiny, občas promíchej. Když ragù vysychá, přilij trochu vývaru. Na konci má být husté; dochuť solí a pepřem. Tagliatelle uvař v osolené vodě podle obalu. Před scezením odlož hrnek vody z těstovin. Promíchej tagliatelle s ragù. Je-li omáčka příliš hustá, přidej po lžících vodu z těstovin a hned podávej.",
     "regionalNote": "TAGLIATELLE, NE spaghetti. „Spaghetti bolognese\" je britsko-americká adaptace, v Boloni se nepodávají.",
     "personalNote": "Pravá italská bolognese — pomalé vaření, mléko + víno.",
     "videoInspiration": "GialloZafferano",
@@ -63,7 +149,44 @@
     "videoChannel": "https://www.youtube.com/@GialloZafferanoTV",
     "videoChecked": "2026-10-15",
     "videoNote": "Video ukazuje přípravu ragù, ne výrobu tagliatelle.",
-    "status": "OVĚŘENO"
+    "status": "OVĚŘENO",
+    "ingredientsByServings": {
+      "2": [
+        "160 g sušených vaječných tagliatelle",
+        "150 g mletého hovězího masa",
+        "75 g pancetty",
+        "150 g rajčatové passaty",
+        "25 g mrkve",
+        "25 g řapíkatého celeru",
+        "25 g cibule",
+        "50 ml suchého červeného vína",
+        "½ lžíce olivového oleje",
+        "Horký zeleninový vývar podle potřeby",
+        "Sůl a černý pepř podle chuti"
+      ],
+      "4": [
+        "320 g sušených vaječných tagliatelle",
+        "300 g mletého hovězího masa",
+        "150 g pancetty",
+        "300 g rajčatové passaty",
+        "50 g mrkve",
+        "50 g řapíkatého celeru",
+        "50 g cibule",
+        "100 ml suchého červeného vína",
+        "1 lžíce olivového oleje",
+        "Horký zeleninový vývar podle potřeby",
+        "Sůl a černý pepř podle chuti"
+      ]
+    },
+    "steps": [
+      "Mrkev, celer a cibuli nakrájej nadrobno. Pancettu nasekej na malé kousky.",
+      "Na oleji opeč pancettu, přidej zeleninu a nech ji na mírném ohni změknout. Přidej hovězí a dobře ho opeč; vařečkou rozbíjej hrudky.",
+      "Přilij červené víno a nech ho odvařit. Vmíchej passatu a trochu horkého vývaru.",
+      "Zvolna dus nejméně 2 hodiny, občas promíchej. Když ragù vysychá, přilij trochu vývaru. Na konci má být husté; dochuť solí a pepřem.",
+      "Tagliatelle uvař v osolené vodě podle obalu. Před scezením odlož hrnek vody z těstovin.",
+      "Promíchej tagliatelle s ragù. Je-li omáčka příliš hustá, přidej po lžících vodu z těstovin a hned podávej."
+    ],
+    "cookingNote": "Ragù podle videa; doplněno 80 g sušených tagliatelle na osobu. Víno odměř v ml. Počítej nejméně se 2 hodinami dušení. Připravené suroviny si odškrtni."
   },
   {
     "id": "gnocchi-pesto-20200331",
@@ -75,8 +198,18 @@
     "photoType": "domácí verze",
     "sourceName": "GialloZafferano + Consorzio Pesto Genovese",
     "sourceUrl": "https://ricette.giallozafferano.it/Pesto-alla-Genovese.html",
-    "ingredients": ["bramborové gnocchi", "basilico genovese DOP", "extra panenský olivový olej Riviera Ligure", "parmigiano reggiano + fiore sardo (ovčí)", "pinie", "česnek z Vessalico", "hrubá mořská sůl"],
-    "methodShort": "Pesto: bazalka + česnek + sůl rozetřít v hmoždíři, přidat pinie, sýry, olej. Gnocchi uvařit al dente, smíchat s pestem + lžící vody z těstovin.",
+    "ingredients": [
+      "800 g hotových bramborových gnocchi",
+      "70 g čerstvých lístků bazalky",
+      "70 g extra panenského olivového oleje",
+      "50 g parmigiana reggiana, najemno",
+      "30 g pecorina sardo, najemno",
+      "30 g piniových oříšků",
+      "2 stroužky česneku",
+      "3 g hrubé soli do pesta",
+      "Sůl do vody podle chuti"
+    ],
+    "methodShort": "Bazalku jemně opláchni a důkladně osuš bez mačkání. Nastrouhej oba sýry a oloupej česnek. V hmoždíři utři česnek se solí, přidej bazalku a rozmělněné pinie. Postupně přimíchej sýry a olej. Při použití mixéru mixuj krátkými pulzy, aby se pesto nezahřálo. Gnocchi vař v osolené vodě podle obalu. Než je vyndáš, odlož trochu vody z vaření. Pesto dej do mísy a zřeď trochou vlažné vody z vaření. Vmíchej gnocchi a hned podávej. Pesto už nevař ani nesmaž.",
     "regionalNote": "Pesto alla genovese = chráněný recept s 7 striktně danými surovinami. Tradičně připravováno v marble mortar (mletí, ne mixování).",
     "personalNote": "Doplnil jsem pancettou + parmigiano navíc — domácí variace.",
     "videoInspiration": "GialloZafferano",
@@ -85,7 +218,38 @@
     "videoChannel": "https://www.youtube.com/@GialloZafferanoTV",
     "videoChecked": "2026-10-15",
     "videoNote": "Video ukazuje přípravu pesta pro gnocchi.",
-    "status": "OVĚŘENO"
+    "status": "OVĚŘENO",
+    "ingredientsByServings": {
+      "2": [
+        "400 g hotových bramborových gnocchi",
+        "35 g čerstvých lístků bazalky",
+        "35 g extra panenského olivového oleje",
+        "25 g parmigiana reggiana, najemno",
+        "15 g pecorina sardo, najemno",
+        "15 g piniových oříšků",
+        "1 stroužek česneku",
+        "1,5 g hrubé soli do pesta",
+        "Sůl do vody podle chuti"
+      ],
+      "4": [
+        "800 g hotových bramborových gnocchi",
+        "70 g čerstvých lístků bazalky",
+        "70 g extra panenského olivového oleje",
+        "50 g parmigiana reggiana, najemno",
+        "30 g pecorina sardo, najemno",
+        "30 g piniových oříšků",
+        "2 stroužky česneku",
+        "3 g hrubé soli do pesta",
+        "Sůl do vody podle chuti"
+      ]
+    },
+    "steps": [
+      "Bazalku jemně opláchni a důkladně osuš bez mačkání. Nastrouhej oba sýry a oloupej česnek.",
+      "V hmoždíři utři česnek se solí, přidej bazalku a rozmělněné pinie. Postupně přimíchej sýry a olej. Při použití mixéru mixuj krátkými pulzy, aby se pesto nezahřálo.",
+      "Gnocchi vař v osolené vodě podle obalu. Než je vyndáš, odlož trochu vody z vaření.",
+      "Pesto dej do mísy a zřeď trochou vlažné vody z vaření. Vmíchej gnocchi a hned podávej. Pesto už nevař ani nesmaž."
+    ],
+    "cookingNote": "Poměr pesta podle videa, doplněno 200 g hotových gnocchi na osobu. Pro 2 porce použij polovinu dávky pesta z videa. Připravené suroviny si odškrtni."
   },
   {
     "id": "risotto-milanese-20200321",
@@ -97,8 +261,18 @@
     "photoType": "domácí verze",
     "sourceName": "GialloZafferano",
     "sourceUrl": "https://ricette.giallozafferano.it/Risotto-alla-milanese.html",
-    "ingredients": ["rýže Carnaroli / Arborio", "šafránové vlákna", "kostní morek (tradičně)", "hovězí vývar", "parmigiano reggiano", "máslo", "cibule", "suché bílé víno"],
-    "methodShort": "Cibuli zavadit s morkem na másle. Rýže, opečíme zrna. Víno, redukovat. Postupně přidávat horký vývar. Pár minut před koncem šafrán. Mantecare = vmíchat máslo + parmigiano mimo oheň.",
+    "ingredients": [
+      "320 g rýže Carnaroli",
+      "0,25 g šafránových vláken",
+      "150 g suchého bílého vína",
+      "½ bílé cibule",
+      "25 g másla na cibuli",
+      "120 g studeného másla na dokončení",
+      "80 g parmigiana reggiana, najemno",
+      "Horký masový vývar podle potřeby",
+      "Sůl podle chuti"
+    ],
+    "methodShort": "Šafrán nech alespoň 30 minut louhovat v troše teplého vývaru. Zbytek vývaru udržuj horký. Cibuli nakrájej najemno. Na másle určeném na základ nech cibuli zesklovatět. Přidej rýži a krátce ji za stálého míchání opékej. Přilij víno a nech ho odvařit. Po naběračkách přidávej horký vývar; další až po vstřebání předchozího. Průběžně míchej. Během vaření přidej šafrán i s nálevem. Vař přibližně 16–18 minut podle rýže, až je na skus. Vývar přilévej podle potřeby. Odstav, vmíchej studené máslo na dokončení a parmigiano. Dochuť solí, nech 1–2 minuty odpočinout. Podle potřeby zřeď vývarem; risotto má na talíři volně téct.",
     "regionalNote": "Servíruje se „all'onda\" — tekuté ale ne polévka, na talíři zploštěné. Tradiční partner k ossobuco.",
     "personalNote": "Bez kostního morku — pouze máslo + cibule. Šafrán z Iránu.",
     "videoInspiration": "GialloZafferano",
@@ -107,7 +281,39 @@
     "videoChannel": "https://www.youtube.com/@GialloZafferanoTV",
     "videoChecked": "2026-10-15",
     "videoNote": "Ve videu je varianta restaurace Boeucc bez přidaného morku.",
-    "status": "OVĚŘENO"
+    "status": "OVĚŘENO",
+    "ingredientsByServings": {
+      "2": [
+        "160 g rýže Carnaroli",
+        "0,125 g šafránových vláken",
+        "75 g suchého bílého vína",
+        "¼ bílé cibule",
+        "12,5 g másla na cibuli",
+        "60 g studeného másla na dokončení",
+        "40 g parmigiana reggiana, najemno",
+        "Horký masový vývar podle potřeby",
+        "Sůl podle chuti"
+      ],
+      "4": [
+        "320 g rýže Carnaroli",
+        "0,25 g šafránových vláken",
+        "150 g suchého bílého vína",
+        "½ bílé cibule",
+        "25 g másla na cibuli",
+        "120 g studeného másla na dokončení",
+        "80 g parmigiana reggiana, najemno",
+        "Horký masový vývar podle potřeby",
+        "Sůl podle chuti"
+      ]
+    },
+    "steps": [
+      "Šafrán nech alespoň 30 minut louhovat v troše teplého vývaru. Zbytek vývaru udržuj horký. Cibuli nakrájej najemno.",
+      "Na másle určeném na základ nech cibuli zesklovatět. Přidej rýži a krátce ji za stálého míchání opékej.",
+      "Přilij víno a nech ho odvařit. Po naběračkách přidávej horký vývar; další až po vstřebání předchozího. Průběžně míchej.",
+      "Během vaření přidej šafrán i s nálevem. Vař přibližně 16–18 minut podle rýže, až je na skus. Vývar přilévej podle potřeby.",
+      "Odstav, vmíchej studené máslo na dokončení a parmigiano. Dochuť solí, nech 1–2 minuty odpočinout. Podle potřeby zřeď vývarem; risotto má na talíři volně téct."
+    ],
+    "cookingNote": "Množství pro variantu Boeucc z videa, bez přidaného morku. Máslo na základ a na dokončení je uvedeno zvlášť. Připravené suroviny si odškrtni."
   },
   {
     "id": "risotto-pomodoro-20200324",
@@ -118,8 +324,17 @@
     "photoType": "domácí verze",
     "sourceName": "GialloZafferano",
     "sourceUrl": "https://ricette.giallozafferano.it/Risotto-al-pomodoro.html",
-    "ingredients": ["rýže Carnaroli / Arborio", "passata di pomodoro", "cherry rajčata", "cibule, česnek, bazalka", "parmigiano", "máslo", "olivový olej"],
-    "methodShort": "Cibuli na olivovém oleji. Rýže, opečít. Passata + cherry rajčata. Postupně horký vývar. Mantecare s máslem a parmigiano. Bazalka navrch.",
+    "ingredients": [
+      "320 g rýže Carnaroli",
+      "550 g rajčatové passaty",
+      "600 g zeleninového vývaru; další podle potřeby",
+      "60 g bílé cibule",
+      "10 lístků bazalky",
+      "50 g grana padano, najemno",
+      "50 g studeného másla",
+      "Olivový olej a sůl podle potřeby"
+    ],
+    "methodShort": "Vývar zahřej a udržuj horký. Cibuli nakrájej najemno a nech ji zesklovatět na troše olivového oleje. Přidej rýži a krátce ji opékej za stálého míchání. Vmíchej passatu a přidej naběračku horkého vývaru. Vař na mírném až středním ohni, míchej a přilévej vývar po naběračkách. Asi po 16–18 minutách, podle rýže, ochutnej; zrnka mají zůstat na skus. Odstav a vmíchej studené máslo, grana padano a natrhanou bazalku. Dochuť solí. Nech 1–2 minuty odpočinout. Je-li risotto příliš husté, přidej trochu horkého vývaru a hned podávej.",
     "regionalNote": "Není klasifikovaná regionální specialita, ale součást italské domácí kuchyně. Variace s mozzarellou nebo pancettou v různých regionech.",
     "personalNote": "Letní oblíbená.",
     "videoInspiration": "GialloZafferano",
@@ -128,7 +343,37 @@
     "videoChannel": "https://www.youtube.com/@GialloZafferanoTV",
     "videoChecked": "2026-10-15",
     "videoNote": "",
-    "status": "OVĚŘENO"
+    "status": "OVĚŘENO",
+    "ingredientsByServings": {
+      "2": [
+        "160 g rýže Carnaroli",
+        "275 g rajčatové passaty",
+        "300 g zeleninového vývaru; další podle potřeby",
+        "30 g bílé cibule",
+        "5 lístků bazalky",
+        "25 g grana padano, najemno",
+        "25 g studeného másla",
+        "Olivový olej a sůl podle potřeby"
+      ],
+      "4": [
+        "320 g rýže Carnaroli",
+        "550 g rajčatové passaty",
+        "600 g zeleninového vývaru; další podle potřeby",
+        "60 g bílé cibule",
+        "10 lístků bazalky",
+        "50 g grana padano, najemno",
+        "50 g studeného másla",
+        "Olivový olej a sůl podle potřeby"
+      ]
+    },
+    "steps": [
+      "Vývar zahřej a udržuj horký. Cibuli nakrájej najemno a nech ji zesklovatět na troše olivového oleje.",
+      "Přidej rýži a krátce ji opékej za stálého míchání. Vmíchej passatu a přidej naběračku horkého vývaru.",
+      "Vař na mírném až středním ohni, míchej a přilévej vývar po naběračkách. Asi po 16–18 minutách, podle rýže, ochutnej; zrnka mají zůstat na skus.",
+      "Odstav a vmíchej studené máslo, grana padano a natrhanou bazalku. Dochuť solí.",
+      "Nech 1–2 minuty odpočinout. Je-li risotto příliš husté, přidej trochu horkého vývaru a hned podávej."
+    ],
+    "cookingNote": "Množství podle videa GialloZafferano. Vývar přidávej podle savosti rýže. Připravené suroviny si odškrtni."
   },
   {
     "id": "spaghetti-pomodoro-20200321",
@@ -139,8 +384,14 @@
     "photoType": "domácí verze",
     "sourceName": "GialloZafferano",
     "sourceUrl": "https://ricette.giallozafferano.it/Spaghetti-al-pomodoro.html",
-    "ingredients": ["spaghetti", "passata / loupaná rajčata San Marzano", "extra panenský olivový olej", "česnek", "čerstvá bazalka", "parmigiano (volitelně)"],
-    "methodShort": "Česnek na olivovém oleji. Rajčata, vařit 15-20 min. Spaghetti al dente, smíchat s omáčkou + bazalka.",
+    "ingredients": [
+      "320 g špaget",
+      "800 g loupaných rajčat",
+      "30 g extra panenského olivového oleje",
+      "1 stroužek česneku",
+      "Čerstvá bazalka a sůl podle chuti"
+    ],
+    "methodShort": "Oloupej česnek a rajčata rozmačkej. V pánvi na mírném ohni rozehřej olej s česnekem; nenech ho zhnědnout. Přidej rajčata, lehce osol a nech mírně probublávat asi 30 minut. Občas promíchej a podle potřeby přidej trochu vody. Vyndej česnek a přidej natrhanou bazalku. Špagety uvař al dente podle obalu; před scezením odlož hrnek vody z vaření. Špagety promíchej v omáčce. Podle potřeby přidej po lžících vodu z těstovin, dochuť a hned podávej.",
     "regionalNote": "Symbol jednoduchosti italské kuchyně. Na jihu (Kampánie, Sicílie) bez sýra. Sever občas přidává parmigiano nebo pecorino.",
     "personalNote": "Klasika — kvalita rajčat dělá vše.",
     "videoInspiration": "GialloZafferano",
@@ -149,7 +400,30 @@
     "videoChannel": "https://www.youtube.com/@GialloZafferanoTV",
     "videoChecked": "2026-10-15",
     "videoNote": "",
-    "status": "OVĚŘENO"
+    "status": "OVĚŘENO",
+    "ingredientsByServings": {
+      "2": [
+        "160 g špaget",
+        "400 g loupaných rajčat",
+        "15 g extra panenského olivového oleje",
+        "½ stroužku česneku",
+        "Čerstvá bazalka a sůl podle chuti"
+      ],
+      "4": [
+        "320 g špaget",
+        "800 g loupaných rajčat",
+        "30 g extra panenského olivového oleje",
+        "1 stroužek česneku",
+        "Čerstvá bazalka a sůl podle chuti"
+      ]
+    },
+    "steps": [
+      "Oloupej česnek a rajčata rozmačkej. V pánvi na mírném ohni rozehřej olej s česnekem; nenech ho zhnědnout.",
+      "Přidej rajčata, lehce osol a nech mírně probublávat asi 30 minut. Občas promíchej a podle potřeby přidej trochu vody.",
+      "Vyndej česnek a přidej natrhanou bazalku. Špagety uvař al dente podle obalu; před scezením odlož hrnek vody z vaření.",
+      "Špagety promíchej v omáčce. Podle potřeby přidej po lžících vodu z těstovin, dochuť a hned podávej."
+    ],
+    "cookingNote": "Množství podle videa GialloZafferano. Připravené suroviny si odškrtni."
   },
   {
     "id": "penne-pomodoro-20200326",
@@ -160,8 +434,14 @@
     "photoType": "domácí verze",
     "sourceName": "GialloZafferano",
     "sourceUrl": "https://ricette.giallozafferano.it/Penne-all-Arrabbiata.html",
-    "ingredients": ["penne rigate", "loupaná rajčata", "česnek", "olivový olej", "chilli (pro arrabbiata)", "petržel", "pecorino"],
-    "methodShort": "Česnek + chilli na olivovém oleji. Rajčata, vařit 15 min. Smíchat s penne rigate al dente. Petržel a pecorino navrch.",
+    "ingredients": [
+      "320 g penne rigate",
+      "380 g loupaných rajčat po slití",
+      "1 stroužek česneku",
+      "3 malé sušené chilli papričky (volitelně)",
+      "Petržel, olivový olej a sůl podle chuti"
+    ],
+    "methodShort": "Slitá rajčata rozmačkej. Česnek oloupej, petržel nasekej a případné chilli rozdrob. V pánvi jemně zahřej trochu oleje s česnekem a chilli. Nenech česnek zhnědnout. Přidej rajčata a lehce osol. Omáčku vař mírně asi 12–15 minut, občas promíchej. Penne mezitím uvař al dente podle obalu a odlož trochu vody z vaření. Vyndej česnek, přidej penne a promíchej. Pokud je třeba, zřeď trochou vody z těstovin. Dokonči petrželí a podávej.",
     "regionalNote": "Arrabbiata = „naštvaná\" kvůli chilli. Římská klasika.",
     "personalNote": "Když je málo času.",
     "videoInspiration": "GialloZafferano",
@@ -170,7 +450,30 @@
     "videoChannel": "https://www.youtube.com/@GialloZafferanoTV",
     "videoChecked": "2026-10-15",
     "videoNote": "Video ukazuje pikantní variantu all’arrabbiata s chilli.",
-    "status": "OVĚŘENO"
+    "status": "OVĚŘENO",
+    "ingredientsByServings": {
+      "2": [
+        "160 g penne rigate",
+        "190 g loupaných rajčat po slití",
+        "½ stroužku česneku",
+        "1½ malé sušené chilli papričky (volitelně)",
+        "Petržel, olivový olej a sůl podle chuti"
+      ],
+      "4": [
+        "320 g penne rigate",
+        "380 g loupaných rajčat po slití",
+        "1 stroužek česneku",
+        "3 malé sušené chilli papričky (volitelně)",
+        "Petržel, olivový olej a sůl podle chuti"
+      ]
+    },
+    "steps": [
+      "Slitá rajčata rozmačkej. Česnek oloupej, petržel nasekej a případné chilli rozdrob.",
+      "V pánvi jemně zahřej trochu oleje s česnekem a chilli. Nenech česnek zhnědnout. Přidej rajčata a lehce osol.",
+      "Omáčku vař mírně asi 12–15 minut, občas promíchej. Penne mezitím uvař al dente podle obalu a odlož trochu vody z vaření.",
+      "Vyndej česnek, přidej penne a promíchej. Pokud je třeba, zřeď trochou vody z těstovin. Dokonči petrželí a podávej."
+    ],
+    "cookingNote": "Množství podle videa all’arrabbiata. Pro jemné penne al pomodoro vynech chilli; jinak ho přizpůsob pálivosti. Připravené suroviny si odškrtni."
   },
   {
     "id": "penne-panna-20200328",
@@ -181,8 +484,16 @@
     "photoType": "domácí verze",
     "sourceName": "GialloZafferano",
     "sourceUrl": "https://ricette.giallozafferano.it/Pasta-panna-e-prosciutto.html",
-    "ingredients": ["penne", "smetana (panna da cucina)", "parmigiano reggiano", "černý pepř", "šunka prosciutto cotto / houby (volitelně)"],
-    "methodShort": "Šunku/houby orestovat. Smetana, redukovat. Parmigiano, pepř. Smíchat s penne al dente.",
+    "ingredients": [
+      "320 g penne rigate",
+      "200 g vařené šunky prosciutto cotto",
+      "250 g tekuté smetany ke šlehání",
+      "50 g parmigiana reggiana, najemno",
+      "1 stroužek česneku",
+      "Petržel a olivový olej podle potřeby",
+      "Sůl, černý pepř a špetka muškátového oříšku"
+    ],
+    "methodShort": "Šunku nakrájej na kousky, nastrouhej parmigiano a nasekej petržel. Penne dej vařit do osolené vody podle obalu. Na troše oleje jemně prohřej česnek, pak přidej šunku a krátce opeč. Česnek vyndej. Přilij smetanu, přidej pepř a špetku muškátového oříšku. Nech na mírném ohni krátce zhoustnout; nesvař ji do sucha. Před scezením penne odlož hrnek vody z vaření. Těstoviny al dente promíchej s omáčkou a podle potřeby přidej trochu této vody. Odstav, vmíchej parmigiano a petržel. Ochutnej, případně dosol a ihned podávej.",
     "regionalNote": "Lombardie, Piemonte, Veneto. Jih Itálie smetanové pasty obecně nepoužívá. Na severu rodinný komfort food.",
     "personalNote": "Pro děti / když chci něco jednoduchého.",
     "videoInspiration": "GialloZafferano",
@@ -191,6 +502,34 @@
     "videoChannel": "https://www.youtube.com/@GialloZafferanoTV",
     "videoChecked": "2026-10-15",
     "videoNote": "Krátké video ukazuje variantu se šunkou.",
-    "status": "OVĚŘENO"
+    "status": "OVĚŘENO",
+    "ingredientsByServings": {
+      "2": [
+        "160 g penne rigate",
+        "100 g vařené šunky prosciutto cotto",
+        "125 g tekuté smetany ke šlehání",
+        "25 g parmigiana reggiana, najemno",
+        "½ stroužku česneku",
+        "Petržel a olivový olej podle potřeby",
+        "Sůl, černý pepř a špetka muškátového oříšku"
+      ],
+      "4": [
+        "320 g penne rigate",
+        "200 g vařené šunky prosciutto cotto",
+        "250 g tekuté smetany ke šlehání",
+        "50 g parmigiana reggiana, najemno",
+        "1 stroužek česneku",
+        "Petržel a olivový olej podle potřeby",
+        "Sůl, černý pepř a špetka muškátového oříšku"
+      ]
+    },
+    "steps": [
+      "Šunku nakrájej na kousky, nastrouhej parmigiano a nasekej petržel. Penne dej vařit do osolené vody podle obalu.",
+      "Na troše oleje jemně prohřej česnek, pak přidej šunku a krátce opeč. Česnek vyndej.",
+      "Přilij smetanu, přidej pepř a špetku muškátového oříšku. Nech na mírném ohni krátce zhoustnout; nesvař ji do sucha.",
+      "Před scezením penne odlož hrnek vody z vaření. Těstoviny al dente promíchej s omáčkou a podle potřeby přidej trochu této vody.",
+      "Odstav, vmíchej parmigiano a petržel. Ochutnej, případně dosol a ihned podávej."
+    ],
+    "cookingNote": "Varianta se šunkou podle videa GialloZafferano. Připravené suroviny si odškrtni."
   }
 ]
