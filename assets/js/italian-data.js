@@ -249,7 +249,34 @@
     en:{cafeTitle:'At a hotel',cafeTime:'At a hotel · A2 · about 7 minutes',cafeContext:'You arrive at a hotel for two nights. Arrange your stay and departure at reception. Breakfast and checkout times are examples from this dialogue only.',ruleText:'A nome… = under the name… Per due notti = for two nights. La colazione è inclusa? = Is breakfast included? Dalle sette alle dieci = from seven until ten. Entro le undici = by eleven. Mi serve… = I need…',completed:'Without hints, give a reservation for two nights, ask about breakfast and the checkout time.',practiceCafe:'Practise speaking at a hotel',barista:'Receptionist',customer:'Guest'},
     it:{cafeTitle:'In hotel',cafeTime:'In hotel · A2 · circa 7 minuti',cafeContext:'Arrivi per due notti. Gli orari del dialogo sono esempi.',ruleText:'A nome indica il nome della prenotazione. Per due notti indica la durata. Entro le undici indica un limite di orario.',completed:'Presenta la prenotazione e chiedi della colazione e della partenza.',practiceCafe:'Esercitati in hotel',barista:'Receptionist',customer:'Ospite'}
   };
+  const city=lessons.find(l=>l.id==='citta');
+  city.goal=t('Zeptám se na cestu, porozumím jednoduchým pokynům a ověřím si směr.','Ask for directions, understand simple instructions and confirm the route.','Chiedere indicazioni, capire istruzioni semplici e verificare il percorso.');
+  city.dialogue=[
+    ['Mi scusi, dov’è la stazione?','Promiňte, kde je nádraží?','Excuse me, where is the station?'],
+    ['Vada sempre dritto fino al semaforo.','Jděte pořád rovně až k semaforu.','Go straight ahead until the traffic light.'],
+    ['E poi?','A potom?','And then?'],
+    ['Al semaforo giri a destra. La stazione è sulla sinistra.','U semaforu odbočte vpravo. Nádraží je po levé straně.','At the traffic light, turn right. The station is on the left.'],
+    ['È lontana?','Je daleko?','Is it far away?'],
+    ['No, sono circa dieci minuti a piedi.','Ne, je to asi deset minut pěšky.','No, it is about ten minutes on foot.'],
+    ['Mi scusi, può ripetere più lentamente?','Promiňte, můžete to zopakovat pomaleji?','Excuse me, could you repeat that more slowly?'],
+    ['Certo. Sempre dritto, poi a destra al semaforo.','Jistě. Pořád rovně, potom u semaforu doprava.','Of course. Straight ahead, then right at the traffic light.'],
+    ['Quindi, dritto e poi a destra. Grazie mille!','Takže rovně a potom doprava. Moc děkuji!','So, straight ahead and then right. Thank you very much!'],
+    ['Esatto. Prego, buona giornata!','Přesně tak. Není zač, hezký den!','Exactly. You are welcome, have a nice day!']
+  ].map((row,i)=>({id:'citta-'+String(i+1).padStart(2,'0'),role:i%2?'barista':'customer',it:row[0],translation:t(row[1],row[2],row[0])}));
+  city.guide={
+    cs:{cafeTitle:'Orientace ve městě',cafeTime:'Orientace ve městě · A1 · asi 6 minut',cafeContext:'Vycházíš z hotelu a hledáš nádraží. Zeptej se kolemjdoucího a zopakuj si cestu. Trasa a čas jsou modelový příklad.',ruleText:'Mi scusi = promiňte při zdvořilém oslovení. Dov’è…? = kde je…? Sempre dritto = pořád rovně. Giri a destra = odbočte vpravo; sulla sinistra = po levé straně. A piedi = pěšky. Può ripetere? = Můžete to zopakovat?',completed:'Bez nápovědy se zeptej na nádraží, požádej o pomalejší zopakování a potvrď směr cesty.',practiceCafe:'Procvičit cestu po městě',barista:'Kolemjdoucí',customer:'Cestovatel'},
+    en:{cafeTitle:'Finding your way',cafeTime:'Finding your way · A1 · about 6 minutes',cafeContext:'You leave your hotel and look for the station. Ask a passer-by and repeat the route. The route and travel time are examples.',ruleText:'Mi scusi = excuse me, politely. Dov’è…? = where is…? Sempre dritto = straight ahead. Giri a destra = turn right; sulla sinistra = on the left. A piedi = on foot. Può ripetere? = Could you repeat that?',completed:'Without hints, ask for the station, ask for slower repetition and confirm the directions.',practiceCafe:'Practise directions',barista:'Passer-by',customer:'Traveller'},
+    it:{cafeTitle:'Orientarsi in città',cafeTime:'In città · A1 · circa 6 minuti',cafeContext:'Cerchi la stazione. Il percorso e il tempo sono esempi.',ruleText:'Mi scusi è una formula cortese. Dritto indica di proseguire senza svoltare. A piedi significa camminando.',completed:'Chiedi la strada e conferma il percorso.',practiceCafe:'Esercitati con le indicazioni',barista:'Passante',customer:'Viaggiatore'}
+  };
+  city.questions.push(
+    grammar('citta-polite','Mi ___, dov’è la stazione? (Lei)',['scusi'],['scusi','scusa','scusate','scusiamo'],'Mi scusi je zdvořilé oslovení jedné osoby.','Mi scusi is a polite way to address one person.','Mi scusi si usa con Lei.'),
+    grammar('citta-right','Giri a ___. (vpravo / right)',['destra'],['destra','sinistra','piedi','stazione'],'A destra znamená doprava.','A destra means to the right.','A destra indica la direzione.'),
+    grammar('citta-walk','Sono dieci minuti a ___. (pěšky / on foot)',['piedi'],['piedi','piede','destra','treno'],'A piedi je ustálené spojení pro pěšky.','A piedi is the expression for on foot.','A piedi significa camminando.'),
+    grammar('citta-repeat','Può ___ più lentamente? (ripetere)',['ripetere'],['ripetere','ripete','ripeto','ripetuto'],'Po può následuje infinitiv: ripetere.','Può is followed by an infinitive: ripetere.','Dopo può si usa l’infinito: ripetere.')
+  );
   const audioFiles = {};
+  for(const w of city.words){audioFiles[w.italian]='citta-'+w.id+'-word.mp3';audioFiles[w.example]='citta-'+w.id+'-example.mp3';}
+  for(const line of city.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for(const w of hotel.words){audioFiles[w.italian]='hotel-'+w.id+'-word.mp3';audioFiles[w.example]='hotel-'+w.id+'-example.mp3';}
   for(const line of hotel.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for(const w of restaurant.words){audioFiles[w.italian]='ristorante-'+w.id+'-word.mp3';audioFiles[w.example]='ristorante-'+w.id+'-example.mp3';}
