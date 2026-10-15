@@ -46,7 +46,23 @@
         explanation:w.example};
     }));
   }
-  function emptyProgress() { return {version:1,favorites:[],mistakes:{},mistakeKinds:{},results:[],lessonResults:{}}; }
+  function emptyProgress() { return {version:1,favorites:[],mistakes:{},mistakeKinds:{},results:[],lessonResults:{},schedule:{}}; }
+  const reviewDays=[1,3,7,14,30], dayMs=86400000;
+  function recordSchedule(progress, changes, date) {
+    const now=Date.parse(date);
+    progress.schedule=progress.schedule||{};
+    for(const item of changes){
+      const key=item.kind+':'+item.id, old=progress.schedule[key];
+      // Early repetitions must not inflate the interval.
+      if(item.correct&&old&&now<Date.parse(old.due))continue;
+      const step=item.correct?Math.min((old?.step||0)+1,reviewDays.length):0;
+      progress.schedule[key]={id:item.id,kind:item.kind,step,last:new Date(now).toISOString(),due:new Date(now+reviewDays[Math.max(0,step-1)]*dayMs).toISOString()};
+    }
+  }
+  function scheduledQuestions(lessons, progress, lang, date=new Date().toISOString()) {
+    const pools=Object.fromEntries(['choice','write','listen','picture','grammar'].map(kind=>[kind,questions(lessons,kind,lang)]));
+    return Object.values(progress.schedule||{}).filter(r=>Date.parse(r.due)<=Date.parse(date)).sort((a,b)=>Date.parse(a.due)-Date.parse(b.due)).map(r=>pools[r.kind]?.find(q=>q.id===r.id)).filter(Boolean);
+  }
   function recordLessonResults(progress, session, date) {
     const grouped={};
     session.questions.forEach((q,i)=>{
@@ -78,6 +94,10 @@
       const r=value.lessonResults?.[lesson.id];
       if(r&&Number.isInteger(r.total)&&r.total>0&&r.total<=100&&Number.isInteger(r.correct)&&r.correct>=0&&r.correct<=r.total&&typeof r.date==='string'&&Number.isFinite(Date.parse(r.date))&&['practice','exam'].includes(r.type))result.lessonResults[lesson.id]={date:new Date(r.date).toISOString(),total:r.total,correct:r.correct,type:r.type};
     }
+    for(const kind of ['choice','write','listen','picture','grammar'])for(const q of questions(data.lessons,kind,'cs')){
+      const key=kind+':'+q.id,r=value.schedule?.[key];
+      if(r&&r.id===q.id&&r.kind===kind&&Number.isInteger(r.step)&&r.step>=0&&r.step<=reviewDays.length&&typeof r.last==='string'&&typeof r.due==='string'&&Number.isFinite(Date.parse(r.last))&&Number.isFinite(Date.parse(r.due))&&Date.parse(r.due)>Date.parse(r.last))result.schedule[key]={id:q.id,kind,step:r.step,last:new Date(r.last).toISOString(),due:new Date(r.due).toISOString()};
+    }
     return result;
   }
   function reviewQuestions(lessons, progress, lang) {
@@ -102,7 +122,7 @@
     return {questions:restored,index:raw.index,answered,correct:changes.filter(c=>c.correct).length,
       played:false,type:raw.type,level:raw.level,changes,answer:typeof raw.answer==='string'?raw.answer.slice(0,500):''};
   }
-  const api = {normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults};
+  const api = {normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults,recordSchedule,scheduledQuestions};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.ItalianCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -348,3 +348,45 @@ test('legacy and invalid lesson results never invent per-lesson history',()=>{
   p.lessonResults={hotel:{total:1,correct:2,date:'bad',type:'practice'},unknown:{total:1,correct:1,date:'2026-10-15',type:'exam'}};
   assert.deepEqual(C.validateProgress(p,D).lessonResults,{});
 });
+
+test('spaced review grows only when due, caps at 30 days and resets after a mistake',()=>{
+  const p=C.emptyProgress(),q=C.questions(D.lessons,'write','cs')[0];
+  const answer={id:q.id,kind:q.kind,correct:true},key=q.kind+':'+q.id;
+  let now='2026-01-01T12:00:00.000Z';
+  for(const days of [1,3,7,14,30,30]){
+    C.recordSchedule(p,[answer],now);
+    assert.equal(Date.parse(p.schedule[key].due)-Date.parse(now),days*86400000);
+    const saved=JSON.stringify(p.schedule);
+    C.recordSchedule(p,[answer],now);assert.equal(JSON.stringify(p.schedule),saved);
+    assert.equal(C.scheduledQuestions(D.lessons,p,'cs',now).length,0);
+    now=p.schedule[key].due;
+    assert.equal(C.scheduledQuestions(D.lessons,p,'cs',now).length,1);
+  }
+  C.recordSchedule(p,[{...answer,correct:false}],now);
+  assert.equal(p.schedule[key].step,0);
+  assert.equal(Date.parse(p.schedule[key].due)-Date.parse(now),86400000);
+});
+
+test('schedule migrates old progress, survives export and rejects unknown or invalid entries',()=>{
+  const p=C.emptyProgress();delete p.schedule;
+  assert.deepEqual(C.validateProgress(p,D).schedule,{});
+  const q=C.questions(D.lessons,'grammar','cs')[0];
+  C.recordSchedule(p,[{id:q.id,kind:q.kind,correct:true}],'2026-01-01T00:00:00Z');
+  const expected=JSON.parse(JSON.stringify(p.schedule));
+  p.schedule.bad={id:'unknown',kind:'write',step:1,last:'bad',due:'bad'};
+  assert.deepEqual(C.validateProgress(p,D).schedule,expected);
+  p.schedule['grammar:'+q.id].step=99;
+  assert.deepEqual(C.validateProgress(p,D).schedule,{});
+});
+
+test('all 12 lessons retain each scheduled question mode and oldest due order',()=>{
+  const p=C.emptyProgress();let count=0;
+  for(const l of D.lessons)for(const kind of ['choice','write','listen','picture','grammar']){
+    const q=C.questions([l],kind,'cs')[0];if(!q)continue;
+    C.recordSchedule(p,[{id:q.id,kind:q.kind,correct:true}],new Date(Date.UTC(2026,0,1,count++)).toISOString());
+  }
+  const restored=C.validateProgress(p,D),due=C.scheduledQuestions(D.lessons,restored,'en','2026-02-01T00:00:00Z');
+  assert.equal(due.length,count);
+  assert.equal(new Set(due.map(q=>q.lessonId)).size,12);
+  for(let i=1;i<due.length;i++)assert.ok(Date.parse(restored.schedule[due[i-1].kind+':'+due[i-1].id].due)<=Date.parse(restored.schedule[due[i].kind+':'+due[i].id].due));
+});

@@ -110,9 +110,13 @@
       it:{intro:'Scegli una breve attività. Cinque minuti sono indicativi: procedi al tuo ritmo.',test:'Continua la prova in corso',question:'Domanda',last:'Torna all’ultima lezione',review:'Ripassa fino a 5 errori',count:'Elementi da ripassare',replace:'Il ripasso sostituisce la prova in corso solo dopo la conferma.',first:'Inizia la prima lezione',browse:'Scegli un’altra lezione'}
     }[lang];
     const last=D.lessons.find(l=>l.id===lastLesson),mistakes=C.reviewQuestions(D.lessons,progress,lang);
+    const due=C.scheduledQuestions(D.lessons,progress,lang);
+    const upcoming=Object.values(progress.schedule||{}).filter(r=>Date.parse(r.due)>Date.now()).sort((a,b)=>Date.parse(a.due)-Date.parse(b.due))[0];
+    const spaced=lang==='cs'?{title:'Opakování po několika dnech',count:'Dnes na řadě',go:'Zopakovat až 5 otázek',info:'Správné odpovědi se vracejí za 1, 3, 7, 14 a 30 dní. Po chybě znovu za den. Plán se uloží po dokončení cvičení, pouze v tomto prohlížeči.',next:'Další opakování',empty:'Dokonči cvičení a otázky se zařadí do plánu opakování.'}:{title:'Spaced review',count:'Due now',go:'Review up to 5 questions',info:'Correct answers return after 1, 3, 7, 14 and 30 days. After a mistake, review again in one day. The schedule is saved when you finish an exercise, in this browser only.',next:'Next review',empty:'Finish an exercise to add its questions to your review schedule.'};
     let choices='';
     if(pausedSession)choices+='<article class="it-card"><h3>'+t.test+'</h3><p>'+t.question+' '+(pausedSession.index+1)+' / '+pausedSession.questions.length+'</p>'+button('resume',T.resume,'class="it-primary"')+'</article>';
     else if(last)choices+='<article class="it-card"><h3>'+t.last+'</h3><p>'+esc(last.title[lang])+'</p>'+button('resume',T.resume,'class="it-primary"')+'</article>';
+    choices+='<article class="it-card it-spaced"><h3>'+spaced.title+'</h3><p>'+spaced.count+': <strong>'+due.length+'</strong></p><p>'+spaced.info+'</p>'+(due.length?button('quick-spaced',spaced.go,'class="it-primary"')+(pausedSession?'<p>'+t.replace+'</p>':''):'<p>'+(upcoming?spaced.next+': '+esc(new Date(upcoming.due).toLocaleString(lang)):spaced.empty)+'</p>')+'</article>';
     if(mistakes.length)choices+='<article class="it-card"><h3>'+t.review+'</h3><p>'+t.count+': '+mistakes.length+'</p><p>'+T.reviewMixed+'</p>'+(pausedSession?'<p class="it-muted">'+t.replace+'</p>':'')+button('quick-review',T.retry,'class="it-primary"')+'</article>';
     if(!last&&!pausedSession&&!mistakes.length){const first=D.lessons[0];choices+='<article class="it-card"><h3>'+t.first+'</h3><p>'+esc(first.title[lang])+'</p>'+button('lesson',T.open,'data-lesson="'+first.id+'" class="it-primary"')+'</article>';}
     el('it-view').innerHTML='<section class="it-panel it-quick"><h2 id="it-focus" tabindex="-1">'+T.quick+'</h2><p>'+t.intro+'</p><div class="it-lessons">'+choices+'</div>'+button('tab',t.browse,'data-tab="lessons"')+'</section>';
@@ -263,6 +267,7 @@
   function finish() {
     const s=session;
     C.recordLessonResults(progress,s,new Date().toISOString());
+    C.recordSchedule(progress,s.changes,new Date().toISOString());
     for(const item of s.changes) {
       if(item.correct){delete progress.mistakes[item.id];delete progress.mistakeKinds[item.id];}
       else {progress.mistakes[item.id]=(progress.mistakes[item.id]||0)+1;progress.mistakeKinds[item.id]=item.kind;}
@@ -374,6 +379,14 @@
     if(action==='dialogue-play'){playDialogue();return;}
     if(action==='text-cards'){picturesOnly=false;cardIndex=0;renderCards();return;}
     if(action==='quick'){stopAudio();if(session)pausedSession=session;session=null;active='quick';openedLesson=null;saveDraft();render();return;}
+    if(action==='quick-spaced'){
+      if(pausedSession&&!window.confirm(T.newAttempt))return;
+      const pool=C.scheduledQuestions(D.lessons,progress,lang).slice(0,5);
+      if(!pool.length){renderQuick();return;}
+      stopAudio();currentLevel='all';currentLesson='all';reviewOnly=false;active='practice';
+      session={questions:pool,index:0,correct:0,answered:false,played:false,type:'practice',level:'all',changes:[]};
+      pausedSession=null;openedLesson=null;saveDraft();render();return;
+    }
     if(action==='quick-review'){
       currentLevel='all';currentLesson='all';reviewOnly=true;active='practice';
       if(!start(false,5))active='quick';return;
