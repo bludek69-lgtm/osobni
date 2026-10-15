@@ -3,10 +3,10 @@ const assert = require('node:assert/strict');
 const D = require('./assets/js/italian-data.js');
 const C = require('./assets/js/italian-core.js');
 
-test('12 lessons, 84 vocabulary items, 68 grammar questions, four levels', () => {
+test('12 lessons, 84 vocabulary items, 72 grammar questions, four levels', () => {
   assert.equal(D.lessons.length,12);
   assert.equal(D.lessons.flatMap(l=>l.words).length,84);
-  assert.equal(D.lessons.flatMap(l=>l.questions).length,68);
+  assert.equal(D.lessons.flatMap(l=>l.questions).length,72);
   for (const level of ['A1','A2','B1','B2']) assert.equal(D.lessons.filter(l=>l.level===level).length,3);
 });
 test('stable unique identifiers and complete localized content', () => {
@@ -30,7 +30,7 @@ test('grading preserves meaningful Italian accents and missing articles',()=>{
 });
 for(const lang of ['cs','en','it'])for(const mode of ['choice','write','listen','grammar'])test(lang+' / '+mode+' produces valid questions',()=>{
   const qs=C.questions(D.lessons,mode,lang);
-  assert.equal(qs.length,mode==='grammar'?68:84);
+  assert.equal(qs.length,mode==='grammar'?72:84);
   assert.equal(new Set(qs.map(q=>q.id)).size,qs.length);
   for(const q of qs) {
     assert.ok(C.grade(q.answers[0],q.answers));
@@ -162,6 +162,23 @@ test('city directions lesson has translated dialogue and audio without a Freya v
     assert.ok(D.audioFiles[text]);assert.ok(fs.statSync(__dirname+'/assets/audio/italian/'+D.audioFiles[text]).size>1000);
   }
   assert.equal(C.reviewQuestions([l],{mistakes:{'citta-repeat':1},mistakeKinds:{}},'cs')[0].answers[0],'ripetere');
+});
+
+test('formal lesson preserves progress, distinguishes polite objects and completes audio across all lessons',()=>{
+  const fs=require('node:fs'),l=D.lessons.find(l=>l.id==='registro');
+  assert.equal(l.level,'B2');assert.equal(l.words.length,6);assert.equal(l.questions.length,6);
+  assert.equal(l.dialogue.length,12);assert.equal(l.video,undefined);
+  assert.ok(l.questions.some(q=>q.id==='formale'));assert.ok(l.questions.some(q=>q.id==='passivo'));
+  assert.equal(new Set(l.dialogue.map(x=>x.id)).size,12);
+  for(const lesson of D.lessons){
+    assert.ok(lesson.dialogue.length>0);
+    for(const row of lesson.dialogue)assert.ok(row.translation.cs&&row.translation.en);
+    for(const text of [...lesson.dialogue.map(x=>x.it),...lesson.words.flatMap(w=>[w.italian,w.example])]){
+      assert.ok(D.audioFiles[text]);assert.ok(fs.statSync(__dirname+'/assets/audio/italian/'+D.audioFiles[text]).size>1000);
+    }
+  }
+  const q=C.reviewQuestions([l],{mistakes:{'registro-indirect':1},mistakeKinds:{}},'cs')[0];
+  assert.equal(q.answers[0],'Le');assert.equal(q.kind,'grammar');
 });
 
 test('conditions lesson preserves progress and provides hypothetical and real conditions with audio',()=>{
