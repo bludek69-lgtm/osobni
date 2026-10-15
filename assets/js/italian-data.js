@@ -2213,6 +2213,115 @@
       {id:'alternative',title:{cs:'Zjistit náhradní program',en:'Ask what they did instead'},lines:[pastBranchRows[3],pastBranchRows[4]]}
     ]},pastBranchRows[2],pastBranchRows[5],pastBranchRows[6]
   ]});
+  const storyBranchRows=[
+  {
+    "id": "racconto-branch-1",
+    "role": "barista",
+    "it": "Ieri siamo arrivati in ritardo al museo.",
+    "translation": {
+      "cs": "Včera jsme přijeli do muzea pozdě.",
+      "en": "Yesterday we arrived late at the museum.",
+      "it": "Ieri siamo arrivati in ritardo al museo."
+    },
+    "situation": {
+      "cs": "Vyprávěj, že jste včera přijeli do muzea pozdě.",
+      "en": "Say that you arrived late at the museum yesterday."
+    }
+  },
+  {
+    "id": "racconto-branch-2",
+    "role": "customer",
+    "it": "Perché siete arrivati in ritardo?",
+    "translation": {
+      "cs": "Proč jste přijeli pozdě?",
+      "en": "Why did you arrive late?",
+      "it": "Perché siete arrivati in ritardo?"
+    },
+    "situation": {
+      "cs": "Zajímá tě příčina pozdního příjezdu. Zeptej se, proč se zpozdili.",
+      "en": "You want to know the cause of the late arrival. Ask why they were delayed."
+    }
+  },
+  {
+    "id": "racconto-branch-3",
+    "role": "barista",
+    "it": "Il treno era in ritardo perché pioveva forte.",
+    "translation": {
+      "cs": "Vlak měl zpoždění, protože silně pršelo.",
+      "en": "The train was delayed because it was raining heavily.",
+      "it": "Il treno era in ritardo perché pioveva forte."
+    },
+    "situation": {
+      "cs": "Vysvětli příčinu: vlak měl zpoždění kvůli silnému dešti.",
+      "en": "Explain the cause: the train was delayed because of heavy rain."
+    }
+  },
+  {
+    "id": "racconto-branch-4",
+    "role": "customer",
+    "it": "E quali conseguenze ha avuto il ritardo?",
+    "translation": {
+      "cs": "A jaké následky mělo to zpoždění?",
+      "en": "And what consequences did the delay have?",
+      "it": "E quali conseguenze ha avuto il ritardo?"
+    },
+    "situation": {
+      "cs": "Zajímá tě následek pozdního příjezdu. Zeptej se, jak zpoždění ovlivnilo program.",
+      "en": "You want to know the effect of arriving late. Ask how the delay affected their plans."
+    }
+  },
+  {
+    "id": "racconto-branch-5",
+    "role": "barista",
+    "it": "Abbiamo perso la visita guidata, quindi abbiamo cambiato programma.",
+    "translation": {
+      "cs": "Zmeškali jsme komentovanou prohlídku, a tak jsme změnili program.",
+      "en": "We missed the guided tour, so we changed our plans.",
+      "it": "Abbiamo perso la visita guidata, quindi abbiamo cambiato programma."
+    },
+    "situation": {
+      "cs": "Popiš následek: zmeškali jste komentovanou prohlídku, a proto změnili program.",
+      "en": "Describe the consequence: you missed the guided tour, so you changed your plans."
+    }
+  },
+  {
+    "id": "racconto-branch-6",
+    "role": "customer",
+    "it": "Siete riusciti a visitare il museo lo stesso?",
+    "translation": {
+      "cs": "Podařilo se vám přesto navštívit muzeum?",
+      "en": "Did you still manage to visit the museum?",
+      "it": "Siete riusciti a visitare il museo lo stesso?"
+    },
+    "situation": {
+      "cs": "Zjisti, zda se i přes zpoždění podařilo muzeum navštívit.",
+      "en": "Ask whether they managed to visit the museum despite the delay."
+    }
+  },
+  {
+    "id": "racconto-branch-7",
+    "role": "barista",
+    "it": "Sì, abbiamo visitato il museo da soli. Anche senza guida, la visita è stata interessante.",
+    "translation": {
+      "cs": "Ano, prohlédli jsme si muzeum sami. I bez průvodce byla návštěva zajímavá.",
+      "en": "Yes, we visited the museum on our own. Even without a guide, the visit was interesting.",
+      "it": "Sì, abbiamo visitato il museo da soli. Anche senza guida, la visita è stata interessante."
+    },
+    "situation": {
+      "cs": "Uzavři příběh: muzeum jste si prošli sami a návštěva byla zajímavá i bez průvodce.",
+      "en": "Conclude the story: you explored the museum on your own and enjoyed the visit without a guide."
+    }
+  }
+];
+  for(const line of storyBranchRows)audioFiles[line.it]=line.id+'.mp3';
+  const storyBranchLesson=lessons.find(l=>l.id==='racconto');
+  storyBranchLesson.dialogueVariants.push({id:'racconto-v2',title:{cs:'Příčina a následek · dvě cesty',en:'Cause and consequence · two paths'},lines:[
+    storyBranchLesson.dialogue[0],storyBranchRows[0],
+    {...storyBranchRows[1],branchTitle:{cs:'Přijeli pozdě. Co chceš zjistit?',en:'They arrived late. What do you want to know?'},branches:[
+      {id:'cause',title:{cs:'Zjistit příčinu',en:'Ask about the cause'},lines:[storyBranchRows[1],storyBranchRows[2]]},
+      {id:'effect',title:{cs:'Zjistit následek',en:'Ask about the consequence'},lines:[storyBranchRows[3],storyBranchRows[4]]}
+    ]},storyBranchRows[2],storyBranchRows[5],storyBranchRows[6]
+  ]});
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;
