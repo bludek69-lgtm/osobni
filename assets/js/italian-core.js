@@ -46,7 +46,16 @@
         explanation:w.example};
     }));
   }
-  function emptyProgress() { return {version:1,favorites:[],mistakes:{},mistakeKinds:{},results:[]}; }
+  function emptyProgress() { return {version:1,favorites:[],mistakes:{},mistakeKinds:{},results:[],lessonResults:{}}; }
+  function recordLessonResults(progress, session, date) {
+    const grouped={};
+    session.questions.forEach((q,i)=>{
+      if(!q.lessonId)return;
+      const r=grouped[q.lessonId]||(grouped[q.lessonId]={date,total:0,correct:0,type:session.type});
+      r.total++;r.correct+=Number(session.changes[i]?.correct===true);
+    });
+    progress.lessonResults={...progress.lessonResults,...grouped};
+  }
   function validateProgress(value, data) {
     if (!value || value.version !== 1 || !Array.isArray(value.favorites) || !Array.isArray(value.results) ||
       !value.mistakes || typeof value.mistakes !== 'object' || Array.isArray(value.mistakes)) throw new Error('Invalid progress');
@@ -65,6 +74,10 @@
         !['practice','exam'].includes(r.type) || !['A1','A2','B1','B2','all'].includes(r.level)) throw new Error('Invalid result');
       return {total:r.total,correct:r.correct,date:new Date(r.date).toISOString(),type:r.type,level:r.level};
     });
+    for(const lesson of data.lessons){
+      const r=value.lessonResults?.[lesson.id];
+      if(r&&Number.isInteger(r.total)&&r.total>0&&r.total<=100&&Number.isInteger(r.correct)&&r.correct>=0&&r.correct<=r.total&&typeof r.date==='string'&&Number.isFinite(Date.parse(r.date))&&['practice','exam'].includes(r.type))result.lessonResults[lesson.id]={date:new Date(r.date).toISOString(),total:r.total,correct:r.correct,type:r.type};
+    }
     return result;
   }
   function reviewQuestions(lessons, progress, lang) {
@@ -89,7 +102,7 @@
     return {questions:restored,index:raw.index,answered,correct:changes.filter(c=>c.correct).length,
       played:false,type:raw.type,level:raw.level,changes,answer:typeof raw.answer==='string'?raw.answer.slice(0,500):''};
   }
-  const api = {normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession};
+  const api = {normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.ItalianCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);

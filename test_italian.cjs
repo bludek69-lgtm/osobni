@@ -333,3 +333,18 @@ test('writing feedback covers every word in all twelve lessons without changing 
 });
 
 test('menu accepts both standard spellings in writing',()=>{const q=C.questions(D.lessons,'write','cs').find(q=>q.id==='menu');assert.ok(C.grade('il menu',q.answers));assert.ok(C.grade('il menù',q.answers));});
+
+test('per-lesson results split mixed sessions and survive export/import',()=>{
+  const p=C.emptyProgress(),qs=D.lessons.map(l=>C.questions([l],'grammar','cs')[0]);
+  C.recordLessonResults(p,{questions:qs,changes:qs.map((q,i)=>({correct:i%2===0})),type:'exam'},'2026-10-15T12:00:00Z');
+  const restored=C.validateProgress(JSON.parse(JSON.stringify(p)),D);
+  assert.equal(Object.keys(restored.lessonResults).length,12);
+  qs.forEach((q,i)=>assert.deepEqual(restored.lessonResults[q.lessonId],{total:1,correct:Number(i%2===0),date:'2026-10-15T12:00:00.000Z',type:'exam'}));
+  C.recordLessonResults(restored,{questions:[qs[0]],changes:[{correct:false}],type:'practice'},'2026-10-16T12:00:00Z');
+  assert.equal(restored.lessonResults.saluti.correct,0);assert.equal(restored.lessonResults.bar.type,'exam');
+});
+test('legacy and invalid lesson results never invent per-lesson history',()=>{
+  const p=C.emptyProgress();delete p.lessonResults;assert.deepEqual(C.validateProgress(p,D).lessonResults,{});
+  p.lessonResults={hotel:{total:1,correct:2,date:'bad',type:'practice'},unknown:{total:1,correct:1,date:'2026-10-15',type:'exam'}};
+  assert.deepEqual(C.validateProgress(p,D).lessonResults,{});
+});

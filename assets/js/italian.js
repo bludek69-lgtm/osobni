@@ -118,6 +118,12 @@
     el('it-view').innerHTML='<section class="it-panel it-quick"><h2 id="it-focus" tabindex="-1">'+T.quick+'</h2><p>'+t.intro+'</p><div class="it-lessons">'+choices+'</div>'+button('tab',t.browse,'data-tab="lessons"')+'</section>';
     el('it-focus').focus();
   }
+  function lessonProgress(l) {
+    const t=lang==='cs'?{last:'Poslední výsledek',none:'Zatím bez výsledku přiřazeného k této lekci.',part:'otázky z této lekce',review:'Doporučení – zopakuj',clear:'Bez uložených chyb. Zkus dialog v jedné roli nebo další typ cvičení.',start:'Začni poslechem dialogu a krátkým procvičováním.',button:'Zopakovat chyby této lekce'}:{last:'Latest result',none:'No result recorded for this lesson yet.',part:'questions from this lesson',review:'Recommended review',clear:'No saved mistakes. Try a dialogue role or another exercise type.',start:'Start with the dialogue and a short practice.',button:'Review this lesson’s mistakes'};
+    const r=progress.lessonResults?.[l.id],mistakes=C.reviewQuestions([l],progress,lang);
+    const kinds=[...new Set(mistakes.map(q=>q.kind))].map(kind=>T[kind]);
+    return '<div class="it-lesson-progress"><p><strong>'+t.last+':</strong> '+(r?r.correct+' / '+r.total+' ('+Math.round(r.correct/r.total*100)+' %) · '+esc(new Date(r.date).toLocaleDateString(lang))+'<br><span class="it-muted">'+T[r.type]+' · '+t.part+'</span>':t.none)+'</p><p>'+(mistakes.length?t.review+': '+esc(kinds.join(', '))+' ('+mistakes.length+').':r?t.clear:t.start)+'</p>'+(mistakes.length?button('lesson-review',t.button,'data-lesson="'+l.id+'"'):'')+'</div>';
+  }
   function render() {
     renderShell();
     const view=el('it-view');
@@ -125,7 +131,7 @@
     if(active==='quick'){renderQuick();return;}
     if(active==='lessons'&&openedLesson){showLesson(openedLesson);return;}
     if (active==='lessons') {
-      view.innerHTML='<div class="it-toolbar">'+levelSelect()+'</div><div class="it-lessons">'+D.lessons.filter(l=>currentLevel==='all'||l.level===currentLevel).map(l=>'<article class="it-card"><img class="it-lesson-thumb" src="'+esc(lessonPictureDirectory+D.lessonIllustrations[l.id].file)+'" alt="" width="1200" height="800" loading="lazy" decoding="async"><span class="it-level">'+l.level+'</span><h2>'+esc(l.title[lang])+'</h2><p>'+esc(l.note[lang])+'</p>'+button('lesson',T.open,'data-lesson="'+l.id+'"')+'</article>').join('')+'</div>';
+      view.innerHTML='<div class="it-toolbar">'+levelSelect()+'</div><div class="it-lessons">'+D.lessons.filter(l=>currentLevel==='all'||l.level===currentLevel).map(l=>'<article class="it-card"><img class="it-lesson-thumb" src="'+esc(lessonPictureDirectory+D.lessonIllustrations[l.id].file)+'" alt="" width="1200" height="800" loading="lazy" decoding="async"><span class="it-level">'+l.level+'</span><h2>'+esc(l.title[lang])+'</h2><p>'+esc(l.note[lang])+'</p>'+lessonProgress(l)+button('lesson',T.open,'data-lesson="'+l.id+'"')+'</article>').join('')+'</div>';
     } else if (active==='cards') {
       renderCards();
     } else if (active==='dictionary') {
@@ -184,7 +190,7 @@
     };
     const lessonCopy=l.guide?{...T,...l.guide[lang]}:id==='ristorante'?{...T,...restaurantCopy[lang]}:T;
     const dialogue=isGuided?'<div class="it-cafe-intro"><div><p class="it-eyebrow">'+lessonCopy.cafeTime+'</p><h3>'+T.goal+'</h3><p>'+esc(l.goal[lang])+'</p><p>'+lessonCopy.cafeContext+'</p></div><img src="'+esc(lessonPictureDirectory+D.lessonIllustrations[id].file)+'" alt="" width="1200" height="800" decoding="async"></div><h3>'+T.dialogue+'</h3><div class="it-toolbar">'+button('dialogue-play','▶ '+T.playAll,'class="it-primary"')+button('audio-stop',T.stopAudio)+'</div><p class="it-muted">'+T.audioCredit+'</p><ol class="it-dialogue">'+l.dialogue.map(line=>'<li id="'+line.id+'" class="it-dialogue-line '+line.role+'"><span class="it-role">'+lessonCopy[line.role]+'</span><p lang="it">'+esc(line.it)+'</p>'+audio(line.it,T.lineAudio)+'<details><summary>'+T.translation+'</summary><p>'+esc(line.translation[lang])+'</p></details></li>').join('')+'</ol>':'';
-    el('it-view').innerHTML='<section class="it-panel">'+button('back',T.back)+'<span class="it-level">'+l.level+'</span><h2 tabindex="-1" id="it-focus">'+esc(isGuided?lessonCopy.cafeTitle:l.title[lang])+'</h2>'+(isGuided?((id==='bar'||l.video)?freyaLessonVideo():'')+roleSetup(l,lessonCopy)+dialogue:'<p>'+esc(l.note[lang])+'</p>')+'<h3>'+(isGuided?T.vocabulary:T.study)+'</h3><div class="it-words">'+l.words.map(w=>'<article class="it-card"><div class="it-word-top">'+favorite(w)+'</div><h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian,T.wordAudio)+audio(w.example,T.sentenceAudio)+'</article>').join('')+'</div>'+(isGuided?'<h3>'+T.rules+'</h3><p class="it-rule">'+lessonCopy.ruleText+'</p><h3>'+T.tryIt+'</h3><p>'+lessonCopy.completed+'</p>'+button('lesson-practice',lessonCopy.practiceCafe,'data-mode="grammar" class="it-primary"'):'')+'<div class="it-toolbar">'+['choice','write','listen','grammar'].map(m=>button('lesson-practice',T[m],'data-mode="'+m+'"'+(m==='listen'&&!l.words.some(w=>canSpeak(w.italian))?' disabled':''))).join('')+'</div><p class="it-muted">'+T.savedDraft+'</p></section>';
+    el('it-view').innerHTML='<section class="it-panel">'+button('back',T.back)+'<span class="it-level">'+l.level+'</span><h2 tabindex="-1" id="it-focus">'+esc(isGuided?lessonCopy.cafeTitle:l.title[lang])+'</h2>'+lessonProgress(l)+(isGuided?((id==='bar'||l.video)?freyaLessonVideo():'')+roleSetup(l,lessonCopy)+dialogue:'<p>'+esc(l.note[lang])+'</p>')+'<h3>'+(isGuided?T.vocabulary:T.study)+'</h3><div class="it-words">'+l.words.map(w=>'<article class="it-card"><div class="it-word-top">'+favorite(w)+'</div><h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian,T.wordAudio)+audio(w.example,T.sentenceAudio)+'</article>').join('')+'</div>'+(isGuided?'<h3>'+T.rules+'</h3><p class="it-rule">'+lessonCopy.ruleText+'</p><h3>'+T.tryIt+'</h3><p>'+lessonCopy.completed+'</p>'+button('lesson-practice',lessonCopy.practiceCafe,'data-mode="grammar" class="it-primary"'):'')+'<div class="it-toolbar">'+['choice','write','listen','grammar'].map(m=>button('lesson-practice',T[m],'data-mode="'+m+'"'+(m==='listen'&&!l.words.some(w=>canSpeak(w.italian))?' disabled':''))).join('')+'</div><p class="it-muted">'+T.savedDraft+'</p></section>';
     updateAudioButtons();saveDraft();el('it-focus').focus();
   }
   function selectedLessons() {return D.lessons.filter(l=>(currentLevel==='all'||l.level===currentLevel)&&(currentLesson==='all'||l.id===currentLesson));}
@@ -256,6 +262,7 @@
   }
   function finish() {
     const s=session;
+    C.recordLessonResults(progress,s,new Date().toISOString());
     for(const item of s.changes) {
       if(item.correct){delete progress.mistakes[item.id];delete progress.mistakeKinds[item.id];}
       else {progress.mistakes[item.id]=(progress.mistakes[item.id]||0)+1;progress.mistakeKinds[item.id]=item.kind;}
@@ -370,6 +377,11 @@
     if(action==='quick-review'){
       currentLevel='all';currentLesson='all';reviewOnly=true;active='practice';
       if(!start(false,5))active='quick';return;
+    }
+    if(action==='lesson-review'){
+      stopAudio();const l=D.lessons.find(l=>l.id===b.dataset.lesson);if(!l)return;
+      currentLevel=l.level;currentLesson=l.id;reviewOnly=true;const previous=active;active='practice';
+      if(!start())active=previous;return;
     }
     if(action==='resume'){
       stopAudio();session=pausedSession;pausedSession=null;
