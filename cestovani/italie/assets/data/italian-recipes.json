@@ -7,7 +7,7 @@
     "city": "Roma",
     "dishConfidence": "HIGH",
     "photoType": "domácí verze",
-    "sourceName": "GialloZafferano + Accademia Italiana della Cucina",
+    "sourceName": "GialloZafferano",
     "sourceUrl": "https://ricette.giallozafferano.it/Spaghetti-alla-Carbonara.html",
     "ingredients": [
       "320 g špaget",
@@ -76,7 +76,7 @@
       "Sůl podle chuti"
     ],
     "methodShort": "Nakrájej guanciale na proužky, nastrouhej pecorino a rozmačkej loupaná rajčata. Připrav chilli; pro jemnější chuť odstraň semínka. Guanciale opeč v pánvi na středním plameni dozlatova. Podle potřeby přidej trochu olivového oleje. Přilij bílé víno a nech krátce odvařit. Guanciale vyndej stranou, tuk a šťávu nech v pánvi. Do pánve dej rajčata a chilli. Na mírném plameni vař asi 10–15 minut, až omáčka zhoustne. Osol podle chuti; sýr i guanciale jsou slané. Špagety uvař al dente podle obalu. Před scezením odlož hrnek vody z těstovin. Do omáčky vrať guanciale a vmíchej špagety. Odstav z plotny, přidej pecorino a promíchej. Podle potřeby přilévej vodu z těstovin po lžících. Podávej hned.",
-    "regionalNote": "STG specifikace registrovaná v EU 2020. Tradice z městečka Amatrice. BEZ česneku a cibule v původním receptu.",
+    "regionalNote": "Guanciale dodá omáčce chuť i tuk. Pancetta je náhrada, která chuť změní.",
     "personalNote": "Občas s pancettou jako náhrada — guanciale není v ČR snadno k sehnání.",
     "videoInspiration": "GialloZafferano",
     "videoUrl": "https://www.youtube.com/watch?v=JzOKhUhdVLU",
@@ -141,8 +141,8 @@
       "Sůl a černý pepř podle chuti"
     ],
     "methodShort": "Mrkev, celer a cibuli nakrájej nadrobno. Pancettu nasekej na malé kousky. Na oleji opeč pancettu, přidej zeleninu a nech ji na mírném ohni změknout. Přidej hovězí a dobře ho opeč; vařečkou rozbíjej hrudky. Přilij červené víno a nech ho odvařit. Vmíchej passatu a trochu horkého vývaru. Zvolna dus nejméně 2 hodiny, občas promíchej. Když ragù vysychá, přilij trochu vývaru. Na konci má být husté; dochuť solí a pepřem. Tagliatelle uvař v osolené vodě podle obalu. Před scezením odlož hrnek vody z těstovin. Promíchej tagliatelle s ragù. Je-li omáčka příliš hustá, přidej po lžících vodu z těstovin a hned podávej.",
-    "regionalNote": "TAGLIATELLE, NE spaghetti. „Spaghetti bolognese\" je britsko-americká adaptace, v Boloni se nepodávají.",
-    "personalNote": "Pravá italská bolognese — pomalé vaření, mléko + víno.",
+    "regionalNote": "Ragù lze podávat také s pappardelle. Tento postup používá sušené tagliatelle; čerstvé těstoviny mají jiné množství na porci i dobu vaření.",
+    "personalNote": "Domácí obměna s mlékem; postup na stránce sleduje video s červeným vínem a bez mléka.",
     "videoInspiration": "GialloZafferano",
     "videoUrl": "https://www.youtube.com/watch?v=_u7pj5FWX2E",
     "videoTitle": "RAGÙ ALLA BOLOGNESE - RICETTA ORIGINALE per lasagne e tagliatelle",
@@ -210,7 +210,7 @@
       "Sůl do vody podle chuti"
     ],
     "methodShort": "Bazalku jemně opláchni a důkladně osuš bez mačkání. Nastrouhej oba sýry a oloupej česnek. V hmoždíři utři česnek se solí, přidej bazalku a rozmělněné pinie. Postupně přimíchej sýry a olej. Při použití mixéru mixuj krátkými pulzy, aby se pesto nezahřálo. Gnocchi vař v osolené vodě podle obalu. Než je vyndáš, odlož trochu vody z vaření. Pesto dej do mísy a zřeď trochou vlažné vody z vaření. Vmíchej gnocchi a hned podávej. Pesto už nevař ani nesmaž.",
-    "regionalNote": "Pesto alla genovese = chráněný recept s 7 striktně danými surovinami. Tradičně připravováno v marble mortar (mletí, ne mixování).",
+    "regionalNote": "Pesto připravuj za studena. Při mixování používej krátké pulzy; tradičně se suroviny roztírají v hmoždíři.",
     "personalNote": "Doplnil jsem pancettou + parmigiano navíc — domácí variace.",
     "videoInspiration": "GialloZafferano",
     "videoUrl": "https://www.youtube.com/watch?v=eAaC5VDLJj4",
