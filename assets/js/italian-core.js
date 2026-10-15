@@ -3,16 +3,16 @@
   // One ephemeral take; injected browser APIs also allow lifecycle regression tests.
   function createAnswerRecorder(env, changed=()=>{}) {
     const state={status:'idle',url:'',error:''};
-    let generation=0,stream=null,recorder=null,timer=null;
+    let generation=0,stream=null,recorder=null,timer=null,stoppedAt=null;
     const notify=()=>changed(state);
     function release(){if(timer!==null)env.clearTimeout(timer);timer=null;stream?.getTracks().forEach(t=>t.stop());stream=null;}
     function reset(){
-      generation++;release();
+      generation++;release();stoppedAt=null;
       if(recorder){recorder.ondataavailable=null;recorder.onstop=null;recorder.onerror=null;if(recorder.state!=='inactive')recorder.stop();recorder=null;}
       if(state.url)env.URL.revokeObjectURL(state.url);
       Object.assign(state,{status:'idle',url:'',error:''});notify();
     }
-    function stop(){if(state.status!=='recording')return;state.status='stopping';notify();if(timer!==null)env.clearTimeout(timer);timer=null;recorder.stop();release();}
+    function stop(){if(state.status!=='recording')return;stoppedAt=env.performance?.now()??Date.now();state.status='stopping';notify();if(timer!==null)env.clearTimeout(timer);timer=null;recorder.stop();release();}
     async function start(){
       if(['pending','recording','stopping'].includes(state.status))return;
       reset();const token=generation;
@@ -24,13 +24,14 @@
         stream=acquired;
         const mime=['audio/webm;codecs=opus','audio/mp4','audio/webm'].find(m=>env.MediaRecorder.isTypeSupported?.(m));
         recorder=new env.MediaRecorder(stream,mime?{mimeType:mime}:undefined);
-        const current=recorder,chunks=[];
+        const current=recorder,chunks=[],started=env.performance?.now()??Date.now();
         current.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};
         current.onstop=()=>{
           if(token!==generation)return;
           release();recorder=null;
           const blob=new env.Blob(chunks,{type:current.mimeType||chunks[0]?.type||'audio/webm'});
-          if(blob.size){state.url=env.URL.createObjectURL(blob);state.status='ready';}
+          if((stoppedAt??env.performance?.now()??Date.now())-started<750){state.status='idle';state.error='short';}
+          else if(blob.size){state.url=env.URL.createObjectURL(blob);state.status='ready';}
           else {state.status='idle';state.error='empty';}
           notify();
         };

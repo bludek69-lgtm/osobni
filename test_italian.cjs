@@ -461,7 +461,8 @@ function recorderFixture(){
   start(){this.state='recording';}
   stop(){this.state='inactive';queueMicrotask(()=>{this.ondataavailable?.({data:new Blob(['audio'],{type:this.mimeType})});this.onstop?.();});}
  }
- const env={navigator:{mediaDevices:{getUserMedia:()=>new Promise((a,b)=>{resolve=a;reject=b;})}},MediaRecorder:Recorder,Blob,URL:{createObjectURL:()=> 'blob:test',revokeObjectURL:u=>revoked.push(u)},setTimeout:fn=>{timers.push(fn);return timers.length;},clearTimeout:()=>{}};
+ let clock=0;
+ const env={performance:{now:()=>clock+=1000},navigator:{mediaDevices:{getUserMedia:()=>new Promise((a,b)=>{resolve=a;reject=b;})}},MediaRecorder:Recorder,Blob,URL:{createObjectURL:()=> 'blob:test',revokeObjectURL:u=>revoked.push(u)},setTimeout:fn=>{timers.push(fn);return timers.length;},clearTimeout:()=>{}};
  return {env,stream,stopped,revoked,timers,allow:()=>resolve(stream),deny:()=>reject(Object.assign(new Error(),{name:'NotAllowedError'}))};
 }
 test('answer recording stops tracks, produces a local take and revokes it on reset',async()=>{
@@ -526,4 +527,12 @@ test('one-reply daily excerpts retain the changed situation in every variant',()
   assert.equal(lines.filter(line=>line.role==='customer').length,1,v.id);
   assert.ok(lines.some(line=>!l.dialogue.some(base=>base.it===line.it)),v.id);
  }
+});
+
+
+test('very short recordings release the microphone without offering an unplayable take',async()=>{
+ const f=recorderFixture();f.env.performance.now=()=>100;
+ const r=C.createAnswerRecorder(f.env),pending=r.start();f.allow();await pending;
+ r.stop();await Promise.resolve();
+ assert.equal(r.state.status,'idle');assert.equal(r.state.error,'short');assert.equal(r.state.url,'');assert.ok(f.stopped.length);
 });
