@@ -449,7 +449,7 @@ test('all dialogue variants keep roles, translations, cues and local audio',()=>
    assert.ok(excerpt.some(line=>!l.dialogue.some(base=>base.it===line.it)),v.id);
   }
  }
- assert.equal(count,20);
+ assert.equal(count,21);
 });
 
 function recorderFixture(){
@@ -627,6 +627,19 @@ test('greeting clarification branches keep spelling, saved lines and daily excer
  const fs=require('fs'),l=D.lessons.find(l=>l.id==='saluti'),v=l.dialogueVariants.find(v=>v.id==='saluti-v2'),fork=v.lines.find(x=>x.branches),p=C.emptyProgress();
  assert.deepEqual(fork.branches.map(b=>b.id),['repeat','spell']);
  assert.match(fork.branches[1].lines[1].it,/a, enne, enne, a/);
+ for(const b of fork.branches){assert.deepEqual(b.lines.map(x=>x.role),['customer','barista']);for(const x of b.lines){
+ assert.ok(x.translation.cs&&x.translation.en&&x.situation.cs&&x.situation.en);
+ assert.ok(fs.statSync('assets/audio/italian/'+D.audioFiles[x.it]).size>1000);
+ p.savedSentences.push(x.id);C.rateSpeaking(p,x.id,'again','2026-10-15T10:00:00Z');}}
+ const restored=C.validateProgress(p,D);assert.equal(restored.savedSentences.length,4);assert.equal(Object.keys(restored.speakingReview).length,4);
+ for(const replies of [1,2]){const excerpt=C.dialogueExcerpt(l.dialogue,v.lines,replies);assert.ok(excerpt.some(x=>x.branches));assert.equal(excerpt.filter(x=>x.role==='customer').length,replies);}
+ assert.equal(C.dialogueEntries(D).find(x=>x.id===fork.id).branches,undefined);
+});
+
+test('past trip branches preserve past-tense practice, audio and review',()=>{
+ const fs=require('fs'),l=D.lessons.find(l=>l.id==='passato'),v=l.dialogueVariants.find(v=>v.id==='passato-v2'),fork=v.lines.find(x=>x.branches),p=C.emptyProgress();
+ assert.deepEqual(fork.branches.map(b=>b.id),['problem','alternative']);
+ assert.match(fork.branches[0].lines[1].it,/Abbiamo perso/);assert.match(fork.branches[1].lines[1].it,/abbiamo visitato/);
  for(const b of fork.branches){assert.deepEqual(b.lines.map(x=>x.role),['customer','barista']);for(const x of b.lines){
  assert.ok(x.translation.cs&&x.translation.en&&x.situation.cs&&x.situation.en);
  assert.ok(fs.statSync('assets/audio/italian/'+D.audioFiles[x.it]).size>1000);

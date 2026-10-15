@@ -2104,6 +2104,115 @@
       {id:'spell',title:{cs:'Požádat o vyhláskování',en:'Ask to spell it'},lines:[greetingBranchRows[2],greetingBranchRows[3]]}
     ]},greetingBranchRows[1],...greetingBranchLesson.dialogue.slice(1,4)
   ]});
+  const pastBranchRows=[
+  {
+    "id": "passato-branch-1",
+    "role": "barista",
+    "it": "Ieri la nostra gita a Siena non è andata come previsto.",
+    "translation": {
+      "cs": "Včera náš výlet do Sieny nevyšel podle plánu.",
+      "en": "Yesterday our trip to Siena did not go as planned.",
+      "it": "Ieri la nostra gita a Siena non è andata come previsto."
+    },
+    "situation": {
+      "cs": "Včerejší výlet do Sieny nevyšel podle plánu. Zahaj vyprávění o změně programu.",
+      "en": "Yesterday’s trip to Siena did not go as planned. Introduce the change of plans."
+    }
+  },
+  {
+    "id": "passato-branch-2",
+    "role": "customer",
+    "it": "Che cosa è successo? Perché non siete andate a Siena?",
+    "translation": {
+      "cs": "Co se stalo? Proč jste nejely do Sieny?",
+      "en": "What happened? Why did you not go to Siena?",
+      "it": "Che cosa è successo? Perché non siete andate a Siena?"
+    },
+    "situation": {
+      "cs": "Kamarádce nevyšel výlet. Zjisti, co se stalo a proč nejely do Sieny.",
+      "en": "Your friend’s trip did not work out. Ask what happened and why they did not go to Siena."
+    }
+  },
+  {
+    "id": "passato-branch-3",
+    "role": "barista",
+    "it": "Abbiamo perso l’autobus e siamo rimaste a Firenze.",
+    "translation": {
+      "cs": "Ujel nám autobus a zůstaly jsme ve Florencii.",
+      "en": "We missed the bus and stayed in Florence.",
+      "it": "Abbiamo perso l’autobus e siamo rimaste a Firenze."
+    },
+    "situation": {
+      "cs": "Vysvětli, že vám ujel autobus a zůstaly jste ve Florencii.",
+      "en": "Explain that you missed the bus and stayed in Florence."
+    }
+  },
+  {
+    "id": "passato-branch-4",
+    "role": "customer",
+    "it": "Che cosa avete fatto invece della gita?",
+    "translation": {
+      "cs": "Co jste dělaly místo výletu?",
+      "en": "What did you do instead of the trip?",
+      "it": "Che cosa avete fatto invece della gita?"
+    },
+    "situation": {
+      "cs": "Plánovaný výlet nevyšel. Zeptej se, jaký náhradní program si kamarádky vybraly.",
+      "en": "The planned trip did not work out. Ask what your friends did instead."
+    }
+  },
+  {
+    "id": "passato-branch-5",
+    "role": "barista",
+    "it": "Siamo rimaste a Firenze e abbiamo visitato un museo.",
+    "translation": {
+      "cs": "Zůstaly jsme ve Florencii a navštívily jsme muzeum.",
+      "en": "We stayed in Florence and visited a museum.",
+      "it": "Siamo rimaste a Firenze e abbiamo visitato un museo."
+    },
+    "situation": {
+      "cs": "Popiš náhradní program: zůstaly jste ve Florencii a navštívily muzeum.",
+      "en": "Describe the alternative plan: you stayed in Florence and visited a museum."
+    }
+  },
+  {
+    "id": "passato-branch-6",
+    "role": "customer",
+    "it": "Alla fine avete passato una bella giornata?",
+    "translation": {
+      "cs": "Nakonec jste si užily hezký den?",
+      "en": "Did you have a nice day in the end?",
+      "it": "Alla fine avete passato una bella giornata?"
+    },
+    "situation": {
+      "cs": "Už víš, že se plán změnil. Zjisti, zda si kamarádky den přesto užily.",
+      "en": "You know the plan changed. Ask whether your friends enjoyed the day after all."
+    }
+  },
+  {
+    "id": "passato-branch-7",
+    "role": "barista",
+    "it": "Sì, abbiamo cambiato programma e ci siamo divertite lo stesso.",
+    "translation": {
+      "cs": "Ano, změnily jsme program a přesto jsme se bavily.",
+      "en": "Yes, we changed our plans and enjoyed ourselves anyway.",
+      "it": "Sì, abbiamo cambiato programma e ci siamo divertite lo stesso."
+    },
+    "situation": {
+      "cs": "Zhodnoť den pozitivně: změnily jste program, ale přesto jste se bavily.",
+      "en": "End on a positive note: you changed plans but enjoyed yourselves anyway."
+    }
+  }
+];
+  for(const line of pastBranchRows)audioFiles[line.it]=line.id+'.mp3';
+  const pastBranchLesson=lessons.find(l=>l.id==='passato');
+  pastBranchLesson.dialogueVariants.push({id:'passato-v2',title:{cs:'Výlet nevyšel podle plánu · dvě cesty',en:'Trip did not go as planned · two paths'},lines:[
+    pastBranchLesson.dialogue[0],pastBranchRows[0],
+    {...pastBranchRows[1],branchTitle:{cs:'Výlet nevyšel. Na co se zeptáš?',en:'The trip did not work out. What will you ask?'},branches:[
+      {id:'problem',title:{cs:'Zjistit, co se pokazilo',en:'Ask what went wrong'},lines:[pastBranchRows[1],pastBranchRows[2]]},
+      {id:'alternative',title:{cs:'Zjistit náhradní program',en:'Ask what they did instead'},lines:[pastBranchRows[3],pastBranchRows[4]]}
+    ]},pastBranchRows[2],pastBranchRows[5],pastBranchRows[6]
+  ]});
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;

@@ -13,3 +13,5 @@ Cafe branching dialogue (2026-10-15): six bar-branch-*.mp3 recordings generated 
 City road-closure dialogue (2026-10-15): seven citta-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for the passer-by and DiegoNeural for the visitor. Original teaching dialogue in a fictional town: walking detour or bus to the station.
 
 Greeting clarification (2026-10-15): four saluti-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for Anna and DiegoNeural for Marco. Original teaching dialogue: asking to repeat or spell a name. Italian letter names are written out for clear synthesis.
+
+Past trip branching dialogue (2026-10-15): seven passato-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for Anna and DiegoNeural for the questioner. Original teaching dialogue: a missed bus, alternative museum visit and retrospective evaluation of the day.
