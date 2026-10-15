@@ -522,6 +522,578 @@
   for(const lesson of lessons)for(const word of lesson.words)if(articleWords.has(word.id))word.article=word.italian.match(/^(un’|l’|uno|una|un|gli|il|lo|la|le|i)(?:\s|(?<=’))/u)[1];
   // Both spellings are valid: https://www.treccani.it/vocabolario/menu/
   restaurant.words.find(w=>w.id==='menu').writingVariants=['il menu'];
+  // Communicative situations, intentionally not sentence translations.
+  const roleSituations={
+  "saluti": [
+    {
+      "cs": "Seznamujete se. Zahaj rozhovor a zjisti jméno druhého.",
+      "en": "You are meeting someone. Start the conversation and ask their name."
+    },
+    {
+      "cs": "Nová známá se představila. Představ se také a reaguj přátelsky.",
+      "en": "Your new acquaintance introduced herself. Introduce yourself and respond warmly."
+    },
+    {
+      "cs": "Už znáš jméno. Zajímej se, jak se druhému daří.",
+      "en": "You know their name. Ask how they are doing."
+    },
+    {
+      "cs": "Odpověz na otázku, jak se máš, a projev stejný zájem.",
+      "en": "Respond about how you are and return the interest."
+    },
+    {
+      "cs": "Rozhovor pokračuje. Přejdi od nálady k tomu, odkud pocházíte.",
+      "en": "Move the conversation from how you feel to where you are from."
+    },
+    {
+      "cs": "Představ svůj původ a zjisti důvod návštěvy.",
+      "en": "Mention your origins and ask why the visitor is here."
+    },
+    {
+      "cs": "Vysvětli účel návštěvy a svou zkušenost s italštinou.",
+      "en": "Explain why you are visiting and your experience with Italian."
+    },
+    {
+      "cs": "Povzbuď člověka, který se učí tvůj jazyk.",
+      "en": "Encourage someone learning your language."
+    },
+    {
+      "cs": "Setkání končí. Poděkuj a přátelsky se rozluč.",
+      "en": "The meeting is ending. Thank them and say a friendly goodbye."
+    },
+    {
+      "cs": "Reaguj na rozloučení a popřej něco milého.",
+      "en": "Respond to the goodbye with a friendly wish."
+    }
+  ],
+  "bar": [
+    {
+      "cs": "Jsi obsluha. Přivítej příchozího a zahaj objednávku.",
+      "en": "You are the barista. Welcome the customer and take their order."
+    },
+    {
+      "cs": "Chceš malou snídani: kávu a něco sladkého. Objednej zdvořile.",
+      "en": "You want a small breakfast: coffee and a pastry. Order politely."
+    },
+    {
+      "cs": "Objednávku znáš. Zjisti, kde bude zákazník konzumovat.",
+      "en": "You have the order. Ask where the customer will have it."
+    },
+    {
+      "cs": "Vyber místo u baru a doplň objednávku o vodu.",
+      "en": "Choose to stay at the counter and add water to your order."
+    },
+    {
+      "cs": "Objednávka je připravená. Předej ji zákazníkovi.",
+      "en": "The order is ready. Serve it to the customer."
+    },
+    {
+      "cs": "Dopil/a jsi a chceš odejít. Požádej o vyúčtování.",
+      "en": "You have finished and want to leave. Ask for the bill."
+    },
+    {
+      "cs": "Zákazník chce platit. Sděl modelovou cenu 4,50 €.",
+      "en": "The customer wants to pay. Give the example price of €4.50."
+    },
+    {
+      "cs": "Nemáš hotovost. Ověř možnost jiného způsobu platby.",
+      "en": "You have no cash. Ask about another way to pay."
+    }
+  ],
+  "citta": [
+    {
+      "cs": "Neznáš cestu na vlak. Oslov kolemjdoucího.",
+      "en": "You do not know the way to catch your train. Approach a passer-by."
+    },
+    {
+      "cs": "Vysvětli první úsek cesty k semaforu.",
+      "en": "Explain the first part of the route to the traffic lights."
+    },
+    {
+      "cs": "Prvnímu úseku rozumíš. Zjisti, jak cesta pokračuje.",
+      "en": "You understand the first part. Ask what comes next."
+    },
+    {
+      "cs": "Doplň odbočení u semaforu a polohu cíle.",
+      "en": "Explain the turn at the lights and where the destination is."
+    },
+    {
+      "cs": "Rozhoduješ se, zda jít pěšky. Zeptej se na vzdálenost.",
+      "en": "You are deciding whether to walk. Ask about the distance."
+    },
+    {
+      "cs": "Uklidni návštěvníka a odhadni dobu chůze.",
+      "en": "Reassure the visitor and estimate the walking time."
+    },
+    {
+      "cs": "Pokyny zazněly příliš rychle. Požádej o pomoc s porozuměním.",
+      "en": "The directions were too fast. Ask for help understanding them."
+    },
+    {
+      "cs": "Zopakuj hlavní směry klidněji a stručně.",
+      "en": "Repeat the key directions more slowly and briefly."
+    },
+    {
+      "cs": "Ověř vlastní porozumění pokynům a poděkuj.",
+      "en": "Check that you understood the directions and thank the speaker."
+    },
+    {
+      "cs": "Potvrď, že návštěvník cestu pochopil, a rozluč se.",
+      "en": "Confirm that the visitor understood and say goodbye."
+    }
+  ],
+  "hotel": [
+    {
+      "cs": "Příchozí host stojí na recepci. Zahaj přihlášení.",
+      "en": "A guest has arrived at reception. Start the check-in."
+    },
+    {
+      "cs": "Přihlašuješ se pod jménem Novák na dvě noci. Sděl údaje rezervace.",
+      "en": "You are checking in as Novák for two nights. Give your booking details."
+    },
+    {
+      "cs": "Potřebuješ ověřit totožnost hosta. Zdvořile požádej o doklady.",
+      "en": "You need to verify the guest’s identity. Politely request identification."
+    },
+    {
+      "cs": "Předej doklady a zjisti, zda pobyt zahrnuje ranní jídlo.",
+      "en": "Hand over your documents and ask whether breakfast is included."
+    },
+    {
+      "cs": "Vysvětli hostovi podmínky a čas snídaně.",
+      "en": "Explain the breakfast arrangements and times to the guest."
+    },
+    {
+      "cs": "Potřebuješ se připojit k internetu. Požádej o potřebný údaj.",
+      "en": "You need internet access. Ask for the necessary information."
+    },
+    {
+      "cs": "Ukaž hostovi údaje k připojení a předej přístup do pokoje.",
+      "en": "Point out the connection details and give the guest room access."
+    },
+    {
+      "cs": "Plánuješ den odjezdu. Zjisti termín uvolnění pokoje.",
+      "en": "You are planning your departure day. Ask about check-out time."
+    },
+    {
+      "cs": "Sděl hostovi nejzazší čas odhlášení.",
+      "en": "Tell the guest the check-out deadline."
+    },
+    {
+      "cs": "Odjíždíš až později. Domluv úschovu zavazadla.",
+      "en": "You are leaving later in the day. Arrange luggage storage."
+    },
+    {
+      "cs": "Potvrď možnost úschovy a přivítej hosta k pobytu.",
+      "en": "Confirm luggage storage and wish the guest a pleasant stay."
+    },
+    {
+      "cs": "Vše je vyřízené. Oceň pomoc recepce.",
+      "en": "Everything is arranged. Thank reception for their help."
+    }
+  ],
+  "ristorante": [
+    {
+      "cs": "Přivítej hosty a ověř, zda mají zamluvený stůl.",
+      "en": "Welcome the guests and check whether they have booked."
+    },
+    {
+      "cs": "Přišel/přišla jsi ve dvou pod jménem Novák. Uveď rezervaci.",
+      "en": "You are a party of two booked as Novák. Give your reservation details."
+    },
+    {
+      "cs": "Usaď hosty a umožni jim vybrat si jídlo.",
+      "en": "Seat the guests and help them choose their meal."
+    },
+    {
+      "cs": "Vybíráš jídlo a nemáš rád/a pálivé. Ověř si jeho chuť.",
+      "en": "You are choosing a dish and dislike spicy food. Check what it is like."
+    },
+    {
+      "cs": "Vysvětli chuť těstovin a přijmi objednávku.",
+      "en": "Describe the pasta and ask for the order."
+    },
+    {
+      "cs": "Vyber těstoviny s rajčaty a zeleninovou přílohu.",
+      "en": "Choose tomato pasta and a vegetable side dish."
+    },
+    {
+      "cs": "Jídlo je objednané. Zjisti, co budou hosté pít.",
+      "en": "The food is ordered. Ask what the guests will drink."
+    },
+    {
+      "cs": "Vyber vodu pro stůl a upřesni její druh.",
+      "en": "Choose water for the table and specify the type."
+    },
+    {
+      "cs": "Přines jídlo a popřej hostům.",
+      "en": "Serve the food with an appropriate wish."
+    },
+    {
+      "cs": "Dojedl/a jsi. Požádej o vyúčtování a ověř platbu bez hotovosti.",
+      "en": "You have finished eating. Ask for the bill and check cashless payment."
+    },
+    {
+      "cs": "Reaguj na žádost o zaplacení a oznam další krok.",
+      "en": "Respond to the payment request and explain what you will do next."
+    },
+    {
+      "cs": "Odcházíš z restaurace. Zdvořile ukonči návštěvu.",
+      "en": "You are leaving the restaurant. End the visit politely."
+    }
+  ],
+  "passato": [
+    {
+      "cs": "Potkal/a jsi známou. Zeptej se na její včerejší den.",
+      "en": "You meet a friend. Ask about her day yesterday."
+    },
+    {
+      "cs": "Vyprávěj o včerejším výletu do Sieny a své společnici.",
+      "en": "Describe yesterday’s trip to Siena and your companion."
+    },
+    {
+      "cs": "Zajímej se o dopravu na výlet.",
+      "en": "Ask about transport for the trip."
+    },
+    {
+      "cs": "Popiš způsob dopravy a zhodnoť cestu.",
+      "en": "Describe the transport and how the journey went."
+    },
+    {
+      "cs": "Zeptej se na program návštěvy města.",
+      "en": "Ask what they visited in the city."
+    },
+    {
+      "cs": "Shrň dvě hlavní aktivity výletu v jejich pořadí.",
+      "en": "Summarise the two main activities in order."
+    },
+    {
+      "cs": "Přejdi k tomu, kde se cestovatelky najedly.",
+      "en": "Ask where the travellers ate."
+    },
+    {
+      "cs": "Popiš oběd a předej slovo druhému.",
+      "en": "Describe lunch and invite the other person to speak."
+    },
+    {
+      "cs": "Vyprávěj o svém vlastním dni ve Florencii.",
+      "en": "Describe your own day in Florence."
+    },
+    {
+      "cs": "Zjisti čas návratu druhého domů.",
+      "en": "Ask when the other person got home."
+    },
+    {
+      "cs": "Sděl svůj návrat a zeptej se na jejich.",
+      "en": "Give your return time and ask about theirs."
+    },
+    {
+      "cs": "Uzavři vyprávění časem návratu a dojmem z výletu.",
+      "en": "Finish with your return time and impressions of the trip."
+    }
+  ],
+  "racconto": [
+    {
+      "cs": "Zeptej se, jak proběhl včerejší výlet.",
+      "en": "Ask how yesterday’s trip went."
+    },
+    {
+      "cs": "Zhodnoť výlet a naznač počáteční komplikaci.",
+      "en": "Give an overall impression and mention an initial problem."
+    },
+    {
+      "cs": "Vyzvi druhého, aby komplikaci vysvětlil.",
+      "en": "Ask the speaker to explain the problem."
+    },
+    {
+      "cs": "Popiš čekání na vlak přerušené změnou počasí.",
+      "en": "Describe waiting for the train when the weather changed."
+    },
+    {
+      "cs": "Zjisti, zda byli cestující vybaveni na déšť.",
+      "en": "Ask whether the travellers were prepared for rain."
+    },
+    {
+      "cs": "Porovnej svůj obvyklý zvyk se včerejší výjimkou.",
+      "en": "Contrast your usual habit with yesterday’s exception."
+    },
+    {
+      "cs": "Zeptej se na řešení vzniklé situace.",
+      "en": "Ask how they dealt with the situation."
+    },
+    {
+      "cs": "Popiš úkryt před deštěm a událost, která nastala během čekání.",
+      "en": "Describe sheltering from rain and what happened while waiting."
+    },
+    {
+      "cs": "Ověř, zda cestující zvládli nástup.",
+      "en": "Check whether the travellers managed to board."
+    },
+    {
+      "cs": "Potvrď nástup a přidej novou komplikaci s telefonem.",
+      "en": "Confirm boarding and introduce a new problem with your phone."
+    },
+    {
+      "cs": "Projev překvapení a zjisti, jak se telefon našel.",
+      "en": "Express surprise and ask where the phone turned up."
+    },
+    {
+      "cs": "Rozuzli příhodu a shrň konec výletu.",
+      "en": "Resolve the story and summarise how the trip ended."
+    }
+  ],
+  "progetti": [
+    {
+      "cs": "Zajímej se o plány známé na další den.",
+      "en": "Ask about your friend’s plans for tomorrow."
+    },
+    {
+      "cs": "Představ plán výletu do Luccy a pozvi druhého.",
+      "en": "Describe a planned trip to Lucca and invite your friend."
+    },
+    {
+      "cs": "Přijmi pozvání a navrhni dopravu.",
+      "en": "Accept the invitation and suggest transport."
+    },
+    {
+      "cs": "Souhlas s dopravou a zdvořile rozděl přípravu cesty.",
+      "en": "Agree on transport and politely share the planning tasks."
+    },
+    {
+      "cs": "Sděl nalezený spoj a doporuč nákup před cestou.",
+      "en": "Give the departure you found and recommend buying tickets ahead."
+    },
+    {
+      "cs": "Převezmi úkol koupit jízdenky.",
+      "en": "Offer to take care of buying the tickets."
+    },
+    {
+      "cs": "Navrhni společnou aktivitu na městských hradbách.",
+      "en": "Suggest an activity together on the city walls."
+    },
+    {
+      "cs": "Přijmi návrh a rozšiř program výletu.",
+      "en": "Accept the suggestion and add to the itinerary."
+    },
+    {
+      "cs": "Připrav alternativu programu pro špatné počasí.",
+      "en": "Suggest an alternative for bad weather."
+    },
+    {
+      "cs": "Program je domluvený. Zjisti čas setkání.",
+      "en": "The itinerary is agreed. Ask when to meet."
+    },
+    {
+      "cs": "Urči čas a místo srazu před odjezdem.",
+      "en": "Specify a meeting time and place before departure."
+    },
+    {
+      "cs": "Potvrď dohodu a shrň čas odjezdu.",
+      "en": "Confirm the arrangement and summarise the departure time."
+    }
+  ],
+  "pronomi": [
+    {
+      "cs": "Ověř, zda má druhý zajištěný vstup do muzea.",
+      "en": "Check whether your friend has a museum ticket."
+    },
+    {
+      "cs": "Vysvětli plán nákupu vstupenky bez opakování jejího názvu.",
+      "en": "Explain your ticket purchase plans without repeating the noun."
+    },
+    {
+      "cs": "Sděl, že vstup už máš, a zeptej se na další pomůcku k orientaci.",
+      "en": "Say your ticket is sorted and ask about a navigation aid."
+    },
+    {
+      "cs": "Odpověz, kde neseš mapu, a popiš polohu muzea.",
+      "en": "Say where you carry the map and locate the museum."
+    },
+    {
+      "cs": "Zjisti, zda je nádraží vidět z vašeho místa.",
+      "en": "Ask whether the station is visible from here."
+    },
+    {
+      "cs": "Potvrď viditelnost a navrhni zastávku na občerstvení.",
+      "en": "Confirm you can see it and suggest a refreshment stop."
+    },
+    {
+      "cs": "Přijmi návrh, zmiň svůj zvyk a nabídni něco k jídlu.",
+      "en": "Accept, mention your habit and offer something to eat."
+    },
+    {
+      "cs": "Vyber množství pečiva a zeptej se na přání druhého.",
+      "en": "Choose a quantity of pastries and ask what your friend wants."
+    },
+    {
+      "cs": "Upřesni své množství a navrhni další přesun.",
+      "en": "Give your quantity and suggest how to get to the next stop."
+    },
+    {
+      "cs": "Potvrď způsob přesunu a odhadni dobu.",
+      "en": "Confirm how you will get there and estimate the time."
+    },
+    {
+      "cs": "Reaguj na náročnější cestu s těžkým batohem sebejistě.",
+      "en": "Respond confidently about the walk with a heavy backpack."
+    },
+    {
+      "cs": "Popiš odchod po návštěvě muzea a domluv další setkání.",
+      "en": "Describe your plans after the museum and arrange to meet later."
+    }
+  ],
+  "opinioni": [
+    {
+      "cs": "Otevři debatu o návštěvě centra s průvodcem.",
+      "en": "Start a discussion about visiting the centre with a guide."
+    },
+    {
+      "cs": "Podpoř nápad a uveď vzdělávací přínos.",
+      "en": "Support the idea and explain its learning benefit."
+    },
+    {
+      "cs": "Zvaž jednu výhodu a finanční nevýhodu.",
+      "en": "Weigh an advantage against the cost."
+    },
+    {
+      "cs": "Uznej vyšší cenu, ale obhaj hodnotu zážitku.",
+      "en": "Acknowledge the higher price but defend the experience’s value."
+    },
+    {
+      "cs": "Vysvětli, proč ti pevný program nevyhovuje.",
+      "en": "Explain why a fixed schedule does not suit you."
+    },
+    {
+      "cs": "Ukaž porozumění a nabídni kompromis v délce prohlídky.",
+      "en": "Show understanding and propose a shorter tour as a compromise."
+    },
+    {
+      "cs": "Přijmi kompromis a ověř dostupnost.",
+      "en": "Accept the compromise and ask about availability."
+    },
+    {
+      "cs": "Vyvoď možnost rezervace z údajů na webu.",
+      "en": "Use the website’s availability information to draw a conclusion."
+    },
+    {
+      "cs": "Vyjádři obavu z počasí a času venku.",
+      "en": "Express concern about the weather and time outdoors."
+    },
+    {
+      "cs": "Obhaj zájem i za horšího počasí a navrhni ověření podmínek.",
+      "en": "Maintain your interest despite the weather and suggest checking the terms."
+    },
+    {
+      "cs": "Stanov svou podmínku ohledně velikosti skupiny.",
+      "en": "State your preference about group size."
+    },
+    {
+      "cs": "Shrň společné rozhodnutí a jeho podmínky.",
+      "en": "Summarise the joint decision and its conditions."
+    }
+  ],
+  "ipotesi": [
+    {
+      "cs": "Polož hypotetickou otázku o dni volna navíc.",
+      "en": "Ask a hypothetical question about an extra free day."
+    },
+    {
+      "cs": "Představ výlet, který bys podnikl/a s více časem.",
+      "en": "Describe a trip you would take with more time."
+    },
+    {
+      "cs": "Navrhni plavbu a podmiň ji stavem moře.",
+      "en": "Suggest a boat trip conditional on sea conditions."
+    },
+    {
+      "cs": "Přidej svou podmínku pohodlí během plavby.",
+      "en": "Add a condition about comfort during the boat trip."
+    },
+    {
+      "cs": "Navrhni záložní program pro změnu počasí.",
+      "en": "Propose a backup plan if the weather changes."
+    },
+    {
+      "cs": "Zhodnoť alternativu s ohledem na společný čas.",
+      "en": "Evaluate the alternative in terms of spending time together."
+    },
+    {
+      "cs": "Dej druhému radu, čím při plánování začít.",
+      "en": "Advise your friend on the first planning step."
+    },
+    {
+      "cs": "Odvoď výhodu brzkého odjezdu.",
+      "en": "Explain the benefit of an early departure."
+    },
+    {
+      "cs": "Doporuč včasnou rezervaci a vysvětli riziko čekání.",
+      "en": "Recommend booking early and explain the risk of waiting."
+    },
+    {
+      "cs": "Stanov hranici přijatelnosti storno podmínek.",
+      "en": "State what cancellation terms would make you choose another offer."
+    },
+    {
+      "cs": "Podpoř porovnání více možností.",
+      "en": "Support comparing several options."
+    },
+    {
+      "cs": "Uzavři plán rozhodnutím závislým na vhodné nabídce.",
+      "en": "Conclude with a decision conditional on finding a suitable offer."
+    }
+  ],
+  "registro": [
+    {
+      "cs": "Jsi pracovník rezervačního oddělení. Zahaj formální telefonát.",
+      "en": "You work in reservations. Open a formal phone conversation."
+    },
+    {
+      "cs": "Představ se a vysvětli, ke které dřívější záležitosti voláš.",
+      "en": "Introduce yourself and identify the earlier matter you are calling about."
+    },
+    {
+      "cs": "Zdvořile vyžádej identifikaci žádosti.",
+      "en": "Politely request the reference number."
+    },
+    {
+      "cs": "Uveď číslo 24 a požádej o vysvětlení platby.",
+      "en": "Give reference 24 and request clarification about payment."
+    },
+    {
+      "cs": "Navrhni zaslání informací a ověř doručení formuláře.",
+      "en": "Offer to send information and check whether the form arrived."
+    },
+    {
+      "cs": "Vysvětli, co jsi udělal/a s formulářem, a požádej o potvrzení doručení.",
+      "en": "Explain what you did with the form and request confirmation of receipt."
+    },
+    {
+      "cs": "Po kontrole sděl stav doručení dokumentu.",
+      "en": "After checking, report the document’s delivery status."
+    },
+    {
+      "cs": "Požádej o doklad dohody v písemné podobě.",
+      "en": "Request written confirmation of the arrangement."
+    },
+    {
+      "cs": "Přislíb odpověď a stanov nejzazší termín.",
+      "en": "Promise a response and state a deadline."
+    },
+    {
+      "cs": "Formálně potvrď, že budeš čekat na vyjádření.",
+      "en": "Formally acknowledge that you will await the response."
+    },
+    {
+      "cs": "Před ukončením hovoru nabídni prostor pro další dotazy.",
+      "en": "Before ending the call, invite any further questions."
+    },
+    {
+      "cs": "Uzavři formální hovor s poděkováním za pomoc.",
+      "en": "Close the formal call with thanks for the assistance."
+    }
+  ]
+};
+  for(const l of lessons)l.dialogue.forEach((line,i)=>{line.situation=roleSituations[l.id][i];});
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;

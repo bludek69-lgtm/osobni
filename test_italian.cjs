@@ -417,3 +417,17 @@ test('resuming a daily test preserves its role destination and rejects unknown l
  assert.equal(C.restoreSession(raw,D.lessons,'cs').dailyLesson,'hotel');
  raw.dailyLesson='unknown';assert.equal(C.restoreSession(raw,D.lessons,'cs').dailyLesson,null);
 });
+
+test('every dialogue turn has a distinct situation cue in Czech and English',()=>{
+ let count=0;
+ for(const l of D.lessons)for(const line of l.dialogue){
+  for(const lang of ['cs','en']){
+   assert.equal(typeof line.situation[lang],'string',line.id);
+   assert.ok(line.situation[lang].length>20,line.id);
+   assert.notEqual(line.situation[lang],line.translation[lang],line.id);
+   assert.ok(!line.situation[lang].includes(line.it),line.id);
+  }
+  count++;
+ }
+ assert.equal(count,136);
+});

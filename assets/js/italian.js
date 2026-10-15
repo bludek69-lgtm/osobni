@@ -32,13 +32,14 @@
     cs:{title:'Procvič jednu roli',intro:'Vyber svou postavu. Druhou uslyšíš; svou odpověď řekni nahlas a pak si přehraj vzor. Bez mikrofonu a automatického hodnocení.',choose:'Budu mluvit jako',start:'Začít rozhovor',turn:'Teď odpověz nahlas italsky. Až budeš připraven/a, zobraz vzor.',reveal:'Ukázat a přehrát vzor',next:'Pokračovat v rozhovoru',listening:'Poslouchej druhou postavu…',model:'Vzorová odpověď',stop:'Ukončit rozhovor',done:'Rozhovor dokončen. Zkus si příště druhou roli.',repeat:'Přehrát znovu',line:'Replika'},
     en:{title:'Practise one role',intro:'Choose your character. Listen to the other speaker, answer aloud, then play the model answer. No microphone or automatic grading.',choose:'I will speak as',start:'Start the conversation',turn:'Answer aloud in Italian. Reveal the model when you are ready.',reveal:'Show and play the model',next:'Continue the conversation',listening:'Listen to the other speaker…',model:'Model answer',stop:'End the conversation',done:'Conversation complete. Try the other role next time.',repeat:'Play again',line:'Line'}
   }[lang==='cs'?'cs':'en'];
+  Object.assign(roleText,lang==='cs'?{mode:'Nápověda při odpovědi',situation:'Jen situace — bez překladu',translation:'S překladem',situationLabel:'Situace',answered:'Odpověděl/a jsem — ukázat vzor',compare:'Vzor je jedna možná odpověď. Nemusíš ho zopakovat doslova; porovnej, zda jsi vyjádřil/a stejný záměr.',noHint:'Odpověz vlastními slovy nahlas. Překlad ani italský vzor se před tvou odpovědí nezobrazí.'}:{mode:'Answer support',situation:'Situation only — no translation',translation:'With translation',situationLabel:'Situation',answered:'I have answered — show the model',compare:'The model is one possible answer. You do not need the exact words; compare whether you expressed the same intent.',noHint:'Answer aloud in your own words. The translation and Italian model stay hidden until you have answered.'});
   function roleSetup(l,copy) {
-    return '<section class="it-role-practice" aria-labelledby="it-role-title"><h3 id="it-role-title">'+roleText.title+'</h3><p>'+roleText.intro+'</p><div id="it-role-setup"><label>'+roleText.choose+'<select id="it-role-choice">'+options([...new Set(l.dialogue.map(line=>line.role))].map(role=>[role,copy[role]]),'customer')+'</select></label>'+button('role-start',roleText.start,'class="it-primary"')+'</div><div id="it-role-stage" aria-live="polite"></div></section>';
+    return '<section class="it-role-practice" aria-labelledby="it-role-title"><h3 id="it-role-title">'+roleText.title+'</h3><p>'+roleText.intro+'</p><div id="it-role-setup"><label>'+roleText.choose+'<select id="it-role-choice">'+options([...new Set(l.dialogue.map(line=>line.role))].map(role=>[role,copy[role]]),'customer')+'</select></label><label>'+roleText.mode+'<select id="it-role-mode">'+options([['situation',roleText.situation],['translation',roleText.translation]],'situation')+'</select></label>'+button('role-start',roleText.start,'class="it-primary"')+'</div><div id="it-role-stage" aria-live="polite"></div></section>';
   }
   function renderRole() {
     if(!roleRun)return;
     const r=roleRun,line=r.lines[r.index],done=!line;
-    el('it-role-stage').innerHTML=done?'<p>'+(r.daily?dailyText.roleDone:roleText.done)+'</p>'+(r.daily?'<p>'+dailyText.done+'</p>'+button('quick',dailyText.back):button('role-stop',roleText.stop)):'<p>'+roleText.line+' '+(r.index+1)+' / '+r.lines.length+'</p><h4 tabindex="-1" id="it-role-turn">'+(r.phase==='waiting'?roleText.turn:r.phase==='other'?roleText.listening:roleText.model)+'</h4>'+(r.phase==='waiting'?'<p>'+esc(line.translation[lang])+'</p>'+button('role-reveal',roleText.reveal,'class="it-primary"'):'<p lang="it">'+esc(line.it)+'</p><p class="it-muted">'+esc(line.translation[lang])+'</p>'+(r.phase==='ready'?button('role-repeat',roleText.repeat)+button('role-next',roleText.next,'class="it-primary"'):''))+button('role-stop',roleText.stop);
+    el('it-role-stage').innerHTML=done?'<p>'+(r.daily?dailyText.roleDone:roleText.done)+'</p>'+(r.daily?'<p>'+dailyText.done+'</p>'+button('quick',dailyText.back):button('role-stop',roleText.stop)):'<p>'+roleText.line+' '+(r.index+1)+' / '+r.lines.length+'</p><h4 tabindex="-1" id="it-role-turn">'+(r.phase==='waiting'?roleText.turn:r.phase==='other'?roleText.listening:roleText.model)+'</h4>'+(r.phase==='waiting'?'<p class="it-role-cue">'+(r.mode==='situation'?'<strong>'+roleText.situationLabel+':</strong> '+esc(line.situation[lang==='cs'?'cs':'en']):esc(line.translation[lang]))+'</p>'+(r.mode==='situation'?'<p class="it-muted">'+roleText.noHint+'</p>':'')+button('role-reveal',r.mode==='situation'?roleText.answered:roleText.reveal,'class="it-primary"'):'<p lang="it">'+esc(line.it)+'</p><p class="it-muted">'+esc(line.translation[lang])+'</p>'+(r.phase==='ready'?'<p>'+roleText.compare+'</p>'+button('role-repeat',roleText.repeat)+button('role-next',roleText.next,'class="it-primary"'):''))+button('role-stop',roleText.stop);
     if(r.phase==='waiting'||done)el('it-role-stage').scrollIntoView({block:'nearest'});
   }
   function roleStep() {
@@ -113,7 +114,7 @@
     el('it-view').innerHTML='<section class="it-panel"><h2>'+dailyText.role+': '+esc(l.title[lang])+'</h2><p>'+roleText.intro+'</p><div id="it-role-setup">'+button('daily-role',dailyText.next,'class="it-primary"')+'</div><div id="it-role-stage" aria-live="polite"></div><ol class="it-dialogue" hidden></ol></section>';
     el('it-role-setup').hidden=true;
     let count=0;const end=l.dialogue.findIndex(line=>line.role==='customer'&&++count===2);
-    roleRun={role:'customer',lines:l.dialogue.slice(0,end+1),index:0,phase:'other',daily:true,lesson:l.id};roleStep();
+    roleRun={role:'customer',lines:l.dialogue.slice(0,end+1),index:0,phase:'other',daily:true,lesson:l.id,mode:'situation'};roleStep();
   }
   function renderQuick() {
     const t={
@@ -384,8 +385,8 @@
       el('it-freya-player').querySelector('iframe').focus();return;
     }
     if(action==='role-start'){
-      const role=el('it-role-choice').value;stopAudio();
-      roleRun={role,lines:D.lessons.find(l=>l.id===openedLesson).dialogue,index:0,phase:'other'};
+      const role=el('it-role-choice').value,mode=el('it-role-mode').value;stopAudio();
+      roleRun={role,mode,lines:D.lessons.find(l=>l.id===openedLesson).dialogue,index:0,phase:'other'};
       el('it-role-setup').hidden=true;app.querySelector('.it-dialogue').hidden=true;roleStep();return;
     }
     if(action==='role-stop'){const wasDaily=roleRun?.daily;stopAudio();if(wasDaily){active='quick';render();}return;}
