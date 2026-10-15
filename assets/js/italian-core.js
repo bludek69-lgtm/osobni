@@ -1,5 +1,49 @@
 (function (root) {
   'use strict';
+  // One ephemeral take; injected browser APIs also allow lifecycle regression tests.
+  function createAnswerRecorder(env, changed=()=>{}) {
+    const state={status:'idle',url:'',error:''};
+    let generation=0,stream=null,recorder=null,timer=null;
+    const notify=()=>changed(state);
+    function release(){if(timer!==null)env.clearTimeout(timer);timer=null;stream?.getTracks().forEach(t=>t.stop());stream=null;}
+    function reset(){
+      generation++;release();
+      if(recorder){recorder.ondataavailable=null;recorder.onstop=null;recorder.onerror=null;if(recorder.state!=='inactive')recorder.stop();recorder=null;}
+      if(state.url)env.URL.revokeObjectURL(state.url);
+      Object.assign(state,{status:'idle',url:'',error:''});notify();
+    }
+    function stop(){if(state.status!=='recording')return;state.status='stopping';notify();if(timer!==null)env.clearTimeout(timer);timer=null;recorder.stop();release();}
+    async function start(){
+      if(['pending','recording','stopping'].includes(state.status))return;
+      reset();const token=generation;
+      if(!env.navigator?.mediaDevices?.getUserMedia||!env.MediaRecorder){state.error='unsupported';notify();return;}
+      state.status='pending';notify();
+      try{
+        const acquired=await env.navigator.mediaDevices.getUserMedia({audio:true});
+        if(token!==generation){acquired.getTracks().forEach(t=>t.stop());return;}
+        stream=acquired;
+        const mime=['audio/webm;codecs=opus','audio/mp4','audio/webm'].find(m=>env.MediaRecorder.isTypeSupported?.(m));
+        recorder=new env.MediaRecorder(stream,mime?{mimeType:mime}:undefined);
+        const current=recorder,chunks=[];
+        current.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};
+        current.onstop=()=>{
+          if(token!==generation)return;
+          release();recorder=null;
+          const blob=new env.Blob(chunks,{type:current.mimeType||chunks[0]?.type||'audio/webm'});
+          if(blob.size){state.url=env.URL.createObjectURL(blob);state.status='ready';}
+          else {state.status='idle';state.error='empty';}
+          notify();
+        };
+        current.onerror=()=>{if(token!==generation)return;reset();state.error='failed';notify();};
+        current.start();state.status='recording';notify();
+        timer=env.setTimeout(stop,60000);
+      }catch(error){
+        if(token!==generation)return;
+        reset();state.error=error.name==='NotAllowedError'?'denied':error.name==='NotFoundError'?'missing':'failed';notify();
+      }
+    }
+    return {state,start,stop,reset};
+  }
   function normalize(value) {
     return String(value).normalize('NFC').toLocaleLowerCase('it').replace(/[’‘]/g, "'").trim().replace(/[.!?]+$/g, '').trim().replace(/\s+/g, ' ');
   }
@@ -142,7 +186,7 @@
     return {questions:restored,index:raw.index,answered,correct:changes.filter(c=>c.correct).length,
       dailyLesson:lessons.some(l=>l.id===raw.dailyLesson)?raw.dailyLesson:null,played:false,type:raw.type,level:raw.level,changes,answer:typeof raw.answer==='string'?raw.answer.slice(0,500):''};
   }
-  const api = {normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults,recordSchedule,scheduledQuestions,dailyPlan,dialogueExcerpt};
+  const api = {createAnswerRecorder,normalize,grade,writtenFeedback,shuffle,questions,emptyProgress,validateProgress,reviewQuestions,restoreSession,recordLessonResults,recordSchedule,scheduledQuestions,dailyPlan,dialogueExcerpt};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.ItalianCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);

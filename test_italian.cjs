@@ -451,3 +451,34 @@ test('all dialogue variants keep roles, translations, cues and local audio',()=>
  }
  assert.equal(count,15);
 });
+
+function recorderFixture(){
+ const stopped=[],revoked=[],timers=[];let reject=null,resolve=null;
+ const stream={getTracks:()=>[{stop:()=>stopped.push(true)}]};
+ class Recorder{
+  static isTypeSupported(m){return m==='audio/mp4';}
+  constructor(s,o){this.mimeType=o.mimeType;this.state='inactive';}
+  start(){this.state='recording';}
+  stop(){this.state='inactive';queueMicrotask(()=>{this.ondataavailable?.({data:new Blob(['audio'],{type:this.mimeType})});this.onstop?.();});}
+ }
+ const env={navigator:{mediaDevices:{getUserMedia:()=>new Promise((a,b)=>{resolve=a;reject=b;})}},MediaRecorder:Recorder,Blob,URL:{createObjectURL:()=> 'blob:test',revokeObjectURL:u=>revoked.push(u)},setTimeout:fn=>{timers.push(fn);return timers.length;},clearTimeout:()=>{}};
+ return {env,stream,stopped,revoked,timers,allow:()=>resolve(stream),deny:()=>reject(Object.assign(new Error(),{name:'NotAllowedError'}))};
+}
+test('answer recording stops tracks, produces a local take and revokes it on reset',async()=>{
+ const f=recorderFixture(),r=C.createAnswerRecorder(f.env);
+ const promise=r.start();assert.equal(r.state.status,'pending');f.allow();await promise;
+ assert.equal(r.state.status,'recording');r.stop();await Promise.resolve();
+ assert.equal(r.state.status,'ready');assert.equal(r.state.url,'blob:test');assert.ok(f.stopped.length);
+ r.reset();assert.deepEqual(f.revoked,['blob:test']);assert.equal(r.state.url,'');
+});
+test('late microphone permission cannot resume a discarded dialogue',async()=>{
+ const f=recorderFixture(),r=C.createAnswerRecorder(f.env),pending=r.start();r.reset();f.allow();await pending;
+ assert.equal(r.state.status,'idle');assert.equal(f.stopped.length,1);assert.equal(r.state.url,'');
+});
+test('recording handles denial, missing support and automatic time limit',async()=>{
+ const f=recorderFixture(),r=C.createAnswerRecorder(f.env),pending=r.start();f.deny();await pending;
+ assert.equal(r.state.error,'denied');assert.equal(r.state.status,'idle');
+ const unsupported=C.createAnswerRecorder({});await unsupported.start();assert.equal(unsupported.state.error,'unsupported');
+ const next=r.start();f.allow();await next;f.timers.at(-1)();await Promise.resolve();
+ assert.equal(r.state.status,'ready');assert.ok(f.stopped.length);
+});

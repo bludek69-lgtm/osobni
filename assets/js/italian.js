@@ -29,10 +29,20 @@
   let pausedSession=null,lastLesson=null,openedLesson=null,media=null,audioGeneration=0;
   let roleRun=null, daily=null, variantHistory={};
   const roleText={
-    cs:{title:'Procvič jednu roli',intro:'Vyber svou postavu. Druhou uslyšíš; svou odpověď řekni nahlas a pak si přehraj vzor. Bez mikrofonu a automatického hodnocení.',choose:'Budu mluvit jako',start:'Začít rozhovor',turn:'Teď odpověz nahlas italsky. Až budeš připraven/a, zobraz vzor.',reveal:'Ukázat a přehrát vzor',next:'Pokračovat v rozhovoru',listening:'Poslouchej druhou postavu…',model:'Vzorová odpověď',stop:'Ukončit rozhovor',done:'Rozhovor dokončen. Zkus si příště druhou roli.',repeat:'Přehrát znovu',line:'Replika'},
-    en:{title:'Practise one role',intro:'Choose your character. Listen to the other speaker, answer aloud, then play the model answer. No microphone or automatic grading.',choose:'I will speak as',start:'Start the conversation',turn:'Answer aloud in Italian. Reveal the model when you are ready.',reveal:'Show and play the model',next:'Continue the conversation',listening:'Listen to the other speaker…',model:'Model answer',stop:'End the conversation',done:'Conversation complete. Try the other role next time.',repeat:'Play again',line:'Line'}
+    cs:{title:'Procvič jednu roli',intro:'Vyber svou postavu. Druhou uslyšíš; svou odpověď řekni nahlas a pak si přehraj vzor. Volitelně si odpověď nahraj. Bez automatického hodnocení.',choose:'Budu mluvit jako',start:'Začít rozhovor',turn:'Teď odpověz nahlas italsky. Až budeš připraven/a, zobraz vzor.',reveal:'Ukázat a přehrát vzor',next:'Pokračovat v rozhovoru',listening:'Poslouchej druhou postavu…',model:'Vzorová odpověď',stop:'Ukončit rozhovor',done:'Rozhovor dokončen. Zkus si příště druhou roli.',repeat:'Přehrát znovu',line:'Replika'},
+    en:{title:'Practise one role',intro:'Choose your character. Listen to the other speaker, answer aloud, then play the model answer. Optionally record your answer. No automatic grading.',choose:'I will speak as',start:'Start the conversation',turn:'Answer aloud in Italian. Reveal the model when you are ready.',reveal:'Show and play the model',next:'Continue the conversation',listening:'Listen to the other speaker…',model:'Model answer',stop:'End the conversation',done:'Conversation complete. Try the other role next time.',repeat:'Play again',line:'Line'}
   }[lang==='cs'?'cs':'en'];
   Object.assign(roleText,lang==='cs'?{mode:'Nápověda při odpovědi',situation:'Jen situace — bez překladu',translation:'S překladem',situationLabel:'Situace',answered:'Odpověděl/a jsem — ukázat vzor',compare:'Vzor je jedna možná odpověď. Nemusíš ho zopakovat doslova; porovnej, zda jsi vyjádřil/a stejný záměr.',noHint:'Odpověz vlastními slovy nahlas. Překlad ani italský vzor se před tvou odpovědí nezobrazí.'}:{mode:'Answer support',situation:'Situation only — no translation',translation:'With translation',situationLabel:'Situation',answered:'I have answered — show the model',compare:'The model is one possible answer. You do not need the exact words; compare whether you expressed the same intent.',noHint:'Answer aloud in your own words. The translation and Italian model stay hidden until you have answered.'});
+  const micText=lang==='cs'?{model:'Přehrát italský vzor',title:'Moje odpověď',start:'Nahrát odpověď',again:'Nahrát znovu',stop:'Zastavit nahrávání',remove:'Smazat nahrávku',pending:'Povol mikrofon v prohlížeči. Můžeš pokračovat i bez nahrávání.',recording:'Nahrávám… Nejvýše 60 sekund.',stopping:'Připravuji nahrávku…',ready:'Přehraj si vlastní odpověď a porovnej ji s italským vzorem.',privacy:'Nahrávka zůstává jen v paměti tohoto prohlížeče. Při další replice nebo odchodu se smaže; nikam ji neposíláme.',unsupported:'Nahrávání není v tomto prohlížeči dostupné. Můžeš odpovídat nahlas bez nahrávání.',denied:'Mikrofon nebyl povolen. Povol ho v nastavení webu, nebo pokračuj bez nahrávání.',missing:'Nebyl nalezen mikrofon. Připoj jej, nebo pokračuj bez nahrávání.',failed:'Nahrávání se nezdařilo. Zkus to znovu nebo pokračuj bez něj.',empty:'Nahrávka je prázdná. Zkus mluvit déle a nahraj ji znovu.'}:{model:'Play Italian model',title:'My answer',start:'Record my answer',again:'Record again',stop:'Stop recording',remove:'Delete recording',pending:'Allow the microphone in your browser. You can also continue without recording.',recording:'Recording… Up to 60 seconds.',stopping:'Preparing recording…',ready:'Play your answer and compare it with the Italian model.',privacy:'The recording stays only in this browser’s memory. It is deleted on the next turn or when you leave; it is never uploaded.',unsupported:'Recording is unavailable in this browser. You can still answer aloud.',denied:'Microphone permission was not granted. Allow it in site settings or continue without recording.',missing:'No microphone was found. Connect one or continue without recording.',failed:'Recording failed. Try again or continue without it.',empty:'The recording is empty. Speak for longer and try again.'};
+  const answerRecorder=C.createAnswerRecorder(window,()=>renderMic());
+  function pauseAnswer(){el('it-own-audio')?.pause();}
+  function renderMic(){
+    const panel=el('it-microphone');if(!panel)return;
+    const s=answerRecorder.state,busy=['pending','recording','stopping'].includes(s.status);
+    pauseAnswer();
+    panel.innerHTML='<h4>'+micText.title+'</h4><p class="it-muted">'+micText.privacy+'</p><p role="status">'+esc(s.error?micText[s.error]:micText[s.status]||'')+'</p>'+(s.status==='recording'?button('mic-stop',micText.stop,'class="it-primary"'):button('mic-start',s.url?micText.again:micText.start,busy?'disabled':''))+(s.url?(roleRun?.phase==='ready'?button('role-repeat',micText.model):'')+'<audio id="it-own-audio" controls preload="metadata" aria-label="'+micText.title+'" src="'+esc(s.url)+'"></audio>'+button('mic-delete',micText.remove):'');
+    app.querySelectorAll('[data-action="role-reveal"],[data-action="role-repeat"],[data-action="role-next"]').forEach(b=>b.disabled=s.status==='recording'||s.status==='stopping');
+  }
   const variantText=lang==='cs'?{label:'Varianta situace',original:'Původní rozhovor',another:'Zkusit další variantu'}:{label:'Situation variant',original:'Original dialogue',another:'Try another variant'};
   function variants(l){return [{id:'original',title:{cs:variantText.original,en:variantText.original},lines:l.dialogue},...l.dialogueVariants];}
   function nextVariant(l){const list=variants(l),previous=list.findIndex(v=>v.id===variantHistory[l.id]);return list[(previous+1||1)%list.length];}
@@ -43,6 +53,7 @@
     if(!roleRun)return;
     const r=roleRun,line=r.lines[r.index],done=!line;
     el('it-role-stage').innerHTML=done?'<p>'+(r.daily?dailyText.roleDone:roleText.done)+'</p>'+(r.daily?'<p>'+dailyText.done+'</p>'+button('quick',dailyText.back):button('role-another',variantText.another,'class="it-primary"')+button('role-stop',roleText.stop)):'<p>'+roleText.line+' '+(r.index+1)+' / '+r.lines.length+'</p><h4 tabindex="-1" id="it-role-turn">'+(r.phase==='waiting'?roleText.turn:r.phase==='other'?roleText.listening:roleText.model)+'</h4>'+(r.phase==='waiting'?'<p class="it-role-cue">'+(r.mode==='situation'?'<strong>'+roleText.situationLabel+':</strong> '+esc(line.situation[lang==='cs'?'cs':'en']):esc(line.translation[lang]))+'</p>'+(r.mode==='situation'?'<p class="it-muted">'+roleText.noHint+'</p>':'')+button('role-reveal',r.mode==='situation'?roleText.answered:roleText.reveal,'class="it-primary"'):'<p lang="it">'+esc(line.it)+'</p><p class="it-muted">'+esc(line.translation[lang])+'</p>'+(r.phase==='ready'?'<p>'+roleText.compare+'</p>'+button('role-repeat',roleText.repeat)+button('role-next',roleText.next,'class="it-primary"'):''))+button('role-stop',roleText.stop);
+    if(!done&&['waiting','ready'].includes(r.phase)){el('it-role-stage').insertAdjacentHTML('beforeend','<section id="it-microphone" class="it-microphone"></section>');renderMic();}
     if(r.variantTitle)el('it-role-stage').insertAdjacentHTML('afterbegin','<p class="it-muted">'+variantText.label+': '+esc(r.variantTitle)+'</p>');
     if(r.phase==='waiting'||done)el('it-role-stage').scrollIntoView({block:'nearest'});
   }
@@ -56,6 +67,7 @@
   }
   function roleModel() {
     const r=roleRun;if(!r)return;
+    pauseAnswer();if(answerRecorder.state.status==='pending')answerRecorder.reset();
     r.phase='model';renderRole();
     playRecording(r.lines[r.index].it,false,()=>{if(roleRun!==r)return;r.phase='ready';renderRole();},audioGeneration);
   }
@@ -323,6 +335,7 @@
     updateVoiceControls();
   }
   function stopAudio() {
+    pauseAnswer();answerRecorder.reset();
     if(roleRun){roleRun=null;const stage=el('it-role-stage');if(stage)stage.innerHTML='';const setup=el('it-role-setup');if(setup)setup.hidden=false;app.querySelector('.it-dialogue')?.removeAttribute('hidden');}
     const player=el('it-freya-player');
     if(player?.querySelector('iframe'))player.innerHTML=freyaPlaceholder();
@@ -389,6 +402,9 @@
       el('it-freya-player').innerHTML='<iframe src="https://app.heygen.com/embeds/'+currentVideo().id+'" title="'+esc(freyaTitle())+'" allow="encrypted-media; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
       el('it-freya-player').querySelector('iframe').focus();return;
     }
+    if(action==='mic-start'){pauseAnswer();answerRecorder.start();return;}
+    if(action==='mic-stop'){answerRecorder.stop();return;}
+    if(action==='mic-delete'){pauseAnswer();answerRecorder.reset();return;}
     if(action==='role-another'){const l=D.lessons.find(l=>l.id===openedLesson);el('it-role-variant').value=nextVariant(l).id;app.querySelector('[data-action="role-start"]').click();return;}
     if(action==='role-start'){
       const role=el('it-role-choice').value,mode=el('it-role-mode').value,l=D.lessons.find(l=>l.id===openedLesson),v=variants(l).find(v=>v.id===el('it-role-variant').value)||nextVariant(l);stopAudio();
@@ -399,7 +415,7 @@
     if(action==='role-stop'){const wasDaily=roleRun?.daily;stopAudio();if(wasDaily){active='quick';render();}return;}
     if(action==='role-reveal'&&roleRun?.phase==='waiting'){roleModel();return;}
     if(action==='role-repeat'&&roleRun?.phase==='ready'){roleModel();return;}
-    if(action==='role-next'&&roleRun?.phase==='ready'){roleRun.index++;roleStep();return;}
+    if(action==='role-next'&&roleRun?.phase==='ready'){pauseAnswer();answerRecorder.reset();roleRun.index++;roleStep();return;}
     if(action==='audio-stop'){stopAudio();return;}
     if(action==='dialogue-play'){playDialogue();return;}
     if(action==='text-cards'){picturesOnly=false;cardIndex=0;renderCards();return;}
@@ -469,6 +485,7 @@
   app.addEventListener('input',event=>{
     if(session&&!session.answered&&event.target.name==='answer'){session.answer=event.target.value;saveDraft();}
   });
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){pauseAnswer();if(answerRecorder.state.status==='pending')answerRecorder.reset();else answerRecorder.stop();}});
   window.addEventListener('pagehide',()=>{stopAudio();saveDraft();});
   const requestedLesson=new URLSearchParams(location.search).get('lesson');
   if(D.lessons.some(l=>l.id===requestedLesson))openedLesson=requestedLesson;
