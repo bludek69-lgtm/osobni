@@ -2568,6 +2568,129 @@
       {id:'compromise',title:{cs:'Navrhnout kompromis',en:'Suggest a compromise'},lines:[opinionBranchRows[4],opinionBranchRows[5]]}
     ]},opinionBranchRows[3],opinionBranchRows[6],opinionBranchRows[7]
   ]});
+  const weatherBranchRows=[
+  {
+    "id": "ipotesi-branch-1",
+    "role": "customer",
+    "it": "Che cosa potremmo fare domani, se avessimo tutta la giornata libera?",
+    "translation": {
+      "cs": "Co bychom mohli dělat zítra, kdybychom měli celý den volný?",
+      "en": "What could we do tomorrow if we had the whole day free?",
+      "it": "Che cosa potremmo fare domani, se avessimo tutta la giornata libera?"
+    },
+    "situation": {
+      "cs": "Představ si celý volný den a zeptej se na možný společný program.",
+      "en": "Imagine having a whole day free and ask about possible plans together."
+    }
+  },
+  {
+    "id": "ipotesi-branch-2",
+    "role": "barista",
+    "it": "Dipenderebbe dal tempo. Le previsioni sono ancora incerte.",
+    "translation": {
+      "cs": "Záleželo by na počasí. Předpověď je zatím nejistá.",
+      "en": "It would depend on the weather. The forecast is still uncertain.",
+      "it": "Dipenderebbe dal tempo. Le previsioni sono ancora incerte."
+    },
+    "situation": {
+      "cs": "Vysvětli, že program by závisel na počasí, protože předpověď není jistá.",
+      "en": "Explain that the plan would depend on the weather because the forecast is uncertain."
+    }
+  },
+  {
+    "id": "ipotesi-branch-3",
+    "role": "customer",
+    "it": "Se domani piovesse, che cosa potremmo fare al coperto?",
+    "translation": {
+      "cs": "Kdyby zítra pršelo, co bychom mohli dělat pod střechou?",
+      "en": "If it rained tomorrow, what could we do indoors?",
+      "it": "Se domani piovesse, che cosa potremmo fare al coperto?"
+    },
+    "situation": {
+      "cs": "Představ si déšť. Zeptej se podmínkovou větou na program pod střechou.",
+      "en": "Imagine rain. Use a conditional sentence to ask about an indoor activity."
+    }
+  },
+  {
+    "id": "ipotesi-branch-4",
+    "role": "barista",
+    "it": "Se piovesse, visiterei un museo, purché fosse aperto.",
+    "translation": {
+      "cs": "Kdyby pršelo, navštívila bych muzeum, pokud by bylo otevřené.",
+      "en": "If it rained, I would visit a museum, provided it was open.",
+      "it": "Se piovesse, visiterei un museo, purché fosse aperto."
+    },
+    "situation": {
+      "cs": "Pro případ deště navrhni muzeum s podmínkou, že bude otevřené.",
+      "en": "For rainy weather, suggest a museum on condition that it is open."
+    }
+  },
+  {
+    "id": "ipotesi-branch-5",
+    "role": "customer",
+    "it": "E se invece ci fosse il sole, dove ti piacerebbe andare?",
+    "translation": {
+      "cs": "A kdyby naopak svítilo slunce, kam bys ráda jela?",
+      "en": "And if it were sunny instead, where would you like to go?",
+      "it": "E se invece ci fosse il sole, dove ti piacerebbe andare?"
+    },
+    "situation": {
+      "cs": "Představ si slunečné počasí. Zeptej se podmínkovou větou na místo výletu.",
+      "en": "Imagine sunny weather. Use a conditional sentence to ask where to go."
+    }
+  },
+  {
+    "id": "ipotesi-branch-6",
+    "role": "barista",
+    "it": "Se ci fosse il sole, farei una gita in barca, a condizione che il mare fosse calmo.",
+    "translation": {
+      "cs": "Kdyby svítilo slunce, podnikla bych výlet lodí pod podmínkou, že by moře bylo klidné.",
+      "en": "If it were sunny, I would take a boat trip, on condition that the sea was calm.",
+      "it": "Se ci fosse il sole, farei una gita in barca, a condizione che il mare fosse calmo."
+    },
+    "situation": {
+      "cs": "Za slunečného počasí navrhni výlet lodí, ale podmiň ho klidným mořem.",
+      "en": "In sunny weather, suggest a boat trip, but make it conditional on calm seas."
+    }
+  },
+  {
+    "id": "ipotesi-branch-7",
+    "role": "customer",
+    "it": "Prima di decidere, dovremmo controllare le previsioni e gli orari.",
+    "translation": {
+      "cs": "Než se rozhodneme, měli bychom zkontrolovat předpověď a časy.",
+      "en": "Before deciding, we should check the forecast and opening or departure times.",
+      "it": "Prima di decidere, dovremmo controllare le previsioni e gli orari."
+    },
+    "situation": {
+      "cs": "Před konečnou volbou doporuč ověřit počasí a časové možnosti programu.",
+      "en": "Before making the final choice, recommend checking the weather and timing of the activity."
+    }
+  },
+  {
+    "id": "ipotesi-branch-8",
+    "role": "barista",
+    "it": "Sono d’accordo. Se il tempo cambiasse, potremmo modificare il programma.",
+    "translation": {
+      "cs": "Souhlasím. Kdyby se počasí změnilo, mohli bychom program upravit.",
+      "en": "I agree. If the weather changed, we could adjust our plans.",
+      "it": "Sono d’accordo. Se il tempo cambiasse, potremmo modificare il programma."
+    },
+    "situation": {
+      "cs": "Souhlas s ověřením a připomeň možnost změnit program při změně počasí.",
+      "en": "Agree to check and point out that you could adjust your plans if the weather changed."
+    }
+  }
+];
+  for(const line of weatherBranchRows)audioFiles[line.it]=line.id+'.mp3';
+  const weatherBranchLesson=lessons.find(l=>l.id==='ipotesi');
+  weatherBranchLesson.dialogueVariants.push({id:'ipotesi-v2',title:{cs:'Déšť, nebo slunce · dvě cesty',en:'Rain or sunshine · two paths'},lines:[
+    weatherBranchRows[0],weatherBranchRows[1],
+    {...weatherBranchRows[2],branchTitle:{cs:'Počasí je nejisté. Kterou možnost promyslíš?',en:'The weather is uncertain. Which possibility will you explore?'},branches:[
+      {id:'rain',title:{cs:'Kdyby pršelo',en:'If it rained'},lines:[weatherBranchRows[2],weatherBranchRows[3]]},
+      {id:'sun',title:{cs:'Kdyby svítilo slunce',en:'If it were sunny'},lines:[weatherBranchRows[4],weatherBranchRows[5]]}
+    ]},weatherBranchRows[3],weatherBranchRows[6],weatherBranchRows[7]
+  ]});
   const data = {version:1, lessons, photos, illustrations, lessonIllustrations, audioFiles};
   if (typeof module !== 'undefined' && module.exports) module.exports = data;
   else root.ItalianData = data;

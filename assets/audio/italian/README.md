@@ -21,3 +21,5 @@ Story cause and consequence (2026-10-15): seven racconto-branch-*.mp3 recordings
 Planning alternatives (2026-10-15): eight progetti-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for Anna and DiegoNeural for the proposer. Original teaching dialogue: Saturday is unsuitable, suggesting Sunday morning or asking availability for Sunday afternoon.
 
 Opinion disagreement (2026-10-15): eight opinioni-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for Anna and DiegoNeural for the proposer. Original teaching dialogue: asking for reasons or suggesting a compromise about guided tours.
+
+Weather hypotheses (2026-10-15): eight ipotesi-branch-*.mp3 recordings generated with edge-tts 7.3.1 at default rate, ElsaNeural for Anna and DiegoNeural for the questioner. Original teaching dialogue: hypothetical rain with a museum visit or sunshine with a boat trip, conditional on opening hours and calm seas.
