@@ -76,10 +76,26 @@
     app.innerHTML='<div class="it-start-row">'+button('quick',T.quick,'class="it-primary"')+((pausedSession||lastLesson)&&!session?button('resume',T.resume):'')+'</div><nav class="it-tabs" aria-label="'+esc(T.mode)+'">'+['lessons','cards','dictionary','practice','exam','progress'].map(name=>button('tab',T[name],'data-tab="'+name+'" aria-pressed="'+(active===name)+'"')).join('')+'</nav><details class="it-audio-disclosure"><summary>'+T.settings+'</summary><div class="it-audio-settings"><label>'+T.voice+'<select id="it-voice"></select></label><p id="it-voice-note"></p></div></details><p id="it-status" role="status" aria-live="polite"></p><div id="it-view"></div>';
     updateVoiceControls();
   }
+  function renderQuick() {
+    const t={
+      cs:{intro:'Vyber si krátké učení podle toho, kde jsi skončil/a. Pět minut je orientační čas; tempo je na tobě.',test:'Pokračovat v rozpracovaném testu',question:'Otázka',last:'Vrátit se k poslední lekci',review:'Zopakovat až 5 chyb',count:'Položky k opakování',replace:'Spuštění opakování nahradí rozpracovaný test až po potvrzení.',first:'Začít první lekcí',browse:'Vybrat jinou lekci'},
+      en:{intro:'Choose a short activity based on where you left off. Five minutes is a guide; learn at your own pace.',test:'Continue your unfinished test',question:'Question',last:'Return to the last lesson',review:'Review up to 5 mistakes',count:'Items to review',replace:'Starting a review replaces your unfinished test only after confirmation.',first:'Start the first lesson',browse:'Choose another lesson'},
+      it:{intro:'Scegli una breve attività. Cinque minuti sono indicativi: procedi al tuo ritmo.',test:'Continua la prova in corso',question:'Domanda',last:'Torna all’ultima lezione',review:'Ripassa fino a 5 errori',count:'Elementi da ripassare',replace:'Il ripasso sostituisce la prova in corso solo dopo la conferma.',first:'Inizia la prima lezione',browse:'Scegli un’altra lezione'}
+    }[lang];
+    const last=D.lessons.find(l=>l.id===lastLesson),mistakes=C.reviewQuestions(D.lessons,progress,lang);
+    let choices='';
+    if(pausedSession)choices+='<article class="it-card"><h3>'+t.test+'</h3><p>'+t.question+' '+(pausedSession.index+1)+' / '+pausedSession.questions.length+'</p>'+button('resume',T.resume,'class="it-primary"')+'</article>';
+    else if(last)choices+='<article class="it-card"><h3>'+t.last+'</h3><p>'+esc(last.title[lang])+'</p>'+button('resume',T.resume,'class="it-primary"')+'</article>';
+    if(mistakes.length)choices+='<article class="it-card"><h3>'+t.review+'</h3><p>'+t.count+': '+mistakes.length+'</p><p>'+T.reviewMixed+'</p>'+(pausedSession?'<p class="it-muted">'+t.replace+'</p>':'')+button('quick-review',T.retry,'class="it-primary"')+'</article>';
+    if(!last&&!pausedSession&&!mistakes.length){const first=D.lessons[0];choices+='<article class="it-card"><h3>'+t.first+'</h3><p>'+esc(first.title[lang])+'</p>'+button('lesson',T.open,'data-lesson="'+first.id+'" class="it-primary"')+'</article>';}
+    el('it-view').innerHTML='<section class="it-panel it-quick"><h2 id="it-focus" tabindex="-1">'+T.quick+'</h2><p>'+t.intro+'</p><div class="it-lessons">'+choices+'</div>'+button('tab',t.browse,'data-tab="lessons"')+'</section>';
+    el('it-focus').focus();
+  }
   function render() {
     renderShell();
     const view=el('it-view');
     if (session) {renderQuestion(); return;}
+    if(active==='quick'){renderQuick();return;}
     if(active==='lessons'&&openedLesson){showLesson(openedLesson);return;}
     if (active==='lessons') {
       view.innerHTML='<div class="it-toolbar">'+levelSelect()+'</div><div class="it-lessons">'+D.lessons.filter(l=>currentLevel==='all'||l.level===currentLevel).map(l=>'<article class="it-card"><img class="it-lesson-thumb" src="'+esc(lessonPictureDirectory+D.lessonIllustrations[l.id].file)+'" alt="" width="1200" height="800" loading="lazy" decoding="async"><span class="it-level">'+l.level+'</span><h2>'+esc(l.title[lang])+'</h2><p>'+esc(l.note[lang])+'</p>'+button('lesson',T.open,'data-lesson="'+l.id+'"')+'</article>').join('')+'</div>';
@@ -145,7 +161,7 @@
     updateAudioButtons();saveDraft();el('it-focus').focus();
   }
   function selectedLessons() {return D.lessons.filter(l=>(currentLevel==='all'||l.level===currentLevel)&&(currentLesson==='all'||l.id===currentLesson));}
-  function start(isExam=false) {
+  function start(isExam=false,limit=12) {
     if(pausedSession&&!window.confirm(T.newAttempt))return;
     const selected=isExam?D.lessons.filter(l=>currentLevel==='all'||l.level===currentLevel):selectedLessons();
     let pool;
@@ -161,9 +177,10 @@
     if(!reviewOnly)pool=pool.filter(q=>q.kind!=='listen'||canSpeak(q.italian));
     if(!pool.length){status(!isExam&&mode==='picture'?T.noPictures:T.noQuestions);return;}
     stopAudio();
-    session={questions:C.shuffle(pool).slice(0,isExam?20:12),index:0,correct:0,answered:false,played:false,type:isExam?'exam':'practice',level:currentLevel,changes:[]};
+    session={questions:C.shuffle(pool).slice(0,isExam?20:limit),index:0,correct:0,answered:false,played:false,type:isExam?'exam':'practice',level:currentLevel,changes:[]};
     pausedSession=null;openedLesson=null;saveDraft();
     render();
+    return true;
   }
   function renderQuestion() {
     const s=session,q=s.questions[s.index],choice=q.kind!=='write';
@@ -312,7 +329,11 @@
     if(action==='audio-stop'){stopAudio();return;}
     if(action==='dialogue-play'){playDialogue();return;}
     if(action==='text-cards'){picturesOnly=false;cardIndex=0;renderCards();return;}
-    if(action==='quick'){stopAudio();if(session)pausedSession=session;session=null;active='lessons';openedLesson='bar';render();return;}
+    if(action==='quick'){stopAudio();if(session)pausedSession=session;session=null;active='quick';openedLesson=null;saveDraft();render();return;}
+    if(action==='quick-review'){
+      currentLevel='all';currentLesson='all';reviewOnly=true;active='practice';
+      if(!start(false,5))active='quick';return;
+    }
     if(action==='resume'){
       stopAudio();session=pausedSession;pausedSession=null;
       if(session){active=session.type==='exam'?'exam':'practice';currentLevel=session.level;openedLesson=null;render();}
