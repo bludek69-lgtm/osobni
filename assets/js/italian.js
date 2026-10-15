@@ -13,10 +13,10 @@
   Object.assign(copy.it,{cards:'Carte',picture:'Quiz illustrato',picturePrompt:'Che cosa c’è nell’immagine? Scegli l’espressione italiana.',cardsInfo:'Guarda l’immagine, ricorda l’espressione italiana e gira la carta. Le immagini coprono 24 espressioni concrete A1–A2; le altre carte usano il testo.',picturesOnly:'Solo carte illustrate',flip:'Gira la carta',hide:'Nascondi la risposta',previousCard:'Carta precedente',nextCard:'Carta successiva',card:'Carta',pictureStart:'Prova il quiz illustrato',noPictures:'Nessuna immagine per questa selezione. Scegli A1/A2 o disattiva il filtro immagini per le carte testuali.',pictureFallback:'Descrizione dell’immagine (accessibilità)'});
   const T = copy[lang], app = document.getElementById('italian-app');
   const lessonPictureDirectory = new URL('../img/italian/lessons/', document.currentScript.src).href;
-  const pictureDirectory = new URL('../img/italian/ai/', document.currentScript.src).href;
-  Object.assign(copy.cs,{photoCredit:'AI ilustrace',photoInfo:'24 realistických ilustrací vytvořených pomocí AI pro tuto výuku. Nejde o skutečné fotografie míst či produktů. Abstraktní výrazy zůstávají textové.'});
-  Object.assign(copy.en,{photoCredit:'AI illustration',photoInfo:'24 realistic AI-generated illustrations for these lessons. They are not actual photographs of places or products. Abstract expressions remain text-only.'});
-  Object.assign(copy.it,{photoCredit:'Illustrazione IA',photoInfo:'24 illustrazioni realistiche generate con IA per queste lezioni. Non sono fotografie reali di luoghi o prodotti. Le espressioni astratte restano testuali.'});
+  const pictureDirectory = new URL('../img/italian/photos/', document.currentScript.src).href;
+  Object.assign(copy.cs,{photoCredit:'Fotografie',photoInfo:'24 skutečných fotografií pro konkrétní výrazy. Abstraktní výrazy zůstávají textové. Fotografie ilustrují slovíčka; nemusí pocházet z Itálie.'});
+  Object.assign(copy.en,{photoCredit:'Photograph',photoInfo:'24 real photographs for concrete expressions. Abstract expressions remain text-only. Photos illustrate vocabulary and are not necessarily taken in Italy.'});
+  Object.assign(copy.it,{photoCredit:'Fotografia',photoInfo:'24 fotografie reali per le espressioni concrete. Le espressioni astratte restano testuali. Le fotografie illustrano il lessico e non sono necessariamente scattate in Italia.'});
   const key = 'cestovatel69_italian_progress_v1';
   const extra = {
     cs:{quick:'Začít na 5 minut',resume:'Pokračovat v učení',resumeNote:'Máš rozpracované učení.',settings:'Zvuk a výslovnost',localAudio:'Všechny lekce mají vlastní syntetické nahrávky dialogů, výrazů a příkladových vět.',textCards:'Zobrazit textové kartičky',goal:'Dnes se naučíš',dialogue:'1. Poslechni si rozhovor',vocabulary:'2. Slova a příklady',rules:'3. Jak to funguje',tryIt:'4. Vyzkoušej si to',playAll:'Přehrát celý dialog',stopAudio:'Zastavit zvuk',translation:'Ukázat překlad / vysvětlení',barista:'Obsluha',customer:'Zákazník',wordAudio:'Poslechnout výraz',sentenceAudio:'Poslechnout větu',lineAudio:'Přehrát repliku',slowLine:'Přehrát pomalu',cafeTime:'V kavárně · A1 · asi 5 minut',cafeContext:'Jsi v italské kavárně. Objednej si u baru, zjisti cenu a požádej o účet.',ruleText:'Vorrei… = chtěl/a bych… Přidej per favore. Al banco znamená u baru, al tavolo u stolu. Il conto, per favore je prosba o účet. Částka v dialogu je modelový příklad.',practiceCafe:'Procvičit objednávku',completed:'Po procvičení si zkus bez nápovědy objednat nápoj a požádat o účet.',savedDraft:'Průběžně ukládáno v tomto prohlížeči.',newAttempt:'Nový test nahradí rozpracovaný test. Pokračovat?',reviewMixed:'Opakování zahrnuje slovíčka i gramatiku; zachová typ poslední chyby.',audioUnavailable:'Tento poslech nyní nemá dostupný zvuk. Zvol jiný hlas nebo jinou lekci.',audioCredit:'Syntetické italské hlasy · předem připravené nahrávky',cafeTitle:'Objednám si v kavárně',noMistakes:'Nemáš žádné chyby k opakování.'},
@@ -125,11 +125,12 @@
   function audio(text,label=T.wordAudio) { return '<span class="it-audio">'+button('speak','▶ '+label,'data-speech="'+esc(text)+'"')+button('slow',T.slow,'data-speech="'+esc(text)+'" aria-label="'+esc(T.slowLine+': '+text)+'"')+'</span>'; }
   function favorite(w) {const yes=progress.favorites.includes(w.id); return button('favorite',yes?'★':'☆','data-word="'+w.id+'" aria-label="'+esc(yes?T.unfavorite:T.favorite)+'" aria-pressed="'+yes+'"');}
   function picture(w) {
-    return '<img class="it-picture" src="'+esc(pictureDirectory+D.illustrations[w.picture].file)+'" alt="'+esc(w.pictureDescription||w.meaning[lang])+'" decoding="async">';
+    return '<img class="it-picture" src="'+esc(pictureDirectory+w.picture+'.jpg')+'" alt="'+esc(w.pictureDescription||w.meaning[lang])+'" decoding="async">';
   }
   function photoCredit(w) {
-    if(!D.illustrations[w.picture])return '';
-    return '<p class="it-photo-credit">'+esc(T.photoCredit)+' · OpenAI</p>';
+    const p=D.photos[w.picture];if(!p)return '';
+    const license=p.licenseUrl?'<a href="'+esc(p.licenseUrl)+'" target="_blank" rel="noopener">'+esc(p.license)+'</a>':esc(p.license);
+    return '<p class="it-photo-credit"><a href="'+esc(p.source)+'" target="_blank" rel="noopener">'+esc(T.photoCredit)+'</a> · '+esc(p.author)+' · '+license+'</p>';
   }
   function cardDeck() {return words.filter(w=>(currentLevel==='all'||w.level===currentLevel)&&(!picturesOnly||w.picture));}
   function renderCards() {

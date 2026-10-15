@@ -160,9 +160,21 @@
     asciugamano:photo('HSY- Folded Towels.jpg','HanSangYoon','CC BY-SA 4.0','https://creativecommons.org/licenses/by-sa/4.0/'),
     menu:photo('Restaurant menus.jpg','E4024','CC BY-SA 4.0','https://creativecommons.org/licenses/by-sa/4.0/'),
     verdure:photo('Vegetables, 2025 - Massachusetts.jpg','Daderot','CC0','https://creativecommons.org/publicdomain/zero/1.0/'),
+    pane:photo("Bread-breakfast-baguette-sliced (24244220141).jpg","www.Pixel.la Free Stock Photos","CC0","https://creativecommons.org/publicdomain/zero/1.0/deed.en"),
+    latte:photo("Glass of milk.jpg","Santeri Viinamäki","CC BY-SA 4.0","https://creativecommons.org/licenses/by-sa/4.0"),
+    gelato:photo("Sprinkles (Jimmies) on Ice Cream Cone.jpg","Bigmacthealmanac","CC BY-SA 4.0","https://creativecommons.org/licenses/by-sa/4.0"),
+    autobus:photo("Roma TPL Iveco Bus Urbanway (9951).jpg","Kaga tau","CC BY-SA 4.0","https://creativecommons.org/licenses/by-sa/4.0"),
+    farmacia:photo("Pharmacies have illuminated green crosses (18417857026).jpg","Eric Fischer","CC BY 2.0","https://creativecommons.org/licenses/by/2.0"),
+    museo:photo("Gallery display of American paintings formerly in the collection of the Corcoran Gallery of Art, now at the National Gallery of Art in Washington, D.C.jpg","Ser Amantio di Nicolao","CC BY-SA 4.0","https://creativecommons.org/licenses/by-sa/4.0"),
+    valigia:photo("Cloth Suitcase.jpg","Mk2010","CC BY-SA 3.0","https://creativecommons.org/licenses/by-sa/3.0"),
+    letto:photo("European single bed from seahorse.jpg","Peachyeung316","CC BY-SA 4.0","https://creativecommons.org/licenses/by-sa/4.0"),
+    doccia:photo("Shower Cubicle.jpg","Fanti Salms","CC BY-SA 3.0","https://creativecommons.org/licenses/by-sa/3.0"),
+    pasta:photo("Spaghetti-prepared.jpg","Eloquence","Public domain",null),
+    pizza:photo("Pizza Margherita (14565452088).jpg","jeffreyw","CC BY 2.0","https://creativecommons.org/licenses/by/2.0"),
+    pesce:photo("Grilled Fish (4791990726).jpg","Emilian Robert Vicol from Com. Balanesti, Romania","CC BY 2.0","https://creativecommons.org/licenses/by/2.0"),
     passeggiata:photo('Couple walking in park.jpg','Bill Branson / National Cancer Institute','Public domain',null)
   };
-  // The old photographs retain their provenance for archival use, but are not displayed.
+  // Previous AI illustrations are retained as an unused archive; flashcards display photos.
   const illustrations = Object.fromEntries(pictures.map(id=>[id,{file:id+'.webp',kind:'ai',generator:'OpenAI image generation',created:'2026-10-10'}]));
   const cafe = lessons.find(l=>l.id==='bar');
   cafe.goal = t('Objednám si kávu a něco k snídani, odpovím obsluze a požádám o účet.','Order coffee and breakfast, reply to the barista and ask for the bill.','Ordinare un caffè e la colazione, rispondere al barista e chiedere il conto.');

@@ -1,6 +1,6 @@
 # AI illustrations for Italian flashcards
 
-24 local WebP illustrations generated using the built-in OpenAI image generation tool on 2026-10-10. These are synthetic educational illustrations, not photographs of actual places or products. The page labels them as AI-generated in CS, EN and IT. No Commons author or license is attached to these AI assets. The preceding Commons photographs and their provenance remain in ../photos/ as an unused archive.
+24 local WebP illustrations generated using the built-in OpenAI image generation tool on 2026-10-10. These are synthetic educational illustrations, not photographs of actual places or products. These assets are retained as an unused archive after flashcards switched to real photographs on 2026-10-15. No Commons author or license is attached to these AI assets. The active Commons photographs and their provenance are in ../photos/.
 
 Images were visually checked for recognizable subjects. WebP conversion uses quality 86, preserving the original dimensions and entire composition. No crops, compositing or retouching were applied. The coffee image reuses the previously approved preview; the other 23 were generated individually.
 

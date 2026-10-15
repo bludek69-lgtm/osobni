@@ -41,17 +41,17 @@ test('shuffle does not mutate input and preserves every item',()=>{
   const input=[1,2,3,4,5];const result=C.shuffle(input,()=>.5);
   assert.deepEqual(input,[1,2,3,4,5]);assert.deepEqual(result.slice().sort(),input);
 });
-test('24 local AI illustrations with provenance and valid Italian choices in every language',()=>{
+test('24 local photographs with attribution and valid Italian choices in every language',()=>{
   const fs=require('node:fs');
-  assert.equal(Object.keys(D.illustrations).length,24);
+  assert.equal(Object.keys(D.photos).length,24);
   for(const lang of ['cs','en','it']) {
     const qs=C.questions(D.lessons,'picture',lang);assert.equal(qs.length,24);
     for(const q of qs) {
-      const illustration=D.illustrations[q.picture];assert.equal(illustration.kind,'ai');
-      assert.ok(illustration.generator&&illustration.created);
-      assert.equal(illustration.file,q.picture+'.webp');
-      const bytes=fs.readFileSync(__dirname+'/assets/img/italian/ai/'+illustration.file);
-      assert.equal(bytes.toString('ascii',0,4),'RIFF');assert.equal(bytes.toString('ascii',8,12),'WEBP');
+      const photo=D.photos[q.picture];assert.ok(photo.author&&photo.title&&photo.license);
+      assert.ok(photo.source.startsWith('https://commons.wikimedia.org/wiki/'));
+      if(photo.license.startsWith('CC'))assert.ok(photo.licenseUrl.startsWith('https://creativecommons.org/'));
+      const bytes=fs.readFileSync(__dirname+'/assets/img/italian/photos/'+q.picture+'.jpg');
+      assert.equal(bytes[0],255);assert.equal(bytes[1],216);
       assert.ok(bytes.length>1000&&bytes.length<1000000);
       assert.deepEqual(q.answers,[q.italian]);assert.ok(q.pictureDescription);
       assert.equal(q.options.length,4);assert.equal(new Set(q.options).size,4);
