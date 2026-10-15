@@ -28,7 +28,7 @@
       word('latte','il latte','mléko','milk','bevanda bianca usata anche nel cappuccino','Prendo un bicchiere di latte.'),
       word('gelato','un gelato','zmrzlina','an ice cream','dolce freddo e cremoso','Vorrei un gelato alla vaniglia.')],[
       grammar('articolo','Vorrei ___ spremuta.',['una'],['una','un','uno','il'],'Spremuta je ženského rodu: una spremuta.','Spremuta is feminine: una spremuta.','Spremuta è femminile: una spremuta.'),
-      grammar('vorrei','___ un caffè, per favore. (richiesta cortese)',['Vorrei'],['Vorrei','Vorremmo','Vorrebbero','Vorresti'],'Vorrei je 1. osoba podmiňovacího způsobu.','Vorrei is the first-person singular conditional.','Vorrei è il condizionale, prima persona singolare.')]),
+      grammar('vorrei','___ un caffè, per favore. (io, richiesta cortese)',['Vorrei'],['Vorrei','Vorremmo','Vorrebbero','Vorresti'],'Vorrei je 1. osoba podmiňovacího způsobu.','Vorrei is the first-person singular conditional.','Vorrei è il condizionale, prima persona singolare.')]),
     lesson('citta','A1',t('Orientace ve městě','Finding your way','Orientarsi in città'),
       t('Dov’è znamená „kde je“. Všímej si apostrofu a přízvuku v è. A destra / a sinistra = vpravo / vlevo.','Dov’è means “where is”. Notice the apostrophe and the accent on è. A destra / a sinistra = right / left.','Dov’è significa dove si trova. Nota l’apostrofo e l’accento su è.'),[
       word('stazione','la stazione','nádraží','the station','luogo da cui partono i treni','Dov’è la stazione?'),
@@ -101,7 +101,7 @@
     lesson('pronomi','B1',t('Zájmena lo, la, ne, ci','Pronouns lo, la, ne, ci','Pronomi lo, la, ne, ci'),
       t('Lo/la mohou nahradit přímý předmět. Ne může vyjadřovat „z toho / z nich“, ci „tam“. Význam vždy záleží na větě.','Lo/la can replace a direct object. Ne can mean “of it/them”; ci can mean “there”. Meaning depends on context.','Lo/la sostituiscono un oggetto diretto; ne può indicare una parte o quantità, ci un luogo.'),[
       word('lo-prendo','lo prendo','vezmu si ho (např. lístek)','I will take it (masculine)','prendo l’oggetto maschile già nominato','Il biglietto? Lo prendo qui.'),
-      word('la-vedo','la vedo','vidím ji','I see her / it (feminine)','vedo la persona o cosa femminile nominata','La stazione? La vedo da qui.'),
+      word('la-vedo','la vedo','vidím ji / ho (italský ženský rod)','I see her / it (feminine)','vedo la persona o cosa femminile nominata','La stazione? La vedo da qui.'),
       word('ne-vorrei','ne vorrei due','chtěl/a bych dva z nich','I would like two of them','vorrei due elementi di quelli nominati','I cornetti? Ne vorrei due.'),
       word('ci-vado','ci vado','jdu tam','I go there','vado nel luogo già nominato','A Roma? Ci vado domani.'),
       word('me-ne','me ne vado','odcházím','I am leaving','lascio questo luogo','È tardi, me ne vado.'),
@@ -202,7 +202,7 @@
   ].map((row,i)=>({id:'ristorante-'+String(i+1).padStart(2,'0'),role:i%2?'customer':'barista',it:row[0],translation:t(row[1],row[2],row[0])}));
   restaurant.questions.push(
     grammar('ristorante-table','Ho prenotato un tavolo ___ due.',['per'],['per','con','di','da'],'Per due = pro dvě osoby.','Per due means for two people.','Per due significa per due persone.'),
-    grammar('ristorante-menu','Posso vedere il ___, per favore?',['menù'],['menù','conto','tavolo','bicchiere'],'Před objednáním požádáš o menù, jídelní lístek.','Before ordering, ask for the menù, the menu.','Prima di ordinare chiedi il menù.'),
+    grammar('ristorante-menu','Per scegliere i piatti: Posso vedere il ___, per favore?',['menù'],['menù','conto','tavolo','bicchiere'],'Před objednáním požádáš o menù, jídelní lístek.','Before ordering, ask for the menù, the menu.','Prima di ordinare chiedi il menù.'),
     grammar('ristorante-order','Io ___ la pasta al pomodoro. (prendere)',['prendo'],['prendo','prendi','prendete','prendono'],'Prendo = dám si. Prendere má pro io tvar prendo.','Prendo means I will have. The io form of prendere is prendo.','Con io: prendo.'),
     grammar('ristorante-drink','E da ___? — Acqua naturale, grazie.',['bere'],['bere','mangiare','pagare','prenotare'],'Da bere = k pití.','Da bere means to drink.','Da bere introduce le bevande.')
   );
@@ -234,7 +234,7 @@
   hotel.questions.push(
     grammar('hotel-duration','Ho una prenotazione ___ due notti.',['per'],['per','a','di','con'],'Per due notti vyjadřuje délku pobytu: na dvě noci.','Per due notti expresses duration: for two nights.','Per due notti indica la durata.'),
     grammar('hotel-breakfast','La colazione è ___? (compresa nel prezzo)',['inclusa'],['inclusa','incluso','inclusi','incluse'],'Colazione je ženského rodu v jednotném čísle: inclusa.','Colazione is feminine singular: inclusa.','Colazione è femminile singolare: inclusa.'),
-    grammar('hotel-time','___ che ora devo lasciare la camera?',['A'],['A','In','Da','Per'],'A che ora? = V kolik hodin?','A che ora? means At what time?','A che ora introduce una domanda sull’orario.'),
+    grammar('hotel-time','___ che ora devo lasciare la camera?',['A'],['A','In','Da','Su'],'A che ora? = V kolik hodin?','A che ora? means At what time?','A che ora introduce una domanda sull’orario.'),
     grammar('hotel-towel','Mi ___ un asciugamano, per favore. (servire)',['serve'],['serve','servono','servire','servi'],'Un asciugamano je jednotné číslo: mi serve.','Un asciugamano is singular: mi serve.','Con un asciugamano si usa il singolare: serve.')
   );
   hotel.video={id:null,status:'unavailable',failedGenerationId:'0f679c2c3416412bd18db7220b18840b',transcript:[
@@ -297,7 +297,7 @@
     grammar('saluti-name','Io ___ chiamo Anna.',['mi'],['mi','ti','si','ci'],'Mi chiamo = jmenuji se.','Mi chiamo means my name is.','Con io: mi chiamo.'),
     grammar('saluti-formal','Come ___ chiama? (Lei)',['si'],['si','ti','mi','vi'],'Při vykání jedné osobě: Come si chiama?','When addressing one person formally: Come si chiama?','Con Lei: Come si chiama?'),
     grammar('saluti-feeling','Come ___? (tu, stare)',['stai'],['stai','sta','sto','stiamo'],'Come stai? používáme při tykání.','Come stai? is informal.','Con tu si usa stai.'),
-    grammar('saluti-origin','Sono italiano, ___ Roma.',['di'],['di','a','in','per'],'Di Roma vyjadřuje původ: z Říma.','Di Roma expresses origin: from Rome.','Di Roma indica la provenienza.')
+    grammar('saluti-origin','Sono italiano, ___ Roma. (origine)',['di'],['di','a','in','per'],'Di Roma vyjadřuje původ: z Říma.','Di Roma expresses origin: from Rome.','Di Roma indica la provenienza.')
   );
   const yesterday=lessons.find(l=>l.id==='passato');
   yesterday.goal=t('Povím, kde jsem včera byl/a, co jsem navštívil/a a kdy jsem se vrátil/a.','Say where I went yesterday, what I visited and when I returned.','Raccontare dove sono stato ieri, cosa ho visitato e quando sono tornato.');

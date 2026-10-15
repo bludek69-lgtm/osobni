@@ -164,6 +164,19 @@ test('city directions lesson has translated dialogue and audio without a Freya v
   assert.equal(C.reviewQuestions([l],{mistakes:{'citta-repeat':1},mistakeKinds:{}},'cs')[0].answers[0],'ripetere');
 });
 
+test('every offered exercise answer is unique and distractors fail grading',()=>{
+  for(const lang of ['cs','en'])for(const mode of ['choice','write','listen','grammar']){
+    for(const l of D.lessons)for(const q of C.questions([l],mode,lang)){
+      assert.ok(C.grade(q.answers[0],q.answers),q.id);
+      assert.ok(!C.grade('nesprávná odpověď',q.answers),q.id);
+      if(mode!=='write'){
+        assert.equal(new Set(q.options.map(C.normalize)).size,q.options.length,q.id);
+        assert.equal(q.options.filter(o=>C.grade(o,q.answers)).length,1,q.id);
+      }
+    }
+  }
+});
+
 test('formal lesson preserves progress, distinguishes polite objects and completes audio across all lessons',()=>{
   const fs=require('node:fs'),l=D.lessons.find(l=>l.id==='registro');
   assert.equal(l.level,'B2');assert.equal(l.words.length,6);assert.equal(l.questions.length,6);
