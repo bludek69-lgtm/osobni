@@ -140,15 +140,20 @@
       grammar('passivo','Il documento è stato ___ ieri. (inviare)',['inviato'],['inviato','inviata','inviare','inviando'],'Příčestí v pasivu se shoduje s il documento: inviato.','The passive participle agrees with il documento: inviato.','Il participio concorda con documento: inviato.')])
   ];
   // Concrete vocabulary only: abstract B1/B2 expressions remain text flashcards.
-  const pictures = ['caffe','acqua','cornetto','spremuta','stazione','biglietto','camera','chiave','asciugamano','menu','verdure','passeggiata','pane','latte','gelato','autobus','farmacia','museo','valigia','letto','doccia','pasta','pizza','pesce'];
+  const pictures = ['caffe','acqua','cornetto','spremuta','stazione','biglietto','camera','chiave','asciugamano','menu','verdure','passeggiata','pane','latte','gelato','autobus','farmacia','museo','valigia','letto','doccia','pasta','pizza','pesce','conto','colazione','piccante','destra','sinistra'];
   for (const l of lessons) for (const w of l.words) if (pictures.includes(w.id)) w.picture = w.id;
   // Do not offer another object visibly contained in the same illustrated scene.
-  const pictureExclusions = {camera:['letto'],letto:['camera'],menu:['pasta','pizza','pesce','verdure']};
+  const pictureExclusions = {camera:['letto'],letto:['camera'],menu:['pasta','pizza','pesce','verdure'],colazione:['caffe','latte','cornetto','pane','spremuta','acqua'],piccante:['verdure']};
   for (const l of lessons) for (const w of l.words) if (pictureExclusions[w.id]) w.pictureExcludes = pictureExclusions[w.id];
   const photo = (title,author,license,licenseUrl) => ({title,author,license,licenseUrl,source:'https://commons.wikimedia.org/wiki/'+encodeURIComponent('File:'+title.replace(/ /g,'_'))});
   // Real photographs; metadata checked against Commons imageinfo on 2026-10-10.
   // Each photo retains its own license. Only Commons-provided scaled versions are used.
   const photos = {
+    conto:photo("Golden Crown Restaurant Receipt.jpg","Collection of My Community SG","CC BY 4.0","https://creativecommons.org/licenses/by/4.0"),
+    colazione:photo("Coffee, breakfast, croissant.jpg","Kurt Kaiser","CC0","https://creativecommons.org/publicdomain/zero/1.0/deed.en"),
+    piccante:photo("Red Chili Pepper.jpg","Psychonaught","Public domain",null),
+    destra:photo("UK Turn Right Sign - geograph.org.uk - 6261777.jpg","Gary","CC BY-SA 2.0","https://creativecommons.org/licenses/by-sa/2.0"),
+    sinistra:photo("Turn left sign, Kingsway, Newport - geograph.org.uk - 6925215.jpg","Jaggery","CC BY-SA 2.0","https://creativecommons.org/licenses/by-sa/2.0"),
     caffe:photo('A cup of espresso.jpg','Vee Satayamas','CC BY-SA 4.0','https://creativecommons.org/licenses/by-sa/4.0/'),
     acqua:photo('Glass-of-water.jpg','Derek Jensen (Tysto)','Public domain',null),
     cornetto:photo('Cornetti2.JPG','exeair','CC BY-SA 3.0','https://creativecommons.org/licenses/by-sa/3.0/'),
@@ -175,7 +180,7 @@
     passeggiata:photo('Couple walking in park.jpg','Bill Branson / National Cancer Institute','Public domain',null)
   };
   // Previous AI illustrations are retained as an unused archive; flashcards display photos.
-  const illustrations = Object.fromEntries(pictures.map(id=>[id,{file:id+'.webp',kind:'ai',generator:'OpenAI image generation',created:'2026-10-10'}]));
+  const illustrations = Object.fromEntries(pictures.slice(0,24).map(id=>[id,{file:id+'.webp',kind:'ai',generator:'OpenAI image generation',created:'2026-10-10'}]));
   const cafe = lessons.find(l=>l.id==='bar');
   cafe.goal = t('Objednám si kávu a něco k snídani, odpovím obsluze a požádám o účet.','Order coffee and breakfast, reply to the barista and ask for the bill.','Ordinare un caffè e la colazione, rispondere al barista e chiedere il conto.');
   cafe.dialogue = [

@@ -2,7 +2,7 @@
 
 These are actual photographs, not AI-generated images. Source metadata was checked using Wikimedia Commons `imageinfo` / `extmetadata` on 2026-10-10 and 2026-10-15. Attribution, source titles, source links and individual licenses are maintained in `assets/js/italian-data.js`, under `ItalianData.photos`, and shown below each photograph in flashcards and picture quizzes.
 
-Files use the same stable vocabulary IDs as the existing learning module. All 24 photos were visually inspected for the intended subject. The pictures illustrate vocabulary; they are not all taken in Italy (for example, the ticket photograph depicts historical Ugandan railway tickets).
+Files use the same stable vocabulary IDs as the existing learning module. All 29 photos were visually inspected for the intended subject. The pictures illustrate vocabulary; they are not all taken in Italy (for example, the ticket photograph depicts historical Ugandan railway tickets).
 
 Only Commons-provided JPEG previews (up to 960 pixels wide) or a smaller original were downloaded. No retouching, cropping, generative edits or removal of attribution was performed here. The UI fits the whole image without cropping. Each photograph retains its original individual license; the surrounding application is not relicensed by this collection.
 
@@ -39,3 +39,15 @@ For CC licenses, see the exact license links in the data manifest. For public-do
 - `pesce.jpg`: Emilian Robert Vicol from Com. Balanesti, Romania — CC BY 2.0 — [Grilled Fish (4791990726).jpg](https://commons.wikimedia.org/wiki/File:Grilled_Fish_(4791990726).jpg)
 
 Spaghetti-prepared.jpg lacks machine-readable author metadata; its source page explicitly identifies Eloquence as photographer and public-domain donor.
+
+## Additional learning cards
+
+- `conto.jpg`: Collection of My Community SG — CC BY 4.0 — [Golden Crown Restaurant Receipt.jpg](https://commons.wikimedia.org/wiki/File:Golden_Crown_Restaurant_Receipt.jpg)
+- `colazione.jpg`: Kurt Kaiser — CC0 — [Coffee, breakfast, croissant.jpg](https://commons.wikimedia.org/wiki/File:Coffee,_breakfast,_croissant.jpg)
+- `piccante.jpg`: Psychonaught — Public domain — [Red Chili Pepper.jpg](https://commons.wikimedia.org/wiki/File:Red_Chili_Pepper.jpg)
+- `destra.jpg`: Gary — CC BY-SA 2.0 — [UK Turn Right Sign - geograph.org.uk - 6261777.jpg](https://commons.wikimedia.org/wiki/File:UK_Turn_Right_Sign_-_geograph.org.uk_-_6261777.jpg)
+- `sinistra.jpg`: Jaggery — CC BY-SA 2.0 — [Turn left sign, Kingsway, Newport - geograph.org.uk - 6925215.jpg](https://commons.wikimedia.org/wiki/File:Turn_left_sign,_Kingsway,_Newport_-_geograph.org.uk_-_6925215.jpg)
+
+Breakfast excludes its visible food and drink components from quiz distractors. The chilli photograph illustrates spicy flavour. Direction cards show actual single-arrow road signs; no crop or mirroring was applied.
+
+The receipt is a historical restaurant bill from 1974. Its page names the creator as unknown and requests the credit line Collection of My Community SG, which is displayed on the card.

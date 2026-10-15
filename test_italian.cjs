@@ -41,11 +41,11 @@ test('shuffle does not mutate input and preserves every item',()=>{
   const input=[1,2,3,4,5];const result=C.shuffle(input,()=>.5);
   assert.deepEqual(input,[1,2,3,4,5]);assert.deepEqual(result.slice().sort(),input);
 });
-test('24 local photographs with attribution and valid Italian choices in every language',()=>{
+test('29 local photographs with attribution and valid Italian choices in every language',()=>{
   const fs=require('node:fs');
-  assert.equal(Object.keys(D.photos).length,24);
+  assert.equal(Object.keys(D.photos).length,29);
   for(const lang of ['cs','en','it']) {
-    const qs=C.questions(D.lessons,'picture',lang);assert.equal(qs.length,24);
+    const qs=C.questions(D.lessons,'picture',lang);assert.equal(qs.length,29);
     for(const q of qs) {
       const photo=D.photos[q.picture];assert.ok(photo.author&&photo.title&&photo.license);
       assert.ok(photo.source.startsWith('https://commons.wikimedia.org/wiki/'));
@@ -62,7 +62,7 @@ test('24 local photographs with attribution and valid Italian choices in every l
 });
 test('single illustrated lesson has four unique choices and uses existing progress IDs',()=>{
   const qs=C.questions(D.lessons.filter(l=>l.id==='hotel'),'picture','cs');
-  assert.equal(qs.length,6);
+  assert.equal(qs.length,7);
   for(const q of qs){assert.equal(q.options.length,4);assert.ok(C.validateProgress({...C.emptyProgress(),mistakes:{[q.id]:1}},D).mistakes[q.id]);}
 });
 test('picture choices do not confuse a room with its bed or a menu with its food',()=>{
