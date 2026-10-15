@@ -214,7 +214,44 @@
     ['Alla fine del pasto, chiedi: Il conto, per favore. E poi: Posso pagare con la carta? Ricorda: un tavolo per due significa un tavolo per due persone.','Na konci jídla požádej: Účet, prosím. A potom: Mohu platit kartou? Pamatuj: un tavolo per due znamená stůl pro dvě osoby.','At the end of the meal, ask: The bill, please. And then: Can I pay by card? Remember: un tavolo per due means a table for two people.'],
     ['Adesso prova tu: chiedi un tavolo, ordina un piatto e chiedi il conto. Buon appetito!','Teď to zkus ty: požádej o stůl, objednej jídlo a požádej o účet. Dobrou chuť!','Now try it yourself: ask for a table, order a dish and ask for the bill. Enjoy your meal!']
   ]};
+  const hotel = lessons.find(l=>l.id==='hotel');
+  hotel.title=t('V hotelu','At a hotel','In hotel');
+  hotel.goal=t('Přihlásím se na recepci, zeptám se na snídani a Wi-Fi a domluvím odjezd.','Check in, ask about breakfast and Wi-Fi, and arrange departure.','Fare il check-in, chiedere della colazione e del Wi-Fi e organizzare la partenza.');
+  hotel.dialogue=[
+    ['Buonasera! Avete una prenotazione?','Dobrý večer! Máte rezervaci?','Good evening! Do you have a reservation?'],
+    ['Sì, a nome Novák. Ho prenotato una camera per due notti.','Ano, na jméno Novák. Rezervoval jsem pokoj na dvě noci.','Yes, under the name Novák. I booked a room for two nights.'],
+    ['Perfetto. Posso vedere i vostri documenti, per favore?','Výborně. Mohu vidět vaše doklady, prosím?','Perfect. May I see your identity documents, please?'],
+    ['Certo, ecco i documenti. La colazione è inclusa?','Jistě, tady jsou doklady. Je snídaně v ceně?','Of course, here are our documents. Is breakfast included?'],
+    ['Sì, è inclusa. Viene servita dalle sette alle dieci.','Ano, je v ceně. Podává se od sedmi do deseti.','Yes, it is included. It is served from seven until ten.'],
+    ['Grazie. Qual è la password del Wi-Fi?','Děkuji. Jaké je heslo k Wi-Fi?','Thank you. What is the Wi-Fi password?'],
+    ['È scritta su questo foglio. Ecco la chiave della camera.','Je napsané na tomto papíru. Tady je klíč od pokoje.','It is written on this sheet. Here is your room key.'],
+    ['A che ora devo lasciare la camera il giorno della partenza?','V kolik hodin musím v den odjezdu opustit pokoj?','What time must I leave the room on the day of departure?'],
+    ['Entro le undici, per favore.','Do jedenácti, prosím.','By eleven, please.'],
+    ['Posso lasciare qui la valigia fino al pomeriggio?','Mohu tu nechat kufr až do odpoledne?','Can I leave my suitcase here until the afternoon?'],
+    ['Certamente, può lasciarla alla reception. Buon soggiorno!','Samozřejmě, můžete jej nechat na recepci. Příjemný pobyt!','Of course, you can leave it at reception. Enjoy your stay!'],
+    ['Grazie mille!','Moc děkuji!','Thank you very much!']
+  ].map((row,i)=>({id:'hotel-'+String(i+1).padStart(2,'0'),role:i%2?'customer':'barista',it:row[0],translation:t(row[1],row[2],row[0])}));
+  hotel.questions.push(
+    grammar('hotel-duration','Ho una prenotazione ___ due notti.',['per'],['per','a','di','con'],'Per due notti vyjadřuje délku pobytu: na dvě noci.','Per due notti expresses duration: for two nights.','Per due notti indica la durata.'),
+    grammar('hotel-breakfast','La colazione è ___? (compresa nel prezzo)',['inclusa'],['inclusa','incluso','inclusi','incluse'],'Colazione je ženského rodu v jednotném čísle: inclusa.','Colazione is feminine singular: inclusa.','Colazione è femminile singolare: inclusa.'),
+    grammar('hotel-time','___ che ora devo lasciare la camera?',['A'],['A','In','Da','Per'],'A che ora? = V kolik hodin?','A che ora? means At what time?','A che ora introduce una domanda sull’orario.'),
+    grammar('hotel-towel','Mi ___ un asciugamano, per favore. (servire)',['serve'],['serve','servono','servire','servi'],'Un asciugamano je jednotné číslo: mi serve.','Un asciugamano is singular: mi serve.','Con un asciugamano si usa il singolare: serve.')
+  );
+  hotel.video={id:null,status:'unavailable',failedGenerationId:'0f679c2c3416412bd18db7220b18840b',transcript:[
+    ['Ciao! Oggi arriviamo in hotel. Alla reception puoi dire: Buonasera, ho una prenotazione a nome Novák, per due notti. Ascolta e ripeti: Ho una prenotazione per due notti.','Ahoj! Dnes přijíždíme do hotelu. Na recepci můžeš říct: Dobrý večer, mám rezervaci na jméno Novák na dvě noci. Poslouchej a opakuj: Mám rezervaci na dvě noci.','Hello! Today we arrive at a hotel. At reception you can say: Good evening, I have a reservation under the name Novák for two nights. Listen and repeat: I have a reservation for two nights.'],
+    ['Vuoi sapere se la colazione è compresa? Chiedi: La colazione è inclusa? E poi: A che ora viene servita?','Chceš vědět, zda je snídaně v ceně? Zeptej se: Je snídaně zahrnutá? A potom: V kolik hodin se podává?','Want to know whether breakfast is included? Ask: Is breakfast included? And then: What time is it served?'],
+    ['Per collegarti a Internet, domanda: Qual è la password del Wi-Fi? Se manca un asciugamano, puoi dire: Mi serve un asciugamano, per favore. Se la chiave non apre la porta: La chiave non funziona.','Pro připojení k internetu se zeptej: Jaké je heslo k Wi-Fi? Pokud chybí ručník, můžeš říct: Potřebuji ručník, prosím. Pokud klíč neotevírá dveře: Klíč nefunguje.','To connect to the internet, ask: What is the Wi-Fi password? If a towel is missing, you can say: I need a towel, please. If the key does not open the door: The key does not work.'],
+    ['Alla partenza chiedi: A che ora devo lasciare la camera? E se vuoi visitare ancora la città: Posso lasciare qui la valigia fino al pomeriggio?','Při odjezdu se zeptej: V kolik hodin musím opustit pokoj? A pokud chceš ještě navštívit město: Mohu tu nechat kufr až do odpoledne?','When leaving, ask: What time must I leave the room? And if you want to explore the city some more: Can I leave my suitcase here until the afternoon?'],
+    ['Ricorda: per due notti indica la durata del soggiorno. Adesso prova tu: presenta la prenotazione, chiedi della colazione e dell’orario di partenza. Buon soggiorno!','Pamatuj: per due notti označuje délku pobytu. Teď to zkus ty: oznam rezervaci, zeptej se na snídani a čas odjezdu. Příjemný pobyt!','Remember: per due notti indicates the length of the stay. Now try it yourself: give your reservation details, ask about breakfast and the departure time. Enjoy your stay!']
+  ]};
+  hotel.guide={
+    cs:{cafeTitle:'V hotelu',cafeTime:'V hotelu · A2 · asi 7 minut',cafeContext:'Přijíždíš do hotelu na dvě noci. Domluv se na recepci na pobytu a odjezdu. Časy snídaně a odjezdu jsou pouze příklady z dialogu.',ruleText:'A nome… = na jméno… Per due notti = na dvě noci. La colazione è inclusa? = Je snídaně v ceně? Dalle sette alle dieci = od sedmi do deseti. Entro le undici = nejpozději do jedenácti. Mi serve… = potřebuji…',completed:'Bez nápovědy oznam rezervaci na dvě noci, zeptej se na snídani a čas opuštění pokoje.',practiceCafe:'Procvičit domluvu v hotelu',barista:'Recepční',customer:'Host'},
+    en:{cafeTitle:'At a hotel',cafeTime:'At a hotel · A2 · about 7 minutes',cafeContext:'You arrive at a hotel for two nights. Arrange your stay and departure at reception. Breakfast and checkout times are examples from this dialogue only.',ruleText:'A nome… = under the name… Per due notti = for two nights. La colazione è inclusa? = Is breakfast included? Dalle sette alle dieci = from seven until ten. Entro le undici = by eleven. Mi serve… = I need…',completed:'Without hints, give a reservation for two nights, ask about breakfast and the checkout time.',practiceCafe:'Practise speaking at a hotel',barista:'Receptionist',customer:'Guest'},
+    it:{cafeTitle:'In hotel',cafeTime:'In hotel · A2 · circa 7 minuti',cafeContext:'Arrivi per due notti. Gli orari del dialogo sono esempi.',ruleText:'A nome indica il nome della prenotazione. Per due notti indica la durata. Entro le undici indica un limite di orario.',completed:'Presenta la prenotazione e chiedi della colazione e della partenza.',practiceCafe:'Esercitati in hotel',barista:'Receptionist',customer:'Ospite'}
+  };
   const audioFiles = {};
+  for(const w of hotel.words){audioFiles[w.italian]='hotel-'+w.id+'-word.mp3';audioFiles[w.example]='hotel-'+w.id+'-example.mp3';}
+  for(const line of hotel.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for(const w of restaurant.words){audioFiles[w.italian]='ristorante-'+w.id+'-word.mp3';audioFiles[w.example]='ristorante-'+w.id+'-example.mp3';}
   for(const line of restaurant.dialogue)audioFiles[line.it]=line.id+'.mp3';
   for (const w of cafe.words) {
