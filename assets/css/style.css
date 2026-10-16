@@ -1446,3 +1446,45 @@ img.pasta-icon {
 @media (max-width: 600px) {
   .theme-italy .italy-launcher { grid-template-columns: 1fr; gap: .5rem; }
 }
+
+/* ── MEDAILE KARET (2026-10-16) ─────────────────────────────
+   Emoji na kartách nahrazeny ikonou (Lucide, assets/img/icons.svg)
+   nebo kódem země, vyraženými na kovové plaketě v barvě sekce. */
+body { --medal: linear-gradient(135deg, #7a5714 0%, #c9973a 28%, #f6e4a9 50%, #d7ad52 66%, #7a5714 100%); --medal-ink: #2e2105; }
+body.theme-finance { --medal: linear-gradient(135deg, #5c4710 0%, #c9a640 28%, #fcebb0 50%, #d4af37 66%, #6d5412 100%); --medal-ink: #2a2004; }
+body.theme-travel { --medal: linear-gradient(135deg, #5e2a12 0%, #c46a44 28%, #f3c3a6 50%, #b85c38 68%, #5e2a12 100%); --medal-ink: #2a1206; }
+body.theme-smart-home { --medal: linear-gradient(135deg, #6f7d86 0%, #b7c3ca 28%, #ffffff 50%, #c9f6ff 60%, #8e9aa2 100%); --medal-ink: #0a3a44; }
+body.theme-italy { --medal: linear-gradient(135deg, #8e959c 0%, #d9dde1 28%, #ffffff 50%, #c3c8cd 70%, #8e959c 100%); --medal-ink: #0c5329; }
+.card .card-icon .medal,
+.medal {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--medal);
+  color: var(--medal-ink);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(0,0,0,.25), 0 4px 10px -5px rgba(0,0,0,.55);
+  line-height: 1;
+  vertical-align: middle;
+}
+.medal .medal-i {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+}
+.medal.medal-code {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  text-shadow: 0 1px 0 rgba(255,255,255,.45);
+}
+.medal.medal-flag svg {
+  width: 26px;
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.25);
+}
