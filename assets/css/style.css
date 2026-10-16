@@ -3,6 +3,9 @@
    Single style.css with theme classes per page.
    ═══════════════════════════════════════════════════════════ */
 
+/* Stejne pismo jako sekce Smart Home: Inter na text, JetBrains Mono na stitky. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+
 /* ── BASE / RESET ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -20,7 +23,8 @@ a { color: inherit; text-decoration: none; }
 ul, ol { list-style: none; }
 
 :root {
-  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-main: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
   --radius-card: 18px;
   --radius-button: 10px;
   --shadow-card: 0 18px 45px rgba(0, 0, 0, 0.18);
@@ -84,19 +88,26 @@ body.theme-travel {
 
 /* Itálie — krém + zelená + červená + terakota + oliva */
 body.theme-italy {
-  --bg:        #fff7e6;
-  --bg-deep:   #f8efd6;
+  --bg:        #f7f5f0;     /* slonovina, aby vynikl kov */
+  --bg-deep:   #efece4;
   --panel:     #ffffff;
-  --panel-hi:  #fff2dc;
+  --panel-hi:  #f1efe9;
   --text:      #1f2933;
   --text-mut:  #5b6470;
-  --accent:    #16803c;     /* zelená */
-  --accent-2:  #c82e2e;     /* červená */
+  --accent:    #13703a;     /* smaragdová zelená */
+  --accent-2:  #a51d27;     /* rubínová červená */
   --accent-3:  #b85c38;     /* terakota */
   --accent-4:  #6f7f3f;     /* oliva */
-  --accent-text: #157a39; /* AA-safe text variant of --accent for use as foreground text (WCAG contrast fix) */
+  --accent-text: #12693a; /* AA-safe text variant of --accent for use as foreground text (WCAG contrast fix) */
   --on-accent: #ffffff; /* readable text color when placed ON TOP of an --accent background (WCAG contrast fix) */
-  --border:    rgba(31, 41, 51, 0.10);
+  --border:    rgba(70, 78, 86, 0.16);
+  /* kovová trikolora: smaragd, platina, rubín */
+  --metal-green: linear-gradient(115deg, #073f1d 0%, #13703a 28%, #5fc489 46%, #c9f0d6 50%, #2b8f52 58%, #0c5329 82%, #073f1d 100%);
+  --metal-silver: linear-gradient(115deg, #9aa1a8 0%, #d9dde1 28%, #ffffff 47%, #f2f4f6 52%, #c3c8cd 70%, #8e959c 100%);
+  --metal-red: linear-gradient(115deg, #5c0a10 0%, #a51d27 28%, #e0636b 46%, #ffd0d3 50%, #c02a34 58%, #7a0e16 82%, #5c0a10 100%);
+  --metal-title: linear-gradient(100deg, #0c5329 0%, #1f8a4c 30%, #56606a 50%, #a51d27 72%, #6e0d14 100%);
+  --metal-brush: rgba(120, 128, 136, 0.05);
+  --metal-glow: rgba(255, 255, 255, 0.6);
 }
 
 /* Smart Home — tmavá + cyan */
@@ -134,15 +145,18 @@ html[data-theme-mode="dark"] body.theme-travel {
   /* accent (#0e7490 teal, #b85c38 terakota) preserved */
 }
 html[data-theme-mode="dark"] body.theme-italy {
-  --bg:        #1a1810;
-  --bg-deep:   #100e08;
-  --panel:     #2a261c;
-  --panel-hi:  #3a3527;
-  --text:      #f4f1e6;
-  --text-mut:  #c0b8a4;
-  --accent-text: #25da66; /* lightened green for foreground text on dark bg (WCAG contrast fix) */
-  --border:    rgba(255,247,230,0.08);
-  /* italian green/red/terracotta accents preserved */
+  --bg:        #16181b;     /* grafit */
+  --bg-deep:   #0f1113;
+  --panel:     #202328;
+  --panel-hi:  #2a2e34;
+  --text:      #eceff2;
+  --text-mut:  #a9b1ba;
+  --accent-text: #5fd394; /* lightened green for foreground text on dark bg (WCAG contrast fix) */
+  --border:    rgba(220,226,232,0.12);
+  --metal-title: linear-gradient(100deg, #5fd394 0%, #9fe6bd 28%, #e9edf1 50%, #ff9aa0 72%, #f0767e 100%);
+  --metal-brush: rgba(255, 255, 255, 0.025);
+  --metal-glow: rgba(255, 255, 255, 0.05);
+  /* kovová trikolora zůstává stejná */
 }
 
 /* LIGHT MODE — applies to all body themes including originally-dark ones */
@@ -344,8 +358,8 @@ main {
 }
 section { margin-bottom: var(--gap-large); }
 h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
-h1 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; }
-h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 1.2rem; color: var(--accent-text); }
+h1 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; font-weight: 800; letter-spacing: -0.025em; }
+h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 1.2rem; color: var(--accent-text); letter-spacing: -0.015em; }
 h3 { font-size: 1.3rem; margin-bottom: 0.8rem; }
 p { margin-bottom: 1rem; color: var(--text-mut); }
 p strong, p b { color: var(--text); }
@@ -372,8 +386,9 @@ a.link:hover { border-bottom-style: solid; }
   border-radius: 999px;
   background: var(--panel-hi);
   color: var(--accent-text);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 1rem;
@@ -411,9 +426,10 @@ a.link:hover { border-bottom-style: solid; }
   margin-top: auto;
   padding-top: 1rem;
   color: var(--accent-text);
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
   border-top: 1px solid var(--border);
 }
 .card.card-link { cursor: pointer; }
@@ -647,9 +663,53 @@ body.theme-italy .italy-flag-bar {
   border-radius: 2px;
   overflow: hidden;
 }
-body.theme-italy .italy-flag-bar > span:nth-child(1) { background: var(--accent);   flex: 1; }
-body.theme-italy .italy-flag-bar > span:nth-child(2) { background: #fff;             flex: 1; }
-body.theme-italy .italy-flag-bar > span:nth-child(3) { background: var(--accent-2); flex: 1; }
+body.theme-italy .italy-flag-bar > span:nth-child(1) { background: var(--metal-green);  flex: 1; }
+body.theme-italy .italy-flag-bar > span:nth-child(2) { background: var(--metal-silver); flex: 1; }
+body.theme-italy .italy-flag-bar > span:nth-child(3) { background: var(--metal-red);    flex: 1; }
+
+/* ── ITALY — kovová trikolora (varianta 2, 2026-10-16) ─────── */
+body.theme-italy .italy-flag-bar {
+  height: 9px;
+  border-radius: 4px;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.15);
+}
+body.theme-italy .hero {
+  border-radius: var(--radius-card);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 2px, var(--metal-brush) 2px 3px),
+    linear-gradient(180deg, var(--metal-glow), transparent);
+}
+body.theme-italy .hero h1 {
+  background: var(--metal-title);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+body.theme-italy .italy-launcher .btn {
+  border: 0;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -1px 0 rgba(0,0,0,.25), 0 2px 6px -2px rgba(0,0,0,.4);
+}
+body.theme-italy .italy-launcher .btn:nth-child(1) { background: linear-gradient(115deg, #0a4d24 0%, #2f9a5a 10%, #a9e3c0 16%, #2b8f52 22%, #13703a 50%, #0c5329 100%); }
+body.theme-italy .italy-launcher .btn:nth-child(2) { background: var(--metal-silver); color: #2a2f35; text-shadow: 0 1px 0 rgba(255,255,255,.7); }
+body.theme-italy .italy-launcher .btn:nth-child(3) { background: linear-gradient(115deg, #6b0d14 0%, #c0434b 10%, #f3b3b7 16%, #c02a34 22%, #a51d27 50%, #7a0e16 100%); }
+body.theme-italy .italy-launcher .btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+body.theme-italy .card {
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 10px 26px -18px rgba(0,0,0,.45);
+}
+html[data-theme-mode="dark"] body.theme-italy .card {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 10px 26px -18px rgba(0,0,0,.6);
+}
+body.theme-italy .card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #13703a 0 33%, #d9dde1 33% 66%, #a51d27 66%);
+}
 
 /* ── PHOTO GALLERY (placeholder + reálné) ────────────────── */
 .gallery {
@@ -917,9 +977,9 @@ body.theme-italy .youtube-subscribe::before {
   width: 100%;
   height: 4px;
   background: linear-gradient(to right,
-    var(--accent) 0%, var(--accent) 33%,
-    #fff 33%, #fff 66%,
-    var(--accent-2) 66%, var(--accent-2) 100%);
+    #13703a 0%, #2b8f52 16%, #13703a 33%,
+    #c3c8cd 33%, #ffffff 50%, #c3c8cd 66%,
+    #a51d27 66%, #c02a34 83%, #a51d27 100%);
   border-radius: var(--radius-card) var(--radius-card) 0 0;
 }
 
