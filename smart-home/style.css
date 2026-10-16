@@ -3364,3 +3364,44 @@ img.zoomable:hover { opacity: 0.85; }
   background: var(--metal-strip);
   pointer-events: none;
 }
+
+/* ═══ MEDAILE IKON (2026-10-16) ══════════════════════════════
+   Emoji v ikonových prvcích nahrazeny ikonou (Lucide, sdílená sada
+   /assets/img/icons.svg) na chromové plaketě. Velikost se odvozuje
+   od velikosti písma prvku, takže sedí v kartě i v textu. */
+.medal {
+  display: inline-grid;
+  place-items: center;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: .32em;
+  background: linear-gradient(135deg, #6f7d86 0%, #b7c3ca 28%, #ffffff 50%, #c9f6ff 60%, #8e9aa2 100%);
+  color: #0a3a44;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(0,0,0,.25), 0 3px 10px -4px rgba(0,229,255,.35);
+  line-height: 1;
+  vertical-align: middle;
+  flex: none;
+}
+.medal .medal-i {
+  width: .85em;
+  height: .85em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+.medal.medal-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6em;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: .55em;
+  font-weight: 500;
+  text-shadow: 0 1px 0 rgba(255,255,255,.45);
+}
+
+/* prvky s vlastním rámečkem ho pod medailí nepotřebují */
+:is(.category-icon, .infra-icon, .challenge-icon, .twin-detail-icon):has(> .medal) {
+  background: none;
+  border: 0;
+  box-shadow: none;
+}

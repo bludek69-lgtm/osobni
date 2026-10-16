@@ -222,7 +222,7 @@
         </header>
         <div class="scene-grid">
           <article class="scene-card">
-            <span class="scene-icon" aria-hidden="true">📦</span>
+            <span class="scene-icon" aria-hidden="true"><span class="medal"><svg class="medal-i"><use href="/assets/img/icons.svg#i-package"/></svg></span></span>
             <h3>Doručovatel</h3>
             <p>
               Geofence enter = 1/3, motion v předsíni = 2/3 (klepá), DOOR_OPEN ne (otevře jen
@@ -231,7 +231,7 @@
             </p>
           </article>
           <article class="scene-card">
-            <span class="scene-icon" aria-hidden="true">🚗</span>
+            <span class="scene-icon" aria-hidden="true"><span class="medal"><svg class="medal-i"><use href="/assets/img/icons.svg#i-car"/></svg></span></span>
             <h3>Projíždění kolem</h3>
             <p>
               Geofence enter = 1/3, ale GPS opustí okruh za 1–2 min. Geofence_exit event před
@@ -239,7 +239,7 @@
             </p>
           </article>
           <article class="scene-card">
-            <span class="scene-icon" aria-hidden="true">🏠</span>
+            <span class="scene-icon" aria-hidden="true"><span class="medal"><svg class="medal-i"><use href="/assets/img/icons.svg#i-house"/></svg></span></span>
             <h3>Návrat z procházky</h3>
             <p>
               Bez auta, jen pěšky. Geofence funguje stejně (mobile GPS), door + motion stejně.
@@ -248,7 +248,7 @@
             </p>
           </article>
           <article class="scene-card">
-            <span class="scene-icon" aria-hidden="true">📵</span>
+            <span class="scene-icon" aria-hidden="true"><span class="medal"><svg class="medal-i"><use href="/assets/img/icons.svg#i-phone-off"/></svg></span></span>
             <h3>Telefon v autě (vybitý)</h3>
             <p>
               Žádný geofence signál. Door + motion = 2/3, geofence = 0. Multi-signal nesplní —
@@ -257,7 +257,7 @@
             </p>
           </article>
           <article class="scene-card">
-            <span class="scene-icon" aria-hidden="true">🌧</span>
+            <span class="scene-icon" aria-hidden="true"><span class="medal"><svg class="medal-i"><use href="/assets/img/icons.svg#i-cloud-rain"/></svg></span></span>
             <h3>Návrat za bouřky</h3>
             <p>
               GPS noise může způsobit blikání geofence_enter / exit. Pipeline má debounce
@@ -383,22 +383,22 @@ action 3: schedule resume @ next_evening_after_sleep_off</code></pre>
         </header>
         <div class="related-grid">
           <a href="bezpecnost-kamery.html" class="related-card">
-            <span class="related-icon" aria-hidden="true">🛡</span>
+            <span class="related-icon" aria-hidden="true"><span class="medal"><svg class="medal-i"><use href="/assets/img/icons.svg#i-shield"/></svg></span></span>
             <h3>Bezpečnost a kamery</h3>
             <p>Multi-signal confirm pattern, away/home stavová logika, false positive prevention.</p>
           </a>
           <a href="topeni-klima.html" class="related-card">
-            <span class="related-icon" aria-hidden="true">🔥</span>
+            <span class="related-icon" aria-hidden="true"><span class="medal"><svg class="medal-i"><use href="/assets/img/icons.svg#i-flame"/></svg></span></span>
             <h3>Topení a klima</h3>
             <p>Comeback z away preset, hystereze, safety cap, schedule slots.</p>
           </a>
           <a href="atmosfera.html" class="related-card">
-            <span class="related-icon" aria-hidden="true">🌗</span>
+            <span class="related-icon" aria-hidden="true"><span class="medal"><svg class="medal-i"><use href="/assets/img/icons.svg#i-sun-moon"/></svg></span></span>
             <h3>Atmosféra a scény</h3>
             <p>AI coordinator levels, comfort suggest pipeline, time-of-day buckets.</p>
           </a>
           <a href="rano-rutina.html" class="related-card">
-            <span class="related-icon" aria-hidden="true">🌅</span>
+            <span class="related-icon" aria-hidden="true"><span class="medal"><svg class="medal-i"><use href="/assets/img/icons.svg#i-sunrise"/></svg></span></span>
             <h3>Ráno v 3:15</h3>
             <p>První případová studie — opačná stránka rituálu, planned departure.</p>
           </a>
