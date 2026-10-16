@@ -52,6 +52,13 @@ ALLOWLIST = {
     "finance/demo/Ucetni_kniha_v4.html": {
         "public GitHub account/repo URL": {"github.com/kurkle/color"},
     },
+    # The AI pages have a public explainer section "Skills, pluginy a MCP"
+    # that describes what an MCP server is (CS/EN/IT). That is editorial
+    # content about the technology, not a reference to the author's internal
+    # tooling -- confirmed by the author 2026-10-16.
+    "ai.html": {"internal MCP workflow reference": {"mcp"}},
+    "en/ai.html": {"internal MCP workflow reference": {"mcp"}},
+    "it/ai.html": {"internal MCP workflow reference": {"mcp"}},
     # smart-home/blog.html used to be allowlisted for a workstation path from a
     # devlog entry. The text no longer contains it (re-checked 2026-09-12, zero
     # occurrences anywhere in the repo), so the entry was dropped rather than
