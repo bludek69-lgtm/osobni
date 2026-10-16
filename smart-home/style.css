@@ -3299,3 +3299,68 @@ img.zoomable:hover { opacity: 0.85; }
 .twin-detail.tz-laundry   { --zone-accent: #f59e0b; --zone-glow: rgba(245,158,11,.3); --zone-bg: rgba(245,158,11,.1); --zone-border: rgba(245,158,11,.3); }
 .twin-detail.tz-office    { --zone-accent: #ec4899; --zone-glow: rgba(236,72,153,.3); --zone-bg: rgba(236,72,153,.1); --zone-border: rgba(236,72,153,.3); }
 .twin-detail.tz-entry     { --zone-accent: #84cc16; --zone-glow: rgba(132,204,22,.3); --zone-bg: rgba(132,204,22,.1); --zone-border: rgba(132,204,22,.3); }
+
+/* ═══ KOV — CHROM S AZUROVÝM ODLESKEM (2026-10-16) ═══════════
+   Stejný princip jako kovový vzhled hlavního webu. Smart Home je
+   tmavý web, kov je chrom přecházející do azurové, s nádechem
+   fialové značky na konci. Rozložení se nemění. */
+:root {
+  --metal-text: linear-gradient(100deg, #e9fbff 0%, #ffffff 18%, #9cefff 38%, #00d4f0 58%, #8fa3b0 78%, #b9a8f0 100%);
+  --metal-num: linear-gradient(180deg, #ffffff 0%, #c9f6ff 35%, #00d4f0 70%, #0a8aa3 100%);
+  --metal-edge: linear-gradient(115deg, #6f7d86 0%, #b7c3ca 28%, #ffffff 47%, #c9f6ff 53%, #8e9aa2 72%, #4f5c64 100%);
+  --metal-strip: linear-gradient(180deg, #0a4a57, #22d3ee 40%, #c9f6ff 50%, #12a9c4 60%, #0a4a57);
+  --metal-btn: linear-gradient(115deg, #0b6f82 0%, #3fd4ec 10%, #e2fbff 16%, #2fd0ea 22%, #00b4d8 52%, #0b6f82 100%);
+}
+.grad-text,
+.brand-name-accent,
+.uc-stat-num {
+  background: var(--metal-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.stat-num {
+  background: var(--metal-num);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.section-eyebrow {
+  background: var(--metal-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  justify-self: start;
+  width: fit-content;
+}
+.eyebrow {
+  border: 1px solid transparent;
+  background: linear-gradient(var(--surface), var(--surface)) padding-box, var(--metal-edge) border-box;
+}
+.btn-primary {
+  background: var(--metal-btn);
+  color: #04262e;
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(0,0,0,.25), 0 8px 24px rgba(0, 229, 255, 0.22);
+}
+.btn-primary:hover {
+  filter: brightness(1.06);
+}
+.stat,
+.home-card,
+.feature-card {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+}
+.home-card {
+  position: relative;
+  overflow: hidden;
+}
+.home-card::before,
+.feature-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--metal-strip);
+  pointer-events: none;
+}
