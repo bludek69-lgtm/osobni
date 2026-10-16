@@ -1223,3 +1223,40 @@ img.pasta-icon {
   .page-toc-sticky ul { gap: 0.2rem 0.4rem; font-size: 0.78rem; }
   .page-toc-sticky .toc-label { display: block; margin-bottom: 0.3rem; }
 }
+
+/* Compact Italy navigation and progressively disclosed photo galleries. */
+.theme-italy .italy-launcher {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .65rem;
+  margin-top: 1.25rem;
+}
+.theme-italy .italy-launcher .btn {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.theme-italy .italy-gallery-more { margin-top: 1rem; }
+.theme-italy .italy-gallery-more summary {
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: .75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.theme-italy .italy-gallery-more summary:hover { background: var(--panel-hi); }
+.theme-italy .italy-gallery-more summary:focus-visible,
+.theme-italy .italy-launcher a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.theme-italy .italy-gallery-more > div { margin-top: 1rem; }
+.theme-italy .italy-gallery-more .gallery-hide,
+.theme-italy .italy-gallery-more[open] .gallery-show { display: none; }
+.theme-italy .italy-gallery-more[open] .gallery-hide { display: inline; }
+@media (max-width: 600px) {
+  .theme-italy .italy-launcher { grid-template-columns: 1fr; gap: .5rem; }
+}

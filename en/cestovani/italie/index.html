@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Italy — Luděk</title>
   <meta name="description" content="A matter of the heart. Tuscany, Lerici, Italian cuisine, bus trips across the country. Practical guide, recipes, regions and personal view.">
-  <link rel="stylesheet" href="../../../assets/css/style.css">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=20261016-italy-navigation">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🇮🇹%3C/text%3E%3C/svg%3E">
   <link rel="canonical" href="https://cestovatel69.cz/en/cestovani/italie/">
   <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/cestovani/italie/">
@@ -55,14 +55,14 @@
       Tuscany, Lerici, Italian cuisine, bus trips across the country.
       A country where I lived and worked — it holds a stronger place in my heart than any other.
     </p>
+    <nav class="italy-launcher" aria-label="Italy main launcher">
+      <a class="btn" href="#regions">Where to go</a>
+      <a class="btn" href="pruvodce.html">Practical information</a>
+      <a class="btn" href="italstina/">Italian for travel</a>
+    </nav>
   </section>
 
-  <section>
-    <div class="page-intro">
-      <p><strong>Who this page is for:</strong> anyone who loves Italy and wants all the resources in one place — guide, kitchen, regional galleries and a personal view.</p>
-      <p><strong>How to read it:</strong> at the top is a launcher for newcomers and favorite places. Below are the individual sections in full.</p>
-    </div>
-  </section>
+
 
   <nav class="page-toc-sticky" aria-label="Jump to section">
     <span class="toc-label">Jump to:</span>
@@ -77,38 +77,7 @@
     </ul>
   </nav>
 
-  <section aria-label="Italy main launcher">
-    <div class="cards-grid">
-      <a href="italstina/" class="card card-link" style="border-left:4px solid #176b53;">
-        <div class="card-icon" aria-hidden="true">🇮🇹</div>
-        <h3>Italian in practice</h3>
-        <p>Lessons for beginners and more advanced learners, vocabulary, written and listening tests. No registration; progress stays in your browser.</p>
-        <div class="card-cta">Start learning →</div>
-      </a>
-      <div class="card" style="border-left:4px solid #4a8fd0;">
-        <div class="card-icon">📚</div>
-        <h3>Italy for beginners</h3>
-        <p>Practical things for your first trip: coffee, food, myths, safety, regions, video guide.</p>
-        <ul style="margin:0.6rem 0 0 1.1rem; padding:0; font-size:0.95rem;">
-          <li><a href="../../../cestovani/italie/pruvodce.html" lang="cs">Practical guide</a> <span class="lang-tag">CS</span> — coffee, language, safety, mafia, customs</li>
-          <li><a href="../../../cestovani/italie/kuchyne.html" lang="cs">Italian cuisine</a> <span class="lang-tag">CS</span> — recipes + pastas + myths</li>
-          <li><a href="#regions">Regions</a> — gallery north / south / Tuscany / Venice / Rome</li>
-          <li><a href="#youtube">Video guide</a> — Italian trips on YouTube</li>
-        </ul>
-      </div>
-      <div class="card" style="border-left:4px solid #2f9f5d;">
-        <div class="card-icon">❤️</div>
-        <h3>My Italy</h3>
-        <p>Personal experiences and favorite places — why I keep coming back and where.</p>
-        <ul style="margin:0.6rem 0 0 1.1rem; padding:0; font-size:0.95rem;">
-          <li><a href="#relation">Relation to Italy</a> — Tuscany, Lerici, life abroad</li>
-          <li><a href="../../../cestovani/italie/toskansko/" lang="cs">Tuscany</a> <span class="lang-tag">CS</span> — the region where I lived part of my life</li>
-          <li><a href="#favorites">Favorite places</a> — Lerici, Val d&apos;Orcia, Saturnia</li>
-          <li><a href="#regions">Bus trips</a> — work tours across Italy</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+
 
   <section class="prose" id="relation">
     <h2>Relation to Italy</h2>
@@ -206,16 +175,22 @@
     <h2 id="gallery">Gallery</h2>
     <p>
       A taste of the Italian trips — one photo per region. The archives are sorted now:
-      all 219 photos live in the per-region albums above.
+      all 218 photos live in the per-region albums above.
     </p>
     <div class="gallery">
       <a class="photo" href="../../../cestovani/italie/benatky/" lang="cs"><img src="../../../cestovani/italie/benatky/photos/r2023/20230702_130445.jpg" alt="Venice — a canal with boats and a bridge (July 2023)" loading="lazy"></a>
       <a class="photo" href="../../../cestovani/italie/toskansko/" lang="cs"><img src="../../../cestovani/italie/toskansko/photos/valdorcia/20230707-17455467.jpg" alt="Tuscany — cypress avenue in Val d’Orcia (July 2023)" loading="lazy"></a>
       <a class="photo" href="../../../cestovani/italie/roma/" lang="cs"><img src="../../../cestovani/italie/roma/photos/r2019_05/20190513_101021.jpg" alt="Rome — St. Peter’s Square in the Vatican (May 2019)" loading="lazy"></a>
-      <a class="photo" href="../../../cestovani/italie/jih/" lang="cs"><img src="../../../cestovani/italie/jih/photos/positano/20230929_150914.jpg" alt="Positano — houses above the Amalfi Coast (September 2023)" loading="lazy"></a>
+
+    </div>
+    <details class="italy-gallery-more">
+      <summary><span class="gallery-show">Show all photos (6)</span><span class="gallery-hide">Show fewer</span></summary>
+      <div class="gallery">
+        <a class="photo" href="../../../cestovani/italie/jih/" lang="cs"><img src="../../../cestovani/italie/jih/photos/positano/20230929_150914.jpg" alt="Positano — houses above the Amalfi Coast (September 2023)" loading="lazy"></a>
       <a class="photo" href="../../../cestovani/italie/jih/" lang="cs"><img src="../../../cestovani/italie/jih/photos/pompeje/20230928_120435.jpg" alt="Pompeii — a paved Roman street (September 2023)" loading="lazy"></a>
       <a class="photo" href="../../../cestovani/italie/sever/" lang="cs"><img src="../../../cestovani/italie/sever/photos/lago_di_garda/20190519_100407_001.jpg" alt="Lago di Garda — a jetty on an overcast morning (May 2019)" loading="lazy"></a>
-    </div>
+      </div>
+    </details>
   </section>
 
   <section id="youtube" class="youtube-section" data-channel-id="@cestovatel69">

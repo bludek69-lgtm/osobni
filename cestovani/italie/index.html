@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
   <meta property="og:url" content="https://cestovatel69.cz/cestovani/italie/">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=20261016-italy-navigation">
   <link rel="icon" href="/favicon.ico">
 </head>
 <body class="theme-italy">
@@ -57,6 +57,11 @@
       Toskánsko, Lerici, italská kuchyně, autobusové cesty napříč zemí.
       Země, ve které jsem pobýval a pracoval — má pro mě silnější místo než kterákoli jiná.
     </p>
+    <nav class="italy-launcher" aria-label="Hlavní rozcestník Itálie">
+      <a class="btn" href="#regiony">Kam jet</a>
+      <a class="btn" href="pruvodce.html">Praktické informace</a>
+      <a class="btn" href="italstina/">Italština na cestu</a>
+    </nav>
     <figure style="margin:1.5rem 0 0; border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.25);">
       <img src="photos/lerici_panorama_sunset.jpg"
            alt="Lerici — panorama přístavu a Golfo dei Poeti při západu slunce"
@@ -69,12 +74,7 @@
   </section>
 
   <!-- Phase 4 intro + sticky TOC (WX_ITALIE_HUB_TOC_2026-05-20) -->
-  <section>
-    <div class="page-intro">
-      <p><strong>Pro koho je tato stránka:</strong> kdo má rád Itálii a chce mít všechny zdroje na jednom místě — průvodce, kuchyni, regionální galerie i osobní pohled.</p>
-      <p><strong>Jak to číst:</strong> nahoře je rozcestník pro nováčky a oblíbená místa. Níž už jsou jednotlivé sekce v plné podobě.</p>
-    </div>
-  </section>
+
 
   <nav class="page-toc-sticky" aria-label="Skok na sekci">
     <span class="toc-label">Skok na:</span>
@@ -90,38 +90,7 @@
   </nav>
 
   <!-- ──────── 2-cestný rozcestník ──────── -->
-  <section aria-label="Hlavní rozcestník Itálie">
-    <div class="cards-grid">
-      <a href="italstina/" class="card card-link" style="border-left:4px solid #176b53;">
-        <div class="card-icon" aria-hidden="true">🇮🇹</div>
-        <h2>Italština v praxi</h2>
-        <p>Lekce pro začátečníky i pokročilejší, slovník a textové i poslechové testy. Bez registrace, s pokrokem ve tvém prohlížeči.</p>
-        <div class="card-cta">Začít se učit →</div>
-      </a>
-      <div class="card" style="border-left:4px solid #4a8fd0;">
-        <div class="card-icon">📚</div>
-        <h2>Itálie pro začátečníky</h2>
-        <p>Praktické věci pro první cestu: káva, jídlo, mýty, bezpečnost, regiony, videoprůvodce.</p>
-        <ul style="margin:0.6rem 0 0 1.1rem; padding:0; font-size:0.95rem;">
-          <li><a href="pruvodce.html">Praktický průvodce</a> — káva, jazyk, bezpečnost, mafie, zvyky</li>
-          <li><a href="kuchyne.html">Italská kuchyně</a> — recepty + těstoviny + mýty</li>
-          <li><a href="#regiony">Regiony</a> — galerie sever / jih / Toskánsko / Benátky / Řím</li>
-          <li><a href="#youtube">Videoprůvodce</a> — italské cesty na YouTube</li>
-        </ul>
-      </div>
-      <div class="card" style="border-left:4px solid #2f9f5d;">
-        <div class="card-icon">❤️</div>
-        <h2>Moje Itálie</h2>
-        <p>Osobní zkušenosti a oblíbená místa — proč se vracím a kam.</p>
-        <ul style="margin:0.6rem 0 0 1.1rem; padding:0; font-size:0.95rem;">
-          <li><a href="#vztah">Vztah k Itálii</a> — Toskánsko, Lerici, život v zahraničí</li>
-          <li><a href="toskansko/">Toskánsko</a> — region, kde jsem prožil část života</li>
-          <li><a href="#oblibena">Oblíbená místa</a> — Lerici, Val d&apos;Orcia, Saturnia</li>
-          <li><a href="#regiony">Autobusové cesty</a> — pracovní zájezdy napříč Itálií</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+
 
   <section class="prose" id="vztah">
     <h2>Vztah k Itálii</h2>
@@ -246,16 +215,22 @@
     <h2 id="galerie-sek">Galerie</h2>
     <p>
       Ochutnávka z italských cest — po jedné fotce z každého regionu. Archivy už roztříděné jsou:
-      kompletních 219 fotek najdeš v albech jednotlivých regionů výše.
+      kompletních 218 fotek najdeš v albech jednotlivých regionů výše.
     </p>
     <div class="gallery">
       <a class="photo" href="benatky/"><img src="benatky/photos/r2023/20230702_130445.jpg" alt="Benátky — kanál s loďkami a mostkem (červenec 2023)" loading="lazy"></a>
       <a class="photo" href="toskansko/"><img src="toskansko/photos/valdorcia/20230707-17455467.jpg" alt="Toskánsko — cypřišová alej ve Val d’Orcia (červenec 2023)" loading="lazy"></a>
       <a class="photo" href="roma/"><img src="roma/photos/r2019_05/20190513_101021.jpg" alt="Řím — Svatopetrské náměstí ve Vatikánu (květen 2019)" loading="lazy"></a>
-      <a class="photo" href="jih/"><img src="jih/photos/positano/20230929_150914.jpg" alt="Positano — domy nad Amalfitánským pobřežím (září 2023)" loading="lazy"></a>
+
+    </div>
+    <details class="italy-gallery-more">
+      <summary><span class="gallery-show">Zobrazit všechny fotografie (6)</span><span class="gallery-hide">Zobrazit méně</span></summary>
+      <div class="gallery">
+        <a class="photo" href="jih/"><img src="jih/photos/positano/20230929_150914.jpg" alt="Positano — domy nad Amalfitánským pobřežím (září 2023)" loading="lazy"></a>
       <a class="photo" href="jih/"><img src="jih/photos/pompeje/20230928_120435.jpg" alt="Pompeje — dlážděná římská ulice (září 2023)" loading="lazy"></a>
       <a class="photo" href="sever/"><img src="sever/photos/lago_di_garda/20190519_100407_001.jpg" alt="Lago di Garda — molo za zataženého rána (květen 2019)" loading="lazy"></a>
-    </div>
+      </div>
+    </details>
   </section>
 
   <!-- =====================================================
