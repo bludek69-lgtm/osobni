@@ -61,7 +61,7 @@
 
 <section>
   <h2>Cosa fa</h2>
-  <p>Ho circa 60 dispositivi a casa (luci, sensori movimento, teste TRV, altoparlanti, purificatore, tapparella, …) gestiti da Homey Pro 2026. Sa fare molto — app mobile, UI web, script, automazioni — ma c'è troppi cassetti e impostazioni sparpagliate.</p><p><strong>Config Center unifica tutto in un posto.</strong> Apro il web nel browser, login col mio token (resta solo qui, niente esce), e vedo 22 pagine ordinate: una per ogni &bdquo;modalità casa&ldquo;, separate per riscaldamento, luci, audio, ecc.</p><p><strong>Preview mode = test sicuro.</strong> Quando voglio provare qualcosa, l'app la applica prima, 10 minuti per test, e se non dico &bdquo;OK&ldquo; si ripristina da sola. La casa si auto-corregge.</p><p><strong>Protegge dagli errori.</strong> Alcuni dispositivi (audio camera, sensori delicati) hanno hard-block — non si accendono per errore.</p><p><strong>Locale, mio, niente cloud.</strong> L'app è solo un file HTML+CSS+JS aperto in Edge o Chrome. Parla direttamente con l'hub Homey a casa, niente va a server terzi. Niente abbonamento.</p>
+  <p>Ho circa 60 dispositivi a casa (luci, sensori movimento, teste TRV, altoparlanti, purificatore, tapparella, …) gestiti da Homey Pro 2026. Sa fare molto — app mobile, UI web, script, automazioni — ma c'è troppi cassetti e impostazioni sparpagliate.</p><p><strong>Config Center unifica tutto in un posto.</strong> Apro il web nel browser, login col mio token (resta solo sul mio PC, niente esce), e vedo 22 pagine ordinate: una per ogni &bdquo;modalità casa&ldquo;, separate per riscaldamento, luci, audio, ecc.</p><p><strong>Preview mode = test sicuro.</strong> Quando voglio provare qualcosa, l'app la applica prima, 10 minuti per test, e se non dico &bdquo;OK&ldquo; si ripristina da sola. La casa si auto-corregge.</p><p><strong>Protegge dagli errori.</strong> Alcuni dispositivi (audio camera, sensori delicati) hanno hard-block — non si accendono per errore.</p><p><strong>Locale, mio, niente cloud.</strong> L'app è solo un file HTML+CSS+JS aperto in Edge o Chrome. Parla direttamente con l'hub Homey a casa, niente va a server terzi. Niente abbonamento.</p>
 </section>
 
 <section>
@@ -71,14 +71,14 @@
       <li><strong>Piano riscaldamento per giorno/ora</strong> — Per ognuna delle 4 zone giorno per giorno, ora per ora la temperatura. Pulsante boost.</li>
       <li><strong>Sicurezza preview 10 min</strong> — Modifica applica prima, 10 min di test, auto-ripristino se non confermo.</li>
       <li><strong>100+ parametri regolabili</strong> — Quando inizia il mattino, velocità ramp luci, durata audio, volume briefing, …</li>
-      <li><strong>Token solo nel browser</strong> — Accesso hub solo in localStorage del browser. Niente server, niente cloud.</li>
+      <li><strong>Token solo sul mio PC</strong> — Accesso hub solo su questo computer (nell'app e, cifrato, nel vault di Windows, così sopravvive a una reinstallazione). Niente server, niente cloud.</li>
       <li><strong>Hard-block per attrezzature delicate</strong> — Alcuni dispositivi non si accendono per sbaglio. Es. audio camera durante il sonno.</li>
   </ul>
 </section>
 
 <section><h2>Anteprime</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/ai_kontrola.png" alt="Controllo AI — cosa il sistema può decidere da solo" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Controllo AI — cosa il sistema può decidere da solo</figcaption></figure>
       <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/devices.png" alt="Dispositivi — 84 dispositivi, cosa supportano e quali impostazioni hanno senso" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Dispositivi — 84 dispositivi, cosa supportano e quali impostazioni hanno senso</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/live_overview.png" alt="Přihlášení tokenem — token zůstává jen v prohlížeči (localStorage)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Přihlášení tokenem — token zůstává jen v prohlížeči (localStorage)</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/live_overview.png" alt="Accesso con token — il token resta solo su questo PC" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Accesso con token — il token resta solo su questo PC</figcaption></figure>
       <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/overview.png" alt="Přehled — všechny módy a parametry na jednom místě" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Přehled — všechny módy a parametry na jednom místě</figcaption></figure>
       <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/heating.png" alt="Topení — TRV zóny, hystereze, boost, pre-wake plán" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Topení — TRV zóny, hystereze, boost, pre-wake plán</figcaption></figure>
       <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/zones.png" alt="Zóny — světla, motion sensors, audio per místnost" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Zóny — světla, motion sensors, audio per místnost</figcaption></figure>
@@ -88,7 +88,7 @@
 
 <section>
   <h2>Stato</h2>
-  <p>Uso quotidiano. Versione <strong>v1.8.0 · beta</strong> (agosto 2026). Gira in locale su PC — ora come <strong>app installabile autonoma (.exe)</strong>, come le mie altre app. 100+ variabili modificabili live.</p>
+  <p>Uso quotidiano. Versione <strong>v1.9.0 · beta</strong> (ottobre 2026). Gira in locale su PC come <strong>app installabile autonoma (.exe)</strong> con aggiornamento automatico; il controllo del riscaldamento è ora anche sul pannello touch a parete. 100+ variabili modificabili live.</p>
 </section>
 
 </main>
