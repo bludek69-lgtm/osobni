@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather and webcams in Italy — Luděk</title>
+  <meta name="description" content="Current weather and a 7-day forecast in Italy's biggest cities, plus live webcams from Rome, Milan, Naples, Florence, Venice and the Cinque Terre.">
+  <link rel="canonical" href="https://cestovatel69.cz/en/cestovani/italie/pocasi-webkamery.html">
+  <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/cestovani/italie/pocasi-webkamery.html">
+  <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/cestovani/italie/pocasi-webkamery.html">
+  <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/cestovani/italie/pocasi-webkamery.html">
+  <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/cestovani/italie/pocasi-webkamery.html">
+  <meta property="og:title" content="Weather and webcams in Italy — Luděk">
+  <meta property="og:description" content="Current weather and a 7-day forecast in Italy's biggest cities, plus live webcams from Rome, Milan, Naples, Florence, Venice and the Cinque Terre.">
+  <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
+  <meta property="og:url" content="https://cestovatel69.cz/en/cestovani/italie/pocasi-webkamery.html">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=20261016-medaile">
+  <link rel="stylesheet" href="../../../assets/css/pocasi.css?v=20261021-pocasi">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌦%3C/text%3E%3C/svg%3E">
+</head>
+<body class="theme-italy">
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../../../" class="brand"><span class="brand-dot"></span>Luděk</a>
+    <div class="lang-switcher" aria-label="Language">
+      <a href="../../../cestovani/italie/pocasi-webkamery.html" hreflang="cs">CS</a>
+      <a href="./pocasi-webkamery.html" hreflang="en" aria-current="page">EN</a>
+      <a href="../../../it/cestovani/italie/pocasi-webkamery.html" hreflang="it">IT</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main navigation">
+    <a href="../../">Home</a>
+    <a href="../../finance/">Finance</a>
+    <a href="../">Travel</a>
+    <a href="./" aria-current="page">Italy</a>
+    <a href="../../zaliby/rybareni/">Fishing</a>
+    <a href="../../smart-home/">Smart Home</a>
+    <a href="../../ai.html">AI</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="pw">
+  <div class="italy-flag-bar"><span></span><span></span><span></span></div>
+
+  <section class="hero">
+    <span class="hero-accent">Live</span>
+    <h1>Weather and webcams</h1>
+    <p class="hero-sub">What Italy looks like right now: current weather and a seven-day forecast in the biggest cities, and live webcams from places I love.</p>
+  </section>
+
+  <nav class="page-toc-sticky" aria-label="Jump to:">
+    <span class="toc-label">Jump to:</span>
+    <ul>
+      <li><a href="#pocasi">🌦 Weather</a></li>
+      <li><a href="#webkamery">📹 Webcams</a></li>
+      <li><a href="#zdroje">ℹ️ Sources</a></li>
+    </ul>
+  </nav>
+
+  <section id="pocasi" aria-labelledby="pocasi-h">
+    <div class="pw-head"><h2 id="pocasi-h">🌦 Weather in the biggest cities</h2><p class="pw-sub">Click a city. Data is loaded live from Open-Meteo.</p></div>
+    <div id="pw-weather" aria-live="polite">
+      <div class="pw-chips" id="pw-chips" role="group" aria-label="🌦 Weather in the biggest cities"></div>
+      <div class="pw-main" id="pw-main"><div class="pw-skel">Loading weather… (requires JavaScript)</div></div>
+      <div class="pw-head"><h2 style="font-size:1.1rem">All cities</h2></div>
+      <div class="pw-grid" id="pw-grid"></div>
+    </div>
+  </section>
+
+  <section id="webkamery" aria-labelledby="webkamery-h">
+    <div class="pw-head"><h2 id="webkamery-h">📹 Live webcams</h2><p class="pw-sub">The player loads only after you click.</p></div>
+    <div id="pw-camroot">
+      <div class="pw-chips" id="pw-camchips" role="group" aria-label="📹 Live webcams"></div>
+      <div class="pw-cams" id="pw-cams"></div>
+      <div class="pw-head"><h2 style="font-size:1.1rem">More webcams</h2><p class="pw-sub">These links lead to SkylineWebcams, where the streams are always up to date.</p></div>
+      <div class="pw-more" id="pw-more"></div>
+    </div>
+  </section>
+
+  <section id="zdroje" aria-labelledby="zdroje-h">
+    <div class="pw-head"><h2 id="zdroje-h">Sources and notes</h2></div>
+    <div class="pw-note">
+      <p><strong>Weather:</strong> data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo.com</a> (CC BY 4.0), free and without an API key. Values are fetched directly in your browser and refreshed about every ten minutes. This is a forecast model, not an official warning — before you travel, also check <a href="https://www.meteoam.it/" target="_blank" rel="noopener noreferrer">Aeronautica Militare (meteoam.it)</a>.</p>
+      <p><strong>Webcams:</strong> the streams are run by third parties (SkylineWebcams, I Love You Venice, Webcam Italia, Il Mattino, Espansione TV, RAMSAT, Vatican News, Paesaggi Digitali, Roma Five Suites) and shown with the official YouTube player. The player loads only after you click, so YouTube learns nothing about you until you press play. If a camera is not broadcasting at the moment, use the “Source” link.</p>
+      <p>The webcams are not mine and I have no control over them; availability of the streams may change.</p>
+    </div>
+    <p style="margin-top:1.6rem"><a class="btn" href="./">← Back to Italy</a></p>
+  </section>
+</main>
+
+<script src="../../../assets/js/italia-pocasi.js?v=20261021-pocasi"></script>
+<script src="../../../assets/js/main.js?v=2026-10-11"></script>
+</body>
+</html>

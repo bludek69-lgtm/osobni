@@ -1,0 +1,133 @@
+/* Počasí a webkamery — Itálie (cestovatel69.cz)
+   Používá proměnné z theme-italy (style.css), takže funguje ve světlém i tmavém režimu. */
+
+.pw { --pw-r: 18px; --pw-shadow: 0 10px 30px rgba(31, 41, 51, .10); }
+.pw * { box-sizing: border-box; }
+
+/* ───── nadpis sekce ───── */
+.pw-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 2.4rem 0 .9rem; }
+.pw-head h2 { margin: 0; }
+.pw-head .pw-sub { color: var(--text-mut); font-size: .92rem; margin: 0; }
+
+/* ───── výběr města ───── */
+.pw-chips { display: flex; gap: .5rem; overflow-x: auto; padding: .25rem .1rem .6rem; margin: 0 -.1rem; scrollbar-width: thin; scrollbar-color: var(--border) transparent; -webkit-overflow-scrolling: touch; }
+.pw-chip {
+  flex: 0 0 auto; appearance: none; cursor: pointer; font: inherit; font-size: .92rem; line-height: 1;
+  padding: .55rem .95rem; border-radius: 999px; color: var(--text);
+  background: var(--panel); border: 1px solid var(--border);
+  transition: background .15s, border-color .15s, color .15s, transform .15s;
+}
+.pw-chip:hover { border-color: var(--accent); transform: translateY(-1px); }
+.pw-chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
+.pw-chip:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 2px; }
+
+/* ───── hlavní karta počasí ───── */
+.pw-main {
+  position: relative; overflow: hidden; border-radius: var(--pw-r); background: var(--panel);
+  border: 1px solid var(--border); box-shadow: var(--pw-shadow); padding: 1.4rem 1.5rem 1.5rem;
+}
+.pw-main::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 5px;
+  background: linear-gradient(90deg, #13703a 0 33.3%, #e9e6df 33.3% 66.6%, #a51d27 66.6% 100%); }
+.pw-main__top { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; flex-wrap: wrap; }
+.pw-city { margin: 0; font-size: 1.15rem; font-weight: 650; color: var(--text); }
+.pw-city small { font-weight: 400; color: var(--text-mut); margin-left: .4rem; }
+.pw-updated { color: var(--text-mut); font-size: .85rem; }
+.pw-now { display: flex; align-items: center; gap: 1.4rem; margin: 1.1rem 0 1.2rem; flex-wrap: wrap; }
+.pw-now__icon { font-size: 4.6rem; line-height: 1; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .15)); }
+.pw-now__temp { font-size: 3.6rem; font-weight: 700; line-height: 1; color: var(--text); letter-spacing: -.02em; }
+.pw-now__temp sup { font-size: 1.5rem; font-weight: 500; vertical-align: top; margin-left: .15rem; color: var(--text-mut); }
+.pw-now__desc { font-size: 1.05rem; color: var(--text); margin-top: .3rem; }
+.pw-facts { display: flex; flex-wrap: wrap; gap: .5rem .9rem; margin-top: .5rem; color: var(--text-mut); font-size: .9rem; }
+.pw-facts span { display: inline-flex; align-items: center; gap: .3rem; }
+
+.pw-label { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-mut); margin: 0 0 .6rem; }
+.pw-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .55rem; }
+.pw-day {
+  text-align: center; padding: .7rem .35rem .75rem; border-radius: 14px; background: var(--panel-hi);
+  border: 1px solid transparent; transition: transform .15s;
+}
+.pw-day:hover { transform: translateY(-2px); }
+.pw-day--today { background: color-mix(in srgb, var(--accent) 14%, var(--panel)); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.pw-day__name { font-size: .82rem; color: var(--text-mut); text-transform: lowercase; }
+.pw-day__ico { font-size: 1.75rem; line-height: 1.5; }
+.pw-day__max { font-weight: 700; color: var(--text); }
+.pw-day__min { color: var(--text-mut); font-size: .88rem; }
+.pw-day__rain { margin-top: .25rem; font-size: .74rem; white-space: nowrap; color: #1e6fa8; min-height: 1.1em; }
+html[data-theme-mode="dark"] .pw-day__rain { color: #6cb6ea; }
+
+/* ───── přehled měst ───── */
+.pw-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: .8rem; }
+.pw-mini {
+  appearance: none; text-align: left; cursor: pointer; font: inherit; color: var(--text);
+  display: grid; grid-template-columns: 1fr auto; gap: .1rem .6rem; align-items: center;
+  padding: .85rem 1rem; border-radius: 14px; background: var(--panel); border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgba(31, 41, 51, .06); transition: transform .15s, border-color .15s, box-shadow .15s;
+}
+.pw-mini:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 8px 22px rgba(31, 41, 51, .12); }
+.pw-mini[aria-pressed="true"] { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--panel)); }
+.pw-mini:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 2px; }
+.pw-mini__name { font-weight: 600; }
+.pw-mini__ico { grid-row: span 2; font-size: 1.9rem; line-height: 1; }
+.pw-mini__temp { font-size: 1.35rem; font-weight: 700; }
+.pw-mini__hl { color: var(--text-mut); font-size: .8rem; grid-column: 1 / -1; }
+
+/* ───── webkamery ───── */
+.pw-cams { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 1.1rem; }
+.pw-cam { border-radius: var(--pw-r); overflow: hidden; background: var(--panel); border: 1px solid var(--border); box-shadow: var(--pw-shadow); display: flex; flex-direction: column; }
+.pw-cam[hidden] { display: none; }
+.pw-cam__stage { position: relative; aspect-ratio: 16 / 9; background: #14202b; }
+.pw-cam__stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.pw-cam__play {
+  position: absolute; inset: 0; width: 100%; border: 0; cursor: pointer; color: #fff; font: inherit;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55rem;
+  background: var(--pw-bg, linear-gradient(135deg, #0f3d2a, #1d6b46 55%, #a51d27));
+}
+.pw-cam__play::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 40%, rgba(255,255,255,.14), transparent 60%); pointer-events: none; }
+.pw-cam__play::before { content: attr(data-ico); position: absolute; right: .8rem; bottom: -.4rem; font-size: 5.2rem; line-height: 1; opacity: .22; pointer-events: none; filter: saturate(.6); }
+.pw-cam__btn { position: relative; z-index: 1; width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,.95); display: grid; place-items: center; box-shadow: 0 8px 22px rgba(0,0,0,.35); transition: transform .15s; }
+.pw-cam__btn::before { content: ""; margin-left: 5px; border-style: solid; border-width: 11px 0 11px 18px; border-color: transparent transparent transparent #a51d27; }
+.pw-cam__play:hover .pw-cam__btn { transform: scale(1.08); }
+.pw-cam__play:focus-visible { outline: 3px solid var(--accent-2); outline-offset: -3px; }
+.pw-cam__live { position: absolute; z-index: 2; top: .7rem; left: .7rem; background: #d6232f; color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .06em; padding: .22rem .55rem; border-radius: 6px; display: inline-flex; align-items: center; gap: .35rem; }
+.pw-cam__live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #fff; animation: pw-pulse 1.6s infinite; }
+@keyframes pw-pulse { 50% { opacity: .25; } }
+.pw-cam__txt { position: relative; z-index: 1; font-weight: 600; text-shadow: 0 1px 8px rgba(0,0,0,.5); padding: 0 1rem; text-align: center; }
+.pw-cam__body { padding: .85rem 1rem 1rem; display: flex; flex-direction: column; gap: .25rem; flex: 1; }
+.pw-cam__city { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); font-weight: 700; }
+.pw-cam__title { margin: 0; font-size: 1.02rem; color: var(--text); }
+.pw-cam__by { color: var(--text-mut); font-size: .84rem; }
+.pw-cam__links { margin-top: auto; padding-top: .55rem; display: flex; gap: .9rem; flex-wrap: wrap; font-size: .88rem; }
+.pw-cam__links a { color: var(--accent-text); border-bottom: 1px dashed var(--accent); text-decoration: none; }
+
+.pw-more { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: .8rem; }
+.pw-link {
+  display: flex; flex-direction: column; gap: .15rem; padding: .9rem 1.05rem; border-radius: 14px; text-decoration: none;
+  background: var(--panel); border: 1px solid var(--border); color: var(--text); transition: transform .15s, border-color .15s;
+}
+.pw-link:hover { transform: translateY(-2px); border-color: var(--accent); }
+.pw-link b { color: var(--text); }
+.pw-link span { color: var(--text-mut); font-size: .86rem; }
+.pw-link i { font-style: normal; color: var(--accent-text); font-size: .85rem; margin-top: .2rem; }
+
+.pw-note { margin: 1.4rem 0 0; padding: .9rem 1.1rem; border-radius: 12px; background: var(--panel-hi); color: var(--text-mut); font-size: .88rem; line-height: 1.55; }
+.pw-note a { color: var(--accent-text); }
+.pw-error { padding: 1rem 1.2rem; border-radius: 12px; background: color-mix(in srgb, var(--accent-2) 10%, var(--panel)); border: 1px solid color-mix(in srgb, var(--accent-2) 35%, transparent); }
+.pw-skel { min-height: 220px; display: grid; place-items: center; color: var(--text-mut); }
+
+/* ───── malý pruh na rozcestníku Itálie ───── */
+.pw-strip { display: flex; gap: .6rem; flex-wrap: wrap; margin: 1.1rem 0 1.3rem; }
+.pw-strip__item { display: inline-flex; align-items: center; gap: .45rem; padding: .5rem .85rem; border-radius: 999px; background: var(--panel); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: .93rem; transition: transform .15s, border-color .15s; }
+.pw-strip__item:hover { transform: translateY(-1px); border-color: var(--accent); }
+.pw-strip__item b { font-weight: 700; }
+
+@media (max-width: 720px) {
+  .pw-main { padding: 1.1rem 1rem 1.2rem; }
+  .pw-now__icon { font-size: 3.6rem; }
+  .pw-now__temp { font-size: 2.9rem; }
+  .pw-days { grid-template-columns: repeat(7, minmax(64px, 1fr)); overflow-x: auto; padding-bottom: .3rem; }
+  .pw-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pw-chip, .pw-mini, .pw-day, .pw-link, .pw-strip__item, .pw-cam__btn { transition: none; }
+  .pw-cam__live::before { animation: none; }
+}
