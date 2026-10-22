@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cestovatel69.cz/ai.html</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/app-tester.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/budline.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/config-center.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -50,19 +50,19 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/media-hub.html</loc>
-    <lastmod>2026-09-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cestovatel69.cz/aplikace/portfolio-tracker.html</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://cestovatel69.cz/aplikace/portfolio-tracker.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://cestovatel69.cz/aplikace/resident-auditor.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/aplikace/sbirka.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -92,7 +92,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/bosna/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -104,31 +104,31 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/chorvatsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/estonsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/finsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/francie/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/holansko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -140,7 +140,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/irsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -152,7 +152,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/italie/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -164,13 +164,13 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/italie/kuchyne.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/italie/pruvodce.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -194,49 +194,49 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/lotyssko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/madarsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/nemecko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/norsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/polsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/pracovni-cesty/autobusy/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/pracovni-cesty/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/rakousko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -248,55 +248,55 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/slovensko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/slovinsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/svedsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/svycarsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/uk/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/ai.html</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/app-tester.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/budline.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/config-center.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -308,7 +308,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -326,19 +326,19 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/media-hub.html</loc>
-    <lastmod>2026-09-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cestovatel69.cz/en/aplikace/portfolio-tracker.html</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://cestovatel69.cz/en/aplikace/portfolio-tracker.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://cestovatel69.cz/en/aplikace/resident-auditor.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -350,7 +350,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/aplikace/sbirka.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -368,7 +368,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/bosna/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -380,31 +380,31 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/chorvatsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/estonsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/finsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/francie/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/holansko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -416,7 +416,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/irsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -428,7 +428,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/italie/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -440,13 +440,13 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/italie/kuchyne.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/italie/pruvodce.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -470,85 +470,85 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/lotyssko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/madarsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/nemecko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/norsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/pracovni-cesty/autobusy/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/pracovni-cesty/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/rakousko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/rusko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/slovensko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/slovinsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/svedsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/svycarsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/uk/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/finance/</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -566,7 +566,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/zaliby/rybareni/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -578,7 +578,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/finance/</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -590,25 +590,25 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/ai.html</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/app-tester.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/budline.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/config-center.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -620,7 +620,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -638,19 +638,19 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/media-hub.html</loc>
-    <lastmod>2026-09-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cestovatel69.cz/it/aplikace/portfolio-tracker.html</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://cestovatel69.cz/it/aplikace/portfolio-tracker.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://cestovatel69.cz/it/aplikace/resident-auditor.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -662,7 +662,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/aplikace/sbirka.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -680,7 +680,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/bosna/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -692,31 +692,31 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/chorvatsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/estonsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/finsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/francie/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/holansko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -728,7 +728,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/irsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -740,7 +740,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/italie/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -752,13 +752,13 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/italie/kuchyne.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/italie/pruvodce.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -782,85 +782,85 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/lotyssko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/madarsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/nemecko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/norsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/pracovni-cesty/autobusy/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/pracovni-cesty/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/rakousko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/rusko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/slovensko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/slovinsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/svedsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/svycarsko/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/uk/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/finance/</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -878,91 +878,91 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/it/zaliby/rybareni/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/ai-brain.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/aplikace.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/architektura.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/atmosfera.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/audio.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/bezpecnost-kamery.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/blog.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/dashboard.html</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/digital-twin.html</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/energie.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/funkce.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/hardware-komplet.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/hardware.html</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/historie.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -974,205 +974,205 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/infra.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/journey.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/kontakt.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/navrat-domu.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/nocni-koupelna.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/ovladace.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/posts/bathroom-misroute.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/posts/dashboard-config-center.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/posts/dashboard-v7.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/posts/dum-pozoruje-sam-sebe.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/posts/heating-coldstart-bug.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/posts/r2-memory-pressure-six-live-patches.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/posts/sandbox-24-7-kiosk-phase-e.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/posts/sheets-cleanup-v21.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/posts/uuid-repair-orphans.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/posts/yr-single-source.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/pribeh.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/proc-smart-home.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/prozivani.html</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/rano-rutina.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/repro.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/rolety.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/senzory.html</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/svetla.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/svitidla.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/team.html</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/technicka-mapa.html</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/topeni-klima.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/vyzvy.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/zarizeni.html</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/smart-home/zasuvky.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/zaliby/rybareni/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/italie/italstina/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/italie/italstina/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
