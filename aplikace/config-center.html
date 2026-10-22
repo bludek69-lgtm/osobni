@@ -88,7 +88,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Denně používané. Verze <strong>v1.9.0 · beta</strong> (říjen 2026). Běží lokálně na PC jako <strong>samostatná appka k instalaci (.exe)</strong> s automatickou aktualizací, ovládání topení je nově i na dotykovém panelu na zdi. 100+ proměnných je živě editovatelných.</p>
+  <p>Denně používané. Verze <strong>v1.9.1 · beta</strong> (říjen 2026). Běží lokálně na PC jako <strong>samostatná appka k instalaci (.exe)</strong> s automatickou aktualizací, ovládání topení je i na dotykovém panelu na zdi. 100+ proměnných je živě editovatelných. Po bezpečnostní prověrce aplikace přijme jen ověřenou novější verzi a data z domácnosti zobrazuje bezpečně jako text.</p>
 </section>
 
   <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Vývojový deník</button></section>
@@ -103,6 +103,7 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
+        <li><strong>v1.9.1 — bezpečnostní prověrka (říjen 2026)</strong> — Celá aplikace prošla bezpečnostní prověrkou a nalezené slabiny jsou opravené. Automatická aktualizace teď přijme jen správně popsanou a novější verzi, takže ji nikdo nepodstrčí ani nevrátí na starší. Názvy zařízení a hodnoty z chytré domácnosti se všude zobrazují jen jako text, stránka má přísnou ochranu proti odesílání dat jinam a nejde ji vložit do cizí stránky. A tlačítko Uložit bez změn už nic nepřepíše — dřív umělo vrátit nastavení topení, které mezitím někdo změnil na panelu.</li>
         <li><strong>v1.9.0 — topení i na panelu na zdi (říjen 2026)</strong> — Samostatná velká stránka Topení na dotykovém panelu: výběr místnosti, rychlé volby Comfort / Noc / Odchod / Rozvrh a otočný ovladač teploty. Ruční změna platí do dalšího přechodu v rozvrhu, pak se hlavice sama vrátí na plán. PC appka i panel sdílejí stejný ovládací modul.</li>
         <li><strong>v1.8.4–1.8.16 — topení pod kontrolou (říjen 2026)</strong> — Stavový řádek topení: jestli je zapnuté, jestli systém chce topit a jestli relé kotle opravdu sepnulo. Dočasné vyřazení místnosti ze systému (1 h / 4 h / 24 h / do odvolání). Karty hlavic ukazují, kdy se naposledy ozvaly, a umí trvalé Den/Noc na celý týden. K tomu AI kontrola nastavení přímo v appce, dotaz „Zavřít bez uložení?“ a spolehlivější ukládání (chyba Homey už se nehlásí jako „Uloženo“).</li>
         <li><strong>v1.8.3 — nastavení přežije aktualizaci (září 2026)</strong> — Přístup do Homey se nově drží i v šifrovaném trezoru Windows, takže reinstalace ani aktualizace ho nesmažou. Aktualizace appku korektně zavře a znovu spustí.</li>

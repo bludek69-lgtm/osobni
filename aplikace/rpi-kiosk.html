@@ -71,7 +71,7 @@
       <li><strong>Scény jedním palcem</strong> — Relax, Kino, Vaření, Večeře, Romantika, Práce, Příchod, Odchod — každá scéna nastaví všechno najednou.</li>
       <li><strong>Ovládání světel</strong> — Všechny místnosti, dim, barva, scény. Žádné hledání v telefonu.</li>
       <li><strong>Audio z rádia</strong> — Spuštění/zastavení internetových rádií, volba reproduktoru, hlasitost.</li>
-      <li><strong>Topení a energie</strong> — Runtime kotle, TRV zóny, aktuální odběr, který spotřebič tahá.</li>
+      <li><strong>Topení a energie</strong> — Velká stránka Topení: výběr místnosti, rychlé volby Comfort / Noc / Odchod / Rozvrh a otočný ovladač teploty. K tomu runtime kotle, TRV zóny a aktuální odběr.</li>
       <li><strong>Kamera a hlídání auta</strong> — Živý obraz z kamery před domem přímo na panelu. Systém sám pozná, že u auta někdo stojí, a ohlásí to nahlas i zprávou na mobil — kolemjdoucí po dvoře přitom ignoruje.</li>
       <li><strong>Bez telefonu, bez login</strong> — Nemusí se nikdo přihlašovat, nemusí se nic hledat. Otevři dveře — panel ti to ukáže.</li>
   </ul>
@@ -86,7 +86,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Běží 24/7 na Raspberry Pi 4 v chodbě. Auto-restart při výpadku proudu. Cca rok bez problémů.</p>
+  <p>Běží 24/7 na Raspberry Pi 4 v chodbě. Auto-restart při výpadku proudu. Cca rok bez problémů. Od října 2026 ovládá i topení po místnostech a po bezpečnostní prověrce smí chytrou domácnost přes panel ovládat jen panel sám.</p>
 </section>
 
   <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Vývojový deník</button></section>
@@ -107,6 +107,8 @@
         <li><strong>Kamera před domem (srpen 2026)</strong> — panel ukazuje živý obraz z kamery a poslední události i s náhledy. Nemusíš nikam chodit ani hledat aplikaci v telefonu.</li>
         <li><strong>Hlídání auta (srpen 2026)</strong> — systém sám pozná, že u auta někdo stojí, a ohlásí to nahlas v kuchyni i zprávou na mobil. Těžké na tom nebylo rozpoznat člověka, ale odlišit „někdo je u mého auta" od „někdo jde po dvoře" — dvůr je průchozí a projde tudy přes sto lidí denně. První pokus to dokonce zhoršil: planých poplachů přibylo. Ukázalo se proč — na plochém obrázku může být člověk o patnáct metrů dál hned vedle auta. Teď se posuzuje, jak je v záběru velký: kdo stojí u auta, je vidět velký, kdo je daleko, je malý. Planých poplachů ubylo z šestadvaceti na nulu.</li>
         <li><strong>Dvě hlasitosti hlášení</strong> — nahlas, když je někdo přímo u auta. A tišší zpráva na mobil, když se někdo u auta jen zdržuje. Aby si člověk hlášení nezačal po týdnu vypínat.</li>
+        <li><strong>Topení na panelu (říjen 2026)</strong> — Samostatná velká stránka Topení: vybereš místnost, ťukneš Comfort, Noc, Odchod nebo Rozvrh, případně otočným ovladačem nastavíš přesnou teplotu. Ruční změna platí do dalšího přechodu v rozvrhu, pak se hlavice sama vrátí na plán. Panel a PC appka Config Center sdílejí stejný ovládací modul.</li>
+        <li><strong>Bezpečnější propojení s domácností (říjen 2026)</strong> — Panel mluví s chytrou domácností přes vlastní prostředníka, který drží přístupový klíč. Po bezpečnostní prověrce ho smí používat jen samotný panel — ostatní zařízení v síti přes něj dům neovládnou ani nepřečtou jeho nastavení.</li>
         <li><strong>Spolehlivě 24/7</strong> — běží pořád, auto-restart při výpadku proudu, cca rok bez problémů.</li>
       </ul>
       <p style="color:var(--text-mut,#777);font-size:.85rem">Pozn.: aplikace běží jen lokálně, reálná data ani osobní údaje nejdou na web.</p>
