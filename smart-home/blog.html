@@ -67,6 +67,51 @@
         </header>
 
         <div class="buildlog-list" role="list">
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-10-19</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Zamrzlá čidla v ložnici — skripty teď kontrolují stáří hodnoty</h3>
+            <p>Tři čidla v ložnici potichu přestala posílat data, ale Homey je dál hlásil jako dostupná a držel jejich poslední hodnotu. Radar u postele zůstal tři týdny zaseknutý na „v posteli", teploměr na 61,9 % vlhkosti. Skripty četly jen hodnotu, ne její stáří. Hodnocení probuzení proto každé ráno strhávalo body, protože „pořád ležím", a zvlhčovač se nezapnul ani jednou, protože vzduch byl „vlhký dost". Diagnóza přes historii Insights ukázala skutečné datum posledního měření. Údaj „naposledy viděno" ze Zigbee kontroléru je u koncových čidel na baterie nespolehlivý, u teploměru ukazoval 214 dní. Oprava: <code>sh_wake_scorer_v1</code> bere údaj z radaru starší než 24 h jako neutrální a <code>sh_humidifier_router_v1</code> bere vlhkost starší než 6 h jako nedostupnou. Hranice jsou zvolené tak, aby legitimní noc v posteli prošla. Sandbox 18 scénářů PASS, živě ověřeno při prvním běhu. Čidla samotná čekají na nové baterie a restart napájení.</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-10-17</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Hlášení při příchodu domů ožilo — a říká i topení a zařízení jmenovitě</h3>
+            <p>Po příchodu domů má reproduktor shrnout, co se dělo během mé nepřítomnosti. Šestnáct dní neřekl nic. Požadavek na hlášení zůstal viset ve stavu „aktivní", automatizace ale reaguje jen na <em>změnu</em> proměnné. Každý další příchod tak zapsal stejnou hodnotu a nic se nespustilo. Briefing teď během nepřítomnosti drží požadavek v klidovém stavu, takže příchod vždy vyvolá změnu. Při té příležitosti hlášení umí víc: kdy šlo topení do útlumu, kdy se kotel zapnul nebo vypnul a která zařízení se jmenovitě spustila, třeba kamera nebo vysavač, každé s časem. Okno se počítá přesně od odchodu po příchod, aby se rádio nebo světlo zapnuté příchodem nepletlo do „během nepřítomnosti". Data bere z existujícího logovacího serveru, nic nového na infrastruktuře nevzniklo. Sandbox 30 scénářů na reálných datech PASS.</p>
+          </article>
+
+          <article class="buildlog-entry bl-fix" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-10-16</span>
+              <span class="buildlog-tag">FIX</span>
+            </div>
+            <h3>Notifikace deset dní nikomu nic neřekly — jedna proměnná, dvě jména</h3>
+            <p>Nejzákeřnější typ chyby: všechno vypadalo, že běží. Notifikační router se probouzel správně, jenže četl proměnnou <code>sh_notif_request</code>, kterou nikdo neplnil. Všech deset zapisovatelů, od kontroly zdraví systému po AI eskalace, psalo do <code>sh_notification_request</code>. Router viděl „nic k doručení" a skončil. Kritický alert o stavu systému tak ležel nepřečtený. Oprava je na jeden řádek: router čte správnou proměnnou a bere text i z pole, které zapisovatelé skutečně posílají. Zbytečné dvojče jsem smazal. Živě ověřeno testovací zprávou, doručení do jedné sekundy.</p>
+          </article>
+
+          <article class="buildlog-entry bl-deploy" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-10-16</span>
+              <span class="buildlog-tag">AUDIT</span>
+            </div>
+            <h3>Audit celého systému — 147 skriptů, 249 flows, 84 zařízení</h3>
+            <p>Druhý velký read-only audit po červnu prošel skripty, automatizace, proměnné, zařízení, kiosk i Config Center. Jádro bylo zdravé: všech 64 aplikací běží, žádná rozbitá automatizace, Config Center bez driftu. Z nálezů vzešly opravy nasazené ještě týž den. Kromě notifikací šlo o <strong>regresi pojistky světel</strong>: oprava z 10. 10. byla o necelé tři hodiny později přepsána necommitnutou verzí, která znovu stavěla na „poloze" rolety. Ta je ale jen posledním příkazem, ne měřenou polohou. Hlídač invariantů na to upozorňoval 109× za dva dny, teď hlásí nulový drift. <strong>Skóre zdraví</strong> stouplo z 60 na 92: penalizovalo jen dlouho známé věci, jako vědomě vypnutou zónu topení a dvě mrtvá virtuální zařízení, takže by neodhalilo nic nového. Na kiosku zmizela tři falešná varování: krypto „nenapojeno" kvůli formátu času, čistička „rozbité mapování", přestože je jen vypnutá, a osiřelá proměnná držící alarm na WARN od jara. Každá změna prošla stejnou cestou: staging, sandbox, kontrola otisku před i po nasazení a živé ověření.</p>
+          </article>
+
+          <article class="buildlog-entry bl-feature" role="listitem">
+            <div class="buildlog-meta">
+              <span class="buildlog-date">2026-10-14</span>
+              <span class="buildlog-tag">FEATURE</span>
+            </div>
+            <h3>Topení před sezónou — okno, kiosk a noční útlum</h3>
+            <p>Před zapnutím sezóny jsem prošel všechno, co souvisí s úsporou za topení. Otevřené okno teď pošle zónu do protimrazové ochrany a zavřené ji vrátí, ověřeno naživo s odezvou kolem sekundy. Teplotu zóny jde nastavit přímo z kiosku po půl stupni a v automatickém režimu má ruční volba přednost. Boost na kiosku přidával dvojnásobek, teď přidává správně. Termohlavice vědomě vypnuté zóny, kde je vadný ventil, už nehlásí chyby ani slabou baterii. Nový nástroj pro ranní kontrolu ověřuje, že noční útlum proběhl podle plánu, a odečítá AI korekce i ranní ohřev koupelny, aby nehlásil falešné poplachy. Dvě noci v automatickém režimu prošly bez nálezu a první skutečný odchod z bytu stáhl všechny zóny na 16 °C.</p>
+          </article>
+
           <article class="buildlog-entry bl-feature" role="listitem">
             <div class="buildlog-meta">
               <span class="buildlog-date">2026-06-15</span>
