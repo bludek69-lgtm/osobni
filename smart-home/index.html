@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Domácnost řízená script-first architekturou nad Homey Pro 2026. Malý byt, 84 zařízení, 145+ skriptů, vlastní AI Brain Guardian." />
+  <meta name="description" content="Moje chytrá domácnost: ranní světla a káva, úspornější vytápění při nepřítomnosti a upozornění na neobvyklé stavy. Projekt na Homey Pro 2026." />
   <meta name="theme-color" content="#0a0e14" />
   <title>SMART HOME — projekt Luďka Budinského</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="style.css?v=20261016-medaile" />
+  <link rel="stylesheet" href="style.css?v=20261023-ux-fixes" />
 
   <link rel="icon" href="/favicon.ico">
   <link rel="canonical" href="https://cestovatel69.cz/smart-home/">
@@ -18,7 +18,7 @@
   <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/smart-home/">
   <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/smart-home/">
   <meta property="og:title" content="SMART HOME — projekt Luďka Budinského">
-  <meta property="og:description" content="Domácnost řízená script-first architekturou nad Homey Pro 2026. Malý byt, 84 zařízení, 145+ skriptů, vlastní AI Brain Guardian.">
+  <meta property="og:description" content="Moje chytrá domácnost: ranní světla a káva, úspornější vytápění při nepřítomnosti a upozornění na neobvyklé stavy. Projekt na Homey Pro 2026.">
   <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
   <meta property="og:url" content="https://cestovatel69.cz/smart-home/">
   <meta property="og:type" content="website">
@@ -57,22 +57,16 @@
       <div class="container hero-inner">
         <div class="hero-text">
           <p class="eyebrow">
-            <span class="status-dot" aria-hidden="true"></span>
-            Live · Homey Pro 2026
+            Domácí projekt · Homey Pro 2026
           </p>
           <h1 class="hero-title">
             Smart home jako<br />
             <span class="grad-text">živý organismus</span>
           </h1>
           <p class="hero-lead">
-            Byt, který si sám rozsvěcí, topí a hlídá — tady je, jak jsem ho postavil.<br />Domácnost řízená script-first architekturou nad <strong>Homey Pro 2026</strong>.
-            Malý byt, 84 zařízení v 10 funkčních zónách
-            (Jídelna, Kitchen, Koupelna, Ložnice, Pracovna, Prádelna,
-            Předsíň, Spolecne, Toaleta, Pc Setup), 145+ HomeyScriptů,
-            248+ flow automatizací, 500+ stavových proměnných, vlastní AI Brain Guardian
-            a multi-resolution dashboardy. Vše vyvíjené v jednom bytě
-            jako roky tichého refaktoringu od první žárovky
-            k samodiagnostickému systému.
+            Ráno se postupně rozsvítí světla a připraví se káva. Když odejdu, dům omezí vytápění. Při neobvyklém stavu mi pošle upozornění.
+            Tyto scénáře jsem si postavil pro vlastní byt na systému <strong>Homey Pro 2026</strong> a rozvíjím je podle každodenního používání.
+            Podrobnosti o řídicích skriptech, automatizačních postupech a diagnostice najdete níže.
           </p>
           <div class="hero-cta">
             <a href="dashboard.html" class="btn btn-primary">Prozkoumat dashboard →</a>
@@ -80,21 +74,22 @@
           </div>
         </div>
 
-        <aside class="hero-stats" aria-label="Klíčová čísla">
+        <aside class="hero-stats" aria-label="Poslední ověřená čísla k 1. září 2026">
+          <p class="snapshot-date">Poslední ověřený stav: 1. 9. 2026. Čísla nejsou živá.</p>
           <div class="stat">
-            <span class="stat-num" data-count="145">145</span>
+            <span class="stat-num">145</span>
             <span class="stat-label">HomeyScriptů</span>
           </div>
           <div class="stat">
-            <span class="stat-num" data-count="248">248</span>
-            <span class="stat-label">Flows</span>
+            <span class="stat-num">248</span>
+            <span class="stat-label">Automatizací (flows)</span>
           </div>
           <div class="stat">
-            <span class="stat-num" data-count="84">84</span>
+            <span class="stat-num">84</span>
             <span class="stat-label">Zařízení</span>
           </div>
           <div class="stat">
-            <span class="stat-num" data-count="10">10</span>
+            <span class="stat-num">10</span>
             <span class="stat-label">Funkčních zón</span>
           </div>
         </aside>
@@ -104,8 +99,8 @@
 
   <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
     <div class="container">
-      <h2 id="video-heading">Chytrá domácnost na videu</h2>
-      <p>Moje chytrá domácnost — Homey, Raspberry Pi a automatizace · 8:36. Video s českým komentářem.</p>
+      <h2 id="video-heading">Podívat se: Moje chytrá domácnost — Homey, Raspberry Pi a automatizace</h2>
+      <p>8:36 · Český komentář a titulky.</p>
       <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
         <iframe src="https://www.youtube-nocookie.com/embed/UoxSFcJQq3M?rel=0" title="Moje chytrá domácnost — Homey, Raspberry Pi a automatizace" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
@@ -117,7 +112,7 @@
     <section class="hero-showcase" id="showcase" aria-labelledby="showcase-title">
       <div class="container">
         <header class="showcase-header">
-          <p class="showcase-eyebrow">Live system · Dashboard V7</p>
+          <p class="showcase-eyebrow">Ukázka rozhraní · Dashboard V7</p>
           <h2 class="showcase-title" id="showcase-title">Co dům reálně dělá</h2>
         </header>
         <a href="dashboard.html" class="showcase-main" aria-label="Otevřít stránku Dashboard">
@@ -144,47 +139,47 @@
       </div>
     </section>
 
-    <!-- LIVE METRICS PANEL -->
+    <!-- HISTORICAL METRICS PANEL -->
     <section class="metrics-section section-alt" id="metrics" aria-labelledby="metrics-title">
       <div class="container">
         <header class="section-header">
-          <p class="section-eyebrow">Live snapshot</p>
-          <h2 class="section-title" id="metrics-title">System health · current export</h2>
-          <p class="section-lead">Read-only tabule co dům právě má. Hodnoty z posledního exportu Homey API + Brain Guardian validátoru.</p>
+          <p class="section-eyebrow">Historický snímek systému</p>
+          <h2 class="section-title" id="metrics-title">Poslední ověřený stav · 1. 9. 2026</h2>
+          <p class="section-lead">Archivní přehled z exportu rozhraní Homey API a kontroly nástroje Brain Guardian. Nejde o aktuální měření.</p>
         </header>
         <div class="metrics-grid">
           <div class="metric-card m-health">
-            <p class="metric-label">System Health Score</p>
+            <p class="metric-label">Skóre stavu systému</p>
             <p class="metric-value">100<span class="metric-suffix">/100</span></p>
-            <p class="metric-meta">Brain Guardian · status OK · validator 100</p>
+            <p class="metric-meta">Kontrola Brain Guardian · stav OK</p>
           </div>
           <div class="metric-card m-flows">
-            <p class="metric-label">Active Flows</p>
+            <p class="metric-label">Automatizační postupy (flows)</p>
             <p class="metric-value">248</p>
-            <p class="metric-meta">Advanced Flow + 1 Stale Cleaner cron</p>
+            <p class="metric-meta">Automatizace Advanced Flow + pravidelný úklid stavu</p>
           </div>
           <div class="metric-card m-scripts">
-            <p class="metric-label">HomeyScripts</p>
+            <p class="metric-label">Řídicí skripty (HomeyScript)</p>
             <p class="metric-value">145</p>
-            <p class="metric-meta">~80 % migrated to LIB pattern</p>
+            <p class="metric-meta">Přibližně 80 % převedeno na sdílenou knihovnu</p>
           </div>
           <div class="metric-card m-devices">
-            <p class="metric-label">Devices Online</p>
+            <p class="metric-label">Připojená zařízení při měření</p>
             <p class="metric-value">84<span class="metric-suffix">/84</span></p>
-            <p class="metric-meta">10 zón · 100 % availability</p>
+            <p class="metric-meta">10 zón · při měření dostupných 100 % zařízení</p>
           </div>
           <div class="metric-card m-vars">
-            <p class="metric-label">Variables (sh_*)</p>
+            <p class="metric-label">Stavové proměnné (sh_*)</p>
             <p class="metric-value">782</p>
-            <p class="metric-meta">9 cfg + state + cache + audit</p>
+            <p class="metric-meta">Konfigurace, stav, mezipaměť a audit</p>
           </div>
           <div class="metric-card m-anom">
-            <p class="metric-label">Last anomaly</p>
+            <p class="metric-label">Poslední zaznamenaná odchylka</p>
             <p class="metric-value" style="font-size:24px;">Bug E ghost</p>
-            <p class="metric-meta">29.4. detected → fixed (Stale Cleaner cron)</p>
+            <p class="metric-meta">Zjištěna 29. 4. · opraveno plánovaným úklidem stavu</p>
           </div>
         </div>
-        <p class="metric-snapshot-note">Aktuální hodnoty ověřené 2026-09-01 (zařízení a flows živě z Homey API, skripty a proměnné z nejnovější dostupné zálohy 2026-08-15, health score z auditu 2026-08-30)</p>
+        <p class="metric-snapshot-note">Historický stav ověřený 1. 9. 2026: zařízení a automatizace z tehdejšího exportu Homey API; skripty a proměnné ze zálohy 15. 8. 2026; skóre stavu z auditu 30. 8. 2026.</p>
       </div>
     </section>
 
