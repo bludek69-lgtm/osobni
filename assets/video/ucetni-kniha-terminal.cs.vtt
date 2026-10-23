@@ -1,0 +1,36 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:06.000
+Takhle může vypadat vývoj aplikace
+Finance Účetní kniha v terminálu.
+
+00:00:06.000 --> 00:00:09.000
+Otevřeme složku projektu.
+
+00:00:09.000 --> 00:00:16.000
+Rozhraní tvoří React a TypeScript, server běží v Pythonu
+a účetní data ukládá místní databáze SQLite.
+
+00:00:16.000 --> 00:00:22.000
+Při vývoji upravujeme jednotlivé stránky,
+například přehled příjmů a výdajů.
+
+00:00:22.000 --> 00:00:27.000
+Příkazem npm run build
+sestavíme webové rozhraní.
+
+00:00:27.000 --> 00:00:33.000
+Potom přejdeme do složky serveru
+a spustíme soubor serve.py.
+
+00:00:33.000 --> 00:00:38.000
+Účetní kniha se otevře na místní adrese,
+na portu 5175.
+
+00:00:38.000 --> 00:00:44.000
+Z kódu a příkazů tak vzniká přehledná
+aplikace pro osobní finance.
+
+00:00:44.000 --> 00:00:48.000
+Toto je ilustrační ukázka
+se smyšlenými údaji.

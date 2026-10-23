@@ -1,0 +1,36 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:06.000
+This is what developing the Finance
+Accounting Book app in a terminal can look like.
+
+00:00:06.000 --> 00:00:09.000
+We open the project folder.
+
+00:00:09.000 --> 00:00:16.000
+React and TypeScript power the interface, Python runs
+the server, and a local SQLite database stores the records.
+
+00:00:16.000 --> 00:00:22.000
+During development, we edit individual pages,
+such as the income and expense overview.
+
+00:00:22.000 --> 00:00:27.000
+The npm run build command
+builds the web interface.
+
+00:00:27.000 --> 00:00:33.000
+Then we enter the server folder
+and run serve.py.
+
+00:00:33.000 --> 00:00:38.000
+The Accounting Book opens
+at the local address on port 5175.
+
+00:00:38.000 --> 00:00:44.000
+Code and commands become a clear,
+practical app for personal finances.
+
+00:00:44.000 --> 00:00:48.000
+This is an illustrative demonstration
+with fictional data.

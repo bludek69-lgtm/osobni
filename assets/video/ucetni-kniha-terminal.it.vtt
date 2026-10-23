@@ -1,0 +1,36 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:06.000
+Ecco come può apparire lo sviluppo dell’app
+Finance Libro contabile nel terminale.
+
+00:00:06.000 --> 00:00:09.000
+Apriamo la cartella del progetto.
+
+00:00:09.000 --> 00:00:16.000
+L’interfaccia usa React e TypeScript, il server Python
+e i dati contabili un database SQLite locale.
+
+00:00:16.000 --> 00:00:22.000
+Durante lo sviluppo modifichiamo le singole pagine,
+per esempio il riepilogo di entrate e uscite.
+
+00:00:22.000 --> 00:00:27.000
+Con il comando npm run build
+compiliamo l’interfaccia web.
+
+00:00:27.000 --> 00:00:33.000
+Poi entriamo nella cartella del server
+e avviamo serve.py.
+
+00:00:33.000 --> 00:00:38.000
+Il Libro contabile si apre
+all’indirizzo locale sulla porta 5175.
+
+00:00:38.000 --> 00:00:44.000
+Dal codice e dai comandi nasce un’app
+chiara per le finanze personali.
+
+00:00:44.000 --> 00:00:48.000
+Questa è una dimostrazione illustrativa
+con dati fittizi.
