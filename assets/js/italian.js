@@ -2,6 +2,7 @@
 (() => {
   'use strict';
   const D = window.ItalianData, C = window.ItalianCore;
+  const tutorVideos = window.ItalianTutorVideos || {};
   const lang = ['cs','en','it'].includes(document.documentElement.lang) ? document.documentElement.lang : 'cs';
   const copy = {
     cs:{lessons:'Lekce',dictionary:'Slovník',practice:'Procvičování',exam:'Zkouška',progress:'Můj pokrok',all:'Všechny úrovně',level:'Úroveň',lesson:'Lekce',allLessons:'Všechny lekce',open:'Otevřít lekci',back:'Zpět na lekce',study:'Slova a příklady',grammar:'Gramatika',choice:'Výběr významu',write:'Napiš italsky',listen:'Poslech',start:'Začít',mode:'Typ cvičení',review:'Jen chyby k opakování',noQuestions:'Pro tento výběr nejsou otázky. Zkus jiný filtr nebo nejprve dokonči test.',question:'Otázka',check:'Vyhodnotit',next:'Další otázka',finish:'Zobrazit výsledek',correct:'Správně!',wrong:'Ještě ne.',answer:'Správná odpověď',placeholder:'Napiš odpověď…',choose:'Vyber odpověď.',required:'Nejprve odpověz.',play:'Přehrát italsky',slow:'Pomaleji',stop:'Ukončit bez uložení',listenPrompt:'Poslechni si výraz a vyber jeho význam.',meaningPrompt:'Vyber význam výrazu.',writePrompt:'Napiš odpovídající výraz italsky. Všímej si členů a přízvuků.',grammarPrompt:'Doplň chybějící část věty.',result:'Výsledek',again:'Nové procvičování',saved:'Výsledek byl uložen v tomto prohlížeči.',notSaved:'Pokrok se nepodařilo uložit. Pro tuto návštěvu zůstává v paměti; stáhni si zálohu.',voice:'Italský hlas',noVoice:'Italský hlas není dostupný. Poslechové testy jsou vypnuté; ostatní funkce fungují. Zkus nainstalovat italský hlas zařízení nebo jiný prohlížeč.',voiceReady:'Zvuk používá hlas zařízení. Kvalita a dostupnost se liší; některé hlasy mohou potřebovat internet.',speechError:'Zvuk se nepodařilo přehrát. Zkus jiný hlas nebo textové cvičení. Tato otázka zatím nebyla hodnocena.',listenFirst:'Nejprve spusť poslech.',search:'Hledat slovo nebo význam',favorites:'Jen oblíbená',favorite:'Přidat k oblíbeným',unfavorite:'Odebrat z oblíbených',empty:'Nic nenalezeno.',examInfo:'20 náhodných otázek z vybrané úrovně: významy, psaní a gramatika. Volitelně přidej poslech. Výsledek platí jen pro tento soubor učiva, neurčuje celkovou jazykovou úroveň.',withAudio:'Zařadit poslechové otázky',attempts:'Dokončené testy',mistakes:'Položky k opakování',best:'Nejlepší výsledek zkoušky',history:'Poslední výsledky',export:'Stáhnout zálohu pokroku',import:'Nahrát zálohu pokroku',importConfirm:'Nahraná záloha nahradí aktuální pokrok v tomto prohlížeči. Pokračovat?',importOk:'Záloha byla načtena.',importBad:'Neplatná záloha nebo příliš velký soubor (maximum 1 MB).',storageNote:'Bez účtu a bez synchronizace. Pokrok patří tomuto prohlížeči a všem, kteří ho sdílejí. Smazání dat webu může pokrok odstranit; exportuj si zálohu.',badge:'Tematická úroveň',example:'Příklad',count:'položek',progressEmpty:'Zatím nemáš dokončený test. Začni některou lekcí.',selectVoice:'Výchozí italský hlas',accent:'Přízvuky',retry:'Opakovat chyby',reading:'Text a poslech'},
@@ -218,31 +219,16 @@
     el('it-dictionary').innerHTML='<p class="it-muted">'+filtered.length+' '+T.count+'</p><div class="it-words">'+filtered.map(w=>'<article class="it-card"><div class="it-word-top"><span class="it-level">'+w.level+'</span>'+favorite(w)+'</div><h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian)+'</article>').join('')+'</div>'+(filtered.length?'':'<p>'+T.empty+'</p>');
     updateAudioButtons();
   }
-  const cafeVideoId='dcf1d9a305bd77187a7cf9e2db8cd677';
-  const freyaCopy={
-    cs:{title:'V kavárně s Freyou',intro:'Poslechni si užitečné věty a opakuj je nahlas. Video můžeš kdykoliv pozastavit.',load:'Načíst video s Freyou',note:'AI lektorka a syntetický hlas · přehrávač HeyGen se připojí po kliknutí.',transcript:'Italský přepis a český překlad',link:'Otevřít video v HeyGen'},
-    en:{title:'At a café with Freya',intro:'Listen to the useful phrases and repeat them aloud. Pause the video whenever you need.',load:'Load Freya’s video',note:'AI tutor and synthetic voice · HeyGen connects when you click.',transcript:'Italian transcript and English translation',link:'Open video in HeyGen'},
-    it:{title:'Al bar con Freya',intro:'Ascolta l’ordinazione e ripeti le frasi ad alta voce. Puoi mettere in pausa quando vuoi.',load:'Carica il video con Freya',note:'Tutor IA e voce sintetica · HeyGen si collega dopo il clic.',transcript:'Leggi la trascrizione',link:'Apri il video su HeyGen'}
+  const tutorVideoCopy={
+    cs:{title:'Lektorka v situaci',intro:'Poslechni si příklady a zkus je říct nahlas. Video můžeš kdykoliv pozastavit.',note:'AI vytvořená lektorka a syntetický hlas.',transcript:'Italský přepis'},
+    en:{title:'Tutor in context',intro:'Listen to the examples and try saying them aloud. Pause the video whenever you need.',note:'AI-generated tutor and synthetic voice.',transcript:'Italian transcript'},
+    it:{title:'Tutor in situazione',intro:'Ascolta gli esempi e prova a ripeterli. Puoi mettere in pausa quando vuoi.',note:'Tutor creata con IA e voce sintetica.',transcript:'Trascrizione italiana'}
   };
-  const freyaTranscript=[
-    ['Ciao! Benvenuto alla lezione: al bar. Oggi impariamo a ordinare un caffè.','Ahoj! Vítej v lekci V kavárně. Dnes se naučíme objednat si kávu.','Hello! Welcome to the café lesson. Today we will learn to order a coffee.'],
-    ['Ascolta: Buongiorno! Vorrei un caffè e un cornetto, per favore. Ora ripeti: Vorrei un caffè e un cornetto, per favore.','Poslouchej: Dobrý den! Chtěl/a bych espresso a croissant, prosím. Teď opakuj: Chtěl/a bych espresso a croissant, prosím.','Listen: Good morning! I would like an espresso and a croissant, please. Now repeat: I would like an espresso and a croissant, please.'],
-    ['Il barista domanda: Al banco o al tavolo? Puoi rispondere: Al banco, grazie. Vuoi anche dell’acqua? Di’: Anche un bicchiere d’acqua naturale, per favore.','Obsluha se ptá: U baru, nebo u stolu? Můžeš odpovědět: U baru, děkuji. Chceš také vodu? Řekni: Ještě sklenici neperlivé vody, prosím.','The barista asks: At the counter or at a table? You can reply: At the counter, thank you. Would you like water too? Say: A glass of still water as well, please.'],
-    ['Quando vuoi pagare, chiedi: Il conto, per favore. Il barista risponde: Sono quattro euro e cinquanta. Questo è solo un prezzo di esempio. Per pagare con la carta, domanda: Posso pagare con la carta?','Když chceš zaplatit, požádej: Účet, prosím. Obsluha odpoví: Jsou to čtyři eura padesát. To je pouze příklad ceny. Pro platbu kartou se zeptej: Mohu platit kartou?','When you want to pay, ask: The bill, please. The barista replies: That is four euros fifty. This is just an example price. To pay by card, ask: Can I pay by card?'],
-    ['Ricorda: vorrei è una richiesta gentile. Adesso prova tu: ordina un caffè, chiedi dell’acqua e poi il conto. Buon caffè!','Pamatuj: vorrei je zdvořilá žádost. Teď to zkus ty: objednej si kávu, požádej o vodu a potom o účet. Užij si kávu!','Remember: vorrei is a polite request. Now try it yourself: order a coffee, ask for water and then the bill. Enjoy your coffee!']
-  ];
-  function freyaPlaceholder(){
-    if(!currentVideo().id)return '<p style="color:#fff;padding:1rem;text-align:center">'+({cs:'Video s Freyou zatím není dostupné. Přepis je připravený níže; zvukový dialog funguje.',en:'Freya’s video is not available yet. The script is ready below; the audio dialogue works.',it:'Il video non è ancora disponibile. La trascrizione e il dialogo audio sono disponibili.'}[lang])+'</p>';
-    return button('freya-load','▶ '+freyaCopy[lang].load,'class="it-primary"');
-  }
-  function currentVideo(){
-    return D.lessons.find(l=>l.id===openedLesson)?.video || {id:cafeVideoId,transcript:freyaTranscript};
-  }
-  function freyaTitle(){if(openedLesson==='hotel')return {cs:'V hotelu s Freyou',en:'At a hotel with Freya',it:'In hotel con Freya'}[lang];return openedLesson==='ristorante'?({cs:'V restauraci s Freyou',en:'At a restaurant with Freya',it:'Al ristorante con Freya'}[lang]):freyaCopy[lang].title;}
-  function freyaLessonVideo(){
-    const t=freyaCopy[lang],video=currentVideo();
-    if(!video.id)return '';
-    return '<section class="it-freya" aria-labelledby="it-freya-title"><h3 id="it-freya-title">'+esc(freyaTitle())+'</h3><p>'+(video.id?t.intro:({cs:'Připravený scénář videa k procvičení hotelových situací.',en:'Prepared video script for practising hotel situations.',it:'Testo preparato per esercitarsi in hotel.'}[lang]))+'</p><div id="it-freya-player" class="it-freya-player'+(video.id?'':' is-unavailable')+'">'+freyaPlaceholder()+'</div>'+(video.id?'<p class="it-muted">'+t.note+'</p>':'')+'<details><summary>'+t.transcript+'</summary>'+video.transcript.map(row=>'<p lang="it">'+esc(row[0])+'</p>'+(lang==='it'?'':'<p class="it-muted">'+esc(row[lang==='cs'?1:2])+'</p>')).join('')+'</details></section>';
+  function tutorLessonVideo(lesson){
+    const video=tutorVideos[lesson.id],t=tutorVideoCopy[lang];
+    if(!video)return '';
+    const title=lesson.title[lang]+' · '+t.title;
+    return '<section class="it-tutor-video" aria-labelledby="it-tutor-video-title"><h3 id="it-tutor-video-title">'+esc(title)+'</h3><p>'+t.intro+'</p><video controls playsinline preload="metadata" poster="'+esc(video.poster)+'" aria-label="'+esc(title)+'"><source src="'+esc(video.src)+'" type="video/mp4"></video><p class="it-muted">'+t.note+'</p><details><summary>'+t.transcript+'</summary><p lang="it">'+esc(video.script)+'</p></details></section>';
   }
   function showLesson(id) {
     const l=D.lessons.find(x=>x.id===id); if(!l)return;
@@ -255,7 +241,7 @@
     };
     const lessonCopy=l.guide?{...T,...l.guide[lang]}:id==='ristorante'?{...T,...restaurantCopy[lang]}:T;
     const dialogue=isGuided?'<div class="it-cafe-intro"><div><p class="it-eyebrow">'+lessonCopy.cafeTime+'</p><h3>'+T.goal+'</h3><p>'+esc(l.goal[lang])+'</p><p>'+lessonCopy.cafeContext+'</p></div><img src="'+esc(lessonPictureDirectory+D.lessonIllustrations[id].file)+'" alt="" width="1200" height="800" decoding="async"></div><h3>'+T.dialogue+'</h3><div class="it-toolbar">'+button('dialogue-play','▶ '+T.playAll,'class="it-primary"')+button('audio-stop',T.stopAudio)+'</div><p class="it-muted">'+T.audioCredit+'</p><ol class="it-dialogue">'+l.dialogue.map(line=>'<li id="'+line.id+'" class="it-dialogue-line '+line.role+'"><span class="it-role">'+lessonCopy[line.role]+'</span><p lang="it">'+esc(line.it)+'</p>'+audio(line.it,T.lineAudio)+sentenceButton(line.id)+'<details><summary>'+T.translation+'</summary><p>'+esc(line.translation[lang])+'</p></details></li>').join('')+'</ol>':'';
-    el('it-view').innerHTML='<section class="it-panel">'+button('back',T.back)+'<span class="it-level">'+l.level+'</span><h2 tabindex="-1" id="it-focus">'+esc(isGuided?lessonCopy.cafeTitle:l.title[lang])+'</h2>'+lessonProgress(l)+(isGuided?((id==='bar'||l.video)?freyaLessonVideo():'')+roleSetup(l,lessonCopy)+dialogue:'<p>'+esc(l.note[lang])+'</p>')+'<h3>'+(isGuided?T.vocabulary:T.study)+'</h3><div class="it-words">'+l.words.map(w=>'<article class="it-card"><div class="it-word-top">'+favorite(w)+'</div><h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian,T.wordAudio)+audio(w.example,T.sentenceAudio)+'</article>').join('')+'</div>'+(isGuided?'<h3>'+T.rules+'</h3><p class="it-rule">'+lessonCopy.ruleText+'</p><h3>'+T.tryIt+'</h3><p>'+lessonCopy.completed+'</p>'+button('lesson-practice',lessonCopy.practiceCafe,'data-mode="grammar" class="it-primary"'):'')+'<div class="it-toolbar">'+['choice','write','listen','grammar'].map(m=>button('lesson-practice',T[m],'data-mode="'+m+'"'+(m==='listen'&&!l.words.some(w=>canSpeak(w.italian))?' disabled':''))).join('')+'</div><p class="it-muted">'+T.savedDraft+'</p></section>';
+    el('it-view').innerHTML='<section class="it-panel">'+button('back',T.back)+'<span class="it-level">'+l.level+'</span><h2 tabindex="-1" id="it-focus">'+esc(isGuided?lessonCopy.cafeTitle:l.title[lang])+'</h2>'+lessonProgress(l)+(isGuided?tutorLessonVideo(l)+roleSetup(l,lessonCopy)+dialogue:'<p>'+esc(l.note[lang])+'</p>')+'<h3>'+(isGuided?T.vocabulary:T.study)+'</h3><div class="it-words">'+l.words.map(w=>'<article class="it-card"><div class="it-word-top">'+favorite(w)+'</div><h3 lang="it">'+esc(w.italian)+'</h3><p>'+esc(w.meaning[lang])+'</p><p class="it-example" lang="it">'+esc(w.example)+'</p>'+audio(w.italian,T.wordAudio)+audio(w.example,T.sentenceAudio)+'</article>').join('')+'</div>'+(isGuided?'<h3>'+T.rules+'</h3><p class="it-rule">'+lessonCopy.ruleText+'</p><h3>'+T.tryIt+'</h3><p>'+lessonCopy.completed+'</p>'+button('lesson-practice',lessonCopy.practiceCafe,'data-mode="grammar" class="it-primary"'):'')+'<div class="it-toolbar">'+['choice','write','listen','grammar'].map(m=>button('lesson-practice',T[m],'data-mode="'+m+'"'+(m==='listen'&&!l.words.some(w=>canSpeak(w.italian))?' disabled':''))).join('')+'</div><p class="it-muted">'+T.savedDraft+'</p></section>';
     updateAudioButtons();saveDraft();el('it-focus').focus();
   }
   function selectedLessons() {return D.lessons.filter(l=>(currentLevel==='all'||l.level===currentLevel)&&(currentLesson==='all'||l.id===currentLesson));}
@@ -365,8 +351,6 @@
   function stopAudio() {
     pauseAnswer();answerRecorder.reset();
     if(roleRun){roleRun=null;const stage=el('it-role-stage');if(stage)stage.innerHTML='';const setup=el('it-role-setup');if(setup)setup.hidden=false;app.querySelector('.it-dialogue')?.removeAttribute('hidden');}
-    const player=el('it-freya-player');
-    if(player?.querySelector('iframe'))player.innerHTML=freyaPlaceholder();
     audioGeneration++;
     if(media){media.pause();media.onended=null;media.onerror=null;media=null;}
     window.speechSynthesis?.cancel();
@@ -425,11 +409,6 @@
   app.addEventListener('click',event=>{
     const b=event.target.closest('button[data-action]');if(!b||b.disabled)return;
     const action=b.dataset.action;
-    if(action==='freya-load'&&currentVideo().id){
-      stopAudio();
-      el('it-freya-player').innerHTML='<iframe src="https://app.heygen.com/embeds/'+currentVideo().id+'" title="'+esc(freyaTitle())+'" allow="encrypted-media; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-      el('it-freya-player').querySelector('iframe').focus();return;
-    }
     if(action==='sentences-practice'){startSentences(b.dataset.all==='true');return;}
     if(action==='sentences-back'){stopAudio();active='sentences';render();return;}
     if(action==='save-sentence'){

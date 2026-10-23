@@ -122,13 +122,11 @@ test('café dialogue has translations, two roles and bundled audio for lines, wo
   for(const text of texts){assert.ok(D.audioFiles[text]);assert.ok(fs.statSync(__dirname+'/assets/audio/italian/'+D.audioFiles[text]).size>1000);}
 });
 
-test('restaurant lesson preserves vocabulary and has playable dialogue and a separate Freya video',()=>{
+test('restaurant lesson preserves vocabulary and has playable dialogue with a local tutor video',()=>{
   const fs=require('node:fs'),l=D.lessons.find(l=>l.id==='ristorante');
   assert.equal(l.level,'A2');assert.equal(l.words.length,9);assert.equal(l.questions.length,6);
   assert.equal(l.dialogue.length,12);assert.equal(new Set(l.dialogue.map(x=>x.id)).size,12);
-  assert.equal(l.video.id,'d2b02d5cc883c753ed2c0558a9bce662');
-  assert.notEqual(l.video.id,'dcf1d9a305bd77187a7cf9e2db8cd677');
-  for(const row of l.video.transcript)assert.ok(row.length===3&&row.every(Boolean));
+  assert.equal(l.video,undefined);
   for(const row of l.dialogue){assert.ok(row.translation.cs&&row.translation.en);assert.ok(['barista','customer'].includes(row.role));}
   for(const text of [...l.dialogue.map(x=>x.it),...l.words.flatMap(w=>[w.italian,w.example])]){
     assert.ok(D.audioFiles[text]);assert.ok(fs.statSync(__dirname+'/assets/audio/italian/'+D.audioFiles[text]).size>1000);
@@ -137,12 +135,27 @@ test('restaurant lesson preserves vocabulary and has playable dialogue and a sep
   assert.equal(review[0].kind,'grammar');assert.equal(review[0].answers[0],'per');
 });
 
-test('hotel lesson keeps existing IDs, provides audio and does not embed the failed video',()=>{
+test('all twelve scene videos have a local poster, full video and matching Italian transcript',()=>{
+  const fs=require('node:fs'),vm=require('node:vm');
+  const context={window:{}};
+  vm.runInNewContext(fs.readFileSync(__dirname+'/assets/js/italian-tutor-videos.js','utf8'),context);
+  const videos=context.window.ItalianTutorVideos;
+  assert.equal(Object.keys(videos).length,12);
+  for(const [id,video] of Object.entries(videos)){
+    assert.ok(D.lessons.some(l=>l.id===id));
+    assert.ok(video.script.length>300);
+    for(const key of ['src','poster']){
+      assert.ok(video[key].startsWith('/assets/video/italian/'));
+      assert.ok(fs.statSync(__dirname+video[key]).size>1000);
+    }
+  }
+});
+
+test('hotel lesson keeps existing IDs and provides audio alongside the local tutor video',()=>{
   const fs=require('node:fs'),l=D.lessons.find(l=>l.id==='hotel');
   assert.equal(l.words.length,9);assert.equal(l.questions.length,6);assert.equal(l.dialogue.length,12);
   assert.ok(l.questions.some(q=>q.id==='prenotato'));assert.ok(l.questions.some(q=>q.id==='arrivata'));
-  assert.equal(l.video.id,null);assert.equal(l.video.status,'unavailable');
-  for(const row of l.video.transcript)assert.ok(row.length===3&&row.every(Boolean));
+  assert.equal(l.video,undefined);
   assert.equal(new Set(l.dialogue.map(x=>x.id)).size,12);
   for(const row of l.dialogue)assert.ok(row.translation.cs&&row.translation.en);
   for(const text of [...l.dialogue.map(x=>x.it),...l.words.flatMap(w=>[w.italian,w.example])]){
@@ -152,7 +165,7 @@ test('hotel lesson keeps existing IDs, provides audio and does not embed the fai
   assert.equal(q.kind,'grammar');assert.equal(q.answers[0],'per');
 });
 
-test('city directions lesson has translated dialogue and audio without a Freya video',()=>{
+test('city directions lesson keeps translated dialogue and audio beside its local tutor video',()=>{
   const fs=require('node:fs'),l=D.lessons.find(l=>l.id==='citta');
   assert.equal(l.dialogue.length,10);assert.equal(l.questions.length,6);assert.equal(l.video,undefined);
   assert.ok(l.questions.some(q=>q.id==='dove'));assert.ok(l.questions.some(q=>q.id==='luogo'));
