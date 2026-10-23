@@ -231,6 +231,6 @@ main img:hover { transform:scale(1.005) }
 </script>
 
 <script>/* Verze appek dynamicky z latest.json (nikdy nedrift) */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){function upd(key,verAttr,dlAttr){var o=d&&d[key];if(!o||!o.version)return;var v=o.version;document.querySelectorAll("["+verAttr+"]").forEach(function(el){el.textContent=el.getAttribute(verAttr).replace("{v}",v);});if(!dlAttr)return;document.querySelectorAll("["+dlAttr+"]").forEach(function(a){if(o.url){a.href=o.url;a.setAttribute("download","");}});}/* BudLine: jen verze, zadny odkaz ke stazeni (predava se osobne) */upd("budline","data-bl-ver",null);/* Meal Planner: jen verze, zadny odkaz ke stazeni (predava se osobne) */upd("meal-planner","data-mp-ver",null);/* Italia, Collection, TenisPark: jen verze, zadny odkaz ke stazeni (predava se osobne) */upd("italia","data-it-ver",null);upd("collection","data-col-ver",null);upd("tenispark","data-tp-ver",null);}).catch(function(){});})();</script>
-  <script src="../assets/js/app-video-filter.js"></script>
+  <script src="../assets/js/app-video-filter.js?v=20261023-final"></script>
 </body>
 </html>
