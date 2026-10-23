@@ -86,10 +86,76 @@
 
 <section>
   <h2>Status</h2>
-  <p>Runs 24/7 on Raspberry Pi 4 in the hallway. Auto-restart on power loss. About a year without issues. Since October 2026 it also controls heating room by room, and after a security review only the panel itself may control the smart home through it.</p>
+  <p>Runs 24/7 on Raspberry Pi 4 in the hallway. Auto-restart on power loss. About a year without issues. Since October 2026 it also controls heating room by room, dims the display in the evening and switches it off at night, and after a security review only the panel itself may control the smart home through it.</p>
 </section>
 
+  <section style="margin:1.2rem 0"><button id="openDiary" class="diary-btn">📖 Development diary</button></section>
 </main>
+<!-- DEVELOPMENT DIARY — popup -->
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Development diary" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head">
+      <h2 style="margin:0">📖 Development diary — Home wall panel</h2>
+      <button class="diary-close" aria-label="Close">✕</button>
+    </div>
+    <div class="diary-body">
+      <ul style="line-height:1.8">
+        <li><strong>Safer link to the smart home (October 2026)</strong> — The panel talks to the smart home through its own intermediary that holds the access key. After a security review only the panel itself may use it — other devices on the network can neither control the house through it nor read its settings.</li>
+        <li><strong>No secrets over the network (October 2026)</strong> — While reading the code I found that the panel's simple web server would hand over, to any other computer in the home network, files that do not belong there — including the smart-home access key and the camera login. Now it serves only the panel's own screens and refuses everything else; the key is kept outside the public files. Verified from another computer: the screens load, the sensitive files do not.</li>
+        <li><strong>Night mode of the display (October 2026)</strong> — The panel in the hallway used to light up the room at night. In the evening it now dims, at night (or when the house is in sleep mode) the display switches off, and a touch lights it faintly for two minutes. It reads the state of the house from the same source as the dashboard; when that is unavailable it falls back to the clock, and when in doubt it stays at full brightness — a black panel by day is worse than a glowing one at night.</li>
+        <li><strong>Heating on the panel (October 2026)</strong> — A separate large Heating page: pick a room, tap Comfort, Night, Away or Schedule, or set the exact temperature with a rotary dial. A manual change holds until the next change in the schedule, then the head returns to the plan on its own. The panel and the Config Center PC app share the same control module.</li>
+        <li><strong>Touch panel on the wall</strong> — Raspberry Pi 4 + 7-inch touch display in the hallway, always on and ready. Scenes with one thumb (Relax, Cinema, Cooking, Dinner, Romance, Work, Arrive, Leave).</li>
+        <li><strong>Control of the whole flat</strong> — Lights (all rooms, dim, color, scenes), audio from internet radios (speaker choice, volume), heating and energy (boiler runtime, TRV zones, current draw).</li>
+        <li><strong>No phone, no login</strong> — Nobody has to sign in or search for anything; you open the door and the panel shows it.</li>
+        <li><strong>Camera in front of the house (August 2026)</strong> — The panel shows a live image from the camera and the latest events with previews. You don't have to go anywhere or look for an app on the phone.</li>
+        <li><strong>Car watch (August 2026)</strong> — The system recognises on its own that someone is standing at the car and announces it out loud in the kitchen and with a message to the phone. Recognising a person was not the hard part, but telling “someone is at my car” from “someone is walking across the yard” — the yard is a thoroughfare and over a hundred people pass through daily. The first attempt even made it worse: false alarms increased. It turned out why — on a flat image a person fifteen metres further away can appear right next to the car. Now it judges how large the person is in the frame: someone standing at the car looks big, someone far away looks small. False alarms dropped from twenty-six to zero.</li>
+        <li><strong>Two alert volumes</strong> — Out loud when someone is right at the car. A quieter message to the phone when someone is only lingering near it. So that nobody starts switching the alerts off after a week.</li>
+        <li><strong>Reliable 24/7</strong> — Runs all the time, restarts itself after a power cut, about a year without problems.</li>
+      </ul>
+      <p style="color:var(--text-mut,#777);font-size:.85rem">Note: the app runs locally only; no real data or personal information goes to the web.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.diary-btn, .diary-link {
+  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
+  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
+}
+.diary-btn:hover { background:#e6c75a; }
+.diary-link { background:none; color:#a07d12; text-decoration:underline; padding:0; font-weight:600; }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel {
+  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
+  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
+  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
+}
+.diary-head {
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
+  position:sticky; top:0; background:var(--bg,#fff);
+}
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
+.diary-close:hover { color:var(--text,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
+</style>
+<script>
+(function(){
+  var modal = document.getElementById('diary');
+  if (!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  ['openDiary','openDiary2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+
 
 <footer class="site-footer">
   <div class="site-footer__inner">

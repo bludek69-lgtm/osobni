@@ -84,14 +84,123 @@
       <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/zones.png" alt="Zóny — světla, motion sensors, audio per místnost" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Zóny — světla, motion sensors, audio per místnost</figcaption></figure>
       <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/morning_params.png" alt="Ranní rutina — wake window, ramp delay, briefing" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Ranní rutina — wake window, ramp delay, briefing</figcaption></figure>
       <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/lights_rules.png" alt="Pravidla světel — lux thresholdy, denní/večerní cíle" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Pravidla světel — lux thresholdy, denní/večerní cíle</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/toggles.png" alt="AI toggles — autonomy, intent engine, health monitor" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">AI toggles — autonomy, intent engine, health monitor</figcaption></figure></div></section>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/toggles.png" alt="AI toggles — autonomy, intent engine, health monitor" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">AI toggles — autonomy, intent engine, health monitor</figcaption></figure>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/safety.png" alt="Safety and protection — protected devices that automation may never switch off on its own, plus configuration validation for every mode (sample demo data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Safety and protection — protected devices that automation may never switch off on its own, plus configuration validation for every mode (sample demo data)</figcaption></figure></div></section>
 
 <section>
   <h2>Status</h2>
   <p>In daily use. Version <strong>v1.9.1 · beta</strong> (October 2026). Runs locally on PC as a <strong>standalone installable app (.exe)</strong> with automatic updates; heating control is also on the touch panel on the wall. 100+ variables editable live. After a security review the app accepts only a verified newer version and shows smart-home data safely as plain text.</p>
 </section>
 
+  <section style="margin:1.2rem 0"><button id="openDiary" class="diary-btn">📖 Development diary</button></section>
 </main>
+<!-- DEVELOPMENT DIARY — popup -->
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Development diary" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head">
+      <h2 style="margin:0">📖 Development diary — Config Center</h2>
+      <button class="diary-close" aria-label="Close">✕</button>
+    </div>
+    <div class="diary-body">
+      <ul style="line-height:1.8">
+        <li><strong>v1.9.1 — security review (October 2026)</strong> — The whole app went through a security review and the weaknesses found are fixed. Automatic update now accepts only a correctly described and newer version, so nobody can slip one in or roll it back to an older one. Device names and values from the smart home are always shown as plain text, the page has a strict policy against sending data elsewhere and cannot be embedded in another page. And the Save button with no changes no longer overwrites anything — it used to be able to revert a heating setting that someone had meanwhile changed on the panel.</li>
+
+        <li><strong>v1.9.0 — heating on the wall panel too (October 2026)</strong> — A separate large Heating page on the touch panel: room selection, quick choices Comfort / Night / Away / Schedule and a rotary temperature dial. A manual change holds until the next change in the schedule, then the head returns to the plan on its own. The PC app and the panel share the same control module.</li>
+
+        <li><strong>v1.8.4–1.8.16 — heating under control (October 2026)</strong> — A heating status line: whether it is on, whether the system wants to heat and whether the boiler relay really switched. Temporary exclusion of a room from the system (1 h / 4 h / 24 h / until revoked). Head cards show when they last reported in and can store a permanent Day/Night for the whole week. Plus an AI check of the settings right in the app, a “Close without saving?” prompt and more reliable saving (a Homey error is no longer reported as “Saved”).</li>
+
+        <li><strong>v1.8.3 — settings survive an update (September 2026)</strong> — Homey access is now also kept in the encrypted Windows vault, so neither a reinstall nor an update wipes it. The update closes the app properly and starts it again.</li>
+
+        <li><strong>v1.8.0 — standalone installer + new knobs (August 2026)</strong> — Config Center is now installable as a standalone app (.exe, like Portfolio Tracker): a window + local server, token in localStorage, <strong>with a silent auto-update</strong> (the new version installs itself). 7 previously hidden settings were added (vacuum auto-clean — time window and min. battery, departure digest, holding presence in the open space, morning radio) and the version is driven by <code>version.json</code> (SemVer + stage, visible in the header).</li>
+
+        <li><strong>v1.7.5 — smart home center (May 2026)</strong> — 100+ variables live-editable from the browser (PC and wall panel): when the morning routine starts, how fast the light ramps up, sensor thresholds, time modes and scenes.</li>
+
+        <li><strong>Voice messages and heating plan</strong> — 22 pages, one per mode (morning/day/evening/night/away/home/sleep), and a heating plan day by day, hour by hour for 4 zones (dining room, bedroom, bathroom, toilet).</li>
+
+        <li><strong>Safe test with a 10-minute revert</strong> — Before a change is confirmed there are 10 minutes to test; if you don't confirm, it reverts itself. Hard-block for sensitive devices (e.g. bedroom audio during sleep).</li>
+
+        <li><strong>Private</strong> — Access to the Homey hub stays on this PC only (app + encrypted Windows vault). No server, no cloud.</li>
+      </ul>
+      <p style="color:var(--text-mut,#777);font-size:.85rem">Note: the app runs locally only; no real data or personal information goes to the web.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+
+.diary-btn, .diary-link {
+
+  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
+
+  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
+
+}
+
+.diary-btn:hover { background:#e6c75a; }
+
+.diary-link { background:none; color:#a07d12; text-decoration:underline; padding:0; font-weight:600; }
+
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+
+.diary-modal.open { display:block; }
+
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+
+.diary-panel {
+
+  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
+
+  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
+
+  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
+
+}
+
+.diary-head {
+
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+
+  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
+
+  position:sticky; top:0; background:var(--bg,#fff);
+
+}
+
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
+
+.diary-close:hover { color:var(--text,#111); }
+
+.diary-body { padding:1.2rem 1.4rem; }
+
+@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
+
+</style>
+
+<script>
+
+(function(){
+
+  var modal = document.getElementById('diary');
+
+  if (!modal) return;
+
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+
+  ['openDiary','openDiary2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
+
+  modal.querySelector('.diary-close').addEventListener('click', close);
+
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+
+})();
+
+</script>
+
 
 <footer class="site-footer">
   <div class="site-footer__inner">

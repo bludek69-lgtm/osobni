@@ -166,7 +166,7 @@
 
 <section>
   <h2>Status</h2>
-  <p>Version <strong data-bl-ver="{v} BETA">1.2.112 BETA</strong> (October 2026). The exact version number is pulled automatically from the release manifest — the same source the installed app uses for its silent updates. Two of us use the app actively; it is developed against real payslips. Beta = it works, but it is still being polished; the installer is unsigned and password-protected.</p>
+  <p>Version <strong data-bl-ver="{v} BETA">1.2.113 BETA</strong> (October 2026). The exact version number is pulled automatically from the release manifest — the same source the installed app uses for its silent updates. Two of us use the app actively; it is developed against real payslips. Beta = it works, but it is still being polished; the installer is unsigned and password-protected.</p>
   <p style="margin-top:.6rem">The detailed history is in the <button class="diary-link" id="openDiary2">development diary</button>. <button id="openDiary" class="diary-btn" style="margin-left:.4rem">📖 Development diary</button></p>
 </section>
 
@@ -182,6 +182,7 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
+        <li><strong>v1.2.113 — payslip comparison now checks tax and insurance too (23 Oct 2026)</strong> — For the advance tax payment and the social and health insurance, the payslip comparison now also shows the amount from the payslip (previously that side was empty). The app also calculates the deductions with the same rates from the base stated on the payslip: if they match to the crown, it says the rates are right and the difference comes only from a different gross pay; if not, it points out a difference in the calculation or the rates (tax credit, children). The app's own payslip calculation is unchanged.</li>
         <li><strong>v1.2.112 — a faster app (23 Oct 2026)</strong> — After importing duties, saving in the duty editor, working with the version archive or restoring a backup, the pages are redrawn only once — they used to be redrawn a second time straight afterwards. Shift management loads about 10× faster, because the driving-time (AETR) check no longer reads the whole duty catalogue again for every duty. Backups made before recalculating a month always get their own folder (two backups within the same second used to overwrite each other) and older backups move to the archive by themselves — nothing is deleted.</li>
         <li><strong>v1.2.111 — a damaged file is no longer overwritten (22 Oct 2026)</strong> — If a data file gets damaged (for example by a power cut while saving), the app says so and leaves the file alone. In a few places it used to read it as empty and overwrite it on the next save — this concerned the bin of deleted shifts, the list of stops, leave confirmations, AI settings and the duty import history. Data is now saved safely in one step, valuable data together with a backup of the previous version.</li>
         <li><strong>v1.2.110 — signed updates (22 Oct 2026)</strong> — Every release is digitally signed and the app checks the signature before an automatic update. If someone swapped the installer or the link to it, the update is not downloaded and the app shows a warning instead of the update button.</li>

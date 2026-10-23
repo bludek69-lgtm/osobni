@@ -86,7 +86,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Běží 24/7 na Raspberry Pi 4 v chodbě. Auto-restart při výpadku proudu. Cca rok bez problémů. Od října 2026 ovládá i topení po místnostech a po bezpečnostní prověrce smí chytrou domácnost přes panel ovládat jen panel sám.</p>
+  <p>Běží 24/7 na Raspberry Pi 4 v chodbě. Auto-restart při výpadku proudu. Cca rok bez problémů. Od října 2026 ovládá i topení po místnostech, večer ztlumí displej a v noci zhasne a po bezpečnostní prověrce smí chytrou domácnost přes panel ovládat jen panel sám.</p>
 </section>
 
   <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Vývojový deník</button></section>
@@ -101,14 +101,16 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
+        <li><strong>Bezpečnější propojení s domácností (říjen 2026)</strong> — Panel mluví s chytrou domácností přes vlastní prostředníka, který drží přístupový klíč. Po bezpečnostní prověrce ho smí používat jen samotný panel — ostatní zařízení v síti přes něj dům neovládnou ani nepřečtou jeho nastavení.</li>
+        <li><strong>Žádná tajemství po síti (říjen 2026)</strong> — Při čtení kódu se ukázalo, že jednoduchý webový server panelu vydával z jiného počítače v domácí síti i soubory, které tam nepatří — klíč k chytré domácnosti a přihlášení ke kameře. Teď servíruje jen vlastní obrazovky panelu a vše ostatní odmítne; klíč je uložený mimo veřejné soubory. Ověřeno z jiného počítače: obrazovky se načtou, citlivé soubory ne.</li>
+        <li><strong>Noční režim displeje (říjen 2026)</strong> — Panel v chodbě v noci svítil do místnosti. Večer se teď ztlumí, v noci (nebo když dům spí) displej zhasne a dotykem se na dvě minuty slabě rozsvítí. Stav domu bere ze stejného zdroje jako dashboard; když ho nemá, řídí se hodinami, a při nejistotě svítí naplno — černý panel ve dne je horší než svítící v noci.</li>
+        <li><strong>Topení na panelu (říjen 2026)</strong> — Samostatná velká stránka Topení: vybereš místnost, ťukneš Comfort, Noc, Odchod nebo Rozvrh, případně otočným ovladačem nastavíš přesnou teplotu. Ruční změna platí do dalšího přechodu v rozvrhu, pak se hlavice sama vrátí na plán. Panel a PC appka Config Center sdílejí stejný ovládací modul.</li>
         <li><strong>Dotykový panel na zdi</strong> — Raspberry Pi 4 + 7palcový dotykový displej v chodbě, vždy zapnutý a připravený. Scény jedním palcem (Relax, Kino, Vaření, Večeře, Romantika, Práce, Příchod, Odchod).</li>
         <li><strong>Ovládání celého bytu</strong> — světla (všechny místnosti, dim, barva, scény), audio z internetových rádií (volba reproduktoru, hlasitost), topení a energie (runtime kotle, TRV zóny, aktuální odběr).</li>
         <li><strong>Bez telefonu, bez loginu</strong> — nikdo se nemusí přihlašovat ani nic hledat; otevřeš dveře a panel ti to ukáže.</li>
         <li><strong>Kamera před domem (srpen 2026)</strong> — panel ukazuje živý obraz z kamery a poslední události i s náhledy. Nemusíš nikam chodit ani hledat aplikaci v telefonu.</li>
         <li><strong>Hlídání auta (srpen 2026)</strong> — systém sám pozná, že u auta někdo stojí, a ohlásí to nahlas v kuchyni i zprávou na mobil. Těžké na tom nebylo rozpoznat člověka, ale odlišit „někdo je u mého auta" od „někdo jde po dvoře" — dvůr je průchozí a projde tudy přes sto lidí denně. První pokus to dokonce zhoršil: planých poplachů přibylo. Ukázalo se proč — na plochém obrázku může být člověk o patnáct metrů dál hned vedle auta. Teď se posuzuje, jak je v záběru velký: kdo stojí u auta, je vidět velký, kdo je daleko, je malý. Planých poplachů ubylo z šestadvaceti na nulu.</li>
         <li><strong>Dvě hlasitosti hlášení</strong> — nahlas, když je někdo přímo u auta. A tišší zpráva na mobil, když se někdo u auta jen zdržuje. Aby si člověk hlášení nezačal po týdnu vypínat.</li>
-        <li><strong>Topení na panelu (říjen 2026)</strong> — Samostatná velká stránka Topení: vybereš místnost, ťukneš Comfort, Noc, Odchod nebo Rozvrh, případně otočným ovladačem nastavíš přesnou teplotu. Ruční změna platí do dalšího přechodu v rozvrhu, pak se hlavice sama vrátí na plán. Panel a PC appka Config Center sdílejí stejný ovládací modul.</li>
-        <li><strong>Bezpečnější propojení s domácností (říjen 2026)</strong> — Panel mluví s chytrou domácností přes vlastní prostředníka, který drží přístupový klíč. Po bezpečnostní prověrce ho smí používat jen samotný panel — ostatní zařízení v síti přes něj dům neovládnou ani nepřečtou jeho nastavení.</li>
         <li><strong>Spolehlivě 24/7</strong> — běží pořád, auto-restart při výpadku proudu, cca rok bez problémů.</li>
       </ul>
       <p style="color:var(--text-mut,#777);font-size:.85rem">Pozn.: aplikace běží jen lokálně, reálná data ani osobní údaje nejdou na web.</p>

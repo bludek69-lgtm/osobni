@@ -96,7 +96,7 @@
       <figure style="margin:0"><img src="../../../assets/img/aplikace/italia-travel/12_dark_mode.png" alt="Dark mode — kompletně čitelný v tmavém režimu, italian green akcent, kontrast textu WCAG AAA" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Dark mode — kompletně čitelný v tmavém režimu, italian green akcent, kontrast textu WCAG AAA</figcaption></figure>
       <figure style="margin:0"><img src="../../../assets/img/aplikace/italia-travel/13_mobil_dnes.png" alt="Mobilní 'Dnes' (414×896) — kompaktní topbar, smart view podle data (před cestou / během / po), spodní 6-ikona navigace" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Mobilní 'Dnes' (414×896) — kompaktní topbar, smart view podle data (před cestou / během / po), spodní 6-ikona navigace</figcaption></figure>
       <figure style="margin:0"><img src="../../../assets/img/aplikace/italia-travel/14_mobil_checklist.png" alt="Mobilní checklist — 18 položek v 5 kategoriích (Doklady, Elektronika, Balení, Ubytování, Doprava), progress bar, lokální uložení" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Mobilní checklist — 18 položek v 5 kategoriích (Doklady, Elektronika, Balení, Ubytování, Doprava), progress bar, lokální uložení</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/italia-travel/15_autopilot.png" alt="Autopilota AI — tre varianti con obiettivi diversi, origine visibile di ogni numero (dai dati mappa vs. stimato), costi onestamente 'non verificati', hotel e tappe reali da OpenStreetMap (dati demo di esempio)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Autopilota AI — tre varianti con obiettivi diversi, origine visibile di ogni numero („dai dati mappa" vs. „stimato"), costi onestamente „non verificati" (dati demo di esempio)</figcaption></figure><figure style="margin:0"><img src="../../assets/img/aplikace/italia-travel/16_diagnostika.png" alt="Pagina Diagnostica — modalità di installazione (OWNER, rete LOCAL_ONLY), stato dell'archiviazione con invio automatico e cloud disattivati, stato dei sottosistemi ed elenco degli incidenti" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Diagnostica — in quale modalità gira l'installazione e dove vanno i dati. Invio automatico DISATTIVATO, nessun cloud, il registro resta nel computer.</figcaption></figure></div></section>
+      <figure style="margin:0"><img src="../../../assets/img/aplikace/italia-travel/15_autopilot.png" alt="Autopilota AI — tre varianti con obiettivi diversi, origine visibile di ogni numero (dai dati mappa vs. stimato), costi onestamente 'non verificati', hotel e tappe reali da OpenStreetMap (dati demo di esempio)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Autopilota AI — tre varianti con obiettivi diversi, origine visibile di ogni numero („dai dati mappa" vs. „stimato"), costi onestamente „non verificati" (dati demo di esempio)</figcaption></figure><figure style="margin:0"><img src="../../assets/img/aplikace/italia-travel/16_diagnostika.png" alt="Pagina Diagnostica — modalità di installazione (THIRD_PARTY, rete LOCAL_ONLY), stato dell'archiviazione con invio automatico e cloud disattivati, stato dei sottosistemi ed elenco degli incidenti" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Diagnostica — in quale modalità gira l'installazione e dove vanno i dati. Invio automatico DISATTIVATO, nessun cloud, il registro resta nel computer.</figcaption></figure><figure style="margin:0"><img src="../../assets/img/aplikace/italia-travel/17_co_je_noveho.png" alt="La finestra «Novità» della versione 1.11.0 — correzioni dall'audit di sicurezza e tecnico: l'Autopilot non si blocca più a causa delle foto, i link da viaggi altrui non avviano nulla, le richieste ai servizi di mappe sono più caute (dati demo di esempio)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Novità della versione 1.11.0 — correzioni dall'audit: salvataggio più affidabile nell'Autopilot, link più sicuri dai viaggi importati e richieste più caute ai servizi di mappe (dati demo di esempio)</figcaption></figure></div></section>
 
 <section>
   <h2>Stato</h2>
@@ -136,7 +136,125 @@
 })();
 </script>
 
+  <section style="margin:1.2rem 0"><button id="openDiary" class="diary-btn">📖 Diario di sviluppo</button></section>
 </main>
+<!-- DEVELOPMENT DIARY — popup -->
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Diario di sviluppo" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head">
+      <h2 style="margin:0">📖 Diario di sviluppo — Italia Travel Planner</h2>
+      <button class="diary-close" aria-label="Chiudi">✕</button>
+    </div>
+    <div class="diary-body">
+      <ul style="line-height:1.8">
+        <li><strong>v1.11.0 — correzioni dall'audit (ottobre 2026)</strong> — un audit di architettura e sicurezza ha trovato cinque cose che i test non avevano colto, perché emergono solo su dati reali o nell'app installata. Prima di ogni scrittura l'Autopilota fa un backup di sicurezza — prima includeva anche le foto a piena risoluzione, e quel backup ha un limite di 32 MiB: circa undici foto del telefono lo mandavano in crisi e l'Autopilota poi non salvava più nulla. Il backup prima della scrittura ora non contiene foto, perché l'Autopilota non le modifica; la correzione ha rivelato una seconda trappola — il ripristino faceva un proprio backup di sicurezza che prendeva anch'esso le foto, quindi un checkpoint sarebbe stato creato ma non ripristinabile. La diagnostica del server locale nell'app installata non partiva affatto: la versione installata si avvia in un modo diverso da quella di sviluppo e i test controllavano solo quest'ultima. I link dei viaggi importati e condivisi andavano nell'app desktop direttamente a Windows con qualsiasi schema — ora passa solo http(s), e due volte in modo indipendente (web e desktop); i nomi dei luoghi sulla mappa sono solo testo. Con lo stesso nome nello stesso mese il pianificatore non creava un nuovo viaggio, ma scriveva «Viaggio creato» e apriva quello vecchio. E il percorso stradale veniva richiesto senza limite di tempo, la ricerca dei luoghi aveva tre client diversi e uno solo rispettava le regole del servizio pubblico — ora tutto passa da un'unica coda, al massimo una volta al secondo. L'upgrade dalla 1.10.0 è verificato in isolamento, i dati sono sopravvissuti.</li>
+
+        <li><strong>v1.10.0 — il registro tecnico dell'app (settembre 2026)</strong> — l'app ora tiene un registro di sé stessa: cosa è andato in crash, quando è successo la prima e l'ultima volta, quanto velocemente si avvia, quanto spazio occupa il registro. Ogni problema riceve un numero (ad esempio <code>INC-20260902-A7F921</code>) con cui rintracciarlo. La cosa più importante, però, è una correzione che non si vede: la segnalazione degli errori si attivava solo aprendo l'Health Center, quindi un crash in qualsiasi altra pagina non lasciava traccia — ora si attiva subito all'avvio. Un errore di rendering prima finiva in una finestra bianca; ora compare un messaggio con il numero dell'incidente e i dati del viaggio restano salvati. Il registro è volutamente povero di contenuto e ricco di tecnica: password, chiavi, e-mail e percorsi con il nome utente vengono oscurati già alla scrittura, i nomi dei viaggi e gli indirizzi non vi vengono scritti affatto, e il pacchetto da inviare omette inoltre il testo libero. Nulla esce da solo — niente cloud, niente telemetria; un'installazione consegnata a un'altra persona funziona in modalità LOCAL_ONLY e non conosce archivi esterni. Durante la verifica sono emersi due errori miei che altrimenti sarebbero rimasti silenziosi: la redazione sovrascriveva anche identificatori e orari (il numero dell'incidente non era più rintracciabile e la scrittura sull'archivio di rete falliva per caratteri vietati nel nome del file) e lo stesso evento poteva essere rimesso in coda dopo l'invio. Entrambi corretti e coperti da test. L'aggiornamento silenzioso 1.9.2→1.10.0 verificato davvero — la sesta volta di fila.</li>
+
+        <li><strong>v1.9.2 — campo corretto e suggerimenti dei luoghi (agosto 2026)</strong> — nell'Autopilota il campo di inserimento spariva subito dopo la prima lettera digitata, quindi nel piano finiva solo «R» invece di «Roma» e il viaggio veniva calcolato verso un luogo inesistente. La causa: il modulo era costruito da un elenco di domande ancora senza risposta — il primo carattere «risolveva» la domanda e il campo veniva rimosso. Ora poggia su un elenco fisso e mantiene ciò che scrivi. I campi «Verso» e «Da» hanno suggerimenti di luoghi reali da OpenStreetMap (cerca anche oltre confine, mostra il paese); il testo manuale resta possibile. La pagina dell'Autopilota ha ricevuto un'introduzione, i passaggi e un modulo più chiaro. La pagina Connettori ora mostra lo stato reale — sono spariti sei «API pronte» che non sono gratuite (Booking, Kiwi, Google Maps) o sono inutili (il calendario è gestito dall'esportazione), e il percorso stradale è indicato come attivo e senza chiave, cosa vera già dalla 1.8.0. L'aggiornamento silenzioso 1.9.1→1.9.2 verificato davvero in 24 secondi — la quinta volta di fila.</li>
+
+        <li><strong>v1.9.1 — correzione del prezzo degli alloggi (agosto 2026)</strong> — per gli alloggi veniva mostrata la tariffa all'ingrosso per i siti partner, non il prezzo che paghi davvero alla prenotazione. Si è scoperto solo alla prima verifica sull'API reale: per un hotel di Roma 1 296 € invece di 3 697 € per due notti, una differenza di 2 400 € — il budget del viaggio sarebbe risultato completamente sballato. Ora si usa il prezzo di vendita consigliato, indicato come orientativo dal fornitore. Una chiave che non sembra una chiave LiteAPI v3 viene rifiutata subito con il motivo — prima veniva salvata e l'errore compariva solo alla prima ricerca.</li>
+
+        <li><strong>v1.9.0 — prezzi e foto degli alloggi (agosto 2026)</strong> — la ricerca di alloggi sulla mappa ha una nuova fonte, «LiteAPI»: il prezzo reale per un soggiorno in una data precisa e per un certo numero di persone, stelle, valutazione degli ospiti e una foto. Facoltativa, con una chiave personale dalla pagina Connettori — la chiave è custodita dal server locale dell'app desktop e non arriva mai al browser né a un backup; nella versione web senza app desktop la fonte è onestamente non disponibile. Si fanno solo richieste di lettura (elenco degli hotel e prezzi più bassi) — l'app non prenota mai tramite il fornitore e un hotel senza prezzo dal fornitore non ne mostra alcuno, nulla viene calcolato. Le foto del fornitore non vengono scaricate nel pacchetto offline senza una licenza documentata. Senza chiave il comportamento dell'app non cambia. L'aggiornamento silenzioso 1.8.0→1.9.0 verificato davvero — la terza volta di fila, di nuovo in 34 secondi.</li>
+
+        <li><strong>v1.8.0 — percorso stradale e giorni sul percorso (agosto 2026)</strong> — il pianificatore del percorso offre «Su strada (OSRM)»: il percorso viene ricalcolato sulla strada reale, chilometri e tempi sono instradati e il budget lo mostra onestamente come «percorso instradato» invece di una stima; se il ricalcolo fallisce, resta la linea retta tra i punti — nulla viene calcolato. Sui punti del percorso si può impostare il giorno di arrivo — il Roadtrip allora controlla i chilometri giornalieri e i limiti di guida per giorno e le tappe mostrano «Giorno N»; un'assegnazione priva di senso (giorno fuori intervallo, giorni in senso contrario) l'app rifiuta di salvarla. Le tappe lungo il percorso possono «Misurare su strada» — la vera deviazione in km e minuti, misurata fino al tratto in cui si trova la tappa; i minuti vengono sempre solo da un vero router, nessuna conversione con coefficienti. Inoltre correzioni da un audit visuale: il doppio clic su «Crea viaggio» non crea più il viaggio due volte e un viaggio con lo stesso nome nello stesso mese non sovrascrive più in silenzio i dati del primo; «Novità» si chiude con Esc; su mobile il pulsante «Segnala un problema» non copre più la barra inferiore. L'aggiornamento silenzioso 1.7.0→1.8.0 verificato davvero — banner, clic, installazione e riavvio in 34 secondi.</li>
+
+        <li><strong>v1.7.0 — AI Autopilota (agosto 2026)</strong> — un intero viaggio da poche domande: percorso, suddivisione in giorni, tappe reali lungo il percorso e alloggio concreto per ogni notte (OpenStreetMap, con coordinate, indirizzo e contatto). Tre varianti con un obiettivo davvero diverso — quante ore al giorno al volante, hotel o pensione, tolleranza alle deviazioni; per ogni numero si vede se è misurato dai dati della mappa o calcolato. L'app non inventa prezzi e disponibilità — i dati della mappa non li hanno, quindi non li afferma. Dormire in auto cerca campeggi (non parcheggi) e propone un luogo di pernottamento di riserva. La proposta si può modificare a parole («Aggiungi un giorno a Roma»). Prima che il piano venga scritto nel viaggio si crea un backup verificato — se fallisce, la scrittura non avviene. Senza rete l'Autopilota ammette ciò che non ha potuto trovare. Dopo il rilascio l'intera app è passata per un audit visuale completo (ogni pagina, ogni percorso dell'utente) — i difetti trovati sono stati corretti subito.</li>
+
+        <li><strong>v1.6.x — perché l'aggiornamento funzioni davvero (agosto 2026)</strong> — due difetti, uno che nascondeva l'altro. L'app <em>non salvava i dati</em>: il browser integrato girava in modalità privata e il profilo finiva in una cartella temporanea, quindi nulla sopravviveva alla chiusura della finestra — all'esterno sembrava un'app con dati di esempio. E <em>non annunciava affatto che era uscita una nuova versione</em>: la barra con l'offerta veniva scartata dalle impostazioni di sicurezza della pagina, quindi nessuno interrogava mai il server e l'aggiornamento non si poteva avviare — il che mascherava anche la prima correzione. Nel frattempo è cambiato anche il modo in cui l'app si chiude prima dell'installazione; l'avevo rilasciato spiegando che lo script di installazione la terminava da solo, ma una misurazione successiva lo ha smentito, quindi non lo lascio come fatto. Inoltre il backup ora include le foto e lo stato della checklist e il ripristino da backup si può avviare direttamente dall'app.</li>
+
+        <li><strong>v1.5.0 — percorso sulla mappa, alloggio dalla mappa, importazione (luglio 2026)</strong> — un pianificatore del percorso direttamente sulla mappa (clic/trascinamento/riordino dei punti) con salvataggio nel viaggio che sopravvive alla chiusura; le tappe lungo il percorso ora mostrano il tratto più vicino, la posizione sul percorso e la deviazione + sono punti sulla mappa; scelta dell'alloggio dalla mappa (OpenStreetMap) con aggiunta a una notte precisa; importazione del percorso da file GPX / KML / GeoJSON e da un link di Google Maps (i link abbreviati/condivisi vengono rifiutati, non si decodificano in modo affidabile) + esportazione di ritorno verso Google Maps. Tutto senza chiave API, senza prezzi inventati.</li>
+
+        <li><strong>v1.4.x — ricerca online delle tappe senza chiave (luglio 2026)</strong> — ricerca di carburante / WC / cibo / farmacie / campeggi vicino al percorso direttamente da OpenStreetMap (Overpass), senza account e senza chiave; quando il viaggio non ha coordinate, l'area viene ricavata dal nome della città (Nominatim). Nessun dato inventato.</li>
+
+        <li><strong>v1.0.8 — Preparazione al viaggio + in auto verso l'Italia (giugno 2026)</strong> — un nuovo hub «Preparazione al viaggio»: documenti di viaggio con controllo della validità, dashboard del budget (previsto vs pagato, a persona), lista dei bagagli in base allo stile del viaggio e riepilogo di prontezza. L'itinerario gestisce tappe strutturate (ora di fine, durata, tipo di luogo) ed è stato aggiunto il pianificatore «In auto verso l'Italia» (paesi attraversati, vignette autostradali 2026, calcolatore dei costi).</li>
+
+        <li><strong>v1.0.1 — pianificatore completo dell'Italia (giugno 2026)</strong> — itinerario giorno per giorno (mattina/pomeriggio/sera + cibo + piano B per la pioggia), biglietti con 7 alternative (Vaticano, Uffizi, Colosseo), budget in 12 categorie, mappa dei POI + esportazione in Google My Maps. 11 esportazioni (PDF, Word, KML/GPX…) + assistente AI.</li>
+
+        <li><strong>Roadtrip e modalità camper</strong> — un pianificatore di roadtrip per 10 paesi (~100 destinazioni) con deep link (Kiwi, Booking, Trenitalia). Profilo del camper e avvisi sulle zone ZTL (dove l'ingresso in auto comporta una multa).</li>
+
+        <li><strong>Multipiattaforma e offline</strong> — web PWA + desktop Windows (installer ~18 MB) + launcher portatile da un unico codice; backup con checksum, funziona offline.</li>
+      </ul>
+      <p style="color:var(--text-mut,#777);font-size:.85rem">Nota: l'app funziona solo in locale; nessun dato reale né informazione personale finisce sul web.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+
+.diary-btn, .diary-link {
+
+  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
+
+  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
+
+}
+
+.diary-btn:hover { background:#e6c75a; }
+
+.diary-link { background:none; color:#a07d12; text-decoration:underline; padding:0; font-weight:600; }
+
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+
+.diary-modal.open { display:block; }
+
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+
+.diary-panel {
+
+  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
+
+  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
+
+  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
+
+}
+
+.diary-head {
+
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+
+  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
+
+  position:sticky; top:0; background:var(--bg,#fff);
+
+}
+
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
+
+.diary-close:hover { color:var(--text,#111); }
+
+.diary-body { padding:1.2rem 1.4rem; }
+
+@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
+
+</style>
+
+<script>
+
+(function(){
+
+  var modal = document.getElementById('diary');
+
+  if (!modal) return;
+
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+
+  ['openDiary','openDiary2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
+
+  modal.querySelector('.diary-close').addEventListener('click', close);
+
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+
+})();
+
+</script>
+
 
 <footer class="site-footer">
   <div class="site-footer__inner">

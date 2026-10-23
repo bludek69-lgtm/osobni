@@ -132,6 +132,7 @@
   <div class="diary-panel">
     <div class="diary-head"><h2 style="margin:0">📖 Dev diary — Resident Auditor</h2><button class="diary-close" aria-label="Close">✕</button></div>
     <div class="diary-body"><ul style="line-height:1.8">
+      <li><strong>Time-zone reading fix (July 2026)</strong> — A bug was found in the fallback that converts log timestamps: the time-zone label was assembled incorrectly, which made some tests fail. After the fix the offline test suites pass in full again (9/9). No new features and no version change, just maintenance.</li>
       <li><strong>v0.1 done — calibrated on real data (June 2026)</strong> — The tool reads the home's real logs and, for lights, bathroom, heating and the morning, gives PASS/FAIL based on actual actions (not the number of log lines). Verified on two real days: 9 areas green with evidence, 1 to watch — 0 false alarms.</li>
       <li><strong>Fixing false alarms</strong> — It turned out routine &bdquo;check&ldquo; events (the guardian verified something, all OK) must not count as a problem. A &bdquo;semantic layer&ldquo; now tells a real action from a routine one — so the tool doesn't raise an alarm where there's nothing.</li>
       <li><strong>Connecting to the home's real logs</strong> — The home has been storing detailed behaviour records for a while. The tool connected to them (read-only) and learned to interpret them correctly — including time zones and context (time of day, presence, brightness).</li>

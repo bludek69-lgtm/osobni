@@ -90,6 +90,8 @@
       <li><strong>Home budget</strong> — transactions in cents (no rounding errors), monthly limits per category with an "Exceeded" warning, season plan.</li>
       <li><strong>Backups with a checksum</strong> — one click, restore always via preview and confirmation; current data is automatically set aside before a restore.</li>
       <li><strong>Plain-language help everywhere</strong> — every page has an expandable "💡 Help — how to" in plain language, no technical jargon.</li>
+      <li><strong>Mobile and narrow window</strong> — on a narrow screen the side menu hides and opens with the ☰ button; unchanged on a computer.</li>
+      <li><strong>What's new and News</strong> — after an update an overview of changes appears once, and the full version history is in the menu.</li>
       <li><strong>Windows app</strong> — the desktop window starts and stops its own local server; or you can run it with a double click in the browser.</li>
   </ul>
 </section>
@@ -99,7 +101,7 @@
       <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/03_cenik.png" alt="Kiosk — price list with stock: old price crossed out next to the new one, stock levels, price history" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Kiosk — price list with stock: old price crossed out next to the new one, stock levels, price history</figcaption></figure>
       <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/04_dluznici.png" alt="Debtors book — who owes what, red 'overdue' after 3 days, settle with one click (sample names)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Debtors book — who owes what, red "overdue" after 3 days, settle with one click (sample names)</figcaption></figure>
       <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/05_transakce.png" alt="Home budget — transactions with a monthly summary (income, expenses, difference, top category)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Home budget — transactions with a monthly summary (income, expenses, difference, top category)</figcaption></figure>
-      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/06_kiosk_dark.png" alt="Dark mode — the whole app in dark clay-court colours, toggle in the left menu" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Dark mode — the whole app in dark clay-court colours, toggle in the left menu</figcaption></figure></div></section>
+      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/06_kiosk_dark.png" alt="Dark mode — the whole app in dark clay-court colours, toggle in the left menu" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Dark mode — the whole app in dark clay-court colours, toggle in the left menu</figcaption></figure><figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/07_novinky.png" alt="What's new — the app's change history, newest version on top; after an update a “What's new” window also appears" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">What's new — the app's change history, newest version on top; after an update a “What's new” window also appears</figcaption></figure><figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/08_mobil_menu.png" alt="Mobile view — on a narrow screen the side menu hides and opens with the ☰ button (sample demo data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Mobile view — on a narrow screen the side menu hides and opens with the ☰ button (sample demo data)</figcaption></figure></div></section>
 
 <section>
   <h2>Installation (private beta)</h2>
@@ -110,16 +112,78 @@
 
 <section>
   <h2>Status</h2>
-  <p><strong>BETA — private beta for friends</strong> (version <span data-tp-ver="{v}">0.2.8</span>, June 2026). Windows app with an installer.</p>
+  <p><strong>BETA — private beta for friends</strong> (version <span data-tp-ver="{v}">0.2.8</span>, July 2026). Windows app with an installer.</p>
   <ul style="line-height:1.7">
     <li><strong>The installer is password-protected</strong> — only people I personally give the password to get the app. There is no password on the web and there never will be.</li>
-    <li><strong>Updates work the same as in my other apps</strong> — the app checks for a new version itself and updates silently after confirmation. Nothing needs to be downloaded manually.</li>
+    <li><strong>Updates work the same as in my other apps</strong> — the app checks for a new version itself and updates silently after confirmation, showing a small progress window. Nothing needs to be downloaded manually.</li>
     <li><strong>A note on Windows SmartScreen:</strong> the app is not signed with a certificate yet, so Windows may show an "unknown publisher" warning during installation. That's fine — continue via "More info → Run anyway".</li>
     <li>All data stays on your PC only. The app is not accounting or a POS system — it's an operations helper.</li>
   </ul>
 </section>
 
+  <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Development log</button></section>
 </main>
+<!-- DEVELOPMENT LOG — popup -->
+<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Development log" aria-hidden="true">
+  <div class="diary-backdrop"></div>
+  <div class="diary-panel">
+    <div class="diary-head">
+      <h2 style="margin:0">📖 Development log — TenisPark</h2>
+      <button class="diary-close" aria-label="Close">✕</button>
+    </div>
+    <div class="diary-body">
+      <ul style="line-height:1.8">
+        <li><strong>v0.2.8 — update progress window (July 2026)</strong> — during an automatic update a small window now appears with a moving bar, a seconds counter and the phases "Closing the app → Installing the new version → Starting the app". The app restarts by itself afterwards, so there is no more waiting blindly. I took the pattern from BudLine; data and calculations are unchanged.</li>
+        <li><strong>v0.2.7 — mobile and narrow window (July 2026)</strong> — on a screen narrower than 768 px the side menu hides and opens with the ☰ button at the top left; it closes by clicking an item, the background or the Esc key. On a computer the app looks exactly as before. A reaction to my usability audit of the apps.</li>
+        <li><strong>v0.2.4–0.2.6 — QA recorder (June 2026)</strong> — a service page listing the reports from the "Report a problem" button (filters, detail, status change), reachable directly by a button; everything stays local and nothing is sent by itself. Version 0.2.5 was only a check of the automatic update, with no functional changes.</li>
+        <li><strong>v0.2.3 — What's new and News (June 2026)</strong> — after an update a "What's new" window appears once, and the menu gained a News page with the version history; a "Report a problem" button was added for testing.</li>
+        <li><strong>v0.2.2 — the whole complex in one place (June 2026)</strong> — court bookings without collisions (a double booking is not allowed; weekday/weekend price list), kiosk with stock (a sale lowers the stock, minimums are watched), debtors book (consumption "on the tab", red "overdue" after 3 days).</li>
+        <li><strong>Budget and price list</strong> — home budget in cents (no rounding errors) with monthly limits per category; a price list with both the old (crossed-out) and the new price and a history of all changes.</li>
+        <li><strong>Safe and for non-experts</strong> — backups with a checksum (restore always via preview and confirmation), an expandable "💡 Help — how to" on every page in plain language. The Windows app starts and stops its own server.</li>
+      </ul>
+      <p style="color:var(--text-mut,#777);font-size:.85rem">Note: the app runs only locally; real data and personal details never go on the web.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.diary-btn, .diary-link {
+  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
+  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
+}
+.diary-btn:hover { background:#e6c75a; }
+.diary-link { background:none; color:#a07d12; text-decoration:underline; padding:0; font-weight:600; }
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+.diary-modal.open { display:block; }
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+.diary-panel {
+  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
+  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
+  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
+}
+.diary-head {
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
+  position:sticky; top:0; background:var(--bg,#fff);
+}
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
+.diary-close:hover { color:var(--text,#111); }
+.diary-body { padding:1.2rem 1.4rem; }
+@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
+</style>
+<script>
+(function(){
+  var modal = document.getElementById('diary');
+  if (!modal) return;
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  ['openDeník','openDeník2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
+  modal.querySelector('.diary-close').addEventListener('click', close);
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+
 <footer class="site-footer">
   <div class="site-footer__inner">
     <div>© Budinský Luděk · Personal website</div>

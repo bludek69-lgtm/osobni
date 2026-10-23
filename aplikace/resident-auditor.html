@@ -131,6 +131,7 @@
   <div class="diary-panel">
     <div class="diary-head"><h2 style="margin:0">📖 Vývojový deník — Resident Auditor</h2><button class="diary-close" aria-label="Zavrit">✕</button></div>
     <div class="diary-body"><ul style="line-height:1.8">
+      <li><strong>Oprava čtení časových pásem (červenec 2026)</strong> — V záložním postupu pro přepočet času logů se našla chyba ve skládání textu časového pásma, kvůli které část testů padala. Po opravě prochází offline sady testů znovu celé (9/9). Funkce ani verze se nemění, jde o údržbu.</li>
       <li><strong>v0.1 hotovo — kalibrace na reálných datech (červen 2026)</strong> — Nástroj čte reálné logy domu a u světel, koupelny, topení a rána dává PASS/FAIL podle skutečných akcí (ne podle počtu řádků v logu). Ověřeno na dvou reálných dnech: 9 oblastí zelených s důkazem, 1 ke sledování — 0 falešných poplachů.</li>
       <li><strong>Náprava falešných poplachů</strong> — Ukázalo se, že rutinní &bdquo;kontrolní&ldquo; události (hlídač něco ověřil, vše OK) se nesmí počítat jako problém. Přidaná &bdquo;sémantická vrstva&ldquo; rozezná skutečnou akci od rutiny — díky tomu nástroj nehlásí poplach tam, kde nic není.</li>
       <li><strong>Napojení na reálné logy domu</strong> — Dům si už delší dobu ukládá podrobné záznamy chování. Nástroj se na ně napojil (jen pro čtení) a začal je správně interpretovat — včetně časových pásem a kontextu (fáze dne, přítomnost, jas).</li>

@@ -158,7 +158,7 @@
 
 <section>
   <h2>Stav</h2>
-  <p>Verze <strong data-bl-ver="{v} BETA">1.2.112 BETA</strong> — přesné číslo verze se natáhne automaticky z manifestu vydání (stejný zdroj, ze kterého si aplikace bere tiché aktualizace). Aplikaci aktivně používáme dva, vyvíjí se podle reálných výplatních pásek. Beta = funguje, ale stále se ladí; instalátor je nepodepsaný a zaheslovaný.</p>
+  <p>Verze <strong data-bl-ver="{v} BETA">1.2.113 BETA</strong> — přesné číslo verze se natáhne automaticky z manifestu vydání (stejný zdroj, ze kterého si aplikace bere tiché aktualizace). Aplikaci aktivně používáme dva, vyvíjí se podle reálných výplatních pásek. Beta = funguje, ale stále se ladí; instalátor je nepodepsaný a zaheslovaný.</p>
   <p style="margin-top:.6rem">Detailní průběh vývoje je ve <button class="diary-link" id="openDeník2">vývojovém deníku</button>. <button id="openDeník" class="diary-btn" style="margin-left:.4rem">📖 Vývojový deník</button></p>
 </section>
 
@@ -174,6 +174,7 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
+        <li><strong>v1.2.113 — porovnání pásek ověří i daně a pojištění (23. 10. 2026)</strong> — Porovnání pásek u zálohy na daň, sociálního a zdravotního pojištění nově ukazuje i částku z výplatní pásky (dřív tam bylo prázdno). Aplikace navíc spočítá odvody stejnými sazbami i ze základu uvedeného na pásce: když vyjdou na korunu stejně, řekne, že sazby sedí a rozdíl vzniká jen z jiné hrubé mzdy; když ne, upozorní na rozdíl ve výpočtu nebo v sazbách (sleva, děti). Vlastní výpočet pásky se tím nemění.</li>
         <li><strong>v1.2.112 — rychlejší aplikace (23. 10. 2026)</strong> — Po importu turnusů, uložení v editoru, práci s archivem verzí nebo obnově zálohy se stránky překreslí jen jednou — dřív se hned potom překreslovaly ještě jednou. Správa směn se načítá zhruba 10× rychleji, protože kontrola AETR už nečte celý katalog turnusů znovu pro každý turnus. Zálohy před přepočtem měsíce mají vždy vlastní složku (dvě zálohy ve stejné sekundě se dřív přepsaly) a starší zálohy se samy přesouvají do archivu — nic se nemaže.</li>
         <li><strong>v1.2.111 — poškozený soubor se už nepřepíše (22. 10. 2026)</strong> — Když se některý soubor s daty poškodí (třeba výpadkem proudu při ukládání), aplikace to řekne a soubor nechá být. Dřív ho na pár místech načetla jako prázdný a dalším uložením přepsala — týkalo se to koše smazaných směn, číselníku zastávek, potvrzení dovolené, nastavení AI a historie importů turnusů. Ukládání dat probíhá bezpečně najednou, u cenných dat se zálohou předchozí verze.</li>
         <li><strong>v1.2.110 — podepsané aktualizace (22. 10. 2026)</strong> — Každé vydání je digitálně podepsané a aplikace si podpis před automatickou aktualizací ověří. Kdyby někdo podvrhl instalační soubor nebo odkaz na něj, aktualizace se nestáhne a aplikace místo tlačítka ukáže varování.</li>
