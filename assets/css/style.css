@@ -1515,3 +1515,5 @@ body.theme-italy { --medal: linear-gradient(135deg, #8e959c 0%, #d9dde1 28%, #ff
 .language-note { max-width:980px; margin:1rem auto; padding:.85rem 1.1rem; border-left:3px solid var(--accent,#3288bc); background:var(--card-bg,#ffffff0a); }
 
 .youtube-section .section-header h1 { color: var(--text); margin: 0 0 .6rem; font-size: clamp(2rem, 4vw, 3rem); }
+
+.hero .hero-note { max-width: 680px; margin: 1rem auto 0; color: var(--text-mut); font-size: .83rem; line-height: 1.55; }
