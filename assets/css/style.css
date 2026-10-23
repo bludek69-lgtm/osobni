@@ -694,6 +694,14 @@ body.theme-italy .italy-launcher .btn {
 body.theme-italy .italy-launcher .btn:nth-child(1) { background: linear-gradient(115deg, #0a4d24 0%, #2f9a5a 10%, #a9e3c0 16%, #2b8f52 22%, #13703a 50%, #0c5329 100%); }
 body.theme-italy .italy-launcher .btn:nth-child(2) { background: var(--metal-silver); color: #2a2f35; text-shadow: 0 1px 0 rgba(255,255,255,.7); }
 body.theme-italy .italy-launcher .btn:nth-child(3) { background: linear-gradient(115deg, #6b0d14 0%, #c0434b 10%, #f3b3b7 16%, #c02a34 22%, #a51d27 50%, #7a0e16 100%); }
+body.theme-italy .italy-launcher .btn:nth-child(4) {
+  grid-column: 2;
+  background: var(--panel-hi);
+  color: var(--accent-text);
+  text-shadow: none;
+  border: 1px solid var(--accent);
+  box-shadow: 0 2px 6px -2px rgba(0,0,0,.25);
+}
 body.theme-italy .italy-launcher .btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
 body.theme-italy .card {
   position: relative;
@@ -1443,8 +1451,13 @@ img.pasta-icon {
 .theme-italy .italy-gallery-more .gallery-hide,
 .theme-italy .italy-gallery-more[open] .gallery-show { display: none; }
 .theme-italy .italy-gallery-more[open] .gallery-hide { display: inline; }
-@media (max-width: 600px) {
+@media (max-width: 760px) {
   .theme-italy .italy-launcher { grid-template-columns: 1fr; gap: .5rem; }
+  body.theme-italy .italy-launcher .btn:nth-child(4) {
+    grid-column: 1;
+    width: min(100%, 20rem);
+    justify-self: center;
+  }
 }
 
 /* ── MEDAILE KARET (2026-10-16) ─────────────────────────────
