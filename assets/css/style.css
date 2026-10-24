@@ -1545,3 +1545,16 @@ body.theme-italy { --medal: linear-gradient(135deg, #8e959c 0%, #d9dde1 28%, #ff
 .youtube-section .section-header h1 { color: var(--text); margin: 0 0 .6rem; font-size: clamp(2rem, 4vw, 3rem); }
 
 .hero .hero-note { max-width: 680px; margin: 1rem auto 0; color: var(--text-mut); font-size: .83rem; line-height: 1.55; }
+/* Italy hub: three clear starting paths and connected personal routes. */
+.italy-start, .italy-routes { margin: 2.5rem 0; }
+.italy-path-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.25rem; }
+.italy-path-card, .italy-route-card, .italy-practical {
+  border: 1px solid var(--border, #374151); border-radius: 14px;
+  padding: 1.25rem; background: var(--surface, rgba(255,255,255,.04));
+}
+.italy-path-card h3, .italy-route-card h3, .italy-practical h3 { margin: 0 0 .55rem; }
+.italy-path-card p, .italy-route-card p, .italy-practical p { margin: 0 0 .9rem; }
+.italy-path-card a, .italy-route-links a { color: var(--accent, #63b4df); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.italy-route-links { display: flex; flex-wrap: wrap; gap: .7rem 1.2rem; }
+.italy-practical { margin-top: 1rem; }
+@media (max-width: 760px) { .italy-path-grid { grid-template-columns: 1fr; } }
