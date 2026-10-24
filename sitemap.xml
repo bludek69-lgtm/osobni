@@ -199,6 +199,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://cestovatel69.cz/cestovani/italie/liguria/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://cestovatel69.cz/cestovani/lotyssko/</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -477,6 +483,12 @@
   <url>
     <loc>https://cestovatel69.cz/en/cestovani/italie/toskansko/</loc>
     <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cestovatel69.cz/en/cestovani/italie/liguria/</loc>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -795,6 +807,12 @@
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/italie/toskansko/</loc>
     <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cestovatel69.cz/it/cestovani/italie/liguria/</loc>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

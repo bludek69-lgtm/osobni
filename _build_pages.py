@@ -72,6 +72,7 @@ PAGES = [
         'title':     'Itálie — Toskánsko — Cestování — Luděk',
         'depth':     3,
     },
+    {'rel': 'cestovani/italie/liguria/index.html', 'theme': 'italy', 'title': 'Itálie — Ligurie — Cestování — Luděk', 'depth': 3},
     {
         'rel':       'cestovani/italie/jih/index.html',
         'theme':     'italy',
