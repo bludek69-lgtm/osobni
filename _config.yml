@@ -1,0 +1,4 @@
+# GitHub Pages (Jekyll): vývojové skripty a testy se nekopírují do publikovaného webu.
+# V repozitáři zůstávají, jen nejsou dostupné na cestovatel69.cz.
+exclude:
+  - "*.py"
