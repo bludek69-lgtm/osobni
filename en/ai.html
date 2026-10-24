@@ -11,7 +11,7 @@
   <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/ai.html">
   <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/ai.html">
   <link rel="stylesheet" href="../assets/css/style.css?v=20261016-medaile">
-  <link rel="stylesheet" href="../assets/css/ai.css?v=2026-10-10-2">
+  <link rel="stylesheet" href="../assets/css/ai.css?v=2026-10-24-case">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🤖%3C/text%3E%3C/svg%3E">
   <meta property="og:type" content="article">
   <meta property="og:title" content="AI in practice — how I use artificial intelligence">
@@ -69,7 +69,7 @@
   </section>
 
   <nav class="ai-jump" aria-label="How I work">
-    <a href="#who-does-what">Tools and their roles</a><a href="#how-apps-are-built">How I work</a><a href="#projects">Real projects</a><a href="#examples">A brief that leads to a concrete result</a>
+    <a href="#who-does-what">Tools and their roles</a><a href="#how-apps-are-built">How I work</a><a href="#case-study">Real repair</a><a href="#projects">Real projects</a><a href="#examples">A brief that leads to a concrete result</a>
     <a href="#demo-vs-praxe">Demo vs. reality</a><a href="#modely">Models</a><a href="#zdarma-placene">Free vs. paid</a><a href="#skills-mcp">Skills and MCP</a>
   </nav>
 
@@ -108,6 +108,22 @@
 <li><span class="ai-process-index" aria-hidden="true">03</span><h3>Change</h3><p>Build on the existing solution. The change has a clear scope and can be reviewed.</p></li>
 <li><span class="ai-process-index" aria-hidden="true">04</span><h3>Verification</h3><p>Use relevant tests, reproduce bugs and explore the interface. The original failure must disappear.</p></li>
 <li><span class="ai-process-index" aria-hidden="true">05</span><h3>Use and iterate</h3><p>I assess the result in practice. Bugs, logs and feedback inform the next task.</p></li></ol>
+  </section>
+
+  <section id="case-study" class="ai-section" aria-labelledby="case-study-title">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">CASE /</span><h2 id="case-study-title">When the “calculators” could not calculate</h2></div>
+    <p class="ai-section-intro">An actual repair to my Finance page on 24 October 2026. The images show the source version before the change and the live page after deployment.</p>
+    <div class="ai-case-grid">
+      <article class="ai-case-step"><h3>1. Problem</h3><p>The “Useful calculators” section only contained cards describing possible calculations. Visitors had nowhere to enter numbers and no result to read. I checked the old code in Git history and opened that version in a browser.</p></article>
+      <article class="ai-case-step"><h3>2. My brief to AI</h3><p>I asked first for a correction to the Lerici page, then for real interactive calculators. The key part of my original Czech instruction was:</p><blockquote class="ai-case-quote" lang="cs">“pak vytvořit skutečné interaktivní kalkulačky”</blockquote><p>In English: “then create actual interactive calculators.”</p></article>
+      <article class="ai-case-step"><h3>3. Specific change</h3><p>Codex replaced the descriptive cards with nine calculators with inputs, buttons and results. They run in the browser. The same functions were added to the Czech, English and Italian pages. For example, the compound-growth calculator shows the final value, total deposits and modelled difference. The heading offset under the fixed navigation was also corrected.</p></article>
+      <article class="ai-case-step"><h3>4. Verification</h3><p>Six automated tests checked the calculations, including zero returns and invalid inputs. I opened all three language versions in the browser, changed values, and checked the results and validation message. Finally I confirmed the completed deployment and tested the live page. The modelled results are not investment or tax advice.</p></article>
+    </div>
+    <p><a class="ai-case-link" href="finance/#fin-4-kalkulacky">Try the calculators on the Finance page ↗</a></p>
+    <div class="ai-case-photos">
+      <figure><img src="../assets/img/ai/finance-before-20261024.png" width="1265" height="712" loading="lazy" alt="Previous Finance page with text cards and no calculator inputs"><figcaption><strong>Before:</strong> historical source commit b90fc2c, displayed locally. The cards have no input fields or results.</figcaption></figure>
+      <figure><img src="../assets/img/ai/finance-after-20261024.png" width="1265" height="712" loading="lazy" alt="Current Finance page with compound-growth inputs and calculated results"><figcaption><strong>After:</strong> live page on 24 October 2026. A model example shows the inputs and calculated final value.</figcaption></figure>
+    </div>
   </section>
 
   <section id="projects" class="ai-section">

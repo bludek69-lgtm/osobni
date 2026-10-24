@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://cestovatel69.cz/ai.html">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="assets/css/style.css?v=20261016-medaile">
-  <link rel="stylesheet" href="assets/css/ai.css?v=2026-10-10-2">
+  <link rel="stylesheet" href="assets/css/ai.css?v=2026-10-24-case">
   <link rel="icon" href="/favicon.ico">
 </head>
 <body class="theme-home">
@@ -66,7 +66,7 @@
   </section>
 
   <nav class="ai-jump" aria-label="Jak pracuji">
-    <a href="#rozdeleni-nastroju">Nástroje a jejich role</a><a href="#jak-vznika">Jak pracuji</a><a href="#projekty">Konkrétní projekty</a><a href="#priklady">Zadání, které vede ke konkrétnímu výsledku</a>
+    <a href="#rozdeleni-nastroju">Nástroje a jejich role</a><a href="#jak-vznika">Jak pracuji</a><a href="#pripadova-studie">Skutečná oprava</a><a href="#projekty">Konkrétní projekty</a><a href="#priklady">Zadání, které vede ke konkrétnímu výsledku</a>
     <a href="#demo-vs-praxe">Demo vs. praxe</a><a href="#modely">Modely</a><a href="#zdarma-placene">Zdarma vs. placené</a><a href="#skills-mcp">Skills a MCP</a>
   </nav>
 
@@ -105,6 +105,22 @@
 <li><span class="ai-process-index" aria-hidden="true">03</span><h3>Úprava</h3><p>Navážeme na existující řešení. Změna má konkrétní rozsah a dá se zkontrolovat.</p></li>
 <li><span class="ai-process-index" aria-hidden="true">04</span><h3>Ověření</h3><p>Podle změny testy, reprodukce chyby a proklikání rozhraní. U opravy musí původní problém zmizet.</p></li>
 <li><span class="ai-process-index" aria-hidden="true">05</span><h3>Používání a další kolo</h3><p>Výsledek posoudím v praxi. Zjištěná chyba, log nebo připomínka se vrací do dalšího zadání.</p></li></ol>
+  </section>
+
+  <section id="pripadova-studie" class="ai-section" aria-labelledby="pripadova-studie-title">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">PŘÍPAD /</span><h2 id="pripadova-studie-title">Když „kalkulačky“ na webu ještě nepočítaly</h2></div>
+    <p class="ai-section-intro">Konkrétní oprava z 24. října 2026 na mé stránce Finance. Snímky zachycují skutečný stav před změnou a živou stránku po nasazení.</p>
+    <div class="ai-case-grid">
+      <article class="ai-case-step"><h3>1. Problém</h3><p>Oddíl „Kalkulačky, které se hodí“ nabízel jen karty s popisem výpočtů. Návštěvník nemohl zadat vlastní čísla ani získat výsledek. Původní podobu jsem ověřil v historii kódu a znovu ji otevřel v prohlížeči.</p></article>
+      <article class="ai-case-step"><h3>2. Moje zadání AI</h3><p>Nejdřív jsem požádal o opravu Lerici a pak o skutečné interaktivní kalkulačky. Rozhodující část zadání byla:</p><blockquote class="ai-case-quote">„pak vytvořit skutečné interaktivní kalkulačky“</blockquote></article>
+      <article class="ai-case-step"><h3>3. Konkrétní změna</h3><p>Codex nahradil popisné karty devíti výpočty s poli, tlačítky a výsledky. Výpočty běží v prohlížeči. Stejnou funkci doplnil do české, anglické i italské verze; například složené úročení ukazuje konečnou hodnotu, součet vkladů a modelový rozdíl. Upravil také odsazení nadpisu pod pevnou navigací.</p></article>
+      <article class="ai-case-step"><h3>4. Jak jsem výsledek ověřil</h3><p>Šest automatických testů zkontrolovalo výpočty včetně nulového výnosu a chybného zadání. V prohlížeči jsem prošel všechny tři jazykové verze, změnil vstupy a zkontroloval výsledky i chybovou hlášku. Nakonec jsem ověřil dokončené nasazení a funkci na živém webu. Modelové výsledky nejsou investiční ani daňové doporučení.</p></article>
+    </div>
+    <p><a class="ai-case-link" href="finance/#fin-4-kalkulacky">Vyzkoušet kalkulačky na stránce Finance ↗</a></p>
+    <div class="ai-case-photos">
+      <figure><img src="assets/img/ai/finance-before-20261024.png" width="1265" height="712" loading="lazy" alt="Původní stránka Finance: místo výpočtů jen karty s textovým popisem"><figcaption><strong>Před:</strong> historická verze ze zdrojového commitu b90fc2c, zobrazená lokálně. Karty nemají vstupní pole ani výsledky.</figcaption></figure>
+      <figure><img src="assets/img/ai/finance-after-20261024.png" width="1265" height="712" loading="lazy" alt="Nová stránka Finance: formulář složeného úročení se vstupy a spočtenými výsledky"><figcaption><strong>Po:</strong> živá stránka z 24. října 2026. Modelový příklad ukazuje vstupy a vypočtenou konečnou hodnotu.</figcaption></figure>
+    </div>
   </section>
 
   <section id="projekty" class="ai-section">

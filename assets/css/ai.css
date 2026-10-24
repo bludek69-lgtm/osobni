@@ -56,6 +56,16 @@
 .ai-process-index { display:block; font:1.8rem monospace; color:var(--ai-accent); margin-bottom:1.4rem; }
 .ai-process h3 { font-size:1.05rem; }
 .ai-process p { font-size:.87rem; margin:0; }
+.ai-case-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.1rem; margin:1.7rem 0; }
+.ai-case-step { background:var(--ai-paper); border:1px solid var(--ai-line); border-radius:14px; padding:1.4rem; }
+.ai-case-step h3 { margin-bottom:.55rem; }
+.ai-case-step p:last-child { margin-bottom:0; }
+.ai-case-quote { margin:.8rem 0 0; padding:1rem 1.2rem; border-left:4px solid var(--ai-accent); background:var(--ai-surface); color:var(--ai-ink); border-radius:0 9px 9px 0; }
+.ai-case-photos { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.1rem; margin:1.8rem 0 0; }
+.ai-case-photos figure { margin:0; min-width:0; }
+.ai-case-photos img { display:block; width:100%; height:auto; border-radius:10px; border:1px solid var(--ai-line); }
+.ai-case-photos figcaption { margin-top:.6rem; font-size:.85rem; color:var(--ai-muted); }
+.ai-case-link { color:var(--ai-accent); font-weight:700; text-decoration:underline !important; text-underline-offset:.2em; }
 .ai-projects { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.2rem; }
 .ai-project { background:var(--ai-paper); border:1px solid var(--ai-line); border-radius:14px; padding:1.5rem; display:flex; flex-direction:column; }
 .ai-project-top { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; font-size:.7rem; color:var(--ai-muted); margin-bottom:1.8rem; }
@@ -94,6 +104,7 @@
 .ai-glossary dt { font-weight:700; font-size:1.1rem; margin-bottom:.5rem; }
 .ai-glossary dd { margin:0; color:var(--ai-muted); font-size:.93rem; }
 @media (max-width:720px) { .ai-models, .ai-glossary { grid-template-columns:1fr; } }
+@media (max-width:720px) { .ai-case-grid, .ai-case-photos { grid-template-columns:1fr; } }
 html:not([data-theme-mode="light"]) .ai-page {
   --ai-ink:#e8eef6; --ai-muted:#bdc9d9; --ai-line:#334357;
   --ai-paper:#182638; --ai-surface:#192b3d; --ai-accent:#9de0d4;
