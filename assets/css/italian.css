@@ -70,6 +70,16 @@
 .it-guide-video__frame {aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#12372e;}
 .it-guide-video__frame iframe {display:block;width:100%;height:100%;border:0;}
 .it-guide-video > p:last-child {margin:1rem 0 0;}
+.it-pronunciation{margin:1.5rem 0 2rem;padding:clamp(1rem,3vw,1.6rem);border:1px solid var(--it-line);border-radius:16px;background:var(--it-paper);}
+.it-pronunciation__head{max-width:54rem;}
+.it-pronunciation__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.2rem 0;}
+.it-pronunciation__card{display:flex;flex-direction:column;min-width:0;padding:1.2rem;border:1px solid var(--it-line);border-radius:12px;}
+.it-pronunciation__card h3{margin:0 0 .6rem;}
+.it-pronunciation__card p{font-size:.92rem;}
+.it-pronunciation__words{margin:auto 0 .5rem;font-size:1rem!important;font-weight:750;letter-spacing:.02em;}
+.it-pronunciation__card audio{display:block;width:100%;max-width:100%;height:44px;}
+.it-pronunciation__source{margin:.8rem 0 0!important;font-size:.82rem;color:var(--text-mut);}
+.it-pronunciation__source a{text-decoration:underline;text-underline-offset:.2em;}
 .it-note a {text-decoration:underline;text-underline-offset:.2em;}
 .it-muted {color:var(--text-mut);}
 #it-status {margin:.5rem 0;color:var(--text);font-weight:600;}
@@ -90,6 +100,7 @@ html[data-theme-mode="dark"] .it-page {--it-green:#9cdbc1;}
 .it-picture-description summary {cursor:pointer;min-height:44px;padding:.7rem 0;}
 @media(max-width:900px) {.it-lessons,.it-words {grid-template-columns:repeat(2,minmax(0,1fr));}.it-hero{grid-template-columns:1fr;}.it-hero-aside{display:flex;gap:2rem;flex-wrap:wrap;}}
 @media(max-width:600px) {.it-page{padding:0 .8rem;}.it-lessons,.it-words,.it-stats,.it-options{grid-template-columns:1fr;}.it-audio-settings{display:block;}.it-audio-settings p{margin-top:.7rem;}.it-quiz-top{align-items:start;flex-direction:column;}.it-hero-aside{display:block;}.it-toolbar>label{min-width:0;flex-basis:100%;}.it-import{max-width:100%;overflow-wrap:anywhere;}}
+@media(max-width:700px) {.it-pronunciation__grid{grid-template-columns:1fr;}}
 
 /* Compact entry and guided café lesson. */
 .it-hero {grid-template-columns:1fr;gap:1rem;padding:1.5rem 2rem;}
