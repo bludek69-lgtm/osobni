@@ -610,6 +610,30 @@ a.link:hover { border-bottom-style: solid; }
   color: var(--text-mut);
 }
 
+/* Interactive, browser-only finance calculators. */
+.finance-calculators { display: grid; gap: .8rem; margin: 1.25rem 0; }
+.finance-calc { border: 1px solid var(--border); border-radius: 12px; background: var(--panel); padding: 0 1rem; }
+.finance-calc summary { cursor: pointer; padding: 1rem .1rem; font-weight: 700; color: var(--text); min-height: 48px; }
+.finance-calc summary:hover { color: var(--accent); }
+.finance-calc summary:focus-visible,
+.finance-calc-form :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.finance-calc-description, .finance-calc-note { color: var(--text-mut); font-size: .91rem; }
+.finance-calc-description { margin: 0 0 .8rem; }
+.finance-calc-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: .75rem; }
+.finance-calc-fields label { display: block; font-size: .9rem; font-weight: 600; color: var(--text); }
+.finance-calc-fields input { display: block; box-sizing: border-box; width: 100%; margin-top: .3rem; padding: .65rem .7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font: inherit; }
+.finance-calc-form button { margin: 1rem 0; padding: .7rem 1.2rem; border: 0; border-radius: 8px; background: var(--accent); color: var(--bg); font: inherit; font-weight: 700; cursor: pointer; }
+.finance-calc-form button:hover { filter: brightness(1.12); }
+.finance-calc-result { border-left: 3px solid var(--accent); padding: .35rem .8rem; background: var(--panel-hi); }
+.finance-calc-result dl { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem 1rem; margin: .35rem 0; }
+.finance-calc-result dt { color: var(--text-mut); }
+.finance-calc-result dd { margin: 0; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+.finance-calc-note { margin: .75rem 0 1rem; line-height: 1.55; }
+@media (max-width: 580px) {
+  .finance-calc-result dl { grid-template-columns: 1fr; }
+  .finance-calc-result dd { text-align: left; margin-bottom: .55rem; overflow-wrap: anywhere; }
+}
+
 /* ── FINANCE: SCORE BLOCK ─────────────────────────────────── */
 .score-block {
   display: grid;
