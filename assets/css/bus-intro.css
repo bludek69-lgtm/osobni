@@ -1,0 +1,33 @@
+/* Independent of page layout and theme: a transparent vehicle crosses the viewport. */
+.bus-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint style;
+}
+
+.bus-intro__vehicle {
+  position: absolute;
+  top: 62%;
+  left: 0;
+  display: block;
+  width: min(72vw, 580px, 70vh);
+  max-width: none;
+  height: auto;
+  margin: 0;
+  border: 0;
+  pointer-events: none;
+  user-select: none;
+  transform: translate3d(calc(-100% - 24px), -50%, 0);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bus-intro { display: none; }
+}
+
+@media print {
+  .bus-intro { display: none; }
+}
