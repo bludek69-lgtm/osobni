@@ -656,7 +656,7 @@ body.theme-finance h2[id] { scroll-margin-top: 12rem; }
 .score-block .score b { display: block; color: var(--text); margin-bottom: 0.1rem; }
 
 /* ── FINANCE: TOOL CTA BUTTON ─────────────────────────────── */
-.tool-cta {
+a.tool-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
