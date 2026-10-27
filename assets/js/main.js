@@ -96,19 +96,38 @@
     installThemeToggle();
   }
 
-  // Mobile nav toggle
+  // Shared mobile menu: keep visible state, accessible labels and focus in sync.
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.nav');
   if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('is-open');
-      const expanded = nav.classList.contains('is-open');
-      toggle.setAttribute('aria-expanded', String(expanded));
-    });
-    // Close menu on link click (mobile)
+    const labels = {
+      cs: ['Otevřít menu', 'Zavřít menu'],
+      en: ['Open menu', 'Close menu'],
+      it: ['Apri menu', 'Chiudi menu']
+    }[document.documentElement.lang] || ['Open menu', 'Close menu'];
+    if (!nav.id) nav.id = 'site-navigation';
+    toggle.setAttribute('aria-controls', nav.id);
+    toggle.type = 'button';
+    function setMenu(open) {
+      nav.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', labels[open ? 1 : 0]);
+    }
+    setMenu(false);
+    toggle.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
     nav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => nav.classList.remove('is-open'));
+      a.addEventListener('click', () => setMenu(false));
     });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && nav.classList.contains('is-open')) {
+        setMenu(false);
+        toggle.focus();
+      }
+    });
+    document.addEventListener('click', event => {
+      if (!event.target.closest('.site-header')) setMenu(false);
+    });
+    window.matchMedia('(max-width: 1199px)').addEventListener('change', () => setMenu(false));
   }
 
   // Native lazy-load fallback (browser handles loading="lazy", but we ensure decoding="async")
@@ -359,7 +378,8 @@
 (function () {
   function init() {
     if (document.getElementById('__lb')) return;            // stránka má vlastní inline lightbox
-    var imgs = document.querySelectorAll('main img');
+    // Linked album photographs navigate; only standalone images open the lightbox.
+    var imgs = Array.from(document.querySelectorAll('main img')).filter(function (img) { return !img.closest('a'); });
     if (!imgs.length) return;                                 // není co zvětšovat
     var style = document.createElement('style');
     style.textContent = '#__lb{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.93);cursor:zoom-out;align-items:center;justify-content:center;padding:2vh}#__lb.open{display:flex}#__lb img{max-width:100%;max-height:96vh;object-fit:contain;box-shadow:0 8px 40px rgba(0,0,0,0.6);border-radius:8px}#__lb .__lbhint{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.6);font:13px/1 system-ui,sans-serif}main img{cursor:zoom-in;transition:transform .15s ease}main img:hover{transform:scale(1.005)}';

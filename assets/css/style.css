@@ -1558,3 +1558,127 @@ body.theme-italy { --medal: linear-gradient(135deg, #8e959c 0%, #d9dde1 28%, #ff
 .italy-route-links { display: flex; flex-wrap: wrap; gap: .7rem 1.2rem; }
 .italy-practical { margin-top: 1rem; }
 @media (max-width: 760px) { .italy-path-grid { grid-template-columns: 1fr; } }
+
+/* Homepage editorial layout. Retains the shared themes and existing card components. */
+body.home-page .home-hero {
+  display: grid; grid-template-columns: 1.08fr 1fr; align-items: center; gap: 3rem;
+  padding: 0; border: 0; background: none; text-align: left; margin-bottom: 3.5rem;
+}
+.home-hero__copy { min-width: 0; }
+body.home-page .home-hero h1 { font-size: clamp(2rem, 3.8vw, 3.25rem); color: var(--text); background: none; text-wrap: balance; }
+body.home-page .home-hero .hero-accent { border: 0; background: none; padding: 0; color: var(--accent-text); }
+body.home-page .home-hero .hero-sub { margin: 0; font-size: 1.1rem; line-height: 1.7; max-width: 36rem; }
+.home-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+.home-action { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: .65rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: .95rem; font-weight: 600; background: var(--panel); }
+.home-action--primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.home-action:hover { border-color: var(--accent-text); }
+.home-action:focus-visible, .nav-toggle:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
+.home-hero__photo { margin: 0; min-width: 0; }
+.home-hero__photo img { width: 100%; height: 350px; object-fit: cover; border-radius: 14px; }
+.home-page figcaption { margin-top: .65rem; color: var(--text-mut); font-size: .8rem; line-height: 1.5; }
+.home-paths .cards-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+body.home-page .home-paths .card { padding: 1.5rem; border: 1px solid var(--border); box-shadow: none; background: var(--panel); }
+body.home-page .home-paths .card::before { display: none; }
+.home-paths .medal { margin-bottom: 1rem; }
+.home-paths .card h3 { font-size: 1.25rem; }
+.home-paths .card-cta { font-family: var(--font-main); font-size: .9rem; letter-spacing: 0; }
+.home-topics { display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; margin-top: 1.25rem; }
+.home-topics a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-text); font-size: .95rem; }
+.home-topics a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.home-about { display: grid; grid-template-columns: 1.6fr 1fr; align-items: center; gap: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.home-about figure { margin: 0; }
+.home-about img { width: 100%; max-height: 270px; object-fit: cover; border-radius: 12px; }
+.home-about .home-personal-note { font-size: .85rem; margin-bottom: 0; }
+@media (max-width: 1199px) {
+  .site-header__inner { display: grid; grid-template-columns: minmax(0,1fr) auto auto auto; gap: .5rem; padding: .65rem 1rem; }
+  .site-header .brand { grid-column: 1; grid-row: 1; white-space: nowrap; }
+  .site-header .lang-switcher { grid-column: 2; grid-row: 1; margin: 0; }
+  .site-header .theme-toggle { grid-column: 3; grid-row: 1; margin: 0; width: 40px; height: 40px; }
+  .site-header .nav-toggle { display: inline-flex; grid-column: 4; grid-row: 1; width: 40px; height: 40px; align-items: center; justify-content: center; padding: 0; }
+  .site-header .nav { display: none; grid-column: 1 / -1; width: 100%; max-height: calc(100dvh - 80px); overflow-y: auto; margin: .25rem 0 0; padding: .5rem; flex-direction: column; align-items: stretch; gap: .15rem; background: var(--panel-hi); border-radius: 10px; }
+  .site-header .nav.is-open { display: flex; }
+  .site-header .nav a { width: 100%; min-height: 44px; padding: .65rem .85rem; text-align: left; }
+  .site-header .lang-switcher a { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; min-width: 30px; padding: .25rem .35rem; }
+}
+@media (max-width: 760px) {
+  body.home-page main { padding-top: 1.75rem; }
+  body.home-page .home-hero { grid-template-columns: minmax(0,1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
+  body.home-page .home-hero h1 { font-size: 2rem; }
+  body.home-page .home-hero .hero-sub { font-size: 1rem; line-height: 1.65; }
+  .home-hero__photo img { height: auto; aspect-ratio: 16 / 9; }
+  .home-paths .cards-grid, .home-about { grid-template-columns: minmax(0,1fr); }
+  .home-about { gap: 1.5rem; }
+  .home-about figure { max-width: 400px; }
+  .home-paths h2 { font-size: 1.6rem; }
+}
+@media (max-width: 359px) {
+  .site-header__inner { gap: .25rem; padding-inline: .65rem; }
+  .site-header .brand { gap: .3rem; font-size: 1rem; letter-spacing: 0; }
+  .site-header .brand-dot { width: .4rem; height: .4rem; }
+  .site-header .lang-switcher a { min-width: 27px; }
+}
+
+.home-page .featured-video { padding: 0; height: auto; max-height: none; aspect-ratio: 16 / 9; box-shadow: none; }
+
+/* Travel hubs reuse the shared hero, cards and video player with photography first. */
+body.journey-page .journey-hero { padding: 0; border: 0; border-radius: 0; background: none; text-align: left; margin-bottom: 3rem; }
+.journey-hero__intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: end; margin-bottom: 1.75rem; }
+body.journey-page .journey-hero h1 { margin-bottom: 0; background: none; color: var(--text); font-size: clamp(2rem,3.6vw,3rem); text-wrap: balance; }
+body.journey-page .journey-hero .hero-accent { padding: 0; border: 0; background: none; color: var(--accent-text); }
+body.journey-page .journey-hero .hero-sub { margin: 0; max-width: none; font-size: 1.05rem; line-height: 1.7; }
+.journey-hero__photo { margin: 0; }
+.journey-hero__photo img { display: block; width: 100%; height: auto; aspect-ratio: 2.4 / 1; object-fit: cover; object-position: center 45%; border-radius: 14px; }
+.journey-hero__photo figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; padding-top: .65rem; color: var(--text-mut); font-size: .85rem; }
+.journey-hero__photo figcaption a { color: var(--accent-text); }
+.journey-shortcuts { display: flex; gap: .5rem 1.75rem; flex-wrap: wrap; margin-top: 1rem; }
+.journey-shortcuts a, .journey-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-text); }
+.journey-shortcuts a:hover, .journey-links a:hover, .journey-hero__photo figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.journey-section-heading p { margin-top: -.5rem; }
+.destination-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.5rem; }
+.destination-grid--wide { grid-template-columns: repeat(2,minmax(0,1fr)); }
+body.journey-page .destination-card { display: flex; flex-direction: column; padding: 0; border: 1px solid var(--border); box-shadow: none; background: var(--panel); }
+body.journey-page .destination-card::before { display: none; }
+.destination-card img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 0; }
+.journey-page a img { cursor: pointer; }
+.destination-card__body { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; }
+.destination-card h3 { font-size: 1.3rem; }
+.destination-card p { margin: 0 0 1rem; }
+.destination-card .card-cta { margin-top: auto; font-family: var(--font-main); font-size: .9rem; letter-spacing: 0; }
+.destination-directory { padding-top: 2rem; border-top: 1px solid var(--border); }
+.destination-directory nav { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .5rem 2rem; }
+.destination-directory a { display: flex; justify-content: space-between; gap: .5rem; padding: .7rem 0; border-bottom: 1px solid var(--border); font-size: .95rem; }
+.destination-directory a:hover { color: var(--accent-text); }
+.journey-note { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-bottom: 3rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 12px; background: var(--panel); }
+.journey-note h2 { font-size: 1.4rem; margin-bottom: .6rem; }
+.journey-note p { margin-bottom: 0; max-width: 40rem; }
+.journey-note > a { color: var(--accent-text); white-space: nowrap; }
+.journey-links { display: flex; flex-wrap: wrap; gap: .25rem 2rem; }
+.journey-resource-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1rem; }
+body.journey-page .journey-resource { padding: 1.25rem; border: 1px solid var(--border); box-shadow: none; }
+body.journey-page .journey-resource::before { display: none; }
+.journey-resource h3 { font-size: 1.15rem; }
+.journey-resource .card-cta { font-family: var(--font-main); font-size: .9rem; }
+.journey-stops { padding-top: 2rem; border-top: 1px solid var(--border); }
+.journey-stops h2 { margin-bottom: .6rem; }
+.journey-smallprint { margin-top: 1rem; max-width: 48rem; font-size: .85rem; }
+.journey-official summary { cursor: pointer; color: var(--text-mut); font-size: .9rem; padding-block: .5rem; }
+.journey-anchor { display: block; scroll-margin-top: 100px; }
+.journey-page :is(section,[id]) { scroll-margin-top: 100px; }
+.journey-page .featured-video { padding: 0; height: auto; max-height: none; aspect-ratio: 16 / 9; box-shadow: none; }
+.journey-page .italy-flag-bar { margin-bottom: 2rem; }
+@media (max-width: 960px) {
+  .journey-resource-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .destination-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .destination-directory nav { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 640px) {
+  .journey-hero__intro { grid-template-columns: minmax(0,1fr); gap: 1rem; margin-bottom: 1.25rem; }
+  body.journey-page .journey-hero h1 { font-size: 2rem; }
+  body.journey-page .journey-hero .hero-sub { font-size: 1rem; }
+  .journey-hero__photo img { aspect-ratio: 16 / 10; }
+  .journey-hero__photo figcaption { font-size: .8rem; }
+  .destination-grid, .destination-grid--wide, .journey-resource-grid { grid-template-columns: minmax(0,1fr); }
+  .destination-directory nav { grid-template-columns: repeat(2,minmax(0,1fr)); gap: .25rem 1rem; }
+  .journey-note { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .journey-shortcuts { gap: .25rem 1rem; font-size: .9rem; }
+}
