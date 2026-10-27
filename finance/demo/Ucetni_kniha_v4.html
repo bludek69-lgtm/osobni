@@ -165,6 +165,21 @@ input[type="text"]:focus, select:focus { outline: 2px solid var(--accent); outli
 .refresh-info { background: var(--bg-3); padding: 10px 14px; border-radius: 6px; font-size: 12px; color: var(--text-muted); margin-top: 8px; display: none; }
 .refresh-info.visible { display: block; }
 .refresh-info code { background: var(--bg); padding: 2px 6px; border-radius: 3px; font-size: 11px; }
+
+/* Keep the existing sidebar on desktop and collapse it on narrow screens. */
+.demo-navigation > summary { display: none; }
+@media (max-width: 900px) {
+  .demo-navigation > summary { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 48px; padding: 12px 20px; cursor: pointer; color: var(--accent); border-block: 1px solid var(--border); font-weight: 600; }
+  .demo-navigation > summary::after { content: '＋'; flex-shrink: 0; }
+  .demo-navigation[open] > summary::after { content: '−'; }
+  .demo-navigation > summary span { margin-left: auto; text-align: right; font-size: 12px; color: var(--text-muted); }
+  .demo-navigation > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
+  .demo-navigation[open] { max-height: 70vh; overflow-y: auto; }
+  .demo-navigation[open] > summary { position: sticky; top: 0; background: var(--bg-2); z-index: 2; }
+  main, .page, .grid-2 > *, .grid-3 > * { min-width: 0; }
+  .page { max-width: 100%; }
+}
+
 </style>
   <link rel="canonical" href="https://cestovatel69.cz/finance/demo/Ucetni_kniha_v4.html">
 
@@ -187,6 +202,8 @@ input[type="text"]:focus, select:focus { outline: 2px solid var(--accent); outli
       Žádné reálné bankovní, brokerské, krypto ani daňové údaje.
       Data jsou deterministicky generovaná (seed=42).
     </div>
+    <details class="demo-navigation" open>
+      <summary>Menu a nastavení <span id="demo-current-section">Dashboard</span></summary>
     <ul class="nav">
       <li><div class="nav-section">Přehled</div></li>
       <li><a href="#dashboard" data-page="dashboard"><span class="ico">📊</span> Dashboard</a></li>
@@ -260,6 +277,7 @@ input[type="text"]:focus, select:focus { outline: 2px solid var(--accent); outli
         <button class="btn-mini" id="theme-toggle">🌗</button>
       </div>
     </div>
+    </details>
   </aside>
   
   <main>
@@ -349,17 +367,46 @@ function activatePage(id) {
   const link = document.querySelector(`[data-page="${id}"]`);
   if (page) page.classList.add('active');
   if (link) link.classList.add('active');
+  const navigation = document.querySelector('.demo-navigation');
+  const currentSection = document.getElementById('demo-current-section');
+  if (link && currentSection) currentSection.textContent = link.textContent.trim();
+  if (navigation && window.matchMedia('(max-width: 900px)').matches) {
+    const focusWasInside = navigation.contains(document.activeElement);
+    navigation.open = false;
+    if (focusWasInside) navigation.querySelector('summary').focus();
+  }
   // render lazy
   const renderer = renderers[id];
   if (renderer && !renderer._rendered) {
     renderer();
     renderer._rendered = true;
   }
+  if (page) page.querySelectorAll('table').forEach(table => {
+    if (table.closest('.scroll-x')) return;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'scroll-x';
+    wrapper.tabIndex = 0;
+    wrapper.setAttribute('role', 'region');
+    wrapper.setAttribute('aria-label', 'Tabulka – posun vodorovně');
+    table.before(wrapper);
+    wrapper.appendChild(table);
+  });
   try { window.scrollTo(0, 0); } catch(e){}
   try { history.replaceState(null, '', '#' + id); } catch(e){}
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const navigation = document.querySelector('.demo-navigation');
+  const mobileLayout = window.matchMedia('(max-width: 900px)');
+  const syncNavigation = () => { navigation.open = !mobileLayout.matches; };
+  syncNavigation();
+  mobileLayout.addEventListener('change', syncNavigation);
+  navigation.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && mobileLayout.matches && navigation.open) {
+      navigation.open = false;
+      navigation.querySelector('summary').focus();
+    }
+  });
   document.querySelectorAll('.nav a').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
@@ -617,124 +664,58 @@ renderers.investments = () => {
 
 // --- Výplatní pásky Demo s.r.o. ---
 renderers.pasky = () => {
-  const pasky = D.pasky || [];
-  const annual = D.pasky_annual || [];
-  const counts = D.pasky_match_counts || {};
-  const missing = D.pasky_missing_months || [];
-  const yrs2025 = annual.find(a => a.rok === 2025) || {};
-  const yrs2026 = annual.find(a => a.rok === 2026) || {};
-  
-  // Sort newest first
-  const sorted = [...pasky].sort((a,b) => (b.rok*100+b.mesic) - (a.rok*100+a.mesic));
-  
-  const html = `
+  const element = document.getElementById('page-pasky');
+  element.querySelectorAll('canvas').forEach(canvas => Chart.getChart(canvas)?.destroy());
+  const number = value => typeof value === 'number' && Number.isFinite(value) ? value : null;
+  const rows = (Array.isArray(D.pasky) ? D.pasky : []).filter(p => p && /^\d{4}-(0[1-9]|1[0-2])$/.test(p.month || '')).map(p => ({
+    month: p.month, year: Number(p.month.slice(0, 4)),
+    gross: number(p.hruba_mzda), net: number(p.cista_mzda), paid: number(p.vyplaceno ?? p.prevod_na_konto),
+    social: number(p.soc_pojisteni), health: number(p.zdrav_pojisteni ?? p.zdr_pojisteni),
+    tax: number(p.zaloha_dan ?? p.zaloha_dane), matched: p.matched_bank_tx
+  }));
+  const period = D.periods?.[currentPeriod];
+  // Payslips represent whole payroll months, not individual payment dates.
+  const selected = rows.filter(p => !period || (p.month >= period.start.slice(0, 7) && p.month <= period.end.slice(0, 7))).sort((a, b) => a.month.localeCompare(b.month));
+  const sum = (items, key) => items.length && items.every(p => p[key] !== null) ? items.reduce((total, p) => total + p[key], 0) : null;
+  const years = [...new Set(selected.map(p => p.year))].sort();
+  const net = sum(selected, 'net');
+  const matched = selected.filter(p => p.matched === true).length;
+  const matchKnown = selected.filter(p => typeof p.matched === 'boolean').length;
+  const range = selected.length ? `${selected[0].month} – ${selected[selected.length - 1].month}` : 'Pro toto období nejsou pásky.';
+  const money = value => value === null ? 'Neuvedeno' : fmt(value);
+  element.innerHTML = `
     <h2 class="page-title">Výplatní pásky Demo s.r.o.</h2>
-    <div class="page-sub">Mzdový modul: evidence pásek, kontrola proti bankovní výplatě, roční přehled. Zaměstnavatel: Demo s.r.o. LK s.r.o.</div>
-    
+    <div class="page-sub">Fiktivní ukázkové pásky. Výběr období se vztahuje k měsíci pásky. ${range}</div>
     <div class="cards">
-      <div class="card kpi green"><div class="label">Pásky v evidenci</div><div class="value">${pasky.length}</div><div class="sub">2021/06 – 2026/03</div></div>
-      <div class="card kpi"><div class="label">Čistá mzda 2025 (rok)</div><div class="value can-anon">${fmt(yrs2025.cista || 0)}</div><div class="sub">ø ${fmt(yrs2025.avg_cista || 0)} / měs</div><span class="anon-placeholder">▮▮▮</span></div>
-      <div class="card kpi yellow"><div class="label">Přesčas 2025</div><div class="value">${(yrs2025.prescasy_hod || 0).toFixed(1)} h</div><div class="sub">${fmt(yrs2025.priplatek_prescas || 0)} přípl.</div></div>
-      <div class="card kpi ${counts.OK >= 9 ? 'green' : 'yellow'}"><div class="label">Bank match (od 5/2025)</div><div class="value">${counts.OK || 0} / ${(counts.OK||0)+(counts.ROZDIL||0)+(counts.CHYBI_PLATBA||0)+(counts.NEEDS_REVIEW||0)}</div><div class="sub">přesně sedí</div></div>
+      <div class="card kpi"><div class="label">Pásky ve vybraném období</div><div class="value">${selected.length}</div></div>
+      <div class="card kpi"><div class="label">Hrubá mzda celkem</div><div class="value can-anon">${money(sum(selected, 'gross'))}</div></div>
+      <div class="card kpi green"><div class="label">Čistá mzda celkem</div><div class="value can-anon">${money(net)}</div><div class="sub">Průměr na pásku: ${money(net === null ? null : net / selected.length)}</div></div>
+      <div class="card kpi"><div class="label">Bankovní spárování</div><div class="value">${matchKnown ? `${matched} / ${matchKnown}` : 'Neuvedeno'}</div><div class="sub">Potvrzené záznamy z ukázkových dat; nejde o novou kontrolu banky.</div></div>
     </div>
-    
-    ${missing.length ? `<div class="warn-box"><strong>Chybějící měsíce:</strong> ${missing.join(', ')} – zkontroluj zda dorazila výplatní páska, případně dohledej.</div>` : ''}
-    <div class="info-box">Bankovní data v systému začínají 5/2025 (nástup nové banky). Pásky před tímto datem mají stav <span class="tag muted">BANKA N/A</span> – verifikovat proti bance lze jen pokud doplníš starší výpisy.</div>
-    
     <h3 class="subhead">Přehled po měsících</h3>
     <div class="grid-2">
-      <div class="chart-wrap"><h3>Čistá mzda po měsících</h3><canvas id="pasky-cista" height="200"></canvas></div>
-      <div class="chart-wrap"><h3>Hrubá mzda po měsících</h3><canvas id="pasky-hruba" height="200"></canvas></div>
+      <div class="chart-wrap"><h3>Čistá mzda</h3><canvas id="pasky-cista" height="200"></canvas></div>
+      <div class="chart-wrap"><h3>Hrubá mzda</h3><canvas id="pasky-hruba" height="200"></canvas></div>
     </div>
-    <div class="grid-2">
-      <div class="chart-wrap"><h3>Přesčasy (hodiny)</h3><canvas id="pasky-prescas" height="200"></canvas></div>
-      <div class="chart-wrap"><h3>Příplatky (Kč)</h3><canvas id="pasky-priplatky" height="200"></canvas></div>
-    </div>
-    
     <h3 class="subhead">Detail výplatních pásek</h3>
-    <div class="scroll-x">
-      <table>
-        <thead><tr><th>Měsíc</th><th class="right">Hrubá</th><th class="right">Soc</th><th class="right">Zdr</th><th class="right">Daň</th><th class="right">Sleva</th><th class="right">Náhr.nem.</th><th class="right">Čistá</th><th class="right">Na konto</th><th class="right">Hod</th><th class="right">Přesč h</th><th class="right">Příplatky</th><th class="right">Banka</th><th>Stav</th></tr></thead>
-        <tbody>
-          ${sorted.map(p => {
-            const mid = p.matched_bank;
-            const priplatky = (p.priplatek_so_ne || 0) + (p.priplatek_noc || 0) + (p.priplatek_prescas || 0);
-            return `<tr>
-              <td><strong>${p.rok}/${String(p.mesic).padStart(2,'0')}</strong></td>
-              <td class="right mono can-anon">${fmt(p.hruba_mzda)}</td><td class="anon-placeholder right">▮▮</td>
-              <td class="right mono">${fmt(p.soc_pojisteni)}</td>
-              <td class="right mono">${fmt(p.zdr_pojisteni)}</td>
-              <td class="right mono">${fmt(p.zaloha_dane)}</td>
-              <td class="right mono">${fmt(p.sleva_poplatnika)}</td>
-              <td class="right mono">${fmt(p.nahrada_nemoc)}</td>
-              <td class="right mono can-anon"><strong>${fmt(p.cista_mzda)}</strong></td>
-              <td class="right mono can-anon">${fmt(p.prevod_na_konto)}</td>
-              <td class="right">${p.odpracovane_hod || '–'}</td>
-              <td class="right">${p.prescasy_hod || '–'}</td>
-              <td class="right mono">${fmt(priplatky)}</td>
-              <td class="right mono can-anon">${mid ? fmt(mid.castka) : '–'}</td>
-              <td>${stateBadge(p.match_state)}</td>
-            </tr>`;
-          }).join('')}
-        </tbody>
-      </table>
-    </div>
-    
-    <h3 class="subhead">Roční souhrn</h3>
-    <table>
-      <thead><tr><th>Rok</th><th class="right">Pásek</th><th class="right">Hrubá</th><th class="right">Čistá</th><th class="right">Na konto</th><th class="right">ø čistá</th><th class="right">Min/Max</th><th class="right">Příplatky</th><th class="right">Přesčas h</th><th class="right">Soc+Zdr+Daň</th></tr></thead>
-      <tbody>
-        ${annual.map(y => `<tr>
-          <td><strong>${y.rok}</strong></td>
-          <td class="right">${y.pasek}</td>
-          <td class="right mono can-anon">${fmt(y.hruba)}</td>
-          <td class="right mono can-anon"><strong>${fmt(y.cista)}</strong></td>
-          <td class="right mono can-anon">${fmt(y.na_konto)}</td>
-          <td class="right mono can-anon">${fmt(y.avg_cista)}</td>
-          <td class="right mono can-anon" style="font-size:11px">${fmt(y.min_cista)} / ${fmt(y.max_cista)}</td>
-          <td class="right mono">${fmt(y.priplatky_total)}</td>
-          <td class="right">${y.prescasy_hod}</td>
-          <td class="right mono">${fmt(y.odvody_soc + y.odvody_zdr + y.dan)}</td>
-        </tr>`).join('')}
-      </tbody>
-    </table>
-    
-    <div class="info-box" style="margin-top:16px">
-      <strong>Pozn:</strong> "Náhrada za nemoc" (43.7 na pásce) je vyplácená zaměstnavatelem v prvních 14 dnech – neprochází odvody.
-      "Sleva poplatníka" snižuje daň. Jak Hrubá < Čistá u 2026/02: čistý příjem zahrnuje náhradu za nemoc 11 642 Kč která NENÍ v hrubé mzdě.
-      "Převod na konto" = Čistá mzda − sražené benefity (penzijko, telefon).
-    </div>
-  `;
-  document.getElementById('page-pasky').innerHTML = html;
-  
-  const lbls = pasky.filter(p=>p.rok).map(p => `${p.rok}/${String(p.mesic).padStart(2,'0')}`);
-  const opts = { scales: { x: { ticks: { color: '#8b949e', maxRotation: 90, minRotation: 60, font:{size:9} } }, y: { ticks: { color: '#8b949e' } } }, plugins: { legend: { labels: { color: '#8b949e' } } } };
-  
-  new Chart(document.getElementById('pasky-cista'), {
-    type: 'bar',
-    data: { labels: lbls, datasets: [{ label: 'Čistá mzda', data: pasky.filter(p=>p.rok).map(p => p.cista_mzda || 0), backgroundColor: '#3fb950' }] },
-    options: opts
-  });
-  new Chart(document.getElementById('pasky-hruba'), {
-    type: 'bar',
-    data: { labels: lbls, datasets: [{ label: 'Hrubá mzda', data: pasky.filter(p=>p.rok).map(p => p.hruba_mzda || 0), backgroundColor: '#58a6ff' }] },
-    options: opts
-  });
-  new Chart(document.getElementById('pasky-prescas'), {
-    type: 'bar',
-    data: { labels: lbls, datasets: [{ label: 'Přesčasové hodiny', data: pasky.filter(p=>p.rok).map(p => p.prescasy_hod || 0), backgroundColor: '#d29922' }] },
-    options: opts
-  });
-  new Chart(document.getElementById('pasky-priplatky'), {
-    type: 'bar',
-    data: { labels: lbls, datasets: [
-      { label: 'SO+NE', data: pasky.filter(p=>p.rok).map(p => p.priplatek_so_ne || 0), backgroundColor: '#bc8cff', stack:'p' },
-      { label: 'Noční', data: pasky.filter(p=>p.rok).map(p => p.priplatek_noc || 0), backgroundColor: '#56d4dd', stack:'p' },
-      { label: 'Přesčas', data: pasky.filter(p=>p.rok).map(p => p.priplatek_prescas || 0), backgroundColor: '#db6d28', stack:'p' }
-    ] },
-    options: { ...opts, scales: { ...opts.scales, x: { ...opts.scales.x, stacked: true }, y: { ...opts.scales.y, stacked: true } } }
-  });
+    <div class="scroll-x" tabindex="0" role="region" aria-label="Výplatní pásky – posun vodorovně"><table>
+      <thead><tr><th>Měsíc</th><th class="right">Hrubá</th><th class="right">Sociální</th><th class="right">Zdravotní</th><th class="right">Záloha daně</th><th class="right">Čistá</th><th class="right">Vyplaceno</th><th>Spárování</th></tr></thead>
+      <tbody>${[...selected].reverse().map(p => `<tr><td>${p.month}</td><td class="right mono">${money(p.gross)}</td><td class="right mono">${money(p.social)}</td><td class="right mono">${money(p.health)}</td><td class="right mono">${money(p.tax)}</td><td class="right mono">${money(p.net)}</td><td class="right mono">${money(p.paid)}</td><td>${typeof p.matched !== 'boolean' ? 'Neuvedeno' : p.matched ? 'Spárováno' : 'Nespárováno'}</td></tr>`).join('') || '<tr><td colspan="8">Pro toto období nejsou pásky.</td></tr>'}</tbody>
+    </table></div>
+    <h3 class="subhead">Souhrn podle let — pouze vybrané měsíce</h3>
+    <div class="scroll-x" tabindex="0" role="region" aria-label="Roční souhrn – posun vodorovně"><table>
+      <thead><tr><th>Rok</th><th>Pásek</th><th class="right">Hrubá</th><th class="right">Čistá</th><th class="right">Vyplaceno</th><th class="right">Průměr čisté</th></tr></thead>
+      <tbody>${years.map(year => { const items = selected.filter(p => p.year === year); const total = sum(items, 'net'); return `<tr><td>${year}</td><td>${items.length}</td><td class="right mono">${money(sum(items, 'gross'))}</td><td class="right mono">${money(total)}</td><td class="right mono">${money(sum(items, 'paid'))}</td><td class="right mono">${money(total === null ? null : total / items.length)}</td></tr>`; }).join('') || '<tr><td colspan="6">Souhrn není k dispozici.</td></tr>'}</tbody>
+    </table></div>
+    <div class="info-box" style="margin-top:16px">Součty vycházejí z jednotlivých ukázkových pásek, nikoli z neúplného souhrnného objektu. Chybějící údaj je označen jako „Neuvedeno“. Výpočet mzdy ani skutečné bankovní údaje tato ukázka nezpracovává.</div>`;
+  if (selected.length) for (const [id, key, label, color] of [['pasky-cista', 'net', 'Čistá mzda', '#3fb950'], ['pasky-hruba', 'gross', 'Hrubá mzda', '#58a6ff']]) {
+    new Chart(document.getElementById(id), {
+      type: 'bar', data: { labels: selected.map(p => p.month), datasets: [{ label, data: selected.map(p => p[key]), backgroundColor: color }] },
+      options: { responsive: true, scales: { x: { ticks: { color: '#8b949e', maxRotation: 60 } }, y: { ticks: { color: '#8b949e' } } }, plugins: { legend: { labels: { color: '#8b949e' } } } }
+    });
+  }
 };
+
 
 // --- Cashflow ---
 renderers.cashflow = () => {
@@ -2308,187 +2289,58 @@ renderers.audit = () => {
 
 // --- Daňové prahy 2026 (kolik mohu ještě prodat bez daně/DAP) ---
 renderers.thresholds = () => {
+  const element = document.getElementById('page-thresholds');
   const t = D.tax_thresholds_2026;
-  if (!t) {
-    document.getElementById('page-thresholds').innerHTML = '<h2 class="page-title">Daňové prahy 2026</h2><div class="muted">Data nejsou k dispozici.</div>';
+  if (!t || typeof t !== 'object') {
+    element.innerHTML = '<h2 class="page-title">Daňové prahy — ukázka</h2><div class="info-box">Ukázková data nejsou k dispozici.</div>';
     return;
   }
-  
-  const k = t.krypto;
-  const a = t.akcie_etf;
+  const k = t.krypto || {};
+  const a = t.akcie_etf || {};
+  const number = value => typeof value === 'number' && Number.isFinite(value) ? value : null;
+  const money = value => number(value) === null ? 'Neuvedeno' : fmt(value);
+  const count = value => number(value) === null ? 'Neuvedeno' : String(value);
+  const percent = (value, limit) => number(value) !== null && number(limit) !== null && limit > 0 ? value / limit * 100 : null;
+  const cryptoPercent = percent(k.ytd_prodeje_kc, k.hodnotovy_test_limit_kc);
+  const sharesPercent = percent(a.ytd_prodeje_hrube_kc, a.hodnotovy_test_limit_kc);
+  const progress = (value, label) => value === null ? '<p class="muted">Využití nelze určit: v ukázce chybí prodeje nebo limit.</p>' : `<div class="chart-wrap"><h3>${label}</h3><div role="progressbar" aria-label="${label}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.max(0, Math.min(100, value))}" style="height:12px; background:var(--bg-3); border-radius:6px; overflow:hidden"><div style="height:100%; width:${Math.max(0, Math.min(100, value))}%; background:var(--brand)"></div></div><p>${fmtPct(value)} modelového limitu</p></div>`;
+  const escaped = value => String(value ?? 'Neuvedeno').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const dap = t.dap_threshold;
   const plan = t.osvobozeno_postup_2026_2029;
-  
-  // Krypto progress
-  const krypto_used_pct = (k.ytd_prodeje_kc / k.hodnotovy_test_limit_kc) * 100;
-  
-  const html2 = `
-    <h2 class="page-title">⚖️ Daňové prahy 2026</h2>
-    <div class="page-sub">Kolik mohu ještě prodat bez daně a bez DAP. Aktualizováno: ${t.datum_aktualizace}.</div>
-    
-    <div class="warn-box">
-      <strong>Pozn:</strong> Tato stránka je <em>plánovací nástroj</em>, ne daňové poradenství. Pro přesný výpočet použij <a href="https://taxomat.cz" target="_blank" style="color:inherit">taxomat.cz</a> nebo daňového poradce.
-    </div>
-    
-    <h3 class="subhead">₿ Krypto - hodnotový test 100 000 Kč/rok</h3>
+  const planRows = Array.isArray(plan?.roky) ? plan.roky : [];
+  element.innerHTML = `
+    <h2 class="page-title">Daňové prahy ${escaped(t.rok)} — ukázka</h2>
+    <div class="page-sub">Stav fiktivních dat: ${escaped(t.datum_aktualizace)}. Tento přehled je roční a nemění se přepínačem období.</div>
+    <div class="info-box">Ukázka zobrazuje hodnoty uložené v demo datech. Nejde o ověřené aktuální daňové posouzení ani doporučení, kolik může konkrétní člověk prodat. Chybějící hodnoty neznamenají nulu.</div>
+    <h3 class="subhead">Krypto — modelový roční přehled</h3>
     <div class="cards">
-      <div class="card kpi green">
-        <div class="label">Roční limit</div>
-        <div class="value">${fmt(k.hodnotovy_test_limit_kc)}</div>
-        <div class="sub">prodejů krypto bez daně</div>
-      </div>
-      <div class="card kpi yellow">
-        <div class="label">YTD již prodáno</div>
-        <div class="value can-anon">${fmt(k.ytd_prodeje_kc)}</div>
-        <div class="sub">${krypto_used_pct.toFixed(1)} % limitu</div>
-        <span class="anon-placeholder">▮▮▮</span>
-      </div>
-      <div class="card kpi green">
-        <div class="label">ZBÝVÁ BEZ DANĚ</div>
-        <div class="value can-anon"><strong>${fmt(k.zbyva_bez_dane_kc)}</strong></div>
-        <div class="sub">do konce 2026</div>
-        <span class="anon-placeholder">▮▮▮</span>
-      </div>
-      <div class="card kpi purple">
-        <div class="label">Aktuálně držíš krypto</div>
-        <div class="value can-anon">${fmt(k.aktualni_drzba_total_kc)}</div>
-        <div class="sub">BTC ${fmt(k.aktualni_drzba_btc_kc)} + ETH ${fmt(k.aktualni_drzba_eth_kc)}</div>
-        <span class="anon-placeholder">▮▮▮</span>
-      </div>
+      <div class="card kpi"><div class="label">Limit uložený v ukázce</div><div class="value">${money(k.hodnotovy_test_limit_kc)}</div></div>
+      <div class="card kpi"><div class="label">Dosavadní prodeje</div><div class="value">${money(k.ytd_prodeje_kc)}</div></div>
+      <div class="card kpi"><div class="label">Zbývá do modelového limitu</div><div class="value">${money(k.zbyva_bez_dane_kc)}</div></div>
+      <div class="card kpi"><div class="label">Hodnota drženého krypta</div><div class="value">${money(k.aktualni_drzba_total_kc)}</div></div>
     </div>
-    
-    <div class="chart-wrap" style="margin-top:8px">
-      <h3>Využití krypto limitu</h3>
-      <div style="background:var(--bg-3); border-radius:8px; height:24px; position:relative; overflow:hidden">
-        <div style="background:var(--brand); height:100%; width:${Math.min(100, krypto_used_pct)}%; transition:width .3s;"></div>
-        <div style="position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:13px;">${krypto_used_pct.toFixed(1)} % využito</div>
-      </div>
-    </div>
-    
-    <div class="info-box" style="margin-top:8px">
-      <strong>${k.akcni_doporuceni}</strong><br>
-      <span class="muted" style="font-size:12px">Pravidlo: ${k.pravidlo}</span><br>
-      <span class="muted" style="font-size:12px">Časový test: ${k.casovy_test}</span>
-    </div>
-    
-    <h3 class="subhead">📈 Akcie / ETF - hodnotový test 100k + časový test 3 roky</h3>
-    
-    <div class="cards" style="margin-bottom:8px">
-      <div class="card kpi green">
-        <div class="label">Roční limit hrubých prodejů</div>
-        <div class="value">${fmt(a.hodnotovy_test_limit_kc)}</div>
-        <div class="sub">§ 4 odst. 1 písm. t) ZDP</div>
-      </div>
-      <div class="card kpi yellow">
-        <div class="label">YTD již prodáno hrubě</div>
-        <div class="value can-anon">${fmt(a.ytd_prodeje_hrube_kc)}</div>
-        <div class="sub">${a.ytd_prodeje_pocet} pozic, ${(a.ytd_prodeje_hrube_kc/a.hodnotovy_test_limit_kc*100).toFixed(1)}% limitu</div>
-        <span class="anon-placeholder">▮▮▮</span>
-      </div>
-      <div class="card kpi green">
-        <div class="label">ZBÝVÁ BEZ DANĚ</div>
-        <div class="value can-anon"><strong>${fmt(a.zbyva_bez_dane_kc)}</strong></div>
-        <div class="sub">do limitu 100k</div>
-        <span class="anon-placeholder">▮▮▮</span>
-      </div>
-    </div>
-    
-    <div class="chart-wrap" style="margin-bottom:8px">
-      <h3>Využití akcie limitu (úhrn prodejů 2026)</h3>
-      <div style="background:var(--bg-3); border-radius:8px; height:24px; position:relative; overflow:hidden">
-        <div style="background:var(--brand); height:100%; width:${Math.min(100, a.ytd_prodeje_hrube_kc/a.hodnotovy_test_limit_kc*100)}%; transition:width .3s;"></div>
-        <div style="position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:13px;">${(a.ytd_prodeje_hrube_kc/a.hodnotovy_test_limit_kc*100).toFixed(1)} % využito</div>
-      </div>
-    </div>
-    
-    <div class="info-box" style="margin-bottom:8px">
-      <strong>${a.hodnotovy_test_pravidlo}</strong><br>
-      <span class="muted" style="font-size:12px">Hrubé prodeje per účet: XTB_CZ ${fmt(a.ytd_prodeje_per_ucet?.XTB_CZ || 0)} | XTB_EUR ${fmt(a.ytd_prodeje_per_ucet?.XTB_EUR || 0)} | XTB_USD ${fmt(a.ytd_prodeje_per_ucet?.XTB_USD || 0)}</span>
-    </div>
-    
-    <h4 style="margin-top:16px">Časový test 3 roky (alternativní cesta osvobození)</h4>
+    ${progress(cryptoPercent, 'Využití modelového limitu krypta')}
+    <h3 class="subhead">Akcie a ETF — dostupná ukázková data</h3>
     <div class="cards">
-      <div class="card kpi green">
-        <div class="label">✅ Osvobozeno (3+ let)</div>
-        <div class="value">${a.pozice_osvobozene_pocet}</div>
-        <div class="sub can-anon">${fmt(a.pozice_osvobozene_value_kc)}</div>
-        <span class="anon-placeholder">▮▮</span>
-      </div>
-      <div class="card kpi yellow">
-        <div class="label">⏰ Do roka osvobozeno</div>
-        <div class="value">${a.pozice_do_roka_pocet}</div>
-        <div class="sub can-anon">${fmt(a.pozice_do_roka_value_kc)}</div>
-        <span class="anon-placeholder">▮▮</span>
-      </div>
-      <div class="card kpi">
-        <div class="label">📅 Za 1-2 roky</div>
-        <div class="value">${a.pozice_2_3_roky_pocet}</div>
-        <div class="sub can-anon">${fmt(a.pozice_2_3_roky_value_kc)}</div>
-        <span class="anon-placeholder">▮▮</span>
-      </div>
-      <div class="card kpi red">
-        <div class="label">🔴 Daleko (2+ roky)</div>
-        <div class="value">${a.pozice_dale_pocet}</div>
-        <div class="sub can-anon">${fmt(a.pozice_dale_value_kc)}</div>
-        <span class="anon-placeholder">▮▮</span>
-      </div>
+      <div class="card kpi"><div class="label">Roční limit prodejů v datech</div><div class="value">${money(a.hodnotovy_test_limit_kc)}</div></div>
+      <div class="card kpi"><div class="label">Dosavadní hrubé prodeje</div><div class="value">${money(a.ytd_prodeje_hrube_kc)}</div></div>
+      <div class="card kpi"><div class="label">Zbývá do modelového limitu</div><div class="value">${money(a.zbyva_bez_dane_kc)}</div></div>
     </div>
-    
-    <div class="info-box" style="margin-top:8px">
-      <strong>${a.akcni_doporuceni}</strong><br>
-      <span class="muted" style="font-size:12px">${a.pravidlo_3_roky}</span><br>
-      <span class="muted" style="font-size:12px">${a.pravidlo_kratsi}</span><br>
-      <span class="muted" style="font-size:12px">YTD 2026: prodáno ${a.ytd_prodeje_pocet} pozic, P/L ${fmt(a.ytd_prodeje_pl_kc)}</span>
-    </div>
-    
-    <h3 class="subhead">📋 DAP threshold (povinnost podat daňové přiznání)</h3>
-    <div class="cards">
-      <div class="card kpi yellow">
-        <div class="label">Limit ostatních příjmů (§7-10)</div>
-        <div class="value">${fmt(dap.limit_ostatnich_prijmu_kc)}</div>
-        <div class="sub">/ rok</div>
-      </div>
-      <div class="card kpi info">
-        <div class="label">Reportovací povinnost</div>
-        <div class="value" style="font-size:18px">5 mil Kč</div>
-        <div class="sub">i osvobozené prodeje</div>
-      </div>
-    </div>
-    
-    <table style="max-width:800px; margin-top:8px">
+    ${progress(sharesPercent, 'Využití modelového limitu akcií')}
+    <div class="scroll-x" tabindex="0" role="region" aria-label="Skupiny pozic – posun vodorovně"><table>
+      <thead><tr><th>Skupina uvedená v datech</th><th class="right">Počet pozic</th><th class="right">Hodnota</th></tr></thead>
       <tbody>
-        <tr><td><strong>Pravidlo</strong></td><td>${dap.pravidlo}</td></tr>
-        <tr><td><strong>Pro zaměstnance</strong></td><td>${dap.pro_zamestnance_pravidlo}</td></tr>
-        <tr style="background:var(--bg-3)"><td><strong>Stav 2026</strong></td><td>${dap.pro_2026_status}</td></tr>
-        <tr><td><strong>Reporting</strong></td><td>${dap.reportovaci_povinnost}</td></tr>
+        <tr><td>Označené jako osvobozené</td><td class="right">${count(a.pozice_osvobozene_pocet)}</td><td class="right mono">${money(a.pozice_osvobozene_value_kc)}</td></tr>
+        <tr><td>Do jednoho roku podle demo plánu</td><td class="right">${count(a.pozice_do_roka_pocet)}</td><td class="right mono">${money(a.pozice_do_roka_value_kc)}</td></tr>
+        <tr><td>Skupina 2–3 roky v demo datech</td><td class="right">${count(a.pozice_2_3_roky_pocet)}</td><td class="right mono">${money(a.pozice_2_3_roky_value_kc)}</td></tr>
+        <tr><td>Vzdálenější pozice v demo datech</td><td class="right">${count(a.pozice_dale_pocet)}</td><td class="right mono">${money(a.pozice_dale_value_kc)}</td></tr>
       </tbody>
-    </table>
-    
-    <h3 class="subhead">🗓️ Plán osvobození 2027-2029</h3>
-    <p class="muted">${plan.description}</p>
-    <table style="max-width:600px">
-      <thead><tr><th>Rok</th><th class="right">Osvobodí se pozic</th><th class="right">Hodnota</th><th>Pozn.</th></tr></thead>
-      <tbody>
-        ${plan.roky.map(r => `<tr>
-          <td><strong>${r.rok}</strong></td>
-          <td class="right">${r.pocet}</td>
-          <td class="right mono can-anon">${fmt(r.osvobodi_se_pribl_kc)}</td>
-          <td class="muted">${r.pozn}</td>
-        </tr>`).join('')}
-      </tbody>
-    </table>
-    
-    <div class="info-box" style="margin-top:16px">
-      <strong>Strategický pohled:</strong>
-      <ul style="margin-top:6px; margin-left:20px">
-        <li><strong>Krypto 2026:</strong> Můžeš prodat až ${fmt(k.zbyva_bez_dane_kc)} BEZ DANĚ a BEZ DAP. Pokud potřebuješ kapitál na nákup auta/rezervu, krypto je nejjednodušší.</li>
-        <li><strong>Akcie 2026:</strong> Žádná pozice ještě není 3+ let. Prodej je zdanitelný (15%) a vyžaduje DAP.</li>
-        <li><strong>Plánuj 2027:</strong> 57 pozic z 2024 se osvobodí (cca ${fmt(a.pozice_2_3_roky_value_kc)}). Jsou to drobné pozice, ale součet stojí za prodej v 2027.</li>
-        <li><strong>Plánuj 2028:</strong> 243 pozic z 2025 se osvobodí (cca ${fmt(a.pozice_dale_value_kc)}). To je velký balík - po osvobození mít plán prodeje pokud potřebuješ kapitál.</li>
-      </ul>
-    </div>
-  `;
-  document.getElementById('page-thresholds').innerHTML = html2;
+    </table></div>
+    <h3 class="subhead">Podklady k povinnosti podat přiznání</h3>
+    ${dap && typeof dap === 'object' ? `<p>Modelový limit ostatních příjmů: ${money(dap.limit_ostatnich_prijmu_kc)}</p><p>${escaped(dap.pravidlo)}</p><p>${escaped(dap.pro_zamestnance_pravidlo)}</p><p>${escaped(dap.pro_2026_status)}</p><p>${escaped(dap.reportovaci_povinnost)}</p>` : '<div class="info-box">Tento blok v ukázkových datech chybí. Povinnost podat přiznání proto z tohoto dema nelze určit.</div>'}
+    <h3 class="subhead">Víceletý plán z ukázkových dat</h3>
+    ${planRows.length ? `<p>${escaped(plan.description)}</p><div class="scroll-x"><table><thead><tr><th>Rok</th><th>Pozic</th><th>Modelová hodnota</th><th>Poznámka</th></tr></thead><tbody>${planRows.map(r => `<tr><td>${escaped(r.rok)}</td><td>${count(r.pocet)}</td><td>${money(r.osvobodi_se_pribl_kc)}</td><td>${escaped(r.pozn)}</td></tr>`).join('')}</tbody></table></div>` : '<p class="muted">Víceletý plán nebyl do této ukázky dodán.</p>'}`;
 };
+
 </script>
 </body></html>

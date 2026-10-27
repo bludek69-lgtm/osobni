@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI in practice — how I use artificial intelligence | Luděk Budinský</title>
-  <meta name="description" content="I build my own apps, maintain this website and refine my smart home. AI helps me turn an everyday need into a working solution: read the project, make a change, find a bug and check the result.">
+  <title>AI in practice — guides and explanations | Luděk Budinský</title>
+  <meta name="description" content="A practical AI guide: better requests, context, agents, development, Git, API keys, data safety and regression checks.">
   <link rel="canonical" href="https://cestovatel69.cz/en/ai.html">
   <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/ai.html">
   <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/ai.html">
   <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/ai.html">
   <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/ai.html">
   <link rel="stylesheet" href="../assets/css/style.css?v=20261027-select-contrast">
-  <link rel="stylesheet" href="../assets/css/ai.css?v=2026-10-24-case">
+  <link rel="stylesheet" href="../assets/css/ai.css?v=20261027-learning">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🤖%3C/text%3E%3C/svg%3E">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="AI in practice — how I use artificial intelligence">
-  <meta property="og:description" content="I build my own apps, maintain this website and refine my smart home. AI helps me turn an everyday need into a working solution: read the project, make a change, find a bug and check the result.">
+  <meta property="og:title" content="AI in practice — guides and explanations | Luděk Budinský">
+  <meta property="og:description" content="A practical AI guide: better requests, context, agents, development, Git, API keys, data safety and regression checks.">
   <meta property="og:url" content="https://cestovatel69.cz/en/ai.html">
   <meta property="og:locale" content="en_GB">
   <meta property="og:locale:alternate" content="cs_CZ">
@@ -49,152 +49,118 @@
   </div>
 </header>
 
-<main id="main">
-<div class="ai-page">
-  <section class="ai-hero" aria-labelledby="ai-title">
-    <div class="ai-hero-copy">
-      <p class="ai-eyebrow">My workflow · AI in practice</p>
-      <h1 id="ai-title">The idea is mine.<br><span>AI helps me make it real.</span></h1>
-      <p class="ai-lead">I build my own apps, maintain this website and refine my smart home. AI helps me turn an everyday need into a working solution: read the project, make a change, find a bug and check the result.</p>
-      <div class="ai-cta-row"><a class="ai-button" href="#how-apps-are-built">How I work <span aria-hidden="true">↗</span></a><a class="ai-button ai-button-secondary" href="#projects">Real projects</a></div>
-      <p class="ai-updated">Updated in October 2026</p>
-    </div>
-    <aside class="ai-workbench" aria-label="From everyday need to my own app">
-      <p class="ai-workbench-heading">From everyday need to my own app</p>
-      <ol><li><span class="ai-step-index">01</span><div><strong>Describe the problem</strong><p>What I need and what a good result looks like.</p></div></li>
-<li><span class="ai-step-index">02</span><div><strong>Work in the project</strong><p>Read the files, propose and implement a change.</p></div></li>
-<li><span class="ai-step-index">03</span><div><strong>Check the behavior</strong><p>Tests, previews and everyday use.</p></div></li></ol>
-      <div class="ai-workbench-bottom"><span>ChatGPT</span><span>Codex</span><span>Claude Code</span></div>
-    </aside>
-  </section>
-
-  <nav class="ai-jump" aria-label="How I work">
-    <a href="#who-does-what">Tools and their roles</a><a href="#how-apps-are-built">How I work</a><a href="#case-study">Real repair</a><a href="#projects">Real projects</a><a href="#examples">A brief that leads to a concrete result</a>
-    <a href="#demo-vs-praxe">Demo vs. reality</a><a href="#modely">Models</a><a href="#zdarma-placene">Free vs. paid</a><a href="#skills-mcp">Skills and MCP</a>
-  </nav>
-
-  <section id="who-does-what" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">01 /</span><h2>Tools and their roles</h2></div>
-    <p class="ai-section-intro">The roles overlap. I choose according to the task and access to the project, rather than assigning one tool only to audits and another only to code.</p>
-    <div class="ai-tools"><article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">↗</span><h3>ChatGPT</h3><p class="ai-tool-role">Thinking and defining the task</p><p>I discuss ideas, requirements and reports. It helps me name the problem, choose a next step and prepare a clear brief.</p></article>
-<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">⌘</span><h3>Codex</h3><p class="ai-tool-role">Development, audit and verification</p><p>Direct work with files: examining the current state, implementation, website edits, tests and browser previews. This update follows that approach.</p></article>
-<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">✳</span><h3>Claude / Claude Code</h3><p class="ai-tool-role">Another project collaborator</p><p>I use it for code, fixes, documentation and project analysis. I can compare results with another tool and follow up with a new task.</p></article>
-<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">◇</span><h3>Gemini</h3><p class="ai-tool-role">AI inside some of my apps</p><p>In Collection it helps read and identify objects from photos. PT offers an optional AI analyst. The specific use depends on the app.</p></article></div>
-  </section>
-
-
-  <section id="ucetni-kniha-terminal" class="section ai-section" aria-labelledby="terminal-video-heading" style="margin:2rem 0">
-    <h2 id="terminal-video-heading">Building the Accounting Book in the terminal</h2>
-    <p>From source code to an app for personal finances. This short demonstration shows the React and TypeScript project, building its web interface and starting the Python server with a local SQLite database.</p>
-    <figure style="margin:1.25rem 0;max-width:960px">
-      <video controls playsinline preload="none" width="1280" height="720" poster="/assets/video/ucetni-kniha-terminal.png" aria-label="Building the Accounting Book in the terminal" style="display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0b1020;border-radius:12px">
-        <source src="/assets/video/ucetni-kniha-terminal.mp4" type="video/mp4">
-      <track kind="captions" src="/assets/video/ucetni-kniha-terminal.cs.vtt" srclang="cs" label="Čeština">
-      <track kind="subtitles" src="/assets/video/ucetni-kniha-terminal.en.vtt" srclang="en" label="English" default>
-      <track kind="subtitles" src="/assets/video/ucetni-kniha-terminal.it.vtt" srclang="it" label="Italiano">
-        Your browser does not support embedded video. Download the MP4 using the link below.
-      </video>
-      <figcaption style="margin-top:.75rem">48 seconds · Czech narration generated with ElevenLabs · CS / EN / IT captions. The terminal and code example are illustrative; the final shot shows the actual app on 11 October 2026 with sample data. It is not a recording of building the entire app in 48 seconds.</figcaption>
-    </figure>
-    <p><a href="/assets/video/ucetni-kniha-terminal.mp4" download>Download video (MP4, 1.3 MB)</a></p>
-  </section>
-
-  <section id="how-apps-are-built" class="ai-section">
-    <span id="vibe-coding" class="ai-anchor"></span>
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">02 /</span><h2>How an idea becomes a working change</h2></div>
-    <p class="ai-section-intro">I start with a need from everyday use. For a bug I first want to understand the cause; for a feature I define the behavior and scope.</p>
-    <ol class="ai-process"><li><span class="ai-process-index" aria-hidden="true">01</span><h3>Brief</h3><p>Describe the goal, evidence and expected behavior, including the project's rules.</p></li>
-<li><span class="ai-process-index" aria-hidden="true">02</span><h3>Current state</h3><p>AI reads the code and documentation. We separate evidence from assumptions.</p></li>
-<li><span class="ai-process-index" aria-hidden="true">03</span><h3>Change</h3><p>Build on the existing solution. The change has a clear scope and can be reviewed.</p></li>
-<li><span class="ai-process-index" aria-hidden="true">04</span><h3>Verification</h3><p>Use relevant tests, reproduce bugs and explore the interface. The original failure must disappear.</p></li>
-<li><span class="ai-process-index" aria-hidden="true">05</span><h3>Use and iterate</h3><p>I assess the result in practice. Bugs, logs and feedback inform the next task.</p></li></ol>
-  </section>
-
-  <section id="case-study" class="ai-section" aria-labelledby="case-study-title">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">CASE /</span><h2 id="case-study-title">When the “calculators” could not calculate</h2></div>
-    <p class="ai-section-intro">An actual repair to my Finance page on 24 October 2026. The images show the source version before the change and the live page after deployment.</p>
-    <div class="ai-case-grid">
-      <article class="ai-case-step"><h3>1. Problem</h3><p>The “Useful calculators” section only contained cards describing possible calculations. Visitors had nowhere to enter numbers and no result to read. I checked the old code in Git history and opened that version in a browser.</p></article>
-      <article class="ai-case-step"><h3>2. My brief to AI</h3><p>I asked first for a correction to the Lerici page, then for real interactive calculators. The key part of my original Czech instruction was:</p><blockquote class="ai-case-quote" lang="cs">“pak vytvořit skutečné interaktivní kalkulačky”</blockquote><p>In English: “then create actual interactive calculators.”</p></article>
-      <article class="ai-case-step"><h3>3. Specific change</h3><p>Codex replaced the descriptive cards with nine calculators with inputs, buttons and results. They run in the browser. The same functions were added to the Czech, English and Italian pages. For example, the compound-growth calculator shows the final value, total deposits and modelled difference. The heading offset under the fixed navigation was also corrected.</p></article>
-      <article class="ai-case-step"><h3>4. Verification</h3><p>Six automated tests checked the calculations, including zero returns and invalid inputs. I opened all three language versions in the browser, changed values, and checked the results and validation message. Finally I confirmed the completed deployment and tested the live page. The modelled results are not investment or tax advice.</p></article>
-    </div>
-    <p><a class="ai-case-link" href="finance/#fin-4-kalkulacky">Try the calculators on the Finance page ↗</a></p>
-    <div class="ai-case-photos">
-      <figure><img src="../assets/img/ai/finance-before-20261024.png" width="1265" height="712" loading="lazy" alt="Previous Finance page with text cards and no calculator inputs"><figcaption><strong>Before:</strong> historical source commit b90fc2c, displayed locally. The cards have no input fields or results.</figcaption></figure>
-      <figure><img src="../assets/img/ai/finance-after-20261024.png" width="1265" height="712" loading="lazy" alt="Current Finance page with compound-growth inputs and calculated results"><figcaption><strong>After:</strong> live page on 24 October 2026. A model example shows the inputs and calculated final value.</figcaption></figure>
-    </div>
-  </section>
-
-  <section id="projects" class="ai-section">
-    <span id="how-i-use" class="ai-anchor"></span>
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">03 /</span><h2>What I actually build with AI</h2></div>
-    <p class="ai-section-intro">AI helps develop these projects. Some also use it within the app itself, for example for photo recognition or analysis.</p>
-    <div class="ai-projects"><article class="ai-project"><div class="ai-project-top"><span>01</span><span>Investments and analysis</span></div><h3>Portfolio Tracker</h3><p>I develop transaction records, performance views and analytical tools with AI. Tracing each number to its source and acknowledging missing data matter. PT also has an optional AI analyst.</p><a href="aplikace/portfolio-tracker.html">Explore the project <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>02</span><span>Documents and financial context</span></div><h3>Bookkeeping</h3><p>My financial records connect documents, transactions and summaries. AI helps develop imports, calculation checks, diagnostics and a clear interface.</p><a href="aplikace/ucetni-kniha.html">Explore the project <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>03</span><span>Trips around my needs</span></div><h3>Italia Travel Planner</h3><p>I develop route and itinerary planning. Autopilot uses places found in map data; availability and prices need verification. AI also helps with translations and content.</p><a href="aplikace/italia-travel.html">Explore the project <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>04</span><span>Photo → draft record</span></div><h3>Collection</h3><p>AI helps identify a coin or stamp and fill in fields from a photo. A person reviews the draft; indicative prices need supporting sources.</p><a href="aplikace/sbirka.html">Explore the project <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>05</span><span>Rules for a real home</span></div><h3>Smart Home</h3><p>I use AI to examine scenarios, find script bugs and prepare changes. My home operates on defined rules; a change must make sense to the person living there.</p><a href="smart-home/">Explore the project <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>06</span><span>Content, design and everyday tools</span></div><h3>This website and other apps</h3><p>AI helps maintain text, translations and links, design interfaces and review previews. Other projects cover driving work, meal planning and choosing a car.</p><a href="aplikace/">Explore the project <span aria-hidden="true">↗</span></a></article></div>
-  </section>
-
-  <section id="dev-environment" class="ai-section ai-environment">
-    <span id="diagnostic-loop" class="ai-anchor"></span>
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">04 /</span><h2>My working environment</h2></div>
-    <p class="ai-section-intro">A development computer, a laptop for everyday use and home storage support my projects. AI tools work with the files and evidence I provide; the models can run at an external provider.</p>
-    <div class="ai-environment-grid"><div><h3>Development</h3><p>Projects, code, documentation and tests on the working computer.</p></div>
-<div><h3>Everyday use</h3><p>I use the app and notice where it needs improvement.</p></div>
-<div><h3>Continuity</h3><p>Backups, change history and context for the next session.</p></div></div>
-  </section>
-
-  <section id="examples" class="ai-section ai-brief">
-    <span id="why-not-working" class="ai-anchor"></span>
-    <div><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">05 /</span><h2>A brief that leads to a concrete result</h2></div><p>Context and a clear goal help most. This example resembles the task behind today's website update.</p></div>
-    <blockquote>Review the Finance page. It still shows the old bookkeeping demo, but I now use my own PT and Bookkeeping apps. Check what the website already says about them, update the text and translations, and verify links and previews. Prepare the changes locally; I will approve publication separately.</blockquote>
-  </section>
-
-  <section id="ai-vs-me" class="ai-section">
-    <span id="testing" class="ai-anchor"></span><span id="where-careful" class="ai-anchor"></span>
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">06 /</span><h2>What AI does and what I decide</h2></div>
-    <div class="ai-ownership"><article><h3>AI helps carry out the work</h3><ul><li>Reads provided evidence and finds inconsistencies.</li><li>Proposes solutions and edits code and text.</li><li>Runs relevant checks and summarizes the result.</li></ul></article><article><h3>I set the direction</h3><ul><li>Define the need, priorities and scope.</li><li>Decide whether the result works well in practice.</li><li>Approve publication and operational changes according to the task.</li></ul></article></div>
-    <p class="ai-data-note">A local app and a cloud AI model are different things. Recognizing a photo through Gemini, for example, involves sending that selected photo to an external service. What I provide to AI matters.</p>
-  </section>
-
-  <section id="demo-vs-praxe" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">07 /</span><h2>An app in an evening? A demo is not a finished product.</h2></div>
-    <p class="ai-section-intro">AI can quickly create a screen, form or chart. “No manual coding” does not mean “no work, understanding or responsibility”. A short demonstration does not prove that the whole application is reliable.</p>
-    <div class="ai-ownership"><article class="ai-project"><h3>What a quick prototype does</h3><p>Shows the idea, design and a basic flow with sample data. Useful for choosing a direction, not automatically suitable for real financial records.</p></article><article class="ai-project"><h3>What a real application must do</h3><p>Handle correct calculations, failures, repeated imports, storage, updates and restoring backups. Verification continues during everyday use.</p></article></div>
-    <div class="ai-callout"><h3>In finance, the numbers must work—not just the design.</h3><p>PT and Účetní kniha need checks for fees, currencies, rounding and the meaning of returns. Transfers between my own accounts must not create false income. Importing the same statement twice must not duplicate transactions. A backup matters only if I can restore the data.</p><p><strong>AI helps produce the code. Tests and checked results must establish correctness—not the model saying “done”.</strong></p></div>
-    <details class="ai-details"><summary>How to assess courses and easy-development promises</summary><p>A paid course or Discord can provide structure and support. I look for debugging, version control, security and testing, not just a first successful demonstration. Video duration is not the time required to finish my project.</p><p>AI is not an automatic shortcut to understanding: an Anthropic experiment highlights the importance of actively asking for explanations and learning with AI. This is not a universal verdict against AI. <a href="https://www.anthropic.com/research/AI-assistance-coding-skills">Anthropic research</a></p></details>
-  </section>
-
-  <section id="modely" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">08 /</span><h2>Which model fits which task?</h2></div>
-    <p class="ai-section-intro">A practical overview based on vendor descriptions, checked on 10 October 2026. Not an independent ranking or a list of models I personally use. Chat, development tools and API access may differ.</p>
-    <div class="ai-models"><article class="ai-project"><h3>OpenAI</h3><p><strong>GPT-6 Astra:</strong> difficult problems, deep analysis and complex design.</p><p><strong>GPT-6.1 Sol:</strong> complex work balancing time and cost.</p><p><strong>GPT-6 Luna:</strong> small scoped edits, triage and repeated tasks.</p><a href="https://learn.chatgpt.com/docs/model-selection">Official model selection ↗</a></article><article class="ai-project"><h3>Anthropic · Claude</h3><p><strong>Opus 5.5:</strong> demanding multi-step tasks and complex project work.</p><p><strong>Sonnet 5.5:</strong> a practical balance of capability, speed and cost for code and documents.</p><p><strong>Haiku 5.5:</strong> fast summaries, classification and smaller tasks.</p><p class="ai-source-links"><a href="https://www.anthropic.com/claude/opus">Opus</a> · <a href="https://www.anthropic.com/claude/sonnet">Sonnet</a> · <a href="https://www.anthropic.com/claude/haiku">Haiku</a></p></article><article class="ai-project"><h3>Google · Gemini</h3><p><strong>Pro:</strong> a family for demanding reasoning; the catalog includes Gemini 3.1 Pro Preview.</p><p><strong>Flash:</strong> fast work with text, code and multimodal inputs; the current catalog includes Gemini 3.8 Flash.</p><p><strong>Flash-Lite:</strong> a more economical family for high-volume simpler tasks. Preview is not the same as a stable release.</p><a href="https://ai.google.dev/gemini-api/docs/models">Official API catalog ↗</a></article></div>
-    <p class="ai-data-note"><strong>A model is not a tool.</strong> ChatGPT and Gemini are also applications; Codex and Claude Code are working environments with tool access. Results also depend on the brief, project context, permissions and verification. A stronger model or more reasoning does not guarantee correctness.</p>
-  </section>
-
-  <section id="zdarma-placene" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">09 /</span><h2>Is free AI enough? It depends on the work.</h2></div>
-    <p class="ai-section-intro">Free does not automatically mean poor, and paid does not mean correct. Differences often concern available models, usage capacity and tools—not just one answer’s quality.</p>
-    <div class="ai-ownership"><article class="ai-project"><h3>Free: a useful starting point</h3><p>Concept explanations, translations, short texts, ideas and small prototypes. A capable model may be available with lower limits. If I can finish the task and verify it, a “Pro” label alone is no reason to pay.</p></article><article class="ai-project"><h3>Paid: room for sustained work</h3><p>May be useful for regular development, long analyses and many correction cycles. Depending on the plan, it adds higher limits, more models or development tools. A subscription does not generally mean unlimited usage.</p></article></div>
-    <div class="ai-callout"><h3>A chat subscription ≠ running AI in my application</h3><p>An AI analyst or photo recognition through an API has its own terms and billing. Do not assume a subscription pays for API calls; some plans may include credits. Hosting, storage and other data services may cost extra.</p><p><strong>Try my actual task first. Pay for a needed capability or a specific limit—not a promise of perfect answers.</strong></p></div>
-    <p class="ai-data-note">Prices, availability and limits vary by product, region and account. Current terms: <a href="https://learn.chatgpt.com/docs/pricing">OpenAI</a> · <a href="https://claude.com/pricing">Claude</a> · <a href="https://support.google.com/gemini/answer/16275805">Gemini</a> · <a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini API</a>. Payment alone does not guarantee privacy; I check the specific terms before providing sensitive data.</p>
-  </section>
-
-  <section id="skills-mcp" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">10 /</span><h2>Skills, plugins and MCP: workflows and access</h2></div>
-    <p class="ai-section-intro">These components can simplify work, but each serves a different purpose. A first application does not need every integration.</p>
-    <dl class="ai-glossary"><div><dt>Skill</dt><dd>Instructions for repeatable work, optionally with scripts and references. For example, checking imports or running tests. Not additional model training.</dd></div><div><dt>Plugin</dt><dd>An installable capability package. May contain skills, tools and MCP connections. Its origin and contents matter.</dd></div><div><dt>Connector</dt><dd>A connection to a service or account. Before connecting, I check which data it exposes and whether it can also write.</dd></div><div><dt>MCP server</dt><dd>Exposes tools and data through a common interface. Can run locally or remotely. MCP is not a security certificate.</dd></div></dl>
-    <p class="ai-data-note">My practical approach: choose a trusted source, read instructions, grant the minimum permissions and try a concrete task with test data. Separate writing, deleting and publishing from reading. More add-ons do not automatically improve results. <a href="https://developers.openai.com/plugins/concepts/plugins">Plugin documentation</a> · <a href="https://modelcontextprotocol.io/docs/draft/tutorials/security/security_best_practices">MCP security</a></p>
-  </section>
-
-  <section class="ai-closing">
-    <h2>The best result is a tool I actually use.</h2><p>AI helps me keep developing my own solutions, from a small idea or fix to an app that fits into my day.</p><a class="ai-button" href="aplikace/">Explore my apps <span aria-hidden="true">↗</span></a>
-  </section>
+<main id="main"><div class="ai-page ai-page--learning">
+<section aria-labelledby="ai-title" class="ai-hero">
+<div class="ai-hero-copy"><p class="ai-eyebrow">AI in practice · explanations and guides</p>
+<h1 id="ai-title">How to work with AI.<br/><span>From a clear request to a result.</span></h1>
+<p class="ai-lead">Find your way around the tools, write better requests and understand what AI agents can do. With simple examples you can try yourself.</p>
+<div class="ai-cta-row"><a class="ai-button" href="#zacatek">Start with the basics ↗</a><a class="ai-button ai-button-secondary" href="#zadani">Try a sample request</a></div>
+<p class="ai-updated">Prepared by Budinský Luděk · Updated 27 October 2026</p>
 </div>
-</main>
+<aside aria-label="What you will learn" class="ai-workbench"><p class="ai-workbench-heading">Choose where you want to go</p><ol>
+<li><span class="ai-step-index">01</span><div><strong>Communicate with AI</strong><p>Requests, context and checking the answer.</p></div></li>
+<li><span class="ai-step-index">02</span><div><strong>Understand the tools</strong><p>Models, chats, agents and their capabilities.</p></div></li>
+<li><span class="ai-step-index">03</span><div><strong>Bring AI into your work</strong><p>Development, repeatable workflows and automation.</p></div></li>
+</ol></aside>
+</section>
+<nav aria-label="Guide topics" class="ai-jump"><a href="#zacatek">Basics</a><a href="#zadani">Better requests</a><a href="#nastroje">Tools</a><a href="#agenti">Agents</a><a href="#vyvoj">Development with AI</a><a href="#verzovani">Git and versions</a><a href="#modely">Models and costs</a><a href="#skills-mcp">Skills and MCP</a><a href="#bezpecnost">What not to share</a><a href="#api-klice">API keys</a><a href="#overeni">Checks and regression</a></nav>
+<section class="ai-section" id="zacatek"><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">01 /</span><h2>First step: a small task with a clear result</h2></div>
+<p class="ai-section-intro">Start with a task where you can judge whether the answer makes sense, such as shortening your own text or comparing two offers you provide.</p>
+<div class="ai-projects"><article class="ai-project"><h3>Give AI the source material</h3><p>Provide the text, table or situation. Explain who the result is for and what must stay unchanged.</p><p class="ai-mini-example">“Shorten this email to five sentences. Keep the meeting date and a polite tone.”</p></article>
+<article class="ai-project"><h3>Specify the output</h3><p>Instead of “make it better”, say what you want: a short proposal, a list of questions or a comparison table.</p><p class="ai-mini-example">“List the differences in price, terms and anything missing from the offer.”</p></article>
+<article class="ai-project"><h3>Review the result</h3><p>Check names, numbers and meaning. If something is wrong, give specific feedback and ask for that part to be corrected.</p><p class="ai-mini-example">“Point two is missing transport. Add it and leave the other points unchanged.”</p></article></div>
+<details class="ai-details"><summary>Why can an answer sound right and still be wrong?</summary><p>Fluent writing does not prove accuracy. AI may invent a detail or misunderstand the request. Ask it to separate supported information from assumptions. Check important facts against the original material or a reliable source.</p></details>
+</section>
+<section class="ai-section" id="zadani"><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">02 /</span><h2>A request you can verify</h2></div>
+<p class="ai-section-intro">A good request includes the goal, source material, boundaries and a way to check the result. You do not need a long list of magic phrases.</p>
+<div class="ai-brief"><div><h3>Example: comparing accommodation</h3><p>Paste two real offers into the template. AI should use their contents and point out missing terms.</p><p>Before booking, check the price and availability directly with the provider. This example shows how to work with source material; it does not place a booking.</p><button class="ai-button ai-copy" data-copy="ai-prompt" type="button">Copy the request</button><p aria-live="polite" class="ai-data-note" id="ai-copy-status" role="status"></p></div>
+<blockquote id="ai-prompt">Compare these two accommodation offers for two people for three nights. Use only information from the supplied material. In a table, list the total price, location, breakfast, parking and cancellation terms. Mark missing information as “not established”. Finish with three questions I should ask before booking. Do not book or pay for anything.
+
+Offer A: [paste text]
+Offer B: [paste text]</blockquote></div>
+<details class="ai-details"><summary>What is context and how do you provide it?</summary><p>Context is the background and source material AI should use. For editing text, provide the original wording and intended reader; for code, the related files and a description of the bug. Include relevant information and remove unnecessary personal details. During longer work, regularly summarise what is still valid and what has changed.</p></details>
+</section>
+<section class="ai-section" id="nastroje"><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">03 /</span><h2>Models, chats and working tools</h2></div>
+<p class="ai-section-intro">These terms are often mixed up. The distinction explains why the same AI can only answer in one setting but edit a file in another.</p>
+<div class="ai-tools"><article class="ai-tool"><h3>Model</h3><p>Generates answers from the supplied input. The model affects capability, speed and cost.</p></article><article class="ai-tool"><h3>Chat</h3><p>The application where you communicate with AI. Depending on the product and account, it may also offer files, search or other tools.</p></article><article class="ai-tool"><h3>Agent</h3><p>Works in repeated steps: proposes an approach, uses an available tool, reads the result and continues.</p></article><article class="ai-tool"><h3>Working environment</h3><p>Determines which files, commands and services AI can access and what permissions it has.</p></article></div>
+<p class="ai-data-note">One example of a tool for working on a project is <a href="https://code.claude.com/docs/en/overview" rel="noopener" target="_blank">Claude Code</a>. Always check the specific product’s capabilities in its documentation.</p>
+</section>
+<section class="ai-section" id="agenti"><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">04 /</span><h2>From a single answer to an AI agent</h2></div>
+<p class="ai-section-intro">An agent needs an achievable goal and clear boundaries. For example, summarise the documents it can access and save a draft in a specified folder.</p>
+<ol class="ai-agent-loop"><li>Understand the goal</li><li>Use a tool</li><li>Check the result</li><li>Continue or finish</li></ol>
+<details class="ai-details"><summary>Example: an agent’s task and boundaries</summary><p>“Review these documents, list the deadlines and cite the source for each one. Save the result as a draft. Do not edit the documents or send messages to anyone.”</p><p>The task has a specific output. Reading material and preparing a draft require different permissions from deleting, sending or paying. Automate a repeated task only after verifying one complete run.</p></details>
+<details class="ai-details"><summary>Do more agents always help?</summary><p>Tasks can be split, but someone must combine the results and resolve disagreements. For a small change, one clearly defined task may be easier to follow. Splitting work makes sense when the parts are genuinely independent and their outputs can be checked.</p></details>
+</section>
+<section class="ai-section" id="vyvoj"><span class="ai-anchor" id="vibe-coding"></span><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">05 /</span><h2>Developing through requests: after the first draft</h2></div>
+<p class="ai-section-intro">In so-called vibe coding, you describe the desired behaviour in ordinary language and AI helps prepare the code. You need to be able to judge what the result actually does.</p>
+<div class="ai-ownership"><article><h3>Prototype</h3><p>Shows the appearance and a basic flow using test data. Helps assess whether the idea is usable.</p></article><article><h3>A usable tool</h3><p>Also needs data storage and recovery, error handling, correct calculations and checks of repeated use.</p></article></div>
+<details class="ai-details"><summary>How to request a small fix in an existing project</summary><p>Describe how to reproduce the bug, what happens and what should happen. First ask for the cause to be identified, then for a limited change and a check of the same steps. Judge the preview or test separately from AI’s claim that the work is done.</p><p class="ai-mini-example">“When the input is empty, the form displays zero as a valid result. Find the cause, fix only this behaviour and check both empty input and a normal value. Do not publish the change yet.”</p></details>
+</section>
+<section class="ai-section" id="verzovani">
+<div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">06 /</span><h2>Versioning, Git and GitHub: track every change</h2></div>
+<p class="ai-section-intro">When making changes, you need to know what changed, why, and which verified state you can return to. A history, labelled releases and a short changelog help.</p>
+<div class="ai-projects"><article class="ai-project"><h3>Application version</h3><p>A release label, such as <code>1.4.2</code>. It tells users which edition they have. A changelog explains fixes, new features and any changes to data handling.</p></article><article class="ai-project"><h3>Git</h3><p>A tool for tracking project files. It compares changes, records related edits in commits and supports branches. Basic work happens locally on your computer.</p></article><article class="ai-project"><h3>GitHub</h3><p>A service for hosting repositories, collaboration and reviewing proposed changes. It can run automated checks or deployments if the project is configured to do so.</p></article></div>
+<details class="ai-details"><summary>Glossary: commits, branches, push and pull requests</summary><dl class="ai-glossary"><div><dt>Repository</dt><dd>The project and its versioned history.</dd></div><div><dt>Commit</dt><dd>A recorded point in history with a message describing the change. It records selected, staged changes; it does not capture unsaved work in your editor.</dd></div><div><dt>Diff</dt><dd>A comparison showing what was added, removed or changed.</dd></div><div><dt>Branch and merge</dt><dd>A branch lets you develop a change separately. A merge incorporates it into another branch; any conflicts must be resolved.</dd></div><div><dt>Push and pull</dt><dd>Push sends local history to a remote repository. Pull downloads and integrates changes from a remote branch.</dd></div><div><dt>Pull request (PR)</dt><dd>A proposal to incorporate changes on GitHub. It lets reviewers examine differences, comments and check results before merging.</dd></div></dl><p class="ai-data-note"><a href="https://git-scm.com/docs/git" rel="noopener" target="_blank">Git commands</a> · <a href="https://docs.github.com/en/pull-requests/reference/pull-requests" rel="noopener" target="_blank">GitHub — pull requests</a></p></details>
+<details class="ai-details"><summary>What do 1.4.2 and beta mean?</summary><p>If a project uses Semantic Versioning (SemVer), the numbers describe compatibility of the public interface:</p><ul><li><strong>PATCH:</strong> a compatible fix, for example <code>1.4.2 → 1.4.3</code>.</li><li><strong>MINOR:</strong> a new backward-compatible feature, for example <code>1.4.2 → 1.5.0</code>.</li><li><strong>MAJOR:</strong> an incompatible public-interface change, for example <code>1.4.2 → 2.0.0</code>.</li></ul><p><code>1.5.0-beta.1</code> denotes a prerelease. Labels such as “work” depend on the project’s own rules. Neither a version number nor the label “final” proves that an application is correct.</p><p><a href="https://semver.org/" rel="noopener" target="_blank">SemVer specification</a></p></details>
+<details class="ai-details"><summary>Saving, uploading and publishing a change</summary><p><strong>Commit</strong> records selected changes in local history.<strong>Push</strong> sends them to a remote server.<strong>Deployment</strong> makes a particular version available to users.</p><p>A project may deploy automatically after a push or merge into the main branch. Before sending changes, find out what will run. GitHub Actions can, for example, build, test and then publish a release.</p><p><a href="https://docs.github.com/en/actions/get-started/understand-github-actions" rel="noopener" target="_blank">GitHub — automated checks and deployments</a></p></details>
+<details class="ai-details"><summary>How to prepare a way back</summary><p>Record a verified commit or mark a release with a tag, for example <code>v1.4.2</code>. A tag names a point in history; the changelog describes changes for users. The command <code>git revert</code> can create a new commit that reverses an earlier change while preserving history.</p><p>Back up the database, documents and user settings separately. Returning to old code may not restore data changed by a new version. For data-format changes, prepare and test a recovery procedure.</p><p><a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging" rel="noopener" target="_blank">Git — release tags</a></p></details>
+<p class="ai-data-note">Checked 27 October 2026. Further background: <a href="https://docs.github.com/en/get-started/using-git/about-git" rel="noopener" target="_blank">Git and GitHub in the official documentation</a>. Do not store passwords, API keys or real private data in the project history.</p>
+</section>
+<section class="ai-section" id="modely"><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">07 /</span><h2>Choosing a model without overspending</h2></div>
+<p class="ai-section-intro">Try the same task using your own material. Compare accuracy, corrections needed, waiting time and cost. A model’s name alone does not guarantee a result.</p>
+<details class="ai-details"><summary>What does reasoning effort mean?</summary><p>In tools offering this option, it adjusts the model’s reasoning effort. A higher setting may help with a complex task but does not guarantee accuracy. Compare the same request at different settings, accounting for time and usage.</p><p><a href="https://learn.chatgpt.com/docs/model-selection" rel="noopener" target="_blank">Official OpenAI documentation — models and reasoning effort</a></p></details>
+<details class="ai-details" id="zdarma-placene"><summary>When is free enough, and what does a subscription cover?</summary><p>Start with an available tool and a specific task. A paid plan may make sense when you hit a limit or need a particular feature. The product’s terms matter. A chat subscription does not automatically pay for a separate API or hosting your application.</p><p><a href="https://learn.chatgpt.com/docs/pricing" rel="noopener" target="_blank">OpenAI</a> · <a href="https://claude.com/pricing" rel="noopener" target="_blank">Claude</a> · <a href="https://ai.google.dev/gemini-api/docs/pricing" rel="noopener" target="_blank">Gemini API</a></p></details>
+<details class="ai-details"><summary>Where can you check the current model selection?</summary><p>The chat and API may not offer the same models. Check availability for your account, pricing and any preview designation before deciding.</p><p><a href="https://learn.chatgpt.com/docs/model-selection" rel="noopener" target="_blank">OpenAI</a> · <a href="https://platform.claude.com/docs/en/about-claude/models/overview" rel="noopener" target="_blank">Claude</a> · <a href="https://ai.google.dev/gemini-api/docs/models" rel="noopener" target="_blank">Gemini</a></p></details>
+</section>
+<section class="ai-section" id="skills-mcp"><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">08 /</span><h2>Skills, plugins and MCP explained</h2></div>
+<p class="ai-section-intro">Extensions meet different needs: repeating a workflow, connecting a service or providing a tool. Start with what your task actually requires.</p>
+<dl class="ai-glossary"><div><dt>Skill</dt><dd>A workflow for repeated work, often with instructions and source material. For example, how to prepare a report or verify a change. It does not retrain the model by itself.</dd></div><div><dt>Plugin</dt><dd>A package extending an application. Depending on the environment, it can combine instructions, skills, tools and service connections.</dd></div><div><dt>Connector</dt><dd>A connection to a service or account. Before connecting, check which data it exposes and whether it also allows writing.</dd></div><div><dt>MCP server</dt><dd>Exposes tools and data through a shared interface. It can run locally or remotely. You still need to assess permissions and the source’s trustworthiness.</dd></div></dl>
+<details class="ai-details"><summary>The difference in one example</summary><p>Suppose you want regular summaries of documents. A skill can describe the report format and checks. A connector provides folder access. An MCP server can supply the tools. A plugin may bundle some of these capabilities. The combination depends on the application.</p><p><a href="https://developers.openai.com/plugins/concepts/plugins" rel="noopener" target="_blank">Plugin documentation</a> · <a href="https://modelcontextprotocol.io/docs/learn/architecture" rel="noopener" target="_blank">MCP architecture</a></p></details>
+</section>
+<section class="ai-section" id="bezpecnost">
+<div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">09 /</span><h2>What never to put in an AI chat</h2></div>
+<p class="ai-section-intro">Before sending a message, file or screenshot, check its contents. These rules apply to ordinary chat fields and attachments; sign in through the service’s designated login or authorisation window.</p>
+<div class="ai-callout"><h3>Access secrets do not belong in chat</h3><ul>
+<li><strong>Passwords, PINs and login codes:</strong> including one-time SMS codes, recovery codes and links that can sign you in or restore access to an account.</li>
+<li><strong>API keys, tokens and private keys:</strong> for example, an AI-service key, GitHub access token, private SSH key or active login cookie. Also check files such as <code>.env</code> and logs.</li>
+<li><strong>Crypto-wallet recovery phrases:</strong> never send a seed phrase or private key to chat, even as a photo. Anyone who obtains them can control the wallet.</li>
+<li><strong>Payment details that could enable card misuse:</strong> full card number, expiry date, CVV/CVC, PIN or payment confirmation codes.</li>
+</ul></div>
+<h3 style="margin-top:1.8rem">Other sensitive material: remove details and check permission first</h3>
+<div class="ai-projects"><article class="ai-project"><h3>Documents and identity</h3><p>ID or passport scans, national identification numbers, signatures, exact addresses, personal contacts or photos of children. For ordinary questions, use fictional or substituted details.</p></article><article class="ai-project"><h3>Health and privacy</h3><p>Medical reports, intimate photos, private messages and documents containing other people’s data. Include only a necessary excerpt with identifying details removed.</p></article><article class="ai-project"><h3>Work and finance</h3><p>Non-public contracts, payslips, statements, client lists and confidential company code. Do not upload these to an ordinary public AI tool without permission; follow your employer’s rules.</p></article></div>
+<p class="ai-data-note">A paid plan or disabling the use of chats for training does not grant permission to share other people’s data or confidential information. It depends on the service, its settings and the rules applying to the data.</p>
+<details class="ai-details"><summary>How to prepare safer source material</summary><ol><li>Send only what the task needs. Replace names with, for example, <code>[CLIENT A]</code>, account numbers with <code>[ACCOUNT]</code> and access credentials with <code>[REMOVED]</code>.</li><li>Check the screenshot’s top bar, URL, QR codes and nearby windows too. In documents, consider comments, hidden sheets and metadata.</li><li>Remove sensitive details or use proper redaction that deletes the content. A black rectangle placed over text in an editable document may leave the original text intact.</li><li>Inspect the resulting file and check that removed content cannot be read or copied. Replacing a name may not be enough if other details identify the person.</li></ol><p class="ai-data-note"><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/security/disclosing-documents-to-the-public-securely/" rel="noopener" target="_blank">ICO — hidden data and safe document redaction</a>.</p><p class="ai-mini-example">Instead of a full payslip: “Explain gross versus net pay using a fictional example. I do not need a calculation of my actual salary.”</p></details>
+<details class="ai-details"><summary>What if I have already sent a password or key?</summary><p>Deleting the message alone does not secure leaked access. Change the password directly in the original service; revoke an exposed token or API key and replace it. Check signed-in devices and account activity. For work data, inform your administrator; for card details, contact your bank. For a wallet recovery phrase, follow the provider’s official security procedure.</p></details>
+<p class="ai-data-note">Sources checked 27 October 2026: <a href="https://osveta.nukib.gov.cz/mod/page/view.php?id=4725" rel="noopener" target="_blank">NÚKIB — risks of using AI</a> · <a href="https://www.ncsc.gov.uk/section/respond-recover/hacked-accounts" rel="noopener" target="_blank">NCSC — securing a compromised account</a> · <a href="https://support.metamask.io/stay-safe/safety-in-web3/basic-safety-and-security-tips-for-metamask" rel="noopener" target="_blank">MetaMask — protecting keys and recovery phrases</a>.</p>
+</section>
+<section class="ai-section" id="api-klice">
+<div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">10 /</span><h2>API keys: how to handle them safely</h2></div>
+<p class="ai-section-intro">An API key lets an application access a service. Misuse of a secret key can mean someone else’s requests are charged to your account. This guidance concerns secret server-side API keys, for example for AI services.</p>
+<div class="ai-projects"><article class="ai-project"><h3>1. Create it with the provider</h3><p>Use the official account dashboard. Separate development from production and grant only the permissions needed. Use expiry and access restrictions if offered.</p></article><article class="ai-project"><h3>2. Store it outside the code</h3><p>For local development, use an environment variable; in production, use hosting secrets or a secrets manager. Do not place the key in chat, documentation, screenshots or logs.</p></article><article class="ai-project"><h3>3. Use it on the server</h3><p>The browser sends a request to your server. The server calls the API with the key and returns the response. The visitor never receives the secret key.</p></article></div>
+<div class="ai-callout"><h3>A public page cannot keep a secret key</h3><p>Do not put it in HTML, browser JavaScript or <code>localStorage</code>. Variables such as <code>VITE_…</code> or <code>NEXT_PUBLIC_…</code> may be included in the public build. Hiding or encoding a value does not make it secret. <a href="https://vite.dev/guide/env-and-mode" rel="noopener" target="_blank">Vite</a> · <a href="https://nextjs.org/docs/app/guides/environment-variables" rel="noopener" target="_blank">Next.js</a>.</p><p>The server endpoint also needs access controls, request limits and input validation, so that anyone cannot use it without limits at your expense.</p></div>
+<details class="ai-details"><summary>Example: load a key without printing it</summary><p>In the server or development environment settings, create a variable named <code>AI_API_KEY</code>. Enter its actual value there, not in the source code. This server-side Python example makes no API calls:</p><pre class="ai-code-sample"><code>import os
+
+api_key = os.environ["AI_API_KEY"]
+print("The key environment variable has been loaded.")
+# Do not print the value of api_key.</code></pre><p>The variable name depends on the application. Some libraries expect a specific name, for example <code>OPENAI_API_KEY</code>. A <code>.env</code> file is not automatically loaded in every environment and does not provide encryption by itself.</p></details>
+<details class="ai-details"><summary>How to prevent uploading a key to GitHub</summary><p>Include local secrets files in <code>.gitignore</code>. A shared <code>.env.example</code> should contain only variable names and empty or obviously invalid values. Review changes before committing; secret scanning can help.</p><p><strong>Adding a file to .gitignore does not remove a key that has already been committed.</strong> A private repository is not a secrets manager either.</p></details>
+<details class="ai-details"><summary>Usage and limits: what to monitor</summary><p>Regularly review usage and costs in the provider’s dashboard. Separate projects and keys help trace spending. A budget alert may not stop requests automatically; check the actual limit and how the service enforces it.</p></details>
+<details class="ai-details"><summary>A leaked key: the order of recovery</summary><ol><li>Immediately revoke the leaked key with the provider. Deleting it from a message or the latest file version is not enough.</li><li>Create a replacement key, update the application settings and verify that it works.</li><li>Review usage history, costs and related access. Contact the provider about suspicious activity.</li><li>Remove the source of the leak. If the secret is in Git history, follow the cleanup documentation and coordinate with others; copies may remain in clones and forks.</li></ol></details>
+<p class="ai-data-note">Checked 27 October 2026: <a href="https://developers.openai.com/api/docs/guides/production-best-practices" rel="noopener" target="_blank">Official OpenAI documentation — key management and production</a> · <a href="https://developers.openai.com/api/reference/overview#authentication" rel="noopener" target="_blank">API authentication</a> · <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository" rel="noopener" target="_blank">GitHub — removing exposed sensitive data</a>.</p>
+</section>
+<section class="ai-section" id="overeni"><span class="ai-anchor" id="regrese"></span>
+<div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">11 /</span><h2>Checking an application after changes and regression testing</h2></div>
+<p class="ai-section-intro"><strong>A regression is a bug where a new change breaks something that used to work.</strong> Fixing one button therefore does not mean the whole application has been verified.</p>
+<div class="ai-projects"><article class="ai-project"><h3>Before the change</h3><p>Record the version and original behaviour. For a bug, note the reproduction steps and expected result. Establish the relevant tests’ baseline and protect any data you will use.</p></article><article class="ai-project"><h3>After the change</h3><p>Repeat the original steps and verify the fix. Then check related functions: saving, loading, calculations or export, depending on the change’s scope.</p></article><article class="ai-project"><h3>Before and after release</h3><p>Review the changed files and verify the build and local preview. After an approved deployment, check the main user flows in the version actually released too.</p></article></div>
+<details class="ai-details"><summary>What to test: the layers of verification</summary><ul><li><strong>Syntax and build:</strong> the code can be processed and the application built. This does not yet verify the result.</li><li><strong>Unit tests:</strong> selected calculations or rules using known inputs.</li><li><strong>Integration tests:</strong> interaction between components, such as importing and saving.</li><li><strong>User flow:</strong> actually entering values, clicking, saving and reloading.</li><li><strong>Visual checks:</strong> mobile and desktop, longer text, error messages and readable controls. Screenshot comparisons can reveal visual changes.</li></ul><p>Match the scope of checks to the change and its impact. A text correction needs different checks from a change to accounting calculations or a database.</p></details>
+<details class="ai-details"><summary>Regression example: fixing an import</summary><p>Imagine an application that must prevent importing the same items twice. Adding support for a new statement format must preserve that rule.</p><ol><li>Using test data, import three different transactions and verify that there are three records.</li><li>Try the same file again. If the application must detect duplicates, the total must still be three records.</li><li>Check totals, currencies and dates. Also try a previously supported format.</li><li>Save the data, reopen the application and check the export.</li></ol><p>Use test or anonymised data. After finding a bug, add a test of the expected behaviour to help catch its return.</p></details>
+<details class="ai-details"><summary>Smoke tests, regression tests and CI explained</summary><p><strong>Smoke test</strong> is a quick check of basic flows: the app starts, its main page loads and the key task can be completed.</p><p><strong>Regression tests</strong> guard previously required behaviour during later changes. <strong>CI</strong> means continuous integration: automated checks can run, for example, when a pull request is created. A green result proves only the checks that actually ran.</p></details>
+<details class="ai-details"><summary>How to ask AI to check work and report results</summary><p class="ai-mini-example">“First establish and record the baseline. After the fix, check both the original bug and related functions. Use test data. State what you checked, the expected and actual results and anything you could not verify. Do not publish anything yet.”</p><p>Ask for specific results and unresolved issues. A count of passing tests or “everything works” does not replace checking important user scenarios.</p></details>
+<details class="ai-details"><summary>What if a check finds a bug?</summary><p>Record the steps, version and expected result. Establish whether the issue existed before the change. Depending on its impact, fix the change or use the prepared rollback; then recheck affected scenarios. Do not overwrite reference screenshots or expected results merely to make a check pass.</p></details>
+<p class="ai-data-note">Sources checked 27 October 2026: <a href="https://playwright.dev/docs/best-practices" rel="noopener" target="_blank">Playwright — testing user behaviour</a> · <a href="https://playwright.dev/docs/test-snapshots" rel="noopener" target="_blank">Screenshot comparisons</a> · <a href="https://docs.github.com/en/actions/get-started/understand-github-actions" rel="noopener" target="_blank">GitHub Actions and CI</a>.</p>
+</section>
+<section class="ai-closing"><h2>Try one small task.</h2><p>Choose your own text or two offers, describe the result you want and check what AI returns. You can build on this with a more complex workflow later.</p><a class="ai-button" href="#zadani">Open the sample request ↗</a><p class="ai-data-note">More educational content in Czech: <a href="https://www.youtube.com/@aisrozumem" rel="noopener" target="_blank">AI s rozumem — Filip Oborník</a>. The original explanations on this page are accompanied by links to the vendors’ documentation.</p></section>
+</div></main>
 
 <footer class="site-footer">
   <div class="site-footer__inner">
@@ -208,5 +174,24 @@
 </footer>
 
 <script src="../assets/js/main.js?v=20261027-travel-photos"></script>
+<script>
+(function () {
+  var button = document.querySelector('[data-copy="ai-prompt"]');
+  if (!button) return;
+  button.addEventListener('click', async function () {
+    var text = document.getElementById('ai-prompt').innerText;
+    var status = document.getElementById('ai-copy-status');
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = 'Request copied. Add your own material and paste it into your AI tool.';
+    } catch (error) {
+      var range = document.createRange();
+      range.selectNodeContents(document.getElementById('ai-prompt'));
+      var selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+      status.textContent = 'Automatic copying is unavailable. Copy the selected request manually.';
+    }
+  });
+})();
+</script>
 </body>
 </html>

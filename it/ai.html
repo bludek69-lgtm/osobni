@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI nella pratica — come uso l'intelligenza artificiale | Luděk Budinský</title>
-  <meta name="description" content="Sviluppo le mie applicazioni, aggiorno il sito e perfeziono la casa intelligente. L’AI mi aiuta a trasformare un bisogno quotidiano in una soluzione: leggere il progetto, fare una modifica, trovare un errore e verificare il risultato.">
+  <title>AI nella pratica — guide e spiegazioni | Luděk Budinský</title>
+  <meta name="description" content="Guida pratica all’AI: richieste migliori, contesto, agenti, sviluppo, Git, chiavi API, sicurezza dei dati e test di regressione.">
   <link rel="canonical" href="https://cestovatel69.cz/it/ai.html">
   <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/ai.html">
   <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/ai.html">
   <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/ai.html">
   <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/ai.html">
   <link rel="stylesheet" href="../assets/css/style.css?v=20261027-select-contrast">
-  <link rel="stylesheet" href="../assets/css/ai.css?v=2026-10-24-case">
+  <link rel="stylesheet" href="../assets/css/ai.css?v=20261027-learning">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🤖%3C/text%3E%3C/svg%3E">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="AI nella pratica — come uso l'intelligenza artificiale">
-  <meta property="og:description" content="Sviluppo le mie applicazioni, aggiorno il sito e perfeziono la casa intelligente. L’AI mi aiuta a trasformare un bisogno quotidiano in una soluzione: leggere il progetto, fare una modifica, trovare un errore e verificare il risultato.">
+  <meta property="og:title" content="AI nella pratica — guide e spiegazioni | Luděk Budinský">
+  <meta property="og:description" content="Guida pratica all’AI: richieste migliori, contesto, agenti, sviluppo, Git, chiavi API, sicurezza dei dati e test di regressione.">
   <meta property="og:url" content="https://cestovatel69.cz/it/ai.html">
   <meta property="og:locale" content="it_IT">
   <meta property="og:locale:alternate" content="cs_CZ">
@@ -49,152 +49,118 @@
   </div>
 </header>
 
-<main id="main">
-<div class="ai-page">
-  <section class="ai-hero" aria-labelledby="ai-title">
-    <div class="ai-hero-copy">
-      <p class="ai-eyebrow">Il mio metodo · AI in pratica</p>
-      <h1 id="ai-title">L’idea è mia.<br><span>Con l’AI la porto nella pratica.</span></h1>
-      <p class="ai-lead">Sviluppo le mie applicazioni, aggiorno il sito e perfeziono la casa intelligente. L’AI mi aiuta a trasformare un bisogno quotidiano in una soluzione: leggere il progetto, fare una modifica, trovare un errore e verificare il risultato.</p>
-      <div class="ai-cta-row"><a class="ai-button" href="#come-nasce">Come lavoro <span aria-hidden="true">↗</span></a><a class="ai-button ai-button-secondary" href="#progetti">Progetti concreti</a></div>
-      <p class="ai-updated">Aggiornato a ottobre 2026</p>
-    </div>
-    <aside class="ai-workbench" aria-label="Da un bisogno alla mia applicazione">
-      <p class="ai-workbench-heading">Da un bisogno alla mia applicazione</p>
-      <ol><li><span class="ai-step-index">01</span><div><strong>Descrivo il problema</strong><p>Che cosa mi serve e come riconosco il risultato.</p></div></li>
-<li><span class="ai-step-index">02</span><div><strong>Lavoriamo nel progetto</strong><p>Leggere i file, proporre e realizzare la modifica.</p></div></li>
-<li><span class="ai-step-index">03</span><div><strong>Verifichiamo il comportamento</strong><p>Test, anteprime e uso quotidiano.</p></div></li></ol>
-      <div class="ai-workbench-bottom"><span>ChatGPT</span><span>Codex</span><span>Claude Code</span></div>
-    </aside>
-  </section>
-
-  <nav class="ai-jump" aria-label="Come lavoro">
-    <a href="#chi-fa-cosa">Strumenti e ruoli</a><a href="#come-nasce">Come lavoro</a><a href="#caso-reale">Una correzione reale</a><a href="#progetti">Progetti concreti</a><a href="#esempi">Un incarico che porta a un risultato concreto</a>
-    <a href="#demo-vs-praxe">Demo e realtà</a><a href="#modely">Modelli</a><a href="#zdarma-placene">Gratis o a pagamento</a><a href="#skills-mcp">Skills e MCP</a>
-  </nav>
-
-  <section id="chi-fa-cosa" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">01 /</span><h2>Strumenti e ruoli</h2></div>
-    <p class="ai-section-intro">I ruoli si sovrappongono. Scelgo in base al compito e all’accesso al progetto, senza assegnare uno strumento solo agli audit e un altro solo al codice.</p>
-    <div class="ai-tools"><article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">↗</span><h3>ChatGPT</h3><p class="ai-tool-role">Ragionamento e incarico</p><p>Discuto idee, requisiti e report. Mi aiuta a definire il problema, scegliere il passo successivo e preparare un incarico chiaro.</p></article>
-<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">⌘</span><h3>Codex</h3><p class="ai-tool-role">Sviluppo, audit e verifica</p><p>Lavora direttamente sui file: esamina lo stato reale, implementa, modifica il sito, esegue test e controlla le anteprime nel browser. Anche questo aggiornamento segue tale metodo.</p></article>
-<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">✳</span><h3>Claude / Claude Code</h3><p class="ai-tool-role">Un altro collaboratore sul progetto</p><p>Lo uso per codice, correzioni, documentazione e analisi. Posso confrontare i risultati con un altro strumento e proseguire con un nuovo incarico.</p></article>
-<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">◇</span><h3>Gemini</h3><p class="ai-tool-role">AI in alcune applicazioni</p><p>Nella Collezione aiuta a leggere e identificare oggetti dalle fotografie. PT offre un analista AI facoltativo. L’uso concreto dipende dall’applicazione.</p></article></div>
-  </section>
-
-
-  <section id="ucetni-kniha-terminal" class="section ai-section" aria-labelledby="terminal-video-heading" style="margin:2rem 0">
-    <h2 id="terminal-video-heading">Come nasce il Libro contabile nel terminale</h2>
-    <p>Dal codice sorgente a un’app per le finanze personali. Questa breve dimostrazione presenta il progetto in React e TypeScript, la compilazione dell’interfaccia web e l’avvio del server Python con un database SQLite locale.</p>
-    <figure style="margin:1.25rem 0;max-width:960px">
-      <video controls playsinline preload="none" width="1280" height="720" poster="/assets/video/ucetni-kniha-terminal.png" aria-label="Come nasce il Libro contabile nel terminale" style="display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0b1020;border-radius:12px">
-        <source src="/assets/video/ucetni-kniha-terminal.mp4" type="video/mp4">
-      <track kind="captions" src="/assets/video/ucetni-kniha-terminal.cs.vtt" srclang="cs" label="Čeština">
-      <track kind="subtitles" src="/assets/video/ucetni-kniha-terminal.en.vtt" srclang="en" label="English">
-      <track kind="subtitles" src="/assets/video/ucetni-kniha-terminal.it.vtt" srclang="it" label="Italiano" default>
-        Il browser non supporta il video incorporato. Scarica il file MP4 dal link qui sotto.
-      </video>
-      <figcaption style="margin-top:.75rem">48 secondi · Voce narrante in ceco generata con ElevenLabs · Sottotitoli CS / EN / IT. Il terminale e l’esempio di codice sono illustrativi; la scena finale mostra l’app reale dell’11 ottobre 2026 con dati di esempio. Non è la registrazione della creazione dell’intera app in 48 secondi.</figcaption>
-    </figure>
-    <p><a href="/assets/video/ucetni-kniha-terminal.mp4" download>Scarica il video (MP4, 1,3 MB)</a></p>
-  </section>
-
-  <section id="come-nasce" class="ai-section">
-    <span id="vibe-coding" class="ai-anchor"></span>
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">02 /</span><h2>Come un’idea diventa una modifica funzionante</h2></div>
-    <p class="ai-section-intro">Parto da un bisogno nell’uso quotidiano. Per un errore cerco prima la causa; per una funzione definisco il comportamento e i limiti.</p>
-    <ol class="ai-process"><li><span class="ai-process-index" aria-hidden="true">01</span><h3>Incarico</h3><p>Descrivo obiettivo, prove e comportamento atteso, comprese le regole del progetto.</p></li>
-<li><span class="ai-process-index" aria-hidden="true">02</span><h3>Stato reale</h3><p>L’AI legge codice e documentazione. Distinguiamo le prove dalle ipotesi.</p></li>
-<li><span class="ai-process-index" aria-hidden="true">03</span><h3>Modifica</h3><p>Partiamo dalla soluzione esistente. La modifica ha un ambito preciso ed è verificabile.</p></li>
-<li><span class="ai-process-index" aria-hidden="true">04</span><h3>Verifica</h3><p>Test pertinenti, riproduzione dell’errore e navigazione dell’interfaccia. Il problema originale deve scomparire.</p></li>
-<li><span class="ai-process-index" aria-hidden="true">05</span><h3>Uso e nuovo ciclo</h3><p>Valuto il risultato nella pratica. Errori, log e osservazioni diventano il prossimo incarico.</p></li></ol>
-  </section>
-
-  <section id="caso-reale" class="ai-section" aria-labelledby="caso-reale-title">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">CASO /</span><h2 id="caso-reale-title">Quando le “calcolatrici” non calcolavano</h2></div>
-    <p class="ai-section-intro">Una correzione reale della mia pagina Finanze del 24 ottobre 2026. Le immagini mostrano la versione precedente del codice e la pagina online dopo la pubblicazione.</p>
-    <div class="ai-case-grid">
-      <article class="ai-case-step"><h3>1. Il problema</h3><p>La sezione delle calcolatrici conteneva solo schede che descrivevano i possibili calcoli. Non c’erano campi per inserire numeri né risultati. Ho verificato il vecchio codice nella cronologia Git e aperto quella versione nel browser.</p></article>
-      <article class="ai-case-step"><h3>2. La mia richiesta all’AI</h3><p>Ho chiesto prima la correzione della pagina di Lerici, poi vere calcolatrici interattive. La parte decisiva della richiesta originale in ceco era:</p><blockquote class="ai-case-quote" lang="cs">“pak vytvořit skutečné interaktivní kalkulačky”</blockquote><p>In italiano: “poi creare vere calcolatrici interattive”.</p></article>
-      <article class="ai-case-step"><h3>3. La modifica concreta</h3><p>Codex ha sostituito le schede descrittive con nove calcolatrici dotate di campi, pulsanti e risultati. I calcoli vengono eseguiti nel browser. Le stesse funzioni sono disponibili in ceco, inglese e italiano. Per esempio, l’interesse composto mostra il valore finale, i versamenti e la differenza del modello. È stato corretto anche lo spazio del titolo sotto la navigazione fissa.</p></article>
-      <article class="ai-case-step"><h3>4. La verifica</h3><p>Sei test automatici hanno controllato i calcoli, incluso il rendimento zero e gli input non validi. Nel browser ho aperto le tre versioni linguistiche, cambiato i valori e controllato risultati e messaggio di errore. Infine ho verificato la pubblicazione e il funzionamento sul sito online. I risultati del modello non sono consigli finanziari o fiscali.</p></article>
-    </div>
-    <p><a class="ai-case-link" href="finance/#fin-4-kalkulacky">Prova le calcolatrici nella pagina Finanze ↗</a></p>
-    <div class="ai-case-photos">
-      <figure><img src="../assets/img/ai/finance-before-20261024.png" width="1265" height="712" loading="lazy" alt="Pagina Finanze precedente con schede di testo, senza campi di calcolo"><figcaption><strong>Prima:</strong> commit storico b90fc2c, visualizzato in locale. Le schede non hanno campi né risultati.</figcaption></figure>
-      <figure><img src="../assets/img/ai/finance-after-20261024.png" width="1265" height="712" loading="lazy" alt="Pagina Finanze attuale con campi e risultati per l’interesse composto"><figcaption><strong>Dopo:</strong> pagina online del 24 ottobre 2026. Un esempio con dati ipotetici mostra gli input e il valore finale calcolato.</figcaption></figure>
-    </div>
-  </section>
-
-  <section id="progetti" class="ai-section">
-    <span id="come-uso" class="ai-anchor"></span>
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">03 /</span><h2>Che cosa costruisco con l’AI</h2></div>
-    <p class="ai-section-intro">L’AI partecipa allo sviluppo di questi progetti. Alcuni la usano anche dentro l’applicazione, per esempio per riconoscere fotografie o analizzare dati.</p>
-    <div class="ai-projects"><article class="ai-project"><div class="ai-project-top"><span>01</span><span>Investimenti e analisi</span></div><h3>Portfolio Tracker</h3><p>Con l’AI sviluppo transazioni, rendimento e viste analitiche. Conta risalire alla fonte di ogni cifra e dichiarare i dati mancanti. PT offre anche un analista AI facoltativo.</p><a href="aplikace/portfolio-tracker.html">Scopri il progetto <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>02</span><span>Documenti e quadro finanziario</span></div><h3>Libro contabile</h3><p>La mia contabilità collega documenti, transazioni e riepiloghi. L’AI aiuta a sviluppare importazioni, verifiche dei calcoli, diagnostica e un’interfaccia chiara.</p><a href="aplikace/ucetni-kniha.html">Scopri il progetto <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>03</span><span>Viaggi secondo le mie esigenze</span></div><h3>Italia Travel Planner</h3><p>Sviluppo percorsi e itinerari. Autopilot usa luoghi trovati nei dati cartografici; prezzi e disponibilità vanno verificati. L’AI aiuta anche con traduzioni e contenuti.</p><a href="aplikace/italia-travel.html">Scopri il progetto <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>04</span><span>Foto → bozza di scheda</span></div><h3>Collezione</h3><p>L’AI aiuta a identificare una moneta o un francobollo e a compilare i campi dalla foto. Una persona controlla la bozza; i prezzi indicativi richiedono fonti di confronto.</p><a href="aplikace/sbirka.html">Scopri il progetto <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>05</span><span>Regole per una casa reale</span></div><h3>Smart Home</h3><p>Con l’AI analizzo scenari, cerco errori negli script e preparo modifiche. La casa funziona con regole definite; le modifiche devono avere senso per chi la abita.</p><a href="smart-home/">Scopri il progetto <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>06</span><span>Contenuti, design e strumenti quotidiani</span></div><h3>Questo sito e altre app</h3><p>L’AI aiuta ad aggiornare testi, traduzioni e link, progettare interfacce e verificare anteprime. Altri progetti riguardano il lavoro da autista, i pasti e la scelta dell’auto.</p><a href="aplikace/">Scopri il progetto <span aria-hidden="true">↗</span></a></article></div>
-  </section>
-
-  <section id="ambiente-sviluppo" class="ai-section ai-environment">
-    <span id="ciclo-diagnostica" class="ai-anchor"></span>
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">04 /</span><h2>Il mio ambiente di lavoro</h2></div>
-    <p class="ai-section-intro">Un computer per lo sviluppo, un portatile per l’uso quotidiano e l’archivio domestico sostengono i progetti. Gli strumenti AI lavorano sui file e sui materiali che fornisco; i modelli possono funzionare presso un fornitore esterno.</p>
-    <div class="ai-environment-grid"><div><h3>Sviluppo</h3><p>Progetti, codice, documentazione e test sul computer di lavoro.</p></div>
-<div><h3>Pratica</h3><p>Uso l’applicazione e noto dove va migliorata.</p></div>
-<div><h3>Continuità</h3><p>Backup, storia delle modifiche e contesto per la sessione successiva.</p></div></div>
-  </section>
-
-  <section id="esempi" class="ai-section ai-brief">
-    <span id="perche-non-funziona" class="ai-anchor"></span>
-    <div><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">05 /</span><h2>Un incarico che porta a un risultato concreto</h2></div><p>Il contesto e un obiettivo chiaro aiutano più di tutto. Questo esempio è simile all’incarico dietro l’aggiornamento di oggi.</p></div>
-    <blockquote>Esamina la pagina Finanza. Mostra ancora la vecchia demo contabile, ma oggi uso PT e il mio Libro contabile. Verifica che cosa il sito già racconta, aggiorna testi e traduzioni e controlla link e anteprime. Prepara le modifiche in locale; approverò la pubblicazione separatamente.</blockquote>
-  </section>
-
-  <section id="ai-vs-io" class="ai-section">
-    <span id="test" class="ai-anchor"></span><span id="dove-attenzione" class="ai-anchor"></span>
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">06 /</span><h2>Che cosa fa l’AI e che cosa decido io</h2></div>
-    <div class="ai-ownership"><article><h3>L’AI aiuta a svolgere il lavoro</h3><ul><li>Legge i materiali forniti e cerca incongruenze.</li><li>Propone soluzioni e modifica codice e testi.</li><li>Esegue le verifiche pertinenti e riassume il risultato.</li></ul></article><article><h3>Io tengo la direzione</h3><ul><li>Definisco bisogni, priorità e ambito.</li><li>Valuto se il risultato funziona nella pratica.</li><li>Approvo pubblicazione e modifiche operative secondo l’incarico.</li></ul></article></div>
-    <p class="ai-data-note">Un’applicazione locale e un modello AI nel cloud sono cose diverse. Per esempio, riconoscere una foto tramite Gemini comporta l’elaborazione della foto selezionata presso un servizio esterno. Conta quali materiali fornisco all’AI.</p>
-  </section>
-
-  <section id="demo-vs-praxe" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">07 /</span><h2>Un’app in una sera? Una demo non è un prodotto finito.</h2></div>
-    <p class="ai-section-intro">L’AI può creare rapidamente una schermata, un modulo o un grafico. “Senza scrivere codice a mano” non significa “senza lavoro, comprensione e responsabilità”. Una breve dimostrazione non prova l’affidabilità dell’intera applicazione.</p>
-    <div class="ai-ownership"><article class="ai-project"><h3>Che cosa fa un prototipo</h3><p>Mostra l’idea, il design e un percorso di base con dati dimostrativi. Utile per scegliere la direzione, non automaticamente adatto alla mia contabilità reale.</p></article><article class="ai-project"><h3>Che cosa deve fare un’app vera</h3><p>Gestire calcoli corretti, errori, importazioni ripetute, salvataggio, aggiornamenti e ripristino dei backup. La verifica continua nell’uso quotidiano.</p></article></div>
-    <div class="ai-callout"><h3>Nella finanza devono tornare i numeri, non solo il design.</h3><p>PT e Účetní kniha richiedono controlli su commissioni, valute, arrotondamenti e significato del rendimento. I trasferimenti tra i miei conti non devono creare false entrate. Importare due volte lo stesso estratto non deve duplicare i movimenti. Un backup conta solo se permette di recuperare i dati.</p><p><strong>L’AI aiuta a produrre il codice. La correttezza va dimostrata con test e risultati verificati, non con un “fatto” del modello.</strong></p></div>
-    <details class="ai-details"><summary>Come valutare corsi e promesse di sviluppo facile</summary><p>Un corso a pagamento o Discord può offrire struttura e supporto. Cerco anche correzione degli errori, controllo delle versioni, sicurezza e test, non soltanto la prima demo riuscita. La durata del video non è il tempo necessario per finire il mio progetto.</p><p>L’AI non è una scorciatoia automatica per capire: un esperimento di Anthropic evidenzia l’importanza di chiedere spiegazioni e imparare attivamente. Non è un verdetto universale contro l’AI. <a href="https://www.anthropic.com/research/AI-assistance-coding-skills">Ricerca Anthropic</a></p></details>
-  </section>
-
-  <section id="modely" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">08 /</span><h2>Quale modello per quale lavoro?</h2></div>
-    <p class="ai-section-intro">Panoramica orientativa basata sulle descrizioni dei produttori, verificata il 10 ottobre 2026. Non è una classifica indipendente né un elenco di modelli che uso tutti personalmente. Chat, strumenti di sviluppo e API possono offrire accessi diversi.</p>
-    <div class="ai-models"><article class="ai-project"><h3>OpenAI</h3><p><strong>GPT-6 Astra:</strong> problemi difficili, analisi approfondite e progettazione complessa.</p><p><strong>GPT-6.1 Sol:</strong> lavoro complesso bilanciando tempi e costi.</p><p><strong>GPT-6 Luna:</strong> piccole modifiche circoscritte, classificazione e attività ripetute.</p><a href="https://learn.chatgpt.com/docs/model-selection">Selezione ufficiale dei modelli ↗</a></article><article class="ai-project"><h3>Anthropic · Claude</h3><p><strong>Opus 5.5:</strong> attività impegnative in più passaggi e progetti complessi.</p><p><strong>Sonnet 5.5:</strong> equilibrio pratico tra capacità, velocità e costi per codice e documenti.</p><p><strong>Haiku 5.5:</strong> riepiloghi rapidi, classificazione e attività parziali.</p><p class="ai-source-links"><a href="https://www.anthropic.com/claude/opus">Opus</a> · <a href="https://www.anthropic.com/claude/sonnet">Sonnet</a> · <a href="https://www.anthropic.com/claude/haiku">Haiku</a></p></article><article class="ai-project"><h3>Google · Gemini</h3><p><strong>Pro:</strong> famiglia per ragionamenti impegnativi; il catalogo include Gemini 3.1 Pro Preview.</p><p><strong>Flash:</strong> lavoro rapido con testo, codice e contenuti multimodali; il catalogo attuale include Gemini 3.8 Flash.</p><p><strong>Flash-Lite:</strong> famiglia più economica per grandi volumi di attività semplici. Preview non equivale a una versione stabile.</p><a href="https://ai.google.dev/gemini-api/docs/models">Catalogo API ufficiale ↗</a></article></div>
-    <p class="ai-data-note"><strong>Un modello non è uno strumento.</strong> ChatGPT e Gemini sono anche applicazioni; Codex e Claude Code sono ambienti di lavoro con accesso a strumenti. Il risultato dipende anche dall’incarico, dal contesto, dai permessi e dalla verifica. Un modello più potente o più ragionamento non garantisce la correttezza.</p>
-  </section>
-
-  <section id="zdarma-placene" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">09 /</span><h2>Basta l’AI gratuita? Dipende dal lavoro.</h2></div>
-    <p class="ai-section-intro">Gratis non significa automaticamente scadente e a pagamento non significa corretto. Le differenze riguardano spesso modelli disponibili, capacità d’uso e strumenti, non soltanto la qualità di una risposta.</p>
-    <div class="ai-ownership"><article class="ai-project"><h3>Gratis: un buon punto di partenza</h3><p>Spiegazioni, traduzioni, testi brevi, idee e piccoli prototipi. A volte è disponibile anche un modello capace, con limiti inferiori. Se completo il lavoro e lo verifico, l’etichetta “Pro” da sola non giustifica una spesa.</p></article><article class="ai-project"><h3>A pagamento: spazio per lavorare con continuità</h3><p>Può essere utile per sviluppo regolare, analisi lunghe e molti cicli di correzione. Secondo il piano offre limiti superiori, altri modelli o strumenti di sviluppo. Un abbonamento non significa generalmente uso illimitato.</p></article></div>
-    <div class="ai-callout"><h3>Abbonamento alla chat ≠ AI nella mia applicazione</h3><p>Un analista AI o il riconoscimento di foto tramite API hanno condizioni e fatturazione proprie. Non considero automaticamente le chiamate API già pagate dall’abbonamento; alcuni piani possono includere crediti. Hosting, archiviazione e servizi dati possono costare a parte.</p><p><strong>Prima provo il mio caso concreto. Pago per una capacità necessaria o un limite specifico, non per la promessa di risposte perfette.</strong></p></div>
-    <p class="ai-data-note">Prezzi, disponibilità e limiti cambiano secondo prodotto, regione e account. Condizioni attuali: <a href="https://learn.chatgpt.com/docs/pricing">OpenAI</a> · <a href="https://claude.com/pricing">Claude</a> · <a href="https://support.google.com/gemini/answer/16275805">Gemini</a> · <a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini API</a>. Pagare non garantisce da solo la privacy: verifico le condizioni prima di fornire dati sensibili.</p>
-  </section>
-
-  <section id="skills-mcp" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">10 /</span><h2>Skills, plugin e MCP: procedure e accessi</h2></div>
-    <p class="ai-section-intro">Questi componenti possono semplificare il lavoro, ma hanno ruoli diversi. La prima applicazione non richiede tutte le integrazioni.</p>
-    <dl class="ai-glossary"><div><dt>Skill</dt><dd>Istruzioni per attività ripetibili, eventualmente con script e riferimenti. Per esempio, verificare un’importazione o eseguire test. Non è ulteriore addestramento del modello.</dd></div><div><dt>Plugin</dt><dd>Pacchetto installabile di capacità. Può contenere skills, strumenti e collegamenti MCP. Contano origine e contenuto.</dd></div><div><dt>Connettore</dt><dd>Collegamento a un servizio o account. Prima di connetterlo controllo quali dati espone e se consente anche la scrittura.</dd></div><div><dt>Server MCP</dt><dd>Fornisce strumenti e dati tramite un’interfaccia comune. Può essere locale o remoto. MCP non è un certificato di sicurezza.</dd></div></dl>
-    <p class="ai-data-note">Procedura pratica: scegliere una fonte affidabile, leggere le istruzioni, concedere i permessi minimi e provare un’attività con dati di test. Separare scrittura, cancellazione e pubblicazione dalla lettura. Più estensioni non significano automaticamente risultati migliori. <a href="https://developers.openai.com/plugins/concepts/plugins">Documentazione dei plugin</a> · <a href="https://modelcontextprotocol.io/docs/draft/tutorials/security/security_best_practices">Sicurezza MCP</a></p>
-  </section>
-
-  <section class="ai-closing">
-    <h2>Il risultato migliore è uno strumento che uso davvero.</h2><p>L’AI mi aiuta a sviluppare continuamente le mie soluzioni: da una piccola idea o correzione a un’applicazione che entra nella mia giornata.</p><a class="ai-button" href="aplikace/">Scopri le mie applicazioni <span aria-hidden="true">↗</span></a>
-  </section>
+<main id="main"><div class="ai-page ai-page--learning">
+<section aria-labelledby="ai-title" class="ai-hero">
+<div class="ai-hero-copy"><p class="ai-eyebrow">AI nella pratica · spiegazioni e guide</p>
+<h1 id="ai-title">Come lavorare con l’AI.<br/><span>Dalla richiesta al risultato.</span></h1>
+<p class="ai-lead">Orientati tra gli strumenti, scrivi richieste migliori e scopri cosa possono fare gli agenti AI. Con esempi semplici da provare.</p>
+<div class="ai-cta-row"><a class="ai-button" href="#zacatek">Inizia dalle basi ↗</a><a class="ai-button ai-button-secondary" href="#zadani">Prova una richiesta</a></div>
+<p class="ai-updated">A cura di Budinský Luděk · Aggiornato il 27 ottobre 2026</p>
 </div>
-</main>
+<aside aria-label="Cosa imparerai" class="ai-workbench"><p class="ai-workbench-heading">Scegli il tuo obiettivo</p><ol>
+<li><span class="ai-step-index">01</span><div><strong>Comunicare con l’AI</strong><p>Richieste, contesto e verifica della risposta.</p></div></li>
+<li><span class="ai-step-index">02</span><div><strong>Capire gli strumenti</strong><p>Modelli, chat, agenti e le loro capacità.</p></div></li>
+<li><span class="ai-step-index">03</span><div><strong>Usare l’AI nel lavoro</strong><p>Sviluppo, procedure ripetibili e automazione.</p></div></li>
+</ol></aside>
+</section>
+<nav aria-label="Argomenti della guida" class="ai-jump"><a href="#zacatek">Basi</a><a href="#zadani">Richieste migliori</a><a href="#nastroje">Strumenti</a><a href="#agenti">Agenti</a><a href="#vyvoj">Sviluppo con l’AI</a><a href="#verzovani">Git e versioni</a><a href="#modely">Modelli e costi</a><a href="#skills-mcp">Skills e MCP</a><a href="#bezpecnost">Cosa non condividere</a><a href="#api-klice">Chiavi API</a><a href="#overeni">Controlli e regressioni</a></nav>
+<section class="ai-section" id="zacatek"><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">01 /</span><h2>Primo passo: un piccolo compito, un risultato chiaro</h2></div>
+<p class="ai-section-intro">Inizia con un compito di cui puoi valutare la risposta: per esempio abbreviare un tuo testo o confrontare due offerte fornite da te.</p>
+<div class="ai-projects"><article class="ai-project"><h3>Fornisci il materiale all’AI</h3><p>Inserisci il testo, la tabella o la descrizione della situazione. Indica a chi è destinato il risultato e cosa va mantenuto.</p><p class="ai-mini-example">«Abbrevia questa email a cinque frasi. Mantieni la data dell’incontro e un tono cortese.»</p></article>
+<article class="ai-project"><h3>Definisci il risultato</h3><p>Invece di «miglioralo», descrivi cosa vuoi ottenere: una proposta breve, un elenco di domande o una tabella delle differenze.</p><p class="ai-mini-example">«Elenca le differenze di prezzo, le condizioni e ciò che manca nell’offerta.»</p></article>
+<article class="ai-project"><h3>Controlla il risultato</h3><p>Controlla nomi, numeri e significato. Se qualcosa non torna, indica il problema e chiedi di correggere quella parte.</p><p class="ai-mini-example">«Nel secondo punto manca il trasporto. Aggiungilo e lascia invariati gli altri punti.»</p></article></div>
+<details class="ai-details"><summary>Perché una risposta può sembrare corretta senza esserlo?</summary><p>Un testo scorrevole non dimostra che sia corretto. L’AI può aggiungere un dato non documentato o fraintendere la richiesta. Chiedile di distinguere i fatti documentati dalle ipotesi. Confronta i dati importanti con il materiale originale o una fonte affidabile.</p></details>
+</section>
+<section class="ai-section" id="zadani"><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">02 /</span><h2>Una richiesta verificabile</h2></div>
+<p class="ai-section-intro">Una buona richiesta comprende obiettivo, materiale, limiti e modalità di verifica. Non serve un lungo elenco di formule magiche.</p>
+<div class="ai-brief"><div><h3>Esempio: confrontare due alloggi</h3><p>Inserisci due offerte reali nel modello. L’AI deve basarsi sul loro contenuto e segnalare le condizioni mancanti.</p><p>Prima di prenotare, verifica prezzo e disponibilità direttamente con il fornitore. L’esempio mostra come usare i materiali e non effettua prenotazioni.</p><button class="ai-button ai-copy" data-copy="ai-prompt" type="button">Copia la richiesta</button><p aria-live="polite" class="ai-data-note" id="ai-copy-status" role="status"></p></div>
+<blockquote id="ai-prompt">Confronta queste due offerte di alloggio per due persone e tre notti. Usa soltanto i dati del materiale fornito. In una tabella indica prezzo totale, posizione, colazione, parcheggio e condizioni di cancellazione. Segna come «non accertato» ciò che manca. Concludi con tre domande da fare prima di prenotare. Non prenotare e non pagare nulla.
+
+Offerta A: [inserisci il testo]
+Offerta B: [inserisci il testo]</blockquote></div>
+<details class="ai-details"><summary>Cos’è il contesto e come fornirlo?</summary><p>Il contesto comprende le informazioni e i materiali su cui l’AI deve basarsi. Per un testo servono l’originale e il destinatario; per il codice, i file pertinenti e la descrizione dell’errore. Aggiungi le informazioni necessarie e rimuovi i dati personali superflui. Nei lavori lunghi riassumi periodicamente cosa resta valido e cosa è cambiato.</p></details>
+</section>
+<section class="ai-section" id="nastroje"><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">03 /</span><h2>Modelli, chat e strumenti di lavoro</h2></div>
+<p class="ai-section-intro">Questi termini vengono spesso confusi. Distinguerli aiuta a capire perché la stessa AI in un ambiente risponde soltanto e in un altro può modificare un file.</p>
+<div class="ai-tools"><article class="ai-tool"><h3>Modello</h3><p>Genera risposte a partire dai dati forniti. Il modello scelto influisce su capacità, velocità e costo.</p></article><article class="ai-tool"><h3>Chat</h3><p>L’applicazione in cui comunichi con l’AI. A seconda del prodotto e dell’account, può offrire anche file, ricerca e altri strumenti.</p></article><article class="ai-tool"><h3>Agente</h3><p>Lavora per passi ripetuti: propone un procedimento, usa uno strumento disponibile, legge il risultato e continua.</p></article><article class="ai-tool"><h3>Ambiente di lavoro</h3><p>Determina a quali file, comandi e servizi può accedere l’AI e con quali autorizzazioni.</p></article></div>
+<p class="ai-data-note">Un esempio di strumento per lavorare su un progetto è <a href="https://code.claude.com/docs/en/overview" rel="noopener" target="_blank">Claude Code</a>. Verifica sempre le capacità del prodotto nella sua documentazione.</p>
+</section>
+<section class="ai-section" id="agenti"><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">04 /</span><h2>Da una risposta a un agente AI</h2></div>
+<p class="ai-section-intro">Un agente ha bisogno di un obiettivo raggiungibile e di limiti chiari. Per esempio preparare un riepilogo dei documenti accessibili e salvarlo come bozza in una cartella precisa.</p>
+<ol class="ai-agent-loop"><li>Capire l’obiettivo</li><li>Usare uno strumento</li><li>Controllare il risultato</li><li>Continuare o terminare</li></ol>
+<details class="ai-details"><summary>Esempio di compito e limiti dell’agente</summary><p>«Esamina questi documenti, prepara un elenco delle scadenze e indica la fonte di ciascuna. Salva il risultato come bozza. Non modificare i documenti e non inviare messaggi a nessuno.»</p><p>Il compito ha un risultato preciso. Leggere i materiali e preparare una bozza richiede autorizzazioni diverse da eliminare, inviare o pagare. Automatizza un’attività ripetuta solo dopo aver verificato un’esecuzione completa.</p></details>
+<details class="ai-details"><summary>Più agenti aiutano sempre?</summary><p>I compiti si possono dividere, ma qualcuno deve unire i risultati e risolvere le incongruenze. Per una piccola modifica può essere più chiaro un solo compito ben definito. La divisione serve quando le parti sono indipendenti e i risultati verificabili.</p></details>
+</section>
+<section class="ai-section" id="vyvoj"><span class="ai-anchor" id="vibe-coding"></span><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">05 /</span><h2>Sviluppare tramite richieste: dopo la prima bozza</h2></div>
+<p class="ai-section-intro">Nel cosiddetto vibe coding descrivi il comportamento desiderato con parole comuni e l’AI aiuta a preparare il codice. È essenziale saper valutare cosa fa davvero il risultato.</p>
+<div class="ai-ownership"><article><h3>Prototipo</h3><p>Mostra l’aspetto e un percorso essenziale con dati di prova. Aiuta a capire se l’idea si usa bene.</p></article><article><h3>Uno strumento utilizzabile</h3><p>Richiede anche salvataggio e ripristino dei dati, gestione degli errori, calcoli corretti e verifica dell’uso ripetuto.</p></article></div>
+<details class="ai-details"><summary>Come richiedere una piccola correzione in un progetto esistente</summary><p>Descrivi come riprodurre l’errore, cosa accade e cosa dovrebbe accadere. Chiedi prima di individuare la causa, poi una modifica limitata e la verifica dello stesso procedimento. Valuta l’anteprima o il test separatamente dall’affermazione dell’AI che il lavoro è finito.</p><p class="ai-mini-example">«Con un campo vuoto il modulo mostra zero come risultato valido. Individua la causa, correggi solo questo comportamento e verifica sia il campo vuoto sia un valore normale. Per ora non pubblicare la modifica.»</p></details>
+</section>
+<section class="ai-section" id="verzovani">
+<div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">06 /</span><h2>Versioni, Git e GitHub: seguire ogni modifica</h2></div>
+<p class="ai-section-intro">Quando modifichi un progetto, devi sapere cosa è cambiato, perché e a quale stato verificato puoi tornare. Aiutano la cronologia, le versioni contrassegnate e un breve registro delle novità.</p>
+<div class="ai-projects"><article class="ai-project"><h3>Versione dell’applicazione</h3><p>Un identificativo di versione, per esempio <code>1.4.2</code>. Permette all’utente di riconoscere la versione in uso. Il changelog spiega correzioni, nuove funzioni ed eventuali modifiche alla gestione dei dati.</p></article><article class="ai-project"><h3>Git</h3><p>Uno strumento per conservare la cronologia dei file. Confronta le modifiche, registra interventi collegati in commit e permette di lavorare su rami. Le operazioni di base avvengono localmente sul computer.</p></article><article class="ai-project"><h3>GitHub</h3><p>Un servizio per ospitare repository, collaborare e controllare proposte di modifica. Può eseguire controlli o pubblicazioni automatiche se il progetto è configurato in questo modo.</p></article></div>
+<details class="ai-details"><summary>Glossario: commit, rami, push e pull request</summary><dl class="ai-glossary"><div><dt>Repository</dt><dd>Il progetto e la sua cronologia versionata.</dd></div><div><dt>Commit</dt><dd>Un punto registrato nella cronologia con un messaggio sulla modifica. Nasce dalle modifiche selezionate e preparate; non include il lavoro non salvato nell’editor.</dd></div><div><dt>Diff</dt><dd>Un confronto che mostra aggiunte, eliminazioni e modifiche.</dd></div><div><dt>Ramo e merge</dt><dd>Un ramo consente di sviluppare una modifica separatamente. Il merge la integra in un altro ramo; eventuali conflitti vanno risolti.</dd></div><div><dt>Push e pull</dt><dd>Push invia la cronologia locale a un repository remoto. Pull scarica e integra le modifiche da un ramo remoto.</dd></div><div><dt>Pull request (PR)</dt><dd>Una proposta di integrazione delle modifiche su GitHub. Permette di esaminare differenze, commenti e risultati dei controlli prima del merge.</dd></div></dl><p class="ai-data-note"><a href="https://git-scm.com/docs/git" rel="noopener" target="_blank">Comandi Git</a> · <a href="https://docs.github.com/en/pull-requests/reference/pull-requests" rel="noopener" target="_blank">GitHub — pull request</a></p></details>
+<details class="ai-details"><summary>Cosa significano 1.4.2 e beta?</summary><p>Se un progetto usa il versionamento semantico (SemVer), i numeri indicano la compatibilità dell’interfaccia pubblica:</p><ul><li><strong>PATCH:</strong> una correzione compatibile, per esempio <code>1.4.2 → 1.4.3</code>.</li><li><strong>MINOR:</strong> una nuova funzione retrocompatibile, per esempio <code>1.4.2 → 1.5.0</code>.</li><li><strong>MAJOR:</strong> una modifica incompatibile dell’interfaccia pubblica, per esempio <code>1.4.2 → 2.0.0</code>.</li></ul><p><code>1.5.0-beta.1</code> indica una versione preliminare. Altre etichette come «work» dipendono dalle regole del progetto. Il numero di versione o l’etichetta «final» non dimostrano da soli che l’applicazione sia corretta.</p><p><a href="https://semver.org/lang/it/" rel="noopener" target="_blank">Specifiche SemVer</a></p></details>
+<details class="ai-details"><summary>Salvare, inviare e pubblicare una modifica</summary><p><strong>Commit</strong> registra le modifiche selezionate nella cronologia locale.<strong>Push</strong> le invia a un server remoto.<strong>Pubblicazione</strong> rende disponibile agli utenti una determinata versione.</p><p>Un progetto può pubblicarsi automaticamente dopo un push o un merge nel ramo principale. Prima di inviare, verifica cosa si avvierà. GitHub Actions può per esempio eseguire il build, i test e poi la pubblicazione.</p><p><a href="https://docs.github.com/en/actions/get-started/understand-github-actions" rel="noopener" target="_blank">GitHub — controlli e pubblicazioni automatiche</a></p></details>
+<details class="ai-details"><summary>Come preparare un ritorno alla versione precedente</summary><p>Annota un commit verificato o contrassegna una versione con un tag, per esempio <code>v1.4.2</code>. Un tag identifica un punto della cronologia; il changelog descrive le modifiche per gli utenti. Il comando <code>git revert</code> può creare un nuovo commit che annulla una modifica precedente mantenendo la cronologia.</p><p>Esegui separatamente il backup di database, documenti e impostazioni. Tornare al vecchio codice non ripristina necessariamente i dati modificati dalla nuova versione. Per i cambiamenti di formato dei dati prepara e verifica una procedura di recupero.</p><p><a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging" rel="noopener" target="_blank">Git — tag di versione</a></p></details>
+<p class="ai-data-note">Verificato il 27 ottobre 2026. Per approfondire: <a href="https://docs.github.com/en/get-started/using-git/about-git" rel="noopener" target="_blank">Git e GitHub nella documentazione ufficiale</a>. Non salvare password, chiavi API o veri dati privati nella cronologia del progetto.</p>
+</section>
+<section class="ai-section" id="modely"><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">07 /</span><h2>Scegliere un modello senza spendere troppo</h2></div>
+<p class="ai-section-intro">Prova lo stesso compito sui tuoi materiali. Confronta correttezza, correzioni necessarie, attesa e costo. Il nome del modello da solo non garantisce il risultato.</p>
+<details class="ai-details"><summary>Cosa significa effort, l’intensità del ragionamento?</summary><p>Negli strumenti che offrono questa opzione, regola l’impegno di ragionamento del modello. Un livello maggiore può aiutare nei compiti complessi, ma non garantisce correttezza. Confronta la stessa richiesta a livelli diversi, considerando tempo e consumo.</p><p><a href="https://learn.chatgpt.com/docs/model-selection" rel="noopener" target="_blank">Documentazione ufficiale OpenAI — modelli e reasoning effort</a></p></details>
+<details class="ai-details" id="zdarma-placene"><summary>Quando basta il gratuito e cosa comprende un abbonamento?</summary><p>Inizia con uno strumento disponibile e un compito preciso. Un piano a pagamento può servire se raggiungi un limite o ti occorre una funzione specifica. Contano le condizioni del prodotto. Un abbonamento alla chat non paga automaticamente un’API separata o l’hosting della tua applicazione.</p><p><a href="https://learn.chatgpt.com/docs/pricing" rel="noopener" target="_blank">OpenAI</a> · <a href="https://claude.com/pricing" rel="noopener" target="_blank">Claude</a> · <a href="https://ai.google.dev/gemini-api/docs/pricing" rel="noopener" target="_blank">Gemini API</a></p></details>
+<details class="ai-details"><summary>Dove verificare i modelli attualmente disponibili?</summary><p>Chat e API possono offrire modelli diversi. Prima di scegliere, verifica disponibilità per il tuo account, prezzo ed eventuale etichetta preview.</p><p><a href="https://learn.chatgpt.com/docs/model-selection" rel="noopener" target="_blank">OpenAI</a> · <a href="https://platform.claude.com/docs/en/about-claude/models/overview" rel="noopener" target="_blank">Claude</a> · <a href="https://ai.google.dev/gemini-api/docs/models" rel="noopener" target="_blank">Gemini</a></p></details>
+</section>
+<section class="ai-section" id="skills-mcp"><div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">08 /</span><h2>Skills, plugin e MCP spiegati semplicemente</h2></div>
+<p class="ai-section-intro">Le estensioni rispondono a esigenze diverse: ripetere una procedura, collegare un servizio o rendere disponibile uno strumento. Inizia da ciò che serve davvero al tuo compito.</p>
+<dl class="ai-glossary"><div><dt>Skill</dt><dd>Una procedura per attività ripetute, spesso con istruzioni e materiali. Per esempio come preparare un report o verificare una modifica. Da sola non riaddestra il modello.</dd></div><div><dt>Plugin</dt><dd>Un pacchetto che estende le capacità dell’applicazione. A seconda dell’ambiente può unire istruzioni, skills, strumenti e collegamenti a servizi.</dd></div><div><dt>Connettore</dt><dd>Un collegamento a un servizio o account. Prima di attivarlo, verifica quali dati rende accessibili e se permette anche la scrittura.</dd></div><div><dt>Server MCP</dt><dd>Rende disponibili strumenti e dati tramite un’interfaccia comune. Può funzionare localmente o da remoto. Devi comunque valutare autorizzazioni e affidabilità della fonte.</dd></div></dl>
+<details class="ai-details"><summary>La differenza in un esempio</summary><p>Vuoi preparare regolarmente un riepilogo di documenti. Uno skill può descrivere formato e controlli del report. Un connettore dà accesso alla cartella. Un server MCP può fornire gli strumenti. Un plugin può riunire alcune di queste capacità. La combinazione dipende dall’applicazione.</p><p><a href="https://developers.openai.com/plugins/concepts/plugins" rel="noopener" target="_blank">Documentazione dei plugin</a> · <a href="https://modelcontextprotocol.io/docs/learn/architecture" rel="noopener" target="_blank">Architettura MCP</a></p></details>
+</section>
+<section class="ai-section" id="bezpecnost">
+<div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">09 /</span><h2>Cosa non inserire mai in una chat AI</h2></div>
+<p class="ai-section-intro">Prima di inviare un messaggio, file o screenshot, controlla cosa contiene. Queste regole riguardano i normali campi di chat e gli allegati; per accedere usa l’apposita finestra di login o autorizzazione del servizio.</p>
+<div class="ai-callout"><h3>I segreti di accesso non vanno in chat</h3><ul>
+<li><strong>Password, PIN e codici di accesso:</strong> anche codici SMS monouso, codici di recupero e link che permettono di accedere o recuperare un account.</li>
+<li><strong>Chiavi API, token e chiavi private:</strong> per esempio una chiave di un servizio AI, un token GitHub, una chiave SSH privata o un cookie di sessione attivo. Controlla anche file come <code>.env</code> e i log.</li>
+<li><strong>Frasi di recupero dei portafogli crypto:</strong> non inviare seed phrase o chiavi private in chat, nemmeno come foto. Chi le ottiene può controllare il portafoglio.</li>
+<li><strong>Dati che consentono di usare indebitamente una carta:</strong> numero completo, scadenza, CVV/CVC, PIN e codici di conferma del pagamento.</li>
+</ul></div>
+<h3 style="margin-top:1.8rem">Altri materiali sensibili: prima rimuovi i dati e verifica le autorizzazioni</h3>
+<div class="ai-projects"><article class="ai-project"><h3>Documenti e identità</h3><p>Scansioni di carta d’identità o passaporto, codici identificativi personali, firme, indirizzi precisi, contatti personali o foto di bambini. Per una normale domanda usa dati inventati o sostitutivi.</p></article><article class="ai-project"><h3>Salute e privacy</h3><p>Referti medici, foto intime, comunicazioni private e documenti con dati di altre persone. Inserisci soltanto il passaggio necessario, privo di dettagli identificativi.</p></article><article class="ai-project"><h3>Lavoro e finanze</h3><p>Contratti non pubblici, buste paga, estratti conto, elenchi clienti e codice aziendale riservato. Non caricarli in un normale strumento AI pubblico senza autorizzazione; rispetta le regole del datore di lavoro.</p></article></div>
+<p class="ai-data-note">Un piano a pagamento o la disattivazione dell’uso delle chat per l’addestramento non autorizzano a condividere dati altrui o informazioni riservate. Contano il servizio, le impostazioni e le regole applicabili ai dati.</p>
+<details class="ai-details"><summary>Come preparare materiali più sicuri</summary><ol><li>Invia solo ciò che serve. Sostituisci i nomi, per esempio, con <code>[CLIENTE A]</code>, il numero di conto con <code>[CONTO]</code> e le credenziali con <code>[RIMOSSO]</code>.</li><li>Negli screenshot controlla anche barra superiore, indirizzo, codici QR e finestre vicine. Nei documenti considera commenti, fogli nascosti e metadati.</li><li>Rimuovi i dati sensibili o usa uno strumento di oscuramento che elimini davvero il contenuto. Un rettangolo nero sopra il testo in un documento modificabile può lasciare intatto il testo originale.</li><li>Controlla il file finale e verifica che i contenuti rimossi non siano leggibili o copiabili. Sostituire un nome può non bastare se altri dettagli permettono di identificare la persona.</li></ol><p class="ai-data-note"><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/security/disclosing-documents-to-the-public-securely/" rel="noopener" target="_blank">ICO — dati nascosti e rimozione sicura dei contenuti</a>.</p><p class="ai-mini-example">Invece di una busta paga completa: «Spiega la differenza tra retribuzione lorda e netta con un esempio inventato. Non serve calcolare il mio stipendio reale.»</p></details>
+<details class="ai-details"><summary>Cosa fare se ho già inviato una password o una chiave?</summary><p>Eliminare il messaggio non mette al sicuro un accesso compromesso. Cambia la password nel servizio originale; revoca e sostituisci il token o la chiave API esposti. Controlla dispositivi connessi e attività dell’account. Per dati di lavoro avvisa l’amministratore, per quelli della carta contatta la banca. Per una frase di recupero segui la procedura ufficiale del fornitore del portafoglio.</p></details>
+<p class="ai-data-note">Fonti verificate il 27 ottobre 2026: <a href="https://osveta.nukib.gov.cz/mod/page/view.php?id=4725" rel="noopener" target="_blank">NÚKIB — rischi dell’uso dell’AI</a> · <a href="https://www.ncsc.gov.uk/section/respond-recover/hacked-accounts" rel="noopener" target="_blank">NCSC — proteggere un account compromesso</a> · <a href="https://support.metamask.io/stay-safe/safety-in-web3/basic-safety-and-security-tips-for-metamask" rel="noopener" target="_blank">MetaMask — proteggere chiavi e frasi di recupero</a>.</p>
+</section>
+<section class="ai-section" id="api-klice">
+<div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">10 /</span><h2>Chiavi API: come usarle in sicurezza</h2></div>
+<p class="ai-section-intro">Una chiave API permette a un’applicazione di accedere a un servizio. L’abuso di una chiave segreta può addebitare al tuo account richieste di altri. Queste indicazioni riguardano chiavi segrete per API lato server, per esempio di servizi AI.</p>
+<div class="ai-projects"><article class="ai-project"><h3>1. Creala presso il fornitore</h3><p>Usa la gestione ufficiale dell’account. Separa sviluppo e produzione e assegna solo le autorizzazioni necessarie. Usa scadenza e restrizioni di accesso, se disponibili.</p></article><article class="ai-project"><h3>2. Conservala fuori dal codice</h3><p>Per lo sviluppo locale usa una variabile d’ambiente; in produzione, i segreti dell’hosting o un gestore di segreti. Non inserire la chiave in chat, documentazione, screenshot o log.</p></article><article class="ai-project"><h3>3. Usala sul server</h3><p>Il browser invia una richiesta al tuo server. Il server chiama l’API con la chiave e restituisce la risposta. La chiave segreta non viene inviata al visitatore.</p></article></div>
+<div class="ai-callout"><h3>Una pagina pubblica non può custodire una chiave segreta</h3><p>Non inserirla nell’HTML, nel JavaScript per il browser o in <code>localStorage</code>. Variabili come <code>VITE_…</code> o <code>NEXT_PUBLIC_…</code> possono finire nel build pubblico. Nascondere o codificare il valore non lo rende segreto. <a href="https://vite.dev/guide/env-and-mode" rel="noopener" target="_blank">Vite</a> · <a href="https://nextjs.org/docs/app/guides/environment-variables" rel="noopener" target="_blank">Next.js</a>.</p><p>Anche l’endpoint del server richiede controlli di accesso, limiti alle richieste e verifica degli input, per impedire che chiunque lo usi senza limiti a tue spese.</p></div>
+<details class="ai-details"><summary>Esempio: caricare una chiave senza mostrarla</summary><p>Nelle impostazioni del server o dell’ambiente di sviluppo crea una variabile <code>AI_API_KEY</code>. Inserisci lì il valore reale, non nel codice sorgente. Questo esempio Python lato server non chiama alcuna API:</p><pre class="ai-code-sample"><code>import os
+
+api_key = os.environ["AI_API_KEY"]
+print("La variabile con la chiave è stata caricata.")
+# Non stampare il valore di api_key.</code></pre><p>Il nome della variabile dipende dall’applicazione. Alcune librerie richiedono un nome specifico, per esempio <code>OPENAI_API_KEY</code>. Un file <code>.env</code> non viene caricato automaticamente in ogni ambiente e non offre di per sé crittografia.</p></details>
+<details class="ai-details"><summary>Come evitare di inviare una chiave su GitHub</summary><p>Inserisci il file locale dei segreti in <code>.gitignore</code>. Un file condiviso <code>.env.example</code> deve contenere solo nomi delle variabili e valori vuoti o chiaramente non validi. Controlla le modifiche prima del commit; la scansione dei segreti può aiutare.</p><p><strong>Aggiungere un file a .gitignore non elimina una chiave già inclusa in un commit.</strong> Nemmeno un repository privato è un gestore di segreti.</p></details>
+<details class="ai-details"><summary>Consumi e limiti: cosa controllare</summary><p>Controlla regolarmente utilizzo e costi nell’account del fornitore. Progetti e chiavi separati aiutano a ricostruire i consumi. Un avviso di budget può non bloccare automaticamente le richieste: verifica il limite effettivo e come viene applicato dal servizio.</p></details>
+<details class="ai-details"><summary>Chiave esposta: l’ordine degli interventi</summary><ol><li>Revoca subito la chiave esposta presso il fornitore. Non basta eliminarla dal messaggio o dall’ultima versione del file.</li><li>Crea una nuova chiave, aggiorna le impostazioni dell’applicazione e verificane il funzionamento.</li><li>Esamina cronologia d’uso, costi e accessi collegati. Segnala al fornitore eventuali attività sospette.</li><li>Elimina l’origine della fuga. Se il segreto è nella cronologia Git, segui la documentazione per la pulizia e coordinati con gli altri; copie possono restare nei cloni e nei fork.</li></ol></details>
+<p class="ai-data-note">Verificato il 27 ottobre 2026: <a href="https://developers.openai.com/api/docs/guides/production-best-practices" rel="noopener" target="_blank">Documentazione ufficiale OpenAI — gestione delle chiavi e produzione</a> · <a href="https://developers.openai.com/api/reference/overview#authentication" rel="noopener" target="_blank">Autenticazione API</a> · <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository" rel="noopener" target="_blank">GitHub — rimuovere dati sensibili esposti</a>.</p>
+</section>
+<section class="ai-section" id="overeni"><span class="ai-anchor" id="regrese"></span>
+<div class="ai-section-heading"><span aria-hidden="true" class="ai-section-number">11 /</span><h2>Controllare un’applicazione dopo le modifiche e verificare le regressioni</h2></div>
+<p class="ai-section-intro"><strong>Una regressione è un errore per cui una nuova modifica interrompe qualcosa che prima funzionava.</strong> Correggere un pulsante non significa quindi aver verificato tutta l’applicazione.</p>
+<div class="ai-projects"><article class="ai-project"><h3>Prima della modifica</h3><p>Annota versione e comportamento originale. Per un errore registra i passaggi per riprodurlo e il risultato atteso. Verifica lo stato iniziale dei test pertinenti e proteggi i dati che userai.</p></article><article class="ai-project"><h3>Dopo la modifica</h3><p>Ripeti i passaggi originali e verifica la correzione. Controlla poi le funzioni collegate: salvataggio, caricamento, calcoli o esportazione, in base all’impatto della modifica.</p></article><article class="ai-project"><h3>Prima e dopo il rilascio</h3><p>Esamina i file modificati e verifica il build e l’anteprima locale. Dopo una pubblicazione approvata, prova i percorsi principali anche nella versione effettivamente distribuita.</p></article></div>
+<details class="ai-details"><summary>Cosa testare: i livelli di verifica</summary><ul><li><strong>Sintassi e build:</strong> il codice può essere elaborato e l’applicazione compilata. Non è ancora una verifica del risultato.</li><li><strong>Test unitari:</strong> singoli calcoli o regole con input noti.</li><li><strong>Test di integrazione:</strong> collaborazione tra parti, per esempio importazione e salvataggio.</li><li><strong>Percorso utente:</strong> inserimento reale di valori, clic, salvataggio e ricaricamento.</li><li><strong>Controllo visivo:</strong> mobile e computer, testi lunghi, messaggi d’errore e leggibilità dei comandi. Il confronto di screenshot può evidenziare cambiamenti visivi.</li></ul><p>Adatta i controlli alla modifica e ai suoi effetti. Correggere un testo richiede verifiche diverse dal modificare un calcolo contabile o un database.</p></details>
+<details class="ai-details"><summary>Esempio di regressione: correggere un’importazione</summary><p>Immagina un’applicazione che deve impedire di importare due volte le stesse voci. Correggere il supporto di un nuovo formato di estratto conto deve preservare questa regola.</p><ol><li>Con dati di prova importa tre movimenti diversi e verifica che ci siano tre voci.</li><li>Prova di nuovo lo stesso file. Se l’applicazione deve riconoscere i duplicati, devono restare tre voci.</li><li>Controlla totali, valute e date. Prova anche un formato già supportato in precedenza.</li><li>Salva i dati, riapri l’applicazione e verifica l’esportazione.</li></ol><p>Usa dati di prova o anonimizzati. Dopo aver individuato un errore è utile aggiungere un test del comportamento atteso che aiuti a rilevarne il ritorno.</p></details>
+<details class="ai-details"><summary>Smoke test, test di regressione e CI spiegati</summary><p><strong>Smoke test</strong> è una verifica rapida dei percorsi essenziali: l’app si avvia, la pagina principale si carica e il compito fondamentale si può svolgere.</p><p><strong>I test di regressione</strong> controllano i comportamenti già richiesti durante le modifiche successive. <strong>CI</strong> significa integrazione continua: i controlli automatici possono partire, per esempio, alla creazione di una pull request. Un esito verde dimostra solo i controlli effettivamente eseguiti.</p></details>
+<details class="ai-details"><summary>Come chiedere all’AI di controllare e riportare i risultati</summary><p class="ai-mini-example">«Prima verifica e registra lo stato iniziale. Dopo la correzione controlla sia l’errore originale sia le funzioni collegate. Usa dati di prova. Indica cosa hai verificato, i risultati attesi e quelli ottenuti e cosa non hai potuto controllare. Per ora non pubblicare nulla.»</p><p>Chiedi risultati concreti e problemi ancora aperti. Il numero di test superati o la frase «funziona tutto» non sostituiscono la verifica degli scenari utente importanti.</p></details>
+<details class="ai-details"><summary>Cosa fare se un controllo trova un errore?</summary><p>Registra passaggi, versione e risultato atteso. Verifica se il problema esisteva già prima. In base all’impatto correggi la modifica o usa il ritorno preparato; poi ricontrolla gli scenari coinvolti. Non sovrascrivere screenshot di riferimento o risultati attesi solo per far superare il controllo.</p></details>
+<p class="ai-data-note">Fonti verificate il 27 ottobre 2026: <a href="https://playwright.dev/docs/best-practices" rel="noopener" target="_blank">Playwright — testare il comportamento utente</a> · <a href="https://playwright.dev/docs/test-snapshots" rel="noopener" target="_blank">Confronto di screenshot</a> · <a href="https://docs.github.com/en/actions/get-started/understand-github-actions" rel="noopener" target="_blank">GitHub Actions e CI</a>.</p>
+</section>
+<section class="ai-closing"><h2>Prova un piccolo compito.</h2><p>Scegli un tuo testo o due offerte, descrivi il risultato desiderato e controlla cosa restituisce l’AI. Potrai passare a una procedura più complessa in seguito.</p><a class="ai-button" href="#zadani">Apri il modello di richiesta ↗</a><p class="ai-data-note">Altri contenuti didattici in ceco: <a href="https://www.youtube.com/@aisrozumem" rel="noopener" target="_blank">AI s rozumem — Filip Oborník</a>. Le spiegazioni originali di questa pagina sono accompagnate da link alla documentazione dei produttori.</p></section>
+</div></main>
 
 <footer class="site-footer">
   <div class="site-footer__inner">
@@ -208,5 +174,24 @@
 </footer>
 
 <script src="../assets/js/main.js?v=20261027-travel-photos"></script>
+<script>
+(function () {
+  var button = document.querySelector('[data-copy="ai-prompt"]');
+  if (!button) return;
+  button.addEventListener('click', async function () {
+    var text = document.getElementById('ai-prompt').innerText;
+    var status = document.getElementById('ai-copy-status');
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = 'Richiesta copiata. Aggiungi i tuoi materiali e incollala nel tuo strumento AI.';
+    } catch (error) {
+      var range = document.createRange();
+      range.selectNodeContents(document.getElementById('ai-prompt'));
+      var selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+      status.textContent = 'La copia automatica non è disponibile. Copia manualmente la richiesta selezionata.';
+    }
+  });
+})();
+</script>
 </body>
 </html>
