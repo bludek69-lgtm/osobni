@@ -3,7 +3,7 @@
   'use strict';
 
   const storageKey = 'cestovatel69_bus_intro_v1';
-  const imageUrl = '/assets/img/bus-intro/ludek-mercedes.webp';
+  const imageUrl = '/assets/img/bus-intro/ludek-mercedes-bila-kosile.webp';
   const duration = 4200;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
