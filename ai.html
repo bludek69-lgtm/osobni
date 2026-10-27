@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI v praxi — jak používám umělou inteligenci | Luděk Budinský</title>
-  <meta name="description" content="Vyvíjím vlastní aplikace, udržuji web a ladím chytrou domácnost. AI mi pomáhá přejít od „tohle potřebuji“ ke konkrétnímu řešení: přečíst projekt, napsat změnu, najít chybu a ověřit výsledek.">
+  <title>AI v praxi — návody a vysvětlení | Luděk Budinský</title>
+  <meta name="description" content="Srozumitelný průvodce prací s AI: lepší zadání, kontext, modely, agenti, vývoj, skills a MCP. Praktické příklady a ověřování výsledků.">
   <link rel="canonical" href="https://cestovatel69.cz/ai.html">
   <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/ai.html">
   <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/ai.html">
   <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/ai.html">
   <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/ai.html">
-  <meta property="og:title" content="AI v praxi — jak používám umělou inteligenci | Luděk Budinský">
-  <meta property="og:description" content="Vyvíjím vlastní aplikace, udržuji web a ladím chytrou domácnost. AI mi pomáhá přejít od „tohle potřebuji“ ke konkrétnímu řešení: přečíst projekt, napsat změnu, najít chybu a ověřit výsledek.">
+  <meta property="og:title" content="AI v praxi — návody a vysvětlení | Luděk Budinský">
+  <meta property="og:description" content="Srozumitelný průvodce prací s AI: lepší zadání, kontext, modely, agenti, vývoj, skills a MCP. Praktické příklady a ověřování výsledků.">
   <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
   <meta property="og:url" content="https://cestovatel69.cz/ai.html">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="assets/css/style.css?v=20261027-select-contrast">
-  <link rel="stylesheet" href="assets/css/ai.css?v=2026-10-24-case">
+  <link rel="stylesheet" href="assets/css/ai.css?v=20261027-learning">
   <link rel="icon" href="/favicon.ico">
 </head>
 <body class="theme-home">
@@ -46,152 +46,129 @@
   </div>
 </header>
 
-<main id="main">
-<div class="ai-page">
+<main id="main"><div class="ai-page ai-page--learning">
   <section class="ai-hero" aria-labelledby="ai-title">
-    <div class="ai-hero-copy">
-      <p class="ai-eyebrow">Můj pracovní postup · AI v praxi</p>
-      <h1 id="ai-title">Nápad je můj.<br><span>S AI ho dostávám do praxe.</span></h1>
-      <p class="ai-lead">Vyvíjím vlastní aplikace, udržuji web a ladím chytrou domácnost. AI mi pomáhá přejít od „tohle potřebuji“ ke konkrétnímu řešení: přečíst projekt, napsat změnu, najít chybu a ověřit výsledek.</p>
-      <div class="ai-cta-row"><a class="ai-button" href="#jak-vznika">Jak pracuji <span aria-hidden="true">↗</span></a><a class="ai-button ai-button-secondary" href="#projekty">Konkrétní projekty</a></div>
-      <p class="ai-updated">Aktualizováno v říjnu 2026</p>
+    <div class="ai-hero-copy"><p class="ai-eyebrow">AI v praxi · vysvětlení a návody</p>
+      <h1 id="ai-title">Jak pracovat s AI.<br><span>Od zadání k výsledku.</span></h1>
+      <p class="ai-lead">Zorientuj se v nástrojích, napiš lepší zadání a pochop, co mohou dělat AI agenti. S jednoduchými příklady, které si můžeš vyzkoušet.</p>
+      <div class="ai-cta-row"><a class="ai-button" href="#zacatek">Začít od základů ↗</a><a class="ai-button ai-button-secondary" href="#zadani">Vyzkoušet zadání</a></div>
+      <p class="ai-updated">Zpracoval Budinský Luděk · Aktualizováno 27. října 2026</p>
     </div>
-    <aside class="ai-workbench" aria-label="Od běžné potřeby k vlastní aplikaci">
-      <p class="ai-workbench-heading">Od běžné potřeby k vlastní aplikaci</p>
-      <ol><li><span class="ai-step-index">01</span><div><strong>Popíšu problém</strong><p>Co potřebuji a jak poznám výsledek.</p></div></li>
-<li><span class="ai-step-index">02</span><div><strong>AI pracuje v projektu</strong><p>Projde soubory, navrhne a upraví řešení.</p></div></li>
-<li><span class="ai-step-index">03</span><div><strong>Ověříme chování</strong><p>Testy, náhled a skutečné používání.</p></div></li></ol>
-      <div class="ai-workbench-bottom"><span>ChatGPT</span><span>Codex</span><span>Claude Code</span></div>
-    </aside>
+    <aside class="ai-workbench" aria-label="Co se na stránce dozvíš"><p class="ai-workbench-heading">Vyber si, kam chceš dojít</p><ol>
+      <li><span class="ai-step-index">01</span><div><strong>Domluvit se s AI</strong><p>Zadání, kontext a kontrola odpovědi.</p></div></li>
+      <li><span class="ai-step-index">02</span><div><strong>Pochopit nástroje</strong><p>Model, chat, agent a jejich možnosti.</p></div></li>
+      <li><span class="ai-step-index">03</span><div><strong>Zapojit AI do práce</strong><p>Vývoj, opakovatelné postupy a automatizace.</p></div></li>
+    </ol></aside>
+  </section>
+  <nav class="ai-jump" aria-label="Témata průvodce"><a href="#zacatek">Základy</a><a href="#zadani">Lepší zadání</a><a href="#nastroje">Nástroje</a><a href="#agenti">Agenti</a><a href="#vyvoj">Vývoj s AI</a><a href="#verzovani">Git a verze</a><a href="#modely">Model a náklady</a><a href="#skills-mcp">Skills a MCP</a><a href="#bezpecnost">Co nesdílet</a><a href="#api-klice">API klíče</a><a href="#overeni">Kontrola a regrese</a></nav>
+
+  <section id="zacatek" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">01 /</span><h2>První krok: malý úkol, jasný výsledek</h2></div>
+    <p class="ai-section-intro">Začni úkolem, u kterého poznáš, jestli odpověď dává smysl. Třeba zkrácením vlastního textu nebo porovnáním dvou dodaných nabídek.</p>
+    <div class="ai-projects"><article class="ai-project"><h3>Dej AI podklady</h3><p>Vlož text, tabulku nebo popis situace. Napiš, pro koho výsledek je a co se má zachovat.</p><p class="ai-mini-example">„Zkrať tento e-mail na pět vět. Zachovej termín schůzky a zdvořilý tón.“</p></article>
+      <article class="ai-project"><h3>Urči podobu výsledku</h3><p>Místo „nějak to vylepši“ popiš, co chceš dostat: stručný návrh, seznam otázek nebo tabulku s rozdíly.</p><p class="ai-mini-example">„Vypiš rozdíly v ceně, podmínkách a tom, co v nabídce chybí.“</p></article>
+      <article class="ai-project"><h3>Prohlédni si výstup</h3><p>Zkontroluj jména, čísla i význam. Když něco nesedí, napiš konkrétní připomínku a nech opravit danou část.</p><p class="ai-mini-example">„Ve druhém bodu chybí doprava. Doplň ji, ostatní body ponech.“</p></article></div>
+    <details class="ai-details"><summary>Proč někdy odpověď působí správně, ale není?</summary><p>Plynulý text sám o sobě nedokazuje správnost. AI může doplnit nepodložený údaj nebo špatně pochopit zadání. Požádej ji, aby oddělila doložené informace od předpokladů. Důležité údaje pak porovnej s původním podkladem nebo spolehlivým zdrojem.</p></details>
   </section>
 
-  <nav class="ai-jump" aria-label="Jak pracuji">
-    <a href="#rozdeleni-nastroju">Nástroje a jejich role</a><a href="#jak-vznika">Jak pracuji</a><a href="#pripadova-studie">Skutečná oprava</a><a href="#projekty">Konkrétní projekty</a><a href="#priklady">Zadání, které vede ke konkrétnímu výsledku</a>
-    <a href="#demo-vs-praxe">Demo vs. praxe</a><a href="#modely">Modely</a><a href="#zdarma-placene">Zdarma vs. placené</a><a href="#skills-mcp">Skills a MCP</a>
-  </nav>
+  <section id="zadani" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">02 /</span><h2>Zadání, které se dá zkontrolovat</h2></div>
+    <p class="ai-section-intro">Dobré zadání obsahuje cíl, podklady, hranice a způsob ověření. Není potřeba dlouhý seznam kouzelných formulací.</p>
+    <div class="ai-brief"><div><h3>Příklad: porovnání ubytování</h3><p>Do šablony vlož dvě skutečné nabídky. AI má pracovat s jejich obsahem a upozornit na chybějící podmínky.</p><p>Než nabídku rezervuješ, ověř cenu a dostupnost přímo u poskytovatele. Ukázka je návod na práci s podklady, sama nic neobjednává.</p><button type="button" class="ai-button ai-copy" data-copy="ai-prompt">Zkopírovat zadání</button><p id="ai-copy-status" class="ai-data-note" role="status" aria-live="polite"></p></div>
+    <blockquote id="ai-prompt">Porovnej tyto dvě nabídky ubytování pro dvě osoby na tři noci. Použij pouze údaje z vložených podkladů. V tabulce uveď celkovou cenu, polohu, snídani, parkování a storno podmínky. Co není uvedeno, označ jako „nezjištěno“. Na závěr napiš tři otázky, které mám před rezervací položit. Nic nerezervuj ani neplať.
 
-  <section id="rozdeleni-nastroju" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">01 /</span><h2>Nástroje a jejich role</h2></div>
-    <p class="ai-section-intro">Role se překrývají. Vybírám podle úkolu a přístupu k projektu, ne podle pevného rozdělení „jeden jen audituje, druhý jen píše kód“.</p>
-    <div class="ai-tools"><article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">↗</span><h3>ChatGPT</h3><p class="ai-tool-role">Přemýšlení a zadání</p><p>Rozebírám nápady, požadavky a reporty. Pomáhá mi pojmenovat problém, navrhnout další krok a připravit srozumitelné zadání.</p></article>
-<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">⌘</span><h3>Codex</h3><p class="ai-tool-role">Vývoj, audit a ověření</p><p>Práce přímo se soubory: kontrola skutečného stavu, implementace, úpravy webu, testy a náhled v prohlížeči. Tak vzniká i tato aktualizace.</p></article>
-<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">✳</span><h3>Claude / Claude Code</h3><p class="ai-tool-role">Další partner nad projektem</p><p>Používám ho pro práci s kódem, opravy, dokumentaci a rozbor projektů. Výstupy můžu porovnat s jiným nástrojem a navázat dalším zadáním.</p></article>
-<article class="ai-tool"><span class="ai-tool-mark" aria-hidden="true">◇</span><h3>Gemini</h3><p class="ai-tool-role">AI uvnitř některých aplikací</p><p>V projektu Sbírka pomáhá číst a rozpoznávat předmět z fotografie. PT nabízí volitelného AI analytika. Konkrétní použití záleží na aplikaci.</p></article></div>
+Nabídka A: [vlož text]
+Nabídka B: [vlož text]</blockquote></div>
+    <details class="ai-details"><summary>Co znamená kontext a jak ho předat?</summary><p>Kontext jsou souvislosti a podklady, ze kterých má AI vycházet. U opravy textu je to původní znění a cílový čtenář; u práce s kódem související soubory a popis chyby. Přidej potřebné informace a odstraň zbytečné osobní údaje. Při delší práci průběžně shrnuj, co už platí a co se změnilo.</p></details>
   </section>
 
-
-  <section id="ucetni-kniha-terminal" class="section ai-section" aria-labelledby="terminal-video-heading" style="margin:2rem 0">
-    <h2 id="terminal-video-heading">Jak vzniká Účetní kniha v terminálu</h2>
-    <p>Od zdrojového kódu k aplikaci pro osobní finance. Krátká ukázka představuje projekt v Reactu a TypeScriptu, sestavení webového rozhraní a spuštění Python serveru s místní databází SQLite.</p>
-    <figure style="margin:1.25rem 0;max-width:960px">
-      <video controls playsinline preload="none" width="1280" height="720" poster="/assets/video/ucetni-kniha-terminal.png" aria-label="Jak vzniká Účetní kniha v terminálu" style="display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0b1020;border-radius:12px">
-        <source src="/assets/video/ucetni-kniha-terminal.mp4" type="video/mp4">
-      <track kind="captions" src="/assets/video/ucetni-kniha-terminal.cs.vtt" srclang="cs" label="Čeština" default>
-      <track kind="subtitles" src="/assets/video/ucetni-kniha-terminal.en.vtt" srclang="en" label="English">
-      <track kind="subtitles" src="/assets/video/ucetni-kniha-terminal.it.vtt" srclang="it" label="Italiano">
-        Prohlížeč nepodporuje vložené video. Stáhněte si MP4 pomocí odkazu níže.
-      </video>
-      <figcaption style="margin-top:.75rem">48 sekund · Český komentář vytvořený v ElevenLabs · Titulky CS / EN / IT. Terminál a příklad kódu jsou ilustrační; závěr používá skutečný záběr aplikace z 11. 10. 2026 s modelovými daty. Nejde o záznam vytvoření celé aplikace za 48 sekund.</figcaption>
-    </figure>
-    <p><a href="/assets/video/ucetni-kniha-terminal.mp4" download>Stáhnout video (MP4, 1,3 MB)</a></p>
+  <section id="nastroje" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">03 /</span><h2>Model, chat a pracovní nástroj</h2></div>
+    <p class="ai-section-intro">Tyto pojmy se často míchají. Rozdíl pomůže pochopit, proč stejná AI někde jen odpovídá a jinde dokáže upravit soubor.</p>
+    <div class="ai-tools"><article class="ai-tool"><h3>Model</h3><p>Vytváří odpovědi z dodaného vstupu. Zvolený model ovlivňuje schopnosti, rychlost i cenu.</p></article><article class="ai-tool"><h3>Chat</h3><p>Aplikace, ve které s AI komunikuješ. Podle produktu a účtu může nabídnout také soubory, hledání nebo další nástroje.</p></article><article class="ai-tool"><h3>Agent</h3><p>Pracuje v opakovaných krocích: navrhne postup, použije dostupný nástroj, přečte výsledek a pokračuje.</p></article><article class="ai-tool"><h3>Pracovní prostředí</h3><p>Určuje, ke kterým souborům, příkazům a službám se AI dostane a jaká oprávnění má.</p></article></div>
+    <p class="ai-data-note">Příkladem nástroje pro práci s projektem je <a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Claude Code</a>. Možnosti konkrétního produktu vždy ověř v jeho dokumentaci.</p>
   </section>
 
-  <section id="jak-vznika" class="ai-section">
-    <span id="vibe-coding" class="ai-anchor"></span>
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">02 /</span><h2>Jak z nápadu vzniká funkční změna</h2></div>
-    <p class="ai-section-intro">Začínám potřebou z běžného používání. U chyby chci nejdřív zjistit příčinu; u nové funkce si ujasním chování a hranice zadání.</p>
-    <ol class="ai-process"><li><span class="ai-process-index" aria-hidden="true">01</span><h3>Zadání</h3><p>Popíšu cíl, podklady a očekávané chování. AI dostane i pravidla projektu.</p></li>
-<li><span class="ai-process-index" aria-hidden="true">02</span><h3>Skutečný stav</h3><p>AI přečte kód a dokumentaci. Rozlišujeme, co je doložené a co je jen předpoklad.</p></li>
-<li><span class="ai-process-index" aria-hidden="true">03</span><h3>Úprava</h3><p>Navážeme na existující řešení. Změna má konkrétní rozsah a dá se zkontrolovat.</p></li>
-<li><span class="ai-process-index" aria-hidden="true">04</span><h3>Ověření</h3><p>Podle změny testy, reprodukce chyby a proklikání rozhraní. U opravy musí původní problém zmizet.</p></li>
-<li><span class="ai-process-index" aria-hidden="true">05</span><h3>Používání a další kolo</h3><p>Výsledek posoudím v praxi. Zjištěná chyba, log nebo připomínka se vrací do dalšího zadání.</p></li></ol>
+  <section id="agenti" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">04 /</span><h2>Od jedné odpovědi k AI agentovi</h2></div>
+    <p class="ai-section-intro">Pro agenta je důležitý dosažitelný cíl a jasná hranice. Například připravit přehled ze zpřístupněných dokumentů a uložit návrh do určené složky.</p>
+    <ol class="ai-agent-loop"><li>Rozumět cíli</li><li>Použít nástroj</li><li>Zkontrolovat výsledek</li><li>Pokračovat nebo skončit</li></ol>
+    <details class="ai-details"><summary>Příklad zadání a hranic agenta</summary><p>„Projdi tyto dokumenty, připrav přehled termínů a u každého uveď zdroj. Výsledek ulož jako návrh. Dokumenty neupravuj a nikomu neposílej zprávy.“</p><p>Úkol má konkrétní výstup. Čtení podkladů a příprava návrhu jsou jiné pravomoci než mazání, odesílání nebo platba. Automatizaci opakovaného úkolu zaváděj až po ověření jednoho průchodu.</p></details>
+    <details class="ai-details"><summary>Pomůže vždy více agentů?</summary><p>Úkoly lze rozdělit, ale někdo musí spojit výsledky a vyřešit rozpory. U malé úpravy může být jeden dobře zadaný úkol přehlednější. Rozdělení má smysl, když jsou části práce skutečně samostatné a lze ověřit jejich výstupy.</p></details>
   </section>
 
-  <section id="pripadova-studie" class="ai-section" aria-labelledby="pripadova-studie-title">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">PŘÍPAD /</span><h2 id="pripadova-studie-title">Když „kalkulačky“ na webu ještě nepočítaly</h2></div>
-    <p class="ai-section-intro">Konkrétní oprava z 24. října 2026 na mé stránce Finance. Snímky zachycují skutečný stav před změnou a živou stránku po nasazení.</p>
-    <div class="ai-case-grid">
-      <article class="ai-case-step"><h3>1. Problém</h3><p>Oddíl „Kalkulačky, které se hodí“ nabízel jen karty s popisem výpočtů. Návštěvník nemohl zadat vlastní čísla ani získat výsledek. Původní podobu jsem ověřil v historii kódu a znovu ji otevřel v prohlížeči.</p></article>
-      <article class="ai-case-step"><h3>2. Moje zadání AI</h3><p>Nejdřív jsem požádal o opravu Lerici a pak o skutečné interaktivní kalkulačky. Rozhodující část zadání byla:</p><blockquote class="ai-case-quote">„pak vytvořit skutečné interaktivní kalkulačky“</blockquote></article>
-      <article class="ai-case-step"><h3>3. Konkrétní změna</h3><p>Codex nahradil popisné karty devíti výpočty s poli, tlačítky a výsledky. Výpočty běží v prohlížeči. Stejnou funkci doplnil do české, anglické i italské verze; například složené úročení ukazuje konečnou hodnotu, součet vkladů a modelový rozdíl. Upravil také odsazení nadpisu pod pevnou navigací.</p></article>
-      <article class="ai-case-step"><h3>4. Jak jsem výsledek ověřil</h3><p>Šest automatických testů zkontrolovalo výpočty včetně nulového výnosu a chybného zadání. V prohlížeči jsem prošel všechny tři jazykové verze, změnil vstupy a zkontroloval výsledky i chybovou hlášku. Nakonec jsem ověřil dokončené nasazení a funkci na živém webu. Modelové výsledky nejsou investiční ani daňové doporučení.</p></article>
-    </div>
-    <p><a class="ai-case-link" href="finance/#fin-4-kalkulacky">Vyzkoušet kalkulačky na stránce Finance ↗</a></p>
-    <div class="ai-case-photos">
-      <figure><img src="assets/img/ai/finance-before-20261024.png" width="1265" height="712" loading="lazy" alt="Původní stránka Finance: místo výpočtů jen karty s textovým popisem"><figcaption><strong>Před:</strong> historická verze ze zdrojového commitu b90fc2c, zobrazená lokálně. Karty nemají vstupní pole ani výsledky.</figcaption></figure>
-      <figure><img src="assets/img/ai/finance-after-20261024.png" width="1265" height="712" loading="lazy" alt="Nová stránka Finance: formulář složeného úročení se vstupy a spočtenými výsledky"><figcaption><strong>Po:</strong> živá stránka z 24. října 2026. Modelový příklad ukazuje vstupy a vypočtenou konečnou hodnotu.</figcaption></figure>
-    </div>
+  <section id="vyvoj" class="ai-section"><span id="vibe-coding" class="ai-anchor"></span><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">05 /</span><h2>Vývoj pomocí zadání: co přijde po prvním návrhu</h2></div>
+    <p class="ai-section-intro">Při takzvaném vibe codingu popisuješ požadované chování běžným jazykem a AI pomáhá připravit kód. Důležité je umět posoudit, co výsledek opravdu dělá.</p>
+    <div class="ai-ownership"><article><h3>Prototyp</h3><p>Ukáže vzhled a základní průchod na zkušebních datech. Pomůže zjistit, zda se nápad dobře používá.</p></article><article><h3>Použitelný nástroj</h3><p>Potřebuje také ukládání a obnovu dat, chybové stavy, správné výpočty a ověření opakovaného používání.</p></article></div>
+    <details class="ai-details"><summary>Jak zadat malou opravu v existujícím projektu</summary><p>Popiš, jak chybu vyvolat, co se děje a co se má stát. Požádej nejdřív o zjištění příčiny. Pak o omezenou změnu a kontrolu stejného postupu. Náhled nebo test výsledku posuzuj samostatně od tvrzení AI, že je hotovo.</p><p class="ai-mini-example">„Při prázdném vstupu formulář zobrazí nulu jako platný výsledek. Najdi příčinu, oprav pouze toto chování a ověř prázdný vstup i běžnou hodnotu. Změnu zatím nepublikuj.“</p></details>
   </section>
 
-  <section id="projekty" class="ai-section">
-    <span id="jak-pouzivam" class="ai-anchor"></span>
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">03 /</span><h2>Co s AI skutečně stavím</h2></div>
-    <p class="ai-section-intro">AI je součást vývoje těchto projektů. U některých je navíc přímo v aplikaci — například při rozpoznávání fotografie nebo analýze.</p>
-    <div class="ai-projects"><article class="ai-project"><div class="ai-project-top"><span>01</span><span>Investice a analýza</span></div><h3>Portfolio Tracker</h3><p>S AI rozvíjím přehled transakcí, výkonnosti a analytických pohledů. Důležité je dohledat zdroj čísla a přiznat chybějící data. Volitelný AI analytik je jedna z funkcí PT.</p><a href="aplikace/portfolio-tracker.html">Podívat se na projekt <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>02</span><span>Doklady a souvislosti</span></div><h3>Účetní kniha</h3><p>Vlastní finanční evidence spojuje doklady, pohyby a přehledy. AI pomáhá při vývoji importů, kontrol výpočtů, diagnostiky a srozumitelného rozhraní.</p><a href="aplikace/ucetni-kniha.html">Podívat se na projekt <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>03</span><span>Cesty podle mých potřeb</span></div><h3>Italia Travel Planner</h3><p>Rozvíjím plánování tras a itinerářů. Autopilot pracuje s dohledanými místy; dostupnost a ceny potřebují ověření. AI mi také pomáhá s překlady a přípravou obsahu.</p><a href="aplikace/italia-travel.html">Podívat se na projekt <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>04</span><span>Fotografie → návrh záznamu</span></div><h3>Sbírka</h3><p>AI pomáhá identifikovat minci či známku a předvyplnit údaje z fotografie. Návrh pak kontroluje člověk; orientační ocenění ověřuji podle zdrojů.</p><a href="aplikace/sbirka.html">Podívat se na projekt <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>05</span><span>Pravidla pro skutečný byt</span></div><h3>Smart Home</h3><p>S AI rozebírám logiku scénářů, hledám chyby ve skriptech a připravuji změny. Provoz domácnosti stojí na vlastních pravidlech; zásah musí dávat smysl i obyvateli.</p><a href="smart-home/">Podívat se na projekt <span aria-hidden="true">↗</span></a></article>
-<article class="ai-project"><div class="ai-project-top"><span>06</span><span>Obsah, vzhled, každodenní nástroje</span></div><h3>Tento web a další aplikace</h3><p>AI mi pomáhá udržovat texty, překlady a odkazy, navrhovat rozhraní a kontrolovat náhledy. Další projekty řeší práci řidiče, jídelníček nebo výběr auta.</p><a href="aplikace/">Podívat se na projekt <span aria-hidden="true">↗</span></a></article></div>
+  <section id="verzovani" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">06 /</span><h2>Verzování, Git a GitHub: přehled o každé změně</h2></div>
+    <p class="ai-section-intro">Při úpravách potřebuješ vědět, co se změnilo, proč a ke kterému ověřenému stavu se dá vrátit. Pomůže historie změn, označená vydání a stručný přehled novinek.</p>
+    <div class="ai-projects"><article class="ai-project"><h3>Verze aplikace</h3><p>Označení vydání, například <code>1.4.2</code>. Uživatel podle něj pozná, jakou podobu aplikace má. Zápis změn neboli changelog vysvětluje opravy, nové funkce a případné změny práce s daty.</p></article><article class="ai-project"><h3>Git</h3><p>Nástroj pro historii souborů projektu. Umožňuje porovnat změny, uložit související úpravy do commitu a pracovat ve větvích. Základní práci zvládá místně na počítači.</p></article><article class="ai-project"><h3>GitHub</h3><p>Služba pro hostování repozitářů, spolupráci a kontrolu návrhů změn. Může spouštět automatické kontroly nebo nasazení, pokud je projekt takto nastavený.</p></article></div>
+    <details class="ai-details"><summary>Slovníček: commit, větev, push a pull request</summary><dl class="ai-glossary"><div><dt>Repozitář</dt><dd>Projekt a jeho verzovaná historie.</dd></div><div><dt>Commit</dt><dd>Uložený bod historie se zprávou o změně. Vzniká z vybraných připravených změn; neuloženou práci v editoru sám nezachytí.</dd></div><div><dt>Diff</dt><dd>Porovnání změn: co přibylo, ubylo nebo se upravilo.</dd></div><div><dt>Větev a merge</dt><dd>Větev umožňuje rozpracovat změnu odděleně. Merge ji začlení do jiné větve; případné rozpory je potřeba vyřešit.</dd></div><div><dt>Push a pull</dt><dd>Push odesílá místní historii do vzdáleného repozitáře. Pull stáhne a začlení změny ze vzdálené větve.</dd></div><div><dt>Pull request (PR)</dt><dd>Návrh začlenění změny na GitHubu. Umožňuje projít rozdíly, komentáře a výsledky kontrol před sloučením.</dd></div></dl><p class="ai-data-note"><a href="https://git-scm.com/docs/git" target="_blank" rel="noopener">Příkazy Gitu</a> · <a href="https://docs.github.com/en/pull-requests/reference/pull-requests" target="_blank" rel="noopener">GitHub — pull requesty</a></p></details>
+    <details class="ai-details"><summary>Co znamenají čísla 1.4.2 a označení beta?</summary><p>Pokud projekt používá sémantické verzování (SemVer), čísla mají význam podle kompatibility veřejného rozhraní:</p><ul><li><strong>PATCH:</strong> oprava zachovávající kompatibilitu, například <code>1.4.2 → 1.4.3</code>.</li><li><strong>MINOR:</strong> nová zpětně kompatibilní funkce, například <code>1.4.2 → 1.5.0</code>.</li><li><strong>MAJOR:</strong> nekompatibilní změna veřejného rozhraní, například <code>1.4.2 → 2.0.0</code>.</li></ul><p><code>1.5.0-beta.1</code> označuje předběžnou verzi. Další označení typu „work“ mají význam podle pravidel konkrétního projektu. Číslo verze ani nálepka „final“ samy o sobě nedokládají správnost aplikace.</p><p><a href="https://semver.org/lang/cs/" target="_blank" rel="noopener">Pravidla SemVer v češtině</a></p></details>
+    <details class="ai-details"><summary>Uložení změny, odeslání a zveřejnění</summary><p><strong>Commit</strong> ukládá vybrané změny do místní historie. <strong>Push</strong> je odešle na vzdálený server. <strong>Nasazení</strong> zpřístupní určitou verzi uživatelům.</p><p>Projekt může mít nasazení nastavené automaticky po pushi nebo sloučení do hlavní větve. Před odesláním proto zjisti, co se tím spustí. GitHub Actions může například provést sestavení, testy a následně vydání.</p><p><a href="https://docs.github.com/en/actions/get-started/understand-github-actions" target="_blank" rel="noopener">GitHub — automatické kontroly a nasazení</a></p></details>
+    <details class="ai-details"><summary>Jak připravit možnost návratu</summary><p>Poznamenej si ověřený commit nebo označ vydání tagem, například <code>v1.4.2</code>. Tag pojmenuje konkrétní bod historie; changelog popíše změny pro uživatele. Příkaz <code>git revert</code> umí vytvořit nový commit, který obrací dřívější změnu a zachovává historii.</p><p>Zálohu databáze, dokumentů a uživatelského nastavení řeš samostatně. Návrat ke starému kódu nemusí vrátit data upravená novou verzí. U změn datového formátu připrav a ověř postup obnovy.</p><p><a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging" target="_blank" rel="noopener">Git — tagy vydání</a></p></details>
+    <p class="ai-data-note">Ověřeno 27. 10. 2026. Další základní vysvětlení: <a href="https://docs.github.com/en/get-started/using-git/about-git" target="_blank" rel="noopener">Git a GitHub v oficiální dokumentaci</a>. Hesla, API klíče a skutečná soukromá data do historie projektu neukládej.</p>
   </section>
 
-  <section id="prostredi" class="ai-section ai-environment">
-    <span id="diagnostika-loop" class="ai-anchor"></span>
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">04 /</span><h2>Moje pracovní zázemí</h2></div>
-    <p class="ai-section-intro">Vývojový počítač, notebook pro běžné používání a domácí úložiště tvoří zázemí projektů. AI nástroje pracují nad zpřístupněnými soubory a podklady; jejich modely mohou běžet u externího poskytovatele.</p>
-    <div class="ai-environment-grid"><div><h3>Vývoj</h3><p>Projekt, kód, dokumentace a testy na pracovním počítači.</p></div>
-<div><h3>Praxe</h3><p>Hotovou aplikaci používám a sleduji, kde potřebuje zlepšit.</p></div>
-<div><h3>Návaznost</h3><p>Zálohy, historie změn a předání kontextu pro příští práci.</p></div></div>
+  <section id="modely" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">07 /</span><h2>Jak vybrat model a nepřehnat náklady</h2></div>
+    <p class="ai-section-intro">Vyzkoušej stejný úkol na vlastních podkladech. Sleduj správnost, potřebné opravy, čekání a cenu. Samotný název modelu ti výsledek nezaručí.</p>
+    <details class="ai-details"><summary>Co znamená effort — intenzita přemýšlení?</summary><p>U nástrojů, které tuto volbu nabízejí, jde o nastavení rozsahu uvažování modelu. Vyšší nastavení může pomoci u složitého úkolu, ale není zárukou správnosti. Porovnej výsledek stejného zadání při různých nastaveních a započítej čas i spotřebu.</p><p><a href="https://learn.chatgpt.com/docs/model-selection" target="_blank" rel="noopener">Oficiální dokumentace OpenAI — model a reasoning effort</a></p></details>
+    <details id="zdarma-placene" class="ai-details"><summary>Kdy stačí zdarma a co znamená předplatné?</summary><p>Začni dostupným nástrojem a konkrétním úkolem. Placený tarif může dávat smysl, když narážíš na limit nebo potřebuješ konkrétní funkci. Rozhodují podmínky daného produktu. Předplatné chatu nepovažuj automaticky za úhradu samostatného API nebo hostingu vlastní aplikace.</p><p><a href="https://learn.chatgpt.com/docs/pricing" target="_blank" rel="noopener">OpenAI</a> · <a href="https://claude.com/pricing" target="_blank" rel="noopener">Claude</a> · <a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener">Gemini API</a></p></details>
+    <details class="ai-details"><summary>Kde ověřit aktuální nabídku modelů?</summary><p>Nabídka v chatu a v API nemusí být totožná. Před rozhodnutím zkontroluj dostupnost pro svůj účet, cenu a případné označení preview.</p><p><a href="https://learn.chatgpt.com/docs/model-selection" target="_blank" rel="noopener">OpenAI</a> · <a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank" rel="noopener">Claude</a> · <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank" rel="noopener">Gemini</a></p></details>
   </section>
 
-  <section id="priklady" class="ai-section ai-brief">
-    <span id="proc-nefunguje" class="ai-anchor"></span>
-    <div><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">05 /</span><h2>Zadání, které vede ke konkrétnímu výsledku</h2></div><p>Nejvíc pomáhá kontext a jasný cíl. Takhle může vypadat zadání podobné tomu, kterým vznikla dnešní úprava webu.</p></div>
-    <blockquote>Projdi stránku Finance. Stále ukazuje starou účetní knihu, ale dnes používám vlastní PT a Účetní knihu. Zjisti, co už web o aplikacích uvádí, aktualizuj texty a překlady a ověř odkazy i náhled. Změny připrav lokálně; publikaci schválím zvlášť.</blockquote>
+  <section id="skills-mcp" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">08 /</span><h2>Skills, pluginy a MCP jednoduše</h2></div>
+    <p class="ai-section-intro">Doplňky řeší různé potřeby: opakovat postup, připojit službu nebo zpřístupnit nástroj. Začni tím, co pro svůj úkol opravdu potřebuješ.</p>
+    <dl class="ai-glossary"><div><dt>Skill</dt><dd>Postup pro opakovanou práci, často s instrukcemi a podklady. Například jak připravit report nebo ověřit změnu. Sám o sobě model znovu netrénuje.</dd></div><div><dt>Plugin</dt><dd>Balíček rozšiřující možnosti aplikace. Podle prostředí může spojovat instrukce, skills, nástroje a napojení na služby.</dd></div><div><dt>Konektor</dt><dd>Napojení na službu nebo účet. Před připojením zjisti, jaká data zpřístupňuje a zda dovoluje také zápis.</dd></div><div><dt>MCP server</dt><dd>Zpřístupňuje nástroje a data přes společné rozhraní. Může běžet místně i vzdáleně. Oprávnění a důvěryhodnost zdroje je stále potřeba posoudit.</dd></div></dl>
+    <details class="ai-details"><summary>Příklad rozdílu v jednom úkolu</summary><p>Chceš pravidelně připravovat přehled z dokumentů. Skill může popisovat formát a kontrolu reportu. Konektor zpřístupní složku. MCP server může poskytovat potřebné nástroje. Plugin může část těchto schopností zabalit dohromady. Konkrétní kombinace záleží na aplikaci.</p><p><a href="https://developers.openai.com/plugins/concepts/plugins" target="_blank" rel="noopener">Dokumentace pluginů</a> · <a href="https://modelcontextprotocol.io/docs/learn/architecture" target="_blank" rel="noopener">Architektura MCP</a></p></details>
   </section>
 
-  <section id="ai-vs-ja" class="ai-section">
-    <span id="testovani" class="ai-anchor"></span><span id="kde-pozor" class="ai-anchor"></span>
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">06 /</span><h2>Co dělá AI a co rozhoduji já</h2></div>
-    <div class="ai-ownership"><article><h3>AI pomáhá provést práci</h3><ul><li>Čte zpřístupněné podklady a hledá nesoulady.</li><li>Navrhuje řešení, upravuje kód a texty.</li><li>Spouští odpovídající kontroly a shrnuje výsledek.</li></ul></article><article><h3>Já držím směr</h3><ul><li>Určuji potřebu, priority a rozsah práce.</li><li>Posuzuji, jestli se výsledek dobře používá.</li><li>Schvaluji publikaci a zásahy do provozu podle zadání.</li></ul></article></div>
-    <p class="ai-data-note">Lokální aplikace a cloudový AI model jsou dvě různé věci. Například rozpoznání fotografie přes Gemini znamená zpracování vybrané fotografie externí službou. Při práci s AI záleží na tom, jaké podklady jí zpřístupním.</p>
+  <section id="bezpecnost" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">09 /</span><h2>Co do AI chatu nikdy nevkládat</h2></div>
+    <p class="ai-section-intro">Než odešleš zprávu, soubor nebo screenshot, zkontroluj, co obsahuje. Tato pravidla platí pro běžné konverzační pole a přílohy; přihlašování řeš v určeném přihlašovacím nebo autorizačním okně služby.</p>
+    <div class="ai-callout"><h3>Přístupová tajemství do chatu nepatří</h3><ul>
+      <li><strong>Hesla, PINy a přihlašovací kódy:</strong> také jednorázové SMS kódy, záložní kódy a odkazy, kterými se lze přihlásit nebo obnovit účet.</li>
+      <li><strong>API klíče, tokeny a soukromé klíče:</strong> například klíč k AI službě, přístupový token GitHubu, privátní SSH klíč nebo aktivní přihlašovací cookie. Pozor i na soubory <code>.env</code> a logy.</li>
+      <li><strong>Obnovovací fráze kryptopeněženky:</strong> seed phrase ani soukromý klíč neposílej do chatu, a to ani jako fotografii. Kdo je získá, může ovládat peněženku.</li>
+      <li><strong>Platební údaje umožňující zneužití karty:</strong> celé číslo karty, platnost, CVV/CVC, PIN ani potvrzovací kódy k platbě.</li>
+    </ul></div>
+    <h3 style="margin-top:1.8rem">Další citlivé podklady: nejdřív odstraň údaje a ověř oprávnění</h3>
+    <div class="ai-projects"><article class="ai-project"><h3>Doklady a identita</h3><p>Sken občanky nebo pasu, rodné číslo, podpis, přesná adresa, osobní kontakty nebo fotografie dětí. Pro běžný dotaz použij smyšlené nebo nahrazené údaje.</p></article><article class="ai-project"><h3>Zdraví a soukromí</h3><p>Lékařské zprávy, intimní fotografie, soukromá komunikace a dokumenty s údaji o dalších lidech. Vlož jen nezbytný výňatek zbavený identifikujících detailů.</p></article><article class="ai-project"><h3>Práce a finance</h3><p>Neveřejné smlouvy, výplatní pásky, výpisy, seznamy klientů a důvěrný firemní kód. Bez povolení je do běžného veřejného AI nástroje nenahrávej; dodrž pravidla zaměstnavatele.</p></article></div>
+    <p class="ai-data-note">Placený tarif ani vypnuté využití konverzací pro trénování samy o sobě nenahrazují oprávnění sdílet cizí nebo důvěrné údaje. Záleží na konkrétní službě, nastavení a pravidlech pro daná data.</p>
+    <details class="ai-details"><summary>Jak připravit podklady bezpečněji</summary><ol><li>Pošli jen část potřebnou pro úkol. Jména nahraď například <code>[KLIENT A]</code>, číslo účtu <code>[ÚČET]</code> a přístupové údaje <code>[ODSTRANĚNO]</code>.</li><li>U screenshotu zkontroluj i horní lištu, adresu stránky, QR kódy a vedlejší okna. U dokumentu zvaž také komentáře, skryté listy a metadata.</li><li>Citlivý údaj odstraň nebo použij skutečné začernění určené k odstranění obsahu. Samotný černý obdélník přes text v editovatelném dokumentu nemusí původní text odstranit.</li><li>Prohlédni výsledný soubor a ověř, že se odstraněný obsah nedá přečíst nebo zkopírovat. Nahrazení jména nemusí stačit, pokud člověka prozradí další souvislosti.</li></ol><p class="ai-data-note"><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/security/disclosing-documents-to-the-public-securely/" target="_blank" rel="noopener">ICO — skryté údaje a bezpečné odstranění obsahu dokumentů</a>.</p><p class="ai-mini-example">Místo celé výplatní pásky: „Vysvětli rozdíl mezi hrubou a čistou mzdou na smyšleném příkladu. Nepotřebuji počítat konkrétní mzdu.“</p></details>
+    <details class="ai-details"><summary>Co když už jsem heslo nebo klíč odeslal?</summary><p>Samotné smazání zprávy nepovažuj za zabezpečení uniklého přístupu. Heslo změň přímo v původní službě; zveřejněný token nebo API klíč zneplatni a nahraď novým. Zkontroluj přihlášená zařízení a aktivitu účtu. U pracovních údajů informuj správce, u údajů platební karty svou banku. U obnovovací fráze peněženky vyhledej oficiální bezpečnostní postup poskytovatele.</p></details>
+    <p class="ai-data-note">Podklady ověřeny 27. 10. 2026: <a href="https://osveta.nukib.gov.cz/mod/page/view.php?id=4725" target="_blank" rel="noopener">NÚKIB — rizika využívání AI</a> · <a href="https://www.ncsc.gov.uk/section/respond-recover/hacked-accounts" target="_blank" rel="noopener">NCSC — zabezpečení napadeného účtu</a> · <a href="https://support.metamask.io/stay-safe/safety-in-web3/basic-safety-and-security-tips-for-metamask" target="_blank" rel="noopener">MetaMask — ochrana klíčů a obnovovací fráze</a>.</p>
   </section>
 
-  <section id="demo-vs-praxe" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">07 /</span><h2>Aplikace za večer? Demo není hotový produkt.</h2></div>
-    <p class="ai-section-intro">První obrazovka, formulář nebo graf mohou s AI vzniknout rychle. „Bez ručního psaní kódu“ ale neznamená „bez práce, znalostí a odpovědnosti“. Krátká ukázka není důkaz spolehlivosti celé aplikace.</p>
-    <div class="ai-ownership"><article class="ai-project"><h3>Co zvládne rychlý prototyp</h3><p>Ukáže nápad, vzhled a základní průchod na ukázkových datech. Je dobrý pro ověření směru, ne automaticky pro vlastní finanční evidenci.</p></article><article class="ai-project"><h3>Co musí zvládnout skutečná aplikace</h3><p>Správné výpočty, chybové stavy, opakované importy, ukládání, aktualizace a obnovu zálohy. Ověření pokračuje i při běžném používání.</p></article></div>
-    <div class="ai-callout"><h3>U financí musí sedět čísla, nejen design.</h3><p>U PT a Účetní knihy je potřeba ověřovat poplatky, měny, zaokrouhlení a význam výnosu. Převod mezi vlastními účty nesmí vytvořit falešný příjem. Opakovaný import stejného výpisu nesmí zdvojit pohyby. Záloha má hodnotu až tehdy, když z ní dokážu data obnovit.</p><p><strong>AI pomáhá kód vytvořit. Správnost musí doložit testy a kontrola výsledků — ne tvrzení modelu „hotovo“.</strong></p></div>
-    <details class="ai-details"><summary>Jak se dívat na kurzy a sliby snadného vývoje</summary><p>Placený kurz nebo Discord může přinést strukturu a užitečnou podporu. Dívám se ale, jestli učí i opravy, verzování, bezpečnost a testování, nejen první úspěšnou ukázku. Délka videa není doba potřebná pro dokončení vlastního projektu.</p><p>AI není automatická zkratka k porozumění: konkrétní experiment Anthropicu ukázal význam aktivního vysvětlování a učení při práci s AI. Nejde o univerzální verdikt proti AI. <a href="https://www.anthropic.com/research/AI-assistance-coding-skills">Výzkum Anthropicu</a></p></details>
+  <section id="api-klice" class="ai-section">
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">10 /</span><h2>API klíče: jak s nimi pracovat bezpečně</h2></div>
+    <p class="ai-section-intro">API klíč umožňuje aplikaci přistupovat ke službě. Zneužití tajného klíče může znamenat cizí požadavky účtované na tvůj účet. Následující postup se týká tajných klíčů pro serverové API, například pro AI služby.</p>
+    <div class="ai-projects"><article class="ai-project"><h3>1. Vytvoř ho u poskytovatele</h3><p>Použij oficiální správu účtu. Odděl vývoj a ostrý provoz a nastav jen potřebná oprávnění. Expiraci a omezení přístupu využij, pokud je služba nabízí.</p></article><article class="ai-project"><h3>2. Ulož ho mimo kód</h3><p>Pro místní vývoj použij proměnnou prostředí; v provozu nastavení tajemství hostingu nebo správce tajemství. Klíč nepřidávej do chatu, dokumentace, screenshotu ani logu.</p></article><article class="ai-project"><h3>3. Použij ho na serveru</h3><p>Prohlížeč pošle požadavek tvému serveru. Server zavolá API s klíčem a vrátí odpověď. Tajný klíč se neposílá návštěvníkovi.</p></article></div>
+    <div class="ai-callout"><h3>Ve veřejné stránce tajný klíč neutajíš</h3><p>Nevkládej ho do HTML, JavaScriptu pro prohlížeč ani do <code>localStorage</code>. Proměnné jako <code>VITE_…</code> nebo <code>NEXT_PUBLIC_…</code> mohou být součástí veřejného sestavení. Ani skrytí či zakódování hodnoty z ní nedělá tajemství. <a href="https://vite.dev/guide/env-and-mode" target="_blank" rel="noopener">Vite</a> · <a href="https://nextjs.org/docs/app/guides/environment-variables" target="_blank" rel="noopener">Next.js</a>.</p><p>Serverový endpoint také potřebuje vlastní řízení přístupu, omezení požadavků a kontrolu vstupů, aby jej nemohl kdokoliv neomezeně používat na tvé náklady.</p></div>
+    <details class="ai-details"><summary>Příklad: načtení klíče bez jeho vypsání</summary><p>V nastavení serveru nebo vývojového prostředí vytvoř proměnnou <code>AI_API_KEY</code>. Její skutečnou hodnotu vlož tam, nikoli do zdrojového kódu. Tento příklad pro serverový Python nevolá žádné API:</p><pre class="ai-code-sample"><code>import os
+
+api_key = os.environ["AI_API_KEY"]
+print("Proměnná s klíčem je načtená.")
+# Hodnotu api_key nevypisuj.</code></pre><p>Název proměnné záleží na aplikaci. Některé knihovny očekávají vlastní název, například <code>OPENAI_API_KEY</code>. Soubor <code>.env</code> se nenačítá automaticky v každém prostředí a sám o sobě neposkytuje šifrování.</p></details>
+    <details class="ai-details"><summary>Jak zabránit odeslání klíče na GitHub</summary><p>Lokální soubor s tajemstvími zahrň do <code>.gitignore</code>. Sdílená ukázka <code>.env.example</code> má obsahovat jen názvy proměnných a prázdné nebo zjevně neplatné hodnoty. Před commitem zkontroluj změny; pomoci může kontrola úniků tajemství.</p><p><strong>Přidání do .gitignore neodstraní klíč, který už byl commitnutý.</strong> Soukromý repozitář také není správce tajemství.</p></details>
+    <details class="ai-details"><summary>Spotřeba a limity: co sledovat</summary><p>Průběžně kontroluj provoz a náklady v účtu poskytovatele. Oddělené projekty a klíče pomohou dohledat spotřebu. Upozornění na rozpočet nemusí automaticky zastavit požadavky; skutečný limit a jeho způsob uplatnění ověř v dané službě.</p></details>
+    <details class="ai-details"><summary>Únik klíče: správné pořadí nápravy</summary><ol><li>Uniklý klíč ihned zneplatni u poskytovatele. Nestačí jej smazat ze zprávy nebo z poslední verze souboru.</li><li>Vytvoř náhradní klíč, aktualizuj nastavení aplikace a ověř její provoz.</li><li>Prohlédni historii použití, náklady a související přístupy. Podezřelou aktivitu řeš s poskytovatelem.</li><li>Odstraň místo úniku. Pokud je tajemství v historii Gitu, řeš čištění podle dokumentace a po domluvě s ostatními; kopie mohou zůstat v klonech i forkech.</li></ol></details>
+    <p class="ai-data-note">Ověřeno 27. 10. 2026: <a href="https://developers.openai.com/api/docs/guides/production-best-practices" target="_blank" rel="noopener">Oficiální dokumentace OpenAI — správa klíčů a provoz</a> · <a href="https://developers.openai.com/api/reference/overview#authentication" target="_blank" rel="noopener">API autentizace</a> · <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository" target="_blank" rel="noopener">GitHub — odstranění uniklých údajů</a>.</p>
   </section>
 
-  <section id="modely" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">08 /</span><h2>Který model se hodí na jakou práci</h2></div>
-    <p class="ai-section-intro">Orientační přehled podle popisu výrobců, ověřený 10. října 2026. Není to nezávislý žebříček ani seznam modelů, které všechny osobně používám. Nabídka v chatu, vývojovém nástroji a API se může lišit.</p>
-    <div class="ai-models"><article class="ai-project"><h3>OpenAI</h3><p><strong>GPT-6 Astra:</strong> obtížné problémy, hlubší analýza a složitý návrh.</p><p><strong>GPT-6.1 Sol:</strong> komplexní práce s ohledem na čas a náklady.</p><p><strong>GPT-6 Luna:</strong> malé vymezené úpravy, třídění a opakované úkoly.</p><a href="https://learn.chatgpt.com/docs/model-selection">Oficiální výběr modelů ↗</a></article><article class="ai-project"><h3>Anthropic · Claude</h3><p><strong>Opus 5.5:</strong> náročné více-krokové úkoly a složitá práce s projektem.</p><p><strong>Sonnet 5.5:</strong> praktický kompromis výkonu, rychlosti a nákladů pro kód i dokumenty.</p><p><strong>Haiku 5.5:</strong> rychlé souhrny, klasifikace a dílčí úkoly.</p><p class="ai-source-links"><a href="https://www.anthropic.com/claude/opus">Opus</a> · <a href="https://www.anthropic.com/claude/sonnet">Sonnet</a> · <a href="https://www.anthropic.com/claude/haiku">Haiku</a></p></article><article class="ai-project"><h3>Google · Gemini</h3><p><strong>Pro:</strong> řada pro náročné uvažování; katalog uvádí i Gemini 3.1 Pro Preview.</p><p><strong>Flash:</strong> rychlá práce s textem, kódem a multimodálními podklady; aktuální katalog uvádí Gemini 3.8 Flash.</p><p><strong>Flash-Lite:</strong> úspornější řada pro velký objem jednodušší práce. Preview není totéž co stabilní vydání.</p><a href="https://ai.google.dev/gemini-api/docs/models">Oficiální katalog API ↗</a></article></div>
-    <p class="ai-data-note"><strong>Model není totéž co nástroj.</strong> ChatGPT a Gemini jsou také aplikace; Codex a Claude Code jsou pracovní prostředí s přístupem k nástrojům. Výsledek závisí i na zadání, kontextu projektu, oprávněních a ověření. Silnější model ani delší přemýšlení nezaručí správnost.</p>
+  <section id="overeni" class="ai-section"><span id="regrese" class="ai-anchor"></span>
+    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">11 /</span><h2>Kontrola aplikace po úpravě a regrese</h2></div>
+    <p class="ai-section-intro"><strong>Regrese je chyba, při které po nové úpravě přestane fungovat něco, co dříve fungovalo.</strong> Opravené tlačítko proto ještě neznamená, že je ověřená celá aplikace.</p>
+    <div class="ai-projects"><article class="ai-project"><h3>Před změnou</h3><p>Poznamenej verzi a původní chování. U chyby zapiš postup vyvolání a očekávaný výsledek. Ověř výchozí stav relevantních testů a chraň data, se kterými budeš pracovat.</p></article><article class="ai-project"><h3>Po změně</h3><p>Zopakuj původní postup a ověř opravu. Pak projdi navazující funkce: ukládání, načtení, výpočty nebo export podle toho, kam změna zasahuje.</p></article><article class="ai-project"><h3>Před a po vydání</h3><p>Prohlédni změněné soubory a ověř sestavení i místní náhled. Po schváleném nasazení zkus hlavní průchody také v opravdu vydané aplikaci.</p></article></div>
+    <details class="ai-details"><summary>Co otestovat: jednotlivé vrstvy kontroly</summary><ul><li><strong>Syntaxe a sestavení:</strong> kód se dá zpracovat a aplikace sestavit. Tím ještě není ověřen její výsledek.</li><li><strong>Jednotkové testy:</strong> vybrané výpočty nebo pravidla na známých vstupech.</li><li><strong>Integrační testy:</strong> spolupráce částí, například importu a ukládání.</li><li><strong>Uživatelský průchod:</strong> skutečné zadání hodnot, kliknutí, uložení a opětovné načtení.</li><li><strong>Vizuální kontrola:</strong> mobil i počítač, delší text, chybová hláška a čitelnost ovládání. Srovnání screenshotů může upozornit na změnu vzhledu.</li></ul><p>Rozsah přizpůsob změně a jejím dopadům. Oprava textu potřebuje jinou kontrolu než změna účetního výpočtu nebo databáze.</p></details>
+    <details class="ai-details"><summary>Konkrétní příklad regrese: oprava importu</summary><p>Představ si aplikaci, která má zabránit opakovanému importu stejných položek. Oprava nového formátu výpisu musí zachovat i toto pravidlo.</p><ol><li>Na zkušebních datech importuj tři různé pohyby a ověř tři položky.</li><li>Zkus stejný soubor podruhé. Pokud má aplikace rozpoznávat duplicity, musí stále zůstat tři položky.</li><li>Zkontroluj součty, měny a datum. Vyzkoušej také dříve podporovaný formát.</li><li>Data ulož, aplikaci znovu otevři a ověř export.</li></ol><p>Používej testovací nebo anonymizovaná data. Po nalezení chyby je vhodné přidat test, který ověřuje očekávané chování a pomůže zachytit její návrat.</p></details>
+    <details class="ai-details"><summary>Smoke test, regresní test a CI jednoduše</summary><p><strong>Smoke test</strong> je rychlé ověření základních průchodů: aplikace se spustí, hlavní stránka se načte a klíčový úkol jde provést.</p><p><strong>Regresní testy</strong> hlídají dříve požadované chování při dalších změnách. <strong>CI</strong> znamená průběžnou integraci: automatizované kontroly mohou běžet například při vytvoření pull requestu. Zelený výsledek dokládá jen kontroly, které se skutečně spustily.</p></details>
+    <details class="ai-details"><summary>Jak zadat kontrolu AI a co chtít ve výsledku</summary><p class="ai-mini-example">„Nejdřív zjisti a zaznamenej výchozí stav. Po opravě ověř původní chybu i související funkce. Použij zkušební data. Uveď, co jsi zkontroloval, jaký byl očekávaný a skutečný výsledek a co se ověřit nepodařilo. Zatím nic nepublikuj.“</p><p>Požaduj konkrétní výsledky a otevřené nedostatky. Samotný počet úspěšných testů ani věta „vše funguje“ nenahrazují kontrolu důležitých uživatelských scénářů.</p></details>
+    <details class="ai-details"><summary>Co když kontrola najde chybu?</summary><p>Zaznamenej postup, verzi a očekávaný výsledek. Zjisti, zda problém existoval už před úpravou. Podle dopadu oprav změnu nebo použij připravený návrat; po opravě znovu projdi dotčené scénáře. Referenční screenshoty nebo očekávané výsledky nepřepisuj jen proto, aby kontrola prošla.</p></details>
+    <p class="ai-data-note">Podklady ověřeny 27. 10. 2026: <a href="https://playwright.dev/docs/best-practices" target="_blank" rel="noopener">Playwright — testování uživatelského chování</a> · <a href="https://playwright.dev/docs/test-snapshots" target="_blank" rel="noopener">Srovnávání screenshotů</a> · <a href="https://docs.github.com/en/actions/get-started/understand-github-actions" target="_blank" rel="noopener">GitHub Actions a CI</a>.</p>
   </section>
-
-  <section id="zdarma-placene" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">09 /</span><h2>Stačí AI zdarma? Záleží na práci.</h2></div>
-    <p class="ai-section-intro">Zdarma není automaticky špatně a placené není automaticky správně. Rozdíl bývá v dostupných modelech, objemu použití a nástrojích — ne jen v kvalitě jedné odpovědi.</p>
-    <div class="ai-ownership"><article class="ai-project"><h3>Zdarma: dobrý začátek</h3><p>Vysvětlení pojmu, překlad, krátký text, nápad nebo malý prototyp. Někdy je dostupný i schopný model, ale s nižšími limity. Pokud úkol dokončím a výsledek ověřím, není důvod platit jen kvůli štítku „Pro“.</p></article><article class="ai-project"><h3>Placené: prostor pro soustavnou práci</h3><p>Smysl může mít při pravidelném vývoji, dlouhých analýzách a mnoha kolech oprav. Podle tarifu přidává vyšší limity, další modely či vývojové nástroje. Ani předplatné však obecně neznamená neomezené použití.</p></article></div>
-    <div class="ai-callout"><h3>Předplatné chatu ≠ provoz AI v mé aplikaci</h3><p>AI analytik nebo rozpoznání fotografie přes API má vlastní podmínky a účtování. Předplatné nelze automaticky považovat za zaplacené API volání; některé tarify mohou zahrnout kredity. Navíc mohou vznikat náklady na hosting, úložiště nebo jiné datové služby.</p><p><strong>Nejdřív vyzkoušet vlastní úkol. Platit za potřebnou schopnost nebo odstranění konkrétního limitu, ne za příslib bezchybnosti.</strong></p></div>
-    <p class="ai-data-note">Ceny, dostupnost a limity se mění podle produktu, regionu a účtu. Aktuální podmínky: <a href="https://learn.chatgpt.com/docs/pricing">OpenAI</a> · <a href="https://claude.com/pricing">Claude</a> · <a href="https://support.google.com/gemini/answer/16275805">Gemini</a> · <a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini API</a>. Placený tarif sám o sobě není zárukou soukromí; před vložením citlivých dat kontroluji konkrétní podmínky.</p>
-  </section>
-
-  <section id="skills-mcp" class="ai-section">
-    <div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">10 /</span><h2>Skills, pluginy a MCP: postupy a přístupy</h2></div>
-    <p class="ai-section-intro">Tyto součásti mohou práci zjednodušit, ale každá má jinou roli. Pro první aplikaci nemusím instalovat všechny.</p>
-    <dl class="ai-glossary"><div><dt>Skill</dt><dd>Návod pro opakovanou práci, případně se skripty a podklady. Například kontrola importu nebo postup testování. Není to dodatečné vytrénování modelu.</dd></div><div><dt>Plugin</dt><dd>Instalovatelný balíček schopností. Může obsahovat skills, nástroje a MCP napojení. Důležitý je původ a obsah balíčku.</dd></div><div><dt>Konektor</dt><dd>Napojení na konkrétní službu nebo účet. Před připojením zjišťuji, jaká data zpřístupňuje a zda umožňuje i zápis.</dd></div><div><dt>MCP server</dt><dd>Poskytuje AI nástroje a data přes společné rozhraní. Může běžet lokálně nebo vzdáleně. MCP není bezpečnostní certifikát.</dd></div></dl>
-    <p class="ai-data-note">Praktický postup: vybrat důvěryhodný zdroj, přečíst instrukce, nastavit nejmenší potřebná oprávnění a vyzkoušet konkrétní úkol na testovacích datech. Zápis, mazání a publikaci oddělit od čtení. Více doplňků automaticky neznamená lepší výsledek. <a href="https://developers.openai.com/plugins/concepts/plugins">Dokumentace pluginů</a> · <a href="https://modelcontextprotocol.io/docs/draft/tutorials/security/security_best_practices">Bezpečnost MCP</a></p>
-  </section>
-
-  <section class="ai-closing">
-    <h2>Nejlepší výsledek je nástroj, který opravdu používám.</h2><p>AI mi umožňuje průběžně rozvíjet vlastní řešení: od malého nápadu přes opravu až po aplikaci, která zapadne do mého dne.</p><a class="ai-button" href="aplikace/">Prohlédnout moje aplikace <span aria-hidden="true">↗</span></a>
-  </section>
-</div>
-</main>
+  <section class="ai-closing"><h2>Vyzkoušej jeden malý úkol.</h2><p>Vyber vlastní text nebo dvě nabídky, popiš požadovaný výsledek a zkontroluj, co AI vrátí. Na složitější postup můžeš navázat později.</p><a class="ai-button" href="#zadani">Otevřít vzor zadání ↗</a><p class="ai-data-note">Další český vzdělávací obsah: <a href="https://www.youtube.com/@aisrozumem" target="_blank" rel="noopener">AI s rozumem — Filip Oborník</a>. Vlastní vysvětlení na této stránce doplňují odkazy na dokumentaci výrobců.</p></section>
+</div></main>
 
 <footer class="site-footer">
   <div class="site-footer__inner">
@@ -229,6 +206,25 @@ main img:hover { transform:scale(1.005) }
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
   document.querySelectorAll('main img').forEach(function(img){
     img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
+  });
+})();
+</script>
+<script>
+(function () {
+  var button = document.querySelector('[data-copy="ai-prompt"]');
+  if (!button) return;
+  button.addEventListener('click', async function () {
+    var text = document.getElementById('ai-prompt').innerText;
+    var status = document.getElementById('ai-copy-status');
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = 'Zadání je zkopírované. Doplň vlastní podklady a vlož ho do svého AI nástroje.';
+    } catch (error) {
+      var range = document.createRange();
+      range.selectNodeContents(document.getElementById('ai-prompt'));
+      var selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+      status.textContent = 'Automatické kopírování není dostupné. Označené zadání zkopíruj ručně.';
+    }
   });
 })();
 </script>

@@ -135,3 +135,28 @@ html:not([data-theme-mode="light"]) .ai-page {
   .ai-project { padding:1.25rem; }
 }
 @media (prefers-reduced-motion:reduce) { .ai-button { transition:none; } }
+
+/* Learning guide: shared visual language, scoped to the new CS page. */
+.ai-page--learning .ai-jump { gap: .3rem 1.2rem; }
+.ai-page--learning .ai-jump a { min-height: 44px; display: flex; align-items: center; }
+.ai-page--learning .ai-agent-loop { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .8rem; padding: 0; list-style: none; counter-reset: step; }
+.ai-page--learning .ai-agent-loop li { counter-increment: step; padding: 1rem; background: var(--ai-surface); border: 1px solid var(--ai-line); border-radius: 10px; color: var(--ai-ink); }
+.ai-page--learning .ai-agent-loop li::before { content: '0' counter(step) ' / '; color: var(--ai-accent); font-family: monospace; }
+.ai-page--learning .ai-mini-example { border-left: 2px solid var(--ai-accent); padding-left: .8rem; font-size: .85rem; }
+.ai-page--learning .ai-project p:last-child { margin-bottom: 0; }
+.ai-page--learning .ai-copy { cursor: pointer; }
+.ai-page--learning .ai-details summary { min-height: 44px; align-content: center; line-height: 1.5; }
+.ai-page--learning #ai-prompt { white-space: pre-line; }
+.ai-page--learning .ai-copy:focus-visible, .ai-page--learning summary:focus-visible { outline: 3px solid #da8c20; outline-offset: 4px; }
+@media (max-width:720px) {
+ .ai-page--learning .ai-hero { padding: 1.25rem; }
+ .ai-page--learning .ai-hero h1 { font-size: clamp(1.9rem,7.5vw,2.7rem); margin: .65rem 0 .9rem; }
+ .ai-page--learning .ai-hero .ai-lead { font-size: .95rem; line-height: 1.6; }
+ .ai-page--learning .ai-hero .ai-workbench { display: none; }
+ .ai-page--learning .ai-hero .ai-updated { margin-top: .9rem; }
+ .ai-page--learning .ai-hero .ai-eyebrow { font-size: .7rem; letter-spacing: .1em; }
+ .ai-page--learning .ai-jump { gap: 0 .9rem; padding: .75rem 0; }
+ .ai-page--learning .ai-agent-loop { grid-template-columns: 1fr 1fr; }
+}
+
+.ai-page--learning .ai-code-sample { max-width: 100%; overflow-x: auto; padding: 1rem; border: 1px solid var(--ai-line); border-radius: 8px; background: var(--ai-surface); color: var(--ai-ink); font-size: .85rem; line-height: 1.6; }
