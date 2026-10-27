@@ -1684,3 +1684,12 @@ body.journey-page .journey-resource::before { display: none; }
   .journey-note { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .journey-shortcuts { gap: .25rem 1rem; font-size: .9rem; }
 }
+
+/* Named travel stops: preserve each photo without cropping. */
+.travel-photo-selection { scroll-margin-top: 10rem; }
+.travel-photo-selection > p { color: var(--text-mut); margin-bottom: 1.2rem; }
+.travel-photo-selection .cards-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.travel-photo-selection figure.card { margin: 0; padding: 0; overflow: hidden; min-width: 0; gap: 0; align-self: start; }
+.travel-photo-selection figure img { display: block; width: 100%; height: auto; max-height: 440px; object-fit: contain; background: var(--panel); }
+.travel-photo-selection figcaption { padding: .85rem 1rem; font-size: .9rem; line-height: 1.5; }
+@media (max-width: 720px) { .travel-photo-selection { scroll-margin-top: 5rem; } .travel-photo-selection figure img { height: auto; max-height: 560px; } }
