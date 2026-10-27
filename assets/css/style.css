@@ -1533,7 +1533,9 @@ body.theme-italy { --medal: linear-gradient(135deg, #8e959c 0%, #d9dde1 28%, #ff
 /* Video catalog and dated Smart Home snapshot */
 .video-filter { display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; margin:1.5rem 0 1rem; }
 .video-filter label { font-weight:700; }
-.video-filter select { min-width:min(100%,320px); max-width:100%; padding:.65rem .8rem; border:1px solid var(--border); border-radius:8px; background:var(--card-bg,#fff); color:var(--text); font:inherit; }
+.video-filter select { min-width:min(100%,320px); max-width:100%; padding:.65rem .8rem; border:1px solid var(--border); border-radius:8px; background:var(--panel); color:var(--text); color-scheme:dark; font:inherit; }
+.video-filter select option { background:var(--panel); color:var(--text); }
+html[data-theme-mode="light"] .video-filter select { color-scheme:light; }
 .video-card[hidden] { display:none !important; }
 .video-archive-link { text-align:center; margin:1.5rem 0 0; }
 .video-archive-intro { text-align:center; margin:1rem 0 2rem; }
