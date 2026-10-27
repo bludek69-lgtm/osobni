@@ -6,13 +6,13 @@
     "sha256": "4904af77498016861a003f46d383d7f492f951af0958313191d6ba6bb2cd7c8a"
   },
   "budline": {
-    "version": "1.2.112",
+    "version": "1.2.114",
     "stage": "beta",
-    "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel-v1.2.112-Setup.exe",
-    "sha256": "ad732d3577212c2e7252a651c9468da2737cf91952cc0fe8f0c48eddd9bd0c59",
+    "url": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel-v1.2.114-Setup.exe",
+    "sha256": "5b90e6dae94b8385614960a2689a3fa6e34e4634f534df208ba6cbcac02d5e3d",
     "url_mac": "https://github.com/bludek69-lgtm/aplikace/releases/download/apps/BudLinePanel.dmg",
-    "sha256_mac": "bd25eed58fabe99c57e0e08ba9f2a3463a4364d458d262507ceccb22bcd68d8b",
-    "sig_ed25519": "HNljG3b/gC0vYMNZCXQGSYSiHQCEcpJFx87pytePNInNEBfDBIz7gS2u8crBOipxIRJ02Y5lpiPEcXCH6gmLDA=="
+    "sha256_mac": "e1c9c2d35e4bd13317922b4846725f79f1bff94755041d806d52b3faae042737",
+    "sig_ed25519": "nX9r04lLy/gHCIqJ+uzNNB1arL5lv7cTulYpc5awS4IbJlhGBt4ogLr90rldh/nkhEaJOqyu/AAwC7S0fXByBw=="
   },
   "italia": {
     "version": "1.9.0",
