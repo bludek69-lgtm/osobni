@@ -12,13 +12,14 @@
   --border-strong: rgba(255, 255, 255, 0.12);
   --text: #e8eef5;
   --text-soft: #aab4c2;
-  --text-dim: #778292; /* was #6b7686 — lightened to clear 4.5:1 on --bg-soft/--surface (WCAG contrast fix) */
+  --text-dim: #8b98a9; /* was #6b7686 — lightened to clear 4.5:1 on --bg-soft/--surface (WCAG contrast fix) */
   --accent: #00e5ff;
   --accent-2: #7c3aed;
   --accent-glow: rgba(0, 229, 255, 0.35);
   --success: #22c55e;
   --warning: #fbbf24;
-  --danger: #ef4444;
+  --danger: #ff7575;
+  --info: #77bfff;
 
   --radius-sm: 8px;
   --radius: 14px;
@@ -3309,7 +3310,7 @@ img.zoomable:hover { opacity: 0.85; }
   --metal-num: linear-gradient(180deg, #ffffff 0%, #c9f6ff 35%, #00d4f0 70%, #0a8aa3 100%);
   --metal-edge: linear-gradient(115deg, #6f7d86 0%, #b7c3ca 28%, #ffffff 47%, #c9f6ff 53%, #8e9aa2 72%, #4f5c64 100%);
   --metal-strip: linear-gradient(180deg, #0a4a57, #22d3ee 40%, #c9f6ff 50%, #12a9c4 60%, #0a4a57);
-  --metal-btn: linear-gradient(115deg, #0b6f82 0%, #3fd4ec 10%, #e2fbff 16%, #2fd0ea 22%, #00b4d8 52%, #0b6f82 100%);
+  --metal-btn: linear-gradient(115deg, #59b9cc 0%, #7ad4e6 10%, #e2fbff 16%, #7ad4e6 22%, #59b9cc 52%, #59b9cc 100%);
 }
 .grad-text,
 .brand-name-accent,

@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://cestovatel69.cz/assets/img/aplikace/rpi-kiosk/01_audio.png">
   <meta property="og:url" content="https://cestovatel69.cz/it/aplikace/rpi-kiosk.html">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="../../assets/css/style.css?v=20261027-select-contrast">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=20261028-readable-final">
   <link rel="icon" href="/favicon.ico">
 </head>
 <body class="theme-smart-home">
@@ -41,10 +41,10 @@
 
 <main id="main">
 <section class="hero" style="border-left:4px solid #9cf2a6;padding-left:1.2rem">
-  <span class="hero-accent" style="color:#9cf2a6">Pannello a muro</span>
+  <span class="hero-accent" style="color:var(--accent-text)">Pannello a muro</span>
   <h1><span style="margin-right:.4rem">🖥️</span>Pannello a muro</h1>
   <p class="hero-sub">Un piccolo touchscreen sul muro del corridoio dove controllo tutto l'appartamento — luci, audio, riscaldamento, scene. Niente sblocco telefono, niente caccia all'app. Passi, un tocco, fatto.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:#9cf2a61a;color:#9cf2a6;border:1px solid #9cf2a640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">HTML</span> <span class="pill" style="background:#9cf2a61a;color:#9cf2a6;border:1px solid #9cf2a640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Vanilla JS</span> <span class="pill" style="background:#9cf2a61a;color:#9cf2a6;border:1px solid #9cf2a640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Raspberry Pi 4</span> <span class="pill" style="background:#9cf2a61a;color:#9cf2a6;border:1px solid #9cf2a640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Chromium kiosk</span></p>
+  <p style="margin-top:.6rem"><span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #9cf2a640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">HTML</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #9cf2a640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Vanilla JS</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #9cf2a640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Raspberry Pi 4</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #9cf2a640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Chromium kiosk</span></p>
   <p style="margin-top:.8rem"><a href="index.html">← Torna alle Mie app</a></p>
 </section>
 
@@ -101,16 +101,26 @@
     </div>
     <div class="diary-body">
       <ul style="line-height:1.8">
-        <li><strong>Collegamento più sicuro con la casa intelligente (ottobre 2026)</strong> — Il pannello parla con la casa intelligente tramite un proprio intermediario che custodisce la chiave di accesso. Dopo una revisione di sicurezza può usarlo solo il pannello stesso — gli altri dispositivi della rete non possono né controllare la casa attraverso di esso né leggerne le impostazioni.</li>
-        <li><strong>Nessun segreto sulla rete (ottobre 2026)</strong> — Leggendo il codice ho scoperto che il semplice server web del pannello consegnava a qualsiasi altro computer della rete domestica file che non devono stare lì — compresi la chiave di accesso alla casa intelligente e il login della telecamera. Ora serve solo le schermate del pannello e rifiuta tutto il resto; la chiave è conservata fuori dai file pubblici. Verificato da un altro computer: le schermate si caricano, i file sensibili no.</li>
-        <li><strong>Modalità notte del display (ottobre 2026)</strong> — Il pannello nel corridoio di notte illuminava la stanza. La sera ora si attenua, di notte (o quando la casa è in modalità sonno) il display si spegne e con un tocco si accende debolmente per due minuti. Legge lo stato della casa dalla stessa fonte della dashboard; se non è disponibile ricorre all'orologio e, nel dubbio, resta a piena luminosità — un pannello nero di giorno è peggio di uno acceso di notte.</li>
-        <li><strong>Riscaldamento sul pannello (ottobre 2026)</strong> — Una pagina Riscaldamento grande e separata: scegli la stanza, tocca Comfort, Notte, Fuori o Programma, oppure imposta la temperatura esatta con una manopola rotante. Una modifica manuale vale fino al successivo cambio del programma, poi la testina torna da sola al piano. Il pannello e l'app per PC Config Center condividono lo stesso modulo di controllo.</li>
-        <li><strong>Pannello touch a muro</strong> — Raspberry Pi 4 + display touch da 7 pollici nel corridoio, sempre acceso e pronto. Scene con un solo pollice (Relax, Cinema, Cucina, Cena, Romantica, Lavoro, Arrivo, Uscita).</li>
-        <li><strong>Controllo di tutto l'appartamento</strong> — Luci (tutte le stanze, dimmer, colore, scene), audio da radio internet (scelta dell'altoparlante, volume), riscaldamento ed energia (ore di funzionamento della caldaia, zone TRV, consumo attuale).</li>
-        <li><strong>Senza telefono, senza login</strong> — Nessuno deve accedere né cercare qualcosa; apri la porta e il pannello te lo mostra.</li>
-        <li><strong>Telecamera davanti a casa (agosto 2026)</strong> — Il pannello mostra l'immagine dal vivo della telecamera e gli ultimi eventi con le anteprime. Non devi andare da nessuna parte né cercare un'app sul telefono.</li>
-        <li><strong>Sorveglianza dell'auto (agosto 2026)</strong> — Il sistema riconosce da solo che qualcuno è vicino all'auto e lo annuncia ad alta voce in cucina e con un messaggio sul telefono. Riconoscere una persona non era la parte difficile, ma distinguere «qualcuno è alla mia auto» da «qualcuno attraversa il cortile» — il cortile è un passaggio e ci passano più di cento persone al giorno. Il primo tentativo ha perfino peggiorato le cose: i falsi allarmi sono aumentati. Si è capito perché — in un'immagine piatta una persona a quindici metri di distanza può apparire proprio accanto all'auto. Ora si valuta quanto è grande nell'inquadratura: chi sta vicino all'auto appare grande, chi è lontano appare piccolo. I falsi allarmi sono scesi da ventisei a zero.</li>
-        <li><strong>Due volumi di avviso</strong> — Ad alta voce quando qualcuno è proprio all'auto. Un messaggio più discreto sul telefono quando qualcuno si trattiene soltanto nei paraggi. Perché nessuno cominci a disattivare gli avvisi dopo una settimana.</li>
+        <li><strong>Collegamento più sicuro con la casa intelligente (ottobre 2026)</strong> — Il pannello parla con la casa intelligente tramite un proprio intermediario che custodisce la chiave di accesso. Dopo una revisione di sicurezza può usarlo solo il pannello stesso — gli altri dispositivi della rete non possono né controllare la casa attraverso di esso né leggerne le impostazioni.</li>
+
+        <li><strong>Nessun segreto sulla rete (ottobre 2026)</strong> — Leggendo il codice ho scoperto che il semplice server web del pannello consegnava a qualsiasi altro computer della rete domestica file che non devono stare lì — compresi la chiave di accesso alla casa intelligente e il login della telecamera. Ora serve solo le schermate del pannello e rifiuta tutto il resto; la chiave è conservata fuori dai file pubblici. Verificato da un altro computer: le schermate si caricano, i file sensibili no.</li>
+
+        <li><strong>Modalità notte del display (ottobre 2026)</strong> — Il pannello nel corridoio di notte illuminava la stanza. La sera ora si attenua, di notte (o quando la casa è in modalità sonno) il display si spegne e con un tocco si accende debolmente per due minuti. Legge lo stato della casa dalla stessa fonte della dashboard; se non è disponibile ricorre all'orologio e, nel dubbio, resta a piena luminosità — un pannello nero di giorno è peggio di uno acceso di notte.</li>
+
+        <li><strong>Riscaldamento sul pannello (ottobre 2026)</strong> — Una pagina Riscaldamento grande e separata: scegli la stanza, tocca Comfort, Notte, Fuori o Programma, oppure imposta la temperatura esatta con una manopola rotante. Una modifica manuale vale fino al successivo cambio del programma, poi la testina torna da sola al piano. Il pannello e l'app per PC Config Center condividono lo stesso modulo di controllo.</li>
+
+        <li><strong>Pannello touch a muro</strong> — Raspberry Pi 4 + display touch da 7 pollici nel corridoio, sempre acceso e pronto. Scene con un solo pollice (Relax, Cinema, Cucina, Cena, Romantica, Lavoro, Arrivo, Uscita).</li>
+
+        <li><strong>Controllo di tutto l'appartamento</strong> — Luci (tutte le stanze, dimmer, colore, scene), audio da radio internet (scelta dell'altoparlante, volume), riscaldamento ed energia (ore di funzionamento della caldaia, zone TRV, consumo attuale).</li>
+
+        <li><strong>Senza telefono, senza login</strong> — Nessuno deve accedere né cercare qualcosa; apri la porta e il pannello te lo mostra.</li>
+
+        <li><strong>Telecamera davanti a casa (agosto 2026)</strong> — Il pannello mostra l'immagine dal vivo della telecamera e gli ultimi eventi con le anteprime. Non devi andare da nessuna parte né cercare un'app sul telefono.</li>
+
+        <li><strong>Sorveglianza dell'auto (agosto 2026)</strong> — Il sistema riconosce da solo che qualcuno è vicino all'auto e lo annuncia ad alta voce in cucina e con un messaggio sul telefono. Riconoscere una persona non era la parte difficile, ma distinguere «qualcuno è alla mia auto» da «qualcuno attraversa il cortile» — il cortile è un passaggio e ci passano più di cento persone al giorno. Il primo tentativo ha perfino peggiorato le cose: i falsi allarmi sono aumentati. Si è capito perché — in un'immagine piatta una persona a quindici metri di distanza può apparire proprio accanto all'auto. Ora si valuta quanto è grande nell'inquadratura: chi sta vicino all'auto appare grande, chi è lontano appare piccolo. I falsi allarmi sono scesi da ventisei a zero.</li>
+
+        <li><strong>Due volumi di avviso</strong> — Ad alta voce quando qualcuno è proprio all'auto. Un messaggio più discreto sul telefono quando qualcuno si trattiene soltanto nei paraggi. Perché nessuno cominci a disattivare gli avvisi dopo una settimana.</li>
+
         <li><strong>Affidabile 24/7</strong> — Funziona sempre, si riavvia da solo dopo un'interruzione di corrente, circa un anno senza problemi.</li>
       </ul>
       <p style="color:var(--text-mut,#777);font-size:.85rem">Nota: l'app funziona solo in locale; nessun dato reale né informazione personale finisce sul web.</p>
@@ -118,42 +128,78 @@
   </div>
 </div>
 
-<style>
-.diary-btn, .diary-link {
-  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
-  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
-}
-.diary-btn:hover { background:#e6c75a; }
-.diary-link { background:none; color:#a07d12; text-decoration:underline; padding:0; font-weight:600; }
-.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
-.diary-modal.open { display:block; }
-.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
-.diary-panel {
-  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
-  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
-  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
-}
-.diary-head {
-  display:flex; align-items:center; justify-content:space-between; gap:1rem;
-  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
-  position:sticky; top:0; background:var(--bg,#fff);
-}
-.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
-.diary-close:hover { color:var(--text,#111); }
-.diary-body { padding:1.2rem 1.4rem; }
-@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
-</style>
-<script>
-(function(){
-  var modal = document.getElementById('diary');
-  if (!modal) return;
-  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-  ['openDiary','openDiary2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
-  modal.querySelector('.diary-close').addEventListener('click', close);
-  modal.querySelector('.diary-backdrop').addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
-})();
+<style>
+
+.diary-btn, .diary-link {
+
+  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
+
+  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
+
+}
+
+.diary-btn:hover { background:#e6c75a; }
+
+.diary-link { background:none; color:#a07d12; text-decoration:underline; padding:0; font-weight:600; }
+
+.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
+
+.diary-modal.open { display:block; }
+
+.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
+
+.diary-panel {
+
+  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
+
+  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
+
+  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
+
+}
+
+.diary-head {
+
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+
+  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
+
+  position:sticky; top:0; background:var(--bg,#fff);
+
+}
+
+.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
+
+.diary-close:hover { color:var(--text,#111); }
+
+.diary-body { padding:1.2rem 1.4rem; }
+
+@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
+
+</style>
+
+<script>
+
+(function(){
+
+  var modal = document.getElementById('diary');
+
+  if (!modal) return;
+
+  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+
+  ['openDiary','openDiary2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
+
+  modal.querySelector('.diary-close').addEventListener('click', close);
+
+  modal.querySelector('.diary-backdrop').addEventListener('click', close);
+
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+
+})();
+
 </script>
 
 

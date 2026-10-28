@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Collection — Numismatics &amp; Philately — My apps — Luděk</title>
   <meta name="description" content="A personal catalogue of coins, banknotes and stamps with an auction-house look. AI recognition from a photo, valuation, marketplace links, Excel import. Local, no cloud.">
-  <link rel="stylesheet" href="../../assets/css/style.css?v=20261027-select-contrast">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=20261028-readable-final">
   <link rel="icon" href="/favicon.ico">
 
   <link rel="canonical" href="https://cestovatel69.cz/en/aplikace/sbirka.html">
@@ -19,7 +19,7 @@
   <meta property="og:url" content="https://cestovatel69.cz/en/aplikace/sbirka.html">
   <meta property="og:type" content="website">
 </head>
-<body>
+<body class="theme-home">
 
 <header class="site-header">
   <div class="site-header__inner">
@@ -47,15 +47,15 @@
 
 <main id="main">
 <section class="hero" style="border-left:4px solid #c9a227;padding-left:1.2rem">
-  <span class="hero-accent" style="color:#c9a227">Collection — Numismatics &amp; Philately</span>
+  <span class="hero-accent" style="color:var(--accent-text)">Collection — Numismatics &amp; Philately</span>
   <h1><span style="margin-right:.4rem">🪙</span>Collection — Numismatics &amp; Philately</h1>
   <p class="hero-sub">A personal catalogue of coins, banknotes, stamps and postcards with an auction-house look. AI recognizes an item from a photo and fills in the details, the app shows where the same item actually sells (marketplaces and auctions) and tracks what raises or lowers the value. Real data stays local with me — no cloud, no accounts, no payments.</p>
   <p style="margin-top:.6rem">
-    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">HTML/JS</span>
-    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python + FastAPI</span>
-    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span>
-    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">AI Gemini (vision)</span>
-    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows (.exe)</span>
+    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">HTML/JS</span>
+    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">Python + FastAPI</span>
+    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">SQLite</span>
+    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">AI Gemini (vision)</span>
+    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">Windows (.exe)</span>
   </p>
   <p style="margin-top:.8rem">
     <a href="index.html">← Back to My apps</a>
@@ -100,7 +100,7 @@
 <section>
   <h2>Screenshots</h2>
   <style>
-    .ss-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.1rem; margin-top:.8rem; }
+    .ss-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr)); gap:1.1rem; margin-top:.8rem; }
     .ss-grid figure { margin:0; }
     .ss-grid img { width:100%; height:auto; border-radius:8px; border:1px solid var(--border,#0001); display:block; }
     .ss-grid figcaption { font-size:.82rem; color:var(--text-mut,#666); margin-top:.35rem; }

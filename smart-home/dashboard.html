@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="style.css?v=20261016-medaile" />
+  <link rel="stylesheet" href="style.css?v=20261028-readable-final" />
 
   <link rel="icon" href="/favicon.ico">
   <link rel="canonical" href="https://cestovatel69.cz/smart-home/dashboard.html">
@@ -155,9 +155,9 @@
           <ul style="margin:8px 0 8px 24px;">
             <li><span style="color:#27ae60;">● CACHE</span> — data čerstvá, vše OK</li>
             <li><span style="color:#e67e22;">◐ CACHE OLD</span> — data starší než 5 minut, ale funkční</li>
-            <li><span style="color:#2980b9;">○ HOMEY</span> — cache selhal, čte se přímo z Homey</li>
-            <li><span style="color:#c0392b;">○ LOCAL</span> — i Homey nedostupný, ukazují se uložené hodnoty</li>
-            <li><span style="color:#c0392b;">✕ ERR</span> — všechny tři vrstvy selhaly</li>
+            <li><span style="color:var(--info);">○ HOMEY</span> — cache selhal, čte se přímo z Homey</li>
+            <li><span style="color:var(--danger);">○ LOCAL</span> — i Homey nedostupný, ukazují se uložené hodnoty</li>
+            <li><span style="color:var(--danger);">✕ ERR</span> — všechny tři vrstvy selhaly</li>
           </ul>
           <p>
             Pro uživatele to znamená jediné: dashboard se nikdy nezasekne na blank screen,

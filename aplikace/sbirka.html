@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sbírka — Numismatika &amp; Filatelie — Moje aplikace — Luděk</title>
   <meta name="description" content="Vlastní katalog mincí, bankovek a známek se vzhledem aukčního domu. AI rozpoznávání z fotky, oceňování, odkazy na burzy, import z Excelu. Lokálně, bez cloudu.">
-  <link rel="stylesheet" href="../assets/css/style.css?v=20261027-select-contrast">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261028-readable-final">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🪙%3C/text%3E%3C/svg%3E">
 
   <link rel="canonical" href="https://cestovatel69.cz/aplikace/sbirka.html">
@@ -48,15 +48,15 @@
 
 <main id="main">
 <section class="hero" style="border-left:4px solid #c9a227;padding-left:1.2rem">
-  <span class="hero-accent" style="color:#c9a227">Sbírka — Numismatika &amp; Filatelie</span>
+  <span class="hero-accent" style="color:var(--accent-text)">Sbírka — Numismatika &amp; Filatelie</span>
   <h1><span style="margin-right:.4rem">🪙</span>Sbírka — Numismatika &amp; Filatelie</h1>
   <p class="hero-sub">Vlastní katalog mincí, bankovek, známek a pohlednic ve vzhledu aukčního domu. AI rozpozná kus z fotky a doplní údaje, ukáže kde se reálně prodává (burzy a aukce), eviduje co sbírku zdražuje a co sráží cenu. Reálná data jen lokálně u mě — žádný cloud, žádné účty, žádné platby.</p>
   <p style="margin-top:.6rem">
-    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">HTML/JS</span>
-    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python + FastAPI</span>
-    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span>
-    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">AI Gemini (vision)</span>
-    <span class="pill" style="background:#c9a2271a;color:#a07d12;border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows (.exe)</span>
+    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">HTML/JS</span>
+    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">Python + FastAPI</span>
+    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">SQLite</span>
+    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">AI Gemini (vision)</span>
+    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">Windows (.exe)</span>
   </p>
   <p style="margin-top:.8rem">
     <a href="index.html">← Zpět na Moje aplikace</a>
@@ -101,7 +101,7 @@
 <section>
   <h2>Náhledy</h2>
   <style>
-    .ss-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.1rem; margin-top:.8rem; }
+    .ss-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr)); gap:1.1rem; margin-top:.8rem; }
     .ss-grid figure { margin:0; }
     .ss-grid img { width:100%; height:auto; border-radius:8px; border:1px solid var(--border,#0001); display:block; }
     .ss-grid figcaption { font-size:.82rem; color:var(--text-mut,#666); margin-top:.35rem; }
