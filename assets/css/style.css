@@ -1758,3 +1758,26 @@ body.theme-smart-home {
 @media (max-width: 640px) {
   .pasta-quality-table th, .pasta-quality-table td { padding: .5rem .4rem; }
 }
+
+/* Quieter surfaces, flat controls, and comfortable reading. */
+html[data-theme-mode="dark"] :is(body.theme-home, body.theme-finance, body.theme-travel, body.theme-italy, body.theme-smart-home) {
+  --bg: #151920;
+  --bg-deep: #10141a;
+  --panel: #202935;
+  --panel-hi: #293443;
+  --border: rgba(218, 228, 240, .15);
+}
+body.theme-home { --metal-btn: #d6a84f; --metal-strip: #b98c37; }
+body.theme-finance { --metal-btn: #d4af37; --metal-strip: #b89530; }
+body.theme-travel { --metal-btn: #0e5f74; --metal-strip: #16758a; }
+body.theme-smart-home { --metal-btn: #7ad4e6; --metal-strip: #279bad; }
+:is(body.theme-home, body.theme-travel, body.theme-finance, body.theme-smart-home) :is(.video-card .btn-mini:not(.secondary), .diary-btn, .btn-primary) {
+  text-shadow: none;
+  box-shadow: none;
+}
+:is(body.theme-home, body.theme-travel, body.theme-finance, body.theme-smart-home) .card { box-shadow: none; }
+.prose p, .prose li { line-height: 1.75; }
+.prose p { max-width: 75ch; }
+.prose li { margin-bottom: .45em; }
+.travel-photo-selection figcaption, .journey-hero__photo figcaption { font-size: .95rem; line-height: 1.55; }
+@media (max-width: 640px) { .journey-hero__photo figcaption { font-size: .9rem; } }

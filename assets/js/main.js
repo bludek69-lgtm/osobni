@@ -6,17 +6,10 @@
   'use strict';
   const STORAGE_KEY = 'cestovatel69_theme_mode'; // 'dark' | 'light' | 'auto'
   const stored = (() => { try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; } })();
-  const prefersDark = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  let mode;
-  if (stored === 'dark' || stored === 'light') {
-    mode = stored;
-  } else {
-    // 'auto' or unset → fall back to system preference; if no preference, respect per-page theme (no override)
-    mode = prefersDark ? 'dark' : 'light';
-    // Note: if user has never toggled, we still APPLY system preference to keep behavior predictable.
-    // Saved value "auto" would mean explicit user choice for "system", overrides default to no-override.
-    if (stored === 'auto') mode = null; // no override → respect per-page designed theme
-  }
+  // New visitors see the dark presentation; an existing preference always wins.
+  // Preserve the former "auto" option for visitors who already selected it.
+  const mode = stored === 'light' || stored === 'dark' ? stored :
+    (stored === 'auto' ? null : 'dark');
   if (mode === 'dark' || mode === 'light') {
     document.documentElement.setAttribute('data-theme-mode', mode);
   }
@@ -74,14 +67,9 @@
     };
     btn.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme-mode');
-      const next = current === 'dark' ? 'light' : (current === 'light' ? null : 'dark');
-      if (next === null) {
-        document.documentElement.removeAttribute('data-theme-mode');
-        try { localStorage.setItem(STORAGE_KEY, 'auto'); } catch (e) {}
-      } else {
-        document.documentElement.setAttribute('data-theme-mode', next);
-        try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
-      }
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme-mode', next);
+      try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
       updateIcon();
     });
     // Insert before nav-toggle so it appears as button group on mobile
