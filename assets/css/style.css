@@ -622,6 +622,8 @@ a.link:hover { border-bottom-style: solid; }
 .finance-calc-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: .75rem; }
 .finance-calc-fields label { display: block; font-size: .9rem; font-weight: 600; color: var(--text); }
 .finance-calc-fields input { display: block; box-sizing: border-box; width: 100%; margin-top: .3rem; padding: .65rem .7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font: inherit; }
+/* Make the input boundary distinct from its surrounding dark card. */
+html[data-theme-mode="dark"] .finance-calc-fields input { background: #101b29; border-color: #8394a7; color: #fff; color-scheme: dark; }
 .finance-calc-form button { margin: 1rem 0; padding: .7rem 1.2rem; border: 0; border-radius: 8px; background: var(--accent); color: var(--on-accent, #111); font: inherit; font-weight: 700; cursor: pointer; }
 .finance-calc-form button:hover { filter: brightness(1.12); }
 .finance-calc-result { border-left: 3px solid var(--accent); padding: .35rem .8rem; background: var(--panel-hi); }
@@ -1781,3 +1783,25 @@ body.theme-smart-home { --metal-btn: #7ad4e6; --metal-strip: #279bad; }
 .prose li { margin-bottom: .45em; }
 .travel-photo-selection figcaption, .journey-hero__photo figcaption { font-size: .95rem; line-height: 1.55; }
 @media (max-width: 640px) { .journey-hero__photo figcaption { font-size: .9rem; } }
+
+/* Finance landing page: give video, example and calculators room to breathe. */
+/* A prose section resets its own margin, so restore spacing before the next section. */
+main > section.prose + section { margin-top: clamp(3rem, 6vw, 4rem); }
+body.finance-landing #vyvoj-ucetni-knihy details {
+  margin-top: 1.5rem;
+  padding: .9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+}
+body.finance-landing #vyvoj-ucetni-knihy summary {
+  min-height: 2rem;
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 600;
+}
+body.finance-landing #vyvoj-ucetni-knihy summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+body.finance-landing #fin-example > p:last-child { margin-top: 1.5rem; }
