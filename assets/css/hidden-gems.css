@@ -1,0 +1,22 @@
+/* The inspiration series reuses travel cards and the shared main.js video player. */
+.gems-label { display: block; color: var(--accent-text); font-size: .8rem; font-weight: 600; margin-bottom: .45rem; }
+.gems-hub { padding-top: 2rem; border-top: 1px solid var(--border); }
+.gems-hub .destination-card img { aspect-ratio: 16 / 9; }
+.hidden-gems-page .gems-back { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: 1rem; color: var(--accent-text); }
+.hidden-gems-page .journey-hero { margin-bottom: 2.5rem; }
+.hidden-gems-page .gems-context { padding: 1rem 1.25rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0 10px 10px 0; color: var(--text-mut); }
+.hidden-gems-page .gems-episodes { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; }
+.hidden-gems-page .video-card .body { padding: 1.25rem; gap: .65rem; }
+.hidden-gems-page .video-card h3 { margin: 0; font-size: 1.25rem; line-height: 1.45; }
+.hidden-gems-page .video-card p { font-size: .95rem; }
+.hidden-gems-page .video-card .gems-label { color: var(--accent-text); flex: 0; font-size: .8rem; }
+.hidden-gems-page .gems-resources { display: flex; gap: .5rem; flex-wrap: wrap; }
+.hidden-gems-page .video-card .btn-mini { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; font-size: .85rem; }
+.hidden-gems-page .gems-resources .btn-mini { border: 0; padding: .4rem 0; text-align: left; justify-content: flex-start; color: var(--accent-text); }
+.hidden-gems-page #prehravac { padding-top: 2rem; border-top: 1px solid var(--border); }
+.hidden-gems-page :is(a,button):focus-visible, .gems-hub a:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
+@media (max-width: 640px) {
+  .hidden-gems-page .gems-episodes { grid-template-columns: minmax(0,1fr); }
+  .hidden-gems-page .gems-resources { flex-direction: column; gap: 0; }
+  .hidden-gems-page .gems-resources .btn-mini { flex: auto; }
+}
