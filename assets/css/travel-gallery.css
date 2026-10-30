@@ -1,0 +1,40 @@
+/* Photo counts on travel hubs and compact layouts for smaller collections. */
+.travel-directory .destination-photo-count { display: block; font-size: .82rem; color: var(--text-mut); margin: 0 0 .6rem; }
+.travel-directory .destination-card__body .destination-photo-count { margin-bottom: .6rem; }
+.travel-directory .destination-directory .destination-photo-count { display: inline; white-space: nowrap; margin: 0 .5rem 0 0; }
+.travel-directory .destination-directory a > span { display: inline-flex; align-items: center; gap: .25rem; }
+.travel-directory .destination-directory nav[aria-label="Tipy na plánování cesty"] a { align-items: center; }
+body.travel-album main { padding-top: 2rem; }
+body.travel-album main .album-hero { text-align: left; padding: 0; border: 0; border-radius: 0; background: none; margin-bottom: 1.75rem; }
+body.travel-album main .album-hero::before, body.travel-album main .album-hero::after { display: none; }
+.travel-album .album-hero h1 { font-size: clamp(2rem, 3.8vw, 3rem); margin-top: .75rem; }
+.travel-album .album-hero .hero-sub { max-width: 800px; margin: 0; font-size: 1.05rem; line-height: 1.7; }
+.travel-album .album-back { display: inline-block; padding: .4rem 0; color: var(--text-mut); margin-bottom: 1rem; }
+.travel-album .album-back:hover { color: var(--accent-text); }
+.travel-album .album-info { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.75rem; margin: 1rem 0 0; }
+.travel-album .album-info strong { color: var(--accent-text); font-size: .95rem; }
+.travel-album .album-info a { display: inline-flex; min-height: 44px; align-items: center; color: var(--accent-text); font-size: .9rem; }
+.travel-album .album-info a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.travel-album .album-photo-section { margin-bottom: 2.5rem; }
+.travel-album .album-photo-section > h2 { font-size: 1.5rem; margin-bottom: .75rem; }
+.travel-album .album-photo-section > p { opacity: 1; font-size: .95rem; }
+.travel-album .travel-photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.5rem; align-items: start; }
+.travel-album .travel-photo-grid > figure.card { margin: 0; padding: 0; gap: 0; overflow: hidden; min-width: 0; box-shadow: none; }
+.travel-album .travel-photo-grid > figure.card:hover { transform: none; }
+.travel-album .travel-photo-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; background: var(--bg-deep); }
+.travel-album .travel-photo-grid figcaption { padding: .8rem 1rem; color: var(--text-mut); font-size: .85rem; line-height: 1.55; }
+.travel-album.album-single .travel-photo-grid { grid-template-columns: minmax(0,1fr); }
+.travel-album.album-single .travel-photo-grid img { aspect-ratio: auto; max-height: 650px; }
+.travel-album :is(section[id], [id].album-anchor) { scroll-margin-top: 100px; }
+.travel-album .album-notes > h2 { font-size: 1.5rem; }
+@media (max-width: 760px) {
+  .travel-directory .destination-directory nav { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .travel-directory .destination-directory a > span { flex-direction: column; align-items: flex-end; gap: 0; }
+  .travel-directory .destination-directory .destination-photo-count { white-space: normal; margin: 0; text-align: right; font-size: .75rem; }
+}
+@media (max-width: 600px) {
+  .travel-album .travel-photo-grid { grid-template-columns: minmax(0,1fr); gap: 1.25rem; }
+  .travel-album .album-info { gap: .25rem 1.25rem; }
+  .travel-album .album-hero .hero-sub { font-size: 1rem; }
+  .travel-album.album-single .travel-photo-grid img { max-height: none; }
+}
