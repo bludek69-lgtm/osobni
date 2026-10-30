@@ -32,7 +32,7 @@
     var link = document.createElement('a');
     link.className = 'skip-link';
     link.href = '#main';
-    link.textContent = 'Přeskočit na hlavní obsah';
+    link.textContent = { cs: 'Přeskočit na hlavní obsah', en: 'Skip to main content', it: 'Vai al contenuto principale' }[document.documentElement.lang] || 'Skip to main content';
     link.addEventListener('click', function () {
       // href="#main" alone only scrolls; explicitly focus it too.
       setTimeout(function () { main.focus(); }, 0);
@@ -56,14 +56,19 @@
     const STORAGE_KEY = 'cestovatel69_theme_mode';
     const btn = document.createElement('button');
     btn.className = 'theme-toggle';
-    btn.setAttribute('aria-label', 'Přepnout tmavý / světlý režim');
-    btn.setAttribute('title', 'Tmavý / světlý režim');
+    const themeLabels = {
+      cs: ['Tmavý / světlý režim', 'Přepnout na světlý režim', 'Přepnout na tmavý režim', 'Auto režim — klikni pro přepnutí'],
+      en: ['Dark / light mode', 'Switch to light mode', 'Switch to dark mode', 'Automatic mode — click to switch'],
+      it: ['Tema scuro / chiaro', 'Passa al tema chiaro', 'Passa al tema scuro', 'Tema automatico — fai clic per cambiare']
+    }[document.documentElement.lang] || ['Dark / light mode', 'Switch to light mode', 'Switch to dark mode', 'Automatic mode — click to switch'];
+    btn.setAttribute('aria-label', themeLabels[0]);
+    btn.setAttribute('title', themeLabels[0]);
     const updateIcon = () => {
       const current = document.documentElement.getAttribute('data-theme-mode');
       // Show icon for NEXT mode (clickable affordance)
-      if (current === 'dark') { btn.textContent = '☀️'; btn.setAttribute('aria-label', 'Přepnout na světlý režim'); }
-      else if (current === 'light') { btn.textContent = '🌙'; btn.setAttribute('aria-label', 'Přepnout na tmavý režim'); }
-      else { btn.textContent = '🌓'; btn.setAttribute('aria-label', 'Auto režim — klikni pro přepnutí'); }
+      if (current === 'dark') { btn.textContent = '☀️'; btn.setAttribute('aria-label', themeLabels[1]); }
+      else if (current === 'light') { btn.textContent = '🌙'; btn.setAttribute('aria-label', themeLabels[2]); }
+      else { btn.textContent = '🌓'; btn.setAttribute('aria-label', themeLabels[3]); }
     };
     btn.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme-mode');

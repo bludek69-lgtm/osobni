@@ -10,36 +10,37 @@
   <link rel="icon" href="/favicon.ico">
   <meta name="description" content="Rezervace tenisových kurtů, kiosek se skladem a domácí rozpočet. Soukromá beta.">
   <link rel="canonical" href="https://cestovatel69.cz/aplikace/tenispark.html">
-  <link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/aplikace/tenispark.html">
-  <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/tenispark.html">
-  <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/tenispark.html">
-  <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/tenispark.html">
   <meta property="og:title" content="TenisPark — Moje aplikace — Luděk">
   <meta property="og:description" content="Rezervace tenisových kurtů, kiosek se skladem a domácí rozpočet. Soukromá beta.">
   <meta property="og:image" content="https://cestovatel69.cz/assets/img/aplikace/tenispark/01_prehled.png">
   <meta property="og:url" content="https://cestovatel69.cz/aplikace/tenispark.html">
   <meta property="og:type" content="website">
 <link rel="stylesheet" href="../assets/css/app-showcase.css?v=20261030-all-apps">
+<link rel="stylesheet" href="../assets/css/language-navigation.css?v=20261030-jazyky">
+<link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/aplikace/tenispark.html">
+<link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/tenispark.html">
+<link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/tenispark.html">
+<link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/tenispark.html">
 </head>
 <body class="theme-home app-showcase app-detail">
 <header class="site-header">
-  <div class="site-header__inner">
-    <a href="../" class="brand">
-      <span class="brand-dot"></span>
+<div class="site-header__inner">
+<a class="brand" href="../">
+<span class="brand-dot"></span>
       Luděk
-    </a><button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
-    <nav class="nav" aria-label="Hlavní navigace">
-      <a href="../">Domů</a>
-      <a href="../aplikace/" aria-current="page">Moje aplikace</a>
-      <a href="../finance/">Finance</a>
-      <a href="../cestovani/">Cestování</a>
-      <a href="../cestovani/italie/">Itálie</a>
-      <a href="../zaliby/rybareni/">Rybaření</a>
-      <a href="../smart-home/">Smart Home</a>
-      <a href="../ai.html">AI</a>
-        <a href="/novinky/">Novinky</a>
-    </nav>
-  </div>
+    </a><nav aria-label="Jazyk stránky" class="lang-switcher"><a aria-current="page" href="/aplikace/tenispark.html" hreflang="cs" lang="cs" title="Česky">CS</a><a href="/en/aplikace/tenispark.html" hreflang="en" lang="en" title="English">EN</a><a href="/it/aplikace/tenispark.html" hreflang="it" lang="it" title="Italiano">IT</a></nav><button aria-expanded="false" aria-label="Otevřít menu" class="nav-toggle">☰</button>
+<nav aria-label="Hlavní navigace" class="nav">
+<a href="../">Domů</a>
+<a aria-current="page" href="../aplikace/">Moje aplikace</a>
+<a href="../finance/">Finance</a>
+<a href="../cestovani/">Cestování</a>
+<a href="../cestovani/italie/">Itálie</a>
+<a href="../zaliby/rybareni/">Rybaření</a>
+<a href="../smart-home/">Smart Home</a>
+<a href="../ai.html">AI</a>
+<a href="/novinky/">Novinky</a>
+</nav>
+</div>
 </header>
 
 <main id="main">
@@ -119,7 +120,7 @@
 
 
 
-<script src="../assets/js/main.js?v=20261030-header"></script>
+<script src="../assets/js/main.js?v=20261030-jazyky"></script>
 <script>/* Verze z latest.json (nikdy nedrift) — natvrdo psane cislo v HTML zustava jen jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var o=d&&d["tenispark"];if(!o||!o.version)return;var v=o.version;document.querySelectorAll("[data-tp-ver]").forEach(function(el){el.textContent=el.getAttribute("data-tp-ver").replace("{v}",v);});/* Odkaz ke stazeni se zamerne nedosazuje - aplikace se nedistribuuje pres web (predava se osobne). */}).catch(function(){});})();</script>
 </body>
 </html>

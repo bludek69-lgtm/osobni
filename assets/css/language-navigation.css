@@ -1,0 +1,6 @@
+/* Language availability and explicit links to Czech-only content. */
+.lang-switcher .lang-unavailable { padding: .25rem .5rem; border: 1px dashed var(--border); border-radius: 4px; color: var(--text-mut); font-size: .72rem; font-weight: 600; letter-spacing: .05em; text-decoration: line-through; }
+.language-note { width: calc(100% - 2rem); max-width: 1152px; box-sizing: border-box; margin: .75rem auto 0; padding: .65rem 1rem; color: var(--text-mut); font-size: .85rem; line-height: 1.6; border-left: 2px solid var(--border); }
+.language-note a { color: var(--accent-text); display: inline-block; padding: .25rem .35rem; text-underline-offset: 3px; }
+.language-note a:focus-visible,.lang-switcher a:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+.nav .lang-tag { margin-left: .35rem; font-size: .65rem; }

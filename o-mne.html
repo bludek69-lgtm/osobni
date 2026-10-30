@@ -17,7 +17,10 @@
 <meta content="website" property="og:type"/>
 <link href="assets/css/style.css?v=20261030-header" rel="stylesheet"/>
 <link href="/favicon.ico" rel="icon"/>
-<link href="assets/css/app-showcase.css?v=20261030-all-apps" rel="stylesheet"/></head>
+<link href="assets/css/app-showcase.css?v=20261030-all-apps" rel="stylesheet"/><link rel="stylesheet" href="assets/css/language-navigation.css?v=20261030-jazyky">
+<link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/o-mne.html">
+<link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/o-mne.html">
+</head>
 <body class="theme-home app-showcase app-detail">
 <header class="site-header">
 <div class="site-header__inner">
@@ -25,11 +28,7 @@
 <span class="brand-dot"></span>
       Luděk
     </a>
-<div aria-label="Jazyk" class="lang-switcher">
-<a aria-current="page" href="o-mne.html" hreflang="cs" title="Česky">CS</a>
-<a href="en/" hreflang="en" title="English — homepage">EN</a>
-<a href="it/" hreflang="it" title="Italiano — pagina iniziale">IT</a>
-</div>
+<nav aria-label="Jazyk stránky" class="lang-switcher"><a aria-current="page" href="/o-mne.html" hreflang="cs" lang="cs" title="Česky">CS</a><span aria-disabled="true" class="lang-unavailable" title="English — překlad této stránky není dostupný">EN</span><span aria-disabled="true" class="lang-unavailable" title="Italiano — překlad této stránky není dostupný">IT</span></nav>
 <button aria-expanded="false" aria-label="Otevřít menu" class="nav-toggle">☰</button>
 <nav aria-label="Hlavní navigace" class="nav">
 <a href="./">Domů</a>
@@ -44,6 +43,7 @@
 </nav>
 </div>
 </header>
+<aside aria-label="Dostupnost jazyků" class="language-note"> Tato stránka není dostupná ve všech jazycích. Přejít na úvod: <a href="/en/" hreflang="en" lang="en">English</a> <a href="/it/" hreflang="it" lang="it">Italiano</a> </aside>
 <main id="main">
 <a class="app-back" href="./">← Úvodní stránka</a>
 <section class="hero app-hero" aria-labelledby="about-title"><div><span class="hero-accent">O mně</span><h1 id="about-title">Jsem Luděk.</h1>
@@ -71,6 +71,6 @@
 </div>
 </div>
 </footer>
-<script src="assets/js/main.js?v=20261030-header"></script>
+<script src="assets/js/main.js?v=20261030-jazyky"></script>
 </body>
 </html>
