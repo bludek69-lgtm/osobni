@@ -1,0 +1,21 @@
+/* Scoped layout for albums with several places or longer photo collections. */
+.album-large .album-directory { margin: 0 0 2.5rem; padding: 1.25rem; border: 1px solid var(--border); border-radius: 14px; background: var(--panel); }
+.album-large .album-directory h2 { margin: 0 0 .4rem; font-size: 1.25rem; }
+.album-large .album-directory p { margin: 0 0 1rem; color: var(--text-mut); font-size: .9rem; }
+.album-large .album-directory ul { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .5rem; list-style: none; margin: 0; padding: 0; }
+.album-large .album-directory a { display: flex; align-items: center; justify-content: space-between; gap: .75rem; min-height: 48px; padding: .65rem .8rem; border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: .9rem; text-decoration: none; }
+.album-large .album-directory a:hover { background: var(--panel-hi); border-color: var(--accent-text); }
+.album-large .album-count { flex-shrink: 0; color: var(--text-mut); font-size: .8rem; }
+.album-large .album-photo-section { padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.album-large .album-photo-section > h2 { margin-bottom: .75rem; }
+.album-large .album-more { margin-top: 1.25rem; }
+.album-large .album-more summary { width: fit-content; max-width: 100%; min-height: 44px; box-sizing: border-box; padding: .75rem 1rem; border: 1px solid var(--border); border-radius: 8px; color: var(--accent-text); cursor: pointer; font-weight: 600; }
+.album-large .album-more summary:hover { background: var(--panel-hi); }
+.album-large .album-more > .travel-photo-grid { margin-top: 1.25rem; }
+.album-large .album-hide, .album-large .album-more[open] .album-show { display: none; }
+.album-large .album-more[open] .album-hide { display: inline; }
+.album-large .album-up { display: inline-block; margin-top: 1rem; padding: .65rem 0; color: var(--text-mut); font-size: .85rem; }
+.album-large :is(h2[id],figure[id]) { scroll-margin-top: 100px; }
+.album-large :is(.album-directory a,.album-more summary,.album-up):focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
+@media (max-width: 900px) { .album-large .album-directory ul { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 540px) { .album-large .album-directory { padding: 1rem; } .album-large .album-directory ul { grid-template-columns: minmax(0,1fr); } }
