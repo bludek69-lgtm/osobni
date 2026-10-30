@@ -1,0 +1,84 @@
+/* Local preview: application catalogue and the BudLine detail. */
+.app-showcase .hero { text-align: left; }
+.app-showcase :is(section[id], details[id], span[id]) { scroll-margin-top: 100px; }
+.app-catalog main { padding-top: 2.5rem; }
+.app-showcase.app-catalog main .catalog-intro { background: none; padding-bottom: 1.5rem; }
+.app-showcase .catalog-intro { padding: 0 0 2rem; border: 0; border-radius: 0; background: none; margin-bottom: 0; }
+.app-showcase .catalog-intro::before, .app-showcase .catalog-intro::after { display: none; }
+.app-showcase .catalog-intro h1 { margin-top: .6rem; }
+.app-showcase .catalog-intro .hero-sub { margin: 0; max-width: 760px; font-size: 1.15rem; }
+.app-showcase .catalog-access { padding: 1rem 1.25rem; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 10px; background: var(--panel); margin: 0 0 2rem; }
+.app-showcase .catalog-access p { margin: .3rem 0 0; }
+.app-showcase .catalog-nav, .app-showcase .app-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+.app-showcase .catalog-nav a { color: var(--accent-text); padding: .4rem 0; margin-right: 1rem; }
+.app-showcase .catalog-guide { margin: 0 0 1.5rem; font-size: .95rem; }
+.app-showcase .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.app-showcase .app-project { min-width: 0; padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.app-showcase .app-project:hover { transform: none; }
+.app-showcase .app-project__image { width: 100%; height: auto; aspect-ratio: 16/10; object-fit: cover; object-position: top; border-bottom: 1px solid var(--border); background: var(--bg-deep); }
+.app-showcase .app-project__body { padding: 1.4rem; display: flex; flex-direction: column; flex: 1; }
+.app-showcase .app-project h3 { font-size: 1.2rem; }
+.app-showcase .app-project h3 a:hover { color: var(--accent-text); }
+.app-showcase .app-project__status { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .75rem; font-size: .8rem; color: var(--text-mut); }
+.app-showcase .app-project__actions { display: flex; flex-wrap: wrap; gap: .6rem 1rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border); }
+.app-showcase .app-project__actions a { min-height: 32px; display: inline-flex; align-items: center; color: var(--accent-text); font-size: .9rem; font-weight: 600; }
+.app-showcase .app-project__actions a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.app-showcase .catalog-tools .card-icon { margin-bottom: .5rem; }
+.app-showcase .app-disclosure { border: 1px solid var(--border); border-radius: 12px; background: var(--panel); margin: 1rem 0; overflow: hidden; }
+.app-showcase .app-disclosure > summary { cursor: pointer; padding: 1.2rem 1.4rem; color: var(--text); font-size: 1.05rem; font-weight: 600; }
+.app-showcase .app-disclosure > summary:hover { background: var(--panel-hi); }
+.app-showcase .app-disclosure > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+.app-showcase .app-disclosure[open] > summary { border-bottom: 1px solid var(--border); }
+.app-showcase .app-disclosure__body { padding: 1.5rem; }
+.app-showcase .app-disclosure__body > :last-child { margin-bottom: 0; }
+.app-showcase .app-disclosure__body li { margin: .65rem 0; line-height: 1.7; }
+.app-showcase .app-disclosure__body ul { list-style: disc; padding-left: 1.25rem; }
+.app-showcase .app-disclosure__body ol { list-style: decimal; padding-left: 1.25rem; }
+.app-showcase .app-disclosure__body code { overflow-wrap: anywhere; }
+.app-showcase .app-disclosure__body a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
+.app-showcase .app-back { display: inline-block; color: var(--text-mut); padding: .3rem 0; margin-bottom: 1rem; }
+.app-showcase .app-back:hover { color: var(--accent-text); }
+.app-showcase.app-detail .app-hero { display: grid; grid-template-columns: 1fr 1.15fr; gap: 2.5rem; align-items: center; padding: 0; border: 0; border-radius: 0; background: none; }
+.app-showcase.app-detail .app-hero::before, .app-showcase.app-detail .app-hero::after { display: none; }
+.app-showcase .app-hero h1 { font-size: clamp(2rem, 3.5vw, 3rem); margin-top: .7rem; }
+.app-showcase .app-hero .hero-sub { margin: 0; font-size: 1.1rem; line-height: 1.7; }
+.app-showcase .app-availability { font-size: .9rem; margin-top: 1rem; }
+.app-showcase .app-version { display: inline-block; color: var(--accent-text); margin-top: .75rem; font-size: .85rem; }
+.app-showcase .app-action { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: .7rem 1rem; border-radius: 9px; border: 1px solid var(--border); background: var(--panel); font-weight: 600; font-size: .95rem; }
+.app-showcase .app-action--primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.app-showcase .app-action:hover { filter: brightness(1.08); }
+.app-showcase .app-preview { min-width: 0; margin: 0; }
+.app-showcase .app-preview img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 12px; }
+.app-showcase .app-preview figcaption { margin-top: .6rem; color: var(--text-mut); font-size: .82rem; }
+.app-showcase .app-benefits { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.25rem; }
+.app-showcase .app-benefit { border-top: 2px solid var(--accent); padding: 1.2rem 0 0; }
+.app-showcase .app-benefit h3 { margin: 0 0 .65rem; font-size: 1.15rem; }
+.app-showcase .app-benefit p { margin: 0; }
+.app-showcase .app-workflow { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; }
+.app-showcase .app-workflow ol { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.5rem; counter-reset: steps; }
+.app-showcase .app-workflow li { counter-increment: steps; }
+.app-showcase .app-workflow li::before { content: '0' counter(steps); display: block; color: var(--accent-text); font-family: var(--font-mono); font-size: .8rem; margin-bottom: .6rem; }
+.app-showcase .app-workflow h3 { font-size: 1.05rem; }
+.app-showcase .app-workflow p { margin: 0; }
+.app-showcase .app-note { font-size: .9rem; color: var(--text-mut); margin-top: 1.25rem; }
+.app-showcase .app-gallery { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.5rem; }
+.app-showcase .app-gallery figure { margin: 0; min-width: 0; }
+.app-showcase .app-gallery img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); }
+.app-showcase .app-gallery figcaption { color: var(--text-mut); margin-top: .6rem; font-size: .85rem; }
+.app-showcase .video-frame { width: 100%; }
+.app-showcase .app-details-heading { margin-bottom: 1.5rem; }
+@media (max-width: 1000px) {
+  .app-showcase .catalog-grid, .app-showcase .app-gallery { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .app-showcase.app-detail .app-hero { gap: 1.5rem; }
+}
+@media (max-width: 760px) {
+  .app-showcase.app-detail .app-hero { grid-template-columns: minmax(0,1fr); }
+  .app-showcase .app-benefits, .app-showcase .app-workflow ol { grid-template-columns: minmax(0,1fr); }
+  .app-showcase .app-workflow { padding: 1.25rem; }
+  .app-showcase .app-hero .hero-sub { font-size: 1rem; }
+}
+@media (max-width: 540px) {
+  .app-showcase .catalog-grid, .app-showcase .app-gallery { grid-template-columns: minmax(0,1fr); }
+  .app-showcase .app-disclosure__body { padding: 1.1rem; }
+  .app-showcase .app-disclosure > summary { padding: 1.1rem; }
+}
