@@ -1,4 +1,4 @@
-/* Local preview: application catalogue and the BudLine detail. */
+/* Application catalogue and shared application detail layout. */
 .app-showcase .hero { text-align: left; }
 .app-showcase :is(section[id], details[id], span[id]) { scroll-margin-top: 100px; }
 .app-catalog main { padding-top: 2.5rem; }
@@ -50,6 +50,13 @@
 .app-showcase .app-preview { min-width: 0; margin: 0; }
 .app-showcase .app-preview img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 12px; }
 .app-showcase .app-preview figcaption { margin-top: .6rem; color: var(--text-mut); font-size: .82rem; }
+.app-showcase .app-report { min-width: 0; padding: 1.5rem; border: 1px solid var(--border); border-radius: 12px; background: var(--panel); }
+.app-showcase .app-report__label { color: var(--accent-text); font: .8rem var(--font-mono); margin-bottom: 1rem; }
+.app-showcase .app-report pre, .app-showcase .app-disclosure pre { max-width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; font: .85rem/1.7 var(--font-mono); color: var(--text); }
+.app-showcase .app-report figcaption { font-size: .82rem; margin-top: 1rem; color: var(--text-mut); }
+.app-showcase .app-version:empty { display: none; }
+.app-showcase .app-disclosure__body > section { margin-bottom: 2rem; }
+.app-showcase .app-disclosure__body > section:last-child { margin-bottom: 0; }
 .app-showcase .app-benefits { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.25rem; }
 .app-showcase .app-benefit { border-top: 2px solid var(--accent); padding: 1.2rem 0 0; }
 .app-showcase .app-benefit h3 { margin: 0 0 .65rem; font-size: 1.15rem; }

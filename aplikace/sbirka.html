@@ -19,8 +19,9 @@
   <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/sbirka.html">
   <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/sbirka.html">
   <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/sbirka.html">
+<link rel="stylesheet" href="../assets/css/app-showcase.css?v=20261030-all-apps">
 </head>
-<body class="theme-home">
+<body class="theme-home app-showcase app-detail">
 
 <header class="site-header">
   <div class="site-header__inner">
@@ -48,225 +49,185 @@
 </header>
 
 <main id="main">
-<section class="hero" style="border-left:4px solid #c9a227;padding-left:1.2rem">
-  <span class="hero-accent" style="color:var(--accent-text)">Sbírka — Numismatika &amp; Filatelie</span>
-  <h1><span style="margin-right:.4rem">🪙</span>Sbírka — Numismatika &amp; Filatelie</h1>
-  <p class="hero-sub">Vlastní katalog mincí, bankovek, známek a pohlednic ve vzhledu aukčního domu. AI rozpozná kus z fotky a doplní údaje, ukáže kde se reálně prodává (burzy a aukce), eviduje co sbírku zdražuje a co sráží cenu. Reálná data jen lokálně u mě — žádný cloud, žádné účty, žádné platby.</p>
-  <p style="margin-top:.6rem">
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">HTML/JS</span>
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">Python + FastAPI</span>
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">SQLite</span>
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">AI Gemini (vision)</span>
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">Windows (.exe)</span>
-  </p>
-  <p style="margin-top:.8rem">
-    <a href="index.html">← Zpět na Moje aplikace</a>
-    <button id="openDeník" class="diary-btn" style="margin-left:1rem">📖 Vývojový deník</button>
-  </p>
-</section>
-
-<section>
-  <h2>Co to dělá</h2>
-  <p><strong>Proč to vzniklo:</strong> kamarád z práce sbírá mince a známky jako koníček a měl na mě spoustu otázek — co ten kus je, kde to zjistit, za kolik se to prodává. Tak jsem mu na to postavil aplikaci, aby v tom měl jasno: kus se vyfotí, appka ho pomůže <em>identifikovat</em> a <em>orientačně ocenit</em> a rovnou odkáže, kde si cenu ověřit. Běží lokálně, vypadá jako katalog aukčního domu, žádný účet, žádná data pryč.</p>
-  <p><strong>Dva režimy:</strong> veřejné <strong>demo</strong> (jen ukázková data, běží v prohlížeči) a <strong>plná verze</strong> u mě na PC s vlastní databází, fotkami a AI. Reálná sbírka nikdy neopustí počítač.</p>
-  <p><strong>AI rozpoznávání z fotky:</strong> vyfotím minci nebo známku, appka pošle fotku na AI (Gemini) a ta <em>přečte text na kusu</em> a předvyplní formulář — kategorie, země, rok, nominál, stav. Pak jen zkontroluju a uložím. Zvládne i obě strany najednou (líc + rub). Pokud je fotka rozmazaná nebo to není mince, appka nic nevyplní a vyzve k novému foto (jako ověřování dokladu).</p>
-  <p><strong>Kde se to prodává:</strong> katalogy a obchody (Numista, Pofis, Colnect, Delcampe…) prohlížím <em>přímo v aplikaci</em> — u nálezu vidím název, cenu i obrázek a ceny v cizí měně se přepočítají na koruny podle kurzu ČNB. K tomu si u položky vedu <em>historii cen</em> v čase, ať vidím, kam hodnota míří. Hned je jasné, za kolik se ten samý kus reálně prodává — ne za kolik ho někdo chce.</p>
-  <p><strong>Nápověda pro začátečníky:</strong> samostatná stránka srozumitelně vysvětlí AI (Gemini) — jak si založit bezplatný klíč a kolik to stojí — i focení telefonem, zálohy a bezpečnost. Klíč pro AI jde vložit přímo v aplikaci a zůstává jen v počítači.</p>
-  <p><strong>Co ovlivňuje cenu:</strong> vzdělávací sekce — co hodnotu zvedá (vyšší grade, chyboražba, atest, lep NH u známek) a co ji sráží (čištění, ouško, vady). Aby člověk nekupoval a neprodával naslepo.</p>
-  <p><strong>Hromadný import:</strong> kdo už má seznam v Excelu, nahraje ho najednou (CSV / XLSX) místo klikání kus po kuse.</p>
-</section>
-
-<section>
-  <h2>Klíčové funkce</h2>
-  <ul style="line-height:1.7">
-    <li><strong>Katalog ve stylu aukčního domu</strong> — tmavý vzhled se zlatými akcenty, detail položky jako aukční „lot" (velké foto, parametry, ocenění).</li>
-    <li><strong>AI rozpoznávání z fotky</strong> — Gemini přečte text na minci/známce a předvyplní pole; líc + rub v jednom kroku; kontrola kvality fotky (špatná = nehodnotí); odpovídá česky.</li>
-    <li><strong>Katalogy přímo v aplikaci</strong> — prohlížení českých i zahraničních katalogů a obchodů (mince, známky) v okně aplikace: název, cena, obrázek, odkaz na zdroj. Ceny v cizí měně přepočítané na koruny (kurz ČNB), historie cen položky v čase. Pravidlo „realizovaná cena má přednost před nabídkou".</li>
-    <li><strong>Nápověda pro začátečníky</strong> — stránka, která vysvětlí AI klíč (Gemini), focení, zálohy i bezpečnost; u každého napojení na internet/AI je tlačítko ℹ s vysvětlením.</li>
-    <li><strong>Co ovlivňuje cenu</strong> — faktory ↑/↓ zvlášť pro mince a zvlášť pro známky + jak se cena skládá (katalog vs. aukce vs. odhad).</li>
-    <li><strong>Jednoduché ověření (od 1.2.6, od té doby rozšiřované)</strong> — rychlé ověření známky: líc + rub, kontrola kvality skenu přímo v počítači, výběr modelu Gemini s ceníkem a odhadem ceny předem, 14 kontrol (identifikace, stav a pravost, tržní ocenění, obchodní rozbor nákup/prodej, hledání na internetu přes Google vyhledávání v Gemini). Výsledkem je zpráva s orientační cenou, úrovní podezření na pravost, tabulkou použitých kontrol, zdroji z internetu a spotřebovanými tokeny i cenou ověření (USD i Kč), export do PDF/DOCX. Bez povolených placených volání běží zdarma jako simulace. Zpráva uvádí jen to, co se opřelo o doložený zdroj.</li>
-    <li><strong>Série a listy najednou (od 1.3.0)</strong> — celý list nebo aršík se rozdělí na jednotlivé známky (nejvýše 40 kusů), líce a ruby se spárují a před ověřením je vedle sebe zkontroluju a opravím. Každá známka má vlastní výsledek, série má vlastní nezávislou cenu a náklady se sčítají za celou dávku.</li>
-    <li><strong>Doložené ceny s odkazy (od 1.2.7, rozšířeno v 1.9–1.12)</strong> — aplikace dohledává nabídky i realizované prodeje, před hledáním cen ověří sérii, rok a katalogové číslo a ukáže podmíněná rozpětí podle stavu, varianty a jednotky s odkazy na zdroje. Co nejde doložit, se nevymýšlí — chybí-li podklad, aplikace to řekne.</li>
-    <li><strong>Zoubkoměr (od 1.10.2)</strong> — změří zoubkování přímo ze skenu a ukáže, ze kterých dírek počítala; s naskenovaným pravítkem na ±0,05. Není to odborné potvrzení varianty.</li>
-    <li><strong>Ukládání do sbírky (od 1.5.0)</strong> — skutečně analyzované známky se samy archivují s fotografiemi a odkazy na zdroje; návrhy AI zůstávají nepotvrzené, nevznikají duplicity a celou sbírku lze vratně přesunout do koše.</li>
-    <li><strong>Soukromý prodej (od 1.11.0)</strong> — průvodce nabídkami pro Delcampe a eBay.de: německé nabídky, fotografie, poštovné, upravitelné podmínky, evidence prodeje a odeslání a offline video návody. Nabídky se zveřejňují ručně.</li>
-    <li><strong>Zdraví systému a diagnostika (od 1.8.0)</strong> — stav aplikace a lokální diagnostický balíček bez fotografií, promptů, klíčů a dat sbírky; u každého ověření vidět použitý model a odpověď služby. Strop útraty za AI jde nastavit přímo v Klíče &amp; API.</li>
-    <li><strong>Expertiza a posudky</strong> — posudek k položce jako neměnný záznam s auditní stopou (nic nejde přepsat, jen doplnit nový). AI posudek přes Gemini s výběrem modelu, porovnání se znaky padělků/pravosti z databáze markantů. Pořád jde o <em>předběžné vizuální posouzení</em>, ne oficiální expertizu ani certifikát; pravost jen slovní úrovní podezření, nikdy procentem — kalibrace pravosti zatím neproběhla.</li>
-    <li><strong>Oceňování s důkazy</strong> — k položce přidám zdroj (katalog / realizovaná aukce / posudek), aktivní nabídka se do průměru nezapočítává.</li>
-    <li><strong>Fotky položek</strong> — přední/zadní strana, zobrazení v kartě i detailu.</li>
-    <li><strong>Import / export</strong> — hromadný import z CSV/Excelu, export CSV / Excel / PDF / ZIP.</li>
-    <li><strong>Lokálně a bezpečně</strong> — SQLite + fotky jen na mém PC, na GitHub jde pouze kód a ukázková data. Windows aplikace spustí backend sama jedním klikem.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Náhledy</h2>
-  <style>
+<a class="app-back" href="index.html">← Moje aplikace</a><section aria-labelledby="app-title" class="hero app-hero"><div><span class="hero-accent">Každý kus má svůj příběh</span><h1 id="app-title">Sbírka — Numismatika a filatelie</h1><p class="hero-sub">Mince, bankovky, známky a pohlednice si vedu v jednom katalogu. AI pomáhá s návrhem údajů z fotografie; výsledek následně kontroluji.</p><p class="app-availability">Osobní aplikace pro sběratelství. Instalátor předávám osobně.</p><div class="app-actions"><a class="app-action app-action--primary" href="#video">Videoprohlídka →</a><a class="app-action" href="#podrobnosti">Funkce a podrobnosti ↓</a></div></div><figure class="app-preview"><img alt="Přehled sbírky" decoding="async" fetchpriority="high" height="1225" src="/aplikace/img/sbirka/01_dashboard.png" width="1875"/><figcaption>Ukázka rozhraní ze stávající galerie. Kliknutím zvětšíš.</figcaption></figure></section><section aria-labelledby="prinosy"><h2 id="prinosy">Co mi aplikace usnadňuje</h2><div class="app-benefits"><article class="app-benefit"><h3>Katalog s fotografiemi</h3><p>Položky, parametry a poznámky mám pohromadě v přehledných detailech.</p></article><article class="app-benefit"><h3>Pomoc při rozpoznání</h3><p>Z fotografie získám návrh údajů, který před uložením ověřím.</p></article><article class="app-benefit"><h3>Cenové podklady</h3><p>K položce dohledávám nabídky, zdroje a historii cen.</p></article></div></section><section aria-labelledby="praxe" class="app-workflow"><h2 id="praxe">Jak ji používám</h2><ol><li><h3>Přidám položku</h3><p>Vyfotím kus a založím záznam v příslušné kategorii.</p></li><li><h3>Zkontroluji údaje</h3><p>Doplním popis nebo prověřím návrh od AI.</p></li><li><h3>Uložím souvislosti</h3><p>Připojím zdroje, cenové podklady a vlastní poznámky.</p></li></ol><p class="app-note">AI ověření je pomocný podklad. Přesnost všech skutečných sérií nebyla úplně ověřena; omezení jsou popsána v aktuálním stavu.</p></section><section class="youtube-section" id="video"><span id="youtube"></span>
+<div class="section-header"><h2>Podívat se: Collection — evidence sbírky, detail mince a zálohy</h2><p>9:24 · Český komentář a titulky.</p></div>
+<div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/fHyILzTIdh8?rel=0" style="width:100%;height:100%;border:0;display:block" title="Collection na videu"></iframe>
+</div>
+<p><a href="https://www.youtube.com/watch?v=fHyILzTIdh8" rel="noopener" target="_blank">Celá prohlídka ↗</a></p>
+</section><section id="podrobnosti"><h2 class="app-details-heading">Když chceš vědět víc</h2><details class="app-disclosure"><summary>Proč vznikla a co umí</summary><div class="app-disclosure__body"><section>
+<p><strong>Proč to vzniklo:</strong> kamarád z práce sbírá mince a známky jako koníček a měl na mě spoustu otázek — co ten kus je, kde to zjistit, za kolik se to prodává. Tak jsem mu na to postavil aplikaci, aby v tom měl jasno: kus se vyfotí, appka ho pomůže <em>identifikovat</em> a <em>orientačně ocenit</em> a rovnou odkáže, kde si cenu ověřit. Běží lokálně, vypadá jako katalog aukčního domu, žádný účet, žádná data pryč.</p>
+<p><strong>Dva režimy:</strong> veřejné <strong>demo</strong> (jen ukázková data, běží v prohlížeči) a <strong>plná verze</strong> u mě na PC s vlastní databází, fotkami a AI. Reálná sbírka nikdy neopustí počítač.</p>
+<p><strong>AI rozpoznávání z fotky:</strong> vyfotím minci nebo známku, appka pošle fotku na AI (Gemini) a ta <em>přečte text na kusu</em> a předvyplní formulář — kategorie, země, rok, nominál, stav. Pak jen zkontroluju a uložím. Zvládne i obě strany najednou (líc + rub). Pokud je fotka rozmazaná nebo to není mince, appka nic nevyplní a vyzve k novému foto (jako ověřování dokladu).</p>
+<p><strong>Kde se to prodává:</strong> katalogy a obchody (Numista, Pofis, Colnect, Delcampe…) prohlížím <em>přímo v aplikaci</em> — u nálezu vidím název, cenu i obrázek a ceny v cizí měně se přepočítají na koruny podle kurzu ČNB. K tomu si u položky vedu <em>historii cen</em> v čase, ať vidím, kam hodnota míří. Hned je jasné, za kolik se ten samý kus reálně prodává — ne za kolik ho někdo chce.</p>
+<p><strong>Nápověda pro začátečníky:</strong> samostatná stránka srozumitelně vysvětlí AI (Gemini) — jak si založit bezplatný klíč a kolik to stojí — i focení telefonem, zálohy a bezpečnost. Klíč pro AI jde vložit přímo v aplikaci a zůstává jen v počítači.</p>
+<p><strong>Co ovlivňuje cenu:</strong> vzdělávací sekce — co hodnotu zvedá (vyšší grade, chyboražba, atest, lep NH u známek) a co ji sráží (čištění, ouško, vady). Aby člověk nekupoval a neprodával naslepo.</p>
+<p><strong>Hromadný import:</strong> kdo už má seznam v Excelu, nahraje ho najednou (CSV / XLSX) místo klikání kus po kuse.</p>
+</section></div></details><details class="app-disclosure"><summary>Podrobný seznam funkcí</summary><div class="app-disclosure__body"><section>
+<ul style="line-height:1.7">
+<li><strong>Katalog ve stylu aukčního domu</strong> — tmavý vzhled se zlatými akcenty, detail položky jako aukční „lot" (velké foto, parametry, ocenění).</li>
+<li><strong>AI rozpoznávání z fotky</strong> — Gemini přečte text na minci/známce a předvyplní pole; líc + rub v jednom kroku; kontrola kvality fotky (špatná = nehodnotí); odpovídá česky.</li>
+<li><strong>Katalogy přímo v aplikaci</strong> — prohlížení českých i zahraničních katalogů a obchodů (mince, známky) v okně aplikace: název, cena, obrázek, odkaz na zdroj. Ceny v cizí měně přepočítané na koruny (kurz ČNB), historie cen položky v čase. Pravidlo „realizovaná cena má přednost před nabídkou".</li>
+<li><strong>Nápověda pro začátečníky</strong> — stránka, která vysvětlí AI klíč (Gemini), focení, zálohy i bezpečnost; u každého napojení na internet/AI je tlačítko ℹ s vysvětlením.</li>
+<li><strong>Co ovlivňuje cenu</strong> — faktory ↑/↓ zvlášť pro mince a zvlášť pro známky + jak se cena skládá (katalog vs. aukce vs. odhad).</li>
+<li><strong>Jednoduché ověření (od 1.2.6, od té doby rozšiřované)</strong> — rychlé ověření známky: líc + rub, kontrola kvality skenu přímo v počítači, výběr modelu Gemini s ceníkem a odhadem ceny předem, 14 kontrol (identifikace, stav a pravost, tržní ocenění, obchodní rozbor nákup/prodej, hledání na internetu přes Google vyhledávání v Gemini). Výsledkem je zpráva s orientační cenou, úrovní podezření na pravost, tabulkou použitých kontrol, zdroji z internetu a spotřebovanými tokeny i cenou ověření (USD i Kč), export do PDF/DOCX. Bez povolených placených volání běží zdarma jako simulace. Zpráva uvádí jen to, co se opřelo o doložený zdroj.</li>
+<li><strong>Série a listy najednou (od 1.3.0)</strong> — celý list nebo aršík se rozdělí na jednotlivé známky (nejvýše 40 kusů), líce a ruby se spárují a před ověřením je vedle sebe zkontroluju a opravím. Každá známka má vlastní výsledek, série má vlastní nezávislou cenu a náklady se sčítají za celou dávku.</li>
+<li><strong>Doložené ceny s odkazy (od 1.2.7, rozšířeno v 1.9–1.12)</strong> — aplikace dohledává nabídky i realizované prodeje, před hledáním cen ověří sérii, rok a katalogové číslo a ukáže podmíněná rozpětí podle stavu, varianty a jednotky s odkazy na zdroje. Co nejde doložit, se nevymýšlí — chybí-li podklad, aplikace to řekne.</li>
+<li><strong>Zoubkoměr (od 1.10.2)</strong> — změří zoubkování přímo ze skenu a ukáže, ze kterých dírek počítala; s naskenovaným pravítkem na ±0,05. Není to odborné potvrzení varianty.</li>
+<li><strong>Ukládání do sbírky (od 1.5.0)</strong> — skutečně analyzované známky se samy archivují s fotografiemi a odkazy na zdroje; návrhy AI zůstávají nepotvrzené, nevznikají duplicity a celou sbírku lze vratně přesunout do koše.</li>
+<li><strong>Soukromý prodej (od 1.11.0)</strong> — průvodce nabídkami pro Delcampe a eBay.de: německé nabídky, fotografie, poštovné, upravitelné podmínky, evidence prodeje a odeslání a offline video návody. Nabídky se zveřejňují ručně.</li>
+<li><strong>Zdraví systému a diagnostika (od 1.8.0)</strong> — stav aplikace a lokální diagnostický balíček bez fotografií, promptů, klíčů a dat sbírky; u každého ověření vidět použitý model a odpověď služby. Strop útraty za AI jde nastavit přímo v Klíče &amp; API.</li>
+<li><strong>Expertiza a posudky</strong> — posudek k položce jako neměnný záznam s auditní stopou (nic nejde přepsat, jen doplnit nový). AI posudek přes Gemini s výběrem modelu, porovnání se znaky padělků/pravosti z databáze markantů. Pořád jde o <em>předběžné vizuální posouzení</em>, ne oficiální expertizu ani certifikát; pravost jen slovní úrovní podezření, nikdy procentem — kalibrace pravosti zatím neproběhla.</li>
+<li><strong>Oceňování s důkazy</strong> — k položce přidám zdroj (katalog / realizovaná aukce / posudek), aktivní nabídka se do průměru nezapočítává.</li>
+<li><strong>Fotky položek</strong> — přední/zadní strana, zobrazení v kartě i detailu.</li>
+<li><strong>Import / export</strong> — hromadný import z CSV/Excelu, export CSV / Excel / PDF / ZIP.</li>
+<li><strong>Lokálně a bezpečně</strong> — SQLite + fotky jen na mém PC, na GitHub jde pouze kód a ukázková data. Windows aplikace spustí backend sama jedním klikem.</li>
+</ul>
+</section></div></details><details class="app-disclosure"><summary>Další obrazovky aplikace · 17</summary><div class="app-disclosure__body"><section>
+<style>
     .ss-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr)); gap:1.1rem; margin-top:.8rem; }
     .ss-grid figure { margin:0; }
     .ss-grid img { width:100%; height:auto; border-radius:8px; border:1px solid var(--border,#0001); display:block; }
     .ss-grid figcaption { font-size:.82rem; color:var(--text-mut,#666); margin-top:.35rem; }
   </style>
-  <div class="ss-grid">
-    <figure>
-      <img src="img/sbirka/01_dashboard.png" alt="Přehled sbírky" loading="lazy">
-      <figcaption>Přehled — kolik položek mám, kde chybí fotka nebo ocenění a kam se hýbe orientační hodnota sbírky.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/02_katalog.png" alt="Katalog s filtry" loading="lazy">
-      <figcaption>Katalog — filtrování přes celou sbírku; u každé položky je vidět jistota určení i orientační cena.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/03_numismatika.png" alt="Přepínač Numismatika / Filatelie" loading="lazy">
-      <figcaption>Modulový přepínač — sbírku lze číst zvlášť jako numismatiku a zvlášť jako filatelii.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/04_detail_lot.png" alt="Detail položky jako aukční lot" loading="lazy">
-      <figcaption>Detail položky ve tvaru aukčního lotu — parametry, které rozhodují o ceně, pohromadě.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/05_prohlizec.png" alt="Prohlížeč aukcí a katalogů" loading="lazy">
-      <figcaption>Prohlížeč aukcí a katalogů — hledání ve zdrojích, aniž by se cokoli zapsalo do sbírky bez potvrzení.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/06_zdroje_burzy.png" alt="Zdroje a burzy" loading="lazy">
-      <figcaption>Rozcestník zdrojů — kde ověřit cenu; realizovaná cena má přednost před aktivní nabídkou.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/07_co_ovlivnuje_cenu.png" alt="Co ovlivňuje cenu" loading="lazy">
-      <figcaption>Co cenu zvedá a co ji sráží — zvlášť pro mince a zvlášť pro známky.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/08_expertiza.png" alt="Expertiza a posudky" loading="lazy">
-      <figcaption>Expertiza — orientační vizuální posouzení s výslovným upozorněním, že nenahrazuje autorizovaného znalce.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/09_napoveda.png" alt="Nápověda" loading="lazy">
-      <figcaption>Nápověda psaná pro začátečníka — co udělat první, co vyžaduje klíč a co funguje i bez něj.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/10_overeni_start.png" alt="Jednoduché ověření — start" loading="lazy">
-      <figcaption>Jednoduché ověření (1.2.6) — pět kroků od nahrání líce a rubu po výstupní zprávu; nahoře výslovné upozornění, že nejde o oficiální expertizu.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/11_overeni_kvalita.png" alt="Kontrola kvality skenu" loading="lazy">
-      <figcaption>Kontrola kvality skenu přímo v počítači — rozlišení, DPI, ostrost; při slabém skenu rada, co zlepšit (ukázková známka CC0, Smithsonian).</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/12_overeni_model_kontroly.png" alt="Výběr modelu a přehled kontrol" loading="lazy">
-      <figcaption>Výběr modelu Gemini s ceníkem Google a odhadem ceny předem, které master prompty se použijí a přehled všech 14 kontrol.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/13_overeni_zprava.png" alt="Výstupní zpráva" loading="lazy">
-      <figcaption>Výstupní zpráva — identifikace, pravost jen slovní úrovní podezření, cena, stav, tokeny a cena ověření a tabulka použitých kontrol (zde bezplatná simulace).</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/14_moje_nabidky.png" alt="Moje nabídky — prodejní stránka" loading="lazy">
-      <figcaption>Moje nabídky — prodejní stránka pro soukromý prodej z vlastní sbírky na Delcampe a eBay.de, od nastavení podmínek po evidenci nabídek (ukázková demo data).</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/15_podminky_prodeje.png" alt="Údaje a podmínky prodeje" loading="lazy">
-      <figcaption>Údaje a podmínky prodeje — formulář (údaje, platby, poštovné, vrácení) a německý text podmínek zvlášť pro každý portál; osobní údaje se do veřejného textu vloží jen s mým souhlasem (ukázková demo data).</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/16_navod_prodeje.png" alt="Postup aktivace prodeje" loading="lazy">
-      <figcaption>Postup aktivace prodeje krok za krokem pro Delcampe a eBay.de — od existujícího účtu po první nabídku; nabídky se na portálech zveřejňují ručně (ukázková demo data).</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/17_zdravi_systemu.png" alt="Zdraví systému" loading="lazy">
-      <figcaption>Zdraví systému — místní kontrola backendu, databáze, nastavení AI a ochrany souborů; neprovádí žádná placená ani síťová AI volání (ukázková demo data).</figcaption>
-    </figure>
-    <figure>
-      <img src="img/sbirka/18_novinky.png" alt="Novinky v aplikaci" loading="lazy">
-      <figcaption>Novinky — historie změn přímo v aplikaci; mj. webové cenové podklady s odkazy a rozšířená prodejní stránka s formulářem podmínek (ukázková demo data).</figcaption>
-    </figure>
-  </div>
-</section>
+<p class="app-note">Přehled — kolik položek mám, kde chybí fotka nebo ocenění a kam se hýbe orientační hodnota sbírky.</p><div class="app-gallery">
 
-<section>
-  <h2>Stav</h2>
-  <p style="margin:.6rem 0 .9rem;padding:.7rem .95rem;border-left:3px solid #9b59b6;background:#9b59b614;border-radius:6px;font-size:.93rem">🔒 <strong>Aplikace není veřejně ke stažení.</strong> Instalátor tady záměrně nenajdeš — odkaz posílám osobně tomu, komu aplikaci dávám. Číslo verze na téhle stránce zůstává: doplňuje se samo ze stejného místa, odkud si už nainstalovaná aplikace bere automatické aktualizace.</p>
-  <p>Nově v 1.13.0 beta: nejprve ověření identity všech známek a společných emisí, potom hledání webových cen s přímými odkazy. Nové úsporné nastavení jedním tlačítkem, případně včetně vad a lepu. Neověřená identita blokuje cenové dotazy. Placené ověření přesnosti všech skutečných sérií nebylo dokončeno.</p>
-  <p>Nově v 1.12.4 beta: opravy referencí větších sérií, postupné načítání podkladů a hledání celků. Placené ověření všech skutečných sérií nebylo dokončeno kvůli kreditu; přesnost rozpoznávání tímto vydáním není prokázána.</p>
-  <p>Nově v 1.12.3 beta: u těžko určitelných emisí (Hradčany, PČ 1919, SO 1920, Protektorát, Germania, Rakousko 1850 a 1867, Penny Red a další) zpráva řekne, na co se dívat — který znak rozhoduje o variantě a ceně, na jaké padělky si dát pozor a co ze skenu určit nejde. Podle veřejného průvodce Znamky.cz, přepsáno vlastními slovy.</p>
-  <p>Nově v 1.12.2 beta: rozšířené dohledávání podkladů, sjednocení závěrů o lepu a čitelnější report. Placené testy všech sérií nejsou dokončené kvůli vyčerpanému kreditu.</p>
-  <p>Nově v 1.12.1 beta: ověření série, roku a katalogového čísla před hledáním cen; přímé odkazy na doloženou emisi a konkrétní nabídky v reportu.</p>
-  <p>Nově v 1.12.0 beta: webové cenové podklady s odkazy pro známky i série, rozšířená prodejní stránka s formulářem podmínek a podrobnými postupy aktivace prodeje. Offline videa pro Delcampe i eBay.de s českým hlasem Jakub a obrázkovými kroky.</p>
-  <p>Nově v 1.11.1 beta: video návod k první nabídce na Delcampe s českým hlasem Jakub, titulky a deseti obrázkovými kroky. Funguje i offline.</p>
-  <p>Nově v 1.11.0 beta: průvodce německými nabídkami pro Delcampe a eBay, fotografie, upravitelné podmínky a evidence prodeje. Opravené potvrzení dvojic známek. Nabídky se zveřejňují ručně.</p>
-  <p>Nově v 1.10.7 beta: drobné opravy z prověrky aplikace. Hledání ve sbírce funguje i bez háčků a čárek, CSV export se v Excelu otevře s češtinou, bezpečný export pro sdílení neobsahuje soukromé poznámky, historie změn zapisuje jen skutečné změny, stejný markant se nezaloží dvakrát a texty mají diakritiku a správné tvary.</p>
-  <p>Nově v 1.10.6 beta: výchozím modelem AI je Gemini 3.8 Flash (posudek, ověření) a 3.5 Flash-Lite (rychlé dotazy) — fungují i s novým klíčem Google, kde řada 2.5 končí chybou. Stránka Klíče & API nabízí modely řady 3. Opraveno řazení katalogu, souhrn bez ocenění, převzetí z Prohlížeče (rok a země), bezpečný export bez koše, rozcestník Nápovědy a ukázkové výsledky jsou zřetelně označené jako DEMO.</p>
-  <p>Nově v 1.10.5 beta: diagnostický balíček u každého ověření ukáže použitý model AI a odpověď služby (třeba HTTP 404 = model pro tento účet nedostupný) a rovnou poradí, co dělat. Export po kliknutí potvrdí uložení a soubor má v názvu datum a čas, takže už nevznikají dvojice „(4)“, „(5)“.</p>
-  <p>Nově v 1.10.4 beta: ve výběru modelu AI jsou Gemini 3.8 Flash, 3.6 Flash a 3.1 Flash-Lite. Google novým účtům (novému API klíči) už nepovoluje řadu 2.5 — s novým klíčem stačí vybrat model řady 3. Ceny podle ceníku Google; ohlášené zdražení od 1. 1. 2027 aplikace uplatní sama.</p>
-  <p>Nově v 1.10.3 beta: když se odpověď AI zacyklí (opakuje stále totéž), aplikace ji zkrátí a jednou zopakuje, takže zpráva už nemá desítky stran nesmyslu. Cenové podklady, které si samy odporují nebo vedou jen na výsledky hledání, se do srovnání nepočítají; u archu je u každé ceny vidět, ke které známce patří.</p>
-  <p>Nově v 1.10.2 beta: zoubkoměr — aplikace změří zoubkování přímo ze skenu a ukáže, ze kterých dírek počítala; s naskenovaným pravítkem na ±0,05. Zpráva má klikací odkazy na zdroje a snímky známek s popisem stavu, u promptů je vysvětlivka ⓘ.</p>
-  <p>Nově v 1.10.1 beta: spolehlivější ověřování potvrzené série — každá známka se identifikuje samostatně, chyba jedné nezastaví ostatní a když nedoběhne žádná, aplikace řekne jednu konkrétní příčinu.</p>
-  <p>Nově v 1.10.0 beta: více cenových podkladů z nabídek a uskutečněných aukcí, stav známek, popisy a přímé odkazy. Jednotliviny, série a aršíky jsou oddělené. Nově Danner, Schultze a Philea, rozšířené hledání Burda a eBay Browse při dostupném API přístupu. Nabídková cena není dosažená prodejní cena.</p>
-  <p>Nově v 1.9.1 beta: když aplikace narazí na svůj strop útraty za AI, řekne to přímo — dřív to vypadalo jako technická chyba spojení, i když se nic neodeslalo ani nezaplatilo. Strop v USD jde nově nastavit, změnit nebo zrušit přímo v Klíče & API.</p>
-  <p>Nově v 1.9.0 beta: podmíněná cenová rozpětí nákupu a prodeje podle stavu, varianty a jednotky. Nabídky oddělené od realizací, předpoklady a odkazy na zdroje v aplikaci i PDF/DOCX. Citace AI není nezávislé ověření stránky.</p>
-  <p>Nově v 1.8.3 beta: odhad ceny celé dávky, průběh přenosu a AI analýz s uplynulým časem, rychlejší otevření uložených výsledků a čitelnější PDF/DOCX. Stručný souhrn jasně označuje nedoložené ceny a vypnuté ocenění.</p>
-  <p>Nově v 1.8.2 beta: opraveno rozdělení série na tmavém podkladu s bílými okraji skenu. Série vyžaduje potvrzení výřezů. Neplatná identifikace zastaví další analýzy a ukáže společnou příčinu ve zprávě i PDF.</p>
-  <p>Nově v 1.8.1 beta: opraven export diagnostických ZIP balíčků v desktopové aplikaci. Při stažení se otevře dialog Uložit jako. Obsah balíčku a ochrana soukromí zůstávají zachovány.</p>
-  <p>Nově v 1.8.0 beta: Zdraví systému, systémová diagnostika a export ZIP bez citlivých dat. Velké skeny se přenášejí po blocích při zachování pixelů. Živý AI test opravy zatím neproběhl; nejde o oficiální expertízu.</p>
-  <p>Nově v 1.7.4 beta: spolehlivější přenos velkých skenů do AI při zachování plného rozlišení. Aplikace rozlišuje chybu přenosu od nedokončené identifikace. Živý AI test této opravy nebyl proveden; nejde o oficiální expertízu.</p>
-  <p>Nově v 1.7.3 beta: světlá známka na bílém pozadí zůstává jedním celým lícem a rubem. Části kresby ani bílá nálepka nejsou další známky. Staré nepotvrzené automatické náhledy se obnoví, ruční úpravy a potvrzené dvojice zůstávají. Nejasné či oříznuté okraje aplikace přizná; správné rozdělení není důkaz pravosti.</p>
-  <p>Nově v 1.7.2 beta: srozumitelný přehled jednotlivých známek a ceny celé série bez technických bloků. Nedostupný AI model zastaví ověření s jasnou příčinou; chyba se nevydává za špatný sken. Aktuální Gemini 3.5 Flash-Lite a tlačítko k přípravě opakování se zachovanými skeny a párováním. Ceny a stav se nevymýšlejí, pokud analýza neproběhla.</p>
-  <p>Nově v 1.7.1 beta: výběr nového skenu ihned odstraní předchozí výsledek, párování, starý rub a údaje předchozí známky. Chyba při nahrávání neobnoví starou zprávu. Výběr kontrol, historie a sbírka zůstávají zachované. Během běhu jsou vstupy skenů zamčené.</p>
-  <p>Nově v 1.7.0 beta: samostatné ceny jednotlivých známek a nezávislá cena série/aršíku podle doložených prodejů celku. Součet známek a cena celku se nesčítají. Před spuštěním kontrola opakovaných instrukcí a doporučení dostupného AI modelu. Opravené hlášení 600 DPI, stručný i podrobný výstup s PDF/DOCX. Zmínky o certifikátech zůstávají nepotvrzené, registry APS/APEX a PF nyní nejsou automaticky přístupné. Aplikace není oficiální expertíza.</p>
-  <p>Nově v 1.6.1 beta: v sekci Tvoje master prompty lze přímo zapnout a vypnout identifikaci, posouzení stavu a pravosti, tržní ocenění a obchodní rozbor. Přepínače jsou společné s výběrem kontrol a odhadem ceny; vypnuté prompty se nespustí a volba se zachovává v uloženém ověření. Ocenění celé sbírky a kontrola aukčního losu zde zůstávají neaktivní s vysvětlením. Aplikace není oficiální expertíza.</p>
-  <p>Nově v 1.6.0 beta: před ověřením více známek lze vedle sebe zkontrolovat označené líce L1/L2 a ruby R1/R2, ručně změnit jejich přiřazení a opravit výřezy. Potvrzená vazba se zachovává v jednotlivých analýzách, historii, exportech a sbírce. Automatické návrhy porovnávají detaily hran při otočení a zrcadlení; nejisté ruby zůstávají nepřiřazené. Přesnost automatického párování není kalibrovaná a ruční potvrzení není potvrzením identity, lepu nebo pravosti. Aplikace není oficiální expertíza.</p>
-  <p>Nově v 1.5.0 beta: jednotlivě analyzované známky se automaticky archivují ve sbírce s fotografiemi, výsledky analýzy a odkazy na nalezené webové podklady. Návrhy AI zůstávají nepotvrzené. Opakované ukládání nevytváří další kopie a smazané položky se samy neobnovují. Celou sbírku lze po potvrzení přesunout do vratného koše. Simulace a nejisté výřezy se neukládají; uložení není odborný posudek ani potvrzení pravosti.</p>
-  <p>Aktuální verze <strong data-col-ver="{v} {s}">1.13.0 BETA</strong> (říjen 2026). Přehled aplikací je na stránce <a href="index.html">Moje aplikace</a>. Veřejné demo + plná lokální verze (web i Windows .exe). Soukromé pro vlastní použití — žádný public hosting reálných dat, žádné účty, žádné platby. Detailní průběh vývoje je ve <button class="diary-link" id="openDeník2">vývojovém deníku</button>.</p>
-</section>
-  <section class="youtube-section" id="youtube">
-    <div class="section-header"><h2>Podívat se: Collection — evidence sbírky, detail mince a zálohy</h2><p>9:24 · Český komentář a titulky.</p></div>
-    <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
-      <iframe src="https://www.youtube-nocookie.com/embed/fHyILzTIdh8?rel=0" title="Collection na videu" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-    <p><a href="https://www.youtube.com/watch?v=fHyILzTIdh8" target="_blank" rel="noopener">Celá prohlídka ↗</a></p>
-  </section>
+<figure>
+<img alt="Katalog s filtry" loading="lazy" src="img/sbirka/02_katalog.png"/>
+<figcaption>Katalog — filtrování přes celou sbírku; u každé položky je vidět jistota určení i orientační cena.</figcaption>
+</figure>
+<figure>
+<img alt="Přepínač Numismatika / Filatelie" loading="lazy" src="img/sbirka/03_numismatika.png"/>
+<figcaption>Modulový přepínač — sbírku lze číst zvlášť jako numismatiku a zvlášť jako filatelii.</figcaption>
+</figure>
+<figure>
+<img alt="Detail položky jako aukční lot" loading="lazy" src="img/sbirka/04_detail_lot.png"/>
+<figcaption>Detail položky ve tvaru aukčního lotu — parametry, které rozhodují o ceně, pohromadě.</figcaption>
+</figure>
+<figure>
+<img alt="Prohlížeč aukcí a katalogů" loading="lazy" src="img/sbirka/05_prohlizec.png"/>
+<figcaption>Prohlížeč aukcí a katalogů — hledání ve zdrojích, aniž by se cokoli zapsalo do sbírky bez potvrzení.</figcaption>
+</figure>
+<figure>
+<img alt="Zdroje a burzy" loading="lazy" src="img/sbirka/06_zdroje_burzy.png"/>
+<figcaption>Rozcestník zdrojů — kde ověřit cenu; realizovaná cena má přednost před aktivní nabídkou.</figcaption>
+</figure>
+<figure>
+<img alt="Co ovlivňuje cenu" loading="lazy" src="img/sbirka/07_co_ovlivnuje_cenu.png"/>
+<figcaption>Co cenu zvedá a co ji sráží — zvlášť pro mince a zvlášť pro známky.</figcaption>
+</figure>
+<figure>
+<img alt="Expertiza a posudky" loading="lazy" src="img/sbirka/08_expertiza.png"/>
+<figcaption>Expertiza — orientační vizuální posouzení s výslovným upozorněním, že nenahrazuje autorizovaného znalce.</figcaption>
+</figure>
+<figure>
+<img alt="Nápověda" loading="lazy" src="img/sbirka/09_napoveda.png"/>
+<figcaption>Nápověda psaná pro začátečníka — co udělat první, co vyžaduje klíč a co funguje i bez něj.</figcaption>
+</figure>
+<figure>
+<img alt="Jednoduché ověření — start" loading="lazy" src="img/sbirka/10_overeni_start.png"/>
+<figcaption>Jednoduché ověření (1.2.6) — pět kroků od nahrání líce a rubu po výstupní zprávu; nahoře výslovné upozornění, že nejde o oficiální expertizu.</figcaption>
+</figure>
+<figure>
+<img alt="Kontrola kvality skenu" loading="lazy" src="img/sbirka/11_overeni_kvalita.png"/>
+<figcaption>Kontrola kvality skenu přímo v počítači — rozlišení, DPI, ostrost; při slabém skenu rada, co zlepšit (ukázková známka CC0, Smithsonian).</figcaption>
+</figure>
+<figure>
+<img alt="Výběr modelu a přehled kontrol" loading="lazy" src="img/sbirka/12_overeni_model_kontroly.png"/>
+<figcaption>Výběr modelu Gemini s ceníkem Google a odhadem ceny předem, které master prompty se použijí a přehled všech 14 kontrol.</figcaption>
+</figure>
+<figure>
+<img alt="Výstupní zpráva" loading="lazy" src="img/sbirka/13_overeni_zprava.png"/>
+<figcaption>Výstupní zpráva — identifikace, pravost jen slovní úrovní podezření, cena, stav, tokeny a cena ověření a tabulka použitých kontrol (zde bezplatná simulace).</figcaption>
+</figure>
+<figure>
+<img alt="Moje nabídky — prodejní stránka" loading="lazy" src="img/sbirka/14_moje_nabidky.png"/>
+<figcaption>Moje nabídky — prodejní stránka pro soukromý prodej z vlastní sbírky na Delcampe a eBay.de, od nastavení podmínek po evidenci nabídek (ukázková demo data).</figcaption>
+</figure>
+<figure>
+<img alt="Údaje a podmínky prodeje" loading="lazy" src="img/sbirka/15_podminky_prodeje.png"/>
+<figcaption>Údaje a podmínky prodeje — formulář (údaje, platby, poštovné, vrácení) a německý text podmínek zvlášť pro každý portál; osobní údaje se do veřejného textu vloží jen s mým souhlasem (ukázková demo data).</figcaption>
+</figure>
+<figure>
+<img alt="Postup aktivace prodeje" loading="lazy" src="img/sbirka/16_navod_prodeje.png"/>
+<figcaption>Postup aktivace prodeje krok za krokem pro Delcampe a eBay.de — od existujícího účtu po první nabídku; nabídky se na portálech zveřejňují ručně (ukázková demo data).</figcaption>
+</figure>
+<figure>
+<img alt="Zdraví systému" loading="lazy" src="img/sbirka/17_zdravi_systemu.png"/>
+<figcaption>Zdraví systému — místní kontrola backendu, databáze, nastavení AI a ochrany souborů; neprovádí žádná placená ani síťová AI volání (ukázková demo data).</figcaption>
+</figure>
+<figure>
+<img alt="Novinky v aplikaci" loading="lazy" src="img/sbirka/18_novinky.png"/>
+<figcaption>Novinky — historie změn přímo v aplikaci; mj. webové cenové podklady s odkazy a rozšířená prodejní stránka s formulářem podmínek (ukázková demo data).</figcaption>
+</figure>
+</div>
+</section></div></details><details class="app-disclosure"><summary>Dostupnost a aktuální stav</summary><div class="app-disclosure__body"><section>
+<p style="margin:.6rem 0 .9rem;padding:.7rem .95rem;border-left:3px solid #9b59b6;background:#9b59b614;border-radius:6px;font-size:.93rem">🔒 <strong>Aplikace není veřejně ke stažení.</strong> Instalátor tady záměrně nenajdeš — odkaz posílám osobně tomu, komu aplikaci dávám. Číslo verze na téhle stránce zůstává: doplňuje se samo ze stejného místa, odkud si už nainstalovaná aplikace bere automatické aktualizace.</p>
+<p>Nově v 1.13.0 beta: nejprve ověření identity všech známek a společných emisí, potom hledání webových cen s přímými odkazy. Nové úsporné nastavení jedním tlačítkem, případně včetně vad a lepu. Neověřená identita blokuje cenové dotazy. Placené ověření přesnosti všech skutečných sérií nebylo dokončeno.</p>
+<p>Nově v 1.12.4 beta: opravy referencí větších sérií, postupné načítání podkladů a hledání celků. Placené ověření všech skutečných sérií nebylo dokončeno kvůli kreditu; přesnost rozpoznávání tímto vydáním není prokázána.</p>
+<p>Nově v 1.12.3 beta: u těžko určitelných emisí (Hradčany, PČ 1919, SO 1920, Protektorát, Germania, Rakousko 1850 a 1867, Penny Red a další) zpráva řekne, na co se dívat — který znak rozhoduje o variantě a ceně, na jaké padělky si dát pozor a co ze skenu určit nejde. Podle veřejného průvodce Znamky.cz, přepsáno vlastními slovy.</p>
+<p>Nově v 1.12.2 beta: rozšířené dohledávání podkladů, sjednocení závěrů o lepu a čitelnější report. Placené testy všech sérií nejsou dokončené kvůli vyčerpanému kreditu.</p>
+<p>Nově v 1.12.1 beta: ověření série, roku a katalogového čísla před hledáním cen; přímé odkazy na doloženou emisi a konkrétní nabídky v reportu.</p>
+<p>Nově v 1.12.0 beta: webové cenové podklady s odkazy pro známky i série, rozšířená prodejní stránka s formulářem podmínek a podrobnými postupy aktivace prodeje. Offline videa pro Delcampe i eBay.de s českým hlasem Jakub a obrázkovými kroky.</p>
+<p>Nově v 1.11.1 beta: video návod k první nabídce na Delcampe s českým hlasem Jakub, titulky a deseti obrázkovými kroky. Funguje i offline.</p>
+<p>Nově v 1.11.0 beta: průvodce německými nabídkami pro Delcampe a eBay, fotografie, upravitelné podmínky a evidence prodeje. Opravené potvrzení dvojic známek. Nabídky se zveřejňují ručně.</p>
+<p>Nově v 1.10.7 beta: drobné opravy z prověrky aplikace. Hledání ve sbírce funguje i bez háčků a čárek, CSV export se v Excelu otevře s češtinou, bezpečný export pro sdílení neobsahuje soukromé poznámky, historie změn zapisuje jen skutečné změny, stejný markant se nezaloží dvakrát a texty mají diakritiku a správné tvary.</p>
+<p>Nově v 1.10.6 beta: výchozím modelem AI je Gemini 3.8 Flash (posudek, ověření) a 3.5 Flash-Lite (rychlé dotazy) — fungují i s novým klíčem Google, kde řada 2.5 končí chybou. Stránka Klíče &amp; API nabízí modely řady 3. Opraveno řazení katalogu, souhrn bez ocenění, převzetí z Prohlížeče (rok a země), bezpečný export bez koše, rozcestník Nápovědy a ukázkové výsledky jsou zřetelně označené jako DEMO.</p>
+<p>Nově v 1.10.5 beta: diagnostický balíček u každého ověření ukáže použitý model AI a odpověď služby (třeba HTTP 404 = model pro tento účet nedostupný) a rovnou poradí, co dělat. Export po kliknutí potvrdí uložení a soubor má v názvu datum a čas, takže už nevznikají dvojice „(4)“, „(5)“.</p>
+<p>Nově v 1.10.4 beta: ve výběru modelu AI jsou Gemini 3.8 Flash, 3.6 Flash a 3.1 Flash-Lite. Google novým účtům (novému API klíči) už nepovoluje řadu 2.5 — s novým klíčem stačí vybrat model řady 3. Ceny podle ceníku Google; ohlášené zdražení od 1. 1. 2027 aplikace uplatní sama.</p>
+<p>Nově v 1.10.3 beta: když se odpověď AI zacyklí (opakuje stále totéž), aplikace ji zkrátí a jednou zopakuje, takže zpráva už nemá desítky stran nesmyslu. Cenové podklady, které si samy odporují nebo vedou jen na výsledky hledání, se do srovnání nepočítají; u archu je u každé ceny vidět, ke které známce patří.</p>
+<p>Nově v 1.10.2 beta: zoubkoměr — aplikace změří zoubkování přímo ze skenu a ukáže, ze kterých dírek počítala; s naskenovaným pravítkem na ±0,05. Zpráva má klikací odkazy na zdroje a snímky známek s popisem stavu, u promptů je vysvětlivka ⓘ.</p>
+<p>Nově v 1.10.1 beta: spolehlivější ověřování potvrzené série — každá známka se identifikuje samostatně, chyba jedné nezastaví ostatní a když nedoběhne žádná, aplikace řekne jednu konkrétní příčinu.</p>
+<p>Nově v 1.10.0 beta: více cenových podkladů z nabídek a uskutečněných aukcí, stav známek, popisy a přímé odkazy. Jednotliviny, série a aršíky jsou oddělené. Nově Danner, Schultze a Philea, rozšířené hledání Burda a eBay Browse při dostupném API přístupu. Nabídková cena není dosažená prodejní cena.</p>
+<p>Nově v 1.9.1 beta: když aplikace narazí na svůj strop útraty za AI, řekne to přímo — dřív to vypadalo jako technická chyba spojení, i když se nic neodeslalo ani nezaplatilo. Strop v USD jde nově nastavit, změnit nebo zrušit přímo v Klíče &amp; API.</p>
+<p>Nově v 1.9.0 beta: podmíněná cenová rozpětí nákupu a prodeje podle stavu, varianty a jednotky. Nabídky oddělené od realizací, předpoklady a odkazy na zdroje v aplikaci i PDF/DOCX. Citace AI není nezávislé ověření stránky.</p>
+<p>Nově v 1.8.3 beta: odhad ceny celé dávky, průběh přenosu a AI analýz s uplynulým časem, rychlejší otevření uložených výsledků a čitelnější PDF/DOCX. Stručný souhrn jasně označuje nedoložené ceny a vypnuté ocenění.</p>
+<p>Nově v 1.8.2 beta: opraveno rozdělení série na tmavém podkladu s bílými okraji skenu. Série vyžaduje potvrzení výřezů. Neplatná identifikace zastaví další analýzy a ukáže společnou příčinu ve zprávě i PDF.</p>
+<p>Nově v 1.8.1 beta: opraven export diagnostických ZIP balíčků v desktopové aplikaci. Při stažení se otevře dialog Uložit jako. Obsah balíčku a ochrana soukromí zůstávají zachovány.</p>
+<p>Nově v 1.8.0 beta: Zdraví systému, systémová diagnostika a export ZIP bez citlivých dat. Velké skeny se přenášejí po blocích při zachování pixelů. Živý AI test opravy zatím neproběhl; nejde o oficiální expertízu.</p>
+<p>Nově v 1.7.4 beta: spolehlivější přenos velkých skenů do AI při zachování plného rozlišení. Aplikace rozlišuje chybu přenosu od nedokončené identifikace. Živý AI test této opravy nebyl proveden; nejde o oficiální expertízu.</p>
+<p>Nově v 1.7.3 beta: světlá známka na bílém pozadí zůstává jedním celým lícem a rubem. Části kresby ani bílá nálepka nejsou další známky. Staré nepotvrzené automatické náhledy se obnoví, ruční úpravy a potvrzené dvojice zůstávají. Nejasné či oříznuté okraje aplikace přizná; správné rozdělení není důkaz pravosti.</p>
+<p>Nově v 1.7.2 beta: srozumitelný přehled jednotlivých známek a ceny celé série bez technických bloků. Nedostupný AI model zastaví ověření s jasnou příčinou; chyba se nevydává za špatný sken. Aktuální Gemini 3.5 Flash-Lite a tlačítko k přípravě opakování se zachovanými skeny a párováním. Ceny a stav se nevymýšlejí, pokud analýza neproběhla.</p>
+<p>Nově v 1.7.1 beta: výběr nového skenu ihned odstraní předchozí výsledek, párování, starý rub a údaje předchozí známky. Chyba při nahrávání neobnoví starou zprávu. Výběr kontrol, historie a sbírka zůstávají zachované. Během běhu jsou vstupy skenů zamčené.</p>
+<p>Nově v 1.7.0 beta: samostatné ceny jednotlivých známek a nezávislá cena série/aršíku podle doložených prodejů celku. Součet známek a cena celku se nesčítají. Před spuštěním kontrola opakovaných instrukcí a doporučení dostupného AI modelu. Opravené hlášení 600 DPI, stručný i podrobný výstup s PDF/DOCX. Zmínky o certifikátech zůstávají nepotvrzené, registry APS/APEX a PF nyní nejsou automaticky přístupné. Aplikace není oficiální expertíza.</p>
+<p>Nově v 1.6.1 beta: v sekci Tvoje master prompty lze přímo zapnout a vypnout identifikaci, posouzení stavu a pravosti, tržní ocenění a obchodní rozbor. Přepínače jsou společné s výběrem kontrol a odhadem ceny; vypnuté prompty se nespustí a volba se zachovává v uloženém ověření. Ocenění celé sbírky a kontrola aukčního losu zde zůstávají neaktivní s vysvětlením. Aplikace není oficiální expertíza.</p>
+<p>Nově v 1.6.0 beta: před ověřením více známek lze vedle sebe zkontrolovat označené líce L1/L2 a ruby R1/R2, ručně změnit jejich přiřazení a opravit výřezy. Potvrzená vazba se zachovává v jednotlivých analýzách, historii, exportech a sbírce. Automatické návrhy porovnávají detaily hran při otočení a zrcadlení; nejisté ruby zůstávají nepřiřazené. Přesnost automatického párování není kalibrovaná a ruční potvrzení není potvrzením identity, lepu nebo pravosti. Aplikace není oficiální expertíza.</p>
+<p>Nově v 1.5.0 beta: jednotlivě analyzované známky se automaticky archivují ve sbírce s fotografiemi, výsledky analýzy a odkazy na nalezené webové podklady. Návrhy AI zůstávají nepotvrzené. Opakované ukládání nevytváří další kopie a smazané položky se samy neobnovují. Celou sbírku lze po potvrzení přesunout do vratného koše. Simulace a nejisté výřezy se neukládají; uložení není odborný posudek ani potvrzení pravosti.</p>
+<p>Aktuální verze <strong data-col-ver="{v} {s}">1.13.0 BETA</strong> (říjen 2026). Přehled aplikací je na stránce <a href="index.html">Moje aplikace</a>. Veřejné demo + plná lokální verze (web i Windows .exe). Soukromé pro vlastní použití — žádný public hosting reálných dat, žádné účty, žádné platby. Detailní průběh vývoje je ve <a href="#vyvojovy-denik">vývojovém deníku</a>.</p>
+</section></div></details><details class="app-disclosure"><summary>Technické údaje</summary><div class="app-disclosure__body"><p><span class="pill" data-badge-tone="gold" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">HTML/JS</span> · <span class="pill" data-badge-tone="gold" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python + FastAPI</span> · <span class="pill" data-badge-tone="gold" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> · <span class="pill" data-badge-tone="gold" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">AI Gemini (vision)</span> · <span class="pill" data-badge-tone="gold" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Windows (.exe)</span></p></div></details><details class="app-disclosure" id="vyvojovy-denik"><summary>Vývojový deník</summary><div class="app-disclosure__body">
+<ul style="line-height:1.8">
+<li><strong>v1.12.2 — poctivější dohledávání podkladů a report (19.–20. 10. 2026)</strong> — Dohledávání katalogových podkladů teď drží číslo, nominál a obrázek ve stejném řádku načtené tabulky a po katalogu se pohybuje podle skutečných odkazů z načtených stránek. Barva známky se porovnává navíc ke kresbě, aby se stejná kresba na různých nominálech nepopletla; rozsah čísel série se nebere jako číslo jednotliviny. Když stav lepu nevím, nepřebírám kategorický závěr z první identifikace a nejisté závěry o lepu jsou v reportu sjednocené. Strojové bloky už nezaplňují čitelný report. Ověření může jednou opravit citaci nebo zopakovat hledání, vždy v mezích rozpočtu. Vyčerpaný kredit Gemini má konkrétní hlášku o fakturaci a další položky se nezačnou. <strong>Co není hotové:</strong> placené ověření všech sérií jsem nedokončil, protože došel kredit; vydal jsem to vědomě bez něj. Všech deset testovacích sérií (69 známek) tedy není živě ověřeno na konečném kódu a pět rakouských jednotlivin dosud nemá prokázané individuální katalogové vazby. Nelze tvrdit, že je dohledávání všech známek opravené, ani že nenalezená nabídka neexistuje. Jistotu dává jen offline sada 42 testů se zakázaným odchozím spojením.</li>
+<li><strong>v1.12.0–1.12.1 — webové ceny s odkazy a ověřená identita (18. 10. 2026)</strong> — Webové cenové podklady jednotlivých známek i celých sérií s odkazy na zdroje, bez vypočteného ocenění; upřesněná identifikace a posouzení vad a lepu. Ve verzi 1.12.1 se před hledáním cen nejdřív ověří série, rok a katalogové číslo podle načteného zdroje a referenčních obrázků. Kdo identitu nedoloží, blokuje i cenové závěry, aby se ceny nepřiřadily špatné známce. Report má přímé odkazy na doloženou emisi a na konkrétní nabídky.</li>
+<li><strong>v1.11.0–1.11.1 a prodejní stránka z 1.12.0 — soukromý prodej na Delcampe a eBay.de (18. 10. 2026)</strong> — Průvodce soukromým prodejem známek v pěti krocích: německé nabídky, fotografie, poštovné, upravitelné podmínky a evidence vystavení, prodeje a odeslání. Každý portál má vlastní viditelný editor podmínek, platby se řídí pravidly portálu a ceník dopravy je datovaný, s přepočtem na EUR. Ve verzi 1.12.0 přibyla rozšířená prodejní stránka s formulářem podmínek a podrobnými návody k aktivaci prodeje na obou portálech. K tomu offline video návody s českým komentářem, titulky a deseti obrázkovými kroky (první nabídka na Delcampe v 1.11.1, eBay.de v 1.12.0), s přeskakováním mezi kapitolami; jsou v Moje nabídky a v Nápovědě a používají ukázková data. Opravil jsem i potvrzení dvojic líců a rubů: kresba uvnitř známek už nezpůsobuje falešné překrývání. Nabídky zveřejňuji vždy ručně na portálu a právní návrh podmínek není certifikací pro všechny země.</li>
+<li><strong>v1.10.6–1.10.7 — opravy z prověrky modulů (16. 10. 2026)</strong> — Prošel jsem pět modulů aplikace nad izolovanými daty. Výchozí modely AI jsou nově Gemini 3.8 Flash (posudek, ověření) a 3.5 Flash-Lite (rychlé dotazy), takže fungují i s novým klíčem Google; stránka Klíče &amp; API nabízí řadu 3. Opravil jsem řazení katalogu, souhrn bez ocenění, převzetí roku a země z Prohlížeče, bezpečný export bez koše, rozcestník Nápovědy a ukázkové výsledky jsou zřetelně označené jako DEMO. Ve verzi 1.10.7 jsem opravil 24 z 25 drobných nálezů (u jednoho nebyla změna potřeba): hledání ve sbírce funguje i bez háčků a čárek, CSV se v Excelu otevře se správnou češtinou, bezpečný export pro sdílení neobsahuje volné poznámky, historie změn zapisuje jen skutečné změny, stejný markant se nezaloží dvakrát, země se řadí česky a horní pruh ukazuje skutečnou adresu.</li>
+<li><strong>v1.10.4–1.10.5 — novější modely Gemini a lepší diagnostika (14. 10. 2026)</strong> — Google novým účtům (novému API klíči) nepovoluje řadu 2.5, takže ověření končilo chybou. Ve výběru jsou proto Gemini 3.8 Flash, 3.6 Flash a 3.1 Flash-Lite; ceny podle ceníku Google k 13. 10. 2026 a ohlášené zdražení od 1. 1. 2027 aplikace uplatní sama. Diagnostický balíček u každého běhu ukazuje použitý model a odpověď služby (třeba HTTP 404 = model pro tento účet nedostupný) a rovnou poradí, co dělat. Export potvrdí uložení, má v názvu datum a čas a chrání před dvojitým kliknutím.</li>
+<li><strong>v1.10.0–1.10.3 — více cenových podkladů, zoubkoměr a pojistka proti zacyklené AI (12.–14. 10. 2026)</strong> — <em>1.10.0:</em> nabídky Danner a Schultze, realizované ceny Philea, cílené hledání Michel v Burda a oficiální eBay Browse, pokud je k dispozici přístup; ceny podle stavu, přímé odkazy a popisy, jednotliviny, série a aršíky zvlášť. <em>1.10.1:</em> u potvrzené série se každá známka identifikuje přímo, chyba jedné nezastaví ostatní a když nedoběhne žádná kvůli spojení s AI, souhrn ukáže jednu společnou příčinu (dřív jen „Dokončeno 0 z N“ bez vysvětlení). <em>1.10.2:</em> zoubkoměr — aplikace najde každou dírku, z rozteče spočítá zuby na 2 cm a ukáže náhled změřených dírek. Bez kalibrace je to přibližně (±2 %, zápis na půlky), s naskenovaným pravítkem ±0,05 a zápis na čtvrtky. Není to odborné potvrzení varianty. Zpráva PDF/DOCX má klikací odkazy na zdroje, snímky líce a rubu s popisem stavu a u archu sekci Sada; u promptů a kontrol je ikona ⓘ s vysvětlením. <em>1.10.3:</em> když se odpověď AI zacyklí a stále opakuje totéž, aplikace ji zkrátí a jednou zopakuje; cenové řádky, které si odporují nebo vedou jen na výsledky hledání, se do srovnání nepočítají.</li>
+<li><strong>v1.9.0–1.9.1 — podmíněné cenové scénáře a strop útraty (11.–12. 10. 2026)</strong> — Ve verzi 1.9.0 hledají prompty nabídky i realizace jednotlivin a celých emisí. Výsledkem jsou podmíněná rozpětí nákupu a prodeje „od–do“ podle stavu lepu, varianty, jednotky a měny, s uvedenou silou doložení zdrojů; nabídky jsou oddělené od realizací a vše je v aplikaci i v PDF/DOCX. Citace AI není nezávislé ověření stránky. Verze 1.9.1: když aplikace narazí na svůj strop útraty za AI, řekne to přímo — dřív to vypadalo jako chyba připojení, i když se nic neodeslalo ani nezaplatilo. Strop v USD jde nově nastavit, změnit nebo zrušit přímo v Klíče &amp; API. Živý placený test těchto změn jsem neprováděl.</li>
+<li><strong>v1.8.0–1.8.3 — zdraví systému, velké skeny a dávky (10.–11. 10. 2026)</strong> — <em>1.8.0:</em> stránka Zdraví systému, systémová diagnostika a lokální ZIP export bez fotografií, promptů, klíčů a dat sbírky. Velké skeny se přenášejí po blocích po 1 MiB s obnovením po přerušení, postupem a možností zrušení, bez změny pixelů. <em>1.8.1:</em> opraveno ukládání diagnostických balíčků v desktopové aplikaci (otevře se dialog Uložit jako, zrušení nevytvoří soubor). <em>1.8.2:</em> správné rozdělení série na tmavém podkladu s bílými okraji skeneru; před spuštěním je povinné potvrzení výřezů a neplatná identifikace zastaví další analýzy se společnou příčinou. <em>1.8.3:</em> odhad ceny celé dávky, průběh přenosu a analýz s uplynulým časem, rychlejší otevření uložených výsledků a čitelnější PDF/DOCX; opravy vycházejí z testu devíti známek.</li>
+<li><strong>v1.7.0–1.7.4 — ceny jednotlivých známek i celé série (7.–9. 10. 2026)</strong> — Samostatná cena každé známky a nezávislá cena série či aršíku podle doložených prodejů celku; součet jednotlivin a cena celku se nesčítají. Před spuštěním kontrola opakovaných instrukcí a doporučení dostupného modelu AI; zmínky o certifikátech zůstávají nepotvrzené a registry APS/APEX a PF nejsou automaticky přístupné. Dále: výběr nové známky ihned smaže předchozí výsledek a údaje (1.7.1); nedostupný model AI (HTTP 404) zastaví dávku s jasnou příčinou místo obviňování skenu, přibyl Gemini 3.5 Flash-Lite a opakování jedním tlačítkem (1.7.2); světlá známka na bílém pozadí zůstává jedním celým lícem a rubem, části kresby ani bílá nálepka nejsou další známky (1.7.3); velké skeny se do AI nahrávají bez zmenšení (1.7.4).</li>
+<li><strong>v1.6.0–1.6.1 — líc a rub u více známek, přepínače promptů (4. 10. 2026)</strong> — Aplikace páruje líce a ruby více známek podle detailů čtyř hran, otočení a zrcadlení a nejisté vazby odmítne. Před ověřením vedle sebe zkontroluji označené líce L1/L2 a ruby R1/R2, ručně změním dvojice a opravím výřezy. Potvrzená vazba se zachová v analýze, historii, exportu i ve sbírce. Přesnost automatického párování není kalibrovaná a ruční potvrzení neznamená potvrzení identity, lepu ani pravosti. Ve verzi 1.6.1 jde v sekci Tvoje master prompty jednotlivě zapnout a vypnout identifikaci, posouzení stavu a pravosti, tržní ocenění a obchodní rozbor; vypnuté prompty se nespustí.</li>
+<li><strong>v1.4.0–1.5.0 — filatelistické kontroly a ukládání do sbírky (3. 10. 2026)</strong> — Aplikace automaticky nabízí filatelistické kontroly, zachovává pixely a DPI výřezů, odhaduje zoubkování z metadat a geometrie a měří centraci. Má ochranu před nedoloženými fyzikálními závěry AI; průsvitka, UV, tenčiny a vtlak z běžného skenu potvrzené nejsou. Ve verzi 1.5.0 se skutečně analyzované známky automaticky ukládají jednotlivě do sbírky s fotografiemi, nepotvrzenými návrhy AI a odkazy na nalezené webové podklady. Opakovaný zápis nevytváří duplicity, smazané položky se samy neobnovují a celou sbírku lze po potvrzení přesunout do vratného koše. Simulace, zrušené běhy a neurčité výřezy se neukládají. Uložení není potvrzení identity, stavu ani ceny. Při auditu zdrojů se Delcampe vyhledávání automaticky nečte a eBay zůstává jen přes oficiální API a mimo Jednoduché ověření.</li>
+<li><strong>v1.3.0 — celý list najednou (2. 10. 2026)</strong> — Jednoduché ověření umí volitelné analýzy, společné i samostatné upřesnění promptů a automatické rozdělení listu na jednotlivé známky se samostatným výsledkem každé z nich. Každý výřez prochází kontrolou kvality, hlídají se překryvy a neúplné dělení, zdroje mají sdílený rozpočet a náklady se sčítají za celou dávku. Nejvýše 40 kusů; rub listu se automaticky nepáruje. Přesnost dělení reálných aršíků živým Gemini zatím nebyla změřena.</li>
+<li><strong>v1.2.7–1.2.9 — Jednoduché ověření s doloženými podklady (21.–22. 9. 2026)</strong> — Po stisku Ověřit aplikace sama dohledá reference variant (Smithsonian National Postal Museum) a realizované ceny (Burda Auction); cenu uvede jen z doložených prodejů téhož kusu, jinak napíše, že ji zatím nelze spolehlivě určit, proč a jaký je jediný další krok. Cena od AI je jen označený nedoložený odhad. Verze 1.2.8 vrátila stav na beta a přiznala, že přesné ocenění konkrétní fotografie není prokázáno (0 z 20 živých ověření): odhad modelu se nevydává za doložený stav, chybné katalogové číslo od AI se odmítne podle nominálu a aplikace navrhne kandidáty ze znaků, a bez doloženého stavu lepu ukáže jen podmíněné cenové scénáře. Verze 1.2.9 přidala v Klíče &amp; API zaškrtávací políčko pro povolení placených volání Gemini; dřív to šlo jen úpravou konfiguračního souboru, takže vložený klíč sám nestačil.</li>
+<li><strong>v1.2.6 — Jednoduché ověření (18. 9. 2026)</strong> — Nová stránka v Expertize pro rychlé ověření jedné známky: líc + rub, kontrola kvality skenu, výběr modelu Gemini s ceníkem Google a odhadem ceny, 14 kontrol včetně hledání na internetu přes Google vyhledávání v Gemini; zpráva s orientační cenou, úrovní podezření na pravost, internetovými zdroji, tokeny a cenou ověření, export PDF/DOCX. Vypnutý model Gemini 2.0 Flash a řada 1.5 zmizely z výběru v celé aplikaci, nově Gemini 2.5 Flash-Lite (nejlevnější).</li>
+<li><strong>v1.2.4–1.2.5 — kalibrace pravosti (září 2026)</strong> — Příprava na měření, jak spolehlivě appka rozeznává padělky: referenční sada ověřených padělků, stránka „Kalibrace pravosti" s poctivým stavem (dokud nejsou ověřené pravé vzorky, appka hlásí NEKALIBROVÁNO), přísné hlídání práv ke zdrojům a účetnictví síťových volání.</li>
+<li><strong>v1.1.24 — modul Expertiza a posudky (18. 7. 2026)</strong> — Nová sekce pro vedení posudků k položkám: neměnný záznam s auditní stopou (nic nejde přepsat, jen přidat nový posudek), vlastní stránka „Expertiza" v menu. Zatím funguje jen <strong>ruční zadání</strong> — AI vizuální ověření pravosti (real-vision) zatím NENÍ implementováno ani kalibrováno, appka to nikde netvrdí.</li>
+<li><strong>v1.1.7 — katalogy přímo v aplikaci a nápověda (12. 6. 2026)</strong> — Velký krok: české i zahraniční katalogy a obchody (Numista, Pofis, Colnect, Delcampe…) se teď prohlížejí <strong>přímo v aplikaci</strong> — u nálezu vidíš název, cenu, obrázek i odkaz na zdroj, do sbírky se nic nepřidá bez potvrzení. Přibyla <strong>historie cen</strong> položky v čase, <strong>přepočet cizích měn na koruny</strong> podle kurzu ČNB, <strong>kategorie a vlastní vlastnosti</strong> položek a nová stránka <strong>Nápověda</strong> (jak na AI klíč Gemini a kolik stojí, focení telefonem, zálohy, bezpečnost). AI klíč jde nově vložit přímo v aplikaci.</li>
+<li><strong>v1.1.8 — opravy katalogů a náhledů (13. 6. 2026)</strong> — Opravené adresy katalogů (Macho &amp; Chlapovič, MA-Shops), náhledové obrázky u nabídek (Delcampe). Katalogy, které nešlo automaticky číst (eBay, TopZnamky), nahrazeny radou „otevři ve webovém prohlížeči" místo strohé chyby.</li>
+<li><strong>Údržba a stabilita (1.1.4–1.1.6)</strong> — jen jedno okno aplikace (druhé spuštění vytáhne to existující), konec opakované nabídky aktualizace po updatu, patička vždy ukazuje skutečnou nainstalovanou verzi, bezpečnější tichá aktualizace (po sobě uklízí dočasné soubory).</li>
+<li><strong>v1.1.0 — redesign aukčního domu (30. 5. 2026)</strong> — Greenfield vzhled (tmavá + zlatá, serif nadpisy), detail položky jako aukční „lot". Stránky „Zdroje &amp; burzy" a „Co ovlivňuje cenu" do menu. Hromadný import CSV/Excel. Zobrazení nahraných fotek v kartě i detailu. Sjednocení verze na 1.1.0.</li>
+<li><strong>AI rozpoznávání z fotky</strong> — Gemini vision: přečte text na kusu a předvyplní formulář (kategorie, země, rok, nominál, stav). Řešeno: správný model (gemini-2.5-pro), SSL přes systémové certifikáty (firemní síť), čeština ve výstupu, KYC kontrola kvality fotky (rozmazané/není mince → nehodnotí), <strong>líc + rub v jednom kroku</strong>, návod na focení (rámeček jako u ověřování dokladu).</li>
+<li><strong>Deep-linky na burzy</strong> — z parametrů položky se poskládá hledání: Numista / NGC / PCGS / Colnect / Pofis (katalogy), eBay prodané / acsearch / CoinArchives / Delcampe (realizované ceny), Aukro / eBay (aktivní). Pravidlo „realizovaná &gt; aktivní".</li>
+<li><strong>Windows aplikace (Tauri)</strong> — jeden klik na ikonu spustí lokální backend sám (sidecar) a otevře plnou verzi ve vlastním okně, bez konzole. Plus spouštěč přes prohlížeč (Edge --app).</li>
+<li><strong>Bezpečnost</strong> — reálná data (SQLite + fotky) zůstávají jen lokálně na disku, na GitHub jde jen kód + ukázková data. Backend servíruje frontend bez vystavení konfigurace.</li>
+<li><strong>Základ (Phase A–H)</strong> — bezpečná architektura, read-only MVP, editor sbírky, oceňování s důkazy, exporty (CSV/Excel/PDF/ZIP), Windows launcher, CI + demo.</li>
+</ul>
+<p style="color:var(--text-mut,#777);font-size:.85rem">Pozn.: appka eviduje a orientačně oceňuje — neprovádí znaleckou činnost. Reálnou cenu vždy ověř na burze.</p>
+</div></details></section>
 </main>
 
 <!-- ═══ VÝVOJOVÝ DENÍK — popup (drží stránku krátkou) ═══ -->
-<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Vývojový deník" aria-hidden="true">
-  <div class="diary-backdrop"></div>
-  <div class="diary-panel">
-    <div class="diary-head">
-      <h2 style="margin:0">📖 Vývojový deník — Sbírka</h2>
-      <button class="diary-close" aria-label="Zavřít">✕</button>
-    </div>
-    <div class="diary-body">
-      <ul style="line-height:1.8">
-        <li><strong>v1.12.2 — poctivější dohledávání podkladů a report (19.–20. 10. 2026)</strong> — Dohledávání katalogových podkladů teď drží číslo, nominál a obrázek ve stejném řádku načtené tabulky a po katalogu se pohybuje podle skutečných odkazů z načtených stránek. Barva známky se porovnává navíc ke kresbě, aby se stejná kresba na různých nominálech nepopletla; rozsah čísel série se nebere jako číslo jednotliviny. Když stav lepu nevím, nepřebírám kategorický závěr z první identifikace a nejisté závěry o lepu jsou v reportu sjednocené. Strojové bloky už nezaplňují čitelný report. Ověření může jednou opravit citaci nebo zopakovat hledání, vždy v mezích rozpočtu. Vyčerpaný kredit Gemini má konkrétní hlášku o fakturaci a další položky se nezačnou. <strong>Co není hotové:</strong> placené ověření všech sérií jsem nedokončil, protože došel kredit; vydal jsem to vědomě bez něj. Všech deset testovacích sérií (69 známek) tedy není živě ověřeno na konečném kódu a pět rakouských jednotlivin dosud nemá prokázané individuální katalogové vazby. Nelze tvrdit, že je dohledávání všech známek opravené, ani že nenalezená nabídka neexistuje. Jistotu dává jen offline sada 42 testů se zakázaným odchozím spojením.</li>
-        <li><strong>v1.12.0–1.12.1 — webové ceny s odkazy a ověřená identita (18. 10. 2026)</strong> — Webové cenové podklady jednotlivých známek i celých sérií s odkazy na zdroje, bez vypočteného ocenění; upřesněná identifikace a posouzení vad a lepu. Ve verzi 1.12.1 se před hledáním cen nejdřív ověří série, rok a katalogové číslo podle načteného zdroje a referenčních obrázků. Kdo identitu nedoloží, blokuje i cenové závěry, aby se ceny nepřiřadily špatné známce. Report má přímé odkazy na doloženou emisi a na konkrétní nabídky.</li>
-        <li><strong>v1.11.0–1.11.1 a prodejní stránka z 1.12.0 — soukromý prodej na Delcampe a eBay.de (18. 10. 2026)</strong> — Průvodce soukromým prodejem známek v pěti krocích: německé nabídky, fotografie, poštovné, upravitelné podmínky a evidence vystavení, prodeje a odeslání. Každý portál má vlastní viditelný editor podmínek, platby se řídí pravidly portálu a ceník dopravy je datovaný, s přepočtem na EUR. Ve verzi 1.12.0 přibyla rozšířená prodejní stránka s formulářem podmínek a podrobnými návody k aktivaci prodeje na obou portálech. K tomu offline video návody s českým komentářem, titulky a deseti obrázkovými kroky (první nabídka na Delcampe v 1.11.1, eBay.de v 1.12.0), s přeskakováním mezi kapitolami; jsou v Moje nabídky a v Nápovědě a používají ukázková data. Opravil jsem i potvrzení dvojic líců a rubů: kresba uvnitř známek už nezpůsobuje falešné překrývání. Nabídky zveřejňuji vždy ručně na portálu a právní návrh podmínek není certifikací pro všechny země.</li>
-        <li><strong>v1.10.6–1.10.7 — opravy z prověrky modulů (16. 10. 2026)</strong> — Prošel jsem pět modulů aplikace nad izolovanými daty. Výchozí modely AI jsou nově Gemini 3.8 Flash (posudek, ověření) a 3.5 Flash-Lite (rychlé dotazy), takže fungují i s novým klíčem Google; stránka Klíče &amp; API nabízí řadu 3. Opravil jsem řazení katalogu, souhrn bez ocenění, převzetí roku a země z Prohlížeče, bezpečný export bez koše, rozcestník Nápovědy a ukázkové výsledky jsou zřetelně označené jako DEMO. Ve verzi 1.10.7 jsem opravil 24 z 25 drobných nálezů (u jednoho nebyla změna potřeba): hledání ve sbírce funguje i bez háčků a čárek, CSV se v Excelu otevře se správnou češtinou, bezpečný export pro sdílení neobsahuje volné poznámky, historie změn zapisuje jen skutečné změny, stejný markant se nezaloží dvakrát, země se řadí česky a horní pruh ukazuje skutečnou adresu.</li>
-        <li><strong>v1.10.4–1.10.5 — novější modely Gemini a lepší diagnostika (14. 10. 2026)</strong> — Google novým účtům (novému API klíči) nepovoluje řadu 2.5, takže ověření končilo chybou. Ve výběru jsou proto Gemini 3.8 Flash, 3.6 Flash a 3.1 Flash-Lite; ceny podle ceníku Google k 13. 10. 2026 a ohlášené zdražení od 1. 1. 2027 aplikace uplatní sama. Diagnostický balíček u každého běhu ukazuje použitý model a odpověď služby (třeba HTTP 404 = model pro tento účet nedostupný) a rovnou poradí, co dělat. Export potvrdí uložení, má v názvu datum a čas a chrání před dvojitým kliknutím.</li>
-        <li><strong>v1.10.0–1.10.3 — více cenových podkladů, zoubkoměr a pojistka proti zacyklené AI (12.–14. 10. 2026)</strong> — <em>1.10.0:</em> nabídky Danner a Schultze, realizované ceny Philea, cílené hledání Michel v Burda a oficiální eBay Browse, pokud je k dispozici přístup; ceny podle stavu, přímé odkazy a popisy, jednotliviny, série a aršíky zvlášť. <em>1.10.1:</em> u potvrzené série se každá známka identifikuje přímo, chyba jedné nezastaví ostatní a když nedoběhne žádná kvůli spojení s AI, souhrn ukáže jednu společnou příčinu (dřív jen „Dokončeno 0 z N“ bez vysvětlení). <em>1.10.2:</em> zoubkoměr — aplikace najde každou dírku, z rozteče spočítá zuby na 2 cm a ukáže náhled změřených dírek. Bez kalibrace je to přibližně (±2 %, zápis na půlky), s naskenovaným pravítkem ±0,05 a zápis na čtvrtky. Není to odborné potvrzení varianty. Zpráva PDF/DOCX má klikací odkazy na zdroje, snímky líce a rubu s popisem stavu a u archu sekci Sada; u promptů a kontrol je ikona ⓘ s vysvětlením. <em>1.10.3:</em> když se odpověď AI zacyklí a stále opakuje totéž, aplikace ji zkrátí a jednou zopakuje; cenové řádky, které si odporují nebo vedou jen na výsledky hledání, se do srovnání nepočítají.</li>
-        <li><strong>v1.9.0–1.9.1 — podmíněné cenové scénáře a strop útraty (11.–12. 10. 2026)</strong> — Ve verzi 1.9.0 hledají prompty nabídky i realizace jednotlivin a celých emisí. Výsledkem jsou podmíněná rozpětí nákupu a prodeje „od–do“ podle stavu lepu, varianty, jednotky a měny, s uvedenou silou doložení zdrojů; nabídky jsou oddělené od realizací a vše je v aplikaci i v PDF/DOCX. Citace AI není nezávislé ověření stránky. Verze 1.9.1: když aplikace narazí na svůj strop útraty za AI, řekne to přímo — dřív to vypadalo jako chyba připojení, i když se nic neodeslalo ani nezaplatilo. Strop v USD jde nově nastavit, změnit nebo zrušit přímo v Klíče &amp; API. Živý placený test těchto změn jsem neprováděl.</li>
-        <li><strong>v1.8.0–1.8.3 — zdraví systému, velké skeny a dávky (10.–11. 10. 2026)</strong> — <em>1.8.0:</em> stránka Zdraví systému, systémová diagnostika a lokální ZIP export bez fotografií, promptů, klíčů a dat sbírky. Velké skeny se přenášejí po blocích po 1 MiB s obnovením po přerušení, postupem a možností zrušení, bez změny pixelů. <em>1.8.1:</em> opraveno ukládání diagnostických balíčků v desktopové aplikaci (otevře se dialog Uložit jako, zrušení nevytvoří soubor). <em>1.8.2:</em> správné rozdělení série na tmavém podkladu s bílými okraji skeneru; před spuštěním je povinné potvrzení výřezů a neplatná identifikace zastaví další analýzy se společnou příčinou. <em>1.8.3:</em> odhad ceny celé dávky, průběh přenosu a analýz s uplynulým časem, rychlejší otevření uložených výsledků a čitelnější PDF/DOCX; opravy vycházejí z testu devíti známek.</li>
-        <li><strong>v1.7.0–1.7.4 — ceny jednotlivých známek i celé série (7.–9. 10. 2026)</strong> — Samostatná cena každé známky a nezávislá cena série či aršíku podle doložených prodejů celku; součet jednotlivin a cena celku se nesčítají. Před spuštěním kontrola opakovaných instrukcí a doporučení dostupného modelu AI; zmínky o certifikátech zůstávají nepotvrzené a registry APS/APEX a PF nejsou automaticky přístupné. Dále: výběr nové známky ihned smaže předchozí výsledek a údaje (1.7.1); nedostupný model AI (HTTP 404) zastaví dávku s jasnou příčinou místo obviňování skenu, přibyl Gemini 3.5 Flash-Lite a opakování jedním tlačítkem (1.7.2); světlá známka na bílém pozadí zůstává jedním celým lícem a rubem, části kresby ani bílá nálepka nejsou další známky (1.7.3); velké skeny se do AI nahrávají bez zmenšení (1.7.4).</li>
-        <li><strong>v1.6.0–1.6.1 — líc a rub u více známek, přepínače promptů (4. 10. 2026)</strong> — Aplikace páruje líce a ruby více známek podle detailů čtyř hran, otočení a zrcadlení a nejisté vazby odmítne. Před ověřením vedle sebe zkontroluji označené líce L1/L2 a ruby R1/R2, ručně změním dvojice a opravím výřezy. Potvrzená vazba se zachová v analýze, historii, exportu i ve sbírce. Přesnost automatického párování není kalibrovaná a ruční potvrzení neznamená potvrzení identity, lepu ani pravosti. Ve verzi 1.6.1 jde v sekci Tvoje master prompty jednotlivě zapnout a vypnout identifikaci, posouzení stavu a pravosti, tržní ocenění a obchodní rozbor; vypnuté prompty se nespustí.</li>
-        <li><strong>v1.4.0–1.5.0 — filatelistické kontroly a ukládání do sbírky (3. 10. 2026)</strong> — Aplikace automaticky nabízí filatelistické kontroly, zachovává pixely a DPI výřezů, odhaduje zoubkování z metadat a geometrie a měří centraci. Má ochranu před nedoloženými fyzikálními závěry AI; průsvitka, UV, tenčiny a vtlak z běžného skenu potvrzené nejsou. Ve verzi 1.5.0 se skutečně analyzované známky automaticky ukládají jednotlivě do sbírky s fotografiemi, nepotvrzenými návrhy AI a odkazy na nalezené webové podklady. Opakovaný zápis nevytváří duplicity, smazané položky se samy neobnovují a celou sbírku lze po potvrzení přesunout do vratného koše. Simulace, zrušené běhy a neurčité výřezy se neukládají. Uložení není potvrzení identity, stavu ani ceny. Při auditu zdrojů se Delcampe vyhledávání automaticky nečte a eBay zůstává jen přes oficiální API a mimo Jednoduché ověření.</li>
-        <li><strong>v1.3.0 — celý list najednou (2. 10. 2026)</strong> — Jednoduché ověření umí volitelné analýzy, společné i samostatné upřesnění promptů a automatické rozdělení listu na jednotlivé známky se samostatným výsledkem každé z nich. Každý výřez prochází kontrolou kvality, hlídají se překryvy a neúplné dělení, zdroje mají sdílený rozpočet a náklady se sčítají za celou dávku. Nejvýše 40 kusů; rub listu se automaticky nepáruje. Přesnost dělení reálných aršíků živým Gemini zatím nebyla změřena.</li>
-        <li><strong>v1.2.7–1.2.9 — Jednoduché ověření s doloženými podklady (21.–22. 9. 2026)</strong> — Po stisku Ověřit aplikace sama dohledá reference variant (Smithsonian National Postal Museum) a realizované ceny (Burda Auction); cenu uvede jen z doložených prodejů téhož kusu, jinak napíše, že ji zatím nelze spolehlivě určit, proč a jaký je jediný další krok. Cena od AI je jen označený nedoložený odhad. Verze 1.2.8 vrátila stav na beta a přiznala, že přesné ocenění konkrétní fotografie není prokázáno (0 z 20 živých ověření): odhad modelu se nevydává za doložený stav, chybné katalogové číslo od AI se odmítne podle nominálu a aplikace navrhne kandidáty ze znaků, a bez doloženého stavu lepu ukáže jen podmíněné cenové scénáře. Verze 1.2.9 přidala v Klíče &amp; API zaškrtávací políčko pro povolení placených volání Gemini; dřív to šlo jen úpravou konfiguračního souboru, takže vložený klíč sám nestačil.</li>
-        <li><strong>v1.2.6 — Jednoduché ověření (18. 9. 2026)</strong> — Nová stránka v Expertize pro rychlé ověření jedné známky: líc + rub, kontrola kvality skenu, výběr modelu Gemini s ceníkem Google a odhadem ceny, 14 kontrol včetně hledání na internetu přes Google vyhledávání v Gemini; zpráva s orientační cenou, úrovní podezření na pravost, internetovými zdroji, tokeny a cenou ověření, export PDF/DOCX. Vypnutý model Gemini 2.0 Flash a řada 1.5 zmizely z výběru v celé aplikaci, nově Gemini 2.5 Flash-Lite (nejlevnější).</li>
-        <li><strong>v1.2.4–1.2.5 — kalibrace pravosti (září 2026)</strong> — Příprava na měření, jak spolehlivě appka rozeznává padělky: referenční sada ověřených padělků, stránka „Kalibrace pravosti" s poctivým stavem (dokud nejsou ověřené pravé vzorky, appka hlásí NEKALIBROVÁNO), přísné hlídání práv ke zdrojům a účetnictví síťových volání.</li>
-        <li><strong>v1.1.24 — modul Expertiza a posudky (18. 7. 2026)</strong> — Nová sekce pro vedení posudků k položkám: neměnný záznam s auditní stopou (nic nejde přepsat, jen přidat nový posudek), vlastní stránka „Expertiza" v menu. Zatím funguje jen <strong>ruční zadání</strong> — AI vizuální ověření pravosti (real-vision) zatím NENÍ implementováno ani kalibrováno, appka to nikde netvrdí.</li>
-        <li><strong>v1.1.7 — katalogy přímo v aplikaci a nápověda (12. 6. 2026)</strong> — Velký krok: české i zahraniční katalogy a obchody (Numista, Pofis, Colnect, Delcampe…) se teď prohlížejí <strong>přímo v aplikaci</strong> — u nálezu vidíš název, cenu, obrázek i odkaz na zdroj, do sbírky se nic nepřidá bez potvrzení. Přibyla <strong>historie cen</strong> položky v čase, <strong>přepočet cizích měn na koruny</strong> podle kurzu ČNB, <strong>kategorie a vlastní vlastnosti</strong> položek a nová stránka <strong>Nápověda</strong> (jak na AI klíč Gemini a kolik stojí, focení telefonem, zálohy, bezpečnost). AI klíč jde nově vložit přímo v aplikaci.</li>
-        <li><strong>v1.1.8 — opravy katalogů a náhledů (13. 6. 2026)</strong> — Opravené adresy katalogů (Macho &amp; Chlapovič, MA-Shops), náhledové obrázky u nabídek (Delcampe). Katalogy, které nešlo automaticky číst (eBay, TopZnamky), nahrazeny radou „otevři ve webovém prohlížeči" místo strohé chyby.</li>
-        <li><strong>Údržba a stabilita (1.1.4–1.1.6)</strong> — jen jedno okno aplikace (druhé spuštění vytáhne to existující), konec opakované nabídky aktualizace po updatu, patička vždy ukazuje skutečnou nainstalovanou verzi, bezpečnější tichá aktualizace (po sobě uklízí dočasné soubory).</li>
-        <li><strong>v1.1.0 — redesign aukčního domu (30. 5. 2026)</strong> — Greenfield vzhled (tmavá + zlatá, serif nadpisy), detail položky jako aukční „lot". Stránky „Zdroje &amp; burzy" a „Co ovlivňuje cenu" do menu. Hromadný import CSV/Excel. Zobrazení nahraných fotek v kartě i detailu. Sjednocení verze na 1.1.0.</li>
-        <li><strong>AI rozpoznávání z fotky</strong> — Gemini vision: přečte text na kusu a předvyplní formulář (kategorie, země, rok, nominál, stav). Řešeno: správný model (gemini-2.5-pro), SSL přes systémové certifikáty (firemní síť), čeština ve výstupu, KYC kontrola kvality fotky (rozmazané/není mince → nehodnotí), <strong>líc + rub v jednom kroku</strong>, návod na focení (rámeček jako u ověřování dokladu).</li>
-        <li><strong>Deep-linky na burzy</strong> — z parametrů položky se poskládá hledání: Numista / NGC / PCGS / Colnect / Pofis (katalogy), eBay prodané / acsearch / CoinArchives / Delcampe (realizované ceny), Aukro / eBay (aktivní). Pravidlo „realizovaná > aktivní".</li>
-        <li><strong>Windows aplikace (Tauri)</strong> — jeden klik na ikonu spustí lokální backend sám (sidecar) a otevře plnou verzi ve vlastním okně, bez konzole. Plus spouštěč přes prohlížeč (Edge --app).</li>
-        <li><strong>Bezpečnost</strong> — reálná data (SQLite + fotky) zůstávají jen lokálně na disku, na GitHub jde jen kód + ukázková data. Backend servíruje frontend bez vystavení konfigurace.</li>
-        <li><strong>Základ (Phase A–H)</strong> — bezpečná architektura, read-only MVP, editor sbírky, oceňování s důkazy, exporty (CSV/Excel/PDF/ZIP), Windows launcher, CI + demo.</li>
-      </ul>
-      <p style="color:var(--text-mut,#777);font-size:.85rem">Pozn.: appka eviduje a orientačně oceňuje — neprovádí znaleckou činnost. Reálnou cenu vždy ověř na burze.</p>
-    </div>
-  </div>
-</div>
+
 
 <footer class="site-footer">
   <div class="site-footer__inner">
@@ -282,70 +243,13 @@
 <script src="../assets/js/main.js?v=20261030-header"></script>
 
 <!-- ═══ Styl + logika deníkového popupu (sdílený vzor) ═══ -->
-<style>
-.diary-btn, .diary-link {
-  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
-  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
-}
-.diary-btn:hover { background:#e6c75a; }
-.diary-link { background:none; color:#a07d12; text-decoration:underline; padding:0; font-weight:600; }
-.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
-.diary-modal.open { display:block; }
-.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
-.diary-panel {
-  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
-  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
-  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
-}
-.diary-head {
-  display:flex; align-items:center; justify-content:space-between; gap:1rem;
-  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
-  position:sticky; top:0; background:var(--bg,#fff);
-}
-.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
-.diary-close:hover { color:var(--text,#111); }
-.diary-body { padding:1.2rem 1.4rem; }
-@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
-</style>
-<script>
-(function(){
-  var modal = document.getElementById('diary');
-  if (!modal) return;
-  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-  ['openDeník','openDeník2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
-  modal.querySelector('.diary-close').addEventListener('click', close);
-  modal.querySelector('.diary-backdrop').addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
-})();
-</script>
+
+
 
 <!-- Lightbox -->
-<style>
-#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
-#__lb.open { display:flex }
-#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-main img { cursor:zoom-in; transition:transform .15s ease }
-main img:hover { transform:scale(1.005) }
-</style>
-<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
-  <img id="__lbimg" alt="">
-  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
-</div>
-<script>
-(function(){
-  var lb = document.getElementById('__lb');
-  var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
-  lb.addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-  document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
-  });
-})();
-</script>
+
+
+
 <script>/* Verze z latest.json (nikdy nedrift) — natvrdo psane cislo v HTML zustava jen jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var o=d&&d["collection"];if(!o||!o.version)return;var v=o.version;var s=({final:"FINÁLNÍ",beta:"BETA",work:"PRACOVNÍ"})[o.stage]||(o.stage||"").toUpperCase();document.querySelectorAll("[data-col-ver]").forEach(function(el){el.textContent=el.getAttribute("data-col-ver").replace("{v}",v).replace("{s}",s);});/* Odkaz ke stazeni se zamerne nedosazuje - aplikace se nedistribuuje pres web (predava se osobne). */}).catch(function(){});})();</script>
 </body>
 </html>
