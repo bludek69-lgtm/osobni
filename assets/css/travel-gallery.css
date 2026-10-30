@@ -38,3 +38,13 @@ body.travel-album main .album-hero::before, body.travel-album main .album-hero::
   .travel-album .album-hero .hero-sub { font-size: 1rem; }
   .travel-album.album-single .travel-photo-grid img { max-height: none; }
 }
+
+/* The full video archive follows the compact travel-page introduction. */
+.video-archive .album-back { display: inline-flex; min-height: 44px; align-items: center; margin: 0 0 1rem; }
+.video-archive .youtube-section { padding-top: 0; }
+.video-archive .section-header { text-align: left; margin-bottom: 1.5rem; }
+.video-archive .section-header h1 { margin-top: .6rem; }
+
+@media (max-width: 400px) {
+  html:is([lang="en"], [lang="it"]) .travel-directory .destination-directory nav { grid-template-columns: minmax(0,1fr); }
+}

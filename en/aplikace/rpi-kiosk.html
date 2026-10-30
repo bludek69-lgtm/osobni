@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home wall panel — My apps — Luděk</title>
-  <meta name="description" content="Wall-mounted home panel on Raspberry Pi — smart home dashboard on a touch display.">
+  <meta content="Lights, heating, audio and scenes on a touchscreen in the hallway. Everyday home controls are available without finding my phone." name="description"/>
   <link rel="canonical" href="https://cestovatel69.cz/en/aplikace/rpi-kiosk.html">
   <meta property="og:title" content="Home wall panel — My apps — Luděk">
-  <meta property="og:description" content="Wall-mounted home panel on Raspberry Pi — smart home dashboard on a touch display.">
+  <meta content="Lights, heating, audio and scenes on a touchscreen in the hallway. Everyday home controls are available without finding my phone." property="og:description"/>
   <meta property="og:image" content="https://cestovatel69.cz/assets/img/aplikace/rpi-kiosk/01_audio.png">
   <meta property="og:url" content="https://cestovatel69.cz/en/aplikace/rpi-kiosk.html">
   <meta property="og:type" content="website">
@@ -18,8 +18,9 @@
 <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/rpi-kiosk.html">
 <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/rpi-kiosk.html">
 <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/rpi-kiosk.html">
+<link rel="stylesheet" href="../../assets/css/app-showcase.css?v=20261030-all-apps">
 </head>
-<body class="theme-smart-home">
+<body class="theme-home app-showcase app-detail">
 
 <header class="site-header">
 <div class="site-header__inner">
@@ -32,58 +33,38 @@
 </header>
 <aside aria-label="Language availability" class="language-note">CS = content in Czech. Some older descriptions remain in Czech.</aside>
 
-<main id="main">
-<section class="hero" style="border-left:4px solid #9cf2a6;padding-left:1.2rem">
-  <span class="hero-accent" style="color:var(--accent-text)">Home wall panel</span>
-  <h1><span style="margin-right:.4rem">🖥️</span>Home wall panel</h1>
-  <p class="hero-sub">A small touchscreen on the hallway wall where I control the whole flat — lights, audio, heating, scenes. No phone unlock, no app hunting. Walk up, one touch, done.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #9cf2a640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">HTML</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #9cf2a640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Vanilla JS</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #9cf2a640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Raspberry Pi 4</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #9cf2a640;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Chromium kiosk</span></p>
-  <p style="margin-top:.8rem"><a href="index.html">← Back to My apps</a></p>
-</section>
-
-  <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
-    <div class="container">
-      <h2 id="video-heading">Watch: Smart Home Kiosk — your home at a touch</h2>
-      <p>9:38 · Czech narration and captions.</p>
-      <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
-        <iframe src="https://www.youtube-nocookie.com/embed/FfN7uIPu0Zw?rel=0" title="Smart Home Kiosk — your home at a touch" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <p><a href="https://www.youtube.com/watch?v=FfN7uIPu0Zw" target="_blank" rel="noopener">YouTube ↗</a> </p>
-    </div>
-  </section>
-
-<section>
-  <h2>What it does</h2>
-  <p><strong>Why it exists:</strong> phone control of a smart home is fast only relative to how slow it is. By the time you unlock the phone, find the app, tap the right icon, scroll — you could've just turned the lights on by hand. <strong>A wall panel solves this exactly.</strong> Always on, always ready, everything important on the first screen.</p><p><strong>Hardware:</strong> Raspberry Pi 4 (small computer the size of a deck of cards) + 7&quot; touch display, screwed to the hallway wall. About €100 total. Lives in a Chromium browser launched in &bdquo;kiosk mode&ldquo; — no OS UI, no menu, just the full-window app.</p><p><strong>What it does:</strong> control all lights, start/stop radio, switch scene (relax / cinema / cooking / dinner / arriving / leaving), adjust heating, see what the house is consuming in real time, who's home, who's asleep, where motion was last detected.</p><p><strong>Scenes Loxone-style:</strong> big tiles, tap &bdquo;Cinema&ldquo; with a thumb and the whole flat reconfigures — lights to 30%, music quietens, blind blocks the street, heating up one degree. One touch instead of ten.</p>
-</section>
-
-<section>
-  <h2>Key features</h2>
-  <ul style="line-height:1.7">
-      <li><strong>Touchscreen in hallway</strong> — Raspberry Pi 4 + 7&quot; touch on wall. Always on, always ready.</li>
-      <li><strong>Scenes with one thumb</strong> — Relax, Cinema, Cooking, Dinner, Romance, Work, Arrive, Leave — one tap configures everything.</li>
-      <li><strong>Light control</strong> — All rooms, dim, color, scenes. No phone hunting.</li>
-      <li><strong>Radio audio</strong> — Start/stop internet radios, choose speaker, volume.</li>
-      <li><strong>Heating & energy</strong> — A large Heating page: pick a room, tap Comfort / Night / Away / Schedule, or set the exact temperature with a rotary dial. Plus boiler runtime, TRV zones and current draw.</li>
-      <li><strong>Camera and car watch</strong> — Live view from the camera outside, right on the panel. The system recognises on its own that someone is standing at the car and announces it out loud and to the phone — while ignoring people just crossing the yard.</li>
-      <li><strong>No phone, no login</strong> — No sign-in needed, nothing to search for. Open the door — panel shows it.</li>
-  </ul>
-</section>
-
-<section><h2>Screenshots</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/05_carguard.png" alt="Car watch — live camera view, recent events and alert settings. The watched area is computed around the car wherever it happens to be parked." loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Car watch — live camera view, recent events and alert settings. The watched area is computed around the car wherever it happens to be parked.</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/06_home.png" alt="Main screen — house states, scenes and quick actions in one touch." loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Main screen — house states, scenes and quick actions in one touch.</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/01_audio.png" alt="Audio a scény — spuštění rádia, scénář pro relax / kino / vaření / večeři" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Audio a scény — spuštění rádia, scénář pro relax / kino / vaření / večeři</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/02_energy.png" alt="Energie a topení — runtime kotle dnes, stav TRV zón, aktuální odběr" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Energie a topení — runtime kotle dnes, stav TRV zón, aktuální odběr</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/03_scenes.png" alt="Scény (styl Loxone) — jeden velký dotyk a celá místnost se přestaví" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Scény (styl Loxone) — jeden velký dotyk a celá místnost se přestaví</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/rpi-kiosk/04_settings.png" alt="Nastavení — rychlý přehled provozu domu bez nutnosti otevřít telefon" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Nastavení — rychlý přehled provozu domu bez nutnosti otevřít telefon</figcaption></figure></div></section>
-
-<section>
-  <h2>Status</h2>
-  <p>Runs 24/7 on Raspberry Pi 4 in the hallway. Auto-restart on power loss. About a year without issues. Since October 2026 it also controls heating room by room, dims the display in the evening and switches it off at night, and after a security review only the panel itself may control the smart home through it.</p>
-</section>
-
-  <section style="margin:1.2rem 0"><button id="openDiary" class="diary-btn">📖 Development diary</button></section>
-</main>
+<main id="main"><a class="app-back" href="index.html">← My apps</a><section aria-labelledby="app-title" class="hero app-hero"><div><span class="hero-accent">My own project</span><h1 id="app-title">Home wall panel</h1><p class="hero-sub">Lights, heating, audio and scenes on a touchscreen in the hallway. Everyday home controls are available without finding my phone.</p><p class="app-availability">Private project. Not publicly available for download.</p><div class="app-actions"><a class="app-action app-action--primary" href="#youtube">Watch the video →</a><a class="app-action" href="#podrobnosti">Features and details ↓</a></div></div><figure class="app-preview"><img alt="🖥️ Home wall panel — interface preview" decoding="async" fetchpriority="high" height="600" src="/assets/img/aplikace/rpi-kiosk/06_home.png" width="1024"/><figcaption>Interface preview. Click to enlarge.</figcaption></figure></section><section><h2>What it helps me do</h2><div class="app-benefits"><article class="app-benefit"><h3>Scenes by touch</h3><p>Select a home scene from one screen.</p></article><article class="app-benefit"><h3>Room controls</h3><p>Reach lights, audio and heating without opening several apps.</p></article><article class="app-benefit"><h3>Home overview</h3><p>See household status and related functions on the display.</p></article></div><p class="app-note">My own Raspberry Pi wall panel. This page shows its interface and has no access to home controls.</p></section><section aria-labelledby="video-heading" class="section youtube-section" id="youtube">
+<div class="container">
+<h2 id="video-heading">Watch: Smart Home Kiosk — your home at a touch</h2>
+<p>9:38 · Czech narration and captions.</p>
+<div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/FfN7uIPu0Zw?rel=0" style="width:100%;height:100%;border:0;display:block" title="Smart Home Kiosk — your home at a touch"></iframe>
+</div>
+<p><a href="https://www.youtube.com/watch?v=FfN7uIPu0Zw" rel="noopener" target="_blank">YouTube ↗</a> </p>
+</div>
+</section><section id="podrobnosti"><h2 class="app-details-heading">Explore the details</h2><details class="app-disclosure"><summary>What it does</summary><div class="app-disclosure__body"><section>
+<h2>What it does</h2>
+<p><strong>Why it exists:</strong> phone control of a smart home is fast only relative to how slow it is. By the time you unlock the phone, find the app, tap the right icon, scroll — you could've just turned the lights on by hand. <strong>A wall panel solves this exactly.</strong> Always on, always ready, everything important on the first screen.</p><p><strong>Hardware:</strong> Raspberry Pi 4 (small computer the size of a deck of cards) + 7" touch display, screwed to the hallway wall. About €100 total. Lives in a Chromium browser launched in „kiosk mode“ — no OS UI, no menu, just the full-window app.</p><p><strong>What it does:</strong> control all lights, start/stop radio, switch scene (relax / cinema / cooking / dinner / arriving / leaving), adjust heating, see what the house is consuming in real time, who's home, who's asleep, where motion was last detected.</p><p><strong>Scenes Loxone-style:</strong> big tiles, tap „Cinema“ with a thumb and the whole flat reconfigures — lights to 30%, music quietens, blind blocks the street, heating up one degree. One touch instead of ten.</p>
+</section></div></details><details class="app-disclosure"><summary>Key features</summary><div class="app-disclosure__body"><section>
+<h2>Key features</h2>
+<ul style="line-height:1.7">
+<li><strong>Touchscreen in hallway</strong> — Raspberry Pi 4 + 7" touch on wall. Always on, always ready.</li>
+<li><strong>Scenes with one thumb</strong> — Relax, Cinema, Cooking, Dinner, Romance, Work, Arrive, Leave — one tap configures everything.</li>
+<li><strong>Light control</strong> — All rooms, dim, color, scenes. No phone hunting.</li>
+<li><strong>Radio audio</strong> — Start/stop internet radios, choose speaker, volume.</li>
+<li><strong>Heating &amp; energy</strong> — A large Heating page: pick a room, tap Comfort / Night / Away / Schedule, or set the exact temperature with a rotary dial. Plus boiler runtime, TRV zones and current draw.</li>
+<li><strong>Camera and car watch</strong> — Live view from the camera outside, right on the panel. The system recognises on its own that someone is standing at the car and announces it out loud and to the phone — while ignoring people just crossing the yard.</li>
+<li><strong>No phone, no login</strong> — No sign-in needed, nothing to search for. Open the door — panel shows it.</li>
+</ul>
+</section></div></details><details class="app-disclosure"><summary>Screenshots</summary><div class="app-disclosure__body"><section><h2>Screenshots</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img alt="Car watch — live camera view, recent events and alert settings. The watched area is computed around the car wherever it happens to be parked." loading="lazy" src="/assets/img/aplikace/rpi-kiosk/05_carguard.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Car watch — live camera view, recent events and alert settings. The watched area is computed around the car wherever it happens to be parked.</figcaption></figure>
+<figure style="margin:0"><img alt="Main screen — house states, scenes and quick actions in one touch." loading="lazy" src="/assets/img/aplikace/rpi-kiosk/06_home.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Main screen — house states, scenes and quick actions in one touch.</figcaption></figure>
+<figure style="margin:0"><img alt="Audio a scény — spuštění rádia, scénář pro relax / kino / vaření / večeři" loading="lazy" src="/assets/img/aplikace/rpi-kiosk/01_audio.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Audio a scény — spuštění rádia, scénář pro relax / kino / vaření / večeři</figcaption></figure>
+<figure style="margin:0"><img alt="Energie a topení — runtime kotle dnes, stav TRV zón, aktuální odběr" loading="lazy" src="/assets/img/aplikace/rpi-kiosk/02_energy.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Energie a topení — runtime kotle dnes, stav TRV zón, aktuální odběr</figcaption></figure>
+<figure style="margin:0"><img alt="Scény (styl Loxone) — jeden velký dotyk a celá místnost se přestaví" loading="lazy" src="/assets/img/aplikace/rpi-kiosk/03_scenes.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Scény (styl Loxone) — jeden velký dotyk a celá místnost se přestaví</figcaption></figure>
+<figure style="margin:0"><img alt="Nastavení — rychlý přehled provozu domu bez nutnosti otevřít telefon" loading="lazy" src="/assets/img/aplikace/rpi-kiosk/04_settings.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Nastavení — rychlý přehled provozu domu bez nutnosti otevřít telefon</figcaption></figure></div></section></div></details><details class="app-disclosure"><summary>Status</summary><div class="app-disclosure__body"><section>
+<h2>Status</h2>
+<p>Runs 24/7 on Raspberry Pi 4 in the hallway. Auto-restart on power loss. About a year without issues. Since October 2026 it also controls heating room by room, dims the display in the evening and switches it off at night, and after a security review only the panel itself may control the smart home through it.</p>
+</section></div></details><details class="app-disclosure"><summary>Technical notes</summary><div class="app-disclosure__body"><section style="margin:1.2rem 0"><button class="diary-btn" id="openDiary">📖 Development diary</button></section></div></details></section></main>
 <!-- DEVELOPMENT DIARY — popup -->
 <div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Development diary" aria-hidden="true">
   <div class="diary-backdrop"></div>
@@ -210,30 +191,8 @@
 <script src="../../assets/js/main.js?v=20261030-norsko"></script>
 
 <!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
-<style>
-#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
-#__lb.open { display:flex }
-#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-main img { cursor:zoom-in; transition:transform .15s ease }
-main img:hover { transform:scale(1.005) }
-</style>
-<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
-  <img id="__lbimg" alt="">
-  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
-</div>
-<script>
-(function(){
-  var lb = document.getElementById('__lb');
-  var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
-  lb.addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-  document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
-  });
-})();
-</script>
+
+
+
 </body>
 </html>

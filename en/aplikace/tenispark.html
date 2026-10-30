@@ -5,24 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TenisPark — My apps — Luděk</title>
   <link rel="stylesheet" href="../../assets/css/style.css?v=20261030-header">
-  <style>
-    #__lb {
-      display:none; position:fixed; inset:0; z-index:9999;
-      background:rgba(0,0,0,0.93); cursor:zoom-out;
-      align-items:center; justify-content:center; padding:2vh;
-    }
-    #__lb.open { display:flex }
-    #__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-    #__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-    main img { cursor:zoom-in; transition:transform .15s ease }
-    main img:hover { transform:scale(1.005) }
-  </style>
+
 
   <link rel="icon" href="/favicon.ico">
-  <meta name="description" content="Tennis court bookings, kiosk with stock tracking and home budget. Private beta.">
+  <meta content="Court bookings, refreshments and finances for a small tennis facility. One application brings together records otherwise kept in several notebooks." name="description"/>
   <link rel="canonical" href="https://cestovatel69.cz/en/aplikace/tenispark.html">
   <meta property="og:title" content="TenisPark — My apps — Luděk">
-  <meta property="og:description" content="Tennis court bookings, kiosk with stock tracking and home budget. Private beta.">
+  <meta content="Court bookings, refreshments and finances for a small tennis facility. One application brings together records otherwise kept in several notebooks." property="og:description"/>
   <meta property="og:image" content="https://cestovatel69.cz/assets/img/aplikace/tenispark/01_prehled.png">
   <meta property="og:url" content="https://cestovatel69.cz/en/aplikace/tenispark.html">
   <meta property="og:type" content="website">
@@ -31,8 +20,9 @@
 <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/tenispark.html">
 <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/tenispark.html">
 <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/tenispark.html">
+<link rel="stylesheet" href="../../assets/css/app-showcase.css?v=20261030-all-apps">
 </head>
-<body class="theme-home">
+<body class="theme-home app-showcase app-detail">
 <header class="site-header">
 <div class="site-header__inner">
 <a class="brand" href="/en/">
@@ -44,78 +34,51 @@
 </header>
 <aside aria-label="Language availability" class="language-note">CS = content in Czech. Some older descriptions remain in Czech.</aside>
 
-<main id="main">
-<section class="hero" style="border-left:4px solid #b04a24;padding-left:1.2rem">
-  <span class="hero-accent" style="color:var(--accent-text)">TenisPark</span>
-  <h1><span style="margin-right:.4rem">🎾</span>TenisPark</h1>
-  <p class="hero-sub">One app for a whole small tennis club: home budget, court bookings and a snack kiosk. Instead of three notebooks and a calculator — everything in one place, on your PC, no internet needed. No cloud, no bank connection, no online payments.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="orange">React</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="orange">TypeScript</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="orange">SQLite</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #b04a2440;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="orange">Tauri (Windows)</span></p>
-  <p style="margin-top:.8rem"><a href="index.html">← Back to My apps</a></p>
-</section>
-
-  <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
-    <div class="container">
-      <h2 id="video-heading">Watch: TenisPark — court bookings, kiosk and budget</h2>
-      <p>9:33 · Czech narration and captions.</p>
-      <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
-        <iframe src="https://www.youtube-nocookie.com/embed/fGLFL5o2yro?rel=0" title="TenisPark — court bookings, kiosk and budget" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <p><a href="https://www.youtube.com/watch?v=fGLFL5o2yro" target="_blank" rel="noopener">YouTube ↗</a> </p>
-    </div>
-  </section>
-
-<section>
-  <h2>What it does</h2>
-  <p><strong>Why it exists:</strong> anyone who looks after a few tennis courts with a kiosk knows it: bookings in one notebook, "on the tab" (who drank what and hasn't paid) in another, counting the till on a calculator in the evening and personal money in a third one. TenisPark joins it all into one app that absolutely anyone can use — every page has an expandable "how to" help.</p>
-  <p><strong>Tennis courts:</strong> bookings take a few clicks — court, from–to, name. The app won't allow two people on the same court at the same time, the price is pre-filled from the price list (different for weekdays and weekends), and after payment you click "Paid". Plus maintenance records (lining, watering) and occupancy and revenue reports per day and month.</p>
-  <p><strong>Kiosk:</strong> sales with a stock that watches itself — you can't sell more than is in stock, and the app warns when something is running low. A special feature is the <strong>debtors book</strong>: whoever doesn't pay right away gets their consumption written "on the tab" with their name, and whoever doesn't pay within 3 days lights up red. In the evening you run the daily closing — the app compares how much should be in the till with what's really there. When prices change, the old price stays visible crossed out next to the new one.</p>
-  <p><strong>Home budget:</strong> personal income and expenses like receipts, categories (envelopes), monthly limits "how much I want to spend on food", plus a year-round planning section for seasonal work — how much to put aside in summer so winter works out.</p>
-  <p><strong>Everything local and safe:</strong> data lives in an SQLite database on your PC only, backs up with one click to a file with a checksum, and a restore always shows a preview first. The app has a light and dark look in clay-court colours.</p>
-</section>
-
-<section>
-  <h2>Key features</h2>
-  <ul style="line-height:1.7">
-      <li><strong>Collision-free court bookings</strong> — the app simply won't allow a double booking of the same court; weekday/weekend price list, states Booked / Paid / Cancelled / No-show.</li>
-      <li><strong>Kiosk with stock</strong> — every sale lowers the stock, minimum levels are watched, you can't sell more than is in stock. The daily closing compares the till with sales.</li>
-      <li><strong>Debtors book</strong> — consumption "on the tab" with a name, name autocomplete, red "overdue" after 3 days without payment, settle with one click.</li>
-      <li><strong>Price list with old and new price</strong> — after a price rise the old price stays crossed out next to the new one, with a history of all changes.</li>
-      <li><strong>Home budget</strong> — transactions in cents (no rounding errors), monthly limits per category with an "Exceeded" warning, season plan.</li>
-      <li><strong>Backups with a checksum</strong> — one click, restore always via preview and confirmation; current data is automatically set aside before a restore.</li>
-      <li><strong>Plain-language help everywhere</strong> — every page has an expandable "💡 Help — how to" in plain language, no technical jargon.</li>
-      <li><strong>Mobile and narrow window</strong> — on a narrow screen the side menu hides and opens with the ☰ button; unchanged on a computer.</li>
-      <li><strong>What's new and News</strong> — after an update an overview of changes appears once, and the full version history is in the menu.</li>
-      <li><strong>Windows app</strong> — the desktop window starts and stops its own local server; or you can run it with a double click in the browser.</li>
-  </ul>
-</section>
-
-<section><h2>Screenshots</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/01_prehled.png" alt="Overview — hub of the three modules (budget, courts, kiosk) with today's summaries" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Overview — hub of the three modules (budget, courts, kiosk) with today's summaries</figcaption></figure>
-      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/02_kurty_den.png" alt="Tennis courts — day view: bookings, occupancy, free slots, quick add booking" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Tennis courts — day view: bookings, occupancy, free slots, quick add booking</figcaption></figure>
-      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/03_cenik.png" alt="Kiosk — price list with stock: old price crossed out next to the new one, stock levels, price history" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Kiosk — price list with stock: old price crossed out next to the new one, stock levels, price history</figcaption></figure>
-      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/04_dluznici.png" alt="Debtors book — who owes what, red 'overdue' after 3 days, settle with one click (sample names)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Debtors book — who owes what, red "overdue" after 3 days, settle with one click (sample names)</figcaption></figure>
-      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/05_transakce.png" alt="Home budget — transactions with a monthly summary (income, expenses, difference, top category)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Home budget — transactions with a monthly summary (income, expenses, difference, top category)</figcaption></figure>
-      <figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/06_kiosk_dark.png" alt="Dark mode — the whole app in dark clay-court colours, toggle in the left menu" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Dark mode — the whole app in dark clay-court colours, toggle in the left menu</figcaption></figure><figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/07_novinky.png" alt="What's new — the app's change history, newest version on top; after an update a “What's new” window also appears" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">What's new — the app's change history, newest version on top; after an update a “What's new” window also appears</figcaption></figure><figure style="margin:0"><img src="../../assets/img/aplikace/tenispark/08_mobil_menu.png" alt="Mobile view — on a narrow screen the side menu hides and opens with the ☰ button (sample demo data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Mobile view — on a narrow screen the side menu hides and opens with the ☰ button (sample demo data)</figcaption></figure></div></section>
-
-<section>
-  <h2>Installation (private beta)</h2>
-  <p style="margin:.6rem 0 .9rem;padding:.7rem .95rem;border-left:3px solid #b04a24;background:#b04a2414;border-radius:6px;font-size:.93rem">🔒 <strong>The app is not publicly downloadable.</strong> You will not find an installer here, on purpose — I send the link personally to whoever I give the app to. The version number on this page stays: it fills itself in from the same place the installed app takes its silent updates from.</p>
-  <p style="font-size:.9rem;line-height:1.6">🔒 <strong>The installer is password-protected</strong> — I share the password personally; it is not and will not be on the web. Without the password nobody can open the installation.</p>
-  <p style="font-size:.9rem;line-height:1.6">🛡️ <strong>Using Avast or AVG?</strong> It may silently block the installer (Windows then says "access to the file is denied"). Open the antivirus → Quarantine → restore the file and add an exception, then run the installer again.</p>
-</section>
-
-<section>
-  <h2>Status</h2>
-  <p><strong>BETA — private beta for friends</strong> (version <span data-tp-ver="{v}">0.2.8</span>, July 2026). Windows app with an installer.</p>
-  <ul style="line-height:1.7">
-    <li><strong>The installer is password-protected</strong> — only people I personally give the password to get the app. There is no password on the web and there never will be.</li>
-    <li><strong>Updates work the same as in my other apps</strong> — the app checks for a new version itself and updates silently after confirmation, showing a small progress window. Nothing needs to be downloaded manually.</li>
-    <li><strong>A note on Windows SmartScreen:</strong> the app is not signed with a certificate yet, so Windows may show an "unknown publisher" warning during installation. That's fine — continue via "More info → Run anyway".</li>
-    <li>All data stays on your PC only. The app is not accounting or a POS system — it's an operations helper.</li>
-  </ul>
-</section>
-
-  <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Development log</button></section>
-</main>
+<main id="main"><a class="app-back" href="index.html">← My apps</a><section aria-labelledby="app-title" class="hero app-hero"><div><span class="hero-accent">My own project</span><h1 id="app-title">TenisPark</h1><p class="hero-sub">Court bookings, refreshments and finances for a small tennis facility. One application brings together records otherwise kept in several notebooks.</p><p class="app-availability">Private project. Not publicly available for download.</p><div class="app-actions"><a class="app-action app-action--primary" href="#youtube">Watch the video →</a><a class="app-action" href="#podrobnosti">Features and details ↓</a></div></div><figure class="app-preview"><img alt="🎾 TenisPark — interface preview" decoding="async" fetchpriority="high" height="683" src="/assets/img/aplikace/tenispark/01_prehled.png" width="1037"/><figcaption>Interface preview. Click to enlarge.</figcaption></figure></section><section><h2>What it helps me do</h2><div class="app-benefits"><article class="app-benefit"><h3>Court bookings</h3><p>Record court, time, price and payment status.</p></article><article class="app-benefit"><h3>Kiosk records</h3><p>Link sales with stock, outstanding payments and daily closing.</p></article><article class="app-benefit"><h3>Budget overview</h3><p>Follow income, expenses and the seasonal plan.</p></article></div><p class="app-note">A private operational tool. It is not accounting software or a certified cash register.</p></section><section aria-labelledby="video-heading" class="section youtube-section" id="youtube">
+<div class="container">
+<h2 id="video-heading">Watch: TenisPark — court bookings, kiosk and budget</h2>
+<p>9:33 · Czech narration and captions.</p>
+<div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/fGLFL5o2yro?rel=0" style="width:100%;height:100%;border:0;display:block" title="TenisPark — court bookings, kiosk and budget"></iframe>
+</div>
+<p><a href="https://www.youtube.com/watch?v=fGLFL5o2yro" rel="noopener" target="_blank">YouTube ↗</a> </p>
+</div>
+</section><section id="podrobnosti"><h2 class="app-details-heading">Explore the details</h2><details class="app-disclosure"><summary>What it does</summary><div class="app-disclosure__body"><section>
+<h2>What it does</h2>
+<p><strong>Why it exists:</strong> anyone who looks after a few tennis courts with a kiosk knows it: bookings in one notebook, "on the tab" (who drank what and hasn't paid) in another, counting the till on a calculator in the evening and personal money in a third one. TenisPark joins it all into one app that absolutely anyone can use — every page has an expandable "how to" help.</p>
+<p><strong>Tennis courts:</strong> bookings take a few clicks — court, from–to, name. The app won't allow two people on the same court at the same time, the price is pre-filled from the price list (different for weekdays and weekends), and after payment you click "Paid". Plus maintenance records (lining, watering) and occupancy and revenue reports per day and month.</p>
+<p><strong>Kiosk:</strong> sales with a stock that watches itself — you can't sell more than is in stock, and the app warns when something is running low. A special feature is the <strong>debtors book</strong>: whoever doesn't pay right away gets their consumption written "on the tab" with their name, and whoever doesn't pay within 3 days lights up red. In the evening you run the daily closing — the app compares how much should be in the till with what's really there. When prices change, the old price stays visible crossed out next to the new one.</p>
+<p><strong>Home budget:</strong> personal income and expenses like receipts, categories (envelopes), monthly limits "how much I want to spend on food", plus a year-round planning section for seasonal work — how much to put aside in summer so winter works out.</p>
+<p><strong>Everything local and safe:</strong> data lives in an SQLite database on your PC only, backs up with one click to a file with a checksum, and a restore always shows a preview first. The app has a light and dark look in clay-court colours.</p>
+</section></div></details><details class="app-disclosure"><summary>Key features</summary><div class="app-disclosure__body"><section>
+<h2>Key features</h2>
+<ul style="line-height:1.7">
+<li><strong>Collision-free court bookings</strong> — the app simply won't allow a double booking of the same court; weekday/weekend price list, states Booked / Paid / Cancelled / No-show.</li>
+<li><strong>Kiosk with stock</strong> — every sale lowers the stock, minimum levels are watched, you can't sell more than is in stock. The daily closing compares the till with sales.</li>
+<li><strong>Debtors book</strong> — consumption "on the tab" with a name, name autocomplete, red "overdue" after 3 days without payment, settle with one click.</li>
+<li><strong>Price list with old and new price</strong> — after a price rise the old price stays crossed out next to the new one, with a history of all changes.</li>
+<li><strong>Home budget</strong> — transactions in cents (no rounding errors), monthly limits per category with an "Exceeded" warning, season plan.</li>
+<li><strong>Backups with a checksum</strong> — one click, restore always via preview and confirmation; current data is automatically set aside before a restore.</li>
+<li><strong>Plain-language help everywhere</strong> — every page has an expandable "💡 Help — how to" in plain language, no technical jargon.</li>
+<li><strong>Mobile and narrow window</strong> — on a narrow screen the side menu hides and opens with the ☰ button; unchanged on a computer.</li>
+<li><strong>What's new and News</strong> — after an update an overview of changes appears once, and the full version history is in the menu.</li>
+<li><strong>Windows app</strong> — the desktop window starts and stops its own local server; or you can run it with a double click in the browser.</li>
+</ul>
+</section></div></details><details class="app-disclosure"><summary>Screenshots</summary><div class="app-disclosure__body"><section><h2>Screenshots</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img alt="Overview — hub of the three modules (budget, courts, kiosk) with today's summaries" loading="lazy" src="/assets/img/aplikace/tenispark/01_prehled.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Overview — hub of the three modules (budget, courts, kiosk) with today's summaries</figcaption></figure>
+<figure style="margin:0"><img alt="Tennis courts — day view: bookings, occupancy, free slots, quick add booking" loading="lazy" src="/assets/img/aplikace/tenispark/02_kurty_den.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Tennis courts — day view: bookings, occupancy, free slots, quick add booking</figcaption></figure>
+<figure style="margin:0"><img alt="Kiosk — price list with stock: old price crossed out next to the new one, stock levels, price history" loading="lazy" src="/assets/img/aplikace/tenispark/03_cenik.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Kiosk — price list with stock: old price crossed out next to the new one, stock levels, price history</figcaption></figure>
+<figure style="margin:0"><img alt="Debtors book — who owes what, red 'overdue' after 3 days, settle with one click (sample names)" loading="lazy" src="/assets/img/aplikace/tenispark/04_dluznici.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Debtors book — who owes what, red "overdue" after 3 days, settle with one click (sample names)</figcaption></figure>
+<figure style="margin:0"><img alt="Home budget — transactions with a monthly summary (income, expenses, difference, top category)" loading="lazy" src="/assets/img/aplikace/tenispark/05_transakce.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Home budget — transactions with a monthly summary (income, expenses, difference, top category)</figcaption></figure>
+<figure style="margin:0"><img alt="Dark mode — the whole app in dark clay-court colours, toggle in the left menu" loading="lazy" src="/assets/img/aplikace/tenispark/06_kiosk_dark.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Dark mode — the whole app in dark clay-court colours, toggle in the left menu</figcaption></figure><figure style="margin:0"><img alt="What's new — the app's change history, newest version on top; after an update a “What's new” window also appears" loading="lazy" src="/assets/img/aplikace/tenispark/07_novinky.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">What's new — the app's change history, newest version on top; after an update a “What's new” window also appears</figcaption></figure><figure style="margin:0"><img alt="Mobile view — on a narrow screen the side menu hides and opens with the ☰ button (sample demo data)" loading="lazy" src="/assets/img/aplikace/tenispark/08_mobil_menu.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Mobile view — on a narrow screen the side menu hides and opens with the ☰ button (sample demo data)</figcaption></figure></div></section></div></details><details class="app-disclosure"><summary>Availability</summary><div class="app-disclosure__body"><section><p>Private project. Not publicly available for download.</p></section></div></details><details class="app-disclosure"><summary>Status</summary><div class="app-disclosure__body"><section>
+<h2>Status</h2>
+<p><strong>BETA — private beta for friends</strong> (version <span data-tp-ver="{v}">0.2.8</span>, July 2026). Windows app with an installer.</p>
+<ul style="line-height:1.7">
+<li><strong>The installer is password-protected</strong> — only people I personally give the password to get the app. There is no password on the web and there never will be.</li>
+<li><strong>Updates work the same as in my other apps</strong> — the app checks for a new version itself and updates silently after confirmation, showing a small progress window. Nothing needs to be downloaded manually.</li>
+<li><strong>A note on Windows SmartScreen:</strong> the app is not signed with a certificate yet, so Windows may show an "unknown publisher" warning during installation. That's fine — continue via "More info → Run anyway".</li>
+<li>All data stays on your PC only. The app is not accounting or a POS system — it's an operations helper.</li>
+</ul>
+</section></div></details><details class="app-disclosure"><summary>Technical notes</summary><div class="app-disclosure__body"><section style="margin:1.2rem 0"><button class="diary-btn" id="openDeník">📖 Development log</button></section></div></details></section></main>
 <!-- DEVELOPMENT LOG — popup -->
 <div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Development log" aria-hidden="true">
   <div class="diary-backdrop"></div>
@@ -187,31 +150,8 @@
     </div>
   </div>
 </footer>
-<div id="__lb" role="dialog" aria-modal="true" aria-label="Enlarged image">
-  <img id="__lbimg" alt="">
-  <span class="__lbhint">Click or press ESC to close</span>
-</div>
-<script>
-(function(){
-  var lb = document.getElementById('__lb');
-  var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){
-    lbimg.src = src; lbimg.alt = alt || '';
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function close(){
-    lb.classList.remove('open');
-    lbimg.src = '';
-    document.body.style.overflow = '';
-  }
-  lb.addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-  document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(){ open(img.src, img.alt); });
-  });
-})();
-</script>
+
+
 <script src="../../assets/js/main.js?v=20261030-norsko"></script>
 <script>/* Verze z latest.json (nikdy nedrift) — natvrdo psane cislo v HTML zustava jen jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var o=d&&d["tenispark"];if(!o||!o.version)return;var v=o.version;document.querySelectorAll("[data-tp-ver]").forEach(function(el){el.textContent=el.getAttribute("data-tp-ver").replace("{v}",v);});/* Odkaz ke stazeni se zamerne nedosazuje - aplikace se nedistribuuje pres web (predava se osobne). */}).catch(function(){});})();</script>
 </body>

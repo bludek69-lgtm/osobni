@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Energy Dashboard (PC) — Le mie app — Luděk</title>
-  <meta name="description" content="Consumi elettrici di casa — misurazione in tempo reale di prese e circuiti.">
+  <meta content="Potenza attuale, consumo giornaliero e costi sul monitor. Tengo il pannello aperto durante il normale uso del computer." name="description"/>
   <link rel="canonical" href="https://cestovatel69.cz/it/aplikace/energy-dashboard.html">
   <meta property="og:title" content="Energy Dashboard (PC) — Le mie app — Luděk">
-  <meta property="og:description" content="Consumi elettrici di casa — misurazione in tempo reale di prese e circuiti.">
+  <meta content="Potenza attuale, consumo giornaliero e costi sul monitor. Tengo il pannello aperto durante il normale uso del computer." property="og:description"/>
   <meta property="og:image" content="https://cestovatel69.cz/assets/img/aplikace/energy-dashboard/01_overview.png">
   <meta property="og:url" content="https://cestovatel69.cz/it/aplikace/energy-dashboard.html">
   <meta property="og:type" content="website">
@@ -18,8 +18,9 @@
 <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/energy-dashboard.html">
 <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/energy-dashboard.html">
 <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/energy-dashboard.html">
+<link rel="stylesheet" href="../../assets/css/app-showcase.css?v=20261030-all-apps">
 </head>
-<body class="theme-smart-home">
+<body class="theme-home app-showcase app-detail">
 
 <header class="site-header">
 <div class="site-header__inner">
@@ -32,52 +33,32 @@
 </header>
 <aside aria-label="Disponibilità delle lingue" class="language-note">CS = contenuto in ceco. Alcune descrizioni precedenti sono ancora in ceco.</aside>
 
-<main id="main">
-<section class="hero" style="border-left:4px solid #7cd6ff;padding-left:1.2rem">
-  <span class="hero-accent" style="color:var(--accent-text)">Energy Dashboard (PC)</span>
-  <h1><span style="margin-right:.4rem">⚡</span>Energy Dashboard (PC)</h1>
-  <p class="hero-sub">Una finestra semplice sul monitor dove vedo in tempo reale quanto consuma la casa, quanto costa oggi e la stima per il mese. Niente click — sta aperta tutto il giorno.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #7cd6ff40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">HTML</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #7cd6ff40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Vanilla JS</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #7cd6ff40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Python proxy</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #7cd6ff40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">HA REST</span></p>
-  <p style="margin-top:.8rem"><a href="index.html">← Torna alle Mie app</a></p>
-</section>
-
-  <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
-    <div class="container">
-      <h2 id="video-heading">Guarda: Energy Dashboard — consumi domestici e prezzi dell’energia</h2>
-      <p>9:25 · Commento e sottotitoli in ceco.</p>
-      <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
-        <iframe src="https://www.youtube-nocookie.com/embed/9kF7CKShHTk?rel=0" title="Energy Dashboard — consumi domestici e prezzi dell’energia" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <p><a href="https://www.youtube.com/watch?v=9kF7CKShHTk" target="_blank" rel="noopener">YouTube ↗</a> </p>
-    </div>
-  </section>
-
-<section>
-  <h2>Cosa fa</h2>
-  <p><strong>Perché esiste:</strong> sapere cosa consuma. L'app mostra il consumo <em>attuale</em> (W), il <em>giornaliero</em> (kWh), il <em>costo di oggi</em>, la <em>stima mensile</em>, e quale elettrodomestico sta tirando di più adesso.</p><p><strong>Come funziona:</strong> a casa c'è un piccolo server (Raspberry Pi con Home Assistant) che raccoglie dati da un contatore trifase (Shelly Pro 3EM) e dalle prese smart. L'app lo interroga ogni 30 secondi. Sul PC gira come finestra Edge dedicata.</p><p><strong>Tariffa NT/VT visibile:</strong> tariffa ceca D57D — bassa in certe ore, alta nel resto. Badge in alto mostra quale è attiva.</p><p><strong>Quando il RPi è irraggiungibile</strong> mostra l'ultimo dato salvato con avviso chiaro &bdquo;cached-stale&ldquo;. Mai dati vecchi mascherati da freschi.</p>
-</section>
-
-<section>
-  <h2>Funzioni principali</h2>
-  <ul style="line-height:1.7">
-      <li><strong>Consumo in tempo reale</strong> — W attuali, split su 3 fasi, top consumer ora. Update ogni 30 s.</li>
-      <li><strong>Oggi e mese in CZK</strong> — kWh oggi, costo (con e senza POZE), stima mensile.</li>
-      <li><strong>Badge tariffa NT/VT</strong> — Indica quale tariffa è attiva — utile per decidere quando avviare elettrodomestici pesanti.</li>
-      <li><strong>Top consumer</strong> — Quale presa smart tira di più ora — utile quando si è dimenticato qualcosa acceso.</li>
-      <li><strong>Riscaldamento e caldaia</strong> — Modalità, runtime caldaia oggi, stato vs richiesta.</li>
-      <li><strong>Fallback offline con avviso</strong> — Quando il server è irraggiungibile, mostra ultimo dato con avviso chiaro.</li>
-  </ul>
-</section>
-
-<section><h2>Anteprime</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/energy-dashboard/01_overview.png" alt="Hlavní pohled — kolik dům teď bere, dnes spotřeboval, kolik to stojí (data jsou DEMO snapshot)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Hlavní pohled — kolik dům teď bere, dnes spotřeboval, kolik to stojí (data jsou DEMO snapshot)</figcaption></figure></div></section>
-
-<section>
-  <h2>Stato</h2>
-  <p>Uso quotidiano sul PC. Versione v1.0.1, fase di lavoro (settembre 2026) — numero di versione e fase sono visibili direttamente nell'intestazione del dashboard. Avvio one-click da shortcut desktop (Edge app-mode).</p>
-</section>
-
-  <section style="margin:1.2rem 0"><button id="openDeník" class="diary-btn">📖 Diario di sviluppo</button></section>
-</main>
+<main id="main"><a class="app-back" href="index.html">← Le mie app</a><section aria-labelledby="app-title" class="hero app-hero"><div><span class="hero-accent">Un mio progetto</span><h1 id="app-title">Energy Dashboard (PC)</h1><p class="hero-sub">Potenza attuale, consumo giornaliero e costi sul monitor. Tengo il pannello aperto durante il normale uso del computer.</p><p class="app-availability">Progetto privato. Non disponibile per il download pubblico.</p><div class="app-actions"><a class="app-action app-action--primary" href="#youtube">Guarda il video →</a><a class="app-action" href="#podrobnosti">Funzioni e dettagli ↓</a></div></div><figure class="app-preview"><img alt="⚡ Energy Dashboard (PC) — anteprima dell’interfaccia" decoding="async" fetchpriority="high" height="1000" src="/assets/img/aplikace/energy-dashboard/01_overview.png" width="1600"/><figcaption>Anteprima dell’interfaccia. Clicca per ingrandire.</figcaption></figure></section><section><h2>Come mi aiuta</h2><div class="app-benefits"><article class="app-benefit"><h3>Potenza attuale</h3><p>Controllo casa, fasi e apparecchi misurati.</p></article><article class="app-benefit"><h3>Costi in contesto</h3><p>Confronto consumo odierno, tariffa e stima mensile.</p></article><article class="app-benefit"><h3>Età dei dati</h3><p>Riconosco quando le ultime misure salvate non sono aggiornate.</p></article></div><p class="app-note">Le schermate contengono dati dimostrativi. La pagina pubblica non mostra i consumi domestici in tempo reale.</p></section><section aria-labelledby="video-heading" class="section youtube-section" id="youtube">
+<div class="container">
+<h2 id="video-heading">Guarda: Energy Dashboard — consumi domestici e prezzi dell’energia</h2>
+<p>9:25 · Commento e sottotitoli in ceco.</p>
+<div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/9kF7CKShHTk?rel=0" style="width:100%;height:100%;border:0;display:block" title="Energy Dashboard — consumi domestici e prezzi dell’energia"></iframe>
+</div>
+<p><a href="https://www.youtube.com/watch?v=9kF7CKShHTk" rel="noopener" target="_blank">YouTube ↗</a> </p>
+</div>
+</section><section id="podrobnosti"><h2 class="app-details-heading">Per saperne di più</h2><details class="app-disclosure"><summary>Cosa fa</summary><div class="app-disclosure__body"><section>
+<h2>Cosa fa</h2>
+<p><strong>Perché esiste:</strong> sapere cosa consuma. L'app mostra il consumo <em>attuale</em> (W), il <em>giornaliero</em> (kWh), il <em>costo di oggi</em>, la <em>stima mensile</em>, e quale elettrodomestico sta tirando di più adesso.</p><p><strong>Come funziona:</strong> a casa c'è un piccolo server (Raspberry Pi con Home Assistant) che raccoglie dati da un contatore trifase (Shelly Pro 3EM) e dalle prese smart. L'app lo interroga ogni 30 secondi. Sul PC gira come finestra Edge dedicata.</p><p><strong>Tariffa NT/VT visibile:</strong> tariffa ceca D57D — bassa in certe ore, alta nel resto. Badge in alto mostra quale è attiva.</p><p><strong>Quando il RPi è irraggiungibile</strong> mostra l'ultimo dato salvato con avviso chiaro „cached-stale“. Mai dati vecchi mascherati da freschi.</p>
+</section></div></details><details class="app-disclosure"><summary>Funzioni principali</summary><div class="app-disclosure__body"><section>
+<h2>Funzioni principali</h2>
+<ul style="line-height:1.7">
+<li><strong>Consumo in tempo reale</strong> — W attuali, split su 3 fasi, top consumer ora. Update ogni 30 s.</li>
+<li><strong>Oggi e mese in CZK</strong> — kWh oggi, costo (con e senza POZE), stima mensile.</li>
+<li><strong>Badge tariffa NT/VT</strong> — Indica quale tariffa è attiva — utile per decidere quando avviare elettrodomestici pesanti.</li>
+<li><strong>Top consumer</strong> — Quale presa smart tira di più ora — utile quando si è dimenticato qualcosa acceso.</li>
+<li><strong>Riscaldamento e caldaia</strong> — Modalità, runtime caldaia oggi, stato vs richiesta.</li>
+<li><strong>Fallback offline con avviso</strong> — Quando il server è irraggiungibile, mostra ultimo dato con avviso chiaro.</li>
+</ul>
+</section></div></details><details class="app-disclosure"><summary>Anteprime</summary><div class="app-disclosure__body"><section><h2>Anteprime</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img alt="Hlavní pohled — kolik dům teď bere, dnes spotřeboval, kolik to stojí (data jsou DEMO snapshot)" loading="lazy" src="/assets/img/aplikace/energy-dashboard/01_overview.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Hlavní pohled — kolik dům teď bere, dnes spotřeboval, kolik to stojí (data jsou DEMO snapshot)</figcaption></figure></div></section></div></details><details class="app-disclosure"><summary>Stato</summary><div class="app-disclosure__body"><section>
+<h2>Stato</h2>
+<p>Uso quotidiano sul PC. Versione v1.0.1, fase di lavoro (settembre 2026) — numero di versione e fase sono visibili direttamente nell'intestazione del dashboard. Avvio one-click da shortcut desktop (Edge app-mode).</p>
+</section></div></details><details class="app-disclosure"><summary>Note tecniche</summary><div class="app-disclosure__body"><section style="margin:1.2rem 0"><button class="diary-btn" id="openDeník">📖 Diario di sviluppo</button></section></div></details></section></main>
 <!-- DIARIO DI SVILUPPO — popup -->
 <div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Diario di sviluppo" aria-hidden="true">
   <div class="diary-backdrop"></div>
@@ -151,30 +132,8 @@
 <script src="../../assets/js/main.js?v=20261030-norsko"></script>
 
 <!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
-<style>
-#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
-#__lb.open { display:flex }
-#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-main img { cursor:zoom-in; transition:transform .15s ease }
-main img:hover { transform:scale(1.005) }
-</style>
-<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
-  <img id="__lbimg" alt="">
-  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
-</div>
-<script>
-(function(){
-  var lb = document.getElementById('__lb');
-  var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
-  lb.addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-  document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
-  });
-})();
-</script>
+
+
+
 </body>
 </html>

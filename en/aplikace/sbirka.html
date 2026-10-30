@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Collection — Numismatics &amp; Philately — My apps — Luděk</title>
-  <meta name="description" content="A personal catalogue of coins, banknotes and stamps with an auction-house look. AI recognition from a photo, valuation, marketplace links, Excel import. Local, no cloud.">
+  <meta content="Coins, banknotes, stamps and postcards in one catalogue. AI helps suggest information from a photograph; I check the result before saving it." name="description"/>
   <link rel="stylesheet" href="../../assets/css/style.css?v=20261030-header">
   <link rel="icon" href="/favicon.ico">
 
   <link rel="canonical" href="https://cestovatel69.cz/en/aplikace/sbirka.html">
   <meta property="og:title" content="Collection — Numismatics &amp; Philately — My apps — Luděk">
-  <meta property="og:description" content="A personal catalogue of coins, banknotes and stamps with an auction-house look. AI recognition from a photo, valuation, marketplace links, Excel import. Local, no cloud.">
+  <meta content="Coins, banknotes, stamps and postcards in one catalogue. AI helps suggest information from a photograph; I check the result before saving it." property="og:description"/>
   <meta property="og:image" content="https://cestovatel69.cz/aplikace/img/sbirka/01_dashboard.png">
   <meta property="og:url" content="https://cestovatel69.cz/en/aplikace/sbirka.html">
   <meta property="og:type" content="website">
@@ -19,8 +19,9 @@
 <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/sbirka.html">
 <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/sbirka.html">
 <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/sbirka.html">
+<link rel="stylesheet" href="../../assets/css/app-showcase.css?v=20261030-all-apps">
 </head>
-<body class="theme-home">
+<body class="theme-home app-showcase app-detail">
 
 <header class="site-header">
 <div class="site-header__inner">
@@ -34,185 +35,159 @@
 </header>
 <aside aria-label="Language availability" class="language-note">CS = content in Czech. Some older descriptions remain in Czech.</aside>
 
-<main id="main">
-<section class="hero" style="border-left:4px solid #c9a227;padding-left:1.2rem">
-  <span class="hero-accent" style="color:var(--accent-text)">Collection — Numismatics &amp; Philately</span>
-  <h1><span style="margin-right:.4rem">🪙</span>Collection — Numismatics &amp; Philately</h1>
-  <p class="hero-sub">A personal catalogue of coins, banknotes, stamps and postcards with an auction-house look. AI recognizes an item from a photo and fills in the details, the app shows where the same item actually sells (marketplaces and auctions) and tracks what raises or lowers the value. Real data stays local with me — no cloud, no accounts, no payments.</p>
-  <p style="margin-top:.6rem">
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">HTML/JS</span>
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">Python + FastAPI</span>
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">SQLite</span>
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">AI Gemini (vision)</span>
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">Windows (.exe)</span>
-  </p>
-  <p style="margin-top:.8rem">
-    <a href="index.html">← Back to My apps</a>
-    <button id="openDiary" class="diary-btn" style="margin-left:1rem">📖 Development diary</button>
-  </p>
-</section>
-
-<section>
-  <h2>What it does</h2>
-  <p><strong>Why it exists:</strong> a friend from work collects coins and stamps as a hobby and kept asking me questions — what is this piece, where do I look it up, what does it sell for. So I built him an app to make it clear: photograph the item, the app helps <em>identify</em> it and give an <em>indicative valuation</em>, and links straight to places where the price can be verified. Runs locally, looks like an auction-house catalogue, no account, no data leaves the machine.</p>
-  <p><strong>Two modes:</strong> a public <strong>demo</strong> (sample data only, runs in the browser) and the <strong>full version</strong> on my PC with its own database, photos and AI. The real collection never leaves the computer.</p>
-  <p><strong>AI recognition from a photo:</strong> photograph a coin or stamp, the app sends the photo to AI (Gemini) which <em>reads the text on the item</em> and pre-fills the form — category, country, year, denomination, condition. Then you just review and save. It handles both sides at once (obverse + reverse). If the photo is blurry or it is not a coin, the app fills nothing and asks for a new photo (like document verification).</p>
-  <p><strong>Where it sells:</strong> I browse catalogues and shops (Numista, Pofis, Colnect, Delcampe…) <em>right inside the app</em> — each result shows the name, price and image, and prices in foreign currencies are converted to Czech koruna using the Czech National Bank rate. Each item also keeps a <em>price history</em> over time, so I can see where the value is heading. You see immediately what the same item actually sells for — not what someone is asking.</p>
-  <p><strong>Help for beginners:</strong> a dedicated page explains the AI (Gemini) in plain language — how to get a free key and what it costs — plus shooting with a phone, backups and security. The AI key can be entered right in the app and stays only on the computer.</p>
-  <p><strong>What drives the price:</strong> an educational section — what raises value (higher grade, mint errors, certification, NH gum on stamps) and what lowers it (cleaning, mounting holes, defects). So you never buy or sell blind.</p>
-  <p><strong>Bulk import:</strong> if you already keep a list in Excel, upload it in one go (CSV / XLSX) instead of clicking item by item.</p>
-</section>
-
-<section>
-  <h2>Key features</h2>
-  <ul style="line-height:1.7">
-    <li><strong>Auction-house style catalogue</strong> — dark look with gold accents, item detail as an auction "lot" (large photo, parameters, valuation).</li>
-    <li><strong>AI recognition from photo</strong> — Gemini reads the text on the coin/stamp and pre-fills the fields; obverse + reverse in one step; photo quality check (bad photo = no valuation).</li>
-    <li><strong>Catalogues right inside the app</strong> — browse Czech and foreign catalogues and shops (coins, stamps) in the app window: name, price, image, link to source. Foreign prices converted to koruna (CNB rate), per-item price history over time. Rule: "a realized price beats an asking price".</li>
-    <li><strong>Help for beginners</strong> — a page explaining the AI key (Gemini), shooting photos, backups and security; every place that connects to the internet/AI has an ℹ button with an explanation.</li>
-    <li><strong>What drives the price</strong> — up/down factors separately for coins and stamps + how a price is composed (catalogue vs. auction vs. estimate).</li>
-    <li><strong>Simple verification (since 1.2.6, extended since)</strong> — a quick check of a stamp: front + back, local scan-quality check, choice of Gemini model with price list and cost estimate up front, 14 checks (identification, condition and authenticity, market valuation, buy/sell analysis, web search via Google Search in Gemini). The result is a report with an indicative price, authenticity suspicion level, table of checks used, web sources and tokens spent plus the cost of the check (USD and CZK), exportable to PDF/DOCX. Without paid calls enabled it runs for free as a simulation. The report states only what rests on a documented source.</li>
-    <li><strong>Sets and sheets at once (since 1.3.0)</strong> — a whole sheet or souvenir sheet is split into single stamps (at most 40 pieces), fronts and backs are paired, and before verification I review them side by side and correct them. Each stamp has its own result, a set has its own independent price, and costs are summed for the whole batch.</li>
-    <li><strong>Documented prices with links (since 1.2.7, extended in 1.9–1.12)</strong> — the app looks for offers and realized sales, verifies the set, year and catalogue number before searching for prices, and shows conditional ranges by condition, variant and unit with links to the sources. What cannot be documented is not invented — if evidence is missing, the app says so.</li>
-    <li><strong>Perforation gauge (since 1.10.2)</strong> — measures perforation straight from the scan and shows which holes it used; with a scanned ruler to ±0.05. It is not an expert confirmation of the variant.</li>
-    <li><strong>Saving to the collection (since 1.5.0)</strong> — stamps that were actually analysed are archived automatically with photos and links to sources; AI suggestions stay unconfirmed, no duplicates are created, and the whole collection can be moved to a reversible trash.</li>
-    <li><strong>Private selling (since 1.11.0)</strong> — a guide to listings for Delcampe and eBay.de: German listings, photos, postage, editable terms, tracking of sales and dispatch, and offline video tutorials. Listings are published by hand.</li>
-    <li><strong>System health and diagnostics (since 1.8.0)</strong> — app status and a local diagnostics package without photos, prompts, keys and collection data; for every verification you can see the model used and the service response. The AI spending cap can be set right in Keys &amp; API.</li>
-    <li><strong>Expert assessment</strong> — an appraisal per item as an immutable record with an audit trail (nothing can be overwritten, only a new one added). AI appraisal via Gemini with model choice, compared against forgery/genuineness markers from the marker database. Still a <em>preliminary visual assessment</em>, not an official expertise or certificate; authenticity only as a verbal suspicion level, never a percentage — authenticity calibration has not been run yet.</li>
-    <li><strong>Valuation with evidence</strong> — attach a source to each item (catalogue / realized auction / appraisal); active listings are excluded from the average.</li>
-    <li><strong>Item photos</strong> — front/back, shown in the card and the detail.</li>
-    <li><strong>Import / export</strong> — bulk import from CSV/Excel, export to CSV / Excel / PDF / ZIP.</li>
-    <li><strong>Local and safe</strong> — SQLite + photos only on my PC; only code and sample data go to GitHub. The Windows app starts its backend itself with one click.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Screenshots</h2>
-  <style>
+<main id="main"><a class="app-back" href="index.html">← My apps</a><section aria-labelledby="app-title" class="hero app-hero"><div><span class="hero-accent">My own project</span><h1 id="app-title">Collection — Numismatics &amp; Philately</h1><p class="hero-sub">Coins, banknotes, stamps and postcards in one catalogue. AI helps suggest information from a photograph; I check the result before saving it.</p><p class="app-availability">Private project. Not publicly available for download.</p><div class="app-actions"><a class="app-action app-action--primary" href="#youtube">Watch the video →</a><a class="app-action" href="#podrobnosti">Features and details ↓</a><button class="app-action" id="openDiary">📖 Development diary</button></div></div><figure class="app-preview"><img alt="🪙 Collection — Numismatics &amp; Philately — interface preview" decoding="async" fetchpriority="high" height="1225" src="/aplikace/img/sbirka/01_dashboard.png" width="1875"/><figcaption>Interface preview. Click to enlarge.</figcaption></figure></section><section><h2>What it helps me do</h2><div class="app-benefits"><article class="app-benefit"><h3>Photo catalogue</h3><p>Keep items, details and notes together.</p></article><article class="app-benefit"><h3>Recognition assistance</h3><p>Review AI suggestions before adding them to the record.</p></article><article class="app-benefit"><h3>Price sources</h3><p>Collect offers, sources and price history for an item.</p></article></div><p class="app-note">AI recognition is supporting information. Its accuracy has not been fully verified across all real series; see the detailed status.</p></section><section class="youtube-section" id="youtube">
+<div class="section-header"><h2>Watch: Collection — catalog, coin details and backup</h2><p>9:24 · Czech narration and captions.</p></div>
+<div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/fHyILzTIdh8?rel=0" style="width:100%;height:100%;border:0;display:block" title="Collection in video"></iframe>
+</div>
+<p><a href="https://www.youtube.com/watch?v=fHyILzTIdh8" rel="noopener" target="_blank">Full tour ↗</a></p>
+</section><section id="podrobnosti"><h2 class="app-details-heading">Explore the details</h2><details class="app-disclosure"><summary>What it does</summary><div class="app-disclosure__body"><section>
+<h2>What it does</h2>
+<p><strong>Why it exists:</strong> a friend from work collects coins and stamps as a hobby and kept asking me questions — what is this piece, where do I look it up, what does it sell for. So I built him an app to make it clear: photograph the item, the app helps <em>identify</em> it and give an <em>indicative valuation</em>, and links straight to places where the price can be verified. Runs locally, looks like an auction-house catalogue, no account, no data leaves the machine.</p>
+<p><strong>Two modes:</strong> a public <strong>demo</strong> (sample data only, runs in the browser) and the <strong>full version</strong> on my PC with its own database, photos and AI. The real collection never leaves the computer.</p>
+<p><strong>AI recognition from a photo:</strong> photograph a coin or stamp, the app sends the photo to AI (Gemini) which <em>reads the text on the item</em> and pre-fills the form — category, country, year, denomination, condition. Then you just review and save. It handles both sides at once (obverse + reverse). If the photo is blurry or it is not a coin, the app fills nothing and asks for a new photo (like document verification).</p>
+<p><strong>Where it sells:</strong> I browse catalogues and shops (Numista, Pofis, Colnect, Delcampe…) <em>right inside the app</em> — each result shows the name, price and image, and prices in foreign currencies are converted to Czech koruna using the Czech National Bank rate. Each item also keeps a <em>price history</em> over time, so I can see where the value is heading. You see immediately what the same item actually sells for — not what someone is asking.</p>
+<p><strong>Help for beginners:</strong> a dedicated page explains the AI (Gemini) in plain language — how to get a free key and what it costs — plus shooting with a phone, backups and security. The AI key can be entered right in the app and stays only on the computer.</p>
+<p><strong>What drives the price:</strong> an educational section — what raises value (higher grade, mint errors, certification, NH gum on stamps) and what lowers it (cleaning, mounting holes, defects). So you never buy or sell blind.</p>
+<p><strong>Bulk import:</strong> if you already keep a list in Excel, upload it in one go (CSV / XLSX) instead of clicking item by item.</p>
+</section></div></details><details class="app-disclosure"><summary>Key features</summary><div class="app-disclosure__body"><section>
+<h2>Key features</h2>
+<ul style="line-height:1.7">
+<li><strong>Auction-house style catalogue</strong> — dark look with gold accents, item detail as an auction "lot" (large photo, parameters, valuation).</li>
+<li><strong>AI recognition from photo</strong> — Gemini reads the text on the coin/stamp and pre-fills the fields; obverse + reverse in one step; photo quality check (bad photo = no valuation).</li>
+<li><strong>Catalogues right inside the app</strong> — browse Czech and foreign catalogues and shops (coins, stamps) in the app window: name, price, image, link to source. Foreign prices converted to koruna (CNB rate), per-item price history over time. Rule: "a realized price beats an asking price".</li>
+<li><strong>Help for beginners</strong> — a page explaining the AI key (Gemini), shooting photos, backups and security; every place that connects to the internet/AI has an ℹ button with an explanation.</li>
+<li><strong>What drives the price</strong> — up/down factors separately for coins and stamps + how a price is composed (catalogue vs. auction vs. estimate).</li>
+<li><strong>Simple verification (since 1.2.6, extended since)</strong> — a quick check of a stamp: front + back, local scan-quality check, choice of Gemini model with price list and cost estimate up front, 14 checks (identification, condition and authenticity, market valuation, buy/sell analysis, web search via Google Search in Gemini). The result is a report with an indicative price, authenticity suspicion level, table of checks used, web sources and tokens spent plus the cost of the check (USD and CZK), exportable to PDF/DOCX. Without paid calls enabled it runs for free as a simulation. The report states only what rests on a documented source.</li>
+<li><strong>Sets and sheets at once (since 1.3.0)</strong> — a whole sheet or souvenir sheet is split into single stamps (at most 40 pieces), fronts and backs are paired, and before verification I review them side by side and correct them. Each stamp has its own result, a set has its own independent price, and costs are summed for the whole batch.</li>
+<li><strong>Documented prices with links (since 1.2.7, extended in 1.9–1.12)</strong> — the app looks for offers and realized sales, verifies the set, year and catalogue number before searching for prices, and shows conditional ranges by condition, variant and unit with links to the sources. What cannot be documented is not invented — if evidence is missing, the app says so.</li>
+<li><strong>Perforation gauge (since 1.10.2)</strong> — measures perforation straight from the scan and shows which holes it used; with a scanned ruler to ±0.05. It is not an expert confirmation of the variant.</li>
+<li><strong>Saving to the collection (since 1.5.0)</strong> — stamps that were actually analysed are archived automatically with photos and links to sources; AI suggestions stay unconfirmed, no duplicates are created, and the whole collection can be moved to a reversible trash.</li>
+<li><strong>Private selling (since 1.11.0)</strong> — a guide to listings for Delcampe and eBay.de: German listings, photos, postage, editable terms, tracking of sales and dispatch, and offline video tutorials. Listings are published by hand.</li>
+<li><strong>System health and diagnostics (since 1.8.0)</strong> — app status and a local diagnostics package without photos, prompts, keys and collection data; for every verification you can see the model used and the service response. The AI spending cap can be set right in Keys &amp; API.</li>
+<li><strong>Expert assessment</strong> — an appraisal per item as an immutable record with an audit trail (nothing can be overwritten, only a new one added). AI appraisal via Gemini with model choice, compared against forgery/genuineness markers from the marker database. Still a <em>preliminary visual assessment</em>, not an official expertise or certificate; authenticity only as a verbal suspicion level, never a percentage — authenticity calibration has not been run yet.</li>
+<li><strong>Valuation with evidence</strong> — attach a source to each item (catalogue / realized auction / appraisal); active listings are excluded from the average.</li>
+<li><strong>Item photos</strong> — front/back, shown in the card and the detail.</li>
+<li><strong>Import / export</strong> — bulk import from CSV/Excel, export to CSV / Excel / PDF / ZIP.</li>
+<li><strong>Local and safe</strong> — SQLite + photos only on my PC; only code and sample data go to GitHub. The Windows app starts its backend itself with one click.</li>
+</ul>
+</section></div></details><details class="app-disclosure"><summary>Screenshots</summary><div class="app-disclosure__body"><section>
+<h2>Screenshots</h2>
+<style>
     .ss-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr)); gap:1.1rem; margin-top:.8rem; }
     .ss-grid figure { margin:0; }
     .ss-grid img { width:100%; height:auto; border-radius:8px; border:1px solid var(--border,#0001); display:block; }
     .ss-grid figcaption { font-size:.82rem; color:var(--text-mut,#666); margin-top:.35rem; }
   </style>
-  <div class="ss-grid">
-    <figure>
-      <img src="../../aplikace/img/sbirka/01_dashboard.png" alt="Collection dashboard" loading="lazy">
-      <figcaption>Dashboard — how many items I hold, where a photo or valuation is missing, and how the indicative value moves.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/02_katalog.png" alt="Catalogue with filters" loading="lazy">
-      <figcaption>Catalogue — filtering across the whole collection; each item shows identification confidence and an indicative price.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/03_numismatika.png" alt="Numismatics / Philately switch" loading="lazy">
-      <figcaption>Module switch — the collection can be read as numismatics and as philately separately.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/04_detail_lot.png" alt="Item detail as an auction lot" loading="lazy">
-      <figcaption>Item detail shaped like an auction lot — the parameters that decide the price, all in one place.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/05_prohlizec.png" alt="Auction and catalogue browser" loading="lazy">
-      <figcaption>Auction and catalogue browser — searching the sources without anything being written into the collection unconfirmed.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/06_zdroje_burzy.png" alt="Sources and marketplaces" loading="lazy">
-      <figcaption>Directory of sources — where to verify a price; a realized price always outranks an active listing.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/07_co_ovlivnuje_cenu.png" alt="What drives the price" loading="lazy">
-      <figcaption>What raises a price and what lowers it — separately for coins and for stamps.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/08_expertiza.png" alt="Appraisals" loading="lazy">
-      <figcaption>Appraisal — an indicative visual assessment, explicitly not a substitute for a certified expert.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/09_napoveda.png" alt="Help" loading="lazy">
-      <figcaption>Help written for a beginner — what to do first, what needs an API key and what works without one.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/10_overeni_start.png" alt="Simple verification — start" loading="lazy">
-      <figcaption>Simple verification (1.2.6) — five steps from uploading front and back to the final report; an explicit notice at the top that this is not an official expertise.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/11_overeni_kvalita.png" alt="Scan quality check" loading="lazy">
-      <figcaption>Scan quality check done locally — resolution, DPI, sharpness; advice on what to improve for a weak scan (CC0 sample stamp, Smithsonian).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/12_overeni_model_kontroly.png" alt="Model choice and checks overview" loading="lazy">
-      <figcaption>Gemini model choice with Google's price list and an up-front cost estimate, which master prompts are used and an overview of all 14 checks.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/13_overeni_zprava.png" alt="Final report" loading="lazy">
-      <figcaption>Final report — identification, authenticity only as a verbal suspicion level, price, condition, tokens and cost of the check, and a table of checks used (free simulation shown).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/14_moje_nabidky.png" alt="My listings — selling page" loading="lazy">
-      <figcaption>My listings — selling page for private sales from my own collection on Delcampe and eBay.de, from setting up the terms to tracking listings (sample demo data).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/15_podminky_prodeje.png" alt="Seller details and terms" loading="lazy">
-      <figcaption>Seller details and terms — a form (details, payments, postage, returns) and a German terms text for each portal separately; personal details go into the public text only with my consent (sample demo data).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/16_navod_prodeje.png" alt="Selling activation guide" loading="lazy">
-      <figcaption>Step-by-step guide to activating selling on Delcampe and eBay.de — from an existing account to the first listing; listings are published manually on the portals (sample demo data).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/17_zdravi_systemu.png" alt="System health" loading="lazy">
-      <figcaption>System health — a local check of the backend, database, AI settings and file protection; it makes no paid or network AI calls (sample demo data).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/18_novinky.png" alt="What's new in the app" loading="lazy">
-      <figcaption>What's new — the change history inside the app; among other things web price evidence with links and an extended selling page with a terms form (sample demo data).</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section>
-  <h2>Status</h2>
-  <p style="margin:.6rem 0 .9rem;padding:.7rem .95rem;border-left:3px solid #9b59b6;background:#9b59b614;border-radius:6px;font-size:.93rem">🔒 <strong>The app is not publicly downloadable.</strong> You will not find an installer here, on purpose — I send the link personally to whoever I give the app to. The version number on this page stays: it fills itself in from the same place the installed app takes its silent updates from.</p>
-  <p>New in 1.13.0 beta: verify every stamp and shared issue before searching for web prices with direct links. One-click economical settings, optionally including condition and gum. Unresolved identities block price searches. Paid accuracy validation of all real stamp sets remains incomplete.</p>
-  <p>New in 1.12.4 beta: fixes for references of larger stamp sets, incremental loading and set searches. Paid validation of all real scans remains incomplete due to exhausted credits; this release does not establish identification accuracy.</p>
-  <p>New in 1.12.3 beta: for hard-to-identify issues (Hradčany, PČ 1919, SO 1920, Protectorate, Germania, Austria 1850 and 1867, Penny Red and more) the report says what to look at — which feature decides the variety and price, which forgeries to watch for, and what a scan cannot decide. Based on the public Znamky.cz guide, in our own words.</p>
-  <p>New in 1.12.2 beta: expanded reference lookup, consistent gum conclusions and clearer reports. Paid testing of all stamp sets remains incomplete due to exhausted credit.</p>
-  <p>New in 1.12.1 beta: issue, year and catalogue verification before price research; direct report links to the verified issue and specific offers.</p>
-  <p>New in 1.12.0 beta: linked web price observations for stamps and sets, expanded sales page with editable terms and seller activation guides. Offline illustrated tutorials for Delcampe and eBay.de with Czech narration.</p>
-  <p>New in 1.11.1 beta: an offline Delcampe listing tutorial with Czech narration, captions and ten illustrated steps.</p>
-  <p>New in 1.11.0 beta: guided German listings for Delcampe and eBay, photos, editable sales terms and sale tracking. Fixed stamp pair confirmation. Listings are published manually.</p>
-  <p>New in 1.10.7 beta: small fixes from the app review. Collection search ignores diacritics, the CSV export opens in Excel with correct characters, the safe export for sharing leaves out private notes, the change history records only real changes, the same marker is not added twice, and texts have proper diacritics and plural forms.</p>
-  <p>New in 1.10.6 beta: the default AI model is now Gemini 3.8 Flash (assessment, verification) and 3.5 Flash-Lite (quick questions) — they work with a new Google key, where the 2.5 series fails. The Keys & API page offers the 3-series models. Fixed catalogue sorting, the overview without valuations, browser import (year and country), safe export without the trash, the help index, and demo results are clearly marked DEMO.</p>
-  <p>New in 1.10.5 beta: the diagnostics package now shows the AI model and the service response for every verification (e.g. HTTP 404 = model not available to this account) and says what to do. The export confirms the download and the file name carries the date and time, so duplicate “(4)”, “(5)” copies no longer pile up.</p>
-  <p>New in 1.10.4 beta: the AI model choice now includes Gemini 3.8 Flash, 3.6 Flash and 3.1 Flash-Lite. Google no longer lets new accounts (a new API key) use the 2.5 series — with a new key just pick a 3-series model. Prices follow Google’s price list; the announced increase from 1 January 2027 is applied automatically.</p>
-  <p>New in 1.10.3 beta: when an AI answer gets stuck repeating itself, the app trims it and retries once, so the report no longer runs to dozens of pages of noise. Price evidence that contradicts itself or only points to search results is left out of the comparison; on a sheet each price shows which stamp it belongs to.</p>
-  <p>New in 1.10.2 beta: perforation gauge — the app measures perforation straight from the scan and shows which holes it used; with a scanned ruler to ±0.05. The report has clickable source links and stamp images with a condition description; prompts have an ⓘ explanation.</p>
-  <p>New in 1.10.1 beta: more reliable verification of a confirmed set — each stamp is identified on its own, one failure no longer stops the others, and if none completes the app states one specific cause.</p>
-  <p>New in 1.10.0 beta: more price evidence from offers and completed auctions, stamp condition, descriptions and direct links. Singles, sets and souvenir sheets are kept separate. Adds Danner, Schultze and Philea, wider Burda searches and eBay Browse where API access is available. Asking prices are distinguished from sale results.</p>
-  <p>New in 1.9.1 beta: when the app reaches its own AI spending cap, it says so — previously it looked like a connection error although nothing was sent or charged. The USD cap can now be set, changed or removed directly in Keys & API.</p>
-  <p>New in 1.9.0 beta: conditional buy/sell price ranges by condition, variant and unit. Offers are separated from realized sales, with assumptions and source links in the app and PDF/DOCX. AI citations are not independent source verification.</p>
-  <p>New in 1.8.3 beta: whole-batch cost estimates, upload and AI progress with elapsed time, faster saved results and clearer PDF/DOCX exports. Brief reports explicitly identify unsupported prices and disabled valuation.</p>
-  <p>New in 1.8.2 beta: improved series segmentation on dark backgrounds with white scan margins. Series require crop confirmation. Invalid identification stops further analysis and displays one shared cause in the report and PDF.</p>
-  <p>New in 1.8.1 beta: fixed diagnostic ZIP downloads in the desktop app. Downloads open the Save As dialog. Diagnostic contents and privacy protections remain unchanged.</p>
-  <p>New in 1.8.0 beta: system health, diagnostics and a local ZIP export without sensitive data. Large scans use chunked uploads without changing pixels. No live AI validation of this fix yet; this is not an official expert opinion.</p>
-  <p>New in 1.7.4 beta: large scans use a dedicated AI file upload while preserving full resolution. Transfer failures are distinguished from unfinished identification. No live AI validation of this fix has been performed; this is not an official expert opinion.</p>
-  <p>New in 1.7.3 beta: pale stamps on white backgrounds retain their complete front and back outlines. Printed fragments and a white hinge are not additional stamps. Outdated automatic previews refresh while user edits and confirmed pairs are preserved. Ambiguous or clipped edges remain explicit limitations; correct cropping is not proof of authenticity.</p>
-  <p>New in 1.7.2 beta: readable stamp and whole-set reports without raw diagnostics. An unavailable AI model stops verification with a clear explanation instead of blaming the scan. Gemini 3.5 Flash-Lite is supported; a recovery button preserves scans and pairing and shows costs before retrying. Missing identification, condition and prices are not invented.</p>
-  <p>New in 1.7.1 beta: selecting a new scan immediately clears the previous result, pairing, old reverse scan and stamp-specific hints. Failed uploads cannot restore the old report. Selected checks, saved history and collection remain intact. Scan inputs are locked during verification.</p>
-  <p>New in 1.7.0 beta: individual stamp prices and independent set/sheet valuations based on documented whole-unit sales. Individual totals and whole-set values are not added together. Duplicate instruction checks and an available AI model recommendation before verification. Corrected 600 DPI messages and both concise and detailed PDF/DOCX reports. Certificate mentions remain unconfirmed; APS/APEX and PF registries are currently unavailable for automated access. The app is not an official expert appraisal.</p>
-  <p>New in 1.6.1 beta: the master prompt panel now lets you switch identification, condition and authenticity assessment, market valuation and buying/selling analysis on or off. These checkboxes share the same selection as the checks and cost estimate; disabled prompts are skipped and saved verifications retain the choices. Whole-collection valuation and auction-lot checks remain unavailable here with explanations. The app is not an official expert appraisal.</p>
-  <p>New in 1.6.0 beta: before multi-stamp verification, compare labelled fronts L1/L2 and backs R1/R2 side by side, change their assignments manually and correct crops. Confirmed assignments remain in individual analyses, history, exports and the collection. Automatic proposals compare edge details across rotations and reflections; uncertain backs remain unpaired. Automatic pairing accuracy is not calibrated and user confirmation does not certify identity, gum or authenticity. The app is not an official expert appraisal.</p>
-  <p>New in 1.5.0 beta: individually analysed stamps are automatically archived in the collection with photos, analysis results and links to discovered web sources. AI suggestions remain unconfirmed. Repeated saves do not duplicate items or restore deleted ones. A confirmed action can move the whole collection to restorable trash. Simulations and uncertain crops are excluded; archiving does not certify identity or authenticity.</p>
-  <p>Current version <strong data-col-ver="{v} {s}">1.13.0 BETA</strong> (October 2026). The app overview is on the <a href="index.html">My apps</a> page. Public demo + full local version (web and Windows .exe). Private, for personal use — no public hosting of real data, no accounts, no payments. <em>Note: the app catalogues and gives indicative valuations — it is not a professional appraisal. Always verify real prices on a marketplace.</em> The detailed history is in the <button class="diary-link" id="openDiary2">development diary</button>.</p>
-</section>
-  <section class="youtube-section" id="youtube">
-    <div class="section-header"><h2>Watch: Collection — catalog, coin details and backup</h2><p>9:24 · Czech narration and captions.</p></div>
-    <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
-      <iframe src="https://www.youtube-nocookie.com/embed/fHyILzTIdh8?rel=0" title="Collection in video" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-    <p><a href="https://www.youtube.com/watch?v=fHyILzTIdh8" target="_blank" rel="noopener">Full tour ↗</a></p>
-  </section>
-</main>
+<div class="ss-grid">
+<figure>
+<img alt="Collection dashboard" loading="lazy" src="/aplikace/img/sbirka/01_dashboard.png"/>
+<figcaption>Dashboard — how many items I hold, where a photo or valuation is missing, and how the indicative value moves.</figcaption>
+</figure>
+<figure>
+<img alt="Catalogue with filters" loading="lazy" src="/aplikace/img/sbirka/02_katalog.png"/>
+<figcaption>Catalogue — filtering across the whole collection; each item shows identification confidence and an indicative price.</figcaption>
+</figure>
+<figure>
+<img alt="Numismatics / Philately switch" loading="lazy" src="/aplikace/img/sbirka/03_numismatika.png"/>
+<figcaption>Module switch — the collection can be read as numismatics and as philately separately.</figcaption>
+</figure>
+<figure>
+<img alt="Item detail as an auction lot" loading="lazy" src="/aplikace/img/sbirka/04_detail_lot.png"/>
+<figcaption>Item detail shaped like an auction lot — the parameters that decide the price, all in one place.</figcaption>
+</figure>
+<figure>
+<img alt="Auction and catalogue browser" loading="lazy" src="/aplikace/img/sbirka/05_prohlizec.png"/>
+<figcaption>Auction and catalogue browser — searching the sources without anything being written into the collection unconfirmed.</figcaption>
+</figure>
+<figure>
+<img alt="Sources and marketplaces" loading="lazy" src="/aplikace/img/sbirka/06_zdroje_burzy.png"/>
+<figcaption>Directory of sources — where to verify a price; a realized price always outranks an active listing.</figcaption>
+</figure>
+<figure>
+<img alt="What drives the price" loading="lazy" src="/aplikace/img/sbirka/07_co_ovlivnuje_cenu.png"/>
+<figcaption>What raises a price and what lowers it — separately for coins and for stamps.</figcaption>
+</figure>
+<figure>
+<img alt="Appraisals" loading="lazy" src="/aplikace/img/sbirka/08_expertiza.png"/>
+<figcaption>Appraisal — an indicative visual assessment, explicitly not a substitute for a certified expert.</figcaption>
+</figure>
+<figure>
+<img alt="Help" loading="lazy" src="/aplikace/img/sbirka/09_napoveda.png"/>
+<figcaption>Help written for a beginner — what to do first, what needs an API key and what works without one.</figcaption>
+</figure>
+<figure>
+<img alt="Simple verification — start" loading="lazy" src="/aplikace/img/sbirka/10_overeni_start.png"/>
+<figcaption>Simple verification (1.2.6) — five steps from uploading front and back to the final report; an explicit notice at the top that this is not an official expertise.</figcaption>
+</figure>
+<figure>
+<img alt="Scan quality check" loading="lazy" src="/aplikace/img/sbirka/11_overeni_kvalita.png"/>
+<figcaption>Scan quality check done locally — resolution, DPI, sharpness; advice on what to improve for a weak scan (CC0 sample stamp, Smithsonian).</figcaption>
+</figure>
+<figure>
+<img alt="Model choice and checks overview" loading="lazy" src="/aplikace/img/sbirka/12_overeni_model_kontroly.png"/>
+<figcaption>Gemini model choice with Google's price list and an up-front cost estimate, which master prompts are used and an overview of all 14 checks.</figcaption>
+</figure>
+<figure>
+<img alt="Final report" loading="lazy" src="/aplikace/img/sbirka/13_overeni_zprava.png"/>
+<figcaption>Final report — identification, authenticity only as a verbal suspicion level, price, condition, tokens and cost of the check, and a table of checks used (free simulation shown).</figcaption>
+</figure>
+<figure>
+<img alt="My listings — selling page" loading="lazy" src="/aplikace/img/sbirka/14_moje_nabidky.png"/>
+<figcaption>My listings — selling page for private sales from my own collection on Delcampe and eBay.de, from setting up the terms to tracking listings (sample demo data).</figcaption>
+</figure>
+<figure>
+<img alt="Seller details and terms" loading="lazy" src="/aplikace/img/sbirka/15_podminky_prodeje.png"/>
+<figcaption>Seller details and terms — a form (details, payments, postage, returns) and a German terms text for each portal separately; personal details go into the public text only with my consent (sample demo data).</figcaption>
+</figure>
+<figure>
+<img alt="Selling activation guide" loading="lazy" src="/aplikace/img/sbirka/16_navod_prodeje.png"/>
+<figcaption>Step-by-step guide to activating selling on Delcampe and eBay.de — from an existing account to the first listing; listings are published manually on the portals (sample demo data).</figcaption>
+</figure>
+<figure>
+<img alt="System health" loading="lazy" src="/aplikace/img/sbirka/17_zdravi_systemu.png"/>
+<figcaption>System health — a local check of the backend, database, AI settings and file protection; it makes no paid or network AI calls (sample demo data).</figcaption>
+</figure>
+<figure>
+<img alt="What's new in the app" loading="lazy" src="/aplikace/img/sbirka/18_novinky.png"/>
+<figcaption>What's new — the change history inside the app; among other things web price evidence with links and an extended selling page with a terms form (sample demo data).</figcaption>
+</figure>
+</div>
+</section></div></details><details class="app-disclosure"><summary>Status</summary><div class="app-disclosure__body"><section>
+<h2>Status</h2>
+<p style="margin:.6rem 0 .9rem;padding:.7rem .95rem;border-left:3px solid #9b59b6;background:#9b59b614;border-radius:6px;font-size:.93rem">🔒 <strong>The app is not publicly downloadable.</strong> You will not find an installer here, on purpose — I send the link personally to whoever I give the app to. The version number on this page stays: it fills itself in from the same place the installed app takes its silent updates from.</p>
+<p>New in 1.13.0 beta: verify every stamp and shared issue before searching for web prices with direct links. One-click economical settings, optionally including condition and gum. Unresolved identities block price searches. Paid accuracy validation of all real stamp sets remains incomplete.</p>
+<p>New in 1.12.4 beta: fixes for references of larger stamp sets, incremental loading and set searches. Paid validation of all real scans remains incomplete due to exhausted credits; this release does not establish identification accuracy.</p>
+<p>New in 1.12.3 beta: for hard-to-identify issues (Hradčany, PČ 1919, SO 1920, Protectorate, Germania, Austria 1850 and 1867, Penny Red and more) the report says what to look at — which feature decides the variety and price, which forgeries to watch for, and what a scan cannot decide. Based on the public Znamky.cz guide, in our own words.</p>
+<p>New in 1.12.2 beta: expanded reference lookup, consistent gum conclusions and clearer reports. Paid testing of all stamp sets remains incomplete due to exhausted credit.</p>
+<p>New in 1.12.1 beta: issue, year and catalogue verification before price research; direct report links to the verified issue and specific offers.</p>
+<p>New in 1.12.0 beta: linked web price observations for stamps and sets, expanded sales page with editable terms and seller activation guides. Offline illustrated tutorials for Delcampe and eBay.de with Czech narration.</p>
+<p>New in 1.11.1 beta: an offline Delcampe listing tutorial with Czech narration, captions and ten illustrated steps.</p>
+<p>New in 1.11.0 beta: guided German listings for Delcampe and eBay, photos, editable sales terms and sale tracking. Fixed stamp pair confirmation. Listings are published manually.</p>
+<p>New in 1.10.7 beta: small fixes from the app review. Collection search ignores diacritics, the CSV export opens in Excel with correct characters, the safe export for sharing leaves out private notes, the change history records only real changes, the same marker is not added twice, and texts have proper diacritics and plural forms.</p>
+<p>New in 1.10.6 beta: the default AI model is now Gemini 3.8 Flash (assessment, verification) and 3.5 Flash-Lite (quick questions) — they work with a new Google key, where the 2.5 series fails. The Keys &amp; API page offers the 3-series models. Fixed catalogue sorting, the overview without valuations, browser import (year and country), safe export without the trash, the help index, and demo results are clearly marked DEMO.</p>
+<p>New in 1.10.5 beta: the diagnostics package now shows the AI model and the service response for every verification (e.g. HTTP 404 = model not available to this account) and says what to do. The export confirms the download and the file name carries the date and time, so duplicate “(4)”, “(5)” copies no longer pile up.</p>
+<p>New in 1.10.4 beta: the AI model choice now includes Gemini 3.8 Flash, 3.6 Flash and 3.1 Flash-Lite. Google no longer lets new accounts (a new API key) use the 2.5 series — with a new key just pick a 3-series model. Prices follow Google’s price list; the announced increase from 1 January 2027 is applied automatically.</p>
+<p>New in 1.10.3 beta: when an AI answer gets stuck repeating itself, the app trims it and retries once, so the report no longer runs to dozens of pages of noise. Price evidence that contradicts itself or only points to search results is left out of the comparison; on a sheet each price shows which stamp it belongs to.</p>
+<p>New in 1.10.2 beta: perforation gauge — the app measures perforation straight from the scan and shows which holes it used; with a scanned ruler to ±0.05. The report has clickable source links and stamp images with a condition description; prompts have an ⓘ explanation.</p>
+<p>New in 1.10.1 beta: more reliable verification of a confirmed set — each stamp is identified on its own, one failure no longer stops the others, and if none completes the app states one specific cause.</p>
+<p>New in 1.10.0 beta: more price evidence from offers and completed auctions, stamp condition, descriptions and direct links. Singles, sets and souvenir sheets are kept separate. Adds Danner, Schultze and Philea, wider Burda searches and eBay Browse where API access is available. Asking prices are distinguished from sale results.</p>
+<p>New in 1.9.1 beta: when the app reaches its own AI spending cap, it says so — previously it looked like a connection error although nothing was sent or charged. The USD cap can now be set, changed or removed directly in Keys &amp; API.</p>
+<p>New in 1.9.0 beta: conditional buy/sell price ranges by condition, variant and unit. Offers are separated from realized sales, with assumptions and source links in the app and PDF/DOCX. AI citations are not independent source verification.</p>
+<p>New in 1.8.3 beta: whole-batch cost estimates, upload and AI progress with elapsed time, faster saved results and clearer PDF/DOCX exports. Brief reports explicitly identify unsupported prices and disabled valuation.</p>
+<p>New in 1.8.2 beta: improved series segmentation on dark backgrounds with white scan margins. Series require crop confirmation. Invalid identification stops further analysis and displays one shared cause in the report and PDF.</p>
+<p>New in 1.8.1 beta: fixed diagnostic ZIP downloads in the desktop app. Downloads open the Save As dialog. Diagnostic contents and privacy protections remain unchanged.</p>
+<p>New in 1.8.0 beta: system health, diagnostics and a local ZIP export without sensitive data. Large scans use chunked uploads without changing pixels. No live AI validation of this fix yet; this is not an official expert opinion.</p>
+<p>New in 1.7.4 beta: large scans use a dedicated AI file upload while preserving full resolution. Transfer failures are distinguished from unfinished identification. No live AI validation of this fix has been performed; this is not an official expert opinion.</p>
+<p>New in 1.7.3 beta: pale stamps on white backgrounds retain their complete front and back outlines. Printed fragments and a white hinge are not additional stamps. Outdated automatic previews refresh while user edits and confirmed pairs are preserved. Ambiguous or clipped edges remain explicit limitations; correct cropping is not proof of authenticity.</p>
+<p>New in 1.7.2 beta: readable stamp and whole-set reports without raw diagnostics. An unavailable AI model stops verification with a clear explanation instead of blaming the scan. Gemini 3.5 Flash-Lite is supported; a recovery button preserves scans and pairing and shows costs before retrying. Missing identification, condition and prices are not invented.</p>
+<p>New in 1.7.1 beta: selecting a new scan immediately clears the previous result, pairing, old reverse scan and stamp-specific hints. Failed uploads cannot restore the old report. Selected checks, saved history and collection remain intact. Scan inputs are locked during verification.</p>
+<p>New in 1.7.0 beta: individual stamp prices and independent set/sheet valuations based on documented whole-unit sales. Individual totals and whole-set values are not added together. Duplicate instruction checks and an available AI model recommendation before verification. Corrected 600 DPI messages and both concise and detailed PDF/DOCX reports. Certificate mentions remain unconfirmed; APS/APEX and PF registries are currently unavailable for automated access. The app is not an official expert appraisal.</p>
+<p>New in 1.6.1 beta: the master prompt panel now lets you switch identification, condition and authenticity assessment, market valuation and buying/selling analysis on or off. These checkboxes share the same selection as the checks and cost estimate; disabled prompts are skipped and saved verifications retain the choices. Whole-collection valuation and auction-lot checks remain unavailable here with explanations. The app is not an official expert appraisal.</p>
+<p>New in 1.6.0 beta: before multi-stamp verification, compare labelled fronts L1/L2 and backs R1/R2 side by side, change their assignments manually and correct crops. Confirmed assignments remain in individual analyses, history, exports and the collection. Automatic proposals compare edge details across rotations and reflections; uncertain backs remain unpaired. Automatic pairing accuracy is not calibrated and user confirmation does not certify identity, gum or authenticity. The app is not an official expert appraisal.</p>
+<p>New in 1.5.0 beta: individually analysed stamps are automatically archived in the collection with photos, analysis results and links to discovered web sources. AI suggestions remain unconfirmed. Repeated saves do not duplicate items or restore deleted ones. A confirmed action can move the whole collection to restorable trash. Simulations and uncertain crops are excluded; archiving does not certify identity or authenticity.</p>
+<p>Current version <strong data-col-ver="{v} {s}">1.13.0 BETA</strong> (October 2026). The app overview is on the <a href="index.html">My apps</a> page. Public demo + full local version (web and Windows .exe). Private, for personal use — no public hosting of real data, no accounts, no payments. <em>Note: the app catalogues and gives indicative valuations — it is not a professional appraisal. Always verify real prices on a marketplace.</em> The detailed history is in the <button class="diary-link" id="openDiary2">development diary</button>.</p>
+</section></div></details></section></main>
 
 <!-- ═══ DEVELOPMENT DIARY — popup ═══ -->
 <div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Development diary" aria-hidden="true">
@@ -308,31 +283,9 @@
 <script src="../../assets/js/main.js?v=20261030-norsko"></script>
 
 <!-- Lightbox -->
-<style>
-#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
-#__lb.open { display:flex }
-#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-main img { cursor:zoom-in; transition:transform .15s ease }
-main img:hover { transform:scale(1.005) }
-</style>
-<div id="__lb" role="dialog" aria-modal="true" aria-label="Enlarged image">
-  <img id="__lbimg" alt="">
-  <span class="__lbhint">Click or press ESC to close</span>
-</div>
-<script>
-(function(){
-  var lb = document.getElementById('__lb');
-  var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
-  lb.addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-  document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
-  });
-})();
-</script>
+
+
+
 <script>/* Verze z latest.json (nikdy nedrift) — natvrdo psane cislo v HTML zustava jen jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var o=d&&d["collection"];if(!o||!o.version)return;var v=o.version;var s=({final:"FINAL",beta:"BETA",work:"WORK"})[o.stage]||(o.stage||"").toUpperCase();document.querySelectorAll("[data-col-ver]").forEach(function(el){el.textContent=el.getAttribute("data-col-ver").replace("{v}",v).replace("{s}",s);});/* Odkaz ke stazeni se zamerne nedosazuje - aplikace se nedistribuuje pres web (predava se osobne). */}).catch(function(){});})();</script>
 </body>
 </html>

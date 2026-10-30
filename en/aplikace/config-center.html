@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Config Center — My apps — Luděk</title>
-  <meta name="description" content="Smart home control panel — one browser page to configure heating, lights, blinds and routines.">
+  <meta content="I configure lights, heating, audio and the morning routine in one panel instead of searching for each setting separately." name="description"/>
   <link rel="canonical" href="https://cestovatel69.cz/en/aplikace/config-center.html">
   <meta property="og:title" content="Config Center — My apps — Luděk">
-  <meta property="og:description" content="Smart home control panel — one browser page to configure heating, lights, blinds and routines.">
+  <meta content="I configure lights, heating, audio and the morning routine in one panel instead of searching for each setting separately." property="og:description"/>
   <meta property="og:image" content="https://cestovatel69.cz/assets/img/aplikace/config-center/live_overview.png">
   <meta property="og:url" content="https://cestovatel69.cz/en/aplikace/config-center.html">
   <meta property="og:type" content="website">
@@ -18,8 +18,9 @@
 <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/config-center.html">
 <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/config-center.html">
 <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/config-center.html">
+<link rel="stylesheet" href="../../assets/css/app-showcase.css?v=20261030-all-apps">
 </head>
-<body class="theme-home">
+<body class="theme-home app-showcase app-detail">
 
 <header class="site-header">
 <div class="site-header__inner">
@@ -32,61 +33,41 @@
 </header>
 <aside aria-label="Language availability" class="language-note">CS = content in Czech. Some older descriptions remain in Czech.</aside>
 
-<main id="main">
-<section class="hero" style="border-left:4px solid #4a8fd0;padding-left:1.2rem">
-  <span class="hero-accent" style="color:var(--accent-text)">Config Center</span>
-  <h1><span style="margin-right:.4rem">⚙️</span>Config Center</h1>
-  <p class="hero-sub">Control panel for the whole smart home — instead of one app per gadget, I have a single web page where I tune everything: when the morning routine starts, how warm the heating is, when audio stops, what lights do when I come home.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">HTML</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Vanilla JS</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Homey REST API</span></p>
-  <p style="margin-top:.8rem"><a href="index.html">← Back to My apps</a></p>
-</section>
-
-  <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
-    <div class="container">
-      <h2 id="video-heading">Watch: Config Center — heating, shading and morning routine</h2>
-      <p>8:59 · Czech narration and captions.</p>
-      <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
-        <iframe src="https://www.youtube-nocookie.com/embed/-40NlRmH9BU?rel=0" title="Config Center — heating, shading and morning routine" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <p><a href="https://www.youtube.com/watch?v=-40NlRmH9BU" target="_blank" rel="noopener">YouTube ↗</a> </p>
-    </div>
-  </section>
-
-<section>
-  <h2>What it does</h2>
-  <p>I have about 60 devices at home (lights, motion sensors, TRV heads, speakers, air purifier, blind, …) running on Homey Pro 2026. It can do a lot — has its own mobile app, web UI, scripts, automations — but there are far too many drawers and the settings are scattered.</p><p><strong>Config Center unifies everything in one place.</strong> Open the web in a browser, log in with my token (the token stays only on my PC, nothing is sent anywhere), and see 22 clean pages: one per &bdquo;house mode&ldquo; (morning / day / evening / night / away / home / sleep), separate for heating, lights, audio, etc.</p><p><strong>Preview mode = safe test.</strong> When I want to try something, the app applies it first, gives me 10 minutes to test, and if I don't say &bdquo;OK, save it&ldquo; in that window, it reverts itself. So even if I make a mistake, the house heals itself.</p><p><strong>Protects from mistakes.</strong> Some devices (bedroom audio, sensitive sensors) have a hard-block — they cannot be turned on accidentally. The bedroom speaker can't play a test if someone's sleeping there.</p><p><strong>Local, mine, no cloud.</strong> The app is just an HTML+CSS+JS file opened in Edge or Chrome. It talks directly to the Homey hub at home, nothing goes to a third-party server. No subscription, no vendor cloud dependency.</p>
-</section>
-
-<section>
-  <h2>Key features</h2>
-  <ul style="line-height:1.7">
-      <li><strong>22 pages per mode</strong> — Morning / day / evening / night / away / home / sleep — each with its own voice messages (TTS), light goals, heating goals.</li>
-      <li><strong>Per-day, per-hour heating plan</strong> — For each of 4 zones (dining, bedroom, bathroom, toilet) day by day, hour by hour what temp I want. Boost button for quick heating.</li>
-      <li><strong>10-min preview safety</strong> — Change applies first, 10 min to test, auto-reverts if I don't confirm. Can't break the house with one typo.</li>
-      <li><strong>100+ knobs to tune</strong> — When morning starts, how fast lights ramp up, how long audio stays on, how loud the morning briefing is, …</li>
-      <li><strong>Token on my PC only</strong> — Hub access stays only on this computer (in the app and, encrypted, in the Windows vault so it survives a reinstall). No server, no clouds, no &bdquo;sign in with Google&ldquo;.</li>
-      <li><strong>Hard-block for sensitive gear</strong> — Some devices can't be accidentally on. E.g. bedroom audio while sleeping, purifier during mold treatment, etc.</li>
-  </ul>
-</section>
-
-<section><h2>Screenshots</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/ai_kontrola.png" alt="AI control — what the system may decide on its own" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">AI control — what the system may decide on its own</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/devices.png" alt="Devices — 84 devices, what each supports and which settings make sense" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Devices — 84 devices, what each supports and which settings make sense</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/live_overview.png" alt="Token sign-in — the token stays only on this PC" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Token sign-in — the token stays only on this PC</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/overview.png" alt="Přehled — všechny módy a parametry na jednom místě" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Přehled — všechny módy a parametry na jednom místě</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/heating.png" alt="Topení — TRV zóny, hystereze, boost, pre-wake plán" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Topení — TRV zóny, hystereze, boost, pre-wake plán</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/zones.png" alt="Zóny — světla, motion sensors, audio per místnost" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Zóny — světla, motion sensors, audio per místnost</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/morning_params.png" alt="Ranní rutina — wake window, ramp delay, briefing" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Ranní rutina — wake window, ramp delay, briefing</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/lights_rules.png" alt="Pravidla světel — lux thresholdy, denní/večerní cíle" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Pravidla světel — lux thresholdy, denní/večerní cíle</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/toggles.png" alt="AI toggles — autonomy, intent engine, health monitor" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">AI toggles — autonomy, intent engine, health monitor</figcaption></figure>
-      <figure style="margin:0"><img src="../../../assets/img/aplikace/config-center/safety.png" alt="Safety and protection — protected devices that automation may never switch off on its own, plus configuration validation for every mode (sample demo data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Safety and protection — protected devices that automation may never switch off on its own, plus configuration validation for every mode (sample demo data)</figcaption></figure></div></section>
-
-<section>
-  <h2>Status</h2>
-  <p>In daily use. Version <strong>v1.9.1 · beta</strong> (October 2026). Runs locally on PC as a <strong>standalone installable app (.exe)</strong> with automatic updates; heating control is also on the touch panel on the wall. 100+ variables editable live. After a security review the app accepts only a verified newer version and shows smart-home data safely as plain text.</p>
-</section>
-
-  <section style="margin:1.2rem 0"><button id="openDiary" class="diary-btn">📖 Development diary</button></section>
-</main>
+<main id="main"><a class="app-back" href="index.html">← My apps</a><section aria-labelledby="app-title" class="hero app-hero"><div><span class="hero-accent">My own project</span><h1 id="app-title">Config Center</h1><p class="hero-sub">I configure lights, heating, audio and the morning routine in one panel instead of searching for each setting separately.</p><p class="app-availability">Private project. Not publicly available for download.</p><div class="app-actions"><a class="app-action app-action--primary" href="#youtube">Watch the video →</a><a class="app-action" href="#podrobnosti">Features and details ↓</a></div></div><figure class="app-preview"><img alt="⚙️ Config Center — interface preview" decoding="async" fetchpriority="high" height="1080" src="/assets/img/aplikace/config-center/overview.png" width="1920"/><figcaption>Interface preview. Click to enlarge.</figcaption></figure></section><section><h2>What it helps me do</h2><div class="app-benefits"><article class="app-benefit"><h3>One settings panel</h3><p>Keep home modes and their parameters together.</p></article><article class="app-benefit"><h3>Heating by room</h3><p>Set temperatures and schedules for each zone.</p></article><article class="app-benefit"><h3>Try before confirming</h3><p>Preview a setting temporarily before keeping the change.</p></article></div><p class="app-note">My own Homey Pro control panel. The public website cannot control my home.</p></section><section aria-labelledby="video-heading" class="section youtube-section" id="youtube">
+<div class="container">
+<h2 id="video-heading">Watch: Config Center — heating, shading and morning routine</h2>
+<p>8:59 · Czech narration and captions.</p>
+<div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/-40NlRmH9BU?rel=0" style="width:100%;height:100%;border:0;display:block" title="Config Center — heating, shading and morning routine"></iframe>
+</div>
+<p><a href="https://www.youtube.com/watch?v=-40NlRmH9BU" rel="noopener" target="_blank">YouTube ↗</a> </p>
+</div>
+</section><section id="podrobnosti"><h2 class="app-details-heading">Explore the details</h2><details class="app-disclosure"><summary>What it does</summary><div class="app-disclosure__body"><section>
+<h2>What it does</h2>
+<p>I have about 60 devices at home (lights, motion sensors, TRV heads, speakers, air purifier, blind, …) running on Homey Pro 2026. It can do a lot — has its own mobile app, web UI, scripts, automations — but there are far too many drawers and the settings are scattered.</p><p><strong>Config Center unifies everything in one place.</strong> Open the web in a browser, log in with my token (the token stays only on my PC, nothing is sent anywhere), and see 22 clean pages: one per „house mode“ (morning / day / evening / night / away / home / sleep), separate for heating, lights, audio, etc.</p><p><strong>Preview mode = safe test.</strong> When I want to try something, the app applies it first, gives me 10 minutes to test, and if I don't say „OK, save it“ in that window, it reverts itself. So even if I make a mistake, the house heals itself.</p><p><strong>Protects from mistakes.</strong> Some devices (bedroom audio, sensitive sensors) have a hard-block — they cannot be turned on accidentally. The bedroom speaker can't play a test if someone's sleeping there.</p><p><strong>Local, mine, no cloud.</strong> The app is just an HTML+CSS+JS file opened in Edge or Chrome. It talks directly to the Homey hub at home, nothing goes to a third-party server. No subscription, no vendor cloud dependency.</p>
+</section></div></details><details class="app-disclosure"><summary>Key features</summary><div class="app-disclosure__body"><section>
+<h2>Key features</h2>
+<ul style="line-height:1.7">
+<li><strong>22 pages per mode</strong> — Morning / day / evening / night / away / home / sleep — each with its own voice messages (TTS), light goals, heating goals.</li>
+<li><strong>Per-day, per-hour heating plan</strong> — For each of 4 zones (dining, bedroom, bathroom, toilet) day by day, hour by hour what temp I want. Boost button for quick heating.</li>
+<li><strong>10-min preview safety</strong> — Change applies first, 10 min to test, auto-reverts if I don't confirm. Can't break the house with one typo.</li>
+<li><strong>100+ knobs to tune</strong> — When morning starts, how fast lights ramp up, how long audio stays on, how loud the morning briefing is, …</li>
+<li><strong>Token on my PC only</strong> — Hub access stays only on this computer (in the app and, encrypted, in the Windows vault so it survives a reinstall). No server, no clouds, no „sign in with Google“.</li>
+<li><strong>Hard-block for sensitive gear</strong> — Some devices can't be accidentally on. E.g. bedroom audio while sleeping, purifier during mold treatment, etc.</li>
+</ul>
+</section></div></details><details class="app-disclosure"><summary>Screenshots</summary><div class="app-disclosure__body"><section><h2>Screenshots</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem"><figure style="margin:0"><img alt="AI control — what the system may decide on its own" loading="lazy" src="/assets/img/aplikace/config-center/ai_kontrola.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">AI control — what the system may decide on its own</figcaption></figure>
+<figure style="margin:0"><img alt="Devices — 84 devices, what each supports and which settings make sense" loading="lazy" src="/assets/img/aplikace/config-center/devices.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Devices — 84 devices, what each supports and which settings make sense</figcaption></figure>
+<figure style="margin:0"><img alt="Token sign-in — the token stays only on this PC" loading="lazy" src="/assets/img/aplikace/config-center/live_overview.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Token sign-in — the token stays only on this PC</figcaption></figure>
+<figure style="margin:0"><img alt="Přehled — všechny módy a parametry na jednom místě" loading="lazy" src="/assets/img/aplikace/config-center/overview.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Přehled — všechny módy a parametry na jednom místě</figcaption></figure>
+<figure style="margin:0"><img alt="Topení — TRV zóny, hystereze, boost, pre-wake plán" loading="lazy" src="/assets/img/aplikace/config-center/heating.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Topení — TRV zóny, hystereze, boost, pre-wake plán</figcaption></figure>
+<figure style="margin:0"><img alt="Zóny — světla, motion sensors, audio per místnost" loading="lazy" src="/assets/img/aplikace/config-center/zones.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Zóny — světla, motion sensors, audio per místnost</figcaption></figure>
+<figure style="margin:0"><img alt="Ranní rutina — wake window, ramp delay, briefing" loading="lazy" src="/assets/img/aplikace/config-center/morning_params.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Ranní rutina — wake window, ramp delay, briefing</figcaption></figure>
+<figure style="margin:0"><img alt="Pravidla světel — lux thresholdy, denní/večerní cíle" loading="lazy" src="/assets/img/aplikace/config-center/lights_rules.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Pravidla světel — lux thresholdy, denní/večerní cíle</figcaption></figure>
+<figure style="margin:0"><img alt="AI toggles — autonomy, intent engine, health monitor" loading="lazy" src="/assets/img/aplikace/config-center/toggles.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">AI toggles — autonomy, intent engine, health monitor</figcaption></figure>
+<figure style="margin:0"><img alt="Safety and protection — protected devices that automation may never switch off on its own, plus configuration validation for every mode (sample demo data)" loading="lazy" src="/assets/img/aplikace/config-center/safety.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Safety and protection — protected devices that automation may never switch off on its own, plus configuration validation for every mode (sample demo data)</figcaption></figure></div></section></div></details><details class="app-disclosure"><summary>Status</summary><div class="app-disclosure__body"><section>
+<h2>Status</h2>
+<p>In daily use. Version <strong>v1.9.1 · beta</strong> (October 2026). Runs locally on PC as a <strong>standalone installable app (.exe)</strong> with automatic updates; heating control is also on the touch panel on the wall. 100+ variables editable live. After a security review the app accepts only a verified newer version and shows smart-home data safely as plain text.</p>
+</section></div></details><details class="app-disclosure"><summary>Technical notes</summary><div class="app-disclosure__body"><section style="margin:1.2rem 0"><button class="diary-btn" id="openDiary">📖 Development diary</button></section></div></details></section></main>
 <!-- DEVELOPMENT DIARY — popup -->
 <div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Development diary" aria-hidden="true">
   <div class="diary-backdrop"></div>
@@ -209,30 +190,8 @@
 <script src="../../assets/js/main.js?v=20261030-norsko"></script>
 
 <!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
-<style>
-#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
-#__lb.open { display:flex }
-#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-main img { cursor:zoom-in; transition:transform .15s ease }
-main img:hover { transform:scale(1.005) }
-</style>
-<div id="__lb" role="dialog" aria-modal="true" aria-label="Zvětšený obrázek">
-  <img id="__lbimg" alt="">
-  <span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>
-</div>
-<script>
-(function(){
-  var lb = document.getElementById('__lb');
-  var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
-  lb.addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-  document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
-  });
-})();
-</script>
+
+
+
 </body>
 </html>

@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>App Tester — My apps — Luděk</title>
-  <meta name="description" content="Universal app tester — a self-built tool that clicks through a web app end to end, watches the console for errors and reports PASS / WATCH / FAIL.">
+  <meta content="I run a browser check and receive a report of loaded pages, errors and places that need attention." name="description"/>
   <link rel="stylesheet" href="../../assets/css/style.css?v=20261030-header">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧪%3C/text%3E%3C/svg%3E">
 
   <link rel="canonical" href="https://cestovatel69.cz/en/aplikace/app-tester.html">
   <meta property="og:title" content="App Tester — My apps — Luděk">
-  <meta property="og:description" content="Luděk&#x27;s personal site — driver, traveller, lover of Italy, technology and the smart home.">
+  <meta content="I run a browser check and receive a report of loaded pages, errors and places that need attention." property="og:description"/>
   <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
   <meta property="og:url" content="https://cestovatel69.cz/en/aplikace/app-tester.html">
   <meta property="og:type" content="website">
@@ -20,8 +20,9 @@
 <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/app-tester.html">
 <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/app-tester.html">
 <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/app-tester.html">
+<link rel="stylesheet" href="../../assets/css/app-showcase.css?v=20261030-all-apps">
 </head>
-<body class="theme-home">
+<body class="theme-home app-showcase app-detail">
 
 <header class="site-header">
 <div class="site-header__inner">
@@ -36,39 +37,36 @@
 </header>
 <aside aria-label="Language availability" class="language-note">CS = content in Czech. Some older descriptions remain in Czech.</aside>
 
-<main id="main">
-<section class="hero" style="border-left:4px solid #22a39f;padding-left:1.2rem">
-  <span class="hero-accent" style="color:var(--accent-text)">App Tester</span>
-  <h1><span style="margin-right:.4rem">🧪</span>Universal App Tester</h1>
-  <p class="hero-sub">A tool that walks through an entire web app on its own: it launches a browser, opens every page and returns <strong>PASS / WATCH / FAIL</strong> — did something fail to load? are there console errors? is the page empty or slow? Adding a new app = one entry in a config file. <strong>Same controls as the Resident Auditor.</strong></p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #22a39f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Python</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #22a39f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Playwright</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #22a39f40;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Read-only</span></p>
-  <p style="margin-top:.8rem"><a href="index.html">← Back to My apps</a><button id="openDenik" class="diary-btn" style="margin-left:1rem">📖 Dev diary</button></p>
-</section>
+<main id="main"><a class="app-back" href="index.html">← My apps</a><section aria-labelledby="app-title" class="hero app-hero"><div><span class="hero-accent">My own project</span><h1 id="app-title">Universal App Tester</h1><p class="hero-sub">I run a browser check and receive a report of loaded pages, errors and places that need attention.</p><p class="app-availability">Private project. Not publicly available for download.</p><div class="app-actions"><a class="app-action" href="#podrobnosti">Features and details ↓</a><button class="app-action" id="openDenik">📖 Dev diary</button></div></div><figure class="app-report"><div class="app-report__label">Example report · original output</div><pre style="background:#0d1117;color:#c9d1d9;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.82rem;line-height:1.55;border:1px solid #22a39f40">$ python -m core.runner --self-test
+  [PASS] mode: run on demand
+  [PASS] browser + Playwright available
+  [PASS] check: app not running → WATCH
+  [PASS] check: console error → FAIL
+  [PASS] check: clean run → PASS
+  SELF-TEST RESULT: PASS
 
-<section>
-  <h2>What it does</h2>
-  <p>I build my own apps — a meal planner, an Italy travel planner, an accounting book, a collection catalogue, … After every change I need to check that all the pages still load normally, nothing throws in the console and nothing is broken. Clicking through it by hand is tedious and easy to miss something.</p>
-  <p><strong>App Tester does it for me.</strong> It launches a browser in the background (no window), opens each page of the chosen app one by one and records for each: did it load at all? how fast? are there errors in the browser console? does the page have any content, or is it empty? do the pages differ from each other (does routing work)? From that it composes a clear verdict.</p>
-  <p><strong>Universal = no hardcoding.</strong> Apps aren't baked into the code — they live in a simple list (config). Adding a new app means writing a few lines: address, list of pages. The tester is generic, it works on anything that runs in a browser.</p>
-  <p><strong>Same philosophy as the Resident Auditor: never PASS without evidence.</strong> When an app isn't running, it gets neither green nor red — it gets &bdquo;WATCH&ldquo; (not enough evidence), so no falsely good result is produced. And the tester changes nothing — it only looks (read-only), runs manually, doesn't run in the background.</p>
-</section>
-
-<section>
-  <h2>Key features</h2>
-  <ul style="line-height:1.7">
-      <li><strong>6 checks per page</strong> — page load, console errors, empty content, load speed, and whether the pages differ from each other (routing works).</li>
-      <li><strong>PASS / WATCH / FAIL verdict</strong> — FAIL when something doesn't load or the console throws; WATCH when a page is slow, empty or the app isn't running; PASS only when everything is fine.</li>
-      <li><strong>Universal config</strong> — adding an app = one object with a list of pages. No code rewriting.</li>
-      <li><strong>Screenshots + report</strong> — a snapshot is saved from each page; the result is a clear per-app report plus a summary across all of them.</li>
-      <li><strong>No false PASS</strong> — when an app isn't running it's honestly WATCH, not falsely green.</li>
-      <li><strong>Manual, read-only</strong> — no automatic scheduling, it only looks, deploys nothing.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Sample output</h2>
-  <p>First a self-test (verifies everything is ready), then a test of one app:</p>
-  <pre style="background:#0d1117;color:#c9d1d9;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.82rem;line-height:1.55;border:1px solid #22a39f40">$ python -m core.runner --self-test
+$ python -m core.runner --run --app meal-planner
+  meal-planner: FAIL — 6/7 pages loaded, 1 console error
+  Overall: FAIL · report and screenshots saved</pre><figcaption>My development tool, run manually. It does not modify the application being checked. Missing evidence is not a pass.</figcaption></figure></section><section><h2>What it helps me do</h2><div class="app-benefits"><article class="app-benefit"><h3>Page checks</h3><p>Visit configured pages and record loading and console errors.</p></article><article class="app-benefit"><h3>Evidence in the report</h3><p>Review PASS, WATCH or FAIL with findings and screenshots.</p></article><article class="app-benefit"><h3>Reusable configuration</h3><p>Add another project through configuration rather than a separate tester.</p></article></div><p class="app-note">My development tool, run manually. It does not modify the application being checked. Missing evidence is not a pass.</p></section><section id="podrobnosti"><h2 class="app-details-heading">Explore the details</h2><details class="app-disclosure"><summary>What it does</summary><div class="app-disclosure__body"><section>
+<h2>What it does</h2>
+<p>I build my own apps — a meal planner, an Italy travel planner, an accounting book, a collection catalogue, … After every change I need to check that all the pages still load normally, nothing throws in the console and nothing is broken. Clicking through it by hand is tedious and easy to miss something.</p>
+<p><strong>App Tester does it for me.</strong> It launches a browser in the background (no window), opens each page of the chosen app one by one and records for each: did it load at all? how fast? are there errors in the browser console? does the page have any content, or is it empty? do the pages differ from each other (does routing work)? From that it composes a clear verdict.</p>
+<p><strong>Universal = no hardcoding.</strong> Apps aren't baked into the code — they live in a simple list (config). Adding a new app means writing a few lines: address, list of pages. The tester is generic, it works on anything that runs in a browser.</p>
+<p><strong>Same philosophy as the Resident Auditor: never PASS without evidence.</strong> When an app isn't running, it gets neither green nor red — it gets „WATCH“ (not enough evidence), so no falsely good result is produced. And the tester changes nothing — it only looks (read-only), runs manually, doesn't run in the background.</p>
+</section></div></details><details class="app-disclosure"><summary>Key features</summary><div class="app-disclosure__body"><section>
+<h2>Key features</h2>
+<ul style="line-height:1.7">
+<li><strong>6 checks per page</strong> — page load, console errors, empty content, load speed, and whether the pages differ from each other (routing works).</li>
+<li><strong>PASS / WATCH / FAIL verdict</strong> — FAIL when something doesn't load or the console throws; WATCH when a page is slow, empty or the app isn't running; PASS only when everything is fine.</li>
+<li><strong>Universal config</strong> — adding an app = one object with a list of pages. No code rewriting.</li>
+<li><strong>Screenshots + report</strong> — a snapshot is saved from each page; the result is a clear per-app report plus a summary across all of them.</li>
+<li><strong>No false PASS</strong> — when an app isn't running it's honestly WATCH, not falsely green.</li>
+<li><strong>Manual, read-only</strong> — no automatic scheduling, it only looks, deploys nothing.</li>
+</ul>
+</section></div></details><details class="app-disclosure"><summary>Sample output</summary><div class="app-disclosure__body"><section>
+<h2>Sample output</h2>
+<p>First a self-test (verifies everything is ready), then a test of one app:</p>
+<pre style="background:#0d1117;color:#c9d1d9;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.82rem;line-height:1.55;border:1px solid #22a39f40">$ python -m core.runner --self-test
   [PASS] mode: run on demand
   [PASS] browser + Playwright available
   [PASS] check: app not running → WATCH
@@ -79,14 +77,11 @@
 $ python -m core.runner --run --app meal-planner
   meal-planner: FAIL — 6/7 pages loaded, 1 console error
   Overall: FAIL · report and screenshots saved</pre>
-  <p style="font-size:.9rem;color:var(--text-mut,#666)">The tester reports the concrete problem (which page, what error) — not just &bdquo;something went wrong&ldquo;.</p>
-</section>
-
-<section>
-  <h2>Status</h2>
-  <p>Version v0.1 (June 2026). Self-test passes (12/12), verified live on a real app. It grew out of earlier one-off scripts, which I unified into a single universal tool controlled the same way as the Resident Auditor.</p>
-</section>
-</main>
+<p style="font-size:.9rem;color:var(--text-mut,#666)">The tester reports the concrete problem (which page, what error) — not just „something went wrong“.</p>
+</section></div></details><details class="app-disclosure"><summary>Status</summary><div class="app-disclosure__body"><section>
+<h2>Status</h2>
+<p>Version v0.1 (June 2026). Self-test passes (12/12), verified live on a real app. It grew out of earlier one-off scripts, which I unified into a single universal tool controlled the same way as the Resident Auditor.</p>
+</section></div></details></section></main>
 
 <footer class="site-footer">
   <div class="site-footer__inner">

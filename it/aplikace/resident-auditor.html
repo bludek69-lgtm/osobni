@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resident Auditor — Le mie app — Luděk</title>
-  <meta name="description" content="Resident Auditor — valuta la smart home dal punto di vista di chi ci vive, sulla base dei log reali: la routine del mattino ha funzionato davvero?">
+  <meta content="Dai registri salvati controllo se routine mattutine, luci, riscaldamento e audio si sono comportati come previsto, con prove per ogni risultato." name="description"/>
   <link rel="stylesheet" href="../../assets/css/style.css?v=20261030-header">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔎%3C/text%3E%3C/svg%3E">
 
   <link rel="canonical" href="https://cestovatel69.cz/it/aplikace/resident-auditor.html">
   <meta property="og:title" content="Resident Auditor — Le mie app — Luděk">
-  <meta property="og:description" content="Sito personale di Luděk — autista, viaggiatore, amante dell&#x27;Italia, della tecnologia e della casa intelligente.">
+  <meta content="Dai registri salvati controllo se routine mattutine, luci, riscaldamento e audio si sono comportati come previsto, con prove per ogni risultato." property="og:description"/>
   <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
   <meta property="og:url" content="https://cestovatel69.cz/it/aplikace/resident-auditor.html">
   <meta property="og:type" content="website">
@@ -20,8 +20,9 @@
 <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/resident-auditor.html">
 <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/resident-auditor.html">
 <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/resident-auditor.html">
+<link rel="stylesheet" href="../../assets/css/app-showcase.css?v=20261030-all-apps">
 </head>
-<body class="theme-home">
+<body class="theme-home app-showcase app-detail">
 
 <header class="site-header">
 <div class="site-header__inner">
@@ -36,39 +37,38 @@
 </header>
 <aside aria-label="Disponibilità delle lingue" class="language-note">CS = contenuto in ceco. Alcune descrizioni precedenti sono ancora in ceco.</aside>
 
-<main id="main">
-<section class="hero" style="border-left:4px solid #4a8fd0;padding-left:1.2rem">
-  <span class="hero-accent" style="color:var(--accent-text)">Resident Auditor</span>
-  <h1><span style="margin-right:.4rem">🔎</span>Smart Home Resident Auditor</h1>
-  <p class="hero-sub">Uno strumento che valuta la mia casa intelligente <strong>con gli occhi di chi ci abita</strong> — non &bdquo;lo script è andato&ldquo;, ma &bdquo;la mattina ha funzionato come doveva?&ldquo;. Legge i log reali di un determinato giorno e restituisce <strong>PASS / WATCH / FAIL</strong> con le prove. Si avvia a mano, non cambia nulla in casa.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Python</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Read-only</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #4a8fd040;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="neutral">Avvio manuale</span></p>
-  <p style="margin-top:.8rem"><a href="index.html">← Torna a Le mie app</a><button id="openDenik" class="diary-btn" style="margin-left:1rem">📖 Diario di sviluppo</button></p>
-</section>
+<main id="main"><a class="app-back" href="index.html">← Le mie app</a><section aria-labelledby="app-title" class="hero app-hero"><div><span class="hero-accent">Un mio progetto</span><h1 id="app-title">Smart Home Resident Auditor</h1><p class="hero-sub">Dai registri salvati controllo se routine mattutine, luci, riscaldamento e audio si sono comportati come previsto, con prove per ogni risultato.</p><p class="app-availability">Progetto privato. Non disponibile per il download pubblico.</p><div class="app-actions"><a class="app-action" href="#podrobnosti">Funzioni e dettagli ↓</a><button class="app-action" id="openDenik">📖 Diario di sviluppo</button></div></div><figure class="app-report"><div class="app-report__label">Esempio di rapporto · output originale</div><pre style="background:#0d1117;color:#c9d1d9;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.82rem;line-height:1.55;border:1px solid #4a8fd040">$ python -m core.runner --run --real --day 2026-06-02
 
-<section>
-  <h2>Che cosa fa</h2>
-  <p>La mia casa è gestita da molte automazioni — luci, audio, riscaldamento, tapparelle, scene. Gli strumenti comuni dicono solo &bdquo;lo script è terminato senza errori&ldquo;. Ma <strong>uno script tecnicamente riuscito non significa che sia stato piacevole per una persona.</strong> La radio può partire tre volte di fila, una luce può accendersi al massimo di notte, il riscaldamento può scaldare anche se non c'è nessuno in casa — e tutto questo &bdquo;tecnicamente è andato bene&ldquo;.</p>
-  <p><strong>Resident Auditor guarda in modo diverso.</strong> Prende i log salvati della casa per un giorno preciso e si chiede, in termini umani: <em>La mattina è stata tranquilla? Le luci hanno reagito al movimento e le tapparelle hanno avuto la priorità? È rimasto qualcosa acceso o la radio accesa dopo che sono uscito? Il riscaldamento si è comportato in modo sensato? Qualcosa mi ha svegliato di notte?</em></p>
-  <p><strong>La regola chiave: mai PASS senza prove.</strong> Se manca la prova che qualcosa è andato bene, non riceve il via libera — riceve &bdquo;WATCH&ldquo; (da osservare). E viceversa: gli eventi di routine e innocui non contano come problema, così non ci sono <em>falsi allarmi</em>. L'obiettivo è un verdetto affidabile, non belle statistiche.</p>
-  <p><strong>Non cambia nulla.</strong> Lo strumento è puramente <strong>read-only</strong> — legge solo i log. Non tocca la casa, non ripara nulla, non gira in background. Lo avvio a mano quando voglio sapere come si è comportata la casa.</p>
-</section>
+  mattina (risveglio)   : PASS   — avvio tranquillo, briefing 1×, nessun disturbo
+  movimento notturno    : PASS   — gestito in modo soffuso, niente mi ha svegliato
+  audio / radio / TTS   : PASS   — radio al massimo 1×, nessun annuncio notturno
+  luci + tapparelle     : PASS   — luci per scena, le tapparelle hanno la priorità
+  bagno / toilette      : PASS   — luce per fase, guardiano a riposo
+  riscaldamento &amp; comfort: PASS  — gestito su pianificazione, senza sprechi
+  stabilità del sistema : PASS   — 0 crash
+  dashboard vs realtà   : PASS   — corrisponde alla realtà
+  affidabilità dispositivi: WATCH — 1 dispositivo non critico cade ogni tanto
 
-<section>
-  <h2>Funzioni principali</h2>
-  <ul style="line-height:1.7">
-      <li><strong>10 ambiti della vita in casa</strong> — mattina, movimento notturno, audio e messaggi vocali, luci e tapparelle, bagno, riscaldamento, affidabilità dei dispositivi e stabilità del sistema. Ognuno ha il proprio &bdquo;valutatore&ldquo;.</li>
-      <li><strong>Verdetto basato sulle prove: PASS / WATCH / FAIL</strong> — verde solo con prova positiva del comportamento corretto; altrimenti da osservare; rosso solo per un problema reale.</li>
-      <li><strong>Nessun falso PASS né falso allarme</strong> — distingue un'azione reale da un controllo di routine, quindi non segnala un problema dove non c'è.</li>
-      <li><strong>Una proposta di passo successivo per ogni problema</strong> — quando qualcosa fallisce nasce un &bdquo;compito da risolvere&ldquo; con le prove (ora, cosa è successo, impatto sull'abitante) — ma una correzione non parte mai da sola, aspetta la mia decisione.</li>
-      <li><strong>Audit di un giorno specifico</strong> — lo avvio per un giorno scelto e ottengo un report chiaro; ideale come verifica dopo ogni modifica alla casa.</li>
-      <li><strong>Manuale, sicuro</strong> — nessun avvio automatico, nessuna interferenza con la casa, sola lettura.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Esempio di output</h2>
-  <p>Audit di un giorno reale (abbreviato):</p>
-  <pre style="background:#0d1117;color:#c9d1d9;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.82rem;line-height:1.55;border:1px solid #4a8fd040">$ python -m core.runner --run --real --day 2026-06-02
+  Stato complessivo: WATCH  ·  0 interventi necessari  ·  0 falsi allarmi</pre><figcaption>L’audit legge solo i registri salvati. Non esegue riparazioni automatiche e non modifica la casa.</figcaption></figure></section><section><h2>Come mi aiuta</h2><div class="app-benefits"><article class="app-benefit"><h3>Il punto di vista dell’abitante</h3><p>Valuto l’esperienza della giornata, non solo l’esecuzione degli script.</p></article><article class="app-benefit"><h3>Verdetti con prove</h3><p>Distinguo PASS, WATCH e FAIL senza considerare un successo i registri mancanti.</p></article><article class="app-benefit"><h3>Cosa controllare dopo</h3><p>Mostro eventi e problemi pertinenti da esaminare.</p></article></div><p class="app-note">L’audit legge solo i registri salvati. Non esegue riparazioni automatiche e non modifica la casa.</p></section><section id="podrobnosti"><h2 class="app-details-heading">Per saperne di più</h2><details class="app-disclosure"><summary>Che cosa fa</summary><div class="app-disclosure__body"><section>
+<h2>Che cosa fa</h2>
+<p>La mia casa è gestita da molte automazioni — luci, audio, riscaldamento, tapparelle, scene. Gli strumenti comuni dicono solo „lo script è terminato senza errori“. Ma <strong>uno script tecnicamente riuscito non significa che sia stato piacevole per una persona.</strong> La radio può partire tre volte di fila, una luce può accendersi al massimo di notte, il riscaldamento può scaldare anche se non c'è nessuno in casa — e tutto questo „tecnicamente è andato bene“.</p>
+<p><strong>Resident Auditor guarda in modo diverso.</strong> Prende i log salvati della casa per un giorno preciso e si chiede, in termini umani: <em>La mattina è stata tranquilla? Le luci hanno reagito al movimento e le tapparelle hanno avuto la priorità? È rimasto qualcosa acceso o la radio accesa dopo che sono uscito? Il riscaldamento si è comportato in modo sensato? Qualcosa mi ha svegliato di notte?</em></p>
+<p><strong>La regola chiave: mai PASS senza prove.</strong> Se manca la prova che qualcosa è andato bene, non riceve il via libera — riceve „WATCH“ (da osservare). E viceversa: gli eventi di routine e innocui non contano come problema, così non ci sono <em>falsi allarmi</em>. L'obiettivo è un verdetto affidabile, non belle statistiche.</p>
+<p><strong>Non cambia nulla.</strong> Lo strumento è puramente <strong>read-only</strong> — legge solo i log. Non tocca la casa, non ripara nulla, non gira in background. Lo avvio a mano quando voglio sapere come si è comportata la casa.</p>
+</section></div></details><details class="app-disclosure"><summary>Funzioni principali</summary><div class="app-disclosure__body"><section>
+<h2>Funzioni principali</h2>
+<ul style="line-height:1.7">
+<li><strong>10 ambiti della vita in casa</strong> — mattina, movimento notturno, audio e messaggi vocali, luci e tapparelle, bagno, riscaldamento, affidabilità dei dispositivi e stabilità del sistema. Ognuno ha il proprio „valutatore“.</li>
+<li><strong>Verdetto basato sulle prove: PASS / WATCH / FAIL</strong> — verde solo con prova positiva del comportamento corretto; altrimenti da osservare; rosso solo per un problema reale.</li>
+<li><strong>Nessun falso PASS né falso allarme</strong> — distingue un'azione reale da un controllo di routine, quindi non segnala un problema dove non c'è.</li>
+<li><strong>Una proposta di passo successivo per ogni problema</strong> — quando qualcosa fallisce nasce un „compito da risolvere“ con le prove (ora, cosa è successo, impatto sull'abitante) — ma una correzione non parte mai da sola, aspetta la mia decisione.</li>
+<li><strong>Audit di un giorno specifico</strong> — lo avvio per un giorno scelto e ottengo un report chiaro; ideale come verifica dopo ogni modifica alla casa.</li>
+<li><strong>Manuale, sicuro</strong> — nessun avvio automatico, nessuna interferenza con la casa, sola lettura.</li>
+</ul>
+</section></div></details><details class="app-disclosure"><summary>Esempio di output</summary><div class="app-disclosure__body"><section>
+<h2>Esempio di output</h2>
+<p>Audit di un giorno reale (abbreviato):</p>
+<pre style="background:#0d1117;color:#c9d1d9;padding:1rem 1.2rem;border-radius:10px;overflow:auto;font-size:.82rem;line-height:1.55;border:1px solid #4a8fd040">$ python -m core.runner --run --real --day 2026-06-02
 
   mattina (risveglio)   : PASS   — avvio tranquillo, briefing 1×, nessun disturbo
   movimento notturno    : PASS   — gestito in modo soffuso, niente mi ha svegliato
@@ -81,14 +81,11 @@
   affidabilità dispositivi: WATCH — 1 dispositivo non critico cade ogni tanto
 
   Stato complessivo: WATCH  ·  0 interventi necessari  ·  0 falsi allarmi</pre>
-  <p style="font-size:.9rem;color:var(--text-mut,#666)">Il verdetto è <em>WATCH</em>, non &bdquo;tutto verde&ldquo; — perché un dispositivo cade ogni tanto. Onesto, senza abbellimenti.</p>
-</section>
-
-<section>
-  <h2>Stato</h2>
-  <p>Versione v0.1 — base completa, pronta per l'uso manuale (giugno 2026). Verificato su giorni reali, 72 test automatici superati. Le aggiunte (la &bdquo;storia della casa&ldquo; giornaliera, una classificazione più fine dei dispositivi) sono pianificate, non necessarie.</p>
-</section>
-</main>
+<p style="font-size:.9rem;color:var(--text-mut,#666)">Il verdetto è <em>WATCH</em>, non „tutto verde“ — perché un dispositivo cade ogni tanto. Onesto, senza abbellimenti.</p>
+</section></div></details><details class="app-disclosure"><summary>Stato</summary><div class="app-disclosure__body"><section>
+<h2>Stato</h2>
+<p>Versione v0.1 — base completa, pronta per l'uso manuale (giugno 2026). Verificato su giorni reali, 72 test automatici superati. Le aggiunte (la „storia della casa“ giornaliera, una classificazione più fine dei dispositivi) sono pianificate, non necessarie.</p>
+</section></div></details></section></main>
 
 <footer class="site-footer">
   <div class="site-footer__inner">

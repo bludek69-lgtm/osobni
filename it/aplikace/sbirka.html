@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Collezione — Numismatica &amp; Filatelia — Le mie app — Luděk</title>
-  <meta name="description" content="Catalogo personale di monete, banconote e francobolli in stile casa d'aste. Riconoscimento AI da foto, valutazione, link ai mercati, import da Excel. In locale, senza cloud.">
+  <meta content="Monete, banconote, francobolli e cartoline in un unico catalogo. L’AI propone informazioni da una fotografia; controllo il risultato prima di salvarlo." name="description"/>
   <link rel="stylesheet" href="../../assets/css/style.css?v=20261030-header">
   <link rel="icon" href="/favicon.ico">
 
   <link rel="canonical" href="https://cestovatel69.cz/it/aplikace/sbirka.html">
   <meta property="og:title" content="Collezione — Numismatica &amp; Filatelia — Le mie app — Luděk">
-  <meta property="og:description" content="Catalogo personale di monete, banconote e francobolli in stile casa d'aste. Riconoscimento AI da foto, valutazione, link ai mercati, import da Excel. In locale, senza cloud.">
+  <meta content="Monete, banconote, francobolli e cartoline in un unico catalogo. L’AI propone informazioni da una fotografia; controllo il risultato prima di salvarlo." property="og:description"/>
   <meta property="og:image" content="https://cestovatel69.cz/aplikace/img/sbirka/01_dashboard.png">
   <meta property="og:url" content="https://cestovatel69.cz/it/aplikace/sbirka.html">
   <meta property="og:type" content="website">
@@ -19,8 +19,9 @@
 <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/sbirka.html">
 <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/sbirka.html">
 <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/sbirka.html">
+<link rel="stylesheet" href="../../assets/css/app-showcase.css?v=20261030-all-apps">
 </head>
-<body class="theme-home">
+<body class="theme-home app-showcase app-detail">
 
 <header class="site-header">
 <div class="site-header__inner">
@@ -34,185 +35,159 @@
 </header>
 <aside aria-label="Disponibilità delle lingue" class="language-note">CS = contenuto in ceco. Alcune descrizioni precedenti sono ancora in ceco.</aside>
 
-<main id="main">
-<section class="hero" style="border-left:4px solid #c9a227;padding-left:1.2rem">
-  <span class="hero-accent" style="color:var(--accent-text)">Collezione — Numismatica &amp; Filatelia</span>
-  <h1><span style="margin-right:.4rem">🪙</span>Collezione — Numismatica &amp; Filatelia</h1>
-  <p class="hero-sub">Catalogo personale di monete, banconote, francobolli e cartoline in stile casa d'aste. L'AI riconosce il pezzo da una foto e compila i dati, l'app mostra dove lo stesso pezzo si vende davvero (mercati e aste) e registra cosa alza o abbassa il valore. I dati reali restano in locale da me — niente cloud, niente account, niente pagamenti.</p>
-  <p style="margin-top:.6rem">
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">HTML/JS</span>
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">Python + FastAPI</span>
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">SQLite</span>
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">AI Gemini (vision)</span>
-    <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #c9a22740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="gold">Windows (.exe)</span>
-  </p>
-  <p style="margin-top:.8rem">
-    <a href="index.html">← Torna a Le mie app</a>
-    <button id="openDiary" class="diary-btn" style="margin-left:1rem">📖 Diario di sviluppo</button>
-  </p>
-</section>
-
-<section>
-  <h2>Cosa fa</h2>
-  <p><strong>Perché esiste:</strong> un amico di lavoro colleziona monete e francobolli per hobby e mi faceva mille domande — cos'è questo pezzo, dove lo cerco, a quanto si vende. Così gli ho costruito un'app per fare chiarezza: si fotografa il pezzo, l'app aiuta a <em>identificarlo</em> e a dargli una <em>valutazione indicativa</em>, e rimanda subito ai posti dove verificare il prezzo. Gira in locale, sembra il catalogo di una casa d'aste, nessun account, nessun dato in giro.</p>
-  <p><strong>Due modalità:</strong> una <strong>demo</strong> pubblica (solo dati di esempio, nel browser) e la <strong>versione completa</strong> sul mio PC con database, foto e AI propri. La collezione reale non lascia mai il computer.</p>
-  <p><strong>Riconoscimento AI da foto:</strong> fotografo una moneta o un francobollo, l'app manda la foto all'AI (Gemini) che <em>legge il testo sul pezzo</em> e precompila il modulo — categoria, paese, anno, valore nominale, stato. Poi basta controllare e salvare. Gestisce anche entrambi i lati insieme (dritto + rovescio). Se la foto è sfocata o non è una moneta, l'app non compila nulla e chiede una nuova foto (come la verifica di un documento).</p>
-  <p><strong>Dove si vende:</strong> sfoglio cataloghi e negozi (Numista, Pofis, Colnect, Delcampe…) <em>direttamente nell'app</em> — ogni risultato mostra nome, prezzo e immagine, e i prezzi in valuta estera vengono convertiti in corone secondo il cambio della Banca nazionale ceca. Per ogni pezzo tengo anche uno <em>storico dei prezzi</em> nel tempo, per vedere dove va il valore. Vedi subito a quanto si vende davvero lo stesso pezzo — non a quanto qualcuno lo chiede.</p>
-  <p><strong>Aiuto per principianti:</strong> una pagina dedicata spiega l'AI (Gemini) in modo semplice — come ottenere una chiave gratuita e quanto costa — oltre alle foto col telefono, ai backup e alla sicurezza. La chiave AI si inserisce direttamente nell'app e resta solo sul computer.</p>
-  <p><strong>Cosa influenza il prezzo:</strong> sezione educativa — cosa alza il valore (grade più alto, errori di conio, certificazione, gomma NH nei francobolli) e cosa lo abbassa (pulizia, fori, difetti). Per non comprare e vendere alla cieca.</p>
-  <p><strong>Import massivo:</strong> chi ha già una lista in Excel la carica in un colpo solo (CSV / XLSX) invece di cliccare pezzo per pezzo.</p>
-</section>
-
-<section>
-  <h2>Funzioni chiave</h2>
-  <ul style="line-height:1.7">
-    <li><strong>Catalogo in stile casa d'aste</strong> — look scuro con accenti oro, dettaglio del pezzo come un "lotto" d'asta (foto grande, parametri, valutazione).</li>
-    <li><strong>Riconoscimento AI da foto</strong> — Gemini legge il testo su moneta/francobollo e precompila i campi; dritto + rovescio in un passaggio; controllo qualità foto (foto scarsa = nessuna valutazione).</li>
-    <li><strong>Cataloghi direttamente nell'app</strong> — sfoglia cataloghi e negozi cechi ed esteri (monete, francobolli) nella finestra dell'app: nome, prezzo, immagine, link alla fonte. Prezzi esteri convertiti in corone (cambio CNB), storico prezzi del pezzo nel tempo. Regola: "il prezzo realizzato batte il prezzo richiesto".</li>
-    <li><strong>Aiuto per principianti</strong> — una pagina che spiega la chiave AI (Gemini), le foto, i backup e la sicurezza; ogni punto che si collega a internet/AI ha un pulsante ℹ con la spiegazione.</li>
-    <li><strong>Cosa influenza il prezzo</strong> — fattori ↑/↓ separati per monete e francobolli + come si compone un prezzo (catalogo vs. asta vs. stima).</li>
-    <li><strong>Verifica semplice (dalla 1.2.6, da allora ampliata)</strong> — controllo rapido di un francobollo: fronte + retro, controllo locale della qualità della scansione, scelta del modello Gemini con listino e stima del costo in anticipo, 14 controlli (identificazione, stato e autenticità, valutazione di mercato, analisi acquisto/vendita, ricerca sul web tramite Google Search in Gemini). Il risultato è un rapporto con prezzo indicativo, livello di sospetto sull'autenticità, tabella dei controlli usati, fonti web, token consumati e costo della verifica (USD e CZK), esportabile in PDF/DOCX. Senza chiamate a pagamento abilitate funziona gratis come simulazione. Il rapporto indica solo ciò che poggia su una fonte documentata.</li>
-    <li><strong>Serie e fogli in una volta (dalla 1.3.0)</strong> — un intero foglio o foglietto viene diviso in singoli francobolli (al massimo 40 pezzi), fronti e retro vengono abbinati e prima della verifica li controllo affiancati e li correggo. Ogni francobollo ha il proprio risultato, la serie ha un proprio prezzo indipendente e i costi si sommano per l'intero lotto.</li>
-    <li><strong>Prezzi documentati con link (dalla 1.2.7, ampliati nelle 1.9–1.12)</strong> — l'app cerca offerte e vendite concluse, prima di cercare i prezzi verifica serie, anno e numero di catalogo e mostra intervalli condizionati per stato, variante e unità con link alle fonti. Ciò che non si può documentare non si inventa — se manca un riscontro, l'app lo dice.</li>
-    <li><strong>Odontometro (dalla 1.10.2)</strong> — misura la dentellatura direttamente dalla scansione e mostra i fori usati; con un righello scansionato fino a ±0,05. Non è una conferma esperta della variante.</li>
-    <li><strong>Salvataggio nella collezione (dalla 1.5.0)</strong> — i francobolli effettivamente analizzati vengono archiviati automaticamente con foto e link alle fonti; i suggerimenti IA restano non confermati, non si creano duplicati e l'intera collezione si può spostare in un cestino reversibile.</li>
-    <li><strong>Vendita privata (dalla 1.11.0)</strong> — guida alle offerte per Delcampe ed eBay.de: offerte in tedesco, foto, spese di spedizione, condizioni modificabili, gestione di vendita e spedizione e video guida offline. Le offerte si pubblicano a mano.</li>
-    <li><strong>Stato del sistema e diagnostica (dalla 1.8.0)</strong> — stato dell'app e pacchetto di diagnostica locale senza foto, prompt, chiavi e dati della collezione; per ogni verifica si vedono il modello usato e la risposta del servizio. Il limite di spesa per l'IA si imposta direttamente in Chiavi &amp; API.</li>
-    <li><strong>Perizie</strong> — perizia per ogni pezzo come voce immutabile con audit trail (nulla può essere sovrascritto, solo aggiunta una nuova). Perizia AI tramite Gemini con scelta del modello, confronto con i segni di falsi/autenticità dal database dei marcatori. Resta una <em>valutazione visiva preliminare</em>, non una perizia ufficiale né un certificato; autenticità solo come livello verbale di sospetto, mai in percentuale — la calibrazione dell'autenticità non è ancora stata eseguita.</li>
-    <li><strong>Valutazione con prove</strong> — a ogni pezzo si allega la fonte (catalogo / asta realizzata / perizia); le offerte attive non entrano nella media.</li>
-    <li><strong>Foto dei pezzi</strong> — fronte/retro, visibili nella scheda e nel dettaglio.</li>
-    <li><strong>Import / export</strong> — import massivo da CSV/Excel, export CSV / Excel / PDF / ZIP.</li>
-    <li><strong>In locale e al sicuro</strong> — SQLite + foto solo sul mio PC; su GitHub vanno solo codice e dati di esempio. L'app Windows avvia il backend da sola con un click.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Anteprime</h2>
-  <style>
+<main id="main"><a class="app-back" href="index.html">← Le mie app</a><section aria-labelledby="app-title" class="hero app-hero"><div><span class="hero-accent">Un mio progetto</span><h1 id="app-title">Collezione — Numismatica &amp; Filatelia</h1><p class="hero-sub">Monete, banconote, francobolli e cartoline in un unico catalogo. L’AI propone informazioni da una fotografia; controllo il risultato prima di salvarlo.</p><p class="app-availability">Progetto privato. Non disponibile per il download pubblico.</p><div class="app-actions"><a class="app-action app-action--primary" href="#youtube">Guarda il video →</a><a class="app-action" href="#podrobnosti">Funzioni e dettagli ↓</a><button class="app-action" id="openDiary">📖 Diario di sviluppo</button></div></div><figure class="app-preview"><img alt="🪙 Collezione — Numismatica &amp; Filatelia — anteprima dell’interfaccia" decoding="async" fetchpriority="high" height="1225" src="/aplikace/img/sbirka/01_dashboard.png" width="1875"/><figcaption>Anteprima dell’interfaccia. Clicca per ingrandire.</figcaption></figure></section><section><h2>Come mi aiuta</h2><div class="app-benefits"><article class="app-benefit"><h3>Catalogo fotografico</h3><p>Riunisco oggetti, dettagli e note.</p></article><article class="app-benefit"><h3>Aiuto nel riconoscimento</h3><p>Controllo le proposte dell’AI prima di inserirle nella scheda.</p></article><article class="app-benefit"><h3>Fonti dei prezzi</h3><p>Raccolgo offerte, fonti e storico dei prezzi per ogni pezzo.</p></article></div><p class="app-note">Il riconoscimento AI è un supporto. L’accuratezza non è stata verificata completamente su tutte le serie reali; i limiti sono descritti nello stato del progetto.</p></section><section class="youtube-section" id="youtube">
+<div class="section-header"><h2>Guarda: Collection — catalogo, dettagli della moneta e backup</h2><p>9:24 · Commento e sottotitoli in ceco.</p></div>
+<div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/fHyILzTIdh8?rel=0" style="width:100%;height:100%;border:0;display:block" title="Collection in video"></iframe>
+</div>
+<p><a href="https://www.youtube.com/watch?v=fHyILzTIdh8" rel="noopener" target="_blank">Visita completa ↗</a></p>
+</section><section id="podrobnosti"><h2 class="app-details-heading">Per saperne di più</h2><details class="app-disclosure"><summary>Cosa fa</summary><div class="app-disclosure__body"><section>
+<h2>Cosa fa</h2>
+<p><strong>Perché esiste:</strong> un amico di lavoro colleziona monete e francobolli per hobby e mi faceva mille domande — cos'è questo pezzo, dove lo cerco, a quanto si vende. Così gli ho costruito un'app per fare chiarezza: si fotografa il pezzo, l'app aiuta a <em>identificarlo</em> e a dargli una <em>valutazione indicativa</em>, e rimanda subito ai posti dove verificare il prezzo. Gira in locale, sembra il catalogo di una casa d'aste, nessun account, nessun dato in giro.</p>
+<p><strong>Due modalità:</strong> una <strong>demo</strong> pubblica (solo dati di esempio, nel browser) e la <strong>versione completa</strong> sul mio PC con database, foto e AI propri. La collezione reale non lascia mai il computer.</p>
+<p><strong>Riconoscimento AI da foto:</strong> fotografo una moneta o un francobollo, l'app manda la foto all'AI (Gemini) che <em>legge il testo sul pezzo</em> e precompila il modulo — categoria, paese, anno, valore nominale, stato. Poi basta controllare e salvare. Gestisce anche entrambi i lati insieme (dritto + rovescio). Se la foto è sfocata o non è una moneta, l'app non compila nulla e chiede una nuova foto (come la verifica di un documento).</p>
+<p><strong>Dove si vende:</strong> sfoglio cataloghi e negozi (Numista, Pofis, Colnect, Delcampe…) <em>direttamente nell'app</em> — ogni risultato mostra nome, prezzo e immagine, e i prezzi in valuta estera vengono convertiti in corone secondo il cambio della Banca nazionale ceca. Per ogni pezzo tengo anche uno <em>storico dei prezzi</em> nel tempo, per vedere dove va il valore. Vedi subito a quanto si vende davvero lo stesso pezzo — non a quanto qualcuno lo chiede.</p>
+<p><strong>Aiuto per principianti:</strong> una pagina dedicata spiega l'AI (Gemini) in modo semplice — come ottenere una chiave gratuita e quanto costa — oltre alle foto col telefono, ai backup e alla sicurezza. La chiave AI si inserisce direttamente nell'app e resta solo sul computer.</p>
+<p><strong>Cosa influenza il prezzo:</strong> sezione educativa — cosa alza il valore (grade più alto, errori di conio, certificazione, gomma NH nei francobolli) e cosa lo abbassa (pulizia, fori, difetti). Per non comprare e vendere alla cieca.</p>
+<p><strong>Import massivo:</strong> chi ha già una lista in Excel la carica in un colpo solo (CSV / XLSX) invece di cliccare pezzo per pezzo.</p>
+</section></div></details><details class="app-disclosure"><summary>Funzioni chiave</summary><div class="app-disclosure__body"><section>
+<h2>Funzioni chiave</h2>
+<ul style="line-height:1.7">
+<li><strong>Catalogo in stile casa d'aste</strong> — look scuro con accenti oro, dettaglio del pezzo come un "lotto" d'asta (foto grande, parametri, valutazione).</li>
+<li><strong>Riconoscimento AI da foto</strong> — Gemini legge il testo su moneta/francobollo e precompila i campi; dritto + rovescio in un passaggio; controllo qualità foto (foto scarsa = nessuna valutazione).</li>
+<li><strong>Cataloghi direttamente nell'app</strong> — sfoglia cataloghi e negozi cechi ed esteri (monete, francobolli) nella finestra dell'app: nome, prezzo, immagine, link alla fonte. Prezzi esteri convertiti in corone (cambio CNB), storico prezzi del pezzo nel tempo. Regola: "il prezzo realizzato batte il prezzo richiesto".</li>
+<li><strong>Aiuto per principianti</strong> — una pagina che spiega la chiave AI (Gemini), le foto, i backup e la sicurezza; ogni punto che si collega a internet/AI ha un pulsante ℹ con la spiegazione.</li>
+<li><strong>Cosa influenza il prezzo</strong> — fattori ↑/↓ separati per monete e francobolli + come si compone un prezzo (catalogo vs. asta vs. stima).</li>
+<li><strong>Verifica semplice (dalla 1.2.6, da allora ampliata)</strong> — controllo rapido di un francobollo: fronte + retro, controllo locale della qualità della scansione, scelta del modello Gemini con listino e stima del costo in anticipo, 14 controlli (identificazione, stato e autenticità, valutazione di mercato, analisi acquisto/vendita, ricerca sul web tramite Google Search in Gemini). Il risultato è un rapporto con prezzo indicativo, livello di sospetto sull'autenticità, tabella dei controlli usati, fonti web, token consumati e costo della verifica (USD e CZK), esportabile in PDF/DOCX. Senza chiamate a pagamento abilitate funziona gratis come simulazione. Il rapporto indica solo ciò che poggia su una fonte documentata.</li>
+<li><strong>Serie e fogli in una volta (dalla 1.3.0)</strong> — un intero foglio o foglietto viene diviso in singoli francobolli (al massimo 40 pezzi), fronti e retro vengono abbinati e prima della verifica li controllo affiancati e li correggo. Ogni francobollo ha il proprio risultato, la serie ha un proprio prezzo indipendente e i costi si sommano per l'intero lotto.</li>
+<li><strong>Prezzi documentati con link (dalla 1.2.7, ampliati nelle 1.9–1.12)</strong> — l'app cerca offerte e vendite concluse, prima di cercare i prezzi verifica serie, anno e numero di catalogo e mostra intervalli condizionati per stato, variante e unità con link alle fonti. Ciò che non si può documentare non si inventa — se manca un riscontro, l'app lo dice.</li>
+<li><strong>Odontometro (dalla 1.10.2)</strong> — misura la dentellatura direttamente dalla scansione e mostra i fori usati; con un righello scansionato fino a ±0,05. Non è una conferma esperta della variante.</li>
+<li><strong>Salvataggio nella collezione (dalla 1.5.0)</strong> — i francobolli effettivamente analizzati vengono archiviati automaticamente con foto e link alle fonti; i suggerimenti IA restano non confermati, non si creano duplicati e l'intera collezione si può spostare in un cestino reversibile.</li>
+<li><strong>Vendita privata (dalla 1.11.0)</strong> — guida alle offerte per Delcampe ed eBay.de: offerte in tedesco, foto, spese di spedizione, condizioni modificabili, gestione di vendita e spedizione e video guida offline. Le offerte si pubblicano a mano.</li>
+<li><strong>Stato del sistema e diagnostica (dalla 1.8.0)</strong> — stato dell'app e pacchetto di diagnostica locale senza foto, prompt, chiavi e dati della collezione; per ogni verifica si vedono il modello usato e la risposta del servizio. Il limite di spesa per l'IA si imposta direttamente in Chiavi &amp; API.</li>
+<li><strong>Perizie</strong> — perizia per ogni pezzo come voce immutabile con audit trail (nulla può essere sovrascritto, solo aggiunta una nuova). Perizia AI tramite Gemini con scelta del modello, confronto con i segni di falsi/autenticità dal database dei marcatori. Resta una <em>valutazione visiva preliminare</em>, non una perizia ufficiale né un certificato; autenticità solo come livello verbale di sospetto, mai in percentuale — la calibrazione dell'autenticità non è ancora stata eseguita.</li>
+<li><strong>Valutazione con prove</strong> — a ogni pezzo si allega la fonte (catalogo / asta realizzata / perizia); le offerte attive non entrano nella media.</li>
+<li><strong>Foto dei pezzi</strong> — fronte/retro, visibili nella scheda e nel dettaglio.</li>
+<li><strong>Import / export</strong> — import massivo da CSV/Excel, export CSV / Excel / PDF / ZIP.</li>
+<li><strong>In locale e al sicuro</strong> — SQLite + foto solo sul mio PC; su GitHub vanno solo codice e dati di esempio. L'app Windows avvia il backend da sola con un click.</li>
+</ul>
+</section></div></details><details class="app-disclosure"><summary>Anteprime</summary><div class="app-disclosure__body"><section>
+<h2>Anteprime</h2>
+<style>
     .ss-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr)); gap:1.1rem; margin-top:.8rem; }
     .ss-grid figure { margin:0; }
     .ss-grid img { width:100%; height:auto; border-radius:8px; border:1px solid var(--border,#0001); display:block; }
     .ss-grid figcaption { font-size:.82rem; color:var(--text-mut,#666); margin-top:.35rem; }
   </style>
-  <div class="ss-grid">
-    <figure>
-      <img src="../../aplikace/img/sbirka/01_dashboard.png" alt="Panoramica della collezione" loading="lazy">
-      <figcaption>Panoramica — quanti pezzi possiedo, dove manca la foto o la valutazione e come si muove il valore indicativo.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/02_katalog.png" alt="Catalogo con filtri" loading="lazy">
-      <figcaption>Catalogo — filtri sull'intera collezione; ogni pezzo mostra la confidenza di identificazione e un prezzo indicativo.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/03_numismatika.png" alt="Selettore Numismatica / Filatelia" loading="lazy">
-      <figcaption>Selettore moduli — la collezione si può leggere separatamente come numismatica e come filatelia.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/04_detail_lot.png" alt="Dettaglio come lotto d'asta" loading="lazy">
-      <figcaption>Dettaglio del pezzo in forma di lotto d'asta — i parametri che determinano il prezzo, tutti insieme.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/05_prohlizec.png" alt="Browser di aste e cataloghi" loading="lazy">
-      <figcaption>Browser di aste e cataloghi — si cerca nelle fonti senza che nulla entri in collezione senza conferma.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/06_zdroje_burzy.png" alt="Fonti e mercati" loading="lazy">
-      <figcaption>Elenco delle fonti — dove verificare un prezzo; il prezzo realizzato ha sempre la precedenza sull'offerta attiva.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/07_co_ovlivnuje_cenu.png" alt="Cosa influenza il prezzo" loading="lazy">
-      <figcaption>Cosa alza il prezzo e cosa lo abbassa — separatamente per monete e francobolli.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/08_expertiza.png" alt="Perizie" loading="lazy">
-      <figcaption>Perizia — valutazione visiva indicativa, esplicitamente non sostitutiva di un perito autorizzato.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/09_napoveda.png" alt="Guida" loading="lazy">
-      <figcaption>Guida scritta per chi inizia — cosa fare per primo, cosa richiede una chiave API e cosa funziona senza.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/10_overeni_start.png" alt="Verifica semplice — inizio" loading="lazy">
-      <figcaption>Verifica semplice (1.2.6) — cinque passi dal caricamento di fronte e retro al rapporto finale; in alto l'avviso esplicito che non è una perizia ufficiale.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/11_overeni_kvalita.png" alt="Controllo qualità della scansione" loading="lazy">
-      <figcaption>Controllo della qualità della scansione in locale — risoluzione, DPI, nitidezza; consigli su cosa migliorare (francobollo di esempio CC0, Smithsonian).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/12_overeni_model_kontroly.png" alt="Scelta del modello e controlli" loading="lazy">
-      <figcaption>Scelta del modello Gemini con listino Google e stima del costo in anticipo, quali master prompt vengono usati e panoramica dei 14 controlli.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/13_overeni_zprava.png" alt="Rapporto finale" loading="lazy">
-      <figcaption>Rapporto finale — identificazione, autenticità solo come livello verbale di sospetto, prezzo, stato, token e costo della verifica e tabella dei controlli usati (qui simulazione gratuita).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/14_moje_nabidky.png" alt="Le mie inserzioni — pagina di vendita" loading="lazy">
-      <figcaption>Le mie inserzioni — pagina di vendita per la vendita privata dalla mia collezione su Delcampe e eBay.de, dall'impostazione delle condizioni al registro delle inserzioni (dati demo di esempio).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/15_podminky_prodeje.png" alt="Dati e condizioni di vendita" loading="lazy">
-      <figcaption>Dati e condizioni di vendita — un modulo (dati, pagamenti, spedizione, resi) e un testo delle condizioni in tedesco separato per ogni portale; i dati personali entrano nel testo pubblico solo con il mio consenso (dati demo di esempio).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/16_navod_prodeje.png" alt="Guida all'attivazione della vendita" loading="lazy">
-      <figcaption>Guida passo passo all'attivazione della vendita su Delcampe e eBay.de — da un account esistente alla prima inserzione; le inserzioni si pubblicano manualmente sui portali (dati demo di esempio).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/17_zdravi_systemu.png" alt="Stato del sistema" loading="lazy">
-      <figcaption>Stato del sistema — controllo locale di backend, database, impostazioni AI e protezione dei file; non esegue chiamate AI a pagamento né di rete (dati demo di esempio).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../aplikace/img/sbirka/18_novinky.png" alt="Novità nell'app" loading="lazy">
-      <figcaption>Novità — la cronologia delle modifiche direttamente nell'app; tra l'altro basi di prezzo dal web con link e una pagina di vendita ampliata con modulo delle condizioni (dati demo di esempio).</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section>
-  <h2>Stato</h2>
-  <p style="margin:.6rem 0 .9rem;padding:.7rem .95rem;border-left:3px solid #9b59b6;background:#9b59b614;border-radius:6px;font-size:.93rem">🔒 <strong>L'app non è scaricabile pubblicamente.</strong> Qui non troverai l'installer, di proposito — mando il link di persona a chi do l'applicazione. Il numero di versione in questa pagina resta: si compila da solo dalla stessa fonte da cui l'app installata prende gli aggiornamenti silenziosi.</p>
-  <p>Novità della 1.13.0 beta: verifica di tutti i francobolli e delle emissioni comuni prima della ricerca dei prezzi sul web con collegamenti diretti. Impostazioni economiche con un clic, anche con esame dei difetti e della gomma. Le identità non verificate bloccano la ricerca dei prezzi. La verifica a pagamento della precisione su tutte le serie reali resta incompleta.</p>
-  <p>Novità della 1.12.4 beta: correzioni ai riferimenti delle serie più grandi, caricamento progressivo e ricerca delle serie. La verifica a pagamento di tutte le scansioni resta incompleta per credito esaurito; questa versione non dimostra la precisione del riconoscimento.</p>
-  <p>Novità della 1.12.3 beta: per le emissioni difficili da determinare (Hradčany, PČ 1919, SO 1920, Protettorato, Germania, Austria 1850 e 1867, Penny Red e altre) il rapporto indica cosa osservare — quale caratteristica decide la varietà e il prezzo, a quali falsi fare attenzione e cosa non si può stabilire da una scansione. In base alla guida pubblica di Znamky.cz, con parole nostre.</p>
-  <p>Novità della 1.12.2 beta: ricerca delle fonti ampliata, conclusioni coerenti sulla gomma e rapporti più chiari. I test a pagamento di tutte le serie non sono completati per esaurimento del credito.</p>
-  <p>Novità della 1.12.1 beta: verifica di serie, anno e numero di catalogo prima della ricerca dei prezzi; collegamenti diretti alle emissioni e alle offerte nel rapporto.</p>
-  <p>Novità della 1.12.0 beta: prezzi trovati sul web con fonti per francobolli e serie, pagina di vendita ampliata con condizioni modificabili e guide di attivazione. Tutorial offline illustrati per Delcampe ed eBay.de con voce ceca.</p>
-  <p>Novità della 1.11.1 beta: guida offline alla prima offerta su Delcampe, con voce ceca, sottotitoli e dieci passaggi illustrati.</p>
-  <p>Novità della 1.11.0 beta: guida alle offerte in tedesco per Delcampe ed eBay, foto, condizioni modificabili e gestione delle vendite. Corretta la conferma delle coppie di francobolli. Pubblicazione manuale.</p>
-  <p>Novità della 1.10.7 beta: piccole correzioni dalla revisione dell’app. La ricerca nella collezione ignora i segni diacritici, l’esportazione CSV si apre in Excel con i caratteri corretti, l’esportazione sicura per la condivisione esclude le note private, la cronologia registra solo le modifiche reali, lo stesso marcatore non viene aggiunto due volte e i testi hanno diacritici e forme plurali corrette.</p>
-  <p>Novità della 1.10.6 beta: il modello IA predefinito è ora Gemini 3.8 Flash (perizia, verifica) e 3.5 Flash-Lite (domande rapide) — funzionano anche con una nuova chiave Google, dove la serie 2.5 dà errore. La pagina Chiavi & API offre i modelli della serie 3. Corretti ordinamento del catalogo, panoramica senza valutazioni, importazione dal browser (anno e paese), esportazione sicura senza cestino, indice della guida; i risultati dimostrativi sono chiaramente marcati DEMO.</p>
-  <p>Novità della 1.10.5 beta: il pacchetto di diagnostica mostra per ogni verifica il modello IA e la risposta del servizio (ad es. HTTP 404 = modello non disponibile per questo account) e indica cosa fare. L’esportazione conferma il salvataggio e il nome del file contiene data e ora, così non si accumulano più copie “(4)”, “(5)”.</p>
-  <p>Novità della 1.10.4 beta: nella scelta del modello IA ci sono Gemini 3.8 Flash, 3.6 Flash e 3.1 Flash-Lite. Google non consente più ai nuovi account (nuova chiave API) di usare la serie 2.5 — con una chiave nuova basta scegliere un modello della serie 3. I prezzi seguono il listino Google; l’aumento annunciato dal 1° gennaio 2027 viene applicato automaticamente.</p>
-  <p>Novità della 1.10.3 beta: quando una risposta dell’IA si blocca ripetendo sempre la stessa cosa, l’app la accorcia e la ripete una volta, così il rapporto non contiene più decine di pagine inutili. I dati di prezzo contraddittori o che rimandano solo a risultati di ricerca non entrano nel confronto; in un foglio ogni prezzo indica a quale francobollo appartiene.</p>
-  <p>Novità della 1.10.2 beta: odontometro — l’app misura la dentellatura direttamente dalla scansione e mostra i fori usati; con un righello scansionato fino a ±0,05. Il rapporto ha link cliccabili alle fonti e immagini dei francobolli con la descrizione dello stato; i prompt hanno una spiegazione ⓘ.</p>
-  <p>Novità della 1.10.1 beta: verifica più affidabile di una serie confermata — ogni francobollo viene identificato separatamente, un errore non ferma gli altri e, se nessuno viene completato, l’app indica una causa precisa.</p>
-  <p>Novità della 1.10.0 beta: più riscontri di prezzo da offerte e aste concluse, stato dei francobolli, descrizioni e link diretti. Francobolli singoli, serie e foglietti restano distinti. Nuove fonti Danner, Schultze e Philea, ricerca Burda ampliata ed eBay Browse con accesso API disponibile. I prezzi richiesti sono distinti dai risultati di vendita.</p>
-  <p>Novità della 1.9.1 beta: quando l’app raggiunge il proprio limite di spesa per l’IA lo dice chiaramente — prima sembrava un errore di connessione, anche se non era stato inviato né addebitato nulla. Il limite in USD si imposta, modifica o rimuove direttamente in Chiavi e API.</p>
-  <p>Novità della 1.9.0 beta: intervalli condizionati di acquisto e vendita per stato, variante e unità. Offerte separate dalle vendite concluse, ipotesi e fonti nell’app e nei PDF/DOCX. Le citazioni IA non equivalgono alla verifica indipendente delle fonti.</p>
-  <p>Novità della 1.8.3 beta: stima del costo dell’intero lotto, avanzamento del caricamento e dell’analisi IA con tempo trascorso, risultati salvati più rapidi ed esportazioni PDF/DOCX più leggibili. Il riepilogo indica prezzi non documentati e valutazione disattivata.</p>
-  <p>Novità della 1.8.2 beta: corretta la separazione delle serie su sfondo scuro con margini bianchi. Occorre confermare i ritagli. Un’identificazione non valida blocca le analisi successive e mostra una causa comune nel rapporto e nel PDF.</p>
-  <p>Novità della 1.8.1 beta: corretto il download dei pacchetti ZIP diagnostici nell’app desktop. Si apre la finestra Salva con nome. Contenuto e protezione dei dati restano invariati.</p>
-  <p>Novità della 1.8.0 beta: stato del sistema, diagnostica ed esportazione ZIP locale senza dati sensibili. Le scansioni grandi vengono trasferite a blocchi senza modificare i pixel. Correzione non ancora validata con IA dal vivo; non è una perizia ufficiale.</p>
-  <p>Novità della 1.7.4 beta: trasferimento dedicato delle scansioni grandi all’IA senza ridurre la risoluzione. Gli errori di trasferimento sono distinti dall’identificazione incompleta. Questa correzione non è stata validata con un test IA dal vivo; non è una perizia ufficiale.</p>
-  <p>Novità della 1.7.3 beta: i francobolli chiari su sfondo bianco mantengono il contorno completo del recto e del verso. Parti del disegno e linguelle bianche non diventano altri francobolli. Le anteprime automatiche obsolete vengono aggiornate, conservando modifiche manuali e coppie confermate. I bordi ambigui o tagliati restano limiti espliciti; il ritaglio non prova l’autenticità.</p>
-  <p>Novità della 1.7.2 beta: resoconti leggibili dei francobolli e della serie senza blocchi tecnici. Un modello AI non disponibile interrompe la verifica indicando la causa, senza attribuirla alla scansione. Supporto Gemini 3.5 Flash-Lite e pulsante per preparare una nuova verifica conservando scansioni e abbinamenti. Prezzi e stato non vengono inventati.</p>
-  <p>Novità della 1.7.1 beta: scegliendo una nuova scansione vengono subito rimossi risultato, abbinamento, vecchio verso e dati del francobollo precedente. Un errore di caricamento non ripristina il vecchio resoconto. Controlli selezionati, cronologia e collezione restano conservati. Gli input sono bloccati durante la verifica.</p>
-  <p>Novità della 1.7.0 beta: prezzi dei singoli francobolli e stime indipendenti di serie/foglietti basate su vendite documentate del lotto completo. La somma dei singoli e il valore della serie non vengono sommati. Controllo delle istruzioni ripetute e suggerimento di un modello AI disponibile prima della verifica. Avvisi 600 DPI corretti e resoconti sintetici e dettagliati in PDF/DOCX. Le citazioni dei certificati restano non confermate; i registri APS/APEX e PF non sono attualmente accessibili automaticamente. L’app non è una perizia ufficiale.</p>
-  <p>Novità della 1.6.1 beta: nel pannello dei prompt puoi attivare o disattivare identificazione, valutazione di stato e autenticità, stima di mercato e analisi di acquisto/vendita. Le caselle condividono la scelta con i controlli e il costo stimato; i prompt disattivati non vengono eseguiti e le scelte restano nelle verifiche salvate. La valutazione dell’intera collezione e il controllo dei lotti restano non disponibili qui, con spiegazioni. L’app non è una perizia ufficiale.</p>
-  <p>Novità della 1.6.0 beta: prima della verifica di più francobolli, confronta affiancati i fronti L1/L2 e i retro R1/R2, modifica manualmente gli abbinamenti e correggi i ritagli. Gli abbinamenti confermati restano nelle analisi individuali, nella cronologia, nelle esportazioni e nella collezione. Le proposte automatiche confrontano i dettagli dei bordi con rotazioni e riflessioni; i retro incerti restano non abbinati. La precisione automatica non è calibrata e la conferma non certifica identità, gomma o autenticità. L’app non è una perizia ufficiale.</p>
-  <p>Novità della 1.5.0 beta: i francobolli analizzati singolarmente vengono archiviati automaticamente nella collezione con foto, risultati e collegamenti alle fonti web trovate. Le proposte dell’IA restano non confermate. I salvataggi ripetuti non creano duplicati e gli elementi eliminati non vengono ripristinati automaticamente. L’intera collezione può essere spostata nel cestino dopo conferma. Simulazioni e ritagli incerti sono esclusi; il salvataggio non certifica identità o autenticità.</p>
-  <p>Versione attuale <strong data-col-ver="{v} {s}">1.13.0 BETA</strong> (ottobre 2026). La panoramica delle app è nella pagina <a href="index.html">Le mie app</a>. Demo pubblica + versione completa locale (web e Windows .exe). Privata, per uso personale — nessun hosting pubblico di dati reali, nessun account, nessun pagamento. <em>Nota: l'app cataloga e dà valutazioni indicative — non è una perizia professionale. Verifica sempre i prezzi reali su un mercato.</em> Lo storico dettagliato è nel <button class="diary-link" id="openDiary2">diario di sviluppo</button>.</p>
-</section>
-  <section class="youtube-section" id="youtube">
-    <div class="section-header"><h2>Guarda: Collection — catalogo, dettagli della moneta e backup</h2><p>9:24 · Commento e sottotitoli in ceco.</p></div>
-    <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
-      <iframe src="https://www.youtube-nocookie.com/embed/fHyILzTIdh8?rel=0" title="Collection in video" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-    <p><a href="https://www.youtube.com/watch?v=fHyILzTIdh8" target="_blank" rel="noopener">Visita completa ↗</a></p>
-  </section>
-</main>
+<div class="ss-grid">
+<figure>
+<img alt="Panoramica della collezione" loading="lazy" src="/aplikace/img/sbirka/01_dashboard.png"/>
+<figcaption>Panoramica — quanti pezzi possiedo, dove manca la foto o la valutazione e come si muove il valore indicativo.</figcaption>
+</figure>
+<figure>
+<img alt="Catalogo con filtri" loading="lazy" src="/aplikace/img/sbirka/02_katalog.png"/>
+<figcaption>Catalogo — filtri sull'intera collezione; ogni pezzo mostra la confidenza di identificazione e un prezzo indicativo.</figcaption>
+</figure>
+<figure>
+<img alt="Selettore Numismatica / Filatelia" loading="lazy" src="/aplikace/img/sbirka/03_numismatika.png"/>
+<figcaption>Selettore moduli — la collezione si può leggere separatamente come numismatica e come filatelia.</figcaption>
+</figure>
+<figure>
+<img alt="Dettaglio come lotto d'asta" loading="lazy" src="/aplikace/img/sbirka/04_detail_lot.png"/>
+<figcaption>Dettaglio del pezzo in forma di lotto d'asta — i parametri che determinano il prezzo, tutti insieme.</figcaption>
+</figure>
+<figure>
+<img alt="Browser di aste e cataloghi" loading="lazy" src="/aplikace/img/sbirka/05_prohlizec.png"/>
+<figcaption>Browser di aste e cataloghi — si cerca nelle fonti senza che nulla entri in collezione senza conferma.</figcaption>
+</figure>
+<figure>
+<img alt="Fonti e mercati" loading="lazy" src="/aplikace/img/sbirka/06_zdroje_burzy.png"/>
+<figcaption>Elenco delle fonti — dove verificare un prezzo; il prezzo realizzato ha sempre la precedenza sull'offerta attiva.</figcaption>
+</figure>
+<figure>
+<img alt="Cosa influenza il prezzo" loading="lazy" src="/aplikace/img/sbirka/07_co_ovlivnuje_cenu.png"/>
+<figcaption>Cosa alza il prezzo e cosa lo abbassa — separatamente per monete e francobolli.</figcaption>
+</figure>
+<figure>
+<img alt="Perizie" loading="lazy" src="/aplikace/img/sbirka/08_expertiza.png"/>
+<figcaption>Perizia — valutazione visiva indicativa, esplicitamente non sostitutiva di un perito autorizzato.</figcaption>
+</figure>
+<figure>
+<img alt="Guida" loading="lazy" src="/aplikace/img/sbirka/09_napoveda.png"/>
+<figcaption>Guida scritta per chi inizia — cosa fare per primo, cosa richiede una chiave API e cosa funziona senza.</figcaption>
+</figure>
+<figure>
+<img alt="Verifica semplice — inizio" loading="lazy" src="/aplikace/img/sbirka/10_overeni_start.png"/>
+<figcaption>Verifica semplice (1.2.6) — cinque passi dal caricamento di fronte e retro al rapporto finale; in alto l'avviso esplicito che non è una perizia ufficiale.</figcaption>
+</figure>
+<figure>
+<img alt="Controllo qualità della scansione" loading="lazy" src="/aplikace/img/sbirka/11_overeni_kvalita.png"/>
+<figcaption>Controllo della qualità della scansione in locale — risoluzione, DPI, nitidezza; consigli su cosa migliorare (francobollo di esempio CC0, Smithsonian).</figcaption>
+</figure>
+<figure>
+<img alt="Scelta del modello e controlli" loading="lazy" src="/aplikace/img/sbirka/12_overeni_model_kontroly.png"/>
+<figcaption>Scelta del modello Gemini con listino Google e stima del costo in anticipo, quali master prompt vengono usati e panoramica dei 14 controlli.</figcaption>
+</figure>
+<figure>
+<img alt="Rapporto finale" loading="lazy" src="/aplikace/img/sbirka/13_overeni_zprava.png"/>
+<figcaption>Rapporto finale — identificazione, autenticità solo come livello verbale di sospetto, prezzo, stato, token e costo della verifica e tabella dei controlli usati (qui simulazione gratuita).</figcaption>
+</figure>
+<figure>
+<img alt="Le mie inserzioni — pagina di vendita" loading="lazy" src="/aplikace/img/sbirka/14_moje_nabidky.png"/>
+<figcaption>Le mie inserzioni — pagina di vendita per la vendita privata dalla mia collezione su Delcampe e eBay.de, dall'impostazione delle condizioni al registro delle inserzioni (dati demo di esempio).</figcaption>
+</figure>
+<figure>
+<img alt="Dati e condizioni di vendita" loading="lazy" src="/aplikace/img/sbirka/15_podminky_prodeje.png"/>
+<figcaption>Dati e condizioni di vendita — un modulo (dati, pagamenti, spedizione, resi) e un testo delle condizioni in tedesco separato per ogni portale; i dati personali entrano nel testo pubblico solo con il mio consenso (dati demo di esempio).</figcaption>
+</figure>
+<figure>
+<img alt="Guida all'attivazione della vendita" loading="lazy" src="/aplikace/img/sbirka/16_navod_prodeje.png"/>
+<figcaption>Guida passo passo all'attivazione della vendita su Delcampe e eBay.de — da un account esistente alla prima inserzione; le inserzioni si pubblicano manualmente sui portali (dati demo di esempio).</figcaption>
+</figure>
+<figure>
+<img alt="Stato del sistema" loading="lazy" src="/aplikace/img/sbirka/17_zdravi_systemu.png"/>
+<figcaption>Stato del sistema — controllo locale di backend, database, impostazioni AI e protezione dei file; non esegue chiamate AI a pagamento né di rete (dati demo di esempio).</figcaption>
+</figure>
+<figure>
+<img alt="Novità nell'app" loading="lazy" src="/aplikace/img/sbirka/18_novinky.png"/>
+<figcaption>Novità — la cronologia delle modifiche direttamente nell'app; tra l'altro basi di prezzo dal web con link e una pagina di vendita ampliata con modulo delle condizioni (dati demo di esempio).</figcaption>
+</figure>
+</div>
+</section></div></details><details class="app-disclosure"><summary>Stato</summary><div class="app-disclosure__body"><section>
+<h2>Stato</h2>
+<p style="margin:.6rem 0 .9rem;padding:.7rem .95rem;border-left:3px solid #9b59b6;background:#9b59b614;border-radius:6px;font-size:.93rem">🔒 <strong>L'app non è scaricabile pubblicamente.</strong> Qui non troverai l'installer, di proposito — mando il link di persona a chi do l'applicazione. Il numero di versione in questa pagina resta: si compila da solo dalla stessa fonte da cui l'app installata prende gli aggiornamenti silenziosi.</p>
+<p>Novità della 1.13.0 beta: verifica di tutti i francobolli e delle emissioni comuni prima della ricerca dei prezzi sul web con collegamenti diretti. Impostazioni economiche con un clic, anche con esame dei difetti e della gomma. Le identità non verificate bloccano la ricerca dei prezzi. La verifica a pagamento della precisione su tutte le serie reali resta incompleta.</p>
+<p>Novità della 1.12.4 beta: correzioni ai riferimenti delle serie più grandi, caricamento progressivo e ricerca delle serie. La verifica a pagamento di tutte le scansioni resta incompleta per credito esaurito; questa versione non dimostra la precisione del riconoscimento.</p>
+<p>Novità della 1.12.3 beta: per le emissioni difficili da determinare (Hradčany, PČ 1919, SO 1920, Protettorato, Germania, Austria 1850 e 1867, Penny Red e altre) il rapporto indica cosa osservare — quale caratteristica decide la varietà e il prezzo, a quali falsi fare attenzione e cosa non si può stabilire da una scansione. In base alla guida pubblica di Znamky.cz, con parole nostre.</p>
+<p>Novità della 1.12.2 beta: ricerca delle fonti ampliata, conclusioni coerenti sulla gomma e rapporti più chiari. I test a pagamento di tutte le serie non sono completati per esaurimento del credito.</p>
+<p>Novità della 1.12.1 beta: verifica di serie, anno e numero di catalogo prima della ricerca dei prezzi; collegamenti diretti alle emissioni e alle offerte nel rapporto.</p>
+<p>Novità della 1.12.0 beta: prezzi trovati sul web con fonti per francobolli e serie, pagina di vendita ampliata con condizioni modificabili e guide di attivazione. Tutorial offline illustrati per Delcampe ed eBay.de con voce ceca.</p>
+<p>Novità della 1.11.1 beta: guida offline alla prima offerta su Delcampe, con voce ceca, sottotitoli e dieci passaggi illustrati.</p>
+<p>Novità della 1.11.0 beta: guida alle offerte in tedesco per Delcampe ed eBay, foto, condizioni modificabili e gestione delle vendite. Corretta la conferma delle coppie di francobolli. Pubblicazione manuale.</p>
+<p>Novità della 1.10.7 beta: piccole correzioni dalla revisione dell’app. La ricerca nella collezione ignora i segni diacritici, l’esportazione CSV si apre in Excel con i caratteri corretti, l’esportazione sicura per la condivisione esclude le note private, la cronologia registra solo le modifiche reali, lo stesso marcatore non viene aggiunto due volte e i testi hanno diacritici e forme plurali corrette.</p>
+<p>Novità della 1.10.6 beta: il modello IA predefinito è ora Gemini 3.8 Flash (perizia, verifica) e 3.5 Flash-Lite (domande rapide) — funzionano anche con una nuova chiave Google, dove la serie 2.5 dà errore. La pagina Chiavi &amp; API offre i modelli della serie 3. Corretti ordinamento del catalogo, panoramica senza valutazioni, importazione dal browser (anno e paese), esportazione sicura senza cestino, indice della guida; i risultati dimostrativi sono chiaramente marcati DEMO.</p>
+<p>Novità della 1.10.5 beta: il pacchetto di diagnostica mostra per ogni verifica il modello IA e la risposta del servizio (ad es. HTTP 404 = modello non disponibile per questo account) e indica cosa fare. L’esportazione conferma il salvataggio e il nome del file contiene data e ora, così non si accumulano più copie “(4)”, “(5)”.</p>
+<p>Novità della 1.10.4 beta: nella scelta del modello IA ci sono Gemini 3.8 Flash, 3.6 Flash e 3.1 Flash-Lite. Google non consente più ai nuovi account (nuova chiave API) di usare la serie 2.5 — con una chiave nuova basta scegliere un modello della serie 3. I prezzi seguono il listino Google; l’aumento annunciato dal 1° gennaio 2027 viene applicato automaticamente.</p>
+<p>Novità della 1.10.3 beta: quando una risposta dell’IA si blocca ripetendo sempre la stessa cosa, l’app la accorcia e la ripete una volta, così il rapporto non contiene più decine di pagine inutili. I dati di prezzo contraddittori o che rimandano solo a risultati di ricerca non entrano nel confronto; in un foglio ogni prezzo indica a quale francobollo appartiene.</p>
+<p>Novità della 1.10.2 beta: odontometro — l’app misura la dentellatura direttamente dalla scansione e mostra i fori usati; con un righello scansionato fino a ±0,05. Il rapporto ha link cliccabili alle fonti e immagini dei francobolli con la descrizione dello stato; i prompt hanno una spiegazione ⓘ.</p>
+<p>Novità della 1.10.1 beta: verifica più affidabile di una serie confermata — ogni francobollo viene identificato separatamente, un errore non ferma gli altri e, se nessuno viene completato, l’app indica una causa precisa.</p>
+<p>Novità della 1.10.0 beta: più riscontri di prezzo da offerte e aste concluse, stato dei francobolli, descrizioni e link diretti. Francobolli singoli, serie e foglietti restano distinti. Nuove fonti Danner, Schultze e Philea, ricerca Burda ampliata ed eBay Browse con accesso API disponibile. I prezzi richiesti sono distinti dai risultati di vendita.</p>
+<p>Novità della 1.9.1 beta: quando l’app raggiunge il proprio limite di spesa per l’IA lo dice chiaramente — prima sembrava un errore di connessione, anche se non era stato inviato né addebitato nulla. Il limite in USD si imposta, modifica o rimuove direttamente in Chiavi e API.</p>
+<p>Novità della 1.9.0 beta: intervalli condizionati di acquisto e vendita per stato, variante e unità. Offerte separate dalle vendite concluse, ipotesi e fonti nell’app e nei PDF/DOCX. Le citazioni IA non equivalgono alla verifica indipendente delle fonti.</p>
+<p>Novità della 1.8.3 beta: stima del costo dell’intero lotto, avanzamento del caricamento e dell’analisi IA con tempo trascorso, risultati salvati più rapidi ed esportazioni PDF/DOCX più leggibili. Il riepilogo indica prezzi non documentati e valutazione disattivata.</p>
+<p>Novità della 1.8.2 beta: corretta la separazione delle serie su sfondo scuro con margini bianchi. Occorre confermare i ritagli. Un’identificazione non valida blocca le analisi successive e mostra una causa comune nel rapporto e nel PDF.</p>
+<p>Novità della 1.8.1 beta: corretto il download dei pacchetti ZIP diagnostici nell’app desktop. Si apre la finestra Salva con nome. Contenuto e protezione dei dati restano invariati.</p>
+<p>Novità della 1.8.0 beta: stato del sistema, diagnostica ed esportazione ZIP locale senza dati sensibili. Le scansioni grandi vengono trasferite a blocchi senza modificare i pixel. Correzione non ancora validata con IA dal vivo; non è una perizia ufficiale.</p>
+<p>Novità della 1.7.4 beta: trasferimento dedicato delle scansioni grandi all’IA senza ridurre la risoluzione. Gli errori di trasferimento sono distinti dall’identificazione incompleta. Questa correzione non è stata validata con un test IA dal vivo; non è una perizia ufficiale.</p>
+<p>Novità della 1.7.3 beta: i francobolli chiari su sfondo bianco mantengono il contorno completo del recto e del verso. Parti del disegno e linguelle bianche non diventano altri francobolli. Le anteprime automatiche obsolete vengono aggiornate, conservando modifiche manuali e coppie confermate. I bordi ambigui o tagliati restano limiti espliciti; il ritaglio non prova l’autenticità.</p>
+<p>Novità della 1.7.2 beta: resoconti leggibili dei francobolli e della serie senza blocchi tecnici. Un modello AI non disponibile interrompe la verifica indicando la causa, senza attribuirla alla scansione. Supporto Gemini 3.5 Flash-Lite e pulsante per preparare una nuova verifica conservando scansioni e abbinamenti. Prezzi e stato non vengono inventati.</p>
+<p>Novità della 1.7.1 beta: scegliendo una nuova scansione vengono subito rimossi risultato, abbinamento, vecchio verso e dati del francobollo precedente. Un errore di caricamento non ripristina il vecchio resoconto. Controlli selezionati, cronologia e collezione restano conservati. Gli input sono bloccati durante la verifica.</p>
+<p>Novità della 1.7.0 beta: prezzi dei singoli francobolli e stime indipendenti di serie/foglietti basate su vendite documentate del lotto completo. La somma dei singoli e il valore della serie non vengono sommati. Controllo delle istruzioni ripetute e suggerimento di un modello AI disponibile prima della verifica. Avvisi 600 DPI corretti e resoconti sintetici e dettagliati in PDF/DOCX. Le citazioni dei certificati restano non confermate; i registri APS/APEX e PF non sono attualmente accessibili automaticamente. L’app non è una perizia ufficiale.</p>
+<p>Novità della 1.6.1 beta: nel pannello dei prompt puoi attivare o disattivare identificazione, valutazione di stato e autenticità, stima di mercato e analisi di acquisto/vendita. Le caselle condividono la scelta con i controlli e il costo stimato; i prompt disattivati non vengono eseguiti e le scelte restano nelle verifiche salvate. La valutazione dell’intera collezione e il controllo dei lotti restano non disponibili qui, con spiegazioni. L’app non è una perizia ufficiale.</p>
+<p>Novità della 1.6.0 beta: prima della verifica di più francobolli, confronta affiancati i fronti L1/L2 e i retro R1/R2, modifica manualmente gli abbinamenti e correggi i ritagli. Gli abbinamenti confermati restano nelle analisi individuali, nella cronologia, nelle esportazioni e nella collezione. Le proposte automatiche confrontano i dettagli dei bordi con rotazioni e riflessioni; i retro incerti restano non abbinati. La precisione automatica non è calibrata e la conferma non certifica identità, gomma o autenticità. L’app non è una perizia ufficiale.</p>
+<p>Novità della 1.5.0 beta: i francobolli analizzati singolarmente vengono archiviati automaticamente nella collezione con foto, risultati e collegamenti alle fonti web trovate. Le proposte dell’IA restano non confermate. I salvataggi ripetuti non creano duplicati e gli elementi eliminati non vengono ripristinati automaticamente. L’intera collezione può essere spostata nel cestino dopo conferma. Simulazioni e ritagli incerti sono esclusi; il salvataggio non certifica identità o autenticità.</p>
+<p>Versione attuale <strong data-col-ver="{v} {s}">1.13.0 BETA</strong> (ottobre 2026). La panoramica delle app è nella pagina <a href="index.html">Le mie app</a>. Demo pubblica + versione completa locale (web e Windows .exe). Privata, per uso personale — nessun hosting pubblico di dati reali, nessun account, nessun pagamento. <em>Nota: l'app cataloga e dà valutazioni indicative — non è una perizia professionale. Verifica sempre i prezzi reali su un mercato.</em> Lo storico dettagliato è nel <button class="diary-link" id="openDiary2">diario di sviluppo</button>.</p>
+</section></div></details></section></main>
 
 <!-- ═══ DIARIO DI SVILUPPO — popup ═══ -->
 <div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Diario di sviluppo" aria-hidden="true">
@@ -308,31 +283,9 @@
 <script src="../../assets/js/main.js?v=20261030-norsko"></script>
 
 <!-- Lightbox -->
-<style>
-#__lb { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.93); cursor:zoom-out; align-items:center; justify-content:center; padding:2vh }
-#__lb.open { display:flex }
-#__lb img { max-width:100%; max-height:96vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,0.6); border-radius:8px }
-#__lb .__lbhint { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font:13px/1 system-ui,sans-serif }
-main img { cursor:zoom-in; transition:transform .15s ease }
-main img:hover { transform:scale(1.005) }
-</style>
-<div id="__lb" role="dialog" aria-modal="true" aria-label="Immagine ingrandita">
-  <img id="__lbimg" alt="">
-  <span class="__lbhint">Clicca o premi ESC per chiudere</span>
-</div>
-<script>
-(function(){
-  var lb = document.getElementById('__lb');
-  var lbimg = document.getElementById('__lbimg');
-  function open(src, alt){ lbimg.src = src; lbimg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close(){ lb.classList.remove('open'); lbimg.src = ''; document.body.style.overflow = ''; }
-  lb.addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-  document.querySelectorAll('main img').forEach(function(img){
-    img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
-  });
-})();
-</script>
+
+
+
 <script>/* Verze z latest.json (nikdy nedrift) — natvrdo psane cislo v HTML zustava jen jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var o=d&&d["collection"];if(!o||!o.version)return;var v=o.version;var s=({final:"FINALE",beta:"BETA",work:"LAVORO"})[o.stage]||(o.stage||"").toUpperCase();document.querySelectorAll("[data-col-ver]").forEach(function(el){el.textContent=el.getAttribute("data-col-ver").replace("{v}",v).replace("{s}",s);});/* Odkaz ke stazeni se zamerne nedosazuje - aplikace se nedistribuuje pres web (predava se osobne). */}).catch(function(){});})();</script>
 </body>
 </html>

@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="../../assets/css/style.css?v=20261030-header">
 
   <link rel="icon" href="/favicon.ico">
-  <meta name="description" content="App for bus drivers — shift and roster records, payroll documents and payslip checking. Windows and Mac beta.">
+  <meta content="Shifts, rosters and payslip checking in one place. I record the work I have done and compare the monthly figures with my payslip." name="description"/>
   <link rel="canonical" href="https://cestovatel69.cz/en/aplikace/budline.html">
   <meta property="og:title" content="BudLine Panel — My apps — Luděk">
-  <meta property="og:description" content="App for bus drivers — shift and roster records, payroll documents and payslip checking. Windows and Mac beta.">
+  <meta content="Shifts, rosters and payslip checking in one place. I record the work I have done and compare the monthly figures with my payslip." property="og:description"/>
   <meta property="og:image" content="https://cestovatel69.cz/aplikace/img/budline/01_prehled.png">
   <meta property="og:url" content="https://cestovatel69.cz/en/aplikace/budline.html">
   <meta property="og:type" content="website">
@@ -19,8 +19,9 @@
 <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/budline.html">
 <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/budline.html">
 <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/budline.html">
+<link rel="stylesheet" href="../../assets/css/app-showcase.css?v=20261030-all-apps">
 </head>
-<body class="theme-home">
+<body class="theme-home app-showcase app-detail">
 <header class="site-header">
 <div class="site-header__inner">
 <a class="brand" href="/en/">
@@ -33,133 +34,98 @@
 </header>
 <aside aria-label="Language availability" class="language-note">CS = content in Czech. Some older descriptions remain in Czech.</aside>
 
-<main id="main">
-<section class="hero" style="border-left:4px solid #2d6ad5;padding-left:1.2rem">
-  <span class="hero-accent" style="color:var(--accent-text)">BudLine Panel</span>
-  <h1><span style="margin-right:.4rem">🚍</span>BudLine Panel</h1>
-  <p class="hero-sub">An app for bus drivers that keeps track of shifts, rosters and pay. Instead of paper notes and mental arithmetic: I log my shifts and the app calculates what should arrive on the payslip — and at the end of the month I check whether it matches. Everything runs locally on the computer, no cloud, no accounts.</p>
-  <p style="margin-top:.6rem"><span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="blue">Python</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="blue">SQLite</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="blue">Windows</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #2d6ad540;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem" data-badge-tone="blue">macOS</span> <span class="pill" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #e8731a66;padding:.2rem .6rem;border-radius:6px;font-size:.78rem" data-bl-ver="v{v} BETA" data-badge-tone="orange">v1.2.114 BETA</span></p>
-  <p style="margin-top:.8rem"><a href="index.html">← Back to My apps</a></p>
-</section>
-
-  <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
-    <div class="container">
-      <h2 id="video-heading">Watch: BudLine Panel — shifts, rotations and a driver’s overview</h2>
-      <p>9:08 · Czech narration and captions.</p>
-      <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
-        <iframe src="https://www.youtube-nocookie.com/embed/XAASanqGbjU?rel=0" title="BudLine Panel — shifts, rotations and a driver’s overview" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <p><a href="https://www.youtube.com/watch?v=XAASanqGbjU" target="_blank" rel="noopener">YouTube ↗</a> </p>
-    </div>
-  </section>
-
-<section>
-  <h2>What it does</h2>
-  <p><strong>Why it exists:</strong> a bus driver's shifts are scattered across rosters, with weekend and holiday bonuses, and at the end of the month there is a payslip that is hard to verify. BudLine is a simple panel for that: I log my shifts (or read them from the driver card), the app adds them up according to the rules and shows what the pay should be. Two of us use it — me and a colleague from work.</p>
-  <p><strong>Shift and roster records:</strong> each shift has a date, times and a type; the app validates the entry (HH:MM time format, no negative numbers) and builds a monthly overview.</p>
-  <p><strong>Payroll documents:</strong> from the logged shifts the app calculates the pay basis according to configured rules (hours, bonuses). At the end of the month you just compare it with the payslip — if something is off, you see exactly where.</p>
-  <p><strong>Driver card reading:</strong> since version 1.2.13 the app can read data directly from the driver's chip card via a reader — less manual typing.</p>
-  <p><strong>Everything local:</strong> data stays on the computer (SQLite). Updates install silently in the background; an upgrade never overwrites user data or settings.</p>
-</section>
-
-<section>
-  <h2>Key features</h2>
-  <ul style="line-height:1.7">
-    <li><strong>Monthly shift overview</strong> — logged shifts roll up into an overview with attendance totals.</li>
-    <li><strong>Payroll calculation</strong> — by rules (hours, bonuses); end-of-month comparison with the payslip.</li>
-    <li><strong>Month close &amp; fill from payslip</strong> — the home page shows an unclosed month; on close, one button fills items that aren't on the standard roster (fuel and regular bonuses, laundry, CNG) straight from the uploaded payslip.</li>
-    <li><strong>In-app roster editor</strong> — create a roster in a table or edit an existing one, batch import (HTML/XML/ZIP), stop autocomplete and a vehicle field (V-code, e.g. "3-axle bus").</li>
-    <li><strong>Compliance assessment</strong> — for a single duty roster and for the whole month: does the planned shift meet AETR and Czech Gov. Reg. 589/2006? Day-by-day list of breaches, full and short version, print to PDF.</li>
-    <li><strong>Plan vs reality from the driver card</strong> — next to the planned roster you see what the card actually recorded (driving, work, rest) and where it differs; rest periods are evaluated continuously across midnight and card times are converted from UTC to local time.</li>
-    <li><strong>Overall monthly assessment</strong> — payslip, driven rosters and the driver card in one view: how much was really driven, how it matches what was paid, and a summary of all breaches.</li>
-    <li><strong>Driving-time checks (AETR)</strong> — shifts that may breach road-transport rules are flagged for review; pay is never changed.</li>
-    <li><strong>Bonuses and benefits on the check payslip</strong> — bonuses from the uploaded payslip (fuel, takings, regular), pension contributions, phone and laundry; the check gross pay now matches to the last koruna.</li>
-    <li><strong>Recalculating closed months after a roster fix</strong> — the app finds the closed months a roster change affects and offers to recalculate them. The roster is never rewritten backwards: every day is calculated with the roster version that was valid on that date.</li>
-    <li><strong>Month picker and a background-work indicator</strong> — switch months in the pay overview with a dropdown or arrows; when the app is calculating in the background you can see it in the bottom right.</li>
-    <li><strong>Yearly public-holiday overview</strong> — which ones were driven and what they paid extra, and which fell on a roster rest day where no entitlement arises.</li>
-    <li><strong>Driver card import</strong> — chip card data via a reader (since v1.2.13).</li>
-    <li><strong>MPV Live / Operations</strong> — real-time operation of Semily rosters: currently running trips, trip detail (delay, occupancy), a vehicle-position map and live delays (since v1.2.14, read-only).</li>
-    <li><strong>Entry validation</strong> — time and value checks so a typo never reaches the payroll.</li>
-    <li><strong>Silent auto-update</strong> — new versions install themselves; config and data are kept.</li>
-    <li><strong>No cloud</strong> — no account, no server, data only on the computer.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>How it works in practice</h2>
-  <p>A bus driver gets a payslip every month with a single number on it. Verifying that number means going through the rosters, adding up driving hours, waiting time, night and weekend bonuses and meal allowances — by the collective agreement, not by feel. BudLine Panel does exactly that: it keeps a record of what was actually driven, calculates what <em>should</em> arrive, and puts it next to what really did.</p>
-
-  <h3 style="margin-top:1.2rem">1. Logging a day</h3>
-  <p>A day comes from two sources. The <strong>roster</strong> says what was supposed to be driven — trips, times, kilometres, breaks. The <strong>DZVA</strong> (the daily vehicle operation log) is the dispatcher's paper: document number, bus, tachograph and odometer readings. The app combines both and works out the rest, so you only enter what differs from the plan.</p>
-  <ul>
-    <li><strong>Swapping the bus mid-day</strong> — just say which route you switched at. Times and kilometres for both vehicles are derived from the roster, and when the counter readings are filled in, actual figures win over the plan.</li>
-    <li><strong>Two shifts in one day</strong> — if the dispatcher issues a new DZVA for the afternoon, the day splits into two shifts. Pay is apportioned by driving time; the meal allowance stays whole, because the whole day was spent at work.</li>
-    <li><strong>Extra or dropped trips</strong> — the difference in driving time, time at work and kilometres is calculated; duration and distance come from the timetable, nothing is guessed.</li>
-  </ul>
-
-  <h3 style="margin-top:1.2rem">2. The calculation</h3>
-  <p>On top of the records runs the payroll calculation per the collective agreement: base rate, performance component, waiting time, difficult conditions, night, weekend and holiday bonuses, and the meal allowance by shift length. The result is visible day by day and for the whole month.</p>
-  <ul>
-    <li><strong>Monthly pay overview</strong> — a day-by-day breakdown: hours worked, how much of that was driving, which bonuses, how many koruna. Months are switched with a picker at the top.</li>
-    <li><strong>Reports</strong> — my own payslip and a <strong>shift sheet</strong> in the same shape as the employer's paper, so they can be compared line by line.</li>
-    <li><strong>Payroll check</strong> — item by item against the uploaded payslip, including bonuses and benefits; anything that does not match shows up straight away.</li>
-    <li><strong>Roster check</strong> — an indicative estimate of what a given roster will bring, before it is driven.</li>
-  </ul>
-
-  <h3 style="margin-top:1.2rem">3. Checks and honest numbers</h3>
-  <p>The app is not supposed to invent figures. When it cannot be sure, it says so and would rather show nothing than show something wrong.</p>
-  <ul>
-    <li><strong>An implausible reading is not used</strong> — if an odometer reading works out to 50,000 km in a shift, or far beyond the plan, the app treats it as a typo and stays with the plan. It does not pass a typo off as a detour.</li>
-    <li><strong>An empty field says why</strong> — whether the value is missing from the DZVA, or only one of the two readings is filled in. A reversed counter (end lower than start) is marked red.</li>
-    <li><strong>The payroll truth stays with the employer's payslip</strong> — the app is a checking aid, not a replacement for the payroll office, and it says so on its own outputs.</li>
-    <li><strong>Month close</strong> — once a month is closed the figures are locked into a snapshot so they cannot drift. If a roster later turns out to have been different from a certain date, the app offers a recalculation and records why.</li>
-  </ul>
-
-  <h3 style="margin-top:1.2rem">4. Data stays at home</h3>
-  <ul>
-    <li>Runs locally on Windows (and macOS), <strong>no cloud, no account, no telemetry</strong>. Data lives on the computer.</li>
-    <li><strong>Backups</strong> with a single button, optionally encrypted with a password. A restore can first be tried as a <strong>dry run</strong> into an isolated copy — you see what the backup contains and live data is never touched.</li>
-    <li><strong>Updates</strong> download and install themselves; data and settings are kept.</li>
-    <li>Pages regenerate themselves whenever the data changes — there is nothing to refresh by hand.</li>
-  </ul>
-
-  <h3 style="margin-top:1.2rem">What the app does not do</h3>
-  <p>It is not a payroll system and it does not replace the payroll office. It does not calculate other people, it sends nothing to the employer and it has no web version. It is one driver's tool for checking his own pay — and it is written that way.</p>
-</section>
-
-<section>
-  <h2>Screenshots</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem">
-    <figure style="margin:0"><img src="../../aplikace/img/budline/01_prehled.png" alt="Overview — Monthly summary, a calendar with four day states and kilometres driven broken down by bus (month / total switch) (sample data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Overview</strong> — Monthly summary, a calendar with four day states and kilometres driven broken down by bus (month / total switch).</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/02_dzva_prace.png" alt="Work per the DZVA — The daily vehicle operation log next to the plan from the roster. An empty counter says why; a reversed state (end lower than start) is marked red (sample data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Work per the DZVA</strong> — The daily vehicle operation log next to the plan from the roster. An empty counter says why; a reversed state (end lower than start) is marked red.</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/03_sprava_smen.png" alt="Shift management — Checking recorded shifts, filling them in from the payslip and closing the month (sample data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Shift management</strong> — Checking recorded shifts, filling them in from the payslip and closing the month.</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/04_nova_smena.png" alt="Recording a shift — Roster and bus from a dropdown. If the vehicle was swapped mid-day, just enter from which route — the rest is worked out; a day can be split into two shifts with their own DZVA (sample data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Recording a shift</strong> — Roster and bus from a dropdown. If the vehicle was swapped mid-day, just enter from which route — the rest is worked out; a day can be split into two shifts with their own DZVA.</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/05_mesic_souhrn.png" alt="Month assessment — What the month earned according to my own records, and where that differs from the payslip (sample data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Month assessment</strong> — What the month earned according to my own records, and where that differs from the payslip.</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/06_reporty.png" alt="Reports — My own payslip and shift sheet in the same shape as the employer's paper — so they can be compared line by line (sample data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Reports</strong> — My own payslip and shift sheet in the same shape as the employer's paper — so they can be compared line by line.</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/07_kontrola_vyplat.png" alt="Payroll check — Calculated against paid, item by item (sample data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Payroll check</strong> — Calculated against paid, item by item.</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/08_turnusy.png" alt="Roster check — An indicative financial estimate of rosters per the collective agreement — what each roster brings (sample data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Roster check</strong> — An indicative financial estimate of rosters per the collective agreement — what each roster brings.</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/09_zalohy.png" alt="Backup and restore — A backup with a single button. A restore can first be tried as a dry run into an isolated copy, leaving live data untouched (sample data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Backup and restore</strong> — A backup with a single button. A restore can first be tried as a dry run into an isolated copy, leaving live data untouched.</figcaption></figure>
-    <figure style="margin:0"><img src="../../aplikace/img/budline/10_napoveda.png" alt="Help — A glossary of terms and an explanation of what affects what (sample data)" loading="lazy" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Help</strong> — A glossary of terms and an explanation of what affects what.</figcaption></figure>
-  </div>
-  <p style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.6rem">Screenshots use sample (anonymised) data — real payslips and personal details do not belong on the web.</p>
-</section>
-
-<section>
-  <h2>Installation (beta)</h2>
-  <p style="margin:.6rem 0 .9rem;padding:.7rem .95rem;border-left:3px solid #2d6ad5;background:#2d6ad514;border-radius:6px;font-size:.93rem">🔒 <strong>The app is not publicly downloadable.</strong> You will not find an installer here on purpose — I send the link personally to whoever I give the app to. The version number on this page stays: it fills in automatically from the same place the installed app uses for its silent updates.</p>
-  <p style="font-size:.9rem;line-height:1.6">🔒 <strong>The installer is password-protected</strong> — I share the password personally; it is not and will not be on the web.</p>
-  <p style="font-size:.9rem;line-height:1.6">🍏 <strong>macOS:</strong> on first launch, <strong>right-click the app → Open</strong> (it is unsigned, it's our own app). If it says "damaged", run <code>xattr -cr "/Applications/BudLine Panel.app"</code> in Terminal.</p>
-  <p style="font-size:.9rem;line-height:1.6">🛡️ Windows may show a SmartScreen warning (unsigned beta installer). If you know the app and expect it from me, click "More info" → "Run anyway".</p>
-  <p style="font-size:.9rem;line-height:1.6">⚠️ Close the running app before installing.</p>
-</section>
-
-<section>
-  <h2>Status</h2>
-  <p>Version <strong data-bl-ver="{v} BETA">1.2.114 BETA</strong> (October 2026). The exact version number is pulled automatically from the release manifest — the same source the installed app uses for its silent updates. Two of us use the app actively; it is developed against real payslips. Beta = it works, but it is still being polished; the installer is unsigned and password-protected.</p>
-  <p style="margin-top:.6rem">The detailed history is in the <button class="diary-link" id="openDiary2">development diary</button>. <button id="openDiary" class="diary-btn" style="margin-left:.4rem">📖 Development diary</button></p>
-</section>
-
-</main>
+<main id="main"><a class="app-back" href="index.html">← My apps</a><section aria-labelledby="app-title" class="hero app-hero"><div><span class="hero-accent">My own project</span><h1 id="app-title">BudLine Panel</h1><p class="hero-sub">Shifts, rosters and payslip checking in one place. I record the work I have done and compare the monthly figures with my payslip.</p><p class="app-availability">Private project. Not publicly available for download.</p><div class="app-actions"><a class="app-action app-action--primary" href="#youtube">Watch the video →</a><a class="app-action" href="#podrobnosti">Features and details ↓</a></div></div><figure class="app-preview"><img alt="BudLine Panel — interface preview" decoding="async" fetchpriority="high" height="1225" src="/aplikace/img/budline/01_prehled.png" width="1875"/><figcaption>Interface preview. Click to enlarge.</figcaption></figure></section><section><h2>What it helps me do</h2><div class="app-benefits"><article class="app-benefit"><h3>Shift records</h3><p>Rosters, actual shifts and attendance totals together.</p></article><article class="app-benefit"><h3>Payslip checking</h3><p>Compare calculated items with the payslip and inspect differences.</p></article><article class="app-benefit"><h3>Local records</h3><p>Keep records on my computer, with backups and trial recovery.</p></article></div><p class="app-note">A private beta used by me and a colleague. It helps check our pay; it does not replace the payroll department.</p></section><section aria-labelledby="video-heading" class="section youtube-section" id="youtube">
+<div class="container">
+<h2 id="video-heading">Watch: BudLine Panel — shifts, rotations and a driver’s overview</h2>
+<p>9:08 · Czech narration and captions.</p>
+<div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/XAASanqGbjU?rel=0" style="width:100%;height:100%;border:0;display:block" title="BudLine Panel — shifts, rotations and a driver’s overview"></iframe>
+</div>
+<p><a href="https://www.youtube.com/watch?v=XAASanqGbjU" rel="noopener" target="_blank">YouTube ↗</a> </p>
+</div>
+</section><section id="podrobnosti"><h2 class="app-details-heading">Explore the details</h2><details class="app-disclosure"><summary>What it does</summary><div class="app-disclosure__body"><section>
+<h2>What it does</h2>
+<p><strong>Why it exists:</strong> a bus driver's shifts are scattered across rosters, with weekend and holiday bonuses, and at the end of the month there is a payslip that is hard to verify. BudLine is a simple panel for that: I log my shifts (or read them from the driver card), the app adds them up according to the rules and shows what the pay should be. Two of us use it — me and a colleague from work.</p>
+<p><strong>Shift and roster records:</strong> each shift has a date, times and a type; the app validates the entry (HH:MM time format, no negative numbers) and builds a monthly overview.</p>
+<p><strong>Payroll documents:</strong> from the logged shifts the app calculates the pay basis according to configured rules (hours, bonuses). At the end of the month you just compare it with the payslip — if something is off, you see exactly where.</p>
+<p><strong>Driver card reading:</strong> since version 1.2.13 the app can read data directly from the driver's chip card via a reader — less manual typing.</p>
+<p><strong>Everything local:</strong> data stays on the computer (SQLite). Updates install silently in the background; an upgrade never overwrites user data or settings.</p>
+</section></div></details><details class="app-disclosure"><summary>Key features</summary><div class="app-disclosure__body"><section>
+<h2>Key features</h2>
+<ul style="line-height:1.7">
+<li><strong>Monthly shift overview</strong> — logged shifts roll up into an overview with attendance totals.</li>
+<li><strong>Payroll calculation</strong> — by rules (hours, bonuses); end-of-month comparison with the payslip.</li>
+<li><strong>Month close &amp; fill from payslip</strong> — the home page shows an unclosed month; on close, one button fills items that aren't on the standard roster (fuel and regular bonuses, laundry, CNG) straight from the uploaded payslip.</li>
+<li><strong>In-app roster editor</strong> — create a roster in a table or edit an existing one, batch import (HTML/XML/ZIP), stop autocomplete and a vehicle field (V-code, e.g. "3-axle bus").</li>
+<li><strong>Compliance assessment</strong> — for a single duty roster and for the whole month: does the planned shift meet AETR and Czech Gov. Reg. 589/2006? Day-by-day list of breaches, full and short version, print to PDF.</li>
+<li><strong>Plan vs reality from the driver card</strong> — next to the planned roster you see what the card actually recorded (driving, work, rest) and where it differs; rest periods are evaluated continuously across midnight and card times are converted from UTC to local time.</li>
+<li><strong>Overall monthly assessment</strong> — payslip, driven rosters and the driver card in one view: how much was really driven, how it matches what was paid, and a summary of all breaches.</li>
+<li><strong>Driving-time checks (AETR)</strong> — shifts that may breach road-transport rules are flagged for review; pay is never changed.</li>
+<li><strong>Bonuses and benefits on the check payslip</strong> — bonuses from the uploaded payslip (fuel, takings, regular), pension contributions, phone and laundry; the check gross pay now matches to the last koruna.</li>
+<li><strong>Recalculating closed months after a roster fix</strong> — the app finds the closed months a roster change affects and offers to recalculate them. The roster is never rewritten backwards: every day is calculated with the roster version that was valid on that date.</li>
+<li><strong>Month picker and a background-work indicator</strong> — switch months in the pay overview with a dropdown or arrows; when the app is calculating in the background you can see it in the bottom right.</li>
+<li><strong>Yearly public-holiday overview</strong> — which ones were driven and what they paid extra, and which fell on a roster rest day where no entitlement arises.</li>
+<li><strong>Driver card import</strong> — chip card data via a reader (since v1.2.13).</li>
+<li><strong>MPV Live / Operations</strong> — real-time operation of Semily rosters: currently running trips, trip detail (delay, occupancy), a vehicle-position map and live delays (since v1.2.14, read-only).</li>
+<li><strong>Entry validation</strong> — time and value checks so a typo never reaches the payroll.</li>
+<li><strong>Silent auto-update</strong> — new versions install themselves; config and data are kept.</li>
+<li><strong>No cloud</strong> — no account, no server, data only on the computer.</li>
+</ul>
+</section></div></details><details class="app-disclosure"><summary>How it works in practice</summary><div class="app-disclosure__body"><section>
+<h2>How it works in practice</h2>
+<p>A bus driver gets a payslip every month with a single number on it. Verifying that number means going through the rosters, adding up driving hours, waiting time, night and weekend bonuses and meal allowances — by the collective agreement, not by feel. BudLine Panel does exactly that: it keeps a record of what was actually driven, calculates what <em>should</em> arrive, and puts it next to what really did.</p>
+<h3 style="margin-top:1.2rem">1. Logging a day</h3>
+<p>A day comes from two sources. The <strong>roster</strong> says what was supposed to be driven — trips, times, kilometres, breaks. The <strong>DZVA</strong> (the daily vehicle operation log) is the dispatcher's paper: document number, bus, tachograph and odometer readings. The app combines both and works out the rest, so you only enter what differs from the plan.</p>
+<ul>
+<li><strong>Swapping the bus mid-day</strong> — just say which route you switched at. Times and kilometres for both vehicles are derived from the roster, and when the counter readings are filled in, actual figures win over the plan.</li>
+<li><strong>Two shifts in one day</strong> — if the dispatcher issues a new DZVA for the afternoon, the day splits into two shifts. Pay is apportioned by driving time; the meal allowance stays whole, because the whole day was spent at work.</li>
+<li><strong>Extra or dropped trips</strong> — the difference in driving time, time at work and kilometres is calculated; duration and distance come from the timetable, nothing is guessed.</li>
+</ul>
+<h3 style="margin-top:1.2rem">2. The calculation</h3>
+<p>On top of the records runs the payroll calculation per the collective agreement: base rate, performance component, waiting time, difficult conditions, night, weekend and holiday bonuses, and the meal allowance by shift length. The result is visible day by day and for the whole month.</p>
+<ul>
+<li><strong>Monthly pay overview</strong> — a day-by-day breakdown: hours worked, how much of that was driving, which bonuses, how many koruna. Months are switched with a picker at the top.</li>
+<li><strong>Reports</strong> — my own payslip and a <strong>shift sheet</strong> in the same shape as the employer's paper, so they can be compared line by line.</li>
+<li><strong>Payroll check</strong> — item by item against the uploaded payslip, including bonuses and benefits; anything that does not match shows up straight away.</li>
+<li><strong>Roster check</strong> — an indicative estimate of what a given roster will bring, before it is driven.</li>
+</ul>
+<h3 style="margin-top:1.2rem">3. Checks and honest numbers</h3>
+<p>The app is not supposed to invent figures. When it cannot be sure, it says so and would rather show nothing than show something wrong.</p>
+<ul>
+<li><strong>An implausible reading is not used</strong> — if an odometer reading works out to 50,000 km in a shift, or far beyond the plan, the app treats it as a typo and stays with the plan. It does not pass a typo off as a detour.</li>
+<li><strong>An empty field says why</strong> — whether the value is missing from the DZVA, or only one of the two readings is filled in. A reversed counter (end lower than start) is marked red.</li>
+<li><strong>The payroll truth stays with the employer's payslip</strong> — the app is a checking aid, not a replacement for the payroll office, and it says so on its own outputs.</li>
+<li><strong>Month close</strong> — once a month is closed the figures are locked into a snapshot so they cannot drift. If a roster later turns out to have been different from a certain date, the app offers a recalculation and records why.</li>
+</ul>
+<h3 style="margin-top:1.2rem">4. Data stays at home</h3>
+<ul>
+<li>Runs locally on Windows (and macOS), <strong>no cloud, no account, no telemetry</strong>. Data lives on the computer.</li>
+<li><strong>Backups</strong> with a single button, optionally encrypted with a password. A restore can first be tried as a <strong>dry run</strong> into an isolated copy — you see what the backup contains and live data is never touched.</li>
+<li><strong>Updates</strong> download and install themselves; data and settings are kept.</li>
+<li>Pages regenerate themselves whenever the data changes — there is nothing to refresh by hand.</li>
+</ul>
+<h3 style="margin-top:1.2rem">What the app does not do</h3>
+<p>It is not a payroll system and it does not replace the payroll office. It does not calculate other people, it sends nothing to the employer and it has no web version. It is one driver's tool for checking his own pay — and it is written that way.</p>
+</section></div></details><details class="app-disclosure"><summary>Screenshots</summary><div class="app-disclosure__body"><section>
+<h2>Screenshots</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem">
+<figure style="margin:0"><img alt="Overview — Monthly summary, a calendar with four day states and kilometres driven broken down by bus (month / total switch) (sample data)" loading="lazy" src="/aplikace/img/budline/01_prehled.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Overview</strong> — Monthly summary, a calendar with four day states and kilometres driven broken down by bus (month / total switch).</figcaption></figure>
+<figure style="margin:0"><img alt="Work per the DZVA — The daily vehicle operation log next to the plan from the roster. An empty counter says why; a reversed state (end lower than start) is marked red (sample data)" loading="lazy" src="/aplikace/img/budline/02_dzva_prace.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Work per the DZVA</strong> — The daily vehicle operation log next to the plan from the roster. An empty counter says why; a reversed state (end lower than start) is marked red.</figcaption></figure>
+<figure style="margin:0"><img alt="Shift management — Checking recorded shifts, filling them in from the payslip and closing the month (sample data)" loading="lazy" src="/aplikace/img/budline/03_sprava_smen.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Shift management</strong> — Checking recorded shifts, filling them in from the payslip and closing the month.</figcaption></figure>
+<figure style="margin:0"><img alt="Recording a shift — Roster and bus from a dropdown. If the vehicle was swapped mid-day, just enter from which route — the rest is worked out; a day can be split into two shifts with their own DZVA (sample data)" loading="lazy" src="/aplikace/img/budline/04_nova_smena.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Recording a shift</strong> — Roster and bus from a dropdown. If the vehicle was swapped mid-day, just enter from which route — the rest is worked out; a day can be split into two shifts with their own DZVA.</figcaption></figure>
+<figure style="margin:0"><img alt="Month assessment — What the month earned according to my own records, and where that differs from the payslip (sample data)" loading="lazy" src="/aplikace/img/budline/05_mesic_souhrn.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Month assessment</strong> — What the month earned according to my own records, and where that differs from the payslip.</figcaption></figure>
+<figure style="margin:0"><img alt="Reports — My own payslip and shift sheet in the same shape as the employer's paper — so they can be compared line by line (sample data)" loading="lazy" src="/aplikace/img/budline/06_reporty.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Reports</strong> — My own payslip and shift sheet in the same shape as the employer's paper — so they can be compared line by line.</figcaption></figure>
+<figure style="margin:0"><img alt="Payroll check — Calculated against paid, item by item (sample data)" loading="lazy" src="/aplikace/img/budline/07_kontrola_vyplat.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Payroll check</strong> — Calculated against paid, item by item.</figcaption></figure>
+<figure style="margin:0"><img alt="Roster check — An indicative financial estimate of rosters per the collective agreement — what each roster brings (sample data)" loading="lazy" src="/aplikace/img/budline/08_turnusy.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Roster check</strong> — An indicative financial estimate of rosters per the collective agreement — what each roster brings.</figcaption></figure>
+<figure style="margin:0"><img alt="Backup and restore — A backup with a single button. A restore can first be tried as a dry run into an isolated copy, leaving live data untouched (sample data)" loading="lazy" src="/aplikace/img/budline/09_zalohy.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Backup and restore</strong> — A backup with a single button. A restore can first be tried as a dry run into an isolated copy, leaving live data untouched.</figcaption></figure>
+<figure style="margin:0"><img alt="Help — A glossary of terms and an explanation of what affects what (sample data)" loading="lazy" src="/aplikace/img/budline/10_napoveda.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem"><strong>Help</strong> — A glossary of terms and an explanation of what affects what.</figcaption></figure>
+</div>
+<p style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.6rem">Screenshots use sample (anonymised) data — real payslips and personal details do not belong on the web.</p>
+</section></div></details><details class="app-disclosure"><summary>Availability</summary><div class="app-disclosure__body"><section><p>Private project. Not publicly available for download.</p></section></div></details><details class="app-disclosure"><summary>Status</summary><div class="app-disclosure__body"><section>
+<h2>Status</h2>
+<p>Version <strong data-bl-ver="{v} BETA">1.2.114 BETA</strong> (October 2026). The exact version number is pulled automatically from the release manifest — the same source the installed app uses for its silent updates. Two of us use the app actively; it is developed against real payslips. Beta = it works, but it is still being polished; the installer is unsigned and password-protected.</p>
+<p style="margin-top:.6rem">The detailed history is in the <button class="diary-link" id="openDiary2">development diary</button>. <button class="diary-btn" id="openDiary" style="margin-left:.4rem">📖 Development diary</button></p>
+</section></div></details></section></main>
 
 <!-- ═══ DEVELOPMENT DIARY — popup (keeps the page short) ═══ -->
 <div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Development diary" aria-hidden="true">
