@@ -18,6 +18,7 @@
 <link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/smart-home/">
 <link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/smart-home/">
 <link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/smart-home/">
+<link rel="stylesheet" href="../../smart-home/visitor.css?v=20261030-navrh">
 </head>
 <body class="theme-smart-home">
 
@@ -35,93 +36,86 @@
 <aside aria-label="Language availability" class="language-note">CS = content in Czech. Some older descriptions remain in Czech.</aside>
 
 <main id="main">
-  <section class="hero">
-    <span class="hero-accent">Smart Home</span>
-    <h1>A house that understands itself</h1>
-    <p class="hero-sub">
+<section class="hero">
+<span class="hero-accent">Smart Home</span>
+<h1>A house that understands itself</h1>
+<p class="hero-sub">
       For years I've been building a system that takes care of heating, lights, coffee and the
       daily rhythm on its own. No universal app — a home that knows my habits and notices when
       something is off.
     </p>
-  </section>
-
-  <p class="language-note">This is a shorter introduction. The detailed Smart Home documentation is currently available <a href="/en/smart-home/" hreflang="en">in Czech</a>.</p>
-
-  <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
-    <div class="container">
-      <h2 id="video-heading">Watch: My smart home — Homey, Raspberry Pi and automation</h2>
-      <p>8:36 · Czech narration and captions.</p>
-      <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
-        <iframe src="https://www.youtube-nocookie.com/embed/UoxSFcJQq3M?rel=0" title="My smart home — Homey, Raspberry Pi and automation" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <p><a href="https://www.youtube.com/watch?v=UoxSFcJQq3M" target="_blank" rel="noopener">YouTube ↗</a> </p>
-    </div>
-  </section>
-
-  <section class="prose">
-    <h2>What it does in practice</h2>
-    <p>
+</section>
+<p class="language-note">This is a shorter introduction. The detailed Smart Home documentation is currently available <a href="/smart-home/" hreflang="cs" title="In Czech">in Czech</a>.</p>
+<section aria-labelledby="video-heading" class="section youtube-section" id="youtube">
+<div class="container">
+<h2 id="video-heading">My smart home in detail</h2>
+<p>8:36 · Czech narration and captions.</p>
+<details class="smart-video"><summary style="--video-image:url('https://img.youtube.com/vi/UoxSFcJQq3M/maxresdefault.jpg')"><span class="smart-video-label"><span class="smart-video-open">▶ Open the video tour</span><span class="smart-video-close">Close the player</span></span></summary><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/UoxSFcJQq3M?rel=0" title="My smart home — Homey, Raspberry Pi and automation"></iframe></details>
+<p><a href="https://www.youtube.com/watch?v=UoxSFcJQq3M" rel="noopener" target="_blank">YouTube ↗</a> </p>
+</div>
+</section>
+<section class="prose">
+<h2>What it does in practice</h2>
+<p>
       The home doesn't wait for me to reach for the phone. It watches multiple signals at once —
       whether I'm home, asleep, whether it's morning, where I'm moving — and decides on its own.
       A few examples:
     </p>
-    <ul style="line-height:1.9;">
-      <li>🌅 <strong>Morning at 3:15</strong> — when the alarm rings and I move out of bed,
+<ul style="line-height:1.9;">
+<li>🌅 <strong>Morning at 3:15</strong> — when the alarm rings and I move out of bed,
         the kitchen radio starts, the bedroom lights gently come on, the coffee is prepared.
         Where I'm not, lights don't turn on.</li>
-      <li>🛏 <strong>Night</strong> — if I go to the bathroom, the "full morning routine" doesn't
+<li>🛏 <strong>Night</strong> — if I go to the bathroom, the "full morning routine" doesn't
         kick in. The system knows I'm just passing through and dims back down after a few minutes.</li>
-      <li>🔥 <strong>Heating</strong> — each zone has its own schedule. When I'm away, temperature
+<li>🔥 <strong>Heating</strong> — each zone has its own schedule. When I'm away, temperature
         drops. When I come home, the bathroom warms up. More efficient than a constant 24°C all day.</li>
-      <li>🚪 <strong>Coming home</strong> — phone enters range, house switches to "home" mode,
+<li>🚪 <strong>Coming home</strong> — phone enters range, house switches to "home" mode,
         audio matches time of day, blinds and windows get checked.</li>
-      <li>🤖 <strong>Anomalies</strong> — when something's off (alarm at 3am with no motion anywhere,
+<li>🤖 <strong>Anomalies</strong> — when something's off (alarm at 3am with no motion anywhere,
         or lights staying on while I'm away), the system notices and sends me a push.</li>
-    </ul>
-    <p>
+</ul>
+<p>
       The goal: less switch-clicking, more calm. The house understands itself.
     </p>
-  </section>
-
-  <section>
-    <h2>What it controls</h2>
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-flame"/></svg></span></div>
-        <h3>Heating &amp; climate</h3>
-        <p>4 zones with their own schedules. Three modes (Auto / Manual / Off). More efficient than one button for the whole house.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-lightbulb"/></svg></span></div>
-        <h3>Lights</h3>
-        <p>Dim based on time of day and outdoor light. When I'm away or asleep, they turn themselves off.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-volume-2"/></svg></span></div>
-        <h3>Audio &amp; morning routine</h3>
-        <p>Kitchen radio, gentle briefing, music per scene. Never plays when I'm sleeping.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-shield"/></svg></span></div>
-        <h3>Security</h3>
-        <p>Motion, doors, windows, cameras. When something's off-normal, I get a phone alert.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-zap"/></svg></span></div>
-        <h3>Energy</h3>
-        <p>Tracks appliance consumption. I see in advance how many kWh the boiler, fridge or stove uses.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-chart-column"/></svg></span></div>
-        <h3>Dashboards</h3>
-        <p>Three displays (big monitor, laptop, wall-mounted RPi panel in the hallway). Whole-house state at a glance.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="prose">
-    <h2>Under the hood (for techies)</h2>
-    <p>
+</section>
+<section>
+<h2>What it controls</h2>
+<div class="cards-grid">
+<div class="card">
+<div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-flame"></use></svg></span></div>
+<h3>Heating &amp; climate</h3>
+<p>4 zones with their own schedules. Three modes (Auto / Manual / Off). More efficient than one button for the whole house.</p>
+</div>
+<div class="card">
+<div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-lightbulb"></use></svg></span></div>
+<h3>Lights</h3>
+<p>Dim based on time of day and outdoor light. When I'm away or asleep, they turn themselves off.</p>
+</div>
+<div class="card">
+<div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-volume-2"></use></svg></span></div>
+<h3>Audio &amp; morning routine</h3>
+<p>Kitchen radio, gentle briefing, music per scene. Never plays when I'm sleeping.</p>
+</div>
+<div class="card">
+<div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-shield"></use></svg></span></div>
+<h3>Security</h3>
+<p>Motion, doors, windows, cameras. When something's off-normal, I get a phone alert.</p>
+</div>
+<div class="card">
+<div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-zap"></use></svg></span></div>
+<h3>Energy</h3>
+<p>Tracks appliance consumption. I see in advance how many kWh the boiler, fridge or stove uses.</p>
+</div>
+<div class="card">
+<div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-chart-column"></use></svg></span></div>
+<h3>Dashboards</h3>
+<p>Three displays (big monitor, laptop, wall-mounted RPi panel in the hallway). Whole-house state at a glance.</p>
+</div>
+</div>
+</section>
+<section class="prose">
+<h2>Under the hood (for techies)</h2>
+<p>
       Built on <strong>Homey Pro 2026</strong> + a custom HomeyScript layer.
       Architecture: <em>request-first pipeline</em> (scripts ask, router decides),
       device map as the single source of truth for device names, multi-signal sleep/wake
@@ -129,31 +123,30 @@
       are stored locally on a Raspberry Pi / SSD (JSONL + SQLite). Mobile notifications via
       Homey notifications API. Full system description and dashboards on a dedicated site below.
     </p>
-  </section>
-
-  <section class="external-cta">
-    <h2>Full technical website</h2>
-    <p>
+</section>
+<section class="external-cta">
+<h2>Full technical website</h2>
+<p>
       Architecture, dashboards, blog and build log have their own section —
       a separate technical part of this site.
     </p>
-    <p style="margin-top: 1.5rem;">
-      <a class="btn btn-primary" href="/en/smart-home/" hreflang="en">
+<p style="margin-top: 1.5rem;">
+<a class="btn btn-primary" href="/smart-home/" hreflang="cs" title="In Czech">
         Open the Smart Home site →
-      </a>
-    </p>
-  </section>
+      <span class="lang-tag">CS</span></a>
+</p>
+</section>
 </main>
 
 <footer class="site-footer">
-  <div class="site-footer__inner">
-    <div>© Budinský Luděk · Personal website</div>
-    <div class="footer-links">
-      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
-      <a href="/o-mne.html" hreflang="cs" title="In Czech">About me (CS)</a>
-      <a href="/en/smart-home/" hreflang="en">Smart Home web</a>
-    </div>
-  </div>
+<div class="site-footer__inner">
+<div>© Budinský Luděk · Personal website</div>
+<div class="footer-links">
+<a href="https://www.youtube.com/@cestovatel69" rel="noopener" target="_blank">YouTube @cestovatel69</a>
+<a href="/o-mne.html" hreflang="cs" title="In Czech">About me (CS)</a>
+<a href="/smart-home/" hreflang="cs" title="In Czech">Smart Home web<span class="lang-tag">CS</span></a>
+</div>
+</div>
 </footer>
 
 <script src="../../assets/js/main.js?v=20261030-jazyky"></script>

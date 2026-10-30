@@ -54,17 +54,30 @@
   const toggle = document.querySelector('.nav-toggle');
   const navList = document.getElementById('nav-list');
   if (toggle && navList) {
+    const setMenu = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      navList.classList.toggle('is-open', open);
+      const label = toggle.querySelector('.sr-only');
+      if (label) label.textContent = open ? 'Zavřít menu' : 'Otevřít menu';
+    };
     toggle.addEventListener('click', () => {
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      navList.classList.toggle('is-open');
+      setMenu(!expanded);
     });
     // close on link click (mobile)
     navList.querySelectorAll('a').forEach((a) => {
       a.addEventListener('click', () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        navList.classList.remove('is-open');
+        setMenu(false);
       });
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenu(false);
+        toggle.focus();
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.primary-nav')) setMenu(false);
     });
   }
 

@@ -1,0 +1,42 @@
+/* Visitor orientation, without changing the technical site's own theme. */
+.sh-visitor-page .visitor-bar { padding: 12px 0; border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+.sh-visitor-page .visitor-bar .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; }
+.sh-visitor-page .visitor-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; }
+.sh-visitor-page .visitor-bar a { display: inline-flex; align-items: center; min-height: 32px; font-size: 13px; color: var(--text-soft); }
+.sh-visitor-page .visitor-bar .visitor-back { color: var(--accent); font-weight: 600; }
+.sh-visitor-page .visitor-bar a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+.sh-visitor-page .visitor-overviews { color: var(--text-dim); font-size: 12px; }
+.sh-visitor-page.visitor-home .section-hero { padding: 64px 0; }
+.sh-visitor-page.visitor-home .hero-inner { grid-template-columns: 1.15fr 1fr; gap: 56px; }
+.sh-visitor-page.visitor-home .hero-title { font-size: clamp(36px,4.4vw,60px); }
+.sh-visitor-page .daily-benefits { border: 1px solid var(--border-strong); border-radius: 18px; background: var(--surface); padding: 24px; }
+.sh-visitor-page .daily-benefits h2 { margin: 0 0 16px; font-size: 20px; }
+.sh-visitor-page .daily-benefits a { display: block; padding: 16px 0; border-top: 1px solid var(--border); }
+.sh-visitor-page .daily-benefits strong { display: block; color: var(--accent); font-size: 17px; }
+.sh-visitor-page .daily-benefits p { margin: 5px 0 0; color: var(--text-soft); font-size: 14px; line-height: 1.65; }
+.sh-visitor-page .daily-benefits a:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+.sh-visitor-page .visitor-tech-links { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--text-soft); font-size: 13px; margin-top: 24px; }
+.sh-visitor-page .visitor-tech-links a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+.sh-visitor-page main :is(section[id],h2[id]) { scroll-margin-top: 88px; }
+.sh-visitor-page :is(.screenshot-grid,.infra-grid,.challenge-grid) { grid-template-columns: repeat(auto-fit,minmax(min(100%,320px),1fr)); }
+.sh-visitor-page.visitor-home .youtube-section { padding: 32px 0 56px; }
+.sh-visitor-page.visitor-home .youtube-section h2 { font-size: clamp(24px,3vw,32px); margin-top: 0; }
+.sh-visitor-page .visitor-archive { padding: 32px 0 56px; }
+.sh-visitor-page .visitor-archive > summary { padding: 18px 24px; border: 1px solid var(--border-strong); border-radius: 12px; color: var(--text-soft); cursor: pointer; font-weight: 600; }
+.sh-visitor-page .visitor-archive[open] > summary { margin-bottom: 24px; }
+.sh-visitor-page .visitor-archive .metrics-section { padding-block: 24px; }
+.sh-visitor-page .visitor-archive .container { padding-inline: 0; }
+.sh-visitor-page :is(.visitor-bar a,.daily-benefits a,.visitor-archive summary):focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.smart-video { width: 100%; max-width: 960px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #10141a; }
+.smart-video > summary { display: flex; align-items: flex-end; list-style: none; cursor: pointer; position: relative; aspect-ratio: 16 / 9; background: linear-gradient(0deg,rgba(0,0,0,.8),transparent 55%),var(--video-image) center / cover no-repeat; padding: 24px; }
+.smart-video > summary::-webkit-details-marker { display: none; }
+.smart-video .smart-video-label { display: inline-block; border: 1px solid rgba(255,255,255,.5); border-radius: 8px; background: #10141a; color: #fff; font: 600 16px/1.5 system-ui,sans-serif; padding: 12px 18px; }
+.smart-video .smart-video-close { display: none; }
+.smart-video[open] > summary { aspect-ratio: auto; background: #10141a; padding: 8px 16px; }
+.smart-video[open] .smart-video-label { border: 0; padding: 6px 0; }
+.smart-video[open] .smart-video-open { display: none; }
+.smart-video[open] .smart-video-close { display: inline; }
+.smart-video > summary:focus-visible { outline: 3px solid #6fe5ff; outline-offset: -4px; }
+.smart-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; }
+@media (max-width: 880px) { .sh-visitor-page.visitor-home .hero-inner { grid-template-columns: 1fr; gap: 32px; } .sh-visitor-page.visitor-home .section-hero { padding: 40px 0; } }
+@media (max-width: 540px) { .sh-visitor-page .visitor-bar .container { align-items: flex-start; } .sh-visitor-page .daily-benefits { padding: 20px; } .smart-video > summary { padding: 12px; } .smart-video .smart-video-label { font-size: 14px; padding: 9px 12px; } }

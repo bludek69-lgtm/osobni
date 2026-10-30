@@ -22,204 +22,170 @@
   <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
   <meta property="og:url" content="https://cestovatel69.cz/smart-home/">
   <meta property="og:type" content="website">
+<link rel="stylesheet" href="visitor.css?v=20261030-navrh">
 </head>
-<body>
+<body class="sh-visitor-page visitor-home">
   <a href="#main" class="skip-link">Přeskočit na obsah</a>
 
   <header class="site-header" id="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand" aria-label="SMART HOME – home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
-      </a>
-      <nav class="primary-nav" aria-label="Hlavní navigace">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">
-          <span class="sr-only">Otevřít menu</span>
-          <span class="nav-toggle-bars" aria-hidden="true"></span>
-        </button>
-        <ul id="nav-list" class="nav-list">
-          <li><a href="../" class="nav-hub">← cestovatel69.cz</a></li>
-          <li><a href="index.html" class="is-active" aria-current="page">Domů</a></li>
-          <li><a href="prozivani.html">Jak to funguje</a></li>
-          <li><a href="zarizeni.html">Zařízení</a></li>
-          <li><a href="hardware-komplet.html">Hardware</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="pribeh.html">Příběh</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="index.html">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Hlavní navigace" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Otevřít menu</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+
+<li><a aria-current="page" class="is-active" href="index.html">Domů</a></li>
+<li><a href="prozivani.html">Jak to funguje</a></li>
+<li><a href="zarizeni.html">Zařízení</a></li>
+<li><a href="hardware-komplet.html">Hardware</a></li>
+<li><a href="dashboard.html">Dashboard</a></li>
+<li><a href="pribeh.html">Příběh</a></li>
+<li><a href="blog.html">Blog</a></li>
+<li><a href="kontakt.html">O projektu</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside class="visitor-bar" aria-label="Osobní web a Smart Home"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/">← Zpět na cestovatel69.cz</a><a href="/o-mne.html">O mně</a></div><div class="visitor-links"><span class="visitor-overviews">Stručný úvod:</span><a href="/en/smart-home/" hreflang="en" lang="en">English</a><a href="/it/smart-home/" hreflang="it" lang="it">Italiano</a></div></div></aside>
 
   <main id="main">
-    <section id="home" class="section section-hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <p class="eyebrow">
+<section class="section section-hero" id="home">
+<div class="container hero-inner">
+<div class="hero-text">
+<p class="eyebrow">
             Domácí projekt · Homey Pro 2026
           </p>
-          <h1 class="hero-title">
-            Smart home jako<br />
-            <span class="grad-text">živý organismus</span>
-          </h1>
-          <p class="hero-lead">
-            Ráno se postupně rozsvítí světla a připraví se káva. Když odejdu, dům omezí vytápění. Při neobvyklém stavu mi pošle upozornění.
-            Tyto scénáře jsem si postavil pro vlastní byt na systému <strong>Homey Pro 2026</strong> a rozvíjím je podle každodenního používání.
-            Podrobnosti o řídicích skriptech, automatizačních postupech a diagnostice najdete níže.
-          </p>
-          <div class="hero-cta">
-            <a href="dashboard.html" class="btn btn-primary">Prozkoumat dashboard →</a>
-            <a href="ai-brain.html" class="btn btn-ghost">Brain Guardian</a>
-          </div>
-        </div>
-
-        <aside class="hero-stats" aria-label="Poslední ověřená čísla k 1. září 2026">
-          <p class="snapshot-date">Poslední ověřený stav: 1. 9. 2026. Čísla nejsou živá.</p>
-          <div class="stat">
-            <span class="stat-num">145</span>
-            <span class="stat-label">HomeyScriptů</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">248</span>
-            <span class="stat-label">Automatizací (flows)</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">84</span>
-            <span class="stat-label">Zařízení</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">10</span>
-            <span class="stat-label">Funkčních zón</span>
-          </div>
-        </aside>
-      </div>
-      <div class="hero-glow" aria-hidden="true"></div>
-    </section>
-
-  <section id="youtube" class="section youtube-section" aria-labelledby="video-heading">
-    <div class="container">
-      <h2 id="video-heading">Podívat se: Moje chytrá domácnost — Homey, Raspberry Pi a automatizace</h2>
-      <p>8:36 · Český komentář a titulky.</p>
-      <div class="video-frame" style="aspect-ratio:16/9;max-width:960px;background:#000;border-radius:12px;overflow:hidden">
-        <iframe src="https://www.youtube-nocookie.com/embed/UoxSFcJQq3M?rel=0" title="Moje chytrá domácnost — Homey, Raspberry Pi a automatizace" loading="lazy" style="width:100%;height:100%;border:0;display:block" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <p><a href="https://www.youtube.com/watch?v=UoxSFcJQq3M" target="_blank" rel="noopener">YouTube ↗</a> </p>
-    </div>
-  </section>
-
-    <!-- HERO SHOWCASE: dashboard + 3 thumbnails -->
-    <section class="hero-showcase" id="showcase" aria-labelledby="showcase-title">
-      <div class="container">
-        <header class="showcase-header">
-          <p class="showcase-eyebrow">Ukázka rozhraní · Dashboard V7</p>
-          <h2 class="showcase-title" id="showcase-title">Co dům reálně dělá</h2>
-        </header>
-        <a href="dashboard.html" class="showcase-main" aria-label="Otevřít stránku Dashboard">
-          <img src="assets/screenshots/dashboard-1920x1080.png" alt="Dashboard V7 — hlavní obrazovka 1920×1080" loading="eager" />
-        </a>
-        <div class="showcase-thumbs">
-          <a href="ai-brain.html" class="showcase-thumb" aria-label="AI Brain Guardian detail">
-            <img src="assets/screenshots/after/1920/ai.png" alt="AI Brain Guardian — health gauge + decision feed" loading="lazy" />
-            <span class="showcase-thumb-label">🧠 AI Brain</span>
-          </a>
-          <a href="dashboard.html" class="showcase-thumb" aria-label="Dashboard přehled">
-            <img src="assets/screenshots/after/1920/home.png" alt="Dashboard přehled — scenes, zones, camera, V5 KPI cards" loading="lazy" />
-            <span class="showcase-thumb-label">📊 Dashboard</span>
-          </a>
-          <a href="bezpecnost-kamery.html" class="showcase-thumb" aria-label="Kamera live view">
-            <img src="assets/screenshots/after/1920/camera.png" alt="Kamera — live view, motion timeline, IR controls" loading="lazy" />
-            <span class="showcase-thumb-label">📷 Kamera</span>
-          </a>
-        </div>
-        <div class="showcase-cta">
-          <a href="dashboard.html" class="btn btn-primary">Prozkoumat dashboard →</a>
-          <a href="ai-brain.html" class="btn btn-ghost">Brain Guardian</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- HISTORICAL METRICS PANEL -->
-    <section class="metrics-section section-alt" id="metrics" aria-labelledby="metrics-title">
-      <div class="container">
-        <header class="section-header">
-          <p class="section-eyebrow">Historický snímek systému</p>
-          <h2 class="section-title" id="metrics-title">Poslední ověřený stav · 1. 9. 2026</h2>
-          <p class="section-lead">Archivní přehled z exportu rozhraní Homey API a kontroly nástroje Brain Guardian. Nejde o aktuální měření.</p>
-        </header>
-        <div class="metrics-grid">
-          <div class="metric-card m-health">
-            <p class="metric-label">Skóre stavu systému</p>
-            <p class="metric-value">100<span class="metric-suffix">/100</span></p>
-            <p class="metric-meta">Kontrola Brain Guardian · stav OK</p>
-          </div>
-          <div class="metric-card m-flows">
-            <p class="metric-label">Automatizační postupy (flows)</p>
-            <p class="metric-value">248</p>
-            <p class="metric-meta">Automatizace Advanced Flow + pravidelný úklid stavu</p>
-          </div>
-          <div class="metric-card m-scripts">
-            <p class="metric-label">Řídicí skripty (HomeyScript)</p>
-            <p class="metric-value">145</p>
-            <p class="metric-meta">Přibližně 80 % převedeno na sdílenou knihovnu</p>
-          </div>
-          <div class="metric-card m-devices">
-            <p class="metric-label">Připojená zařízení při měření</p>
-            <p class="metric-value">84<span class="metric-suffix">/84</span></p>
-            <p class="metric-meta">10 zón · při měření dostupných 100 % zařízení</p>
-          </div>
-          <div class="metric-card m-vars">
-            <p class="metric-label">Stavové proměnné (sh_*)</p>
-            <p class="metric-value">782</p>
-            <p class="metric-meta">Konfigurace, stav, mezipaměť a audit</p>
-          </div>
-          <div class="metric-card m-anom">
-            <p class="metric-label">Poslední zaznamenaná odchylka</p>
-            <p class="metric-value" style="font-size:24px;">Bug E ghost</p>
-            <p class="metric-meta">Zjištěna 29. 4. · opraveno plánovaným úklidem stavu</p>
-          </div>
-        </div>
-        <p class="metric-snapshot-note">Historický stav ověřený 1. 9. 2026: zařízení a automatizace z tehdejšího exportu Homey API; skripty a proměnné ze zálohy 15. 8. 2026; skóre stavu z auditu 30. 8. 2026.</p>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="navigace">
-      <div class="container">
-        <header class="section-header">
-          <p class="section-eyebrow">Navigace</p>
-          <h2 class="section-title">Co tě zajímá?</h2>
-          <p class="section-lead">Web je rozdělený do čtyř pilířů. Vyber, kam chceš.</p>
-        </header>
-        <div class="home-grid home-grid-pillars">
-      <a href="prozivani.html" class="home-card home-card-pillar">
-        <span class="home-card-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-house"/></svg></span></span>
-        <h3>Prožívání</h3>
-        <p>Use-case pohled na celý systém — co dům dělá pro ty, kdo v něm žijí. Funkce, dashboardy a AI vrstva v jednom.</p>
-        <span class="home-card-cta">Otevřít pilíř →</span>
-      </a>
-      <a href="zarizeni.html" class="home-card home-card-pillar">
-        <span class="home-card-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-package"/></svg></span></span>
-        <h3>Zařízení</h3>
-        <p>Hardware co řídí dům — Homey Pro 2026, 84 zařízení, infrastruktura okolo.</p>
-        <span class="home-card-cta">Otevřít pilíř →</span>
-      </a>
-      <a href="pribeh.html" class="home-card home-card-pillar">
-        <span class="home-card-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-book-open"/></svg></span></span>
-        <h3>Příběh</h3>
-        <p>Cesta k současnému stavu — historie, architektonické přechody a problémy které vznikaly a řešily se cestou.</p>
-        <span class="home-card-cta">Otevřít pilíř →</span>
-      </a>
-      <a href="blog.html" class="home-card home-card-pillar">
-        <span class="home-card-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-notebook-pen"/></svg></span></span>
-        <h3>Blog</h3>
-        <p>Pravidelné poznámky o tom, co se v systému změnilo, co se rozbilo a jak se to fixovalo.</p>
-        <span class="home-card-cta">Otevřít pilíř →</span>
-      </a>
-        </div>
-        <p class="home-foot">Hledáš kontakt? <a href="kontakt.html">O projektu →</a></p>
-      </div>
-    </section>
-  </main>
+<h1 class="hero-title">Domov, který mi<br/><span class="grad-text">usnadňuje den</span></h1>
+<p class="hero-lead">Světla se přizpůsobí tomu, kde jsem. Ráno mě čeká káva, při odchodu se omezí vytápění a v noci mě světlo neoslní. Takto si postupně stavím vlastní chytrý byt na systému Homey Pro 2026.</p>
+<div class="hero-cta"><a class="btn btn-primary" href="prozivani.html">Jak to funguje v běžném dni →</a><a class="btn btn-ghost" href="#youtube">Otevřít videoprohlídku ↓</a></div>
+<nav aria-label="Technické podrobnosti" class="visitor-tech-links"><span>Pro techniky:</span><a href="dashboard.html">Dashboard</a><a href="ai-brain.html">Brain Guardian</a><a href="#metrics">Archivní přehled</a></nav></div>
+<aside aria-labelledby="daily-title" class="daily-benefits"><h2 id="daily-title">Tři situace z mého dne</h2><a href="rano-rutina.html"><strong>Ráno bez pobíhání →</strong><p>Postupně se rozsvítí světla, zapne rádio a připraví káva.</p></a><a href="navrat-domu.html"><strong>Když odejdu nebo se vrátím →</strong><p>Vytápění reaguje na přítomnost doma a na denní rozvrh.</p></a><a href="nocni-koupelna.html"><strong>Noční cesta do koupelny →</strong><p>Jemné světlo pro krátký průchod, bez spuštění ranní rutiny.</p></a></aside>
+</div>
+<div aria-hidden="true" class="hero-glow"></div>
+</section>
+<section aria-labelledby="video-heading" class="section youtube-section" id="youtube">
+<div class="container">
+<h2 id="video-heading">Moje chytrá domácnost podrobně</h2>
+<p>8:36 · Český komentář a titulky.</p>
+<details class="smart-video"><summary style="--video-image:url('https://img.youtube.com/vi/UoxSFcJQq3M/maxresdefault.jpg')"><span class="smart-video-label"><span class="smart-video-open">▶ Otevřít videoprohlídku</span><span class="smart-video-close">Zavřít přehrávač</span></span></summary><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/UoxSFcJQq3M?rel=0" title="Moje chytrá domácnost — Homey, Raspberry Pi a automatizace"></iframe></details>
+<p><a href="https://www.youtube.com/watch?v=UoxSFcJQq3M" rel="noopener" target="_blank">YouTube ↗</a> </p>
+</div>
+</section>
+<!-- HERO SHOWCASE: dashboard + 3 thumbnails -->
+<section aria-labelledby="showcase-title" class="hero-showcase" id="showcase">
+<div class="container">
+<header class="showcase-header">
+<p class="showcase-eyebrow">Archivní ukázka rozhraní · Dashboard V7</p>
+<h2 class="showcase-title" id="showcase-title">Jak domácnost ovládám</h2>
+<p>Snímky ukazují podobu rozhraní. Podrobnosti najdeš na stránkách dashboardu, diagnostiky a kamer.</p></header>
+<a aria-label="Otevřít stránku Dashboard" class="showcase-main" href="dashboard.html">
+<img alt="Dashboard V7 — hlavní obrazovka 1920×1080" loading="eager" src="assets/screenshots/dashboard-1920x1080.png"/>
+</a>
+<div class="showcase-thumbs">
+<a aria-label="AI Brain Guardian detail" class="showcase-thumb" href="ai-brain.html">
+<img alt="AI Brain Guardian — health gauge + decision feed" loading="lazy" src="assets/screenshots/after/1920/ai.png"/>
+<span class="showcase-thumb-label">🧠 AI Brain</span>
+</a>
+<a aria-label="Dashboard přehled" class="showcase-thumb" href="dashboard.html">
+<img alt="Dashboard přehled — scenes, zones, camera, V5 KPI cards" loading="lazy" src="assets/screenshots/after/1920/home.png"/>
+<span class="showcase-thumb-label">📊 Dashboard</span>
+</a>
+<a aria-label="Kamera live view" class="showcase-thumb" href="bezpecnost-kamery.html">
+<img alt="Kamera — live view, motion timeline, IR controls" loading="lazy" src="assets/screenshots/after/1920/camera.png"/>
+<span class="showcase-thumb-label">📷 Kamera</span>
+</a>
+</div>
+<div class="showcase-cta">
+<a class="btn btn-primary" href="dashboard.html">Prozkoumat dashboard →</a>
+<a class="btn btn-ghost" href="ai-brain.html">Brain Guardian</a>
+</div>
+</div>
+</section>
+<!-- HISTORICAL METRICS PANEL -->
+<section class="section section-alt" id="navigace">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Navigace</p>
+<h2 class="section-title">Co tě zajímá?</h2>
+<p class="section-lead">Praktické situace, zařízení a příběh projektu. Vyber si, čím chceš pokračovat.</p>
+</header>
+<div class="home-grid home-grid-pillars">
+<a class="home-card home-card-pillar" href="prozivani.html">
+<span aria-hidden="true" class="home-card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-house"></use></svg></span></span>
+<h3>Jak se doma žije</h3>
+<p>Světla, topení, hudba a každodenní situace. Od rána po noční cestu do koupelny.</p>
+<span class="home-card-cta">Prohlédnout →</span>
+</a>
+<a class="home-card home-card-pillar" href="zarizeni.html">
+<span aria-hidden="true" class="home-card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-package"></use></svg></span></span>
+<h3>Zařízení</h3>
+<p>Centrála Homey, světla, senzory a další hardware, ze kterého jsem domácnost sestavil.</p>
+<span class="home-card-cta">Prohlédnout →</span>
+</a>
+<a class="home-card home-card-pillar" href="pribeh.html">
+<span aria-hidden="true" class="home-card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-book-open"></use></svg></span></span>
+<h3>Příběh</h3>
+<p>Cesta k současnému stavu — historie, architektonické přechody a problémy které vznikaly a řešily se cestou.</p>
+<span class="home-card-cta">Prohlédnout →</span>
+</a>
+<a class="home-card home-card-pillar" href="blog.html">
+<span aria-hidden="true" class="home-card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-notebook-pen"></use></svg></span></span>
+<h3>Blog</h3>
+<p>Pravidelné poznámky o tom, co se v systému změnilo, co se rozbilo a jak se to fixovalo.</p>
+<span class="home-card-cta">Prohlédnout →</span>
+</a>
+</div>
+<p class="home-foot">Hledáš kontakt? <a href="kontakt.html">O projektu →</a></p>
+</div>
+</section>
+<details class="visitor-archive container"><summary>Technický přehled · stav ověřený 1. 9. 2026</summary><section aria-labelledby="metrics-title" class="metrics-section section-alt" id="metrics">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Historický snímek systému</p>
+<h2 class="section-title" id="metrics-title">Poslední ověřený stav · 1. 9. 2026</h2>
+<p class="section-lead">Archivní přehled z exportu rozhraní Homey API a kontroly nástroje Brain Guardian. Nejde o aktuální měření.</p>
+</header>
+<div class="metrics-grid">
+<div class="metric-card m-health">
+<p class="metric-label">Skóre stavu systému</p>
+<p class="metric-value">100<span class="metric-suffix">/100</span></p>
+<p class="metric-meta">Kontrola Brain Guardian · stav OK</p>
+</div>
+<div class="metric-card m-flows">
+<p class="metric-label">Automatizační postupy (flows)</p>
+<p class="metric-value">248</p>
+<p class="metric-meta">Automatizace Advanced Flow + pravidelný úklid stavu</p>
+</div>
+<div class="metric-card m-scripts">
+<p class="metric-label">Řídicí skripty (HomeyScript)</p>
+<p class="metric-value">145</p>
+<p class="metric-meta">Přibližně 80 % převedeno na sdílenou knihovnu</p>
+</div>
+<div class="metric-card m-devices">
+<p class="metric-label">Připojená zařízení při měření</p>
+<p class="metric-value">84<span class="metric-suffix">/84</span></p>
+<p class="metric-meta">10 zón · při měření dostupných 100 % zařízení</p>
+</div>
+<div class="metric-card m-vars">
+<p class="metric-label">Stavové proměnné (sh_*)</p>
+<p class="metric-value">782</p>
+<p class="metric-meta">Konfigurace, stav, mezipaměť a audit</p>
+</div>
+<div class="metric-card m-anom">
+<p class="metric-label">Poslední zaznamenaná odchylka</p>
+<p class="metric-value" style="font-size:24px;">Bug E ghost</p>
+<p class="metric-meta">Zjištěna 29. 4. · opraveno plánovaným úklidem stavu</p>
+</div>
+</div>
+<p class="metric-snapshot-note">Historický stav ověřený 1. 9. 2026: zařízení a automatizace z tehdejšího exportu Homey API; skripty a proměnné ze zálohy 15. 8. 2026; skóre stavu z auditu 30. 8. 2026.</p>
+</div>
+</section></details></main>
 
   <!-- LIGHTBOX -->
   <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Zvětšený obrázek">
@@ -236,6 +202,6 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=20261030-navrh" defer></script>
 </body>
 </html>
