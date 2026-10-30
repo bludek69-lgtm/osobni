@@ -123,14 +123,25 @@
     img.setAttribute('decoding', 'async');
   });
 
-  // Set aria-current on active nav link based on path
-  const path = location.pathname.replace(/\/+$/, '').toLowerCase();
-  document.querySelectorAll('.nav a').forEach(a => {
-    const href = (a.getAttribute('href') || '').replace(/\/+$/, '').toLowerCase();
-    if (path.endsWith(href) || (href === '' && path.endsWith('/osobni'))) {
-      a.setAttribute('aria-current', 'page');
+  // Resolve relative and root links alike; select only the closest section.
+  // A root href must not match every page via endsWith('').
+  const normalizePath = path => path.replace(/\/index\.html$/i, '/').replace(/\/+$/, '') || '/';
+  const path = normalizePath(location.pathname);
+  const navLinks = [...document.querySelectorAll('.site-header .nav a')];
+  let activeLink = null;
+  let activeLength = -1;
+  navLinks.forEach(a => {
+    const url = new URL(a.href, location.href);
+    const target = normalizePath(url.pathname);
+    const matches = url.origin === location.origin &&
+      (path === target || (target !== '/' && path.startsWith(target + '/')));
+    a.removeAttribute('aria-current');
+    if (matches && target.length > activeLength) {
+      activeLink = a;
+      activeLength = target.length;
     }
   });
+  if (activeLink) activeLink.setAttribute('aria-current', 'page');
 
   // Enhance the existing recipe checklist; the two-serving recipe works without JS.
   document.querySelectorAll('.recipe-cooking').forEach(cooking => {
