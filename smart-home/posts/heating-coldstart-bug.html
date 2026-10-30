@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="../style.css?v=20261016-medaile" />
+  <link rel="stylesheet" href="../style.css?v=20261028-readable-final" />
   <link rel="canonical" href="https://cestovatel69.cz/smart-home/posts/heating-coldstart-bug.html">
 
   <link rel="icon" href="/favicon.ico">
@@ -18,8 +18,9 @@
   <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
   <meta property="og:url" content="https://cestovatel69.cz/smart-home/posts/heating-coldstart-bug.html">
   <meta property="og:type" content="website">
+<link rel="stylesheet" href="../visitor.css?v=20261030-redakce">
 </head>
-<body>
+<body class="sh-visitor-page">
   <a href="#main" class="skip-link">Přeskočit na obsah</a>
   <header class="site-header">
     <div class="container header-inner">
@@ -34,6 +35,7 @@
       </nav>
     </div>
   </header>
+<aside class="visitor-bar" aria-label="Návrat z článku"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/">← Zpět na cestovatel69.cz</a><a href="/o-mne.html">O mně</a></div><div class="visitor-links"><a href="/smart-home/">Úvod Smart Home</a><a href="/smart-home/blog.html">Všechny zápisky</a></div></div></aside>
 
   <main class="post-page" id="main">
     <div class="container">
@@ -259,11 +261,11 @@ if (boilerState === 'off') {
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> SMART HOME projekt</p>
-      <p class="footer-meta">Veřejná prezentace · žádné API klíče · žádné lokální IP.</p>
-    </div>
-  </footer>
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME projekt</p>
+<p class="footer-meta">Veřejná prezentace · žádné API klíče · žádné lokální IP.</p>
+</div>
+</footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();

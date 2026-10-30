@@ -1,0 +1,23 @@
+.fishing-page .fishing-hero { display: grid; grid-template-columns: 1fr 1.1fr; gap: 2.5rem; align-items: center; margin: .5rem 0 2rem; }
+.fishing-page .fishing-hero h1 { font-size: clamp(2rem,4vw,3rem); margin: .75rem 0 1rem; }
+.fishing-page .fishing-hero .hero-accent { color: var(--accent-text); font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.fishing-page .fishing-hero p { color: var(--text-mut); font-size: 1.05rem; line-height: 1.75; margin: 0; }
+.fishing-page .fishing-lead-photo { margin: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 16px; background: var(--panel); }
+.fishing-page .fishing-lead-photo img { display: block; width: 100%; height: auto; }
+.fishing-page .fishing-lead-photo figcaption { padding: .65rem 1rem; color: var(--text-mut); font-size: .85rem; }
+.fishing-page .fishing-albums { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .8rem; margin: 1rem 0 2.5rem; }
+.fishing-page .fishing-albums a { display: block; border: 1px solid var(--border); border-radius: 10px; background: var(--panel); padding: 1rem; color: var(--text); }
+.fishing-page .fishing-albums span { display: block; color: var(--text-mut); font-size: .85rem; margin-top: .25rem; }
+.fishing-page .fishing-albums a:hover { border-color: var(--accent-text); background: var(--panel-hi); }
+.fishing-page .fishing-more { margin-top: 1.25rem; }
+.fishing-page .fishing-more summary { min-height: 44px; width: fit-content; max-width: 100%; box-sizing: border-box; cursor: pointer; padding: .75rem 1rem; border: 1px solid var(--border); border-radius: 8px; color: var(--accent-text); font-weight: 600; }
+.fishing-page .fishing-more > .travel-photo-grid { margin-top: 1.25rem; }
+.fishing-page .fishing-hide,.fishing-page .fishing-more[open] .fishing-show { display: none; }
+.fishing-page .fishing-more[open] .fishing-hide { display: inline; }
+.fishing-page .fishing-up { display: inline-block; color: var(--text-mut); font-size: .85rem; padding: .75rem 0; margin-top: .5rem; }
+.fishing-page .fishing-notes { max-width: 800px; margin-top: 2.5rem; }
+.fishing-page .fishing-notes p { color: var(--text-mut); line-height: 1.8; }
+.fishing-page :is(h3[id],section[id]) { scroll-margin-top: 100px; }
+.fishing-page :is(.fishing-more summary,.fishing-albums a,.fishing-up):focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
+@media (max-width: 760px) { .fishing-page .fishing-hero { grid-template-columns: minmax(0,1fr); gap: 1.25rem; } }
+@media (max-width: 540px) { .fishing-page .fishing-albums { grid-template-columns: minmax(0,1fr); gap: .5rem; } .fishing-page .fishing-albums a { display: flex; justify-content: space-between; gap: .5rem; align-items: center; padding: .8rem 1rem; } .fishing-page .fishing-albums span { margin: 0; } }

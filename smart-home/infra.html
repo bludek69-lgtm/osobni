@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Raspberry Pi, Home Assistant, GitHub repos, GitHub Actions." />
-  <meta name="theme-color" content="#0a0e14" />
-  <title>Infrastruktura | SMART HOME</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="style.css?v=20261028-readable-final" />
-
-  <link rel="icon" href="/favicon.ico">
-  <link rel="canonical" href="https://cestovatel69.cz/smart-home/infra.html">
-  <meta property="og:title" content="Infrastruktura | SMART HOME">
-  <meta property="og:description" content="Raspberry Pi, Home Assistant, GitHub repos, GitHub Actions.">
-  <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
-  <meta property="og:url" content="https://cestovatel69.cz/smart-home/infra.html">
-  <meta property="og:type" content="website">
-<link rel="stylesheet" href="visitor.css?v=20261030-navrh">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Vedle centrály Homey používám další zařízení a nástroje pro záznamy, zálohy a kontrolu provozu. Tato stránka ukazuje jejich role a způsob, jak dohledávám chyby." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Zázemí pro chod domácnosti | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+<link href="https://cestovatel69.cz/smart-home/infra.html" rel="canonical"/>
+<meta content="Zázemí pro chod domácnosti | SMART HOME" property="og:title"/>
+<meta content="Vedle centrály Homey používám další zařízení a nástroje pro záznamy, zálohy a kontrolu provozu. Tato stránka ukazuje jejich role a způsob, jak dohledávám chyby." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/smart-home/infra.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="visitor.css?v=20261030-redakce" rel="stylesheet"/>
 </head>
 <body class="sh-visitor-page">
   <a href="#main" class="skip-link">Přeskočit na obsah</a>
@@ -51,136 +50,131 @@
 <aside class="visitor-bar" aria-label="Osobní web a Smart Home"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/">← Zpět na cestovatel69.cz</a><a href="/o-mne.html">O mně</a></div><div class="visitor-links"><a href="/smart-home/">Úvod Smart Home</a><span class="visitor-overviews">Stručný úvod:</span><a href="/en/smart-home/" hreflang="en" lang="en">English</a><a href="/it/smart-home/" hreflang="it" lang="it">Italiano</a></div></div></aside>
 
   <main id="main">
-<section id="infra" class="section section-alt">
-      <div class="container">
-        <header class="section-header">
-          <p class="section-eyebrow">📦 Zařízení · Infrastruktura</p>
-          <h1 class="section-title">Co drží systém pohromadě</h1>
-          <p class="section-lead">
+<section class="section section-alt" id="infra">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">📦 Zařízení · Infrastruktura</p>
+<h1 class="section-title">Zázemí pro chod domácnosti</h1>
+<p class="section-lead">Vedle centrály Homey používám další zařízení a nástroje pro záznamy, zálohy a kontrolu provozu. Tato stránka ukazuje jejich role a způsob, jak dohledávám chyby.</p><details class="visitor-technical-intro"><summary>Technické podrobnosti</summary><p class="section-lead">
             Homey Pro je hlavní hub, ale není sám. Raspberry Pi, Home Assistant,
             GitHub repo a GitHub Actions tvoří backup + observability vrstvu,
             která dělá systém spolehlivý mimo lokální síť.
-          </p>
-        </header>
-
-        <div class="infra-grid">
-          <article class="infra-card">
-            <div class="infra-head">
-              <span class="infra-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-monitor"/></svg></span></span>
-              <h3>Raspberry Pi (kiosek + proxy)</h3>
-            </div>
-            <p>
-              <strong>Raspberry Pi 4</strong> s WaveShare 10.1" HDMI LCD
+          </p></details>
+</header>
+<div class="infra-grid">
+<article class="infra-card">
+<div class="infra-head">
+<span aria-hidden="true" class="infra-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-monitor"></use></svg></span></span>
+<h3>Raspberry Pi (kiosek + proxy)</h3>
+</div>
+<p>
+<strong>Raspberry Pi 4</strong> s WaveShare 10.1" HDMI LCD
               (1024 × 600). Běží 24/7 v předsíni jako vždy zapnutý touch
               kiosek dashboardu. Chromium v full-screen kiosk módu, autostart
               přes systemd.
             </p>
-            <p>
+<p>
               Druhá role: <strong>dashboard proxy</strong>. Python skript
               <code>dashboard_server.py</code> na <code>localhost:8080</code>
               překlápí požadavky z dashboardu na Homey REST API.
               Tím dashboard funguje i když cloud Homey nedostupný — stačí lokální síť.
             </p>
-            <p>
+<p>
               Třetí role: <strong>další služby</strong>. Tailscale (přístup z práce
               přes VPN), Apps Script proxy, případně další skripty.
             </p>
-          </article>
-
-          <article class="infra-card">
-            <div class="infra-head">
-              <span class="infra-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-house"/></svg></span></span>
-              <h3>Home Assistant (mirror + observer + 24/7 sandbox brána)</h3>
-            </div>
-            <p>
+</article>
+<article class="infra-card">
+<div class="infra-head">
+<span aria-hidden="true" class="infra-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-house"></use></svg></span></span>
+<h3>Home Assistant (mirror + observer + 24/7 sandbox brána)</h3>
+</div>
+<p>
               Druhý Raspberry Pi s <strong>Home Assistant OS</strong>. Hlavní role
               není primární řízení (to dělá Homey) — HA je <strong>read-only
               observer, backup target a od 14. května 2026 i 24/7 testovací brána</strong>
               přes Python sandbox runner.
             </p>
-            <p>
+<p>
               Konkrétně:
             </p>
-            <ul class="infra-list">
-              <li>HA Energy Dashboard agreguje data ze Shelly plugů (lednice, trouba, mikrovlnka).</li>
-              <li>Long-term storage telemetrie — Homey má krátkou paměť, HA drží roky.</li>
-              <li>Samostatný backup target pro git repa (cron auto-pull každou hodinu).</li>
-              <li>Failover: kdyby Homey padl, HA zná aktuální stav.</li>
-              <li><strong>NEW (14.5.):</strong> Python sandbox runner běží každou hodinu přes
+<ul class="infra-list">
+<li>HA Energy Dashboard agreguje data ze Shelly plugů (lednice, trouba, mikrovlnka).</li>
+<li>Long-term storage telemetrie — Homey má krátkou paměť, HA drží roky.</li>
+<li>Samostatný backup target pro git repa (cron auto-pull každou hodinu).</li>
+<li>Failover: kdyby Homey padl, HA zná aktuální stav.</li>
+<li><strong>NEW (14.5.):</strong> Python sandbox runner běží každou hodinu přes
                   HA <code>shell_command</code> + automation. 26 testů, 19 replay scénářů,
                   auto-registry nových entit. Bez něj žádná oprava nesmí do live Homey.</li>
-              <li><strong>NEW (14.5.):</strong> Dashboard cache pipeline (Python, cron 1×/min) →
+<li><strong>NEW (14.5.):</strong> Dashboard cache pipeline (Python, cron 1×/min) →
                   <code>/local/smart-home/dashboard-data.json</code> jako mirror+enhance vrstva
                   mezi Homey a frontendem. Snižuje Homey HTTP load, kiosek čte cache místo přímo.</li>
-              <li><strong>LIVE od 27.5.2026:</strong> Intenso SSD Premium 256 GB USB 3.2 nainstalován
+<li><strong>LIVE od 27.5.2026:</strong> Intenso SSD Premium 256 GB USB 3.2 nainstalován
                   jako <code>/dev/sda1</code> (~234 GB ext4). Hybrid setup: SD karta zůstává OS, SSD
                   drží EventLog JSONL (primární logging vrstva), HA recorder DB, backupy, sandbox a git
                   mirrors. Cíl byl prodloužit životnost SD (HA recorder dělá stovky writes/min, SD má
                   3–10k cyklů, SSD 1M+) — splněno.</li>
-            </ul>
-            <p>
+</ul>
+<p>
               Komunikace: HA přistupuje k Homey přes REST API (Bearer token),
               Homey k HA přes webhook + REST sensor. Žádné dvojí ovládání —
               jen sdílená observability.
             </p>
-          </article>
-
-          <article class="infra-card">
-            <div class="infra-head">
-              <span class="infra-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-package"/></svg></span></span>
-              <h3>GitHub repos (single source of truth)</h3>
-            </div>
-            <p>
+</article>
+<article class="infra-card">
+<div class="infra-head">
+<span aria-hidden="true" class="infra-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-package"></use></svg></span></span>
+<h3>GitHub repos (single source of truth)</h3>
+</div>
+<p>
               Veškerý kód, dokumentace, snapshoty a konfigurace v
               <strong>privátních GitHub repech</strong>. Tři aktivní:
             </p>
-            <ul class="infra-list">
-              <li><code>smart-home-homey</code> — všechny <code>sh_*</code> skripty, audity, deployment plány, denní snapshoty exportu z Homey REST API.</li>
-              <li><code>smart-home-dashboards</code> — HTML/CSS/JS dashboardy ve všech rozlišeních + Python phase patchery.</li>
-              <li><code>lk-finance</code> — privátní finance (encrypted-at-rest přes transcrypt + AES-256-CBC + PBKDF2). Stejný pattern, jiná data.</li>
-            </ul>
-            <p>
-              <strong>Daily backup pipeline</strong>: HAOS skript
+<ul class="infra-list">
+<li><code>smart-home-homey</code> — všechny <code>sh_*</code> skripty, audity, deployment plány, denní snapshoty exportu z Homey REST API.</li>
+<li><code>smart-home-dashboards</code> — HTML/CSS/JS dashboardy ve všech rozlišeních + Python phase patchery.</li>
+<li><code>lk-finance</code> — privátní finance (encrypted-at-rest přes transcrypt + AES-256-CBC + PBKDF2). Stejný pattern, jiná data.</li>
+</ul>
+<p>
+<strong>Daily backup pipeline</strong>: HAOS skript
               <code>backup_homey.sh</code> se spustí každý den v 02:00,
               zavolá Homey REST API, vyexportuje devices/variables/flows/scripts,
               commitne do <code>backup_homey/</code> a pushne na GitHub.
               SSH deploy key, žádný uložený token v repo.
             </p>
-          </article>
-
-          <article class="infra-card">
-            <div class="infra-head">
-              <span class="infra-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-settings"/></svg></span></span>
-              <h3>GitHub Actions (automatizované úkony)</h3>
-            </div>
-            <p>
+</article>
+<article class="infra-card">
+<div class="infra-head">
+<span aria-hidden="true" class="infra-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-settings"></use></svg></span></span>
+<h3>GitHub Actions (automatizované úkony)</h3>
+</div>
+<p>
               Část úkolů běží <strong>v cloudu na GitHub Actions</strong>,
               ne na Homey. Konkrétně:
             </p>
-            <ul class="infra-list">
-              <li><code>daily_backup.yml</code> — denní snapshot Homey state, cron na GitHub straně (failover pokud HAOS padne).</li>
-              <li><code>weekly_audit.yml</code> — týdenní statická analýza skriptů: hledá hardcoded names, missing guards, deprecated patterns. Vytvoří issue.</li>
-              <li><code>memory_watchdog.yml</code> — sleduje memory soubory, pokud někde duplicita / stale info → alert.</li>
-              <li><code>cleanup_phase4_delete.yml</code> — naplánovaný auto-delete cleanup wave skriptů. Pre-checks: Brain Guardian score, EventLog exceptions. Pokud red flag → action selže, žádný delete.</li>
-            </ul>
-            <p>
+<ul class="infra-list">
+<li><code>daily_backup.yml</code> — denní snapshot Homey state, cron na GitHub straně (failover pokud HAOS padne).</li>
+<li><code>weekly_audit.yml</code> — týdenní statická analýza skriptů: hledá hardcoded names, missing guards, deprecated patterns. Vytvoří issue.</li>
+<li><code>memory_watchdog.yml</code> — sleduje memory soubory, pokud někde duplicita / stale info → alert.</li>
+<li><code>cleanup_phase4_delete.yml</code> — naplánovaný auto-delete cleanup wave skriptů. Pre-checks: Brain Guardian score, EventLog exceptions. Pokud red flag → action selže, žádný delete.</li>
+</ul>
+<p>
               Výhoda: <strong>akce běží mimo dům</strong>. I kdyby Homey padl,
               GitHub Actions stále hlídají repo a provádějí naplánované úkony.
               Tokens jsou v GitHub Secrets, ne v kódu.
             </p>
-          </article>
-
-          <article class="infra-card infra-card-finance">
-            <div class="infra-head">
-              <span class="infra-icon" aria-hidden="true"><span class="medal"><svg class="medal-i" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/img/icons.svg#i-lock"/></svg></span></span>
-              <h3>Finance (paralelní privátní stack)</h3>
-            </div>
-            <p>
+</article>
+<article class="infra-card infra-card-finance">
+<div class="infra-head">
+<span aria-hidden="true" class="infra-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-lock"></use></svg></span></span>
+<h3>Finance (paralelní privátní stack)</h3>
+</div>
+<p>
               Stejný pattern jako smart home, ale pro <strong>osobní finance</strong>:
               privátní GitHub repo + HAOS mirror. Klíčový rozdíl —
               <strong>encryption-at-rest</strong>.
             </p>
-            <p>
+<p>
               Soubory typu <code>*.pdf, *.xlsx, *.csv, *.docx, *.zip</code>
               jsou před commitem šifrované přes
               <strong>transcrypt + AES-256-CBC + PBKDF2 (100k iter)</strong>.
@@ -188,16 +182,16 @@
               Master heslo lokálně, mimo repo, offline backup na USB +
               papír v sejfu.
             </p>
-            <p>
+<p>
               Z webu sem nic nepatří — finance jsou striktně privátní.
               Ale architektura je sdílená: stejný auto-backup pattern,
               stejné principy, jen vyšší ochrana dat.
             </p>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
+</article>
+</div>
+</div>
+</section>
+</main>
 
   <!-- LIGHTBOX -->
   <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Zvětšený obrázek">
@@ -207,12 +201,12 @@
   </div>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> SMART HOME projekt · Vyrobeno s ❤️ a script-first myšlením.</p>
-      <p class="footer-meta">Veřejná prezentace · žádné API klíče · žádné lokální IP · žádné ovládání odtud.</p>
-      <p class="footer-meta"><a href="technicka-mapa.html">Technická mapa →</a> · <a href="index.html">Domů</a></p>
-    </div>
-  </footer>
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME projekt · Vyrobeno s ❤️ a script-first myšlením.</p>
+<p class="footer-meta">Veřejná prezentace · žádné API klíče · žádné lokální IP · žádné ovládání odtud.</p>
+<p class="footer-meta"><a href="technicka-mapa.html">Technická mapa →</a> · <a href="index.html">Domů</a></p>
+</div>
+</footer>
 
   <script src="script.js?v=20261030-navrh" defer></script>
 </body>

@@ -6,6 +6,12 @@
 .sh-visitor-page .visitor-bar .visitor-back { color: var(--accent); font-weight: 600; }
 .sh-visitor-page .visitor-bar a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
 .sh-visitor-page .visitor-overviews { color: var(--text-dim); font-size: 12px; }
+.sh-visitor-page .visitor-technical-intro { max-width: 800px; margin: 20px 0 0; color: var(--text-soft); }
+.sh-visitor-page .visitor-technical-intro > summary { width: fit-content; max-width: 100%; min-height: 44px; padding: 10px 14px; border: 1px solid var(--border-strong); border-radius: 8px; cursor: pointer; font-size: 14px; }
+.sh-visitor-page .visitor-technical-intro > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.sh-visitor-page .visitor-technical-intro[open] > summary { margin-bottom: 16px; }
+.sh-visitor-page .visitor-technical-intro .hero-lead,.sh-visitor-page .visitor-technical-intro .section-lead { margin: 0; font-size: 15px; line-height: 1.75; }
+.sh-visitor-page .visitor-technical-intro .uc-stats { margin-top: 20px; }
 .sh-visitor-page.visitor-home .section-hero { padding: 64px 0; }
 .sh-visitor-page.visitor-home .hero-inner { grid-template-columns: 1.15fr 1fr; gap: 56px; }
 .sh-visitor-page.visitor-home .hero-title { font-size: clamp(36px,4.4vw,60px); }

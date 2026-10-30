@@ -391,6 +391,15 @@
     var lb = document.createElement('div');
     lb.id = '__lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Zvětšený obrázek');
     lb.innerHTML = '<img id="__lbimg" alt=""><button type="button" id="__lbclose" class="__lbclose" aria-label="Zavřít zvětšený obrázek">✕</button><span class="__lbhint">Klikni nebo stiskni ESC pro zavření</span>';
+    var lightboxLabels = {
+      en: ['Enlarged photograph', 'Close enlarged photograph', 'Click or press Escape to close'],
+      it: ['Fotografia ingrandita', 'Chiudi la fotografia ingrandita', 'Fai clic o premi Esc per chiudere']
+    }[document.documentElement.lang];
+    if (lightboxLabels) {
+      lb.setAttribute('aria-label', lightboxLabels[0]);
+      lb.querySelector('#__lbclose').setAttribute('aria-label', lightboxLabels[1]);
+      lb.querySelector('.__lbhint').textContent = lightboxLabels[2];
+    }
     document.body.appendChild(lb);
     var closeStyle = document.createElement('style');
     closeStyle.textContent = '.__lbclose{position:absolute;top:1rem;right:1rem;width:2.5rem;height:2.5rem;border:none;border-radius:50%;background:rgba(255,255,255,0.15);color:#fff;font-size:1.25rem;line-height:1;cursor:pointer}.__lbclose:hover,.__lbclose:focus-visible{background:rgba(255,255,255,0.3)}.__lbclose:focus-visible{outline:2px solid #fff;outline-offset:2px}';
