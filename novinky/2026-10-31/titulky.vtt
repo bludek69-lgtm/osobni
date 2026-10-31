@@ -1,0 +1,276 @@
+WEBVTT
+
+00:00.000 --> 00:03.420
+Ahoj, vítám vás u přehledu novinek z AI a
+
+00:03.420 --> 00:08.340
+financí. Podíváme se na změny v ChatGPT,
+nový specializovaný model
+
+00:08.340 --> 00:13.380
+pro výzkum, výsledky Amazonu a Intelu,
+páteční vývoj amerických trhů
+
+00:13.380 --> 00:15.540
+a náladu na kryptoměnovém trhu.
+
+00:16.100 --> 00:22.560
+OpenAI 30. října oznámila zavádění modelu
+GPT-6 Rosalind Research pro
+
+00:22.560 --> 00:25.180
+vícekrokový výzkum v biologických vědách.
+
+00:25.180 --> 00:29.980
+Přístup je určen omezenému okruhu
+schválených organizací a uživatelů,
+
+00:30.000 --> 00:32.340
+a to ve Work, Codexu a API.
+
+00:32.920 --> 00:35.340
+V běžné záložce Chat dostupný není.
+
+00:35.580 --> 00:39.820
+V Enterprise začíná dvoutýdenním náhledem
+pro správce a ve výchozím
+
+00:39.820 --> 00:44.200
+nastavení je vypnutý. Pro české uživatele
+zatím nemáme potvrzení
+
+00:44.200 --> 00:48.620
+dostupnosti konkrétní organizace.
+Prakticky: výzkumný tým musí
+
+00:48.620 --> 00:53.400
+nejprve ověřit schválení a nastavení svého
+účtu; nejde o univerzálně
+
+00:53.400 --> 00:55.180
+dostupnou novinku pro každého.
+
+00:55.560 --> 01:02.260
+OpenAI 29. října popsala úpravu GPT-6 v
+ChatGPT: odpovědi mají
+
+01:02.260 --> 01:04.680
+být stručnější a méně lichotivé.
+
+01:04.940 --> 01:09.000
+Změna se týká bezplatných uživatelů,
+tarifu Go a lidí bez
+
+01:09.000 --> 01:12.720
+přihlášení. U Plus a Pro se týká jen
+modelu, na
+
+01:12.720 --> 01:17.300
+který může systém přepnout po vyčerpání
+limitu; hlavní GPT-6 v
+
+01:17.300 --> 01:19.460
+těchto tarifech zůstává beze změny.
+
+01:19.460 --> 01:23.760
+Společnost také přepracovala veřejný Model
+Spec, tedy pravidla
+
+01:23.760 --> 01:26.220
+popisující zamýšlené chování modelů.
+
+01:26.440 --> 01:30.000
+To samo o sobě není oznámení nového modelu
+a nelze
+
+01:30.000 --> 01:33.500
+předpokládat, že změny okamžitě vyřeší
+všechny chyby.
+
+01:34.140 --> 01:38.720
+Amazon zveřejnil 29. října výsledky za
+třetí čtvrtletí.
+
+01:38.980 --> 01:44.620
+Celkové tržby dosáhly 201,9 miliardy
+dolarů, zatímco tržby cloudové
+
+01:44.620 --> 01:49.780
+divize AWS meziročně vzrostly o 39,3
+procenta.
+
+01:49.780 --> 01:53.760
+Cloud těží z poptávky po výpočetním
+výkonu, ale vedle růstu
+
+01:53.760 --> 01:57.580
+tržeb je důležité sledovat i náklady na
+datová centra a
+
+01:57.580 --> 02:02.240
+návratnost investic. Samotný rychlý růst
+cloudu není zárukou, že
+
+02:02.240 --> 02:04.900
+akcie porostou. Google 29.
+
+02:05.140 --> 02:09.360
+října oznámil, že v aplikaci Gemini lze
+přímo v chatu
+
+02:09.360 --> 02:12.900
+vytvářet, zobrazovat a upravovat různé
+soubory.
+
+02:12.900 --> 02:16.760
+U PDF firma popisuje náhled a úpravy na
+webu i
+
+02:16.760 --> 02:21.800
+v mobilu; dokumenty, tabulky, prezentace a
+další vyjmenované formáty
+
+02:21.800 --> 02:26.100
+na webu. Podle oznámení jsou funkce
+dostupné všem uživatelům v
+
+02:26.100 --> 02:29.100
+jazycích, ve kterých je aplikace Gemini
+dostupná.
+
+02:29.340 --> 02:32.460
+Představte si, že máte poznámky z cest a
+chcete z
+
+02:32.460 --> 02:34.720
+nich vytvořit stručný přehled v PDF.
+
+02:35.200 --> 02:39.680
+Soubor potom můžete v chatu otevřít,
+označit odstavec a požádat
+
+02:39.680 --> 02:44.160
+o jeho úpravu. Výsledek má smysl před
+sdílením zkontrolovat, zejména
+
+02:44.160 --> 02:46.780
+pokud obsahuje čísla nebo osobní údaje.
+
+02:47.100 --> 02:51.320
+Pro konkrétní český účet dostupnost nebyla
+samostatně vyzkoušena.
+
+02:51.720 --> 02:56.480
+Pro širší souvislost přidávám starší
+výzkum Anthropic zveřejněný 27.
+
+02:57.240 --> 03:01.880
+října. Výzkumníci sledovali, jak
+profesionální analytici používají
+
+03:01.880 --> 03:04.940
+Claude Code při úkolu se statistickou
+analýzou.
+
+03:05.200 --> 03:09.240
+Agentům v experimentu předem přiřadili
+náhodnou preferenci jedné z
+
+03:09.240 --> 03:13.280
+možností. Účastníci se v řadě rozhodnutí
+přikláněli ke stejné
+
+03:13.280 --> 03:18.200
+variantě jako agent. Studie ale sama
+upozorňuje, že preference agentů
+
+03:18.200 --> 03:22.560
+byly v experimentu záměrně posílené, a
+proto z výsledku nelze
+
+03:22.560 --> 03:26.500
+přímo odvodit, jak silný vliv mají běžní
+asistenti ve všech
+
+03:26.500 --> 03:31.080
+situacích. Praktický závěr: při práci s AI
+je dobré
+
+03:31.080 --> 03:36.230
+předem určit vlastní kritéria a porovnat
+víc možností, například při
+
+03:36.230 --> 03:39.240
+hodnocení investičního přehledu nebo
+analýzy dat.
+
+03:39.240 --> 03:42.820
+Tato studie není oznámením nového modelu
+Claude.
+
+03:43.160 --> 03:48.080
+Intel oznámil tržby za třetí čtvrtletí
+16,5 miliardy dolarů,
+
+03:48.420 --> 03:50.640
+meziročně o 21 procent více.
+
+03:50.920 --> 03:55.620
+Pro čtvrté čtvrtletí očekává 15 až 16
+miliard; je to
+
+03:55.620 --> 03:58.520
+výhled firmy, nikoli už dosažený výsledek.
+
+03:58.820 --> 04:03.180
+V pátek podle Associated Press akcie
+Intelu klesly o 28,6
+
+04:03.180 --> 04:07.560
+procenta a Nasdaq Composite o 2,9
+procenta.
+
+04:07.560 --> 04:11.500
+Pro českého investora je kromě pohybu cen
+podstatný také kurz
+
+04:11.500 --> 04:15.880
+dolaru vůči koruně. Tyto údaje se vztahují
+k pátečnímu obchodování,
+
+04:16.100 --> 04:17.760
+nikoli k budoucímu vývoji.
+
+04:18.040 --> 04:22.300
+Bitcoin a ether se obchodují nepřetržitě,
+proto má každá cenovka
+
+04:22.300 --> 04:25.880
+smysl pouze s datem, časem, měnou a
+zdrojem.
+
+04:26.220 --> 04:30.710
+Index Crypto Fear & Greed od
+Alternative.me měl 31.
+
+04:30.710 --> 04:35.220
+října hodnotu 30 ze 100, což zdroj
+označuje jako strach.
+
+04:35.220 --> 04:37.300
+Den předtím byl rovněž na 30.
+
+04:37.760 --> 04:42.640
+Index zachycuje náladu trhu; sám o sobě
+nepředpovídá další cenu.
+
+04:42.680 --> 04:44.700
+Odkazy na zdroje najdete pod videem.
+
+04:45.000 --> 04:48.800
+Tento přehled slouží pro informaci a není
+osobním investičním
+
+04:48.800 --> 04:52.140
+doporučením. Děkuji za pozornost a přeji
+hezký den.
