@@ -20,3 +20,13 @@
   .hidden-gems-page .gems-resources { flex-direction: column; gap: 0; }
   .hidden-gems-page .gems-resources .btn-mini { flex: auto; }
 }
+
+/* A clear overview of the three travel series. */
+.gems-project-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.gems-project { display:flex; flex-direction:column; gap:.65rem; padding:1.4rem; border:1px solid var(--border); border-radius:14px; background:var(--panel); }
+.gems-project h3, .gems-project p, .gems-project .gems-label { margin:0; }
+.gems-project h3 { font-size:1.2rem; }
+.gems-project p { color:var(--text-mut); }
+.gems-project a { margin-top:auto; padding-top:.4rem; color:var(--accent-text); font-weight:700; }
+.gems-project a:hover { text-decoration:underline; text-underline-offset:4px; }
+@media(max-width:760px) { .gems-project-grid { grid-template-columns:minmax(0,1fr); } }
