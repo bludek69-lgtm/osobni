@@ -1,0 +1,384 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.320
+Dobrý den, vítám vás u dnešního přehledu
+světa AI a
+
+2
+00:00:04.320 --> 00:00:08.880
+financí. Podíváme se, jak se mají změnit
+limity ChatGPT a
+
+3
+00:00:08.880 --> 00:00:13.100
+Codexu, proč se kolem umělé inteligence
+řeší elektřina a co
+
+4
+00:00:13.100 --> 00:00:14.700
+naznačují data z průmyslu.
+
+5
+00:00:14.960 --> 00:00:18.560
+A nechybí Bitcoin, Ethereum a nálada na
+kryptotrhu.
+
+6
+00:00:19.040 --> 00:00:23.800
+OpenAI popisuje změnu, která se může
+dotknout každého, kdo používá
+
+7
+00:00:23.800 --> 00:00:27.140
+ChatGPT vedle programovacího nástroje
+Codex.
+
+8
+00:00:27.140 --> 00:00:31.540
+Od prosince mají tarify Plus, Pro a
+Business sdílet limit
+
+9
+00:00:31.540 --> 00:00:33.420
+využití mezi oběma produkty.
+
+10
+00:00:33.700 --> 00:00:37.380
+Firma říká, že běžný Instant chat z tohoto
+limitu čerpat
+
+11
+00:00:37.380 --> 00:00:41.960
+nebude. Praktický příklad: když necháte
+Codex pracovat na rozsáhlé
+
+12
+00:00:41.960 --> 00:00:47.040
+aplikaci a potom požádáte ChatGPT o
+náročný úkol, oba typy
+
+13
+00:00:47.040 --> 00:00:50.560
+práce se mohou promítnout do stejného
+dostupného objemu.
+
+14
+00:00:50.680 --> 00:00:53.960
+Záleží na zvoleném modelu a náročnosti
+zadání.
+
+15
+00:00:53.960 --> 00:00:58.400
+Zbývající využití a čas obnovení mají být
+vidět v nastavení.
+
+16
+00:00:58.540 --> 00:01:02.880
+Tohle je zatím oznámený budoucí stav,
+takže před změnou sledujte
+
+17
+00:01:02.880 --> 00:01:04.920
+skutečné podmínky svého tarifu.
+
+18
+00:01:05.360 --> 00:01:08.580
+Ve zprávě ze třicátého října se u Claude
+Code řeší
+
+19
+00:01:08.580 --> 00:01:12.280
+pravidlo pro vytváření kopií konkrétních
+existujících her.
+
+20
+00:01:12.680 --> 00:01:16.640
+Podle vyjádření pracovníka Anthropic, na
+které firma odkázala hernímu
+
+21
+00:01:16.640 --> 00:01:21.420
+médiu Game Developer, upravila instrukce
+pro model Opus 5.5 tak,
+
+22
+00:01:21.580 --> 00:01:24.920
+aby se vyhýbal obnovování konkrétní cizí
+hry.
+
+23
+00:01:25.260 --> 00:01:29.940
+Originální hry, vlastní návrhy a hry
+inspirované žánrem mají zůstat
+
+24
+00:01:29.940 --> 00:01:32.800
+možné. Pro vývojáře je rozdíl praktický.
+
+25
+00:01:33.220 --> 00:01:37.020
+Zadání vlastní hry s vlastními obrázky a
+pravidly je něco
+
+26
+00:01:37.020 --> 00:01:41.560
+jiného než požadavek znovu vytvořit
+konkrétní existující titul.
+
+27
+00:01:41.900 --> 00:01:46.640
+Média také zmiňují případy možného
+odmítnutí legitimní práce; jejich
+
+28
+00:01:46.640 --> 00:01:48.380
+rozsah zatím nelze zobecnit.
+
+29
+00:01:48.680 --> 00:01:52.480
+Budeme sledovat, jak se pravidlo projeví v
+běžném používání.
+
+30
+00:01:52.840 --> 00:01:56.200
+OpenAI dnes představila program Grid
+Protectors.
+
+31
+00:01:56.580 --> 00:02:00.440
+Chce v budoucích výpočetních areálech
+spolupracovat s energetickými
+
+32
+00:02:00.440 --> 00:02:04.040
+společnostmi a při napětí v síti omezovat
+odběr.
+
+33
+00:02:04.320 --> 00:02:07.600
+Jako pilot uvádí plánovaný areál v
+americké Georgii.
+
+34
+00:02:08.020 --> 00:02:12.800
+Dohoda tam podle společnosti počítá až s
+tisícem megawattů flexibilního
+
+35
+00:02:12.800 --> 00:02:16.240
+omezení spotřeby. Proč se tím zabývat?
+Výpočetní
+
+36
+00:02:16.240 --> 00:02:20.380
+centra potřebují hodně energie a místní
+síť musí zvládat i
+
+37
+00:02:20.380 --> 00:02:24.920
+špičky. Když velký odběratel dokáže
+spotřebu ve správnou chvíli snížit,
+
+38
+00:02:24.920 --> 00:02:29.940
+může síti pomoci. Úspěch ale závisí na
+skutečném provozu, podmínkách
+
+39
+00:02:29.940 --> 00:02:32.540
+dohody a investicích do infrastruktury.
+
+40
+00:02:32.880 --> 00:02:36.600
+Zatím jde o program a plán, nikoli o
+naměřený výsledek.
+
+41
+00:02:36.920 --> 00:02:40.480
+Pro českého diváka je to zajímavá ukázka
+toho, jak spolu
+
+42
+00:02:40.480 --> 00:02:44.700
+souvisí rozvoj AI, energetika a náklady na
+provoz.
+
+43
+00:02:44.700 --> 00:02:47.100
+Z Číny přišla data o průmyslu.
+
+44
+00:02:47.560 --> 00:02:53.540
+Její statistický úřad uvedl za říjen
+průmyslový PMI 49,3 bodu,
+
+45
+00:02:53.820 --> 00:02:57.200
+zatímco v září šlo o 50,1. Říjnová
+
+46
+00:02:57.200 --> 00:03:02.060
+hodnota pod hranicí padesáti ukazuje na
+celkové oslabení aktivity podle
+
+47
+00:03:02.060 --> 00:03:04.980
+průzkumu. Data byla zveřejněna už 31.
+
+48
+00:03:05.720 --> 00:03:10.040
+října. Pro investory sledující globální
+firmy to připomíná, že
+
+49
+00:03:10.040 --> 00:03:13.620
+jednotlivé ekonomiky se nemusí pohybovat
+stejným tempem.
+
+50
+00:03:13.620 --> 00:03:17.820
+Hotelová společnost Marriott dnes
+zveřejnila výsledky za třetí
+
+51
+00:03:17.820 --> 00:03:23.940
+čtvrtletí. Čistý zisk dosáhl 794 milionů
+dolarů, před rokem to
+
+52
+00:03:23.940 --> 00:03:29.800
+bylo 728 milionů. Výnos na dostupný pokoj,
+označovaný jako RevPAR,
+
+53
+00:03:30.100 --> 00:03:34.740
+celosvětově meziročně vzrostl o 6,5
+procenta. Tato metrika
+
+54
+00:03:34.740 --> 00:03:39.220
+zahrnuje obsazenost i cenu pokojů a v
+uvedeném srovnání firma
+
+55
+00:03:39.220 --> 00:03:41.420
+používá stálé dolarové kurzy.
+
+56
+00:03:41.420 --> 00:03:46.100
+Pro cestovatele je zajímavé, že silnější
+poptávka může přispívat k
+
+57
+00:03:46.100 --> 00:03:50.720
+vyšším cenám ubytování, ale jeden výsledek
+velkého hotelového řetězce
+
+58
+00:03:50.720 --> 00:03:53.940
+neříká, jak se změní cena konkrétního
+pobytu.
+
+59
+00:03:54.220 --> 00:03:57.620
+Investory může zajímat i výhled
+společnosti na celý rok.
+
+60
+00:03:57.920 --> 00:04:01.160
+Ten je odhadem managementu, a ne jistým
+výsledkem.
+
+61
+00:04:01.500 --> 00:04:06.680
+Americké akcie během pondělního
+obchodování část předchozích ztrát
+umazávaly.
+
+62
+00:04:06.680 --> 00:04:11.220
+Agentura Associated Press kolem čtvrt na
+jedenáct dopoledne východního
+
+63
+00:04:11.220 --> 00:04:17.140
+amerického času uváděla růst indexu S&P
+500 o osm desetin procenta.
+
+64
+00:04:17.340 --> 00:04:20.380
+Pohyby na trzích se během dne mění, a
+proto je
+
+65
+00:04:20.380 --> 00:04:25.320
+čas údaje důležitý. Bitcoin a Ethereum
+sledujeme společně s ukazatelem
+
+66
+00:04:25.320 --> 00:04:26.880
+Fear & Greed Index.
+
+67
+00:04:27.320 --> 00:04:31.960
+Při kontrole druhého listopadu přibližně v
+šestnáct hodin čtyřicet osm minut
+
+68
+00:04:31.960 --> 00:04:38.640
+středoevropského času uváděl CoinGecko
+cenu Bitcoinu přibližně sedmdesát sedm
+tisíc devět set čtyřicet šest
+
+69
+00:04:38.640 --> 00:04:43.280
+dolarů a cenu Etherea přibližně dva tisíce
+dvě stě osmdesát devět
+
+70
+00:04:43.280 --> 00:04:49.360
+dolarů. Podle Alternative.me činil index
+při poslední kontrole 37 bodů
+
+71
+00:04:49.360 --> 00:04:53.680
+ze 100, což zdroj označuje jako strach;
+předchozí hodnota byla
+
+72
+00:04:53.680 --> 00:04:59.120
+34. Index popisuje náladu spojenou s
+Bitcoinem, nikoli jistý směr
+
+73
+00:04:59.120 --> 00:05:02.160
+jeho budoucí ceny. Ceny se mohou rychle
+měnit.
+
+74
+00:05:02.160 --> 00:05:03.820
+To byl dnešní přehled.
+
+75
+00:05:04.140 --> 00:05:09.420
+U AI sledujte především skutečné podmínky
+dostupnosti a limitů, u trhů
+
+76
+00:05:09.420 --> 00:05:11.700
+pak datum a čas každého údaje.
+
+77
+00:05:11.980 --> 00:05:16.600
+Informace slouží k orientaci a nejsou
+osobním investičním doporučením.
+
+78
+00:05:16.840 --> 00:05:20.540
+Zdroje najdete pod videem a na webu
+Cestovatel69.
+
+79
+00:05:21.040 --> 00:05:23.440
+Děkuji za pozornost a těším se příště.
