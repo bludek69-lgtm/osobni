@@ -122,7 +122,7 @@
     { c: 'cinque', yt: 'QpqsJKI0Wfk', t: L('Manarola', 'Manarola', 'Manarola'), by: 'Paesaggi Digitali' }
   ];
 
-  /* Další kamery u velkých měst (otevřou se na SkylineWebcams, kde jsou vždy aktuální). */
+  /* Další kamery u velkých měst (otevřou se na SkylineWebcams, jejichž dostupnost se může měnit). */
   var SKY = 'https://www.skylinewebcams.com/' + { cs: 'cs', en: 'en', it: 'it' }[LANG] + '/webcam/italia/';
   var MORE = [
     { n: L('Turín', 'Turin', 'Torino'), d: L('kamery v Piemontu', 'webcams in Piedmont', 'webcam in Piemonte'), u: SKY + 'piemonte/torino.html' },
@@ -132,6 +132,9 @@
     { n: 'Palermo', d: L('katedrála a přístav', 'cathedral and port', 'cattedrale e porto'), u: SKY + 'sicilia/palermo/cattedrale-di-palermo.html' },
     { n: 'Bari', d: L('pláž Pane e Pomodoro', 'Pane e Pomodoro beach', 'spiaggia Pane e Pomodoro'), u: SKY + 'puglia/bari/spiaggia-di-bari.html' },
     { n: 'Pisa', d: L('Šikmá věž a panorama', 'Leaning Tower and panorama', 'Torre pendente e panorama'), u: SKY + 'toscana/pisa/pisa.html' },
+    { n: 'Siena', d: 'Piazza del Campo', u: SKY + 'toscana/siena/siena.html' },
+    { n: 'Positano', d: L('pláž Spiaggia Grande', 'Spiaggia Grande beach', 'Spiaggia Grande'), u: SKY + 'campania/salerno/spiaggia-positano.html' },
+    { n: 'Lago di Garda', d: 'Cisano – Bardolino', u: SKY + 'veneto/verona/lungolago-cisano-bardolino.html' },
     { n: 'Catania', d: L('sopka Etna', 'Mount Etna', 'Etna'), u: SKY + 'sicilia/catania/vulcano-etna.html' }
   ];
 
@@ -258,7 +261,8 @@
       });
       list.appendChild(card);
     });
-    filter('all');
+    var requested = new URLSearchParams(window.location.search).get('kamera');
+    filter(CAM_CITIES.some(function (c) { return c.id === requested; }) ? requested : 'all');
 
     if (more) {
       MORE.forEach(function (m) {
