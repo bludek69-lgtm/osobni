@@ -1,0 +1,12 @@
+name = "cestovatel69-test"
+main = "worker.mjs"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[ai]
+binding = "AI"
+
+[[ratelimits]]
+name = "CHAT_RATE_LIMITER"
+namespace_id = "69002"
+simple = { limit = 8, period = 60 }

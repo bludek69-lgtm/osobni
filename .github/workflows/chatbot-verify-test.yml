@@ -1,0 +1,36 @@
+name: Ověření testovacího chatbota
+
+on:
+  push:
+    branches: [ci-chatbot-zkouska]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chatbot-isolated-test
+  cancel-in-progress: false
+
+jobs:
+  isolated-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python chatbot-verejny/build_index.py
+      - run: node --test chatbot-verejny/worker.test.mjs
+      - run: python chatbot-verejny/index_guard_test.py
+      - name: Nasadit výhradně testovací službu
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_TEST_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN" && test -n "$CLOUDFLARE_ACCOUNT_ID"
+          npx --yes wrangler@4.156.2 deploy --config chatbot-verejny/wrangler.test-ci.toml
+      - run: python chatbot-verejny/ci_smoke_test.py
