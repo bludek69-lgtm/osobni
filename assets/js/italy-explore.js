@@ -8,6 +8,20 @@
   var empty = section.querySelector('[data-italy-empty]');
   var cards = Array.prototype.slice.call(section.querySelectorAll('[data-italy-item]'));
   if (!controls || !query || !kind || !empty || !cards.length) return;
+  var language = (document.documentElement.lang || 'cs').split('-')[0];
+  var expand = document.createElement('button');
+  expand.type = 'button';
+  expand.className = 'italy-search-expand';
+  expand.textContent = {cs:'Hledat na celém webu',en:'Search the entire website',it:'Cerca in tutto il sito'}[language] || 'Hledat na celém webu';
+  expand.addEventListener('click', function () {
+    var opener = document.querySelector('.site-search-open');
+    if (!opener) return;
+    opener.click();
+    var siteQuery = document.getElementById('site-search-query');
+    if (siteQuery) { siteQuery.value = query.value; siteQuery.dispatchEvent(new Event('input', { bubbles:true })); }
+  });
+  empty.appendChild(document.createTextNode(' '));
+  empty.appendChild(expand);
   function normalize(value) { return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim(); }
   function filter() {
     var term = normalize(query.value), selected = kind.value, visible = 0;

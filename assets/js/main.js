@@ -15,6 +15,18 @@
   }
 })();
 
+// The site-wide search is loaded separately and fetches its index only on demand.
+(function () {
+  function install() {
+    if (!document.querySelector('.site-header__inner')) return;
+    const script = document.createElement('script');
+    script.src = '/assets/js/site-search.js?v=20261103';
+    document.body.appendChild(script);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', install);
+  else install();
+})();
+
 /* Skip-to-main-content link — WCAG 2.4.1 Bypass Blocks.
    Injected as the very first element inside <body> so it's the first Tab stop on every page. */
 (function () {
