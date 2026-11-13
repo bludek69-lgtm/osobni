@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Denní kvíz — cestování, Itálie a život za volantem</title>
+<meta content="Každý den 5 nových otázek o cestování, Itálii, Evropě a životě řidiče autobusu. Zahraj si, drž sérii a pošli výsledek kamarádům." name="description"/>
+<link href="https://cestovatel69.cz/hry/denni-kviz/" rel="canonical"/>
+<meta content="Denní kvíz Cestovatel69" property="og:title"/>
+<meta content="5 otázek denně: cestování, Itálie a život za volantem autobusu. Kolik dáš?" property="og:description"/>
+<meta content="https://cestovatel69.cz/hry/denni-kviz/" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/assets/css/style.css?v=20261030-header" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+<link rel="stylesheet" href="/assets/css/language-navigation.css?v=20261030-jazyky">
+<link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/hry/denni-kviz/">
+<link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/hry/denni-kviz/">
+<style>
+.kviz{max-width:600px;margin:0 auto;padding:1.5rem 1rem 2rem;
+  --k-ok:#16a34a; --k-bad:#dc2626; --k-ok-bg:rgba(22,163,74,.16); --k-bad-bg:rgba(220,38,38,.16);}
+.kviz-head{display:flex;align-items:flex-end;justify-content:space-between;gap:.75rem;margin-bottom:1rem}
+.kviz-head h1{margin:0;font-size:clamp(1.5rem,4vw,2rem)}
+.kviz-head .meta{color:var(--text-mut);font-size:.85rem;text-align:right;white-space:nowrap}
+.kviz-intro{color:var(--text-mut);margin:0 0 1rem}
+.kviz .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-card);padding:1.25rem;margin-bottom:1rem}
+.kviz .progress{display:flex;gap:6px;margin-bottom:1rem}
+.kviz .progress span{flex:1;height:6px;border-radius:3px;background:var(--border)}
+.kviz .progress span.ok{background:var(--k-ok)} .kviz .progress span.bad{background:var(--k-bad)} .kviz .progress span.cur{background:var(--accent)}
+.kviz .cat{display:inline-block;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent-text);font-weight:700;margin-bottom:.4rem}
+.kviz .q{font-size:1.15rem;font-weight:600;margin:0 0 1rem;color:var(--text)}
+.kviz .opts{display:grid;gap:.5rem}
+.kviz .opt{width:100%;text-align:left;padding:.8rem 1rem;border-radius:var(--radius-button);border:1px solid var(--border);background:transparent;color:var(--text);font:inherit;cursor:pointer}
+.kviz .opt:hover:not(:disabled){border-color:var(--accent)}
+.kviz .opt:disabled{cursor:default}
+.kviz .opt.ok{background:var(--k-ok-bg);border-color:var(--k-ok)} .kviz .opt.bad{background:var(--k-bad-bg);border-color:var(--k-bad)}
+.kviz .btn{display:inline-block;padding:.75rem 1.1rem;border-radius:var(--radius-button);border:0;background:var(--accent);color:var(--on-accent);font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
+.kviz .btn.ghost{background:transparent;color:var(--accent-text);border:1px solid var(--accent)}
+.kviz .row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+.kviz .big{font-size:2.4rem;font-weight:800;margin:.25rem 0;color:var(--text)}
+.kviz .grid{font-size:1.6rem;letter-spacing:4px}
+.kviz .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;text-align:center;margin-top:1rem}
+.kviz .stats b{display:block;font-size:1.4rem;color:var(--text)}
+.kviz .stats small,.kviz .muted{color:var(--text-mut)}
+.kviz .muted{font-size:.9rem}
+.kviz-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:.9rem;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50}
+.kviz-toast.show{opacity:1}
+</style>
+</head>
+<body class="theme-home">
+<header class="site-header">
+<div class="site-header__inner">
+<a class="brand" href="/">
+<span class="brand-dot"></span>
+      Luděk
+    </a>
+<nav aria-label="Jazyk stránky" class="lang-switcher"><a aria-current="page" href="/hry/denni-kviz/" hreflang="cs" lang="cs" title="Česky">CS</a><span aria-disabled="true" class="lang-unavailable" title="English — překlad této stránky není dostupný">EN</span><span aria-disabled="true" class="lang-unavailable" title="Italiano — překlad této stránky není dostupný">IT</span></nav>
+<button aria-expanded="false" aria-label="Otevřít menu" class="nav-toggle">☰</button>
+<nav aria-label="Hlavní navigace" class="nav">
+<a href="/">Domů</a>
+<a href="/aplikace/">Moje aplikace</a>
+<a href="/finance/">Finance</a>
+<a href="/cestovani/">Cestování</a>
+<a href="/cestovani/italie/">Itálie</a>
+<a href="/zaliby/rybareni/">Rybaření</a>
+<a href="/smart-home/">Smart Home</a>
+<a href="/ai.html">AI</a>
+<a href="/cestovani/uzitecne-odkazy/">Užitečné odkazy</a>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="kviz">
+  <div class="kviz-head">
+    <h1>🚌 Denní kvíz</h1>
+    <div class="meta" id="meta"></div>
+  </div>
+  <p class="kviz-intro">Každý den 5 nových otázek o cestování, Itálii a životě za volantem. Všichni hrají stejný kvíz – porovnej se s kamarády.</p>
+
+  <div id="app"><noscript><p class="card">Kvíz potřebuje zapnutý JavaScript.</p></noscript></div>
+
+  <section class="card" id="partner" hidden>
+    <div class="cat">Tip na cestu</div>
+    <p style="margin:0 0 .75rem">Plánuješ Itálii? Vstupenky a výlety s rychlým potvrzením najdeš tady.</p>
+    <a class="btn ghost" href="https://www.getyourguide.com/?partner_id=C1MGSGB&amp;utm_medium=online_publisher" target="_blank" rel="sponsored noopener noreferrer">Prohlédnout výlety ↗</a>
+  </section>
+
+  <p class="muted">Nový kvíz každý den o půlnoci. Výsledky se ukládají jen ve tvém prohlížeči.</p>
+</div>
+</main>
+<div class="kviz-toast" id="toast" role="status" aria-live="polite"></div>
+<footer class="site-footer">
+<div class="site-footer__inner">
+<div>© Budinský Luděk · Osobní web</div>
+<div class="footer-links">
+<a href="https://www.youtube.com/@cestovatel69" rel="noopener" target="_blank">YouTube @cestovatel69</a>
+<a href="/o-mne.html">O mně</a>
+<a href="/smart-home/">Smart Home web</a>
+</div>
+</div>
+</footer>
+<script src="questions.js?v=20261113"></script>
+<script src="kviz.js?v=20261113"></script>
+<script src="/assets/js/main.js?v=20261103-search"></script>
+</body>
+</html>
