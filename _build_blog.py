@@ -37,6 +37,16 @@ def card(post, featured=False, heading='h2'):
 <a class="blog-card__link" href="{url(post)}">Přečíst příběh →</a><p class="blog-meta">{post['reading_minutes']} minut čtení · video {esc(post['video_duration'])}</p></div></article>'''
 
 
+def video_card(video):
+    watch = 'https://www.youtube.com/watch?v=' + video['video_id']
+    return f'''<article class="blog-card blog-video-card"><a class="blog-card__image" href="{watch}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="https://img.youtube.com/vi/{video['video_id']}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"></a><div class="blog-card__body"><p class="blog-meta">{esc(video['series'])} · {esc(video['duration'])}</p><h3><a href="{watch}" target="_blank" rel="noopener noreferrer">{esc(video['title'])}</a></h3><a class="blog-card__link" href="{watch}" target="_blank" rel="noopener noreferrer" aria-label="Přehrát na YouTube: {esc(video['title'])}">Přehrát na YouTube ↗</a></div></article>'''
+
+
+def video_block(videos, limit=None):
+    more = '<p><a class="blog-card__link" href="/blog/#ostatni-videa">Všechna ostatní videa →</a></p>' if limit else ''
+    return '<section class="blog-videos" id="ostatni-videa" aria-labelledby="other-videos-title"><h2 id="other-videos-title">Ostatní cestovatelská videa</h2><p>Další zveřejněné díly z kanálu Cestovatel69. Vyber si místo a otevři video na YouTube.</p><div class="blog-grid">' + ''.join(video_card(v) for v in videos[:limit]) + '</div>' + more + '</section>'
+
+
 def wrapper(title, description, path, body, header, footer, image=None, schema=None):
     image = image or ORIGIN + '/assets/og-default.jpg'
     canonical = ORIGIN + path
@@ -46,15 +56,18 @@ def wrapper(title, description, path, body, header, footer, image=None, schema=N
 <title>{esc(title)} — Cestovatel69</title><meta name="description" content="{esc(description)}"><link rel="canonical" href="{canonical}">
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{'article' if path != '/blog/' else 'website'}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{esc(image)}">
 <meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico">
-<link rel="stylesheet" href="/assets/css/style.css?v=20261030-header"><link rel="stylesheet" href="/assets/css/language-navigation.css?v=20261030-jazyky"><link rel="stylesheet" href="/assets/css/blog.css?v=20261116">
+<link rel="stylesheet" href="/assets/css/style.css?v=20261116-travel"><link rel="stylesheet" href="/assets/css/language-navigation.css?v=20261030-jazyky"><link rel="stylesheet" href="/assets/css/blog.css?v=20261116-travel">
 <script id="cestovatel-analytics-consent" src="/assets/js/analytics-consent.js?v=20261116-2"></script>
-<link rel="alternate" type="application/rss+xml" title="Cestovatel69 – Blog" href="/blog/feed.xml">{schema_tag}</head>
+<link rel="alternate" type="application/rss+xml" title="Cestovatel69 – Blog z cest" href="/blog/feed.xml">{schema_tag}</head>
 <body class="theme-home blog-page">{header}<main id="main">{body}</main>{footer}
-<script src="/assets/js/main.js?v=20261116-analytics"></script><script defer src="/assets/js/blog.js?v=20261116"></script></body></html>'''
+<script src="/assets/js/main.js?v=20261116-travel"></script><script defer src="/assets/js/blog.js?v=20261116"></script></body></html>'''
 
 
 def main():
     posts = json.loads((DATA / 'posts.json').read_text(encoding='utf-8'))
+    videos = json.loads((DATA / 'videos.json').read_text(encoding='utf-8'))
+    assert len({v['video_id'] for v in videos}) == len(videos), 'Unique videos are required'
+    assert all(re.fullmatch(r'[A-Za-z0-9_-]{11}', v['video_id']) for v in videos), 'Invalid video ID'
     assert posts and len({p['slug'] for p in posts}) == len(posts), 'Unique post slugs are required'
     for post in posts:
         assert re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', post['slug']), 'Invalid slug'
@@ -69,20 +82,19 @@ def main():
     header = header.replace(' aria-current="page"', '')
     # No translated blog exists yet: do not send visitors to unrelated translated homepages.
     header = re.sub(r'<nav[^>]*class="lang-switcher".*?</nav>', '<nav aria-label="Jazyk stránky" class="lang-switcher"><a href="/blog/" lang="cs" aria-current="page">CS</a><span class="lang-unavailable" aria-disabled="true" title="English — překlad není dostupný">EN</span><span class="lang-unavailable" aria-disabled="true" title="Italiano — překlad není dostupný">IT</span></nav>', header, flags=re.S)
-    if 'href="/blog/">Blog</a>' not in header:
-        header = header.replace('<nav aria-label="Hlavní navigace" class="nav">', '<nav aria-label="Hlavní navigace" class="nav"><a href="/blog/" aria-current="page">Blog</a>')
-    else:
-        header = header.replace('href="/blog/">Blog</a>', 'href="/blog/" aria-current="page">Blog</a>')
-    footer = '''<footer class="site-footer"><div class="site-footer__inner"><div>© Budinský Luděk · Cestovatel69</div><div class="footer-links"><a href="/blog/">Blog</a><a href="/blog/feed.xml">RSS</a><a href="/o-mne.html">O mně</a><a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener noreferrer">YouTube @cestovatel69 ↗</a></div></div></footer>'''
+    header = re.sub(r'<a href="/blog/">[^<]+</a>', '<a href="/blog/" aria-current="page">Blog z cest</a>', header)
+    footer = '''<footer class="site-footer"><div class="site-footer__inner"><div>© Budinský Luděk · Cestovatel69</div><div class="footer-links"><a href="/blog/">Blog z cest</a><a href="/blog/feed.xml">RSS</a><a href="/o-mne.html">O mně</a><a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener noreferrer">YouTube @cestovatel69 ↗</a></div></div></footer>'''
     categories = list(dict.fromkeys(p['category'] for p in posts))
     filters = '<button type="button" data-category="all" aria-pressed="true">Všechny články</button>' + ''.join(f'<button type="button" data-category="{esc(c)}" aria-pressed="false">{esc(c)}</button>' for c in categories)
-    index_body = '''<section class="blog-intro"><p class="blog-eyebrow">Cestovatel69 · Blog</p><h1>Příběhy z cest<br>a mých projektů</h1><p>Místa mají své příběhy. Tady je najdeš spolu s videi, mapami a tipy pro vlastní cestu. Postupně přibudou i zkušenosti s aplikacemi a chytrou domácností.</p></section>'''
-    index_body += f'<nav class="blog-filters" aria-label="Filtrovat články podle tématu" data-blog-filters hidden>{filters}</nav><p class="sr-only" aria-live="polite" data-blog-status></p>'
-    index_body += ''.join(card(p, featured=(len(posts) == 1)) for p in posts) if len(posts) == 1 else '<div class="blog-grid">' + ''.join(card(p) for p in posts) + '</div>'
-    index_body += '''<aside class="blog-related"><h2>Další příběhy a projekty</h2><p>Prohlédni si <a href="/cestovani/skryte-klenoty/">cestovatelské série na videu</a>, <a href="/cestovani/">fotografie z mých cest</a> nebo <a href="/smart-home/blog.html">vývojový deník chytré domácnosti</a>.</p><p>Nové články můžeš sledovat přes <a href="/blog/feed.xml">RSS</a>.</p></aside>'''
+    index_body = '''<section class="blog-intro"><p class="blog-eyebrow">Cestovatel69 · Blog z cest</p><h1>Příběhy z cest</h1><p>Místa mají své příběhy. Tady je najdeš spolu s cestovatelskými videi, mapami a tipy pro vlastní cestu.</p><nav class="blog-resource-links" aria-label="Na této stránce"><a href="#clanky">Články k videím ↓</a><a href="#ostatni-videa">Ostatní cestovatelská videa ↓</a></nav></section><section id="clanky" aria-labelledby="articles-title"><h2 id="articles-title">Články k videím</h2>'''
+    if len(categories) > 1:
+        index_body += f'<nav class="blog-filters" aria-label="Filtrovat články podle tématu" data-blog-filters hidden>{filters}</nav><p class="sr-only" aria-live="polite" data-blog-status></p>'
+    index_body += ''.join(card(p, featured=True, heading='h3') for p in posts) if len(posts) == 1 else '<div class="blog-grid">' + ''.join(card(p, heading='h3') for p in posts) + '</div>'
+    index_body += '</section>' + video_block(videos)
+    index_body += '''<aside class="blog-related"><h2>Další inspirace na cesty</h2><p>Prohlédni si <a href="/cestovani/skryte-klenoty/">cestovatelské série s mapami a podklady</a> nebo <a href="/cestovani/">fotografie z mých cest</a>.</p><p>Nové články můžeš sledovat přes <a href="/blog/feed.xml">RSS</a>.</p></aside>'''
     blog = ROOT / 'blog'
     blog.mkdir(exist_ok=True)
-    (blog / 'index.html').write_text(wrapper('Příběhy z cest a mých projektů', 'Blog Cestovatele69: příběhy míst, videa z YouTube, mapy a praktické tipy. Začínáme Hoslovickým mlýnem.', '/blog/', index_body, header, footer), encoding='utf-8')
+    (blog / 'index.html').write_text(wrapper('Blog z cest – příběhy a cestovatelská videa', 'Cestovatelský blog Cestovatele69: příběhy míst, zveřejněná videa z YouTube, mapy a tipy. Hoslovický mlýn a další cesty po Česku a Evropě.', '/blog/', index_body, header, footer), encoding='utf-8')
     for post in posts:
         video = post['video_id']
         body = f'''<article class="blog-article"><header class="blog-article__header"><a class="blog-back" href="/blog/">← Všechny články</a><p class="blog-eyebrow">{esc(post['series'])} · {esc(post['category'])}</p><h1>{esc(post['title'])}</h1><div class="blog-meta"><span>Luděk · Cestovatel69</span><time datetime="{post['published']}">{date_label(post['published'])}</time><span>{post['reading_minutes']} minut čtení</span></div></header>
@@ -91,6 +103,7 @@ def main():
 <nav class="blog-resource-links" aria-label="Podklady k videu"><a href="{esc(post['map_url'])}">Místo na mapě →</a><a href="{esc(post['credits_url'])}">Autoři a licence fotografií →</a></nav>
 <div class="blog-content">{(DATA / (post['slug'] + '.html')).read_text(encoding='utf-8')}</div>
 <aside class="blog-related"><h2>Pokračuj v cestách s příběhem</h2><p><a href="{esc(post['project_url'])}">Prohlédnout cestovatelské série →</a></p><p><a href="https://www.youtube.com/@cestovatel69?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Odebírat Cestovatel69 na YouTube ↗</a></p><a href="/blog/">Zpět na blog →</a></aside></article>'''
+        body = body.replace('</article>', video_block([v for v in videos if v['video_id'] != video], limit=3) + '</article>')
         schema = {'@context': 'https://schema.org', '@type': 'BlogPosting', 'headline': post['title'], 'description': post['description'], 'datePublished': post['published'], 'dateModified': post['updated'], 'inLanguage': 'cs', 'author': {'@type': 'Person', 'name': 'Luděk Budínský', 'url': ORIGIN + '/o-mne.html'}, 'mainEntityOfPage': ORIGIN + url(post), 'image': f'https://img.youtube.com/vi/{video}/maxresdefault.jpg'}
         directory = ROOT / url(post).strip('/')
         directory.mkdir(parents=True, exist_ok=True)
@@ -112,7 +125,7 @@ def main():
     # RSS gives readers a subscription option without introducing another account.
     rss = ET.Element('rss', version='2.0')
     channel = ET.SubElement(rss, 'channel')
-    for name, value in [('title','Cestovatel69 – Blog'),('link',ORIGIN+'/blog/'),('description','Příběhy z cest a mých projektů'),('language','cs')]:
+    for name, value in [('title','Cestovatel69 – Blog z cest'),('link',ORIGIN+'/blog/'),('description','Příběhy z cest'),('language','cs')]:
         ET.SubElement(channel,name).text = value
     for post in posts:
         item = ET.SubElement(channel,'item')

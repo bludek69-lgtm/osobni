@@ -27,12 +27,14 @@
 // Keep Blog reachable from older static pages without rebuilding their wrappers.
 (function () {
   function installBlogLink() {
-    if (document.documentElement.lang !== 'cs') return;
+    if (document.documentElement.lang !== 'cs' || /^\/(?:en\/|it\/)?smart-home(?:\/|$)/.test(location.pathname)) return;
     const nav = document.querySelector('.site-header .nav');
-    if (!nav || [...nav.querySelectorAll('a')].some(a => new URL(a.href, location.href).pathname === '/blog/')) return;
+    if (!nav) return;
+    const existing = [...nav.querySelectorAll('a')].find(a => new URL(a.href, location.href).pathname === '/blog/');
+    if (existing) { existing.textContent = 'Blog z cest'; return; }
     const link = document.createElement('a');
     link.href = '/blog/';
-    link.textContent = 'Blog';
+    link.textContent = 'Blog z cest';
     nav.appendChild(link);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', installBlogLink);

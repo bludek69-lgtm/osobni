@@ -27,3 +27,15 @@ Analytics měří návštěvnost; AdSense slouží k reklamě a podléhá schvá
 Soubor ads.txt už obsahoval existující publisher ID; žádné nové ID nevymýšlet.
 Bez kontroly skutečných účtů nelze tvrdit, že je měření nebo reklama aktivní.
 Schválení YouTube samo nepotvrzuje schválení samostatného webu.
+
+## Oddělení témat a ostatní videa
+
+`/blog/` je pouze cestovatelský blog. Smart Home zůstává samostatně na
+`/smart-home/blog.html`; technické zápisky ani aplikace se nepřidávají do
+cestovatelských článků a RSS. Globální navigace na ostatní části webu zůstává.
+
+Blok ostatních zveřejněných cestovatelských videí spravuje `_data/blog/videos.json`.
+Na přehledu se zobrazí celý výběr, pod článkem první tři videa a odkaz na zbytek.
+Názvy, ID a délky ověřeny na veřejné kartě kanálu 16. 11. 2026; délky 32 a 35
+minut YouTube zaokrouhluje. Krkonošské boudy jsou podle uživatele nedokončené
+a nejsou publikované ani v seznamu. Nevytvářet články k nedokončeným videím.

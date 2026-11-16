@@ -42,6 +42,10 @@
 .blog-check,.blog-sources { color: var(--text-mut); font-size: .93rem; }
 .blog-resource-links { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; padding: 1rem 0; }
 .blog-home { margin-block: 3rem; }
+.blog-videos { margin-block: 3rem; scroll-margin-top: 8rem; }
+.blog-videos > p { color: var(--text-mut); margin: .8rem 0 1.5rem; }
+.blog-videos .blog-grid { grid-template-columns: repeat(auto-fit,minmax(min(100%,260px),1fr)); }
+.blog-video-card .blog-card__body h3 { font-size: 1.2rem; }
 .blog-home .section-header { margin-bottom: 1.5rem; }
 .blog-home .blog-card { max-width: 850px; }
 .blog-home .blog-card a:focus-visible,.blog-page a:focus-visible,.blog-page button:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }

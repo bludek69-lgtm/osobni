@@ -323,7 +323,9 @@ html[data-theme-mode="light"] body.theme-smart-home {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  min-width: 0;
 }
 .nav a {
   padding: 0.5rem 0.6rem;
