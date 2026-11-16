@@ -2,3 +2,4 @@
 # V repozitáři zůstávají, jen nejsou dostupné na cestovatel69.cz.
 exclude:
   - "*.py"
+  - "test_*.cjs"

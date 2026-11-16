@@ -4,7 +4,7 @@ const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const original = fs.readFileSync('assets/js/analytics-consent.js', 'utf8');
 const registry = JSON.parse(fs.readFileSync('_data/youtube-campaigns.json', 'utf8'));
-const source = original.replace("if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', install);\n  else install();", 'window.testConsent = {apply, disable};');
+const source = original.replace(/if \(document\.readyState === 'loading'\) document\.addEventListener\('DOMContentLoaded', install\);\r?\n  else install\(\);/, 'window.testConsent = {apply, disable};');
 assert.notEqual(source, original);
 function run(search, hostname = 'cestovatel69.cz') {
   const scripts = [];
