@@ -413,7 +413,8 @@
     "video_duration": "7:07",
     "map_url": "/zdroje/cesty-s-pribehem-hoslovice-mapy.html",
     "credits_url": "/zdroje/cesty-s-pribehem-hoslovice-fotografie.html",
-    "project_url": "/cestovani/skryte-klenoty/#hoslovice"
+    "project_url": "/cestovani/cesko/",
+    "short_url": "https://www.youtube.com/shorts/PT3zjTTbLUY"
   },
   {
     "slug": "spanelsko-skryte-klenoty",
@@ -429,7 +430,8 @@
     "video_duration": "6:21",
     "map_url": "/zdroje/spanelsko-mapy.html",
     "credits_url": "/zdroje/spanelsko-fotografie.html",
-    "project_url": "/cestovani/"
+    "project_url": "/cestovani/",
+    "short_url": "https://www.youtube.com/shorts/HuZ3B7nEVnE"
   },
   {
     "slug": "portugalsko-skryte-klenoty",
@@ -445,7 +447,8 @@
     "video_duration": "6:06",
     "map_url": "/zdroje/portugalsko-mapy.html",
     "credits_url": "/zdroje/portugalsko-fotografie.html",
-    "project_url": "/cestovani/"
+    "project_url": "/cestovani/",
+    "short_url": "https://www.youtube.com/shorts/r0SC6J6QYBs"
   },
   {
     "slug": "italie-skryte-klenoty",
@@ -461,7 +464,8 @@
     "video_duration": "6:29",
     "map_url": "/zdroje/italie-mapy.html",
     "credits_url": "/zdroje/italie-fotografie.html",
-    "project_url": "/cestovani/italie/"
+    "project_url": "/cestovani/italie/",
+    "short_url": "https://www.youtube.com/shorts/jHuQapwN3QQ"
   },
   {
     "slug": "evropa-fotograficka-cesta",
