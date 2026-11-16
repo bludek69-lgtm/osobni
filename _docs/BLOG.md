@@ -50,3 +50,17 @@ Historie a návštěvnické údaje ověřeny na odkazovaných oficiálních str�
 regionu, KČT Semily a CzechTourism. Výběry výletů nejsou vydávané za hotové trasy.
 Pověsti a filmová místa odděleny od doložené historie. Fotografie v existující
 miniatuře odkazují na původní autory a licence.
+
+## Jednotná nabídka příběhů – 16. 11. 2026
+
+Na výslovné přání uživatele má každé ze 12 videí v dosavadním výběru svůj článek.
+Všechny karty používají Přečíst příběh → a shodnou šablonu. Starší odkaz
+/blog/#ostatni-videa zůstává funkční a vede na přehled příběhů.
+Uživatel nechce v blogu opakovat autory a licence fotografií. Jejich původní
+stránky /zdroje/ a odkazy v popisech YouTube zůstávají zachované, viditelné
+licenční bloky a odkazy se v článcích nevykreslují. Věcné zdroje k historii
+a praktickým údajům v textu mohou zůstat.
+Podklady: aktuální názvy a celé popisy všech deseti zbývajících videí načteny
+v YouTube Studiu, včetně kapitol a mapových odkazů. Záloha mimo veřejný repo:
+youtube-blog-puvodni-popisy.json ve workspace Bloger. Zpětné odkazy přidávat
+až po živém ověření článků, původní popisy a licenční informace zachovat.
