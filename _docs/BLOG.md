@@ -4,7 +4,8 @@
 Blogger ani další redakční účet nejsou potřeba.
 
 1. Do `_data/blog/posts.json` přidat metadata a ID skutečného zveřejněného videa.
-2. Text vložit do `_data/blog/<slug>.html`; uvést zdroje, autory a licence obrázků.
+2. Text vložit do `_data/blog/<slug>.html`; věcné údaje ověřit u primárních zdrojů.
+   Autory a licence fotografií ponechat na příslušných stránkách `/zdroje/`.
 3. Spustit `python _build_blog.py` (pouze blog a označený náhled na homepage).
 4. Novou adresu přidat do sitemap.xml, aktualizovat lastmod dotčených stránek.
 5. Spustit `python _build_site_search_index.py` a zkontrolovat nové stránky.
@@ -53,7 +54,7 @@ miniatuře odkazují na původní autory a licence.
 
 ## Jednotná nabídka příběhů – 16. 11. 2026
 
-Na výslovné přání uživatele má každé ze 12 videí v dosavadním výběru svůj článek.
+Na výslovné přání uživatele dostalo všech 12 videí v původním výběru svůj článek.
 Všechny karty používají Přečíst příběh → a shodnou šablonu. Starší odkaz
 /blog/#ostatni-videa zůstává funkční a vede na přehled příběhů.
 Uživatel nechce v blogu opakovat autory a licence fotografií. Jejich původní
@@ -64,3 +65,25 @@ Podklady: aktuální názvy a celé popisy všech deseti zbývajících videí n
 v YouTube Studiu, včetně kapitol a mapových odkazů. Záloha mimo veřejný repo:
 youtube-blog-puvodni-popisy.json ve workspace Bloger. Zpětné odkazy přidávat
 až po živém ověření článků, původní popisy a licenční informace zachovat.
+
+## Doplnění starších cestovatelských videí – 16. 11. 2026
+
+Blog má nyní 30 článků. Přibylo 18 příběhů: Vesuv, Val d’Orcia a Crete Senesi,
+U Borovice, Turín, Spiagge Bianche, Siena, Saturnia a Bagni San Filippo,
+Positano, Pompeje, Pisa, Petrohrad, Neapol, Semily Na Kruhách, Montepulciano,
+Kozákov, muzea Ferrari, Benátky a Amalfi. Zveřejnění všech 18 původních videí
+bylo ověřeno v YouTube Studiu; názvy, kapitoly a obsah vycházejí z uložených
+popisů. Smart Home a dosud nezveřejněná videa do tohoto výběru nepatří.
+
+Každý článek má přehrávač načítaný po kliknutí, přímý odkaz na správné video,
+mapu, odkazy na související články a běžné měření se souhlasem. RSS, sitemap,
+vyhledávání, náhled na homepage a existující české/anglické/italské karty videí
+byly doplněny. Nové články jsou česky; cizojazyčné karty tento jazyk uvádějí.
+
+Pro 18 videí a jejich 18 souvisejících Shorts jsou mimo veřejný repozitář
+připraveny přesné odstavce s měřenými odkazy v souboru
+`starsi-cestovani-youtube-pripravene-odkazy.json` ve workspace Bloger.
+Používají již registrované kampaně a ID konkrétního videa/Shortu.
+Tyto nové odstavce zatím nejsou uložené v YouTube: během práce se odpojilo
+ovládání prohlížeče. Před dokončením načíst a zálohovat aktuální popisy,
+přidat odkaz jen jednou, zachovat ostatní text a ověřit skutečné uložení.
