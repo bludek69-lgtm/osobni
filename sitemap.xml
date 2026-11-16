@@ -134,7 +134,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -608,7 +608,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -1274,7 +1274,7 @@
   </url>
   <url>
     <loc>https://cestovatel69.cz/cestovani/skryte-klenoty/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2811,5 +2811,13 @@
   <url>
     <loc>https://cestovatel69.cz/it/cestovani/italie/mista/alberobello/</loc>
     <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://cestovatel69.cz/blog/</loc>
+    <lastmod>2026-11-16</lastmod>
+  </url>
+  <url>
+    <loc>https://cestovatel69.cz/blog/hoslovicky-mlyn/</loc>
+    <lastmod>2026-11-16</lastmod>
   </url>
 </urlset>

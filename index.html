@@ -20,6 +20,7 @@
 <link href="https://cestovatel69.cz/en/" hreflang="en" rel="alternate"/>
 <link href="https://cestovatel69.cz/it/" hreflang="it" rel="alternate"/>
 <link href="https://cestovatel69.cz/" hreflang="x-default" rel="alternate"/>
+<link rel="stylesheet" href="/assets/css/blog.css?v=20261116">
 </head>
 <body class="theme-home home-page">
 <header class="site-header">
@@ -31,6 +32,7 @@
 <nav aria-label="Jazyk stránky" class="lang-switcher"><a aria-current="page" href="/" hreflang="cs" lang="cs" title="Česky">CS</a><a href="/en/" hreflang="en" lang="en" title="English">EN</a><a href="/it/" hreflang="it" lang="it" title="Italiano">IT</a></nav>
 <button aria-expanded="false" aria-label="Otevřít menu" class="nav-toggle">☰</button>
 <nav aria-label="Hlavní navigace" class="nav">
+<a href="/blog/">Blog</a>
 <a aria-current="page" href="./">Domů</a>
 <a href="aplikace/">Moje aplikace</a>
 <a href="finance/">Finance</a>
@@ -68,6 +70,11 @@
 <a href="zaliby/rybareni/">Rybaření →</a>
 <a href="ai.html">Jak pracuji s AI →</a><a href="/cestovani/prestavba-dodavky/">Přestavba dodávky →</a><a href="/hry/denni-kviz/">Denní kvíz 🚌 →</a></nav>
 </section>
+<!-- BLOG_PREVIEW_START --><section class="blog-home" aria-labelledby="blog-home-title"><div class="section-header"><p class="blog-eyebrow">Nově na blogu</p><h2 id="blog-home-title">Příběhy za videem</h2><p>Místa, souvislosti a tipy, které doplňují moje videa.</p></div><article class="blog-card blog-featured" data-blog-category="Cestování">
+<a class="blog-card__image" href="/blog/hoslovicky-mlyn/" tabindex="-1" aria-hidden="true"><img src="https://img.youtube.com/vi/hqDFJFh8dak/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"></a>
+<div class="blog-card__body"><div class="blog-meta"><span>Cestování · Cesty s příběhem</span><time datetime="2026-11-16">16. 11. 2026</time></div>
+<h3><a href="/blog/hoslovicky-mlyn/">Hoslovický mlýn: jak se žilo a pracovalo u vody</a></h3><p>Cesta vody ke kolu, mlynářská práce a domov rodiny Harantových. Příběh Hoslovického mlýna s videem, mapou a tipy pro návštěvu.</p>
+<a class="blog-card__link" href="/blog/hoslovicky-mlyn/">Přečíst příběh →</a><p class="blog-meta">5 minut čtení · video 7:07</p></div></article><p><a class="blog-card__link" href="/blog/">Všechny články →</a></p></section><!-- BLOG_PREVIEW_END -->
 <section aria-labelledby="about-title" class="home-about">
 <div>
 <h2 id="about-title">O mně</h2>
@@ -110,7 +117,7 @@
 </div>
 </div>
 </footer>
-<script src="assets/js/main.js?v=20261103-search"></script>
+<script src="assets/js/main.js?v=20261116-blog"></script>
 <link href="/assets/css/bus-intro.css?v=20261026-1" rel="stylesheet"/>
 <script defer="" src="/assets/js/bus-intro.js?v=20261027-kosile"></script>
 <!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
@@ -135,6 +142,7 @@ main img:hover { transform:scale(1.005) }
   lb.addEventListener('click', close);
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
   document.querySelectorAll('main img').forEach(function(img){
+    if (img.closest('.blog-card')) return;
     img.addEventListener('click', function(e){ e.stopPropagation(); open(img.src, img.alt); });
   });
 })();

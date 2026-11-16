@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss version="2.0">
+  <channel>
+    <title>Cestovatel69 – Blog</title>
+    <link>https://cestovatel69.cz/blog/</link>
+    <description>Příběhy z cest a mých projektů</description>
+    <language>cs</language>
+    <item>
+      <title>Hoslovický mlýn: jak se žilo a pracovalo u vody</title>
+      <link>https://cestovatel69.cz/blog/hoslovicky-mlyn/</link>
+      <description>Cesta vody ke kolu, mlynářská práce a domov rodiny Harantových. Příběh Hoslovického mlýna s videem, mapou a tipy pro návštěvu.</description>
+      <guid>https://cestovatel69.cz/blog/hoslovicky-mlyn/</guid>
+      <pubDate>Mon, 16 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

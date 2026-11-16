@@ -15,6 +15,21 @@
   }
 })();
 
+// Keep Blog reachable from older static pages without rebuilding their wrappers.
+(function () {
+  function installBlogLink() {
+    if (document.documentElement.lang !== 'cs') return;
+    const nav = document.querySelector('.site-header .nav');
+    if (!nav || [...nav.querySelectorAll('a')].some(a => new URL(a.href, location.href).pathname === '/blog/')) return;
+    const link = document.createElement('a');
+    link.href = '/blog/';
+    link.textContent = 'Blog';
+    nav.appendChild(link);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', installBlogLink);
+  else installBlogLink();
+})();
+
 // The site-wide search is loaded separately and fetches its index only on demand.
 (function () {
   function install() {
