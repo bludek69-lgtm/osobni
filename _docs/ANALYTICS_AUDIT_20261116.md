@@ -28,6 +28,11 @@ odmítnutí nula Google tagů. Vyhledání Sonoff zobrazilo 18 z 84 zařízení;
 vymazání dotazu obnovilo seznam. Mobil 390 px bez vodorovného přetečení,
 menu hardwaru po kliknutí přechází na aria-expanded=true.
 
+Mobilní kontrola hlavních sekcí odhalila přetékající dlouhý odkaz na článek
+v Cestování. Opraveno zalamování `.journey-note > a`. Hlavní stránka, Cestování,
+Aplikace, Finance, Smart Home, Blog, AI a EN/IT homepage mají jeden souhlasový
+panel. Při odmítnutí zůstává měření vypnuté.
+
 Opakovatelná kontrola: `python audit_site_analytics.py`. Podrobný strojový
 výstup je lokálně v `_reports/analytics-20261116.json` (nenasazuje se).
 
