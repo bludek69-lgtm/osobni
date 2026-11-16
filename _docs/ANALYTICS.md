@@ -18,6 +18,13 @@ Google Analytics a podmínek zpracování dat GDPR.
 Pomocné stránky s pouhými zdroji/mapami bez těchto skriptů Analytics nepoužívají.
 Ukázkové aplikace v `/demo/` jsou z instalace vynechány.
 
+Samostatné obsahové stránky bez společné šablony (přehled pracovních tras a
+novinky z 31. 10. a 2. 11.) používají přímo stejný souhlasový skript. Kompletní
+hardware Smart Home používá `smart-home/script.js`, který zajišťuje i mobilní
+menu a rok v patičce. Kontrola `python audit_site_analytics.py` prověří všechny
+sledované veřejné HTML soubory, nejen sitemap, a selže při chybějícím měření
+nebo nepodmíněně vloženém Google tagu. Výsledky auditu: ANALYTICS_AUDIT_20261116.md.
+
 Zvolen basic consent mode: do udělení souhlasu žádný Google tag ani analytický
 požadavek. Povolení a odmítnutí mají rovnocenná tlačítka. Volba se uchovává
 180 dní v localStorage; v patičce je Nastavení soukromí a odkaz na /soukromi/.
