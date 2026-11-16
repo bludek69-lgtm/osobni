@@ -34,6 +34,15 @@
 
   function tag() { window.dataLayer.push(arguments); }
 
+  function trackEvent(name, parameters) {
+    tag('event', name, {
+      ...parameters,
+      send_to: MEASUREMENT_ID,
+      event_callback: function () { document.documentElement.dataset.analyticsProcessedEvent = name; }
+    });
+    document.documentElement.dataset.analyticsQueuedEvent = name;
+  }
+
   function enable() {
     if (!production || !/^G-[A-Z0-9]+$/.test(MEASUREMENT_ID)) return;
     window['ga-disable-' + MEASUREMENT_ID] = false;
@@ -43,6 +52,7 @@
     }
     started = true;
     window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || tag;
     tag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
     tag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
     tag('js', new Date());
@@ -55,7 +65,7 @@
       page_location: location.origin + location.pathname,
       page_referrer: cleanURL(document.referrer)
     });
-    tag('event', 'page_view', { page_location: location.origin + location.pathname, page_title: document.title, page_referrer: cleanURL(document.referrer) });
+    trackEvent('page_view', { page_location: location.origin + location.pathname, page_title: document.title, page_referrer: cleanURL(document.referrer) });
     const script = document.createElement('script');
     script.async = true;
     script.id = 'cestovatel-google-tag';
@@ -142,7 +152,7 @@
       const button = event.target.closest('.thumb-cover, .btn-play');
       const card = button?.closest('[data-video-id]');
       if (card && /^[\w-]{11}$/.test(card.dataset.videoId || '')) {
-        tag('event', 'video_play_click', { video_id: card.dataset.videoId, video_provider: 'YouTube' });
+        trackEvent('video_play_click', { video_id: card.dataset.videoId, video_provider: 'YouTube' });
       }
       const link = event.target.closest('a[href]');
       if (!link) return;
@@ -150,7 +160,7 @@
         const target = new URL(link.href);
         if (['youtube.com', 'www.youtube.com', 'youtu.be'].includes(target.hostname)) {
           const id = target.hostname === 'youtu.be' ? target.pathname.slice(1) : target.searchParams.get('v');
-          tag('event', 'youtube_click', { video_id: /^[\w-]{11}$/.test(id || '') ? id : 'channel', link_domain: target.hostname });
+          trackEvent('youtube_click', { video_id: /^[\w-]{11}$/.test(id || '') ? id : 'channel', link_domain: target.hostname });
         }
       } catch (_) { /* Invalid links are not measured. */ }
     }, true);
