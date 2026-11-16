@@ -15,7 +15,7 @@ Google Analytics a podmínek zpracování dat GDPR.
 
 `assets/js/analytics-consent.js` se načítá z obou sdílených JS souborů:
 `assets/js/main.js` a `smart-home/script.js`. Duplicitní spuštění je blokované.
-Pomocné stránky s pouhými zdroji/mapami bez těchto skriptů Analytics nepoužívají.
+Zdrojové a mapové přehledy také používají stejný souhlasový skript, aby byly zachyceny příchody přes odkazy z YouTube.
 Ukázkové aplikace v `/demo/` jsou z instalace vynechány.
 
 Samostatné obsahové stránky bez společné šablony (přehled pracovních tras a
@@ -52,3 +52,29 @@ mají právě jeden panel. Mobil 390 px bez přetékání, obě volby mají stej
 výšku a plochu. Syntaxe JS a interní odkazy kontrolovány samostatně.
 
 Dokumentace: https://developers.google.com/tag-platform/security/guides/consent
+
+## Příchody z jednotlivých videí YouTube
+
+Od 16. 11. 2026 používají odkazy v popisech parametr `utm_source=youtube`,
+`utm_medium=organic_video`, `utm_campaign=<čitelný název>` a `utm_content=<ID videa>`.
+Registr `_data/youtube-campaigns.json` obsahuje ověřená ID, názvy a označení
+100 aktuálních videí (49 hlavních, 51 Shorts). Při dalším videu doplň registr
+a spusť `python _build_youtube_campaigns.py`. Samotný text URL v popisu Shortu
+YouTube běžně nečiní klikacím; funkce souvisejícího videa zůstává zachovaná.
+
+Měření přijme jen přesnou kombinaci z registru. `page_location` i referrer
+zůstávají bez query a fragmentu; ověřená kampaň se předá explicitně přes
+`campaign_source`, `campaign_medium`, `campaign_name`, `campaign_content`.
+Po povolení se kromě `page_view` pošle `youtube_arrival` s parametry `video_id`,
+`source_video` (veřejný název, nejvýše 100 znaků), `page_location`, `page_title`.
+Před souhlasem ani při odmítnutí se tyto údaje Googlu neposílají.
+Žádné nové úložiště se nezavádí. Následující návštěvy stránek se přiřazují
+ke kampani standardní relací GA4; `youtube_arrival` označuje přímé otevření
+vydaného odkazu a není počtem zhlédnutí na YouTube ani důkazem kliknutí.
+
+Kontroly: `node test_youtube_attribution.cjs`, `node --check assets/js/analytics-consent.js`,
+`python audit_site_analytics.py`. Celkem 588 obsahových a referenčních HTML
+s měřením, 8 přesměrování, 1 noindex a 1 demo mimo měření. Předchozí audit
+519+69 popisuje stav před tímto rozšířením.
+
+Dokumentace Google: https://developers.google.com/analytics/devguides/collection/ga4/reference/config
