@@ -49,7 +49,7 @@ def wrapper(title, description, path, body, header, footer, image=None, schema=N
 <link rel="stylesheet" href="/assets/css/style.css?v=20261030-header"><link rel="stylesheet" href="/assets/css/language-navigation.css?v=20261030-jazyky"><link rel="stylesheet" href="/assets/css/blog.css?v=20261116">
 <link rel="alternate" type="application/rss+xml" title="Cestovatel69 – Blog" href="/blog/feed.xml">{schema_tag}</head>
 <body class="theme-home blog-page">{header}<main id="main">{body}</main>{footer}
-<script src="/assets/js/main.js?v=20261116-blog"></script><script defer src="/assets/js/blog.js?v=20261116"></script></body></html>'''
+<script src="/assets/js/main.js?v=20261116-analytics"></script><script defer src="/assets/js/blog.js?v=20261116"></script></body></html>'''
 
 
 def main():
@@ -104,6 +104,7 @@ def main():
         home = home.replace('</head>', '<link rel="stylesheet" href="/assets/css/blog.css?v=20261116">\n</head>')
     if "if (img.closest('.blog-card')) return;" not in home:
         home = home.replace("document.querySelectorAll('main img').forEach(function(img){", "document.querySelectorAll('main img').forEach(function(img){\n    if (img.closest('.blog-card')) return;")
+    home = home.replace('main.js?v=20261116-blog', 'main.js?v=20261116-analytics')
     home_file.write_text(home, encoding='utf-8')
     # RSS gives readers a subscription option without introducing another account.
     rss = ET.Element('rss', version='2.0')

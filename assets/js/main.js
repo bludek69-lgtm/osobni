@@ -1,6 +1,15 @@
 // Osobní web — Luděk
 // Minimal JS: mobile nav toggle + lazy-load helper + theme toggle (Phase 5.1)
 
+// First-party privacy controls load locally; Google loads only after consent.
+(function () {
+  if (document.getElementById('cestovatel-analytics-consent')) return;
+  const privacy = document.createElement('script');
+  privacy.id = 'cestovatel-analytics-consent';
+  privacy.src = '/assets/js/analytics-consent.js?v=20261116';
+  document.head.appendChild(privacy);
+})();
+
 // Theme toggle — runs EARLY (before DOMContentLoaded) to prevent flash of wrong theme
 (function () {
   'use strict';

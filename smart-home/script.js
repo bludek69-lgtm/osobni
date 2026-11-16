@@ -2,6 +2,15 @@
    SMART HOME — minimal vanilla JS
    ════════════════════════════════════════════════════════════ */
 
+// Share the site's opt-in analytics controls with the standalone Smart Home pages.
+(function () {
+  if (document.getElementById('cestovatel-analytics-consent')) return;
+  const privacy = document.createElement('script');
+  privacy.id = 'cestovatel-analytics-consent';
+  privacy.src = '/assets/js/analytics-consent.js?v=20261116';
+  document.head.appendChild(privacy);
+})();
+
 (function () {
   'use strict';
 

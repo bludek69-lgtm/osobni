@@ -1,0 +1,13 @@
+.analytics-consent { position: fixed; z-index: 9998; inset: auto 1rem 1rem; max-width: 1050px; margin-inline: auto; padding: 1.3rem 1.5rem; display: flex; align-items: center; gap: 1.5rem; color: var(--text, #f9fafb); background: var(--panel, #1f2937); border: 1px solid var(--border, #64748b); border-radius: 16px; box-shadow: 0 10px 50px #0006; font: 15px/1.6 system-ui, sans-serif; max-height: calc(100dvh - 2rem); overflow-y: auto; }
+.analytics-consent[hidden],.analytics-consent [hidden] { display: none !important; }
+.analytics-consent h2 { font: 700 1.15rem/1.3 system-ui, sans-serif; margin: 0 0 .45rem; color: inherit; }
+.analytics-consent p { margin: .35rem 0; }
+.analytics-consent__details { text-decoration: underline; color: inherit; }
+.analytics-consent__status { color: var(--text-mut, #cbd5e1); font-size: .85rem; }
+.analytics-consent__actions { flex: 0 0 185px; display: grid; gap: .6rem; }
+.analytics-consent__actions button { border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 8px; padding: .65rem 1rem; min-height: 44px; cursor: pointer; font: 600 .95rem/1.3 system-ui,sans-serif; }
+.analytics-consent button:focus-visible,.analytics-privacy-links button:focus-visible { outline: 3px solid var(--accent, #d6a84f); outline-offset: 3px; }
+.analytics-privacy-links { display: inline-flex; flex-wrap: wrap; gap: .5rem 1rem; font-size: .85rem; }
+.analytics-privacy-links button,.analytics-privacy-links a { color: inherit; font: inherit; background: none; border: 0; padding: .4rem 0; text-decoration: underline; cursor: pointer; }
+.analytics-privacy-links--floating { position: fixed; z-index: 9000; bottom: .5rem; left: .5rem; padding: .25rem .75rem; color: #fff; background: #17202c; border-radius: 8px; }
+@media(max-width:650px) { .analytics-consent { inset-inline: .5rem; bottom: .5rem; padding: 1rem; flex-direction: column; align-items: stretch; gap: .6rem; font-size: 14px; } .analytics-consent__actions { flex-basis: auto; grid-template-columns: 1fr 1fr; } .analytics-consent__actions [data-choice="close"] { grid-column: 1/-1; } }
