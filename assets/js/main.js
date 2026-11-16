@@ -24,21 +24,35 @@
   }
 })();
 
-// Keep Blog reachable from older static pages without rebuilding their wrappers.
+// Two header rows: identity and controls first, all navigation links below.
 (function () {
-  function installBlogLink() {
-    if (document.documentElement.lang !== 'cs' || /^\/(?:en\/|it\/)?smart-home(?:\/|$)/.test(location.pathname)) return;
+  function installHeaderNavigation() {
     const nav = document.querySelector('.site-header .nav');
-    if (!nav) return;
-    const existing = [...nav.querySelectorAll('a')].find(a => new URL(a.href, location.href).pathname === '/blog/');
-    if (existing) { existing.textContent = 'Blog z cest'; return; }
-    const link = document.createElement('a');
-    link.href = '/blog/';
-    link.textContent = 'Blog z cest';
-    nav.appendChild(link);
+    const header = document.querySelector('.site-header__inner');
+    if (!nav || !header || nav.classList.contains('site-nav--organized')) return;
+    const lang = (document.documentElement.lang || 'cs').split('-')[0];
+    const blogLabel = {cs: 'Blog z cest', en: 'Travel blog · CS', it: 'Blog di viaggio · CS'}[lang] || 'Blog z cest';
+    const path = a => new URL(a.href, location.href).pathname.replace(/^\/(en|it)(?=\/)/, '').replace(/index\.html$/, '').replace(/\/$/, '') || '/';
+    let blog = [...nav.querySelectorAll('a')].find(a => path(a) === '/blog');
+    if (!blog) { blog = document.createElement('a'); blog.href = '/blog/'; nav.appendChild(blog); }
+    blog.textContent = blogLabel;
+    if (lang !== 'cs') blog.hreflang = 'cs';
+    const links = [...nav.querySelectorAll('a')];
+    const order = ['/', '/cestovani', '/cestovani/italie', '/blog', '/aplikace', '/finance', '/zaliby/rybareni', '/smart-home', '/ai.html', '/cestovani/uzitecne-odkazy'];
+    const rank = a => { const i = order.indexOf(path(a)); return i < 0 ? order.length : i; };
+    links.sort((a, b) => rank(a) - rank(b)).forEach(a => nav.appendChild(a));
+    nav.classList.add('site-nav--organized');
+    const mobile = window.matchMedia('(max-width: 1199px)');
+    function arrange() {
+      const brand = header.querySelector('.brand'), languages = header.querySelector('.lang-switcher'), search = header.querySelector('.site-search-open'), theme = header.querySelector('.theme-toggle'), toggle = header.querySelector('.nav-toggle');
+      [brand, languages, search, theme, toggle, nav].filter(Boolean).forEach(element => header.appendChild(element));
+    }
+    arrange();
+    mobile.addEventListener('change', arrange);
+    document.addEventListener('site-header-controls-ready', arrange);
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', installBlogLink);
-  else installBlogLink();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', installHeaderNavigation);
+  else installHeaderNavigation();
 })();
 
 // The site-wide search is loaded separately and fetches its index only on demand.
@@ -46,7 +60,7 @@
   function install() {
     if (!document.querySelector('.site-header__inner')) return;
     const script = document.createElement('script');
-    script.src = '/assets/js/site-search.js?v=20261103';
+    script.src = '/assets/js/site-search.js?v=20261116-navsearch';
     document.body.appendChild(script);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', install);
@@ -146,9 +160,7 @@
     }
     setMenu(false);
     toggle.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
-    nav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => setMenu(false));
-    });
+    nav.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape' && nav.classList.contains('is-open')) {
         setMenu(false);

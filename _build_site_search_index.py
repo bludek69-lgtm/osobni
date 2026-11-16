@@ -7,6 +7,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 from urllib.parse import urlsplit, unquote
 import json, re, subprocess, sys, xml.etree.ElementTree as ET
+from _build_blog import SERIES, SERIES_PATH
 
 ROOT=Path(__file__).resolve().parent
 records=[]
@@ -20,7 +21,8 @@ for node in ET.parse(ROOT/'sitemap.xml').iter():
  lang=(soup.html.get('lang','cs') if soup.html else 'cs').split('-')[0]
  if lang not in ('cs','en','it'):continue
  main=soup.main
- for tag in main.select('script,style,nav,footer,iframe,svg,template,[aria-hidden=true]'):tag.decompose()
+ # Recommendation cards are navigation, not the article's own searchable content.
+ for tag in main.select('script,style,nav,footer,iframe,svg,template,[aria-hidden=true],.blog-card,.blog-related,.blog-videos,.blog-home,.gems-projects,.gems-hub'):tag.decompose()
  title=(main.find('h1') or soup.title)
  title=title.get_text(' ',strip=True) if title else path
  current={'title':title,'section':'','url':url.path,'lang':lang,'text':''}
@@ -38,6 +40,20 @@ for node in ET.parse(ROOT/'sitemap.xml').iter():
    current={'title':title,'section':section,'url':url.path+('#'+anchor if anchor else ''),'lang':lang,'text':''}
   else:current['text']+=' '+tag.get_text(' ',strip=True)
  save()
+
+# Enrich article records from the same catalogue that builds the blog and series.
+posts=json.loads((ROOT/'_data/blog/posts.json').read_text(encoding='utf8'))
+by_url={'/blog/'+p['slug']+'/':p for p in posts}
+series_aliases={'Skryté klenoty':'Hidden Gems Tesori nascosti', 'Místa jako z pohádky':'Places Like a Fairytale Luoghi da fiaba', 'Cesty s příběhem':'Journeys with a Story Viaggi con una storia'}
+for record in records:
+ post=by_url.get(record['url'].split('#')[0])
+ if post:
+  record['kind']='article'
+  record['keywords']='Blog z cest Příběhy z cest travel blog blog di viaggio '+post['series']+' '+series_aliases.get(post['series'],'')+' '+post['video_title']
+records.append({'title':'Blog z cest — Příběhy z cest','section':'','url':'/blog/','lang':'cs','kind':'collection','keywords':'travel blog blog di viaggio','text':'Články s videi, mapami a tipy na cestu. '+', '.join(s['title'] for s in SERIES)})
+for series in SERIES:
+ episodes=[p for p in posts if p['series']==series['title']]
+ records.append({'title':series['title'],'section':'Cestovatelské série','url':SERIES_PATH+'#'+series['id'],'lang':'cs','kind':'collection','keywords':series_aliases[series['title']],'text':series['description']+' '+str(len(episodes))+' dílů: '+'; '.join(p['title'] for p in episodes)})
 
 # Dynamic food content is explicitly public, reviewed structured data.
 for filename,fields,label in [('italian-recipes.json',('title','region','city','ingredients','regionalNote'),'Recept'),('pasta-types.json',('name','type','region','bestWith','exampleDish'),'Druh těstovin'),('italian-food-rules.json',('title','category','text'),'Italská kuchyně')]:

@@ -353,6 +353,18 @@ html[data-theme-mode="light"] body.theme-smart-home {
   font-size: 1.2rem;
 }
 
+/* Two deliberate desktop rows, with all links visible in the navigation row. */
+.site-header .site-nav--organized > a { font-size: .9rem; padding-inline: .45rem; }
+@media (min-width: 1200px) {
+  .site-header__inner { display: grid; grid-template-columns: minmax(0,1fr) auto auto auto; gap: .5rem .75rem; padding-block: .65rem; }
+  .site-header .brand { grid-column: 1; grid-row: 1; }
+  .site-header .lang-switcher { grid-column: 2; grid-row: 1; }
+  .site-header .site-search-open { grid-column: 3; grid-row: 1; }
+  .site-header .theme-toggle { grid-column: 4; grid-row: 1; }
+  .site-header .site-nav--organized { grid-column: 1 / -1; grid-row: 2; display: flex; flex-wrap: nowrap; justify-content: space-between; gap: .2rem; width: 100%; padding-top: .5rem; border-top: 1px solid var(--border); }
+  .site-header .site-nav--organized > a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
 /* ── MAIN / CONTENT ──────────────────────────────────────── */
 main {
   flex: 1;
