@@ -1,5 +1,21 @@
 [
   {
+    "slug": "cesky-raj",
+    "title": "Český ráj: mezi skalami, hrady a příběhy",
+    "description": "Prachovské skály, Trosky, Hruboskalsko i pohádkový Střehomský mlýn. Průvodce k videu s mapou míst, kapitolami a tipy pro vlastní výlet.",
+    "category": "Cestování",
+    "series": "Cestování po Česku",
+    "published": "2026-11-16",
+    "updated": "2026-11-16",
+    "reading_minutes": 7,
+    "video_id": "KIXA5yxV6-U",
+    "video_title": "Český ráj | Putování mezi skalami, hrady a rybníky",
+    "video_duration": "8:08",
+    "map_url": "/zdroje/cesky-raj-mapy.html",
+    "credits_url": "/zdroje/cesky-raj-fotografie.html",
+    "project_url": "/cestovani/cesko/"
+  },
+  {
     "slug": "hoslovicky-mlyn",
     "title": "Hoslovický mlýn: jak se žilo a pracovalo u vody",
     "description": "Cesta vody ke kolu, mlynářská práce a domov rodiny Harantových. Příběh Hoslovického mlýna s videem, mapou a tipy pro návštěvu.",

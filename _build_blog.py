@@ -39,7 +39,8 @@ def card(post, featured=False, heading='h2'):
 
 def video_card(video):
     watch = 'https://www.youtube.com/watch?v=' + video['video_id']
-    return f'''<article class="blog-card blog-video-card"><a class="blog-card__image" href="{watch}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="https://img.youtube.com/vi/{video['video_id']}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"></a><div class="blog-card__body"><p class="blog-meta">{esc(video['series'])} · {esc(video['duration'])}</p><h3><a href="{watch}" target="_blank" rel="noopener noreferrer">{esc(video['title'])}</a></h3><a class="blog-card__link" href="{watch}" target="_blank" rel="noopener noreferrer" aria-label="Přehrát na YouTube: {esc(video['title'])}">Přehrát na YouTube ↗</a></div></article>'''
+    article_link = f'<p><a class="blog-card__link" href="{esc(video["article_url"])}">Článek k videu →</a></p>' if video.get('article_url') else ''
+    return f'''<article class="blog-card blog-video-card"><a class="blog-card__image" href="{watch}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="https://img.youtube.com/vi/{video['video_id']}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"></a><div class="blog-card__body"><p class="blog-meta">{esc(video['series'])} · {esc(video['duration'])}</p><h3><a href="{watch}" target="_blank" rel="noopener noreferrer">{esc(video['title'])}</a></h3><a class="blog-card__link" href="{watch}" target="_blank" rel="noopener noreferrer" aria-label="Přehrát na YouTube: {esc(video['title'])}">Přehrát na YouTube ↗</a>{article_link}</div></article>'''
 
 
 def video_block(videos, limit=None):
@@ -66,6 +67,9 @@ def wrapper(title, description, path, body, header, footer, image=None, schema=N
 def main():
     posts = json.loads((DATA / 'posts.json').read_text(encoding='utf-8'))
     videos = json.loads((DATA / 'videos.json').read_text(encoding='utf-8'))
+    articles_by_video = {p['video_id']: url(p) for p in posts}
+    for video in videos:
+        video['article_url'] = articles_by_video.get(video['video_id'])
     assert len({v['video_id'] for v in videos}) == len(videos), 'Unique videos are required'
     assert all(re.fullmatch(r'[A-Za-z0-9_-]{11}', v['video_id']) for v in videos), 'Invalid video ID'
     assert posts and len({p['slug'] for p in posts}) == len(posts), 'Unique post slugs are required'
@@ -94,7 +98,7 @@ def main():
     index_body += '''<aside class="blog-related"><h2>Další inspirace na cesty</h2><p>Prohlédni si <a href="/cestovani/skryte-klenoty/">cestovatelské série s mapami a podklady</a> nebo <a href="/cestovani/">fotografie z mých cest</a>.</p><p>Nové články můžeš sledovat přes <a href="/blog/feed.xml">RSS</a>.</p></aside>'''
     blog = ROOT / 'blog'
     blog.mkdir(exist_ok=True)
-    (blog / 'index.html').write_text(wrapper('Blog z cest – příběhy a cestovatelská videa', 'Cestovatelský blog Cestovatele69: příběhy míst, zveřejněná videa z YouTube, mapy a tipy. Hoslovický mlýn a další cesty po Česku a Evropě.', '/blog/', index_body, header, footer), encoding='utf-8')
+    (blog / 'index.html').write_text(wrapper('Blog z cest – příběhy a cestovatelská videa', 'Cestovatelský blog Cestovatele69: Český ráj, Hoslovický mlýn a další cesty po Česku a Evropě. Články, zveřejněná videa, mapy a tipy k výletům.', '/blog/', index_body, header, footer), encoding='utf-8')
     for post in posts:
         video = post['video_id']
         body = f'''<article class="blog-article"><header class="blog-article__header"><a class="blog-back" href="/blog/">← Všechny články</a><p class="blog-eyebrow">{esc(post['series'])} · {esc(post['category'])}</p><h1>{esc(post['title'])}</h1><div class="blog-meta"><span>Luděk · Cestovatel69</span><time datetime="{post['published']}">{date_label(post['published'])}</time><span>{post['reading_minutes']} minut čtení</span></div></header>
@@ -102,7 +106,7 @@ def main():
 <div class="blog-video-caption"><span>Video · {esc(post['video_duration'])} · YouTube se načte po spuštění</span><a href="https://www.youtube.com/watch?v={video}" target="_blank" rel="noopener noreferrer">Otevřít video na YouTube ↗</a></div>
 <nav class="blog-resource-links" aria-label="Podklady k videu"><a href="{esc(post['map_url'])}">Místo na mapě →</a><a href="{esc(post['credits_url'])}">Autoři a licence fotografií →</a></nav>
 <div class="blog-content">{(DATA / (post['slug'] + '.html')).read_text(encoding='utf-8')}</div>
-<aside class="blog-related"><h2>Pokračuj v cestách s příběhem</h2><p><a href="{esc(post['project_url'])}">Prohlédnout cestovatelské série →</a></p><p><a href="https://www.youtube.com/@cestovatel69?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Odebírat Cestovatel69 na YouTube ↗</a></p><a href="/blog/">Zpět na blog →</a></aside></article>'''
+<aside class="blog-related"><h2>Pokračuj v cestování</h2><p><a href="{esc(post['project_url'])}">Prohlédnout další cesty →</a></p><p><a href="https://www.youtube.com/@cestovatel69?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Odebírat Cestovatel69 na YouTube ↗</a></p><a href="/blog/">Zpět na blog →</a></aside></article>'''
         body = body.replace('</article>', video_block([v for v in videos if v['video_id'] != video], limit=3) + '</article>')
         schema = {'@context': 'https://schema.org', '@type': 'BlogPosting', 'headline': post['title'], 'description': post['description'], 'datePublished': post['published'], 'dateModified': post['updated'], 'inLanguage': 'cs', 'author': {'@type': 'Person', 'name': 'Luděk Budínský', 'url': ORIGIN + '/o-mne.html'}, 'mainEntityOfPage': ORIGIN + url(post), 'image': f'https://img.youtube.com/vi/{video}/maxresdefault.jpg'}
         directory = ROOT / url(post).strip('/')

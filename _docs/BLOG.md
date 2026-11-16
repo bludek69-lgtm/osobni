@@ -39,3 +39,14 @@ Na přehledu se zobrazí celý výběr, pod článkem první tři videa a odkaz 
 Názvy, ID a délky ověřeny na veřejné kartě kanálu 16. 11. 2026; délky 32 a 35
 minut YouTube zaokrouhluje. Krkonošské boudy jsou podle uživatele nedokončené
 a nejsou publikované ani v seznamu. Nevytvářet články k nedokončeným videím.
+
+## Český ráj – 16. 11. 2026
+
+Článek `/blog/cesky-raj/` navazuje na veřejné video `KIXA5yxV6-U`.
+Obsah ověřen podle aktuálního popisu, kapitol a exportovaného přepisu
+(získána anglická stopa; žádný nový komentář ani změna videa). Délka ve Studiu
+8:08, veřejný přehrávač ukazuje 8:07; metadata zachovávají údaj Studia.
+Historie a návštěvnické údaje ověřeny na odkazovaných oficiálních stránkách
+regionu, KČT Semily a CzechTourism. Výběry výletů nejsou vydávané za hotové trasy.
+Pověsti a filmová místa odděleny od doložené historie. Fotografie v existující
+miniatuře odkazují na původní autory a licence.
