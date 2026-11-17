@@ -17,6 +17,7 @@ ORIGINAL = STATE / 'original'
 LANGS = ('cs', 'en', 'it')
 SITE = 'https://cestovatel69.cz'
 VERSION = '20261117-editorial'
+CONSENT_VERSION = '20261117-adsense'
 SKIP = {'script', 'style', 'code', 'pre', 'kbd', 'samp', 'math', 'template'}
 ATTRS = ('alt', 'title', 'aria-label', 'placeholder', 'data-title')
 COPY_EDITS={
@@ -469,7 +470,9 @@ def render(file,lang,p,cache):
   for a in ('href','src','poster','data-src'):
    if tag.has_attr(a):tag[a]=localize_url(tag[a],file,lang,available)
   if tag.name=='script' and tag.get('src','').startswith('/') and urlsplit(tag['src']).path.endswith('.js'):
-   tag['src']=urlsplit(tag['src']).path+'?v='+VERSION
+   asset_path = urlsplit(tag['src']).path
+   asset_version = CONSENT_VERSION if asset_path in ('/assets/js/analytics-consent.js','/assets/js/main.js','/smart-home/script.js') else VERSION
+   tag['src']=asset_path+'?v='+asset_version
   if tag.name=='script' and urlsplit(tag.get('src','')).hostname=='widget.getyourguide.com':
    # This widget observes document.body; async can execute before it exists.
    tag.attrs.pop('async',None);tag['defer']=''

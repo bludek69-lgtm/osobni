@@ -178,7 +178,7 @@
     if (location.pathname.includes('/demo/')) return;
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = '/assets/css/analytics-consent.css?v=20261116';
+    css.href = '/assets/css/analytics-consent.css?v=20261117-adsense';
     document.head.appendChild(css);
     banner = document.createElement('section');
     banner.className = 'analytics-consent';

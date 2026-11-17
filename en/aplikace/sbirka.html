@@ -229,7 +229,7 @@
 </div>
 </div>
 </footer>
-<script src="/assets/js/main.js?v=20261117-editorial"></script>
+<script src="/assets/js/main.js?v=20261117-adsense"></script>
 <!-- ═══ Styl + logika deníkového popupu (sdílený vzor) ═══ -->
 <!-- Lightbox -->
 <script>/* Verze z latest.json (nikdy nedrift) — natvrdo psane cislo v HTML zustava jen jako fallback, kdyz je manifest nedostupny. */(function(){fetch("https://raw.githubusercontent.com/bludek69-lgtm/aplikace/main/latest.json",{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){var o=d&&d["collection"];if(!o||!o.version)return;var v=o.version;var s=({final:"FINÁLNÍ",beta:"BETA",work:"PRACOVNÍ"})[o.stage]||(o.stage||"").toUpperCase();document.querySelectorAll("[data-col-ver]").forEach(function(el){el.textContent=el.getAttribute("data-col-ver").replace("{v}",v).replace("{s}",s);});/* Odkaz ke stazeni se zamerne nedosazuje - aplikace se nedistribuuje pres web (predava se osobne). */}).catch(function(){});})();</script>

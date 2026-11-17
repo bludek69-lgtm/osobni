@@ -37,6 +37,10 @@ Na localhostu, jiných hostitelích a uvnitř /demo/ se integrace nespouští.
 Souhlas s reklamami sám nespouští Google Analytics. Nepřipojovat Analytics k
 souhlasu pro účel 1 v AdSense bez změny této logiky a informací pro návštěvníka.
 
+URL tří vstupních skriptů mají verzi 20261117-adsense, včetně přímých značek
+v HTML. `_refresh_consent_assets.py` je obnoví bez přeformátování obsahu.
+Generátory blogu, šablon a jazykových stránek zachovávají tuto verzi.
+
 Před budoucím spuštěním automatických reklam vybrat vhodné obsahové stránky
 a vyloučit chybové, navigační, pomocné či demonstrační obrazovky.
 
