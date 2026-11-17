@@ -399,6 +399,8 @@ def render(file,lang,p,cache):
  s.body['class']=list(dict.fromkeys(classes));s.html['lang']=lang
  for calculators in s.select('[data-finance-calculators]'):calculators['data-locale']=lang
  if file=='404.html':
+  box=s.select_one('.box')
+  if box:box['role']='main'
   for a in s.select('.en a'):
    text=normalize(a.get_text())
    if text in ('English','Italiano'):a['hreflang']='en' if text=='English' else 'it'
@@ -498,7 +500,7 @@ def render(file,lang,p,cache):
   s.head.append(s.new_tag('link',rel='canonical',href=SITE+url_for(file,lang)))
   for l in LANGS:s.head.append(s.new_tag('link',rel='alternate',hreflang=l,href=SITE+url_for(file,l)))
   s.head.append(s.new_tag('link',rel='stylesheet',href='/assets/css/editorial-preview.css?v='+VERSION))
-  s.head.append(s.new_tag('link',rel='stylesheet',href='/assets/css/editorial-site.css?v='+VERSION))
+  s.head.append(s.new_tag('link',rel='stylesheet',href='/assets/css/editorial-site.css?v=20261117-spacing-1'))
   s.head.append(s.new_tag('script',src='/assets/js/editorial-ui.js?v='+VERSION,defer=''))
   if (file.startswith('zdroje/') or file in ('404.html','cestovani/pracovni-cesty/prehled-tras.html')) and not s.select_one('link[href*="/assets/css/style.css"]'):
    s.head.insert(0,s.new_tag('link',rel='stylesheet',href='/assets/css/style.css?v=20261116-navsearch'))

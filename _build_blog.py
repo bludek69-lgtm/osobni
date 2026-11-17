@@ -87,7 +87,7 @@ def wrapper(title, description, path, body, header, footer, image=None, schema=N
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{'article' if path != '/blog/' else 'website'}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{esc(image)}">
 <meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="/assets/css/style.css?v=20261116-navsearch"><link rel="stylesheet" href="/assets/css/language-navigation.css?v=20261030-jazyky"><link rel="stylesheet" href="/assets/css/blog.css?v=20261116-travel">
-<link rel="stylesheet" href="/assets/css/editorial-preview.css?v=20261117-editorial"><link rel="stylesheet" href="/assets/css/editorial-site.css?v=20261117-editorial">
+<link rel="stylesheet" href="/assets/css/editorial-preview.css?v=20261117-editorial"><link rel="stylesheet" href="/assets/css/editorial-site.css?v=20261117-spacing-1">
 <script id="cestovatel-analytics-consent" src="/assets/js/analytics-consent.js?v=20261117-adsense"></script>
 <link rel="alternate" type="application/rss+xml" title="Cestovatel69 – Blog z cest" href="/blog/feed.xml">{schema_tag}</head>
 <body class="theme-home blog-page editorial-preview editorial-site {'editorial-hub' if path == '/blog/' else 'editorial-reading'}">{header}<main id="main">{body}</main>{footer}
