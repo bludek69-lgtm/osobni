@@ -4,11 +4,11 @@ const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const original = fs.readFileSync('assets/js/analytics-consent.js', 'utf8');
 const registry = JSON.parse(fs.readFileSync('_data/youtube-campaigns.json', 'utf8'));
-const source = original.replace(/if \(document\.readyState === 'loading'\) document\.addEventListener\('DOMContentLoaded', install\);\r?\n  else install\(\);/, 'window.testConsent = {apply, disable};');
+const source = original.replace(/if \(document\.readyState === 'loading'\) document\.addEventListener\('DOMContentLoaded', install\);\r?\n  else install\(\);/, 'window.testConsent = {apply, disable, installAdvertising};');
 assert.notEqual(source, original);
 function run(search, hostname = 'cestovatel69.cz') {
   const scripts = [];
-  const document = {documentElement: {lang: 'cs', dataset: {}}, referrer: 'https://www.youtube.com/watch?v=private&email=secret@example.com', title: 'Článek', cookie: '', createElement: () => ({}), head: {appendChild: x => scripts.push(x)}};
+  const document = {documentElement: {lang: 'cs', dataset: {}}, referrer: 'https://www.youtube.com/watch?v=private&email=secret@example.com', title: 'Článek', cookie: '', createElement: () => ({addEventListener(event, fn) { this[event] = fn; }}), getElementById: id => scripts.find(x => x.id === id), head: {appendChild: x => scripts.push(x)}};
   const window = {};
   vm.runInNewContext(source, {window, document, URL, URLSearchParams, location: {hostname, search, origin: 'https://' + hostname, pathname: '/blog/hoslovicky-mlyn/', protocol: 'https:'}, localStorage: {getItem: () => null}, Date, Number});
   return {window, document, scripts, commands: () => Array.from(window.dataLayer || [], x => Array.from(x))};
@@ -43,4 +43,34 @@ for (const search of ['', '?utm_source=youtube&utm_medium=organic_video&utm_cont
 }
 const local = run('', '127.0.0.1'); local.window.testConsent.apply(true);
 assert.equal(local.scripts.length, 0);
-console.log(`PASS: ${registry.length} issued video links; consent, no duplication, clean URLs, invalid campaign rejection, localhost exclusion.`);
+const ads = run('');
+const controls = {children: [], appendChild(node) { this.children.push(node); }};
+ads.window.testConsent.installAdvertising(controls);
+assert.equal(ads.scripts.length, 1);
+assert(ads.scripts[0].src.startsWith('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2131933406219379'));
+assert(!ads.commands().some(c => c[0] === 'config'), 'loading the CMP never enables Analytics');
+const defaults = ads.commands()[0];
+assert.equal(defaults[0], 'consent');
+for (const purpose of ['analytics_storage', 'ad_storage', 'ad_user_data', 'ad_personalization']) assert.equal(defaults[2][purpose], 'denied');
+const button = controls.children[0];
+assert.equal(button.hidden, true);
+const queue = ads.window.googlefc.callbackQueue;
+queue[0].CONSENT_API_READY();
+assert.equal(button.hidden, false);
+let revocations = 0;
+ads.window.googlefc.showRevocationMessage = () => { revocations++; };
+button.click();
+assert.equal(revocations, 0, 'revocation uses the supported ready callback');
+queue[1].CONSENT_API_READY();
+assert.equal(revocations, 1);
+const beforeAnalytics = ads.commands().length;
+ads.window.testConsent.apply(true);
+ads.window.testConsent.apply(false);
+const analyticsConsentCommands = ads.commands().slice(beforeAnalytics).filter(c => c[0] === 'consent');
+for (const command of analyticsConsentCommands) {
+  assert.deepEqual(Object.keys(command[2]), ['analytics_storage'], 'Analytics choices must not override the CMP advertising decision');
+}
+assert.equal(ads.window['ga-disable-G-BM11EHQG00'], true);
+local.window.testConsent.installAdvertising(controls);
+assert.equal(local.scripts.length, 0, 'CMP and advertising excluded from local previews');
+console.log(`PASS: ${registry.length} issued video links; attribution, privacy, independent advertising consent, revocation, denied defaults, localhost exclusion.`);

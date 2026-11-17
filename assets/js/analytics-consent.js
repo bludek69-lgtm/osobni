@@ -67,8 +67,9 @@
     started = true;
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || tag;
-    tag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
-    tag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    // Advertising consent belongs to the Google CMP, independently of Analytics.
+    tag('consent', 'default', { analytics_storage: 'denied' });
+    tag('consent', 'update', { analytics_storage: 'granted' });
     tag('js', new Date());
     const campaign = youtubeCampaign();
     tag('config', MEASUREMENT_ID, {
@@ -105,7 +106,7 @@
 
   function disable() {
     window['ga-disable-' + MEASUREMENT_ID] = true;
-    if (started) tag('consent', 'update', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    if (started) tag('consent', 'update', { analytics_storage: 'denied' });
     const names = ['_ga', '_ga_' + MEASUREMENT_ID.replace(/^G-/, '')];
     const domains = ['', location.hostname, '.cestovatel69.cz'];
     names.forEach(name => domains.forEach(domain => {
@@ -131,6 +132,45 @@
     previousFocus = document.activeElement;
     banner.hidden = false;
     banner.querySelector('button').focus();
+  }
+
+  function installAdvertising(controls) {
+    if (!production) return;
+    // The AdSense tag delivers the published Google CMP. It is not an Analytics opt-in.
+    // Set defaults before loading it; the CMP updates advertising purposes only.
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || tag;
+    tag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    const googlefc = window.googlefc = window.googlefc || {};
+    googlefc.callbackQueue = googlefc.callbackQueue || [];
+    const settings = document.createElement('button');
+    settings.type = 'button';
+    settings.id = 'cestovatel-advertising-settings';
+    settings.textContent = ({cs: 'Nastavení reklam', en: 'Advertising settings', it: 'Impostazioni pubblicitarie'})[language] || 'Advertising settings';
+    settings.hidden = true;
+    settings.addEventListener('click', function () {
+      window.googlefc.callbackQueue.push({CONSENT_API_READY: function () {
+        window.googlefc.showRevocationMessage();
+      }});
+    });
+    controls.appendChild(settings);
+    googlefc.callbackQueue.push({CONSENT_API_READY: function () {
+      settings.hidden = false;
+      document.documentElement.dataset.advertisingConsentUi = 'ready';
+    }});
+    if (!document.getElementById('cestovatel-adsense')) {
+      const script = document.createElement('script');
+      script.id = 'cestovatel-adsense';
+      script.async = true;
+      script.crossOrigin = 'anonymous';
+      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2131933406219379';
+      document.head.appendChild(script);
+    }
   }
 
   function install() {
@@ -167,6 +207,7 @@
     const footer = document.querySelector('.footer-links, .site-footer, footer');
     if (footer) footer.appendChild(controls);
     else { controls.classList.add('analytics-privacy-links--floating'); document.body.appendChild(controls); }
+    installAdvertising(controls);
     const choice = readChoice();
     banner.hidden = !!choice;
     banner.querySelector('[data-choice="close"]').hidden = !choice;

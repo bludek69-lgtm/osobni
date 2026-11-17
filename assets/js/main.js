@@ -1,12 +1,12 @@
 // Osobní web — Luděk
 // Minimal JS: mobile nav toggle + lazy-load helper + theme toggle (Phase 5.1)
 
-// First-party privacy controls load locally; Google loads only after consent.
+// Analytics requires its own opt-in; the AdSense tag delivers Google's advertising CMP.
 (function () {
   if (document.getElementById('cestovatel-analytics-consent')) return;
   const privacy = document.createElement('script');
   privacy.id = 'cestovatel-analytics-consent';
-  privacy.src = '/assets/js/analytics-consent.js?v=20261116-3';
+  privacy.src = '/assets/js/analytics-consent.js?v=20261117-adsense';
   document.head.appendChild(privacy);
 })();
 

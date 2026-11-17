@@ -29,7 +29,10 @@ Zvolen basic consent mode: do udělení souhlasu žádný Google tag ani analyti
 požadavek. Povolení a odmítnutí mají rovnocenná tlačítka. Volba se uchovává
 180 dní v localStorage; v patičce je Nastavení soukromí a odkaz na /soukromi/.
 Při odvolání se nastaví ga-disable, odešle změna dříve uděleného souhlasu
-a odstraní vlastní _ga cookies. Reklamní consent je vždy denied.
+a odstraní vlastní _ga cookies. Od 17. 11. 2026 reklamní souhlas spravuje
+samostatně Google CMP z AdSense. Volba pro Analytics mění pouze analytics_storage,
+aby nepřepisovala reklamní rozhodnutí návštěvníka. Google Signals a reklamní
+personalizace samotné konfigurace GA4 zůstávají vypnuté.
 
 Google se načítá pouze na skutečné doméně cestovatel69.cz a www variantě.
 Místní náhled umožňuje testovat UI, ale neposílá testovací návštěvy do produkce.
@@ -42,7 +45,11 @@ Události:
 
 Kliknutí na přehrání není důkaz přehrání ani délky sledování. Nezapínat formuláře
 ani automatický sběr vyhledávacích dotazů bez samostatného posouzení obsahu.
-AdSense tímto není aktivováno a nejde o Googlem certifikovanou CMP pro reklamy.
+Vlastní panel není reklamní CMP. Od 17. 11. 2026 stejný společný skript navíc
+na produkční doméně zavádí značku AdSense, která doručuje publikovanou Google CMP.
+Před jejím načtením nastaví všechny čtyři účely souhlasu na denied. Google CMP
+spravuje pouze reklamní účely; analytické účely jsou v nastavení CMP vypnuté.
+Podrobnosti v ADSENSE.md. Žádost o nové posouzení webu nebyla odeslána.
 
 ## Ověření před nasazením
 
