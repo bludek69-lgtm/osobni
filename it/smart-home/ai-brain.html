@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Brain Guardian aiuta a verificare se la famiglia si comporta come previsto. Cerca discrepanze negli stati e nei log per facilitare l'individuazione del problema e la preparazione di una soluzione." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Controllare la gestione della casa |
+CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="Controllare la gestione della casa |
+CASA INTELLIGENTE" property="og:title"/>
+<meta content="Brain Guardian aiuta a verificare se la famiglia si comporta come previsto. Cerca discrepanze negli stati e nei log per facilitare l'individuazione del problema e la preparazione di una soluzione." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/ai-brain.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/ai-brain.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/ai-brain.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/ai-brain.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/ai-brain.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/ai-brain.html#main">Vai al contenuto</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Apri il menù</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/it/smart-home/">Home</a></li>
+<li><a aria-current="page" class="is-active" href="/it/smart-home/prozivani.html">Come funziona</a></li>
+<li><a href="/it/smart-home/zarizeni.html">Attrezzatura</a></li>
+<li><a href="/it/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/it/smart-home/dashboard.html">Cruscotto</a></li>
+<li><a href="/it/smart-home/pribeh.html">La storia</a></li>
+<li><a href="/it/smart-home/blog.html">Blog</a></li>
+<li><a href="/it/smart-home/kontakt.html">Informazioni sul progetto</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Sito web personale e Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a><a href="/it/smart-home/">Introduzione Casa intelligente</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/ai-brain.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/ai-brain.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/ai-brain.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section section-alt" id="ai-brain">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">🏠 Esperienza · Cervello AI</p>
+<h1 class="section-title">Controllo della gestione della casa</h1>
+<p class="section-lead">Brain Guardian aiuta a verificare se la famiglia si comporta come previsto. Cerca discrepanze negli stati e nei log per facilitare l'individuazione del problema e la preparazione di una soluzione.</p><details class="visitor-technical-intro"><summary>Dettagli tecnici</summary><p class="section-lead">
+            Una casa intelligente che si controlla da sola.
+Rileva valori fantasma, verifica lo stato previsto, blocca distribuzioni interrotte, analizza quotidianamente i log tramite Gemini.
+          </p></details>
+</header>
+<div class="module-grid">
+<article class="module-card">
+<div class="module-head">
+<span class="module-status module-status-live">VIVI</span>
+<code class="module-name">sh_brain_guardian_v1</code>
+</div>
+<h3>Guardiano del cervello</h3>
+<p>
+              Supervisore di primo livello.
+Aggrega gli output del validatore e del motore dello stato previsto, calcola <strong>punteggio di salute</strong> (attualmente 92/100). In caso di calo critico, suonerà un allarme.
+            </p>
+</article>
+<article class="module-card">
+<div class="module-head">
+<span class="module-status module-status-live">VIVI</span>
+<code class="module-name">sh_expected_state_engine_v1</code>
+</div>
+<h3>Motore dello stato previsto</h3>
+<p>
+              Per ogni volta + modalità calcola cosa <em>dovrebbe</em> essere acceso/spento.
+Serve come riferimento rispetto allo stato reale, la base per il rilevamento delle anomalie.
+            </p>
+</article>
+<article class="module-card">
+<div class="module-head">
+<span class="module-status module-status-live">VIVI</span>
+<code class="module-name">sh_state_validator_v1</code>
+</div>
+<h3>Validatore dello Stato</h3>
+<p>
+              Confronta lo stato atteso e quello reale. Rileva valori fantasma (variabili che mentono) e flag bloccati. Primo rilevamento della produzione:
+              <code>priority_active=tts</code> fantasma dopo le 00:40.
+            </p>
+</article>
+<article class="module-card">
+<div class="module-head">
+<span class="module-status module-status-live">VIVI</span>
+<code class="module-name">sh_release_guard_v1</code>
+</div>
+<h3>Rilascio della guardia</h3>
+<p>
+              Esegue controlli Canary (3 chiamate di prova) prima di distribuire una nuova versione dello script.
+Se il punteggio di Brain Guardian scende, il rilascio viene bloccato e rimane la vecchia sceneggiatura.
+            </p>
+</article>
+<article class="module-card">
+<div class="module-head">
+<span class="module-status module-status-live">VIVI</span>
+<code class="module-name">sh_self_healing_v4</code>
+</div>
+<h3>Motore di autoguarigione</h3>
+<p>
+              4 rilevatori ogni 10 minuti: richieste orfane, eventi bloccati, deadlock audio, dispositivi critici offline.
+Ripristino automatico senza il mio intervento.
+            </p>
+</article>
+<article class="module-card">
+<div class="module-head">
+<span class="module-status module-status-live">VIVI</span>
+<code class="module-name">sh_gemini_diagnostic_v1</code>
+</div>
+<h3>Diagnostica dei Gemelli</h3>
+<p>
+              Tutti i giorni alle 11:40.
+Legge i log JSONL da SSD su Raspberry Pi (dal 27.5.2026 — precedentemente Fogli Google), invia Gemini Flash con una richiesta di diagnostica, salva il risultato (priorità + suggerimento di correzione) nel dashboard nella pagina AI.
+            </p>
+</article>
+<article class="module-card">
+<div class="module-head">
+<span class="module-status module-status-live">IN DIRETTA (2 maggio)</span>
+<code class="module-name">sh_intent_engine_v1</code>
+</div>
+<h3>Motore di intenti</h3>
+<p>
+              Ogni minuto chiede: <em>"Cosa sta cercando di fare la casa?"</em>
+              La risposta è una delle 8 intenzioni (sonno tranquillo, viaggio notturno, risveglio mattutino, arrivo, partenza, ...) più un punteggio da 0 a 100 quanto è sicuro il sistema.
+Funziona come uno strato più alto sopra i singoli script: un quadro completo della situazione invece di dozzine di segnali frammentati.
+            </p>
+</article>
+<article class="module-card">
+<div class="module-head">
+<span class="module-status module-status-live">IN DIRETTA (2 maggio)</span>
+<code class="module-name">sh_health_monitor_v1</code>
+</div>
+<h3>Monitoraggio della salute</h3>
+<p>
+              Ogni 5 minuti controlla 5 indicatori di salute: caldaia, pipeline audio, rilevamento di presenza, macchina dello stato di sonno, registratori di energia. Quando qualcuno inizia a fare cose strane, arriverà una notifica push sul telefono con una descrizione specifica (anti-flap protetto per non spammare l'utente durante i brevi segnali acustici).
+            </p>
+</article>
+<article class="module-card">
+<div class="module-head">
+<span class="module-status module-status-live">IN DIRETTA (2 maggio)</span>
+<code class="module-name">sh_kill_switch</code>
+</div>
+<h3>Kill Switch: interruttore di standby</h3>
+<p>
+              L'unica variabile <code>yes/no</code>.
+Quando passi a <code>yes</code>, 6 script chiave (cervello decisionale, previsione, routine mattutina, pattuglia, riscaldamento) si fermeranno all'inizio e non faranno nulla al successivo avvio. Il modo per garantire che l’operatore umano abbia sempre l’ultima parola. Ripristina con un clic.
+            </p>
+</article>
+<article class="module-card">
+<div class="module-head">
+<span class="module-status module-status-live">IN DIRETTA (14 maggio)</span>
+<code class="module-name">sh_room_vacancy_guardian_v1 v1.1</code>
+</div>
+<h3>Vacancy Guardian: rilevamento del battito cardiaco</h3>
+<p>
+              Si assicura che le luci del bagno non siano accese o che la radio non resti accesa molto tempo dopo che qualcuno se n'è andato.
+La versione 1.1 (14/5) ha aggiunto due timestamp: <strong>battito cardiaco</strong> (lo script ha iniziato a funzionare) a <strong>last_run</strong> (la sceneggiatura è esaurita). Quando il primo è fresco ma il secondo è vecchio, vediamo esattamente: cron si attiva, ma lo script viene ucciso nel mezzo a causa della pressione della memoria. Inoltre ripristino in stato di blocco: quando il bagno è vuoto e la modalità audio continua a ripetere <em>radio_bagno</em>, lo ripristinerà in modalità inattiva in modo che la radio non ritorni mai da sola da un bagno vuoto.
+            </p>
+</article>
+</div>
+<figure class="uc-screenshot">
+<img alt="Pagina dashboard AI Brain: stato del tutore, invarianti del validatore, registro del briefing di Gemini" class="zoomable" data-full-src="/smart-home/assets/screenshots/after/1920/ai.png" decoding="async" height="900" loading="lazy" src="/assets/img/editorial/media/7096e0549d2a16e52b.webp" width="1600"/>
+<figcaption>Pagina dashboard AI Brain: punteggio di salute del Guardian, controllo delle invarianti del validatore, registro del briefing di Gemini</figcaption>
+</figure>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Filosofia · Come parlare con l'intelligenza artificiale</p>
+<h2 class="section-title">Perché le persone non si fidano dell'intelligenza artificiale</h2>
+<p class="section-lead">Un semplice motto: una domanda stupida, una risposta stupida.</p>
+</header>
+<article class="uc-prose">
+<p>Sento spesso che l'intelligenza artificiale non funziona perché scrive sciocchezze.
+Ma nella maggior parte dei casi vale una regola semplice: una domanda stupida avrà una risposta stupida.</p>
+<p>L’intelligenza artificiale non è un oracolo magico.
+È uno strumento.
+Se le fai una domanda imprecisa, non le fornisci un contesto, non dichiari un obiettivo e non le dici esattamente cosa ci si aspetta da lei, il risultato tende ad essere debole.
+L’intelligenza artificiale quindi si limita a indovinare, riempie gli spazi vuoti e talvolta produce una risposta che sembra intelligente ma è praticamente inutile.</p>
+<p>Ma quando una persona impara a porre domande specifiche, ad aggiungere esempi, vincoli, risorse e a descrivere chiaramente il risultato desiderato, l’intelligenza artificiale si trasforma da un giocattolo in un aiuto molto potente.
+Non è che l'intelligenza artificiale non funzioni.
+Spesso si tratta più del fatto che non sappiamo come parlarle correttamente.</p>
+<h3>Un esempio della differenza</h3>
+<p><strong>Domanda sbagliata:</strong> Scrivimi qualcosa sull'intelligenza artificiale.</p>
+<p><strong>Una domanda migliore:</strong> Scrivi un testo breve e di facile comprensione per i non addetti ai lavori sul motivo per cui l'intelligenza artificiale a volte dà risposte sbagliate e spiega che la qualità della risposta dipende dalla qualità dell'input.</p>
+<p>Ecco perché dico sempre alla gente: l'intelligenza artificiale non sostituisce il pensiero.
+È un potenziatore del pensiero.
+Quando le diamo il caos, lei ci restituisce il caos.
+Se le diamo un incarico chiaro, potrà aiutarci in modo significativo.</p>
+</article>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Immagine ingrandita" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Chiudi lo zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME · Realizzato con ❤️ e pensando prima alla sceneggiatura.</p>
+<p class="footer-meta">Presentazione pubblica · nessuna chiave API · nessun IP locale · nessun controllo da qui.</p>
+<p class="footer-meta"><a href="/it/smart-home/technicka-mapa.html">Mappa tecnica →</a> · <a href="/it/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

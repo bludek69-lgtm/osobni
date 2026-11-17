@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Audio brain bathroom misroute — 4 hours of diagnostics. Bug on 25.4., when after comfort_suggest TTS the bathroom radio started by itself even without user accept. Root cause + fix v1.8." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Bathroom misroute — 4 hours of diagnostics | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Bathroom misroute — 4 hours of diagnostics | SMART HOME" property="og:title"/>
+<meta content="Audio brain bathroom misroute — 4 hours of diagnostics. Bug on 25.4., when after comfort_suggest TTS the bathroom radio started by itself even without user accept. Root cause + fix v1.8." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/posts/bathroom-misroute.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/posts/bathroom-misroute.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/bathroom-misroute.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/bathroom-misroute.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/bathroom-misroute.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/posts/bathroom-misroute.html#main">Skip to content</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/en/smart-home/blog.html">← Back to the blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Back from the article" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a></div><div class="visitor-links"><a href="/en/smart-home/">Introduction Smart Home</a><a href="/en/smart-home/blog.html">All notes</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/posts/bathroom-misroute.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/posts/bathroom-misroute.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/posts/bathroom-misroute.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/en/smart-home/blog.html">← All posts</a>
+<article class="post-content">
+<p class="post-meta">Apr 25, 2026 · Audio · 8 min read</p>
+<h1>Bathroom misroute — 4 hours of diagnostics and fix v1.8</h1>
+<p>
+          Last night at 20:45 the system automatically started the radio to the bathroom where no one was. No explicit command, no scene, no cube tap. Just 46 seconds after the AI ​​coordinator offered a "relax scene", Italian Classic Hits Sanremo started playing from the empty bathroom.
+        </p>
+<p>
+          The bug registered as medium severity (one-shot, can be stopped manually), but the key was that it could happen again with every comfort_suggest. Here is 4 hours of diagnostics condensed into 8 minutes of reading.
+        </p>
+<h2>Reproduction</h2>
+<ol>
+<li>The AI coordinator evaluates the situation = <code>comfort_suggest</code> (level 4, evening + idle scene)</li>
+<li>TTS reads: <em>"Man, it's evening and nothing is going on. Do you want to start a relax scene?"</em></li>
+<li>User <strong>he doesn't answer</strong> — neither cube, nor button, nor voice</li>
+<li>~46 s after TTS completed: <code>sh_audio_brain_v2 audio_dispatch</code> event</li>
+<li>Speaker bathroom will start playing the radio (even if the user is not in the bathroom)</li>
+</ol>
+<h2>State when there is a bug</h2>
+<pre tabindex="0"><code>sh_audio_current_mode = 'radio_bathroom'
+sh_audio_active_speaker = 'Speaker koupelna'
+sh_audio_playing = 'yes'
+sh_audio_request = 'idle'           ← nikdo nepožádal o radio
+sh_audio_final_request = 'idle'     ← ditto
+sh_scene_active = 'idle'            ← scéna se neaktivovala
+sh_user_intent = 'idle'             ← user neodpověděl
+sh_user_intent_request = 'idle'     ← ditto
+sh_ai_coord_last_action = 'comfort_suggest'  ← byla jen NABÍDKA
+sh_audio_prev_mode = 'idle'         ← žádné prev radio (nebylo co resumovat)
+sh_audio_prev_speaker = ''          ← ditto
+sh_tts_resume_pending = 'idle'      ← resume nečeká
+sh_tts_resume_target = 'idle'       ← ditto</code></pre>
+<p>
+          Key Red Alert: <code>sh_audio_current_mode='radio_bathroom'</code>
+          but <code>sh_audio_prev_mode='idle'</code>. Mode got stuck from the morning routine, no one reset it, and after TTS completion fallback logic used it as "where to fall back to".
+        </p>
+<h2>Hypotheses that didn't work</h2>
+<p><strong>H1 — audio_brain auto-execute on comfort_suggest.</strong>
+        Hypothesis: the brain may auto-activate the "comfort scene" 30-60 seconds after the suggestion without waiting for a user response. Verified by reading <code>sh_audio_brain_v2</code> — there is no such handler. Falsified.</p>
+<p><strong>H3 — sh_audio_active_speaker stuck from morning.</strong>
+        Hypothesis: he stayed from his morning routine <code>active_speaker='Speaker koupelna'</code>, audio_brain dispatch routes according to him. Partially true (active_speaker WAS stuck), but dispatch was not the problem — the problem was in the resume_exec fallback logic.</p>
+<p><strong>H4 — flow listener on ai_coord_last_action.</strong>
+        Hypothesis: somewhere flow has a trigger "<code>sh_ai_coord_last_action</code> changed + condition <code>comfort_suggest</code> → action play radio". Grep across all flows found no such. Falsified.</p>
+<h2>Root cause (H2 winner)</h2>
+<p>
+<code>sh_tts_resume_exec_v1</code> (id <code>009149d9-0e49-4881-b41d-502b52ca652c</code>), which is called automatically after each TTS completion, had a fallback handler:
+        </p>
+<pre tabindex="0"><code>// BEFORE v1.8
+if (target === 'idle' &amp;&amp; currentMode === 'radio_bathroom') {
+  // Resume bathroom radio
+  await dispatchAudio({mode: 'radio_bathroom', speaker: 'Speaker koupelna'});
+}</code></pre>
+<p>
+          The logic was: "if TTS ended, there was no explicit resume target, and the current mode says bathroom radio, return to bathroom radio". Intention: after a short TTS notification during the shower to summarize the radio that was playing.
+        </p>
+<p>
+<strong>What fallback didn't check</strong>: if bathroom radio actually played BEFORE TTS. <code>sh_audio_current_mode</code> got stuck on
+          <code>'radio_bathroom'</code> from the morning routine at 03:35 and no one reset it. At 20:45, the situation was still valid, even though the speaker had been silent for a long time.
+        </p>
+<h2>Fix v1.8 — prev_playing guard</h2>
+<pre tabindex="0"><code>// AFTER v1.8
+if (target === 'idle' &amp;&amp; currentMode === 'radio_bathroom') {
+  if (sh_audio_prev_playing !== 'yes') {
+    logEvent({event: 'tts_resume_skip_no_prev_playing'});
+    return;
+  }
+  // Resume bathroom radio
+  await dispatchAudio({mode: 'radio_bathroom', speaker: 'Speaker koupelna'});
+}</code></pre>
+<p>
+          Additional condition: <code>sh_audio_prev_playing === 'yes'</code>. This variable is set to <code>'yes'</code> only if the TTS orchestrator detects active audio playback BEFORE it starts. If nothing was playing (just TTS), prev_playing remains <code>'no'</code> and the resume is not executed.
+        </p>
+<h2>Test (25.4. night)</h2>
+<p>
+          After deploying v1.8, I manually reproduced the bug conditions:
+        </p>
+<ul>
+<li>Reset all audio state vars to clean</li>
+<li>Setup: <code>sh_audio_current_mode='radio_bathroom'</code>,
+              <code>sh_audio_prev_playing='no'</code> (key difference)</li>
+<li>Trigger TTS via <code>sh_tts_orchestrator_v1</code></li>
+<li>Wait 60 sec</li>
+<li>check: <code>sh_audio_request</code> still 'idle', no dispatch event</li>
+</ul>
+<p>
+          Test passed. Resume_exec correctly skipped, no radio fired. Log entry
+          <code>tts_resume_skip_no_prev_playing</code> recorded.
+        </p>
+<h2>Long-term watch</h2>
+<p>
+          Fix v1.8 addresses the symptom, not the cause of the stuck <code>sh_audio_current_mode</code>. If we see stuck mode again, we will need to add a reset to the bathroom radio stop logic — when speaker stop, set mode='idle'. Currently, the mode holds its last value, which is basically a dirty state.
+        </p>
+<p>
+          Backlog item: <code>tools/audit_audio_state_consistency.py</code> — periodic check if <code>current_mode</code> corresponds to the real speaker_playing state. Brain Guardian extension.
+        </p>
+<h2>What was learned</h2>
+<blockquote>
+          The fallback logic must explicitly verify that the condition the fallback responds to is <em>current</em>, ne jen <em>recently</em>. State variables can get stuck in ghost values ​​that look valid but don't match the real world.
+        </blockquote>
+<p>
+          This is not the first ghost state bug. Stuck <code>sh_priority_active='tts'</code>
+          the incident was similar — the variable held the value from the incomplete pipeline and blocked subsequent operations. Brain Guardian validator layer (V1 LIVE from 26.4.) is the answer to this whole category of bugs — periodic cross-check state vs. reality.
+        </p>
+<p>
+          4 hours of diagnostics → 4 lines of code. A typical ratio for state-driven bugs. Hypothesis ladder (H1 → H2 → H3 → H4) is necessary — without systematic elimination, I would end up with a quick fix that would only mask the symptom.
+        </p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME project</p>
+<p class="footer-meta">Public presentation · no API keys · no local IP.</p>
+</div>
+</footer>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

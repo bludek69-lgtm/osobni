@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="I direct music and voice announcements to specific rooms. Morning briefings have their place and time; at night the household is to remain quiet. Below I also describe the rules that prevent accidental replay." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Music and voice announcements | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="Music and voice announcements | SMART HOME" property="og:title"/>
+<meta content="I direct music and voice announcements to specific rooms. Morning briefings have their place and time; at night the household is to remain quiet. Below I also describe the rules that prevent accidental replay." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/audio.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/audio.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/audio.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/audio.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/audio.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/audio.html#main">Skip to content</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Open the menu</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/en/smart-home/">Home</a></li>
+<li><a aria-current="page" class="is-active" href="/en/smart-home/prozivani.html">How it works</a></li>
+<li><a href="/en/smart-home/zarizeni.html">Equipment</a></li>
+<li><a href="/en/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/en/smart-home/dashboard.html">Dashboard</a></li>
+<li><a href="/en/smart-home/pribeh.html">The story</a></li>
+<li><a href="/en/smart-home/blog.html">Blog</a></li>
+<li><a href="/en/smart-home/kontakt.html">About the project</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Personal website and Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a><a href="/en/smart-home/">Introduction Smart Home</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/audio.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/audio.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/audio.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section section-hero uc-hero" id="audio">
+<div class="container">
+<p class="eyebrow"><span aria-hidden="true" class="status-dot"></span>🏠 Experience · Audio and TTS</p>
+<h1 class="hero-title">Music and <span class="grad-text">voice messages</span></h1>
+<p class="hero-lead">I direct music and voice announcements to specific rooms. Morning briefings have their place and time; at night the household is to remain quiet. Below I also describe the rules that prevent accidental replay.</p><details class="visitor-technical-intro"><summary>Technical details</summary><p class="hero-lead">
+          Three speakers, four modes, one orchestrator. TTS goes via Google Cast with a hard limit of 200 characters per utterance — that's why the morning briefing is divided into two phases. Sleep guard silence at night. Prev_playing guard to prevent the radio station from the previous routine from playing in the empty bathroom after the TTS.
+        </p><div class="uc-stats">
+<div class="uc-stat"><span class="uc-stat-num">3</span><span class="uc-stat-label">Loudspeakers</span></div>
+<div class="uc-stat"><span class="uc-stat-num">200</span><span class="uc-stat-label">Char TTS limit</span></div>
+<div class="uc-stat"><span class="uc-stat-num">2</span><span class="uc-stat-label">Briefing phase</span></div>
+<div class="uc-stat"><span class="uc-stat-num">100</span><span class="uc-stat-label">TTS priority</span></div>
+</div></details>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">What does it do?</p>
+<h2 class="section-title">Audio that knows when to be silent</h2>
+</header>
+<div class="uc-prose">
+<p>
+            Three speakers in the apartment — kitchen, bathroom, bedroom. All Google Cast, all controlled via <strong>sh_audio_brain_v2</strong> (dispatcher) a
+            <strong>sh_tts_orchestrator_v1</strong> (speech). Central audio_request variable — anyone can request radio or TTS, the brain decides which speaker and in which order.
+          </p>
+<p>
+<strong>Google Cast has a hard limit of 200 characters</strong> per utterance. Longer text is cut off in the middle of a sentence, the user hears "...maybe you already t". Therefore, in sayTTS there is a defensive truncation and the morning briefing is divided into two phases — the first at 3:15 (time, weather, holiday, up to 150 characters), the second 15 min later (BTC, PM2.5, humidity, funny comment, up to 170 characters).
+          </p>
+<p>
+            It has audio <strong>priority 100</strong> v priority engine — when TTS is running, lights (priority 60) and other automations will not override it. After completing the TTS, the priorities are released and the previous radio can be summarized (only if <code>prev_playing='yes'</code>
+            — guard po bathroom misroute bug).
+          </p>
+</div>
+<figure class="uc-screenshot">
+<img alt="Audio page in the dashboard — speakers, current mode, volume, briefing replay" class="zoomable" data-full-src="/smart-home/assets/screenshots/after/1920/audio.png" decoding="async" height="900" loading="lazy" src="/assets/img/editorial/media/da2cc1939d862f84a4.webp" width="1600"/>
+<figcaption>Audio page in the dashboard — 3 speakers + Nest Hub Max, current mode (TTS / radio / scene), volume controls</figcaption>
+</figure>
+</div>
+</section>
+<!-- DENNÍ PROVOZ -->
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Daily operation</p>
+<h2 class="section-title">How the audio reacts during the day</h2>
+<p class="section-lead">It's quiet most of the day. Events are ritualistic — briefing in the morning, maybe a comfort suggest in the evening.</p>
+</header>
+<ol class="uc-timeline">
+<li class="uc-stage">
+<span class="uc-stage-time">03:15</span>
+<h3>Phase 1 Briefing</h3>
+<p>
+              15 minutes before the alarm clock. Greeting, time, date, weather today, holiday of the day. 150 character limit. Kitchen speaker (where coffee is prepared in the morning). Once completed, a 15 minute countdown to phase 2 will begin.
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">03:30</span>
+<h3>Phase 2 Briefing</h3>
+<p>
+              BTC rate, PM2.5 outside and inside, humidity, funny comment from Gemini. 170 character limit. Same speaker. The goal: finish the morning briefing before I leave for the car at 03:45.
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">Day</span>
+<h3>Idle, waiting</h3>
+<p>
+<code>sh_audio_request='idle'</code>. No automatic audio during the day. Speakers work as TTS recipients for alerts, otherwise silence. The AI ​​coordinator is monitoring the situation, not triggering anything yet.
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">Evening</span>
+<h3>Comfort suggest (maybe)</h3>
+<p>
+              AI coordinator can evaluate "evening + idle scene" → comfort_suggest. TTS reads the suggestion: "Do you want to start a relaxation scene?". Dispatch radio only if the user explicitly accepts via Cube or Voice (no timeout fallback).
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">Night</span>
+<h3>Sleep silent</h3>
+<p>
+<code>sh_spim='yes'</code> → priority engine blocks TTS. Critical alerts (flooding, fire) go through their own safety bypass. Comfort notifications are waiting for you to wake up.
+            </p>
+</li>
+</ol>
+</div>
+</section>
+<!-- SCÉNY -->
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Scenes</p>
+<h2 class="section-title">Five actions, five roles</h2>
+<p class="section-lead">Most are triggered by the system, not user input.</p>
+</header>
+<div class="scene-grid">
+<article class="scene-card">
+<span aria-hidden="true" class="scene-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-sunrise"></use></svg></span></span>
+<h3>Morning briefing</h3>
+<p>
+              Two phases, 15 min apart. Limit 150/170 chars. TV mute before, unmute after. Speaker = kitchen (where coffee is being prepared). Gemini generates, sayTTS truncates to 200 max.
+            </p>
+</article>
+<article class="scene-card">
+<span aria-hidden="true" class="scene-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-lightbulb"></use></svg></span></span>
+<h3>Comfort suggested</h3>
+<p>
+              AI coordinator will evaluate level 4 situation in the evening → suggest. Without user accept (cube/voice) NOT auto-execute — that was a bathroom misroute bug.
+            </p>
+</article>
+<article class="scene-card">
+<span aria-hidden="true" class="scene-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-shower-head"></use></svg></span></span>
+<h3>Bathroom radio</h3>
+<p>
+              Motion in the bathroom + TOD in the morning → starts the radio (Italia Classic Hits, Sanremo feed). Stop at motion_off + 30s timeout. Resume guard checks
+              <code>prev_playing='yes'</code>.
+            </p>
+</article>
+<article class="scene-card">
+<span aria-hidden="true" class="scene-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-bed"></use></svg></span></span>
+<h3>Sleep silent</h3>
+<p>
+              Sleep state → day priorities for TTS. Critical alerts (gas, water leak) have a safety bypass. Briefing 03:15 goes normally (sleep state already unset).
+            </p>
+</article>
+<article class="scene-card">
+<span aria-hidden="true" class="scene-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-circle-play"></use></svg></span></span>
+<h3>Resume after TTS</h3>
+<p>
+              If the radio was playing before the TTS (prev_playing='yes', prev_mode='radio_*'), it will resume after the TTS is finished. Without the prev_playing guard, it would be summarized even if nothing was playing.
+            </p>
+</article>
+</div>
+</div>
+</section>
+<!-- HARDWARE -->
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Hardware</p>
+<h2 class="section-title">What he actually talks and plays</h2>
+<p class="section-lead">Three Google Cast endpoints + Homey as an orchestrator.</p>
+</header>
+<div class="hw-grid">
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-volume-2"></use></svg></span></div>
+<h3>Speaker kitchen</h3>
+<p class="hw-tag">Google Cast · Wi-Fi · TTS + radio</p>
+<p>
+              The main speaker for the morning briefing. The kitchen is the center of ritual — coffee, preparation, decisions of the day. TTS recipient for most messages. Radio backup for the bathroom when the bathroom one falls.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-shower-head"></use></svg></span></div>
+<h3>Speaker bathroom</h3>
+<p class="hw-tag">Google Cast · Wi-Fi · morning radio</p>
+<p>
+              Italian Classic Hits in the morning while showering. Motion-trigger, motion_off + 30s stop. After bathroom misroute bug 25.4. added prev_playing guard so the radio doesn't start out of nowhere.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-bed"></use></svg></span></div>
+<h3>Speaker bedroom</h3>
+<p class="hw-tag">Google Cast · Wi-Fi · evening</p>
+<p>
+              Easier use — evening music before bed, alerts when the user is in the bedroom. Sleep guard protects against nocturnal TTS. Speaker variable
+              <code>sh_tts_speaker='ložnice'</code> historically, the real cast goes to the kitchen.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-tv"></use></svg></span></div>
+<h3>Nest Hub Max ložnice</h3>
+<p class="hw-tag">Google Cast · Wi-Fi · visual + audio</p>
+<p>
+              Secondary output for visual alerts — Nest Hub Max in the bedroom. TV mute pipeline before TTS / unmute after (via Android TV remote capabilities).
+            </p>
+</article>
+<article class="hw-card hw-future">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-mic"></use></svg></span></div>
+<h3>Voice intent <span class="hw-badge">Planned</span></h3>
+<p class="hw-tag">Local LLM · Whisper · HA voice</p>
+<p>
+              Voice control locally — Whisper STT + local LLM or HA Voice. Currently user_intent via Cubo + buttons. Voice is the next iteration, depends on the LLM host (RPi5 or NAS).
+            </p>
+</article>
+</div>
+</div>
+</section>
+<!-- TECH DETAIL -->
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">For the tech-savvy</p>
+<h2 class="section-title">What's going on under the hood</h2>
+<p class="section-lead">Orchestrator, dispatcher, priority engine, prev_playing guard.</p>
+</header>
+<div class="uc-tech">
+<details>
+<summary>200 char Cast limit + briefing split</summary>
+<p>
+              The Google Cast SDK has a hard limit of 200 characters per utterance. Exceeds → cast stream crashes or truncates mid-sentence. <strong>It's NOT a bug, it's a safety net</strong>
+              v <code>sh_gemini_brain_v1::sayTTS()</code>:
+            </p>
+<pre><code>if (cleaned.length &gt; 200) {
+  cleaned = cleaned.substring(0, 200);
+  logMsg('GOOGLE CAST: message truncated to 200 chars');
+}</code></pre>
+<p>
+              Briefing split into two phases:
+            </p>
+<ul>
+<li><strong>briefing</strong> (3:15) — greeting, time, date, weather, holiday (max 150 chars)</li>
+<li><strong>briefing2</strong> (+15 min) — BTC, PM2.5, humidity, funny comment (max 170 chars)</li>
+</ul>
+<p>Orchestration via flow "SH – Morning – Briefing 2" with 15 min delay. Pending var: <code>sh_morning_briefing2_pending_ts</code>.</p>
+</details>
+<details>
+<summary>Audio brain + TTS orchestrator</summary>
+<ul>
+<li>
+<strong>sh_tts_orchestrator_v1</strong> — issues a TTS request, waits for completion, emits <code>tts_completed</code> event They hold <code>sh_priority_active='tts'</code>
+                for the duration of the speech.
+              </li>
+<li>
+<strong>sh_audio_brain_v2</strong> — dispatcher for non-TTS audio (radio, music, ambient). He reads <code>sh_audio_request</code>, the speaker decides according to the active zone and TOD. It emits <code>audio_dispatch</code> event
+              </li>
+<li>
+<strong>sh_tts_resume_exec_v1</strong> — after TTS is finished, it decides whether to summarize the previous audio. Guards on <code>prev_playing='yes'</code>
+                (after bathroom misroute fix v1.8).
+              </li>
+</ul>
+</details>
+<details>
+<summary>Priority engine (TTS=100, light=60)</summary>
+<p>
+              Central Arbiter. Each request has a priority, the higher one wins. When TTS active (priority 100), light request (60) postponed. Table:
+            </p>
+<ul>
+<li><strong>100</strong> — TTS (briefing, alerts, voice response)</li>
+<li><strong>80</strong> — Critical alerts (water leak, gas, fire)</li>
+<li><strong>60</strong> — Light request</li>
+<li><strong>50</strong> — Audio comfort (radio, music)</li>
+<li><strong>30</strong> — Background ambient</li>
+</ul>
+<p>
+              Stuck recovery: when <code>active='tts'</code> &gt; 1 min without forward progress, brain guardian resets to <code>none/idle</code>.
+            </p>
+</details>
+<details>
+<summary>Prev_playing guard (post bathroom misroute)</summary>
+<p>
+              Bug 25.4. night: after comfort_suggest TTS, ~46 s later the bathroom radio started by itself. Root causes: <code>sh_tts_resume_exec_v1</code> fallback
+              <code>if (target === 'idle' &amp;&amp; currentMode === 'radio_bathroom')</code>
+              summarized without verifying that something actually played before TTS.
+            </p>
+<p>
+<code>sh_audio_current_mode</code> was stuck on <code>radio_bathroom</code>
+              from the morning routine. The resume condition was met even if the speaker had been silent for a long time.
+            </p>
+<p>
+<strong>Fix v1.8</strong>: added guard
+              <code>if (sh_audio_prev_playing !== 'yes') return skip</code>. Resume only when the radio actually played before TTS.
+            </p>
+</details>
+<details>
+<summary>TV mute / unmute pipeline</summary>
+<p>
+              Before each TTS:
+            </p>
+<ol>
+<li>Read TV state (Android TV remote, IP 192.168.1.xxx)</li>
+<li>If volume &gt; 0 → setCapability volume_mute = true, save original volume</li>
+<li>Starts TTS</li>
+<li>Mon <code>tts_completed</code>: setCap volume_mute = false, restore volume</li>
+</ol>
+<p>
+              Without this, the TTS voice would compete with the TV sound — the morning news + briefing could not be heard. Capabilities <code>volume_mute</code> is toggle, no need to wait for driver ack.
+            </p>
+</details>
+</div>
+</div>
+</section>
+<!-- SOUVISEJÍCÍ -->
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Related</p>
+<h2 class="section-title">Context in the context of the site</h2>
+</header>
+<div class="related-grid">
+<a class="related-card" href="/en/smart-home/vyzvy.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-bug"></use></svg></span></span>
+<h3>Challenges</h3>
+<p>Audio brain bathroom misroute (4 hours of diagnostics), 200 char Cast crash, briefing cut off.</p>
+</a>
+<a class="related-card" href="/en/smart-home/ai-brain.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-brain"></use></svg></span></span>
+<h3>AI Brain</h3>
+<p>AI coordinator generates comfort_suggest situation, validator monitors audio dispatch.</p>
+</a>
+<a class="related-card" href="/en/smart-home/svetla.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-lightbulb"></use></svg></span></span>
+<h3>Lights and lighting</h3>
+<p>Same priority engine — TTS overrides light request. Stuck priority bug.</p>
+</a>
+<a class="related-card" href="/en/smart-home/architektura.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-landmark"></use></svg></span></span>
+<h3>Architecture</h3>
+<p>Orchestrator + dispatcher pattern, request-first pipeline.</p>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Enlarged image" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Close zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME project · Made with ❤️ and script-first thinking.</p>
+<p class="footer-meta">Public presentation · no API keys · no local IP · no control from here.</p>
+<p class="footer-meta"><a href="/en/smart-home/technicka-mapa.html">Technical map →</a> · <a href="/en/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

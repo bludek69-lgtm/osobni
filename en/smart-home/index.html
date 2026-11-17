@@ -1,154 +1,203 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Home — Luděk's project | cestovatel69.cz</title>
-  <meta name="description" content="A house that takes care of heating, lights, audio and the morning rhythm on its own. Built on Homey Pro 2026 + custom HomeyScripts.">
-  <link rel="stylesheet" href="../../assets/css/style.css?v=20261116-navsearch">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
-  <link rel="canonical" href="https://cestovatel69.cz/en/smart-home/">
-  <meta property="og:title" content="Smart Home — Luděk&#x27;s project | cestovatel69.cz">
-  <meta property="og:description" content="A house that takes care of heating, lights, audio and the morning rhythm on its own. Built on Homey Pro 2026 + custom HomeyScripts.">
-  <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
-  <meta property="og:url" content="https://cestovatel69.cz/en/smart-home/">
-  <meta property="og:type" content="website">
-<link rel="stylesheet" href="../../assets/css/language-navigation.css?v=20261030-jazyky">
-<link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/smart-home/">
-<link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/smart-home/">
-<link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/smart-home/">
-<link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/smart-home/">
-<link rel="stylesheet" href="../../smart-home/visitor.css?v=20261030-redakce">
-</head>
-<body class="theme-smart-home">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="My smart home: morning lights and coffee, more economical heating when you're away and notifications of unusual conditions. Project on Homey Pro 2026." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>SMART HOME — a project by Luďek Budinski</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
 
-<header class="site-header">
-<div class="site-header__inner">
-<a class="brand" href="/en/">
-<span class="brand-dot"></span>
-      Luděk
-    </a>
-<nav aria-label="Page language" class="lang-switcher"><a href="/smart-home/" hreflang="cs" lang="cs" title="Česky">CS</a><a aria-current="page" href="/en/smart-home/" hreflang="en" lang="en" title="English">EN</a><a href="/it/smart-home/" hreflang="it" lang="it" title="Italiano">IT</a></nav>
-<button aria-expanded="false" aria-label="Open menu" class="nav-toggle">☰</button>
-<nav aria-label="Main navigation" class="nav"><a href="/en/">Home</a><a href="/en/aplikace/">My apps</a><a href="/en/finance/">Finance</a><a href="/en/cestovani/">Travel</a><a href="/en/cestovani/italie/">Italy</a><a href="/en/zaliby/rybareni/">Fishing</a><a aria-current="page" href="/en/smart-home/">Smart Home</a><a href="/en/ai.html">AI</a><a href="/cestovani/uzitecne-odkazy/" hreflang="cs" title="Useful links — in Czech">Useful links<span aria-hidden="true" class="lang-tag">CS</span></a></nav>
+
+
+
+
+<meta content="SMART HOME — a project by Luďek Budinski" property="og:title"/>
+<meta content="My smart home: morning lights and coffee, more economical heating when you're away and notifications of unusual conditions. Project on Homey Pro 2026." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<script async="" src="https://serve.affiliate.heureka.cz/js/trixam.min.js"></script>
+<link href="https://cestovatel69.cz/en/smart-home/" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page visitor-home editorial-preview editorial-site editorial-smart-home">
+<a class="skip-link" href="/en/smart-home/#main">Skip to content</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Open the menu</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a aria-current="page" class="is-active" href="/en/smart-home/">Home</a></li>
+<li><a href="/en/smart-home/prozivani.html">How it works</a></li>
+<li><a href="/en/smart-home/zarizeni.html">Equipment</a></li>
+<li><a href="/en/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/en/smart-home/dashboard.html">Dashboard</a></li>
+<li><a href="/en/smart-home/pribeh.html">The story</a></li>
+<li><a href="/en/smart-home/blog.html">Blog</a></li>
+<li><a href="/en/smart-home/kontakt.html">About the project</a></li>
+</ul>
+</nav>
 </div>
 </header>
-<aside aria-label="Language availability" class="language-note">CS = content in Czech. Some older descriptions remain in Czech.</aside>
-
+<aside aria-label="Personal website and Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/" hreflang="en" lang="en">EN</a><a href="/it/smart-home/" hreflang="it" lang="it">IT</a></nav></div></aside>
 <main id="main">
-<section class="hero">
-<span class="hero-accent">Smart Home</span>
-<h1>A house that understands itself</h1>
-<p class="hero-sub">
-      For years I've been building a system that takes care of heating, lights, coffee and the
-      daily rhythm on its own. No universal app — a home that knows my habits and notices when
-      something is off.
-    </p>
+<section class="section section-hero" id="home">
+<div class="container hero-inner">
+<div class="hero-text">
+<p class="eyebrow">
+            Home Project · Homey Pro 2026
+          </p>
+<h1 class="hero-title">The home that mi<br/><span class="grad-text">makes the day easier</span></h1>
+<p class="hero-lead">The lights adjust to where I am. Coffee awaits me in the morning, the heating will be reduced when I leave, and the light won't dazzle me at night. This is how I gradually build my own smart apartment on the Homey Pro 2026 system.</p>
+<div class="hero-cta"><a class="btn btn-primary" href="/en/smart-home/prozivani.html">How it works in a normal day →</a><a class="btn btn-ghost" href="/en/smart-home/#youtube">Open video tour ↓</a></div>
+<nav aria-label="Technical details" class="visitor-tech-links"><span>For technicians:</span><a href="/en/smart-home/dashboard.html">Dashboard</a><a href="/en/smart-home/ai-brain.html">Brain Guardian</a><a href="/en/smart-home/#metrics">Archive overview</a></nav></div>
+<aside aria-labelledby="daily-title" class="daily-benefits"><h2 id="daily-title">Three situations from my day</h2><a href="/en/smart-home/rano-rutina.html"><strong>Morning without running around →</strong><p>Gradually, the lights are turned on, the radio is turned on and the coffee is prepared.</p></a><a href="/en/smart-home/navrat-domu.html"><strong>When I leave or come back →</strong><p>The heating reacts to the presence at home and to the daily schedule.</p></a><a href="/en/smart-home/nocni-koupelna.html"><strong>Night trip to the bathroom →</strong><p>Gentle light for a short passage, without starting the morning routine.</p></a></aside>
+</div>
+<div aria-hidden="true" class="hero-glow"></div>
 </section>
-<p class="language-note">This is a shorter introduction. The detailed Smart Home documentation is currently available <a href="/smart-home/" hreflang="cs" title="In Czech">in Czech</a>.</p>
 <section aria-labelledby="video-heading" class="section youtube-section" id="youtube">
 <div class="container">
 <h2 id="video-heading">My smart home in detail</h2>
-<p>8:36 · Czech narration and captions.</p>
+<p>8:36 · Czech commentary and subtitles.</p>
 <details class="smart-video"><summary style="--video-image:url('https://img.youtube.com/vi/UoxSFcJQq3M/maxresdefault.jpg')"><span class="smart-video-label"><span class="smart-video-open">▶ Open the video tour</span><span class="smart-video-close">Close the player</span></span></summary><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/UoxSFcJQq3M?rel=0" title="My smart home — Homey, Raspberry Pi and automation"></iframe></details>
 <p><a href="https://www.youtube.com/watch?v=UoxSFcJQq3M" rel="noopener" target="_blank">YouTube ↗</a> </p>
 </div>
 </section>
-<section class="prose">
-<h2>What it does in practice</h2>
-<p>
-      The home doesn't wait for me to reach for the phone. It watches multiple signals at once —
-      whether I'm home, asleep, whether it's morning, where I'm moving — and decides on its own.
-      A few examples:
-    </p>
-<ul style="line-height:1.9;">
-<li>🌅 <strong>Morning at 3:15</strong> — when the alarm rings and I move out of bed,
-        the kitchen radio starts, the bedroom lights gently come on, the coffee is prepared.
-        Where I'm not, lights don't turn on.</li>
-<li>🛏 <strong>Night</strong> — if I go to the bathroom, the "full morning routine" doesn't
-        kick in. The system knows I'm just passing through and dims back down after a few minutes.</li>
-<li>🔥 <strong>Heating</strong> — each zone has its own schedule. When I'm away, temperature
-        drops. When I come home, the bathroom warms up. More efficient than a constant 24°C all day.</li>
-<li>🚪 <strong>Coming home</strong> — phone enters range, house switches to "home" mode,
-        audio matches time of day, blinds and windows get checked.</li>
-<li>🤖 <strong>Anomalies</strong> — when something's off (alarm at 3am with no motion anywhere,
-        or lights staying on while I'm away), the system notices and sends me a push.</li>
-</ul>
-<p>
-      The goal: less switch-clicking, more calm. The house understands itself.
-    </p>
-</section>
-<section>
-<h2>What it controls</h2>
-<div class="cards-grid">
-<div class="card">
-<div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-flame"></use></svg></span></div>
-<h3>Heating &amp; climate</h3>
-<p>4 zones with their own schedules. Three modes (Auto / Manual / Off). More efficient than one button for the whole house.</p>
+<!-- HERO SHOWCASE: dashboard + 3 thumbnails -->
+<section aria-labelledby="showcase-title" class="hero-showcase" id="showcase">
+<div class="container">
+<header class="showcase-header">
+<p class="showcase-eyebrow">Archive preview of the interface · Dashboard V7</p>
+<h2 class="showcase-title" id="showcase-title">How I manage the household</h2>
+<p>The images show the appearance of the interface. Details can be found on the dashboard, diagnostics and camera pages.</p></header>
+<a aria-label="Open the Dashboard page" class="showcase-main" href="/en/smart-home/dashboard.html">
+<img alt="Dashboard V7 — main screen 1920×1080" data-full-src="/smart-home/assets/screenshots/dashboard-1920x1080.png" decoding="async" height="900" loading="eager" src="/assets/img/editorial/media/571919223d2a9326b6.webp" width="1600"/>
+</a>
+<div class="showcase-thumbs">
+<a aria-label="AI Brain Guardian detail" class="showcase-thumb" href="/en/smart-home/ai-brain.html">
+<img alt="AI Brain Guardian — health gauge + decision feed" data-full-src="/smart-home/assets/screenshots/after/1920/ai.png" decoding="async" height="900" loading="lazy" src="/assets/img/editorial/media/7096e0549d2a16e52b.webp" width="1600"/>
+<span class="showcase-thumb-label">🧠 AI Brain</span>
+</a>
+<a aria-label="Dashboard overview" class="showcase-thumb" href="/en/smart-home/dashboard.html">
+<img alt="Dashboard overview — scenes, zones, camera, V5 KPI cards" data-full-src="/smart-home/assets/screenshots/after/1920/home.png" decoding="async" height="900" loading="lazy" src="/assets/img/editorial/media/d274526e8aa9afda5e.webp" width="1600"/>
+<span class="showcase-thumb-label">📊 Dashboard</span>
+</a>
+<a aria-label="Live view camera" class="showcase-thumb" href="/en/smart-home/bezpecnost-kamery.html">
+<img alt="Camera — live view, motion timeline, IR controls" data-full-src="/smart-home/assets/screenshots/after/1920/camera.png" decoding="async" height="900" loading="lazy" src="/assets/img/editorial/media/db5fe3afa0f354ee9b.webp" width="1600"/>
+<span class="showcase-thumb-label">📷 Camera</span>
+</a>
 </div>
-<div class="card">
-<div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-lightbulb"></use></svg></span></div>
-<h3>Lights</h3>
-<p>Dim based on time of day and outdoor light. When I'm away or asleep, they turn themselves off.</p>
-</div>
-<div class="card">
-<div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-volume-2"></use></svg></span></div>
-<h3>Audio &amp; morning routine</h3>
-<p>Kitchen radio, gentle briefing, music per scene. Never plays when I'm sleeping.</p>
-</div>
-<div class="card">
-<div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-shield"></use></svg></span></div>
-<h3>Security</h3>
-<p>Motion, doors, windows, cameras. When something's off-normal, I get a phone alert.</p>
-</div>
-<div class="card">
-<div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-zap"></use></svg></span></div>
-<h3>Energy</h3>
-<p>Tracks appliance consumption. I see in advance how many kWh the boiler, fridge or stove uses.</p>
-</div>
-<div class="card">
-<div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-chart-column"></use></svg></span></div>
-<h3>Dashboards</h3>
-<p>Three displays (big monitor, laptop, wall-mounted RPi panel in the hallway). Whole-house state at a glance.</p>
+<div class="showcase-cta">
+<a class="btn btn-primary" href="/en/smart-home/dashboard.html">Explore the dashboard →</a>
+<a class="btn btn-ghost" href="/en/smart-home/ai-brain.html">Brain Guardian</a>
 </div>
 </div>
 </section>
-<section class="prose">
-<h2>Under the hood (for techies)</h2>
-<p>
-      Built on <strong>Homey Pro 2026</strong> + a custom HomeyScript layer.
-      Architecture: <em>request-first pipeline</em> (scripts ask, router decides),
-      device map as the single source of truth for device names, multi-signal sleep/wake
-      decision-making, a guard layer for anomaly and regression detection. Logs and technical data
-      are stored locally on a Raspberry Pi / SSD (JSONL + SQLite). Mobile notifications via
-      Homey notifications API. Full system description and dashboards on a dedicated site below.
-    </p>
+<!-- HISTORICAL METRICS PANEL -->
+<section class="section section-alt" id="navigace">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Navigation</p>
+<h2 class="section-title">What are you interested in?</h2>
+<p class="section-lead">Practical situations, equipment and project story. Choose what you want to continue with.</p>
+</header>
+<div class="home-grid home-grid-pillars">
+<a class="home-card home-card-pillar" href="/en/smart-home/prozivani.html">
+<span aria-hidden="true" class="home-card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-house"></use></svg></span></span>
+<h3>How to live at home</h3>
+<p>Lights, heating, music and everyday situations. From the morning to the night trip to the bathroom.</p>
+<span class="home-card-cta">Browse →</span>
+</a>
+<a class="home-card home-card-pillar" href="/en/smart-home/zarizeni.html">
+<span aria-hidden="true" class="home-card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-package"></use></svg></span></span>
+<h3>Equipment</h3>
+<p>The Homey central, lights, sensors and other hardware from which I assembled the home.</p>
+<span class="home-card-cta">Browse →</span>
+</a>
+<a class="home-card home-card-pillar" href="/en/smart-home/pribeh.html">
+<span aria-hidden="true" class="home-card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-book-open"></use></svg></span></span>
+<h3>The story</h3>
+<p>The path to the current state — history, architectural transitions and problems that arose and were solved along the way.</p>
+<span class="home-card-cta">Browse →</span>
+</a>
+<a class="home-card home-card-pillar" href="/en/smart-home/blog.html">
+<span aria-hidden="true" class="home-card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-notebook-pen"></use></svg></span></span>
+<h3>Blog</h3>
+<p>Regular notes on what changed in the system, what broke, and how it got fixed.</p>
+<span class="home-card-cta">Browse →</span>
+</a>
+</div>
+<p class="home-foot">About the author and other projects: <a href="/en/o-mne.html">About me →</a></p>
+</div>
 </section>
-<section class="external-cta">
-<h2>Full technical website</h2>
-<p>
-      Architecture, dashboards, blog and build log have their own section —
-      a separate technical part of this site.
-    </p>
-<p style="margin-top: 1.5rem;">
-<a class="btn btn-primary" href="/smart-home/" hreflang="cs" title="In Czech">
-        Open the Smart Home site →
-      <span class="lang-tag">CS</span></a>
-</p>
-</section>
-</main>
-
+<section aria-label="Partner offer Heureka" class="heureka-affiliate" style="margin:2rem auto;padding:1.25rem;max-width:72rem;border:1px solid currentColor;border-radius:12px;"><h2>Smart home equipment</h2><p>Compare smart home equipment offers on Heureka.</p><p><a class="heureka-hn-link" data-trixam-positionid="302556" href="https://chytra-domacnost.heureka.cz/#utm_source=cestovatel69.cz&amp;utm_medium=affiliate&amp;utm_campaign=26173&amp;utm_content=Text%20link" rel="sponsored noopener noreferrer" target="_blank">Compare smart home equipment ↗</a></p><p><small>Affiliate link: if you make a purchase through it or go to the store, I may receive a commission.</small></p></section>
+<details class="visitor-archive container"><summary>Technical overview · status verified on September 1, 2026</summary><section aria-labelledby="metrics-title" class="metrics-section section-alt" id="metrics">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Historical snapshot of the system</p>
+<h2 class="section-title" id="metrics-title">Last verified status · September 1, 2026</h2>
+<p class="section-lead">Archive overview from Homey API export and Brain Guardian review. This is not a current measurement.</p>
+</header>
+<div class="metrics-grid">
+<div class="metric-card m-health">
+<p class="metric-label">System health score</p>
+<p class="metric-value">100<span class="metric-suffix">/100</span></p>
+<p class="metric-meta">Brain Guardian check · status OK</p>
+</div>
+<div class="metric-card m-flows">
+<p class="metric-label">Automation procedures (flows)</p>
+<p class="metric-value">248</p>
+<p class="metric-meta">Advanced Flow automation + regular status cleaning</p>
+</div>
+<div class="metric-card m-scripts">
+<p class="metric-label">Control scripts (HomeyScript)</p>
+<p class="metric-value">145</p>
+<p class="metric-meta">About 80% converted to shared library</p>
+</div>
+<div class="metric-card m-devices">
+<p class="metric-label">Connected devices during measurement</p>
+<p class="metric-value">84<span class="metric-suffix">/84</span></p>
+<p class="metric-meta">10 zones · when measuring 100% of available devices</p>
+</div>
+<div class="metric-card m-vars">
+<p class="metric-label">State variables (sh_*)</p>
+<p class="metric-value">782</p>
+<p class="metric-meta">Configuration, state, cache and audit</p>
+</div>
+<div class="metric-card m-anom">
+<p class="metric-label">Last deviation recorded</p>
+<p class="metric-value" style="font-size:24px;">Bug E ghost</p>
+<p class="metric-meta">Detected on 4/29 · fixed by scheduled status cleanup</p>
+</div>
+</div>
+<p class="metric-snapshot-note">Historical status verified 01/09/2026: devices and automation from the then Homey API export; scripts and variables from backup 8/15/2026; status score from the 30/08/2026 audit.</p>
+</div>
+</section></details></main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Enlarged image" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Close zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
 <footer class="site-footer">
-<div class="site-footer__inner">
-<div>© Budinský Luděk · Personal website</div>
-<div class="footer-links">
-<a href="https://www.youtube.com/@cestovatel69" rel="noopener" target="_blank">YouTube @cestovatel69</a>
-<a href="/o-mne.html" hreflang="cs" title="In Czech">About me (CS)</a>
-<a href="/smart-home/" hreflang="cs" title="In Czech">Smart Home web<span class="lang-tag">CS</span></a>
-</div>
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME project · Made with ❤️ and script-first thinking.</p>
+<p class="footer-meta">Public presentation · no API keys · no local IP · no control from here.</p>
+<p class="footer-meta"><a href="/en/smart-home/technicka-mapa.html">Technical map →</a> · <a href="/en/smart-home/">Home</a></p>
 </div>
 </footer>
-
-<script src="../../assets/js/main.js?v=20261116-navsearch"></script>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
 </body>
 </html>

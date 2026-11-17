@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content='May 15, 2026 evening — 8 waves of dashboard stabilization in one day. Canonical enum guard, weather restore, Config Center with schema-validated writes (128+ schema records), shutter like PURE LUX truth. Dashboard stopped writing "home"/"away" and started rejecting 9 forbidden literals on the write path.' name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Dashboard Config Center + Weather restore — 8 waves in one day | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Dashboard Config Center + Weather restore — 8 waves in one day | SMART HOME" property="og:title"/>
+<meta content='May 15, 2026 evening — 8 waves of dashboard stabilization in one day. Canonical enum guard, weather restore, Config Center with schema-validated writes (128+ schema records), shutter like PURE LUX truth. Dashboard stopped writing "home"/"away" and started rejecting 9 forbidden literals on the write path.' property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/posts/dashboard-config-center.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/posts/dashboard-config-center.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/dashboard-config-center.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/dashboard-config-center.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/dashboard-config-center.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/posts/dashboard-config-center.html#main">Skip to content</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/en/smart-home/blog.html">← Back to the blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Back from the article" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a></div><div class="visitor-links"><a href="/en/smart-home/">Introduction Smart Home</a><a href="/en/smart-home/blog.html">All notes</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/posts/dashboard-config-center.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/posts/dashboard-config-center.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/posts/dashboard-config-center.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/en/smart-home/blog.html">← All posts</a>
+<article class="post-content">
+<p class="post-meta">May 15, 2026 · Dashboard / Config Center · 6 min read</p>
+<h1>Dashboard Config Center + Weather restore — 8 waves in one day</h1>
+<p>
+          May 15 evening. After the R2-R6A series of Homey runtime fixes, we moved to the other side — the dashboard. Three outputs, three resolutions: WaveShare 10.1″ 1024×600 (RPi kiosk), 14″ notebook 1920×1080, 32″ master 2880×1800. The goal: a stable render, no silent-fail buttons, and most importantly <strong>no entry of Czech literals</strong> like
+          <code>doma</code>, <code>pryc</code>, <code>ano</code> into logical variables.
+        </p>
+<h2>Wave 1 — canonical enum guard</h2>
+<p>
+          Before wave 1, the dashboard could write to <code>sh_rezim_doma</code> value
+          <code>'doma'</code>, while the rest of the system (sh_morning_brain, sh_audio_brain, sh_light_router) worked with <code>'home'</code>. Silent mismatch — no error, just the automation didn't do what it was supposed to. The same with <code>'pryc'</code> vs <code>'away'</code>,
+          <code>'ano'</code> vs <code>'yes'</code>, <code>'strong_yes'</code> vs <code>'yes'</code>.
+        </p>
+<p>
+          Wave 1 added by helper <code>__CANON_ENUMS</code> directly into HTML. In front of everyone
+          <code>writeVar</code> the dashboard will compare the value with the enabled enum (English tokens). If it finds a Czech literal or <code>true</code>/<code>false</code>, blocks write and logs. 9 forbidden literals in total.
+        </p>
+<h2>Wave 2A + 2B — weather restoration</h2>
+<p>
+          After the recent RPi migration to SSD, the kiosk renderer reverted to the old weather version (OpenWeatherMap proxy via Homey), which has since stopped working. The diagnostic wasn't a bug code — it was <strong>deploy-channel regression</strong>. SSD rebuild overwrote the patched canonical file with an older OWM file.
+        </p>
+<p>
+          Wave 2A: cache-first renderer (reads directly <code>sh_weather_3d_json</code>
+          from Homey logic vars) was re-deployed on the RPi via SSH. Wave 2B revived cron <code>sh_weather_yr_bridge_v1</code>, which downloads yr.no JSON every 10 min and writes it to the same var. No API keys, no OWM, no proxy hop — yr.no is free and stable.
+        </p>
+<h2>Wave 3 — blind = PURE LUX truth</h2>
+<p>
+          The blind in the Dining Room had two contradictory conditions: <code>sh_house_state</code>
+          and outdoor lux. When <code>sh_house_state</code> was <code>'home_normal'</code>, short-circuit and blind at the top regardless of lux. But in reality it caused a drift — the blind remained up even at night when the lux was 0. Wave 3 removed that short-circuit. Now the only truth is lux + hysteresis (R3 throttle deploy from 5/13 remained in place).
+        </p>
+<h2>Wave 6 — desktop parity</h2>
+<p>
+          v7_1920 (notebook) and v7_2880 (32″ master) received the same <code>__CANON_ENUMS</code>
+          guard like RPi. Three outputs, identical write contract.
+        </p>
+<h2>Wave 4A → 4B-6 — Config Center</h2>
+<p>
+          Here was the biggest change. Instead of each config tile having its own inline write logic, Wave 4A added <code>DASHBOARD_CONFIG_SCHEMA</code>
+          object + helper <code>writeVarValidated(varName, value)</code>. Schema defines for each logic var: type, min, max, enum, cross-field dependencies, soft warnings.
+        </p>
+<p>
+          Wave 4B gradually expanded the scheme from 18 entries (4B-1) to 128+ entries (4B-6). Covers: morning routine cfg (alarm window, kaffe immediate, score boost), heating cfg (target_temp s <code>min:5</code> for frostsave 7°C,
+          <code>manual_override_temp</code> s <code>min:-99</code> for sentinel), audio cfg, light cfg, occupancy thresholds, vacancy guardian timeouts, blind lux thresholds, energy budget caps, scene engine modes (<code>idle, reset, romantika, relax, kino, vareni, work</code>).
+        </p>
+<p>
+<code>writeCfg</code> dispatcher unified all config write paths. Currently running in <em>soft-reject</em> mode — log warning, but write starts. After a 24-hour soak, we switch to hard-reject (true block). Final RPi sha:
+          <code>e3216213e4b9f73772c1a555d790cd5e411bac5b2031c290ffaf36e791bd7aec</code>.
+        </p>
+<h2>What I avoided in the process</h2>
+<p>
+          B11 misdiagnosis: I wanted to add a new helper at the beginning
+          <code>setHeatingBoost(30)</code> to the dashboard. But while reading the live source, I found out that it already exists and is correctly wired. No new code, REUSE FIRST, revert. Likewise, the scene engine — they wanted to offer dashboards
+          <code>comfort</code> a <code>night</code> as scene IDs, but the engine does not recognize them. Seven IDs only. Wave 5 (Homey-side scene enumeration) is scheduled but not tonight.
+        </p>
+<h2>What next</h2>
+<p>
+          Overnight soak. Automatic in the morning <code>OVERNIGHT_SOAK_REPORT_2026-05-16_0600.md</code>
+          fire-Sun at 06:00 Prague. After it: Wave 4B hard-mode flip, R6A morning verify (reads EventLog for last morning routine), then R6B (Gemini brain + morning score heartbeat) and R5 SIGABRT main hunt (~7-8 crashes/h baseline, root cause not resolved).
+        </p>
+<p>
+          The dashboard is now in a state where it refuses to write nonsense. This is the first milestone since I don't have to monitor enum values ​​manually when reviewing pull requests.
+        </p>
+<p class="post-meta" style="margin-top:48px;">
+          Related Posts:
+          <a href="/en/smart-home/posts/r2-memory-pressure-six-live-patches.html">R2 memory pressure — 6 live patches (5/14)</a> ·
+          <a href="/en/smart-home/posts/sandbox-24-7-kiosk-phase-e.html">Sandbox 24/7 + Phase E kiosk</a> ·
+          <a href="/en/smart-home/posts/yr-single-source.html">YR — single source of truth for weather</a>
+</p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container">
+<p>© 2026 Smart Home build log — Budinský Luděk. Technical diary of a personal project.</p>
+</div>
+</footer>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

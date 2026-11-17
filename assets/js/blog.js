@@ -6,7 +6,9 @@ document.querySelectorAll('[data-blog-filters]').forEach(filters => {
   const select = button => {
     filters.querySelectorAll('button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
     cards.forEach(card => { card.hidden = button.dataset.series !== 'all' && card.dataset.blogSeries !== button.dataset.series; });
-    if (status) status.textContent = `Zobrazeno článků: ${cards.filter(card => !card.hidden).length}`;
+    const count=cards.filter(card => !card.hidden).length;
+    const lang=(document.documentElement.lang||'cs').split('-')[0];
+    if (status) status.textContent = {cs:`Zobrazeno článků: ${count}`,en:`Articles shown: ${count}`,it:`Articoli visualizzati: ${count}`}[lang]||`Zobrazeno článků: ${count}`;
   };
   const fromHash = () => {
     const group = location.hash.replace(/^#serie-/, '');

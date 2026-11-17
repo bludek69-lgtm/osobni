@@ -1,96 +1,139 @@
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finanza — le mie app e i calcolatori | Luděk</title>
-  <meta name="description" content="Le mie app per le finanze, un semplice esempio numerico e calcolatori interattivi. Esperienza personale, non consulenza finanziaria.">
-  <link rel="stylesheet" href="../../assets/css/style.css?v=20261116-navsearch">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💰%3C/text%3E%3C/svg%3E">
-  <link rel="canonical" href="https://cestovatel69.cz/it/finance/">
-  <meta property="og:title" content="Finanza &amp; investimenti — Luděk">
-  <meta property="og:description" content="Portfolio Tracker (PT) e Libro contabile: le applicazioni che ho sviluppato e uso per seguire investimenti e finanze personali. Funzioni, anteprime e storia.">
-  <meta property="og:image" content="https://cestovatel69.cz/assets/og-default.jpg">
-  <meta property="og:url" content="https://cestovatel69.cz/it/finance/">
-  <meta property="og:type" content="website">
-<link rel="stylesheet" href="../../assets/css/language-navigation.css?v=20261030-jazyky">
-<link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/finance/">
-<link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/finance/">
-<link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/finance/">
-<link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/finance/">
-</head>
-<body class="theme-finance finance-landing">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Finanza: le mie app e calcolatrici |
+Luděk</title>
+<meta content="La mia app finanziaria, un esempio di modello semplice e calcolatrici interattive.
+Esperienza personale, non una raccomandazione di investimento." name="description"/>
 
+<meta content="Finanza e investimenti — Luděk" property="og:title"/>
+<meta content="My Portfolio Tracker (PT) e Ledger: come li utilizzo per tenere traccia dei miei investimenti e delle mie finanze personali.
+Caratteristiche, anteprime e cronologia del progetto." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/finance/" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/assets/css/style.css?v=20261116-navsearch" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+<link href="/assets/css/language-navigation.css?v=20261030-jazyky" rel="stylesheet"/>
+
+
+
+
+<link href="https://cestovatel69.cz/it/finance/" rel="canonical"/><link href="https://cestovatel69.cz/finance/" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/finance/" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/finance/" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="theme-finance finance-landing editorial-preview editorial-site editorial-hub">
 <header class="site-header">
 <div class="site-header__inner">
 <a class="brand" href="/it/">
 <span class="brand-dot"></span>
       Luděk
     </a>
-<nav aria-label="Lingua della pagina" class="lang-switcher"><a href="/finance/" hreflang="cs" lang="cs" title="Česky">CS</a><a href="/en/finance/" hreflang="en" lang="en" title="English">EN</a><a aria-current="page" href="/it/finance/" hreflang="it" lang="it" title="Italiano">IT</a></nav>
-<button aria-expanded="false" aria-label="Apri menu" class="nav-toggle">☰</button>
-<nav aria-label="Navigazione principale" class="nav"><a href="/it/">Home</a><a href="/it/aplikace/">Le mie app</a><a aria-current="page" href="/it/finance/">Finanza</a><a href="/it/cestovani/">Viaggi</a><a href="/it/cestovani/italie/">Italia</a><a href="/it/zaliby/rybareni/">Pesca</a><a href="/it/smart-home/">Smart Home</a><a href="/it/ai.html">AI</a><a href="/cestovani/uzitecne-odkazy/" hreflang="cs" title="Link utili — in ceco">Link utili<span aria-hidden="true" class="lang-tag">CS</span></a></nav>
+<nav aria-label="Lingua della pagina" class="lang-switcher"><a href="/finance/" hreflang="cs" lang="cs">CS</a><a href="/en/finance/" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/finance/" hreflang="it" lang="it">IT</a></nav>
+<button aria-expanded="false" aria-label="Apri il menù" class="nav-toggle">☰</button>
+<nav aria-label="Navigazione principale" class="nav">
+<a href="/it/">Home</a>
+<a href="/it/aplikace/">Le mie app</a>
+<a aria-current="page" href="/it/finance/">Finanza</a>
+<a href="/it/cestovani/">Viaggi</a>
+<a href="/it/cestovani/italie/">Italia</a>
+<a href="/it/zaliby/rybareni/">Pesca</a>
+<a href="/it/smart-home/">Smart Home</a>
+<a href="/it/ai.html">AI</a>
+<a href="/it/cestovani/uzitecne-odkazy/">Link utili</a>
+</nav>
 </div>
 </header>
-<aside aria-label="Disponibilità delle lingue" class="language-note">CS = contenuto in ceco. Alcune descrizioni precedenti sono ancora in ceco.</aside>
-
 <main id="main"><section class="hero">
-<span class="hero-accent">Finanza &amp; investimenti</span>
-<h1>Finanza con le mie applicazioni</h1>
-<p class="hero-sub">Per seguire le mie finanze uso due applicazioni che ho sviluppato: <strong>Portfolio Tracker (PT)</strong> per il portafoglio di investimenti e <strong>Účetní kniha (Libro contabile)</strong> per il quadro finanziario generale. Le sviluppo in base al mio lavoro quotidiano con i dati. Qui racconto come si completano e il mio approccio alla finanza.</p>
+<span class="hero-accent">Finanza e investimenti</span>
+<h1>Le mie finanze, con le mie app</h1>
+<p class="hero-sub">Utilizzo le mie applicazioni per una panoramica delle finanze: <strong>Monitoraggio del portafoglio (PT)</strong> per il portafoglio di investimento a <strong>Libro contabile</strong> per i registri finanziari complessivi.
+Li costruisco in base a ciò di cui ho bisogno nel mio lavoro quotidiano con i dati.
+Qui mostro come si completano a vicenda e condividono il mio approccio alla finanza.</p>
 <p class="disclaimer" style="margin-top:1.2rem; padding:0.9rem 1.1rem; border-left:4px solid #d49317; background:rgba(212,147,23,0.08); font-size:0.95rem;">
-<strong>⚠️ Disclaimer:</strong> Questa pagina è una prospettiva personale e una demo tecnica.
-      Non è consulenza di investimento. Tutti i numeri negli esempi sono illustrativi e servono
-      solo a spiegare il principio.
+<strong>⚠️ Dichiarazione di non responsabilità:</strong> Questa pagina è una visione personale e una demo tecnica.
+Questa non è una raccomandazione di investimento.
+Tutti i numeri negli esempi sono modelli e servono solo a spiegare il principio.
     </p>
-</section><nav class="page-toc-sticky" aria-label="Le mie app"><span class="toc-label">Le mie app</span><ul>
-      <li><a href="#fin-apps">Le mie app</a></li><li><a href="#fin-example">Esempio numerico</a></li>
-      <li><a href="#fin-4-kalkulacky">Apri i calcolatori →</a></li><li><a href="#fin-more">Altre note e fonti</a></li></ul></nav><section aria-labelledby="fin-apps">
-<h2 id="fin-apps">Le mie applicazioni finanziarie</h2>
+</section><nav aria-label="Le mie app" class="page-toc-sticky"><span class="toc-label">Le mie app</span><ul>
+<li><a href="/it/finance/#fin-apps">Le mie app</a></li><li><a href="/it/finance/#fin-example">Esempio di modello</a></li>
+<li><a href="/it/finance/#fin-4-kalkulacky">Apri calcolatrici →</a></li><li><a href="/it/finance/#fin-more">Note e risorse aggiuntive</a></li></ul></nav><section aria-labelledby="fin-apps">
+<h2 id="fin-apps">La mia app finanziaria</h2>
 <div class="cards-grid">
 <article class="card">
 <div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-chart-column"></use></svg></span></div>
-<h3>Portfolio Tracker (PT)</h3>
-<p><strong>Gli investimenti nel tempo</strong></p>
-<p>Uso PT per seguire gli investimenti. Gestisce transazioni, posizioni, dividendi, commissioni e rendimento, con importazione degli estratti e viste analitiche per esaminare il portafoglio.</p>
-<a class="tool-cta" href="../aplikace/portfolio-tracker.html">Dettagli e anteprime →</a>
+<h3>Monitoraggio del portafoglio (PT)</h3>
+<p><strong>Portafoglio di investimenti nel tempo</strong></p>
+<p>PT mi serve come panoramica degli investimenti.
+Funziona con transazioni, posizioni, dividendi, commissioni e performance.
+Offre l'importazione di estratti conto, visualizzazioni analitiche e background per la revisione del portafoglio.</p>
+<a class="tool-cta" href="/it/aplikace/portfolio-tracker.html">Dettagli e anteprime dell'applicazione →</a>
 </article>
 <article class="card">
 <div aria-hidden="true" class="card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-notebook-pen"></use></svg></span></div>
-<h3>Účetní kniha</h3>
-<p><strong>Il quadro finanziario generale</strong></p>
-<p>Uso il Libro contabile per una registrazione più ampia. Collega documenti e transazioni a entrate, uscite, patrimonio e debiti. Per me conta poter risalire alla fonte di ogni cifra.</p>
-<a class="tool-cta" href="../aplikace/ucetni-kniha.html">Dettagli e anteprime →</a>
+<h3>Libro contabile</h3>
+<p><strong>Panoramica generale delle finanze</strong></p>
+<p>Utilizzo il registro per documenti più ampi.
+Combina documenti e transazioni con una panoramica di entrate, spese, attività e passività.
+Per me è importante la tracciabilità: da cosa è stato creato un numero specifico.</p>
+<a class="tool-cta" href="/it/aplikace/ucetni-kniha.html">Dettagli e anteprime dell'applicazione →</a>
 </article>
 </div>
-<h3>Come le uso insieme</h3>
-<p>Il Libro contabile offre il quadro complessivo. PT approfondisce il portafoglio di investimenti, dalle singole transazioni al rendimento nel tempo.</p>
-<p>Il sito presenta le funzioni e le anteprime delle applicazioni. I dati finanziari privati restano fuori dalla presentazione pubblica.</p>
-</section><section class="prose" id="fin-example"><h2>Esempio numerico</h2><p>Con 100.000 Kč iniziali e 2.000 Kč versate ogni mese per due anni, i versamenti sarebbero 148.000 Kč prima di rendimenti, costi e imposte. È solo la somma dei versamenti, non una previsione.</p>
-      <p><a class="btn btn-primary" href="#fin-4-kalkulacky">Apri i calcolatori →</a></p></section><section class="prose">
-<h2 id="fin-4-kalkulacky">Calcolatori utili</h2>
-<p>Inserisci <strong>valori di esempio</strong> e apri il calcolatore desiderato. Il calcolo avviene solo in questo browser: i dati non vengono inviati né salvati. I risultati non sono consigli finanziari o fiscali.</p>
-<div class="finance-calculators" data-finance-calculators="" data-locale="it">
-<p>Caricamento dei calcolatori. È necessario JavaScript per usarli.</p>
+<h3>Come li uso insieme</h3>
+<p>Il registro risponde alla domanda su come appaiono le finanze nel loro insieme.
+PT approfondisce il portafoglio di investimenti: dalle singole transazioni al suo sviluppo nel tempo.</p>
+<p>Presento funzionalità ed esempi di applicazioni sul sito Web. I dati finanziari privati ​​rimangono al di fuori della presentazione pubblica.</p>
+</section> <section class="prose" id="vyvoj-ucetni-knihy">
+<h2>Come è stato creato il mio libro contabile</h2>
+<p>Da una tabella di portafoglio in Excel ad un'applicazione personalizzata: nel film mostro gli inizi tracciati a partire dal 2023, l'ulteriore sviluppo del book finanziario e il passaggio al database SQLite.
+I campioni utilizzano dati di test.</p>
+<div style="position:relative; width:100%; max-width:900px; aspect-ratio:16/9; margin:1.2rem 0;">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/WMa86-VWYjA" style="width:100%; height:100%; border:0;" title="Come è stato realizzato il libro mastro — film completo"></iframe>
 </div>
-</section><section class="prose" id="fin-more"><h2>Altre note e fonti</h2><p>Ho spostato gli elenchi più lunghi di strumenti e domande in una guida separata, lasciando qui le mie app e un esempio concreto.</p>
-      <div class="cards-grid"><article class="card" id="fin-3-nastroje"><h3>Strumenti di terzi</h3><p><a class="tool-cta" href="pruvodce.html#fin-3-nastroje">Apri la guida finanziaria →</a></p></article>
-      <article class="card" id="fin-5-akcie"><h3>Domande da valutare</h3><p><a class="tool-cta" href="pruvodce.html#fin-5-akcie">Apri la guida finanziaria →</a></p></article>
-      <article class="card" id="fin-8-dane"><h3>Imposte e registri</h3><p><a class="tool-cta" href="pruvodce.html#fin-8-dane">Apri la guida finanziaria →</a></p></article></div>
-      <p><a class="btn" href="pruvodce.html">Apri la guida finanziaria →</a></p></section></main>
+<p><a href="https://youtu.be/WMa86-VWYjA">Riproduci il film completo su YouTube</a> · <a href="https://youtube.com/shorts/6HHYNra8y2U">Riproduci un breve campione (Short)</a></p>
+<details>
+<summary>Una breve anteprima dello sviluppo</summary>
+<div style="width:min(100%,360px); aspect-ratio:9/16; margin:1rem 0;">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/6HHYNra8y2U" style="width:100%; height:100%; border:0;" title="Da Excel alla tua applicazione: un breve esempio"></iframe>
+</div>
+</details>
+</section>
+<section class="prose" id="fin-example"><h2>Esempio di modello</h2><p>Se iniziassi con 100.000 CZK e risparmiassi 2.000 CZK al mese per due anni, senza contare il reddito, le tasse e le tasse, avrei investito 148.000 CZK.
+Questa è solo una somma di scommesse, non una previsione del risultato.</p>
+<p><a class="btn btn-primary" href="/it/finance/#fin-4-kalkulacky">Apri calcolatrici →</a></p></section><section>
+<h2 id="fin-4-kalkulacky">Calcolatrici adatte</h2>
+<p>Inserisci il tuo <strong>numeri di modello</strong> e aprire il calcolo richiesto.
+Tutto conta solo in questo browser;
+i dati non vengono inviati o archiviati da nessuna parte.
+I risultati non sono raccomandazioni sugli investimenti o sulle tasse.</p>
+<div class="finance-calculators" data-finance-calculators="" data-locale="it">
+<p>Le calcolatrici sono in fase di caricamento.
+È necessario abilitare JavaScript per utilizzarli.</p>
+</div>
+</section><section class="prose" id="fin-more"><h2>Note e risorse aggiuntive</h2><p>Ho spostato gli elenchi più lunghi di strumenti e domande di revisione in una guida separata per mantenere qui la mia applicazione e la demo specifica.</p>
+<nav aria-label="Argomenti della guida finanziaria" class="journey-links"><a href="/it/finance/pruvodce.html#fin-3-nastroje" id="fin-3-nastroje">Strumenti di terze parti →</a><a href="/it/finance/pruvodce.html#fin-5-akcie" id="fin-5-akcie">Domande di revisione →</a><a href="/it/finance/pruvodce.html#fin-8-dane" id="fin-8-dane">Tasse e registri →</a></nav><div class="cards-grid" style="display:block;max-width:760px">
+<article class="card" id="digrin"><h3>Digrin</h3><p><strong>Cosa fa:</strong> Strumento web per il monitoraggio del portafoglio di investimenti e dei dividendi.</p><p><strong>Per chi:</strong> Per tutti coloro che desiderano avere una panoramica del portafoglio in un unico posto.</p><p><strong>Attenzione:</strong> I dati vengono archiviati in un servizio Web e alcune funzionalità richiedono un abbonamento a pagamento.
+Verificare i dati con il broker.</p><p>Con codice sconto <strong>DIGRIN20</strong> ottieni uno sconto una tantum del 20%.</p><p><a class="tool-cta" href="https://www.digrin.com/?fp_ref=lgafz" rel="sponsored noopener noreferrer" target="_blank">Visualizza Digrin ↗</a></p><p><small>Link di affiliazione: se ti iscrivi tramite esso, potrei guadagnare una commissione.</small></p></article>
+</div>
+</section>
 
+</main>
 <footer class="site-footer">
-  <div class="site-footer__inner">
-    <div>© Budinský Luděk · Sito personale</div>
-    <div class="footer-links">
-      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
-      <a href="/o-mne.html" hreflang="cs" title="In ceco">Su di me (CS)</a>
-      <a href="/it/smart-home/" hreflang="it">Smart Home web</a>
-    </div>
-  </div>
+<div class="site-footer__inner">
+<div>© Budinský Luděk · Sito personale</div>
+<div class="footer-links">
+<a href="https://www.youtube.com/@cestovatel69" rel="noopener" target="_blank">YouTube @Cestovatel69</a>
+<a href="/it/o-mne.html">Chi sono</a>
+<a href="/it/smart-home/">Sito web Casa intelligente</a>
+</div>
+</div>
 </footer>
+<script src="/assets/js/main.js?v=20261117-editorial"></script>
+<script src="/assets/js/finance-calculators.js?v=20261117-editorial"></script>
+<!-- Lightbox: click any main img to zoom. Aplikuje se na všech stránkách. -->
 
-<script src="../../assets/js/main.js?v=20261116-navsearch"></script>
-<script src="../../assets/js/finance-calculators.js?v=20261024"></script>
+
+
 </body>
 </html>

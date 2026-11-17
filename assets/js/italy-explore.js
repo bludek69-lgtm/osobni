@@ -26,7 +26,8 @@
   function filter() {
     var term = normalize(query.value), selected = kind.value, visible = 0;
     cards.forEach(function (card) {
-      var matches = (!term || normalize(card.getAttribute('data-search') || card.textContent).indexOf(term) !== -1) && (selected === 'all' || (card.getAttribute('data-kind') || '').split(/\s+/).indexOf(selected) !== -1);
+      var searchable = (card.getAttribute('data-search') || '') + ' ' + card.textContent;
+      var matches = (!term || normalize(searchable).indexOf(term) !== -1) && (selected === 'all' || (card.getAttribute('data-kind') || '').split(/\s+/).indexOf(selected) !== -1);
       card.hidden = !matches;
       if (matches) visible++;
     });

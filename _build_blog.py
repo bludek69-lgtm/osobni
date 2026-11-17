@@ -41,6 +41,16 @@ def reading_label(minutes):
     return f'{minutes} {unit} čtení'
 
 
+def photo_essay(post):
+    """An opt-in layout using the same article, video and source catalogue."""
+    return f'''<article class="editorial-article"><header class="editorial-article-header"><a href="/blog/">← Všechny články</a><p class="editorial-eyebrow">Itálie / Toskánsko</p><h1>{esc(post['title'])}</h1><p class="editorial-deck">Fotografie z mého archivu, pohled z výšky a souvislosti pro vlastní cestu.</p><div class="editorial-meta"><span>Budinský Luděk</span><time datetime="{post['published']}">{date_label(post['published'])}</time><span>{reading_label(post['reading_minutes'])}</span></div></header>
+<figure class="editorial-panorama"><img src="{esc(post['hero_image'])}" alt="{esc(post['hero_alt'])}" width="1600" height="738" fetchpriority="high" decoding="async"><figcaption><span>{esc(post['hero_caption'])}</span><a href="/cestovani/italie/toskansko/#valdorcia">Celá galerie Val d’Orcia →</a></figcaption></figure>
+<div class="editorial-article-content">{(DATA / (post['slug'] + '.html')).read_text(encoding='utf-8')}</div>
+<section class="editorial-film" id="film" aria-labelledby="film-title"><p class="editorial-eyebrow">Krajina ve videu</p><h2 id="film-title">Val d’Orcia a Crete Senesi z výšky</h2><p>Krátký film doplňuje fotografie. Video se načte z YouTube po spuštění.</p><div class="featured-video" data-video-id="{post['video_id']}" data-title="{esc(post['video_title'])}"><button class="thumb-cover" type="button" aria-label="Přehrát video: {esc(post['video_title'])}" style="background-image:url('https://img.youtube.com/vi/{post['video_id']}/maxresdefault.jpg')"></button></div><div class="editorial-meta"><span>Délka videa {esc(post['video_duration'])}</span><a href="https://www.youtube.com/watch?v={post['video_id']}" target="_blank" rel="noopener noreferrer">Otevřít na YouTube ↗</a></div><nav class="editorial-actions" aria-label="Podklady k videu"><a href="{esc(post['map_url'])}">Místa na mapě →</a><a href="{esc(post['credits_url'])}">Zdroje fotografií a podklady →</a></nav></section>
+<section class="editorial-sources" aria-labelledby="sources-title"><h2 id="sources-title">Podklady k článku</h2><p>Fotografie na této stránce pocházejí z mého archivu. Souvislosti ke krajině vycházejí z následujících zdrojů; podklady k filmu jsou uvedené samostatně nad touto částí.</p><ul><li><a href="https://whc.unesco.org/en/list/1026/" target="_blank" rel="noopener noreferrer">UNESCO: kulturní krajina Val d’Orcia ↗</a></li><li><a href="https://www.visittuscany.com/en/attractions/crete-senesi-life-park/" target="_blank" rel="noopener noreferrer">Visit Tuscany: Crete Senesi Life Park ↗</a></li></ul></section>
+<nav class="editorial-next" aria-label="Pokračovat ve čtení"><h2>Ještě chvíli v Toskánsku</h2><div class="editorial-actions"><a href="/blog/montepulciano/">Montepulciano →</a><a href="/blog/toskansko-vsemi-smysly/">Toskánsko všemi smysly →</a><a href="{esc(post['project_url'])}">Další cesty po Itálii →</a><a href="https://www.youtube.com/@cestovatel69?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Odebírat kanál Cestovatel69 ↗</a></div></nav></article>'''
+
+
 def url(post):
     return '/blog/' + post['slug'] + '/'
 
@@ -77,10 +87,11 @@ def wrapper(title, description, path, body, header, footer, image=None, schema=N
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{'article' if path != '/blog/' else 'website'}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{esc(image)}">
 <meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="/assets/css/style.css?v=20261116-navsearch"><link rel="stylesheet" href="/assets/css/language-navigation.css?v=20261030-jazyky"><link rel="stylesheet" href="/assets/css/blog.css?v=20261116-travel">
+<link rel="stylesheet" href="/assets/css/editorial-preview.css?v=20261117-editorial"><link rel="stylesheet" href="/assets/css/editorial-site.css?v=20261117-editorial">
 <script id="cestovatel-analytics-consent" src="/assets/js/analytics-consent.js?v=20261116-3"></script>
 <link rel="alternate" type="application/rss+xml" title="Cestovatel69 – Blog z cest" href="/blog/feed.xml">{schema_tag}</head>
-<body class="theme-home blog-page">{header}<main id="main">{body}</main>{footer}
-<script src="/assets/js/main.js?v=20261116-navsearch"></script><script defer src="/assets/js/blog.js?v=20261116-serie"></script></body></html>'''
+<body class="theme-home blog-page editorial-preview editorial-site {'editorial-hub' if path == '/blog/' else 'editorial-reading'}">{header}<main id="main">{body}</main>{footer}
+<script src="/assets/js/main.js?v=20261117-editorial"></script><script defer src="/assets/js/blog.js?v=20261117-editorial"></script></body></html>'''
 
 
 def build_series(posts):
@@ -187,13 +198,21 @@ def main():
 <div class="blog-content">{(DATA / (post['slug'] + '.html')).read_text(encoding='utf-8')}</div>
 <aside class="blog-related"><h2>Pokračuj v cestování</h2>{series_link}<p><a href="{esc(post['project_url'])}">Prohlédnout další cesty →</a></p><p><a href="https://www.youtube.com/@cestovatel69?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Odebírat Cestovatel69 na YouTube ↗</a></p><a href="/blog/">Zpět na blog →</a></aside></article>'''
         body = body.replace('</article>', video_block([v for v in videos if v['video_id'] != video], limit=3) + '</article>')
-        schema = {'@context': 'https://schema.org', '@type': 'BlogPosting', 'headline': post['title'], 'description': post['description'], 'datePublished': post['published'], 'dateModified': post['updated'], 'inLanguage': 'cs', 'author': {'@type': 'Person', 'name': 'Luděk Budínský', 'url': ORIGIN + '/o-mne.html'}, 'mainEntityOfPage': ORIGIN + url(post), 'image': f'https://img.youtube.com/vi/{video}/maxresdefault.jpg'}
+        schema = {'@context': 'https://schema.org', '@type': 'BlogPosting', 'headline': post['title'], 'description': post['description'], 'datePublished': post['published'], 'dateModified': post['updated'], 'inLanguage': 'cs', 'author': {'@type': 'Person', 'name': 'Budinský Luděk', 'url': ORIGIN + '/o-mne.html'}, 'mainEntityOfPage': ORIGIN + url(post), 'image': f'https://img.youtube.com/vi/{video}/maxresdefault.jpg'}
         directory = ROOT / url(post).strip('/')
         directory.mkdir(parents=True, exist_ok=True)
-        (directory / 'index.html').write_text(wrapper(post['title'], post['description'], url(post), body, header, footer, schema['image'], schema), encoding='utf-8')
+        if post.get('layout') == 'photo-essay':
+            schema['image'] = ORIGIN + post['hero_image']
+            body = photo_essay(post)
+        html = wrapper(post['title'], post['description'], url(post), body, header, footer, schema['image'], schema)
+        if post.get('layout') == 'photo-essay':
+            html = html.replace('editorial-reading"', 'editorial-reading editorial-article-page"')
+        (directory / 'index.html').write_text(html, encoding='utf-8')
     # Replace the marked homepage section on repeated runs, rather than duplicating it.
     preview = '<!-- BLOG_PREVIEW_START --><section class="blog-home" aria-labelledby="blog-home-title"><div class="section-header"><p class="blog-eyebrow">Nově na blogu</p><h2 id="blog-home-title">Příběhy za videem</h2><p>Místa, souvislosti a tipy, které doplňují moje videa.</p></div>' + ''.join(card(p, featured=True, heading='h3') for p in posts[:3]) + '<p><a class="blog-card__link" href="/blog/">Všechny články →</a></p></section><!-- BLOG_PREVIEW_END -->'
-    if '<!-- BLOG_PREVIEW_START -->' in home:
+    if 'editorial-home' in home:
+        pass  # The editorial homepage intentionally pins a curated selection of stories.
+    elif '<!-- BLOG_PREVIEW_START -->' in home:
         home = re.sub(r'<!-- BLOG_PREVIEW_START -->.*?<!-- BLOG_PREVIEW_END -->', lambda _: preview, home, flags=re.S)
     else:
         home = home.replace('<section aria-labelledby="about-title"', preview + '\n<section aria-labelledby="about-title"', 1)

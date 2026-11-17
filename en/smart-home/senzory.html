@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Various sensors recognize movement, the presence of a person, an open window or the amount of daylight. Everyone has different capabilities and limitations. Below is an overview of their use and what to watch out for when reading the data." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Motion and environmental sensors | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="Motion and environmental sensors | SMART HOME" property="og:title"/>
+<meta content="Various sensors recognize movement, the presence of a person, an open window or the amount of daylight. Everyone has different capabilities and limitations. Below is an overview of their use and what to watch out for when reading the data." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/senzory.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/senzory.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/senzory.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/senzory.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/senzory.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/senzory.html#main">Skip to content</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Open the menu</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/en/smart-home/">Home</a></li>
+<li><a href="/en/smart-home/prozivani.html">How it works</a></li>
+<li><a aria-current="page" class="is-active" href="/en/smart-home/zarizeni.html">Equipment</a></li>
+<li><a href="/en/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/en/smart-home/dashboard.html">Dashboard</a></li>
+<li><a href="/en/smart-home/pribeh.html">The story</a></li>
+<li><a href="/en/smart-home/blog.html">Blog</a></li>
+<li><a href="/en/smart-home/kontakt.html">About the project</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Personal website and Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a><a href="/en/smart-home/">Introduction Smart Home</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/senzory.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/senzory.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/senzory.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section section-hero uc-hero" id="senzory">
+<div class="container">
+<p class="eyebrow"><span aria-hidden="true" class="status-dot"></span>📦 Devices · Sensors</p>
+<h1 class="hero-title">Motion sensors <span class="grad-text">and environment</span></h1>
+<p class="hero-lead">Various sensors recognize movement, the presence of a person, an open window or the amount of daylight. Everyone has different capabilities and limitations. Below is an overview of their use and what to watch out for when reading the data.</p><details class="visitor-technical-intro"><summary>Technical details</summary><p class="hero-lead">
+          Overview of detection — where and how the house senses reality. mmWave radar for a quiet person, classic PIR for movement, contact sensors on windows, lux for daylight. Each type has a different use-case, different limits and its own battery consumption.
+        </p><div class="uc-stats">
+<div class="uc-stat"><span class="uc-stat-num">4</span><span class="uc-stat-label">Types of sensors</span></div>
+<div class="uc-stat"><span class="uc-stat-num">3</span><span class="uc-stat-label">Wireless protocols</span></div>
+<div class="uc-stat"><span class="uc-stat-num">10</span><span class="uc-stat-label">Functional zones covered</span></div>
+<div class="uc-stat"><span class="uc-stat-num">~6 m</span><span class="uc-stat-label">FP2 mmWave range</span></div>
+</div></details>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">What does it do?</p>
+<h2 class="section-title">Detection layers + data path</h2>
+</header>
+<div class="uc-prose">
+<p>
+            Sensors are <strong>input layer</strong> of the entire system. Without them, the system does not know if someone is in the room, if it is dark, if the window is open. Each sensor has a capability in Homey (e.g. <code>alarm_motion</code>,
+            <code>alarm_presence</code>, <code>alarm_contact</code>), which the flow trigger reads and sends the event to the scripts.
+          </p>
+<p>
+<strong>Architecturally</strong> sensors <strong>they never interfere</strong> straight to the action. Instead, they write the status to request variables (e.g.
+            <code>sh_light_request='on'</code>) and the request-first pipeline decides whether the action will take place. This enables sleep guard, privacy guard, priority engine — and most importantly testability.
+          </p>
+<p>
+            Most sensors are <strong>battery</strong>. Lifetime typically 1-2 years. Brain Guardian is watching <code>lastUpdated</code> timestamp — when the sensor has not updated for 24+ h, alert in EventLog (battery suspect). Re-pair will generate after replacing the battery <strong>new UUID</strong> — flow trigger of cards with old UUID silent fail, fix requires bulk swap.
+          </p>
+</div>
+</div>
+</section>
+<!-- TYPOLOGIE -->
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Types of sensors</p>
+<h2 class="section-title">Four categories, four roles</h2>
+<p class="section-lead">Each detects a different thing. Together they give a complete picture.</p>
+</header>
+<ol class="uc-timeline">
+<li class="uc-stage">
+<span class="uc-stage-time">Presence</span>
+<h3>mmWave radar (FP2)</h3>
+<p>
+              He sees a calm person — sitting, breathing, micro-movements. Plus movement. Capabilities
+              <code>alarm_presence</code>. Price ~1,500 CZK. Limit: the detection zone is not 100% accurate, it sometimes flashes to False, hence the triple-sensor guard.
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">Motion</span>
+<h3>PIR (Fibaro Z-wave)</h3>
+<p>
+              Classic passive-infrared. Detects temperature change (= motion). He does not feel a calm person. Capabilities <code>alarm_motion</code>. Cheap (~600 CZK), reliable, long battery life. Ideal for kitchen, bathroom.
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">Contact</span>
+<h3>Door/Window contact</h3>
+<p>
+              Magnetic contact on window/door. Capabilities <code>alarm_contact</code>. Simple, cheapest (~350 CZK), without false positives. SNZB-04 has a known firmware bug (deep-sleep failure) — Aqara P2 replacement.
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">Environmental</span>
+<h3>Lux + temperature</h3>
+<p>
+              Lux sensor for daylight (controls lighting), internal temperature sensors in each TRV for heating. Capabilities <code>measure_luminance</code>,
+              <code>measure_temperature</code>. Continuous, not event-based.
+            </p>
+</li>
+</ol>
+</div>
+</section>
+<!-- HARDWARE -->
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Hardware in operation</p>
+<h2 class="section-title">What we actually see</h2>
+<p class="section-lead">Specific pieces that are currently running in the apartment.</p>
+</header>
+<div class="hw-grid">
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-radio-tower"></use></svg></span></div>
+<h3>Aqara FP2 (SNZB-06P)</h3>
+<p class="hw-tag">mmWave · presence · Zigbee · open space</p>
+<p>
+              Flagship. Detects a sitting person, breathing, micro-movements. "Open space" zone (dining room + kitchen). Requires 230 V power supply (not battery). Sensitivity 5 levels, user set mid.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-eye"></use></svg></span></div>
+<h3>Kitchen sensor Z-wave (Fibaro)</h3>
+<p class="hw-tag">PIR · motion · Z-wave · battery</p>
+<p>
+              Classic PIR. Trigger for "get up in the morning" detection (motion + sleep_state=active = waking). Kitchen lights, occupancy bonus for heating. Battery ~12 months.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-door-open"></use></svg></span></div>
+<h3>Door/Window Sensor Dining room1</h3>
+<p class="hw-tag">Aqara · contact · Zigbee · battery</p>
+<p>
+              Contact on the dining room window. Trigger for the air cleaner (turn off when open). Real incident 26.4. — re-pair generated new UUID, 3 old flows orphaned. Diagnosis: GET device → 404, fix bulk swap.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-sun"></use></svg></span></div>
+<h3>Kitchen Light Sensor1 + Xiaomi</h3>
+<p class="hw-tag">Lux · Zigbee · ambient</p>
+<p>
+              Two lux sensors in open space — primary (kitchen) + Xiaomi (dining room). Values
+              <code>sh_lux_jidelna</code>, <code>sh_lux_kuchyne_xiaomi</code>. Threshold 120 / 400 for on/off with hysteresis.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-thermometer"></use></svg></span></div>
+<h3>3× Fibaro FGT-001 (TRV)</h3>
+<p class="hw-tag">Thermal head · Z-wave · battery</p>
+<p>
+              Dual role — heating flow regulator + internal temperature sensor. Capabilities
+              <code>measure_temperature</code> in each of the TRV-zones (dining room, bathroom, toilet). Source <code>current_temp</code> for heating demand.
+            </p>
+</article>
+<article class="hw-card hw-future">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-droplet"></use></svg></span></div>
+<h3>Water leak <span class="hw-badge">Planned</span></h3>
+<p class="hw-tag">Aqara · alarm_water · Zigbee · battery</p>
+<p>
+              Under the sink in the kitchen and bathroom. Trigger for safety bypass — closes the main supply (via the planned Aqara water valve), alert to the bedroom speaker. Price ~400 CZK/piece.
+            </p>
+</article>
+</div>
+</div>
+</section>
+<!-- TECH DETAIL -->
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">For the tech-savvy</p>
+<h2 class="section-title">What's going on under the hood</h2>
+<p class="section-lead">Zigbee vs. Z-wave, battery management, UUID stability.</p>
+</header>
+<div class="uc-tech">
+<details>
+<summary>Zigbee vs. Z-wave (why both)</summary>
+<p>
+<strong>Zigbee 3.0</strong> (2.4 GHz) — Aqara FP2, door/window, lux. Cheaper sensors, mesh in own space, Aqara hub-free integration via Homey Pro 2026. Weaker range, shared band with Wi-Fi.
+            </p>
+<p>
+<strong>Z-wave</strong> (868 MHz EU) — Fibaro PIR, FGS-214 (boiler), 3× FGT-001 TRV. More expensive, but dedicated band, good range through walls, powered devices work as repeaters for mesh.
+            </p>
+<p>
+              For battery motion sensors, Zigbee would also be OK, but Fibaro PIR has better firmware reliability than the cheap Aqara variant (test: 6 months, 0 false positives).
+            </p>
+</details>
+<details>
+<summary>Triple-sensor guard for presence_off</summary>
+<p>
+              FP2 sometimes falsely flashes on <code>alarm_presence=false</code> (cooldown / sensitivity). 15 min flow delay → presence_off event → router would like to turn off the lights. At that moment, the user was already back.
+            </p>
+<pre><code>if (presence_event === 'off') {
+  if (motion.alarm_motion === true) → keep on (motion_active)
+  if (presence.alarm_presence === true) → keep on (presence_recovered)
+  if (max(open_presence_ts, open_motion_ts) &gt; now - 5min) → keep on (recent)
+}</code></pre>
+<p>
+              Implemented in <code>sh_open_space_router_v1 v1.18</code>. Without this guard, the light would flicker every 15 minutes while sitting quietly.
+            </p>
+</details>
+<details>
+<summary>Battery management (lastUpdated tracking)</summary>
+<p>
+              Brain Guardian cron 15 min iterates sensors with capability <code>measure_battery</code>
+              a <code>lastUpdated</code> time stamp:
+            </p>
+<ul>
+<li><strong>battery &lt; 20%</strong> → battery_low alert, log to EventLog</li>
+<li><strong>battery &lt; 10%</strong> → battery_critical, push (when implemented)</li>
+<li><strong>lastUpdated &gt; 24 h</strong> → sensor still, possible dead battery</li>
+<li><strong>lastUpdated &gt; 72 h</strong> → sensor unreachable, suggest re-pair</li>
+</ul>
+<p>
+              SNZB-04 (door/window) has a friend <strong>deep-sleep firmware bug</strong> — falls into unreachable even with a full battery. Aqara P2 (Matter/Thread) replacement planned.
+            </p>
+</details>
+<details>
+<summary>Stability UUID (re-pair = new UUID)</summary>
+<p>
+              After replacing the battery / re-installing the device Homey will generate <strong>new UUID</strong>. Old UUID in device_map / flow trigger cards = orphan reference, no error, just silent fail.
+            </p>
+<p>
+              Real incident 26.4. — Door/Window Sensor Dining room1 overpaired, 3 flows broken, the cleaner did not turn off when the window was opened. Diagnosis:
+              <code>GET /api/manager/devices/device/&lt;old&gt;</code> → 404. Fix: bulk swap PUT.
+            </p>
+<p>
+              Backlog: <code>tools/find_orphan_device_refs.py</code> prevention scanner — before each commit, checks if all device_map references are live.
+            </p>
+</details>
+<details>
+<summary>Lux thresholds + hysteresis</summary>
+<p>
+              Open space lux control uses two thresholds + hysteresis for stability:
+            </p>
+<ul>
+<li><code>sh_cfg_lux_open_space_on</code> = 120 — below that they turn on (if presence)</li>
+<li><code>sh_cfg_lux_open_space_off</code> = 400 — above that they switch off (enough daylight)</li>
+<li><strong>Between 120 and 400</strong>: keeps current state (no on→off→on flikr)</li>
+</ul>
+<p>
+              Lux sensor reads from <code>sh_lux_jidelna</code> or <code>sh_lux_kuchyne_xiaomi</code>
+              (max of both, pessimistic estimate — most darkness in the zone).
+            </p>
+</details>
+</div>
+</div>
+</section>
+<!-- SOUVISEJÍCÍ -->
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Related</p>
+<h2 class="section-title">Context</h2>
+</header>
+<div class="related-grid">
+<a class="related-card" href="/en/smart-home/svetla.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-lightbulb"></use></svg></span></span>
+<h3>Lights and lighting</h3>
+<p>Use-case side — how sensors control lighting via pipeline.</p>
+</a>
+<a class="related-card" href="/en/smart-home/bezpecnost-kamery.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-shield"></use></svg></span></span>
+<h3>Security and cameras</h3>
+<p>Sensors as security marker, away/home status logic.</p>
+</a>
+<a class="related-card" href="/en/smart-home/hardware.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-package"></use></svg></span></span>
+<h3>Hardware overview</h3>
+<p>Overall overview of hardware, not just sensors — boiler, switches, speakers.</p>
+</a>
+<a class="related-card" href="/en/smart-home/vyzvy.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-bug"></use></svg></span></span>
+<h3>Challenges</h3>
+<p>SNZB-04 firmware bug, UUID re-pair incident, triple-sensor guard.</p>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Enlarged image" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Close zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME project · Made with ❤️ and script-first thinking.</p>
+<p class="footer-meta">Public presentation · no API keys · no local IP · no control from here.</p>
+<p class="footer-meta"><a href="/en/smart-home/technicka-mapa.html">Technical map →</a> · <a href="/en/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

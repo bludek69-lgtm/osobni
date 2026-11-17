@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Cosa è andato storto durante la costruzione di una casa e come ho cercato una soluzione.
+Dalle limitazioni dei dispositivi agli stati di errore dell'automazione.
+Queste sono esperienze del mio sistema, non una guida già pronta per ogni appartamento." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Sfide |
+CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="Sfide |
+CASA INTELLIGENTE" property="og:title"/>
+<meta content="Cosa è andato storto durante la costruzione di una casa e come ho cercato una soluzione.
+Dalle limitazioni dei dispositivi agli stati di errore dell'automazione.
+Queste sono esperienze del mio sistema, non una guida già pronta per ogni appartamento." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/vyzvy.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/vyzvy.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/vyzvy.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/vyzvy.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/vyzvy.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/vyzvy.html#main">Vai al contenuto</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Apri il menù</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/it/smart-home/">Home</a></li>
+<li><a href="/it/smart-home/prozivani.html">Come funziona</a></li>
+<li><a href="/it/smart-home/zarizeni.html">Attrezzatura</a></li>
+<li><a href="/it/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/it/smart-home/dashboard.html">Cruscotto</a></li>
+<li><a aria-current="page" class="is-active" href="/it/smart-home/pribeh.html">La storia</a></li>
+<li><a href="/it/smart-home/blog.html">Blog</a></li>
+<li><a href="/it/smart-home/kontakt.html">Informazioni sul progetto</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Sito web personale e Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a><a href="/it/smart-home/">Introduzione Casa intelligente</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/vyzvy.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/vyzvy.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/vyzvy.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section" id="vyzvy">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">📖 Storia · Sfide</p>
+<h1 class="section-title">Con cosa deve confrontarsi il sistema</h1>
+<p class="section-lead">Cosa è andato storto durante la costruzione di una casa e come ho cercato una soluzione.
+Dalle limitazioni dei dispositivi agli stati di errore dell'automazione.
+Queste sono esperienze del mio sistema, non una guida già pronta per ogni appartamento.</p><details class="visitor-technical-intro"><summary>Dettagli tecnici</summary><p class="section-lead">
+            La casa intelligente nel mondo reale non è "imposta e dimentica".
+Ecco un elenco di problemi del mondo reale che ho risolto e che dovrai risolvere anche tu, una volta superato il livello di "poche lampadine intelligenti".
+          </p></details>
+</header>
+<div class="challenge-grid">
+<article class="challenge-card challenge-hw">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-battery"></use></svg></span></span>
+<h3>Dispositivi a batteria Zigbee e sonno profondo</h3>
+</div>
+<p>
+              I sensori Zigbee alimentati a batteria (porta/finestra, movimento) vanno in modalità sospensione per risparmiare energia.
+Se li svegli e glielo chiedi subito, spesso risponderanno dopo pochi secondi o per niente.
+Alcuni pezzi più vecchi cadono <strong>sonno profondo, da cui i funghi perdono la loro presenza</strong> (il dispositivo appare offline anche con la batteria carica).
+            </p>
+<p>
+<strong>Un incidente specifico</strong>: Sensore porta/finestra SNZB-04 nella sala da pranzo.
+Bug noto del firmware: periodicamente diventa irraggiungibile anche a 2 metri dall'hub, batteria carica.
+Ha causato un ritardo di 20 minuti nella risposta all'arrivo il 23 aprile (l'aspirapolvere non si è spento quando è stata aperta la finestra).
+Soluzione: <strong>sostituzione per Aqara P2</strong>
+              (Matter/Thread, firmware più stabile). Nel frattempo – fallback multisegnale (movimento in cucina come segnale di backup).
+            </p>
+</article>
+<article class="challenge-card challenge-hw">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-id-card"></use></svg></span></span>
+<h3>Riassociazione = nuovo UUID = errore silenzioso</h3>
+</div>
+<p>
+              Quando cambi la batteria o reinstalli il dispositivo Zigbee, Homey genererà <strong>nuovo UUID</strong>.
+Schede di flusso + script + mappa del dispositivo che fa riferimento al VECCHIO UUID <strong>fallire silenziosamente</strong>
+              — nessun errore nell'interfaccia utente, l'automazione semplicemente non risponde.
+            </p>
+<p>
+<strong>Caso reale 26.4.</strong>: Riparazione sensore porta/finestra Sala da pranzo1 → 3 flussi interrotti, l'aspirapolvere non si è spento quando è stata aperta la finestra.
+Diagnosi: <code>GET /devices/device/&lt;old_id&gt;</code> → 404. Correzione: scambio in blocco VECCHIO→NUOVO tramite PUT di ciascun flusso interessato.
+Scanner preventivo <code>find_orphan_device_refs.py</code>
+              nell'arretrato.
+            </p>
+</article>
+<article class="challenge-card challenge-runtime">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-bomb"></use></svg></span></span>
+<h3>SIGABRT — Homey interrompe la sceneggiatura senza spiegazioni</h3>
+</div>
+<p>
+              Il runtime Homey interrompe i processi quando vengono rilevati problemi (loop infinito, troppi script paralleli, perdita di memoria). <strong>Non scrive mai perché</strong> - lo script scompare semplicemente dal registro exec.
+Il debug di SIGABRT è puro lavoro investigativo: isolamento, ricerca binaria, test.
+            </p>
+<p>
+              Trappola classica: <code>setValue()</code> chiama <code>logEvent()</code>,
+              <code>logEvent()</code> chiama <code>setValue()</code> a cui scrivere
+              <code>sh_log_payload</code> → <strong>ricorsione infinita → SIGABRT</strong>.
+Regola: <code>setValue()</code> può solo chiamare <code>getVar +
+              updateVariable + log</code>.
+Mai <code>logEvent()</code>.
+            </p>
+</article>
+<article class="challenge-card challenge-runtime">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-timer"></use></svg></span></span>
+<h3>setTimeout non esiste (e si blocca)</h3>
+</div>
+<p>
+              Il riflesso JS naturale per il ritardo asincrono è <code>setTimeout</code>.
+Nel runtime HomeyScript <strong>non è disponibile</strong> e la chiamata porta a un misterioso arresto anomalo senza messaggio di errore: lo script semplicemente cessa di esistere.
+            </p>
+<p>
+              Soluzione: propria <code>wait()</code> funzione in combinazione con
+              <code>Promise.race()</code> per i timeout delle chiamate HTTP. Ho dovuto sistemare questo problema in dozzine di script: è stato sistematico, non una tantum.
+            </p>
+</article>
+<article class="challenge-card challenge-runtime">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-trash-2"></use></svg></span></span>
+<h3>Eliminazione dello script = nuovo UUID = flussi interrotti</h3>
+</div>
+<p>
+              In accogliente <strong>Non devo mai eliminare HomeyScript</strong>.
+L'eliminazione genererà un nuovo UUID, che interromperà qualsiasi scheda Flow che fa riferimento allo script.
+L'unica modifica sicura è
+              <strong>sul posto</strong>: apri script, Ctrl+A, incolla, Salva.
+            </p>
+<p>
+              Questa regola ha causato una grande interruzione prima che me ne rendessi conto.
+Gli script delle ondate di pulizia (20× DELETE_CANDIDATE) hanno quindi un proprio flusso di lavoro con monitoraggio di assorbimento di 48 ore + test canary prima dell'effettiva eliminazione tramite GitHub Actions.
+            </p>
+</article>
+<article class="challenge-card challenge-runtime">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-volume-x"></use></svg></span></span>
+<h3>Condizioni di gara della pipeline audio</h3>
+</div>
+<p>
+              L'audio è stata la parte tecnica più difficile. Molte parti mobili: motore prioritario, cervello audio, router degli altoparlanti, orchestratore TTS, Cast Flow, logica di ripresa. Ogni parte aveva condizioni di gara, ogni combinazione di condizioni aggiungeva un caso limite.
+            </p>
+<p>
+<strong>Un esempio</strong>: briefing alle 3:20 del mattino.
+Pipeline: API Gemini (timeout di 15 secondi) → Testo TTS → priorità 55 &gt; radio 50 → interruzione audio cerebrale della radio → Trasmetti TTS → riprendi la radio.
+Ogni passo potrebbe fallire.
+Crash: <code>setTimeout</code>, Limite di 200 caratteri Google Cast, conflitto di priorità, ripresa della race condition. Cane da guardia
+              <code>sh_audio_pipeline_watchdog_v1</code> monitora lo stato bloccato ogni minuto.
+            </p>
+</article>
+<article class="challenge-card challenge-data">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-ghost"></use></svg></span></span>
+<h3>Valori fantasma: variabili che mentono</h3>
+</div>
+<p>
+<code>sh_audio_request</code> è rimasto al valore
+              <code>tts_kitchen_alert</code> durante la notte.
+Al mattino la radio non si avviava perché il cervello audio vedeva una richiesta pendente – variabile
+              <strong>rivendicò uno status che non reggeva più</strong>.
+            </p>
+<p>
+              La soluzione è risultata <code>sh_state_validator_v1</code>, che confronta lo stato atteso e quello reale. Primo rilevamento della produzione:
+              <code>priority_active=tts</code> fantasma che ha bloccato la conduttura audio dalle 00:40 fino al mattino. Senza un validatore, ciò si ripeterebbe indefinitamente.
+            </p>
+</article>
+<article class="challenge-card challenge-data">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-tornado"></use></svg></span></span>
+<h3>Gli argomenti[] di Flow non sono affidabili</h3>
+</div>
+<p>
+              Homey Flow può passare un argomento a uno script tramite "<em>con l'argomento</em>Ma <code>args[]</code> non è affidabile: a volte manca il valore, competizione tra trigger e script.
+            </p>
+<p>
+              Oggi tutte le mod passano attraverso variabili Homey Logic dedicate (<code>sh_kitchen_mode</code>, <code>sh_energy_mode</code>), non tramite args. Flusso sempre: <em>imposta variabile → esegui script</em>.
+Lo script legge da una variabile, non da un argomento.
+            </p>
+</article>
+<article class="challenge-card challenge-data">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-ban"></use></svg></span></span>
+<h3>Alcune API semplicemente non sono disponibili</h3>
+</div>
+<p>
+<code>Homey.notifications.createNotification</code> esiste nella documentazione, sembra funzionale, ma in un contesto HomeyScript
+              <strong>non è disponibile</strong>. Risultato: <code>is not a function</code>.
+19 errori silenziosi in un solo giorno nel registro prima di trovare questo.
+            </p>
+<p>
+              Stesso modello: <code>castRadio</code> (solo flusso), alcuni
+              <code>Homey.scripts</code> chiamando. Regola: l'API deve
+              <strong>verificare empiricamente</strong> nella sandbox, non fidarti della documentazione. I fallimenti silenziosi sono la categoria peggiore.
+            </p>
+</article>
+</div>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Immagine ingrandita" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Chiudi lo zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME · Realizzato con ❤️ e pensando prima alla sceneggiatura.</p>
+<p class="footer-meta">Presentazione pubblica · nessuna chiave API · nessun IP locale · nessun controllo da qui.</p>
+<p class="footer-meta"><a href="/it/smart-home/technicka-mapa.html">Mappa tecnica →</a> · <a href="/it/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

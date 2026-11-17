@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Il giorno in cui la casa cominciò ad osservare se stessa.
+Tre correzioni e un nuovo livello: descritti senza abbreviazioni tecniche." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Il giorno in cui la casa cominciò ad osservarsi |
+CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Il giorno in cui la casa cominciò ad osservarsi |
+CASA INTELLIGENTE" property="og:title"/>
+<meta content="Il giorno in cui la casa cominciò ad osservare se stessa.
+Tre correzioni e un nuovo livello: descritti senza abbreviazioni tecniche." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/posts/dum-pozoruje-sam-sebe.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/posts/dum-pozoruje-sam-sebe.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/dum-pozoruje-sam-sebe.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/dum-pozoruje-sam-sebe.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/dum-pozoruje-sam-sebe.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/posts/dum-pozoruje-sam-sebe.html#main">Vai al contenuto</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/it/smart-home/blog.html">← Torniamo al blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Ritorno dall'articolo" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a></div><div class="visitor-links"><a href="/it/smart-home/">Introduzione Casa intelligente</a><a href="/it/smart-home/blog.html">Tutte le note</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/posts/dum-pozoruje-sam-sebe.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/posts/dum-pozoruje-sam-sebe.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/posts/dum-pozoruje-sam-sebe.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/it/smart-home/blog.html">← Tutti i post</a>
+<article class="post-content">
+<p class="post-meta">2 maggio 2026 · Intelligenza di sistema · 8 minuti di lettura</p>
+<h1>Il giorno in cui la casa cominciò ad osservare se stessa</h1>
+<p>
+          Questo post non utilizza intenzionalmente abbreviazioni tecniche.
+Descrive il giorno in cui abbiamo corretto due vecchi bug nel sistema e aggiunto un terzo livello che consente alla casa di capire cosa sta succedendo e di vigilare su se stessa.
+        </p>
+<p>
+          Se sei un profano della casa intelligente e vuoi sapere come si presenta un tipico "giorno nella vita" di una casa intelligente, eccolo.
+        </p>
+<h2>1. Il mistero delle luci notturne</h2>
+<p>
+          Si è iniziato questa mattina con un resoconto: <em>"La striscia LED e la lampada da scrivania sono rimaste accese tutta la notte anche se ho premuto il pulsante di sospensione."</em>
+</p>
+<p>
+          C'è un piccolo programma in esecuzione in casa che si sveglia ogni mezz'ora e cerca di prevedere di cosa avrà bisogno la casa.
+Per esempio <em>"tra 20 minuti sarà buio, chiudete le persiane esterne a ¾"</em>.
+Ma questo programma aveva un difetto nascosto: quando pensava di averlo fatto <em>abbassare la luce al livello notturno</em>, non ha mai chiesto se l'utente stesse dormendo.
+        </p>
+<p>
+          Quindi lo script era simile a questo:
+        </p>
+<ul>
+<li>21:14: l'utente preme la modalità di sospensione e le luci si spengono.</li>
+<li>23:00 — il ciclo automatico si attiva. Decide: "è buio + c'è qualcuno in casa → accendi la luce notturna touch." La lampada si accende.</li>
+<li>00:30 — lo stesso.
+La lampada continua a brillare.</li>
+<li>Al mattino: l'utente guarda perché è rimasto acceso tutta la notte.</li>
+</ul>
+<p>
+<strong>Correzione:</strong> abbiamo aggiunto una singola condizione al programma: <em>"se l'utente dorme, non accendere nulla, torna a farlo domattina."</em> Tre righe di codice, ma impediscono un errore di regressione.
+Abbiamo applicato lo stesso principio a un altro luogo in cui hanno avuto luogo processi decisionali simili (logica di salvataggio per situazioni in cui i sensori segnalano movimento in una stanza buia).
+        </p>
+<p>
+          La notte successiva, nulla si accende da solo.
+Controlleremo il registro domattina.
+        </p>
+<h2>2. Una routine mattutina che non è iniziata</h2>
+<p>
+          Questa mattina (sabato, sveglia impostata alle 5:15), l'utente si è alzato intorno alle 3:08, prima che suonasse la sveglia.
+Camminò tra la camera da letto, il bagno e la cucina. <strong>Nessuna luce, nessuna radio, nessun briefing.</strong>
+          Ha solo illuminato in modo reattivo la provenienza dell'utente, e questo non è sufficiente.
+La routine mattutina era accendere l'audio in bagno, aprire le persiane, riprodurre il briefing meteorologico, aggiungere le notizie.
+Non è successo niente di tutto ciò.
+        </p>
+<p>
+          Perché?
+Il programma responsabile della routine mattutina può essere avviato in due modi:
+        </p>
+<ol>
+<li><strong>Sveglia</strong> - il telefono squilla, Homey risponde, la routine se ne va.</li>
+<li><strong>Doppio movimento in una zona entro 3 minuti</strong> — protezione anti-errore in modo che un viaggio in bagno di notte non attivi la routine come un falso allarme.</li>
+</ol>
+<p>
+          Entrambi hanno fallito stamattina:
+        </p>
+<ul>
+<li>La sveglia non avrebbe dovuto suonare fino alle 5:15, l'utente si era alzato 2 ore prima.</li>
+<li>Durante il passaggio da una zona all'altra, i sensori si sono attivati <em>uno</em> movimento in camera da letto, <em>uno</em> nel bagno <em>uno</em> in cucina, ma mai <em>due</em> nello stesso.
+Pertanto, il cancello antierrore non ha aperto il percorso.</li>
+</ul>
+<p>
+          Nel frattempo, però, nel sistema c'era un altro programma che sapeva esattamente questo. Monitora 4 zone contemporaneamente e valuta che l'utente è "probabilmente sveglio, multizona, con elevata sicurezza". <strong>Ma la routine mattutina non ha ascoltato quel segnale.</strong>
+</p>
+<p>
+<strong>Correzione:</strong> abbiamo aggiunto un terzo percorso di lancio:
+        </p>
+<blockquote>
+<p>
+<em>Se il rilevatore di sveglia indipendente segnala "forte sì" in due o più zone e sono trascorsi almeno 10 minuti dal primo movimento registrato, esegui la routine anche senza sveglia, anche senza doppio movimento in una zona.</em>
+</p>
+</blockquote>
+<p>
+          I 10 minuti sono una pausa intenzionale.
+Filtra i brevi viaggi in bagno durante la notte (dove l'utente attraversa 2 zone ma torna a letto in 30 secondi).
+Il vero risveglio richiede più tempo: una persona beve, urina, accende il bollitore, va in bagno.
+Dopo 10 minuti di movimento multizona la certezza è sufficiente.
+        </p>
+<h2>3. Una casa che osserva se stessa</h2>
+<p>
+          Questo è il cambiamento più grande della giornata.
+Abbiamo aggiunto due nuovi livelli "osservatore" al sistema, che a loro volta <strong>non controllano nulla</strong> - seguono semplicemente quello che sta succedendo e lo mostrano in un formato semplice.
+        </p>
+<h3>3.1 Livello uno: cosa sta succedendo?</h3>
+<p>
+          Fino ad ora, il sistema aveva molti indicatori separati: <em>mentre si dorme, a casa, al mattino, durante la riproduzione audio, con una scena attiva...</em>. Ma nessuno di loro ha detto in una frase, <strong>in quale modalità si trova attualmente la casa</strong>.
+        </p>
+<p>
+          Il nuovo livello legge questi sette puntatori e valuta una di queste situazioni ogni minuto:
+        </p>
+<ul>
+<li><strong>assente_confermato</strong> - non c'è nessuno in casa</li>
+<li><strong>dormire</strong> — l'utente dorme tranquillo</li>
+<li><strong>night_movimento</strong> — dormendo, ma attualmente qualcuno sta andando (WC, cucina per l'acqua)</li>
+<li><strong>allarme_sveglia</strong> - la sveglia ha appena suonato</li>
+<li><strong>mattina_sveglia</strong> — l'utente si è effettivamente svegliato e sta camminando tra le stanze</li>
+<li><strong>soft_morning_start</strong> – probabilmente al risveglio, ma non ancora con assoluta certezza</li>
+<li><strong>lasciando_casa</strong> - la porta d'ingresso si è aperta, qualcuno se ne va</li>
+<li><strong>arrivando_a casa</strong> - qualcuno è appena tornato</li>
+<li><strong>inattivo_casa</strong> – a casa, ma rilassati, non succede nulla</li>
+</ul>
+<p>
+          Ogni preventivo ha il suo <strong>punteggio di certezza da 0 a 100</strong>.
+Se il punteggio non arriva a 85, il livello non dice "è mattina, fai routine" a nessuno.
+Scrive semplicemente a se stessa "Penso che sia mattina, 75 su 100 sicuro" - e aspetta finché non ne è più sicura.
+        </p>
+<p>
+          Inoltre, il livello memorizza la cronologia delle ultime 20 modifiche.
+Quando apro il telefono la mattina, posso vedere: <em>"alle 23:30 ha dormito, alle 3:08 ha iniziato il movimento_notturno, alle 3:14 è passato a soft_morning_start, alle 3:42 mattina_sveglia."</em> Quindi ho una cronologia di una giornata reale: nessuna telecamera, nessuna registrazione, solo quello che vedono i sensori comunque.
+        </p>
+<h3>3.2 Livello due: una pattuglia che controlla se stessa</h3>
+<p>
+          Il secondo nuovo livello è <strong>guardiano della salute del sistema</strong>.
+Funziona ogni 5 minuti e controlla 5 cose:
+        </p>
+<ol>
+<li><strong>Tutti i programmi chiave sono in esecuzione?</strong> Se si suppone che qualcosa venga eseguito ogni minuto e l'ultima esecuzione è avvenuta 8 minuti fa, c'è un errore da qualche parte.</li>
+<li><strong>Ci sono vecchi valori bloccati da qualche parte?</strong> A volte capita che qualche indicatore si blocchi in uno stato bloccato (il cosiddetto valore fantasma).
+La guardia sa come trovare questi fantasmi e, in casi chiaramente sicuri, li cancella lui stesso.</li>
+<li><strong>Quanti errori si sono verificati negli ultimi 60 minuti?</strong>
+            Più di 5 = avviso, più di 20 = critico.</li>
+<li><strong>La connessione a Fogli Google funziona?</strong> Dove il sistema scrive tutta la storia.</li>
+<li><strong>Aggiornamento del livello "Cosa sta succedendo"?</strong></li>
+</ol>
+<p>
+          Se la guardia rileva un errore critico due volte di seguito, invierà una notifica push al mio telefono (tramite un bridge esistente - vedi post precedenti).
+Ma deve essere prima del primo messaggio di allarme <strong>due fideiussioni di seguito</strong>
+          - un falso rilevamento non mi sveglierà di notte.
+        </p>
+<p>
+          Stato attuale del tutore: <code>ok</code>. Nessun problema.
+        </p>
+<h3>3.3 Livello tre: interruttore di emergenza</h3>
+<p>
+          Questa è una novità che dovrebbe esistere in ogni sistema autonomo:
+          <strong>un unico interruttore che ferma immediatamente tutto in automatico</strong>.
+        </p>
+<p>
+          Lo chiamiamo <em>interruttore di interruzione</em> ed è una variabile ordinaria
+          <code>sh_kill_switch</code> con due stati: <code>no</code> (impostazione predefinita, il sistema funziona normalmente) o <code>yes</code> (pausa). Quando lo passi a <code>yes</code>, i sei programmi chiave si fermeranno proprio all'inizio al prossimo avvio, ritorno <code>HALTED</code>
+          e non fanno nulla.
+        </p>
+<p>
+          A cosa serve?
+        </p>
+<ul>
+<li>Sto per cambiare qualcosa e non voglio che il sistema me lo dica.</li>
+<li>Qualcuno viene a trovarci e vuole provare i controlli manualmente, senza sorprese.</li>
+<li>È successo qualcosa di inaspettato e voglio mettere in pausa tutto ciò che è automatico finché non avrò indagato.</li>
+<li>Una pausa mensile del sistema: dieci minuti per verificare che i comandi fisici funzionino ancora senza il software.</li>
+</ul>
+<p>
+          Nessun controllo dovrebbe mai continuare quando io, come operatore umano, dico "stop".
+Il kill switch offre questa capacità, al livello di un singolo interruttore nell'app Homey.
+        </p>
+<h2>Cosa significa per la vita di tutti i giorni</h2>
+<p>
+          Per gli utenti la vita reale in casa non cambia molto — <em>per lo più</em>. Ma tre cose che sentirai nelle situazioni limite sono cambiate:
+        </p>
+<ol>
+<li><strong>Di notte non si accende nulla da solo.</strong> Quel vecchio insetto era disgustoso, se n'è andato.</li>
+<li><strong>Se ti alzi prima della sveglia, la casa lo saprà.</strong> Dopo 10 minuti di funzionamento multizona, avvia la routine mattutina anche senza segnale di allarme.</li>
+<li><strong>Quando qualcosa smetterà di funzionare, lo saprai.</strong> Sia nel registro (tracciabile) che direttamente tramite notifica (critico).</li>
+</ol>
+<p>
+          E quarto: hai un interruttore di emergenza in mano.
+Puoi disattivare tutto ciò con un interruttore della variabile.
+Non riavviare la casa, non rimboccarsi le maniche.
+        </p>
+<h2>Cos'altro è previsto</h2>
+<ul>
+<li><strong>Espansione della pattuglia</strong> anche per altri programmi (riscaldamento, predizione, validatore di stato sono già inclusi, via via si espanderanno ulteriormente).</li>
+<li><strong>Coda di approvazione</strong> – se io, come IA, suggerisco un cambio di impostazione, per ora devo farlo subito.
+L'obiettivo è che le proposte vadano in coda, le hai guardate sul cellulare, cliccate
+            <em>approvare</em> o <em>rifiutare</em>, e solo allora sarebbe stato eseguito.</li>
+<li><strong>Modalità di funzionamento a secco</strong> - una modalità in cui il sistema scrive cosa farebbe, ma in realtà non lo fa.
+Utile quando si testano nuove routine.</li>
+</ul>
+<h2>Tre brevi domande e risposte</h2>
+<p>
+<strong>Che cos'è un "punteggio di certezza di 85 su 100"?</strong><br/>
+          Un sensore = bassa certezza.
+Più sensori dalla stessa zona = più sicurezza.
+Sensori da tre zone + tempo trascorso = ancora più alto.
+Quando la somma è ≥ 85 il sistema dichiara confermata la situazione.
+L'Under 85 aspetta.
+        </p>
+<p>
+<strong>Perché aspettare 10 minuti prima di iniziare la routine mattutina senza sveglia?</strong><br/>
+          Filtra per viaggi notturni.
+Un breve viaggio in bagno dura 1-3 minuti.
+Il vero risveglio (alzarsi, bagno, cucina, tè) richiede più tempo.
+10 minuti sono un compromesso: abbastanza lunghi da filtrare i viaggi notturni, abbastanza brevi da rendere utile la routine mattutina.
+        </p>
+<p>
+<strong>Il sistema mi invierà un SMS se qualcosa non funziona?</strong><br/>
+          Nessun SMS: invia notifiche all'app Homey sul tuo telefono.
+Funziona altrettanto velocemente e non costa nulla.
+        </p>
+<h2>Conclusione</h2>
+<p>
+          Una casa intelligente non significa solo accendere le luci quando arrivi.
+Riguarda quella casa <strong>sa cosa sta succedendo in questo momento</strong> e ha un modo di dirtelo.
+E, cosa ancora più importante, che lo sappia <em>dalle prove</em>, non da supposizioni, e che tu, come operatore umano, hai l'ultima parola.
+        </p>
+<p>
+          Se questo post ti è stato più comprensibile delle pagine precedenti, fammelo sapere.
+I futuri post del blog saranno simili: argomenti tecnici, ma raccontati normalmente.
+        </p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME · Realizzato con ❤️ e pensando prima alla sceneggiatura.</p>
+</div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

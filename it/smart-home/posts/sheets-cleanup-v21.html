@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Una grande pulizia dei livelli di Fogli Google.
+28 fogli → 25, endpoint dashboard fissi, sleep_window guard, score consumer.
+Un lunedì dopo una routine mattutina interrotta." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Pulizia dei fogli + correzione del dashboard: il giorno dopo l'interruzione della routine |
+CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Pulizia dei fogli + correzione del dashboard: il giorno dopo l'interruzione della routine |
+CASA INTELLIGENTE" property="og:title"/>
+<meta content="Una grande pulizia dei livelli di Fogli Google.
+28 fogli → 25, endpoint dashboard fissi, sleep_window guard, score consumer.
+Un lunedì dopo una routine mattutina interrotta." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/posts/sheets-cleanup-v21.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/posts/sheets-cleanup-v21.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/sheets-cleanup-v21.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/sheets-cleanup-v21.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/sheets-cleanup-v21.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/posts/sheets-cleanup-v21.html#main">Vai al contenuto</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/it/smart-home/blog.html">← Torniamo al blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Ritorno dall'articolo" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a></div><div class="visitor-links"><a href="/it/smart-home/">Introduzione Casa intelligente</a><a href="/it/smart-home/blog.html">Tutte le note</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/posts/sheets-cleanup-v21.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/posts/sheets-cleanup-v21.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/posts/sheets-cleanup-v21.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/it/smart-home/blog.html">← Tutti i post</a>
+<article class="post-content">
+<p class="post-meta">5 maggio 2026 · Infrastrutture · 10 minuti di lettura</p>
+<h1>Pulizia dei livelli di Big Sheets: 28 fogli, 6 commit, un giorno</h1>
+<p>
+          Lunedì 5 maggio la routine mattutina non è iniziata affatto.
+Invece di limitarmi a risolvere quel particolare bug, ho aperto l'intero livello di Fogli Google e ho guardato cosa era effettivamente memorizzato al suo interno.
+La scoperta è stata spiacevole: <strong>metà dei fogli erano in codice morto</strong> - o nessuno li ha compilati, oppure i dati sono volati altrove rispetto a dove avrebbero dovuto andare.
+        </p>
+<p>
+          La giornata si è conclusa con 8 commit, Apps Script v18 → v21, grafici della dashboard corretti e 3 fogli eliminati da Fogli.
+Ecco cosa è stato rivelato e risolto.
+        </p>
+<h2>1. Routine mattutina: sleep_window ha bloccato tutto</h2>
+<p>
+          Tutto è iniziato con una semplice denuncia: <em>"la routine mattutina non è iniziata affatto oggi"</em>.
+Sveglia alle 3:12, sensore di movimento in camera da letto alle 3:16:23, ma lo script cerebrale mattutino è appena stato registrato <code>waiting_2nd_motion</code> e sono rimasto bloccato in silenzio.
+        </p>
+<p>
+          Causa principale: variabile <code>sh_sleep_window_until_ts</code> era impostato su <code>2026-05-05T06:37:51Z</code> (= 08:37 ora locale) — 8 ore da quando hai premuto il pulsante di sospensione a tarda notte. Sega circolare mattutina per spazi aperti
+          <code>spim=no, sleep_window=yes</code> e tutto è stato bloccato da Reason=
+          <code>sleep_window_guard</code>.
+Non è mai stato cancellato al risveglio dell'utente: nessuno aveva la responsabilità di cancellare quel flag.
+        </p>
+<p>
+          Secondo problema: le stesse luci che si accendono da sole di notte <em>anche se</em>
+          finestra_sonno attiva.
+Investigazione: <code>sh_light_router_v1</code> ho appena controllato <code>sh_spim === 'yes'</code>, NO <code>sh_sleep_window_until_ts</code>.
+Open_space_router aveva questa difesa dalla versione 3.5, ma light_router no.
+Quando <code>sh_spim</code> lampeggiava <code>no</code> (a causa del reset di time_sync_guard), la richiesta di luce serale è passata e Sektorka1 si è acceso alle 22:36.
+        </p>
+<p><strong>Correzione:</strong></p>
+<ul>
+<li><code>sh_wake_confirm_v1</code> — quando la conferma della sveglia multizona conferma la sveglia (<code>sh_jsem_vstal=strong_yes</code>), finestra centrale trasparente TS. Un'unica fonte di verità, non per router.</li>
+<li><code>sh_light_router_v1</code> v1.15 — parità con il router open_space.
+Blocca SLEEP_BLOCKED_REQUESTS anche se sleep_window attivo + strong_yes override.</li>
+</ul>
+<h2>2. Esisteva un produttore di colonne sonore, ma nessuno lo leggeva</h2>
+<p>
+          Ho consegnato ieri <code>sh_morning_score_v1</code> — un motore adattivo che valuta 10 sensori ogni minuto e calcola un punteggio mattutino 0-100 + macchina a stati (night_sleep, pre_wakeup, wakeup_candidate, Morning_confirmed, …).
+Cron 1×/min eseguito, variabili aggiornate, ma... <strong>nessuno lo ha letto</strong>.
+Brain ha deciso in base al proprio movimento di 180 di rimbalzare e ha ignorato il punteggio.
+        </p>
+<p>
+          Ecco perché la routine mattutina non è iniziata.
+Il punteggio direbbe <code>morning_confirmed</code>
+          alle 03:18 (dopo wake_confirm strong_yes), ma il cervello non ha ricevuto alcun segnale per la riattivazione. Movimento in camera singola → wait_2nd_motion → finestra 180s → nessun secondo movimento in camera da letto (l'utente è andato in bagno) → il rimbalzo non è mai scaduto.
+        </p>
+<p><strong>Correzione:</strong></p>
+<ul>
+<li><code>sh_morning_brain_v1</code> – ha aggiunto <code>scoreBypass</code> parallelo a quello esistente <code>wakeBypass</code>.
+Se
+          <code>sh_morning_state ∈ {morning_confirmed, wakeup_candidate}</code> e battito cardiaco fresco (&lt;5 min), bypass antirimbalzo.</li>
+<li><code>sh_morning_score_v1</code> v1.4 — sensibile all'allarme (probe
+          <code>Homey.alarms.getAlarms()</code>, finestra di ±30 minuti, punteggio +3), transizioni di stato registrate su EventLog, doppio registro sul nuovo foglio Cronologia dello stato del mattino (16 colonne).</li>
+</ul>
+<h2>3. Registro dei sensori: adattabilità per futuri sensori</h2>
+<p>
+          Il secondo difetto: i sensori nello script del punteggio erano nomi codificati. Nuovo sensore nella stanza = modifica del codice. PROMPT per la routine adattiva che richiedeva registri di pattern.
+        </p>
+<p><strong>Implementato:</strong></p>
+<ul>
+<li>Nuova variabile <code>sh_wakeup_sensor_registry</code> — JSON con 10 sensori, ciascuno con metadati: dispositivo, capacità, stanza, tipo, peso_mattina, peso_notte, uso_per_sveglia, affidabilità, regola, is_legacy, nota.</li>
+<li>Script del popolare <code>_create_morning_sensor_registry_vars_v1.js</code>
+          - creazione+aggiornamento idempotente.</li>
+<li>Il punteggio itera registri, voci non legacy (<code>is_legacy: false</code>) contribuiscono automaticamente con +morning_weight se il sensore è stato recentemente attivo &lt;300 s.</li>
+</ul>
+<p>
+          Flusso di lavoro per un nuovo sensore: modifica registro → aggiungi voce s <code>is_legacy:
+          false</code>, peso, <code>use_for_wakeup: 'yes'</code> → rieseguire il popolatore. Il punteggio viene utilizzato automaticamente dal successivo tick del cron.
+Nessuna modifica del codice.
+        </p>
+<h2>4. Dashboard accattivante → 404 (silenzioso)</h2>
+<p>
+          Il controllo della dashboard ha mostrato che 4 endpoint in Apps Script non esistono affatto, ma la dashboard li chiama:
+        </p>
+<pre tabindex="0"><code>?mode=lux_history       → fall-through na default filter
+?mode=battery_history    → totéž
+?mode=morning_timeline   → totéž
+?mode=diagnose           → jen v tooltip (ne fetch)</code></pre>
+<p>
+          Apps Script non ha restituito un 404: lo ha fatto <code>{rows:[]}</code> (risposta del filtro predefinita). Controllò il cruscotto <code>data.points</code> o <code>data.events</code>
+          (che non esisteva) e mostrava il messaggio "Nessun dato (esegui context_full_v1)". Sembrava un produttore rotto, ma in realtà un endpoint rotto.
+        </p>
+<p><strong>Correggi Apps Script v20:</strong> 3 nuovi endpoint:</p>
+<ul>
+<li><code>mode=lux_history&amp;hours=24</code> — Scheda Monitor Lux → <code>{points:
+          [{ts, lux_j, lux_k}]}</code></li>
+<li><code>mode=battery_history&amp;days=30</code> — Cronologia della batteria → <code>{points:
+          [{ts, device, battery}]}</code></li>
+<li><code>mode=morning_timeline&amp;days=3</code> — UNISCI Timeline dello stato mattutino + routine Rani + monitor TTS (ora filtrata 03-11 Praga) → <code>{events: [...]}</code>
+          DESC ordinato, cap 500.</li>
+</ul>
+<h2>5. Foglie senza prodotto</h2>
+<p>
+          Strati dei fogli di audit: 28 fogli in totale, ma la realtà:
+        </p>
+<ul>
+<li><strong>12 attivi</strong> — registro giornaliero, letture del dashboard (EventLog, Zone Activity, TTS Monitor, FlowLog, EnergyLog, …)</li>
+<li><strong>4 periodico</strong> — dipende dagli eventi (Daily Report, Gemini Briefing, EnergySummary, Ranni_Rutina_Budik)</li>
+<li><strong>6 instradamento del codice morto</strong> — i dati vengono inviati a EventLog anziché a un foglio dedicato (integrità del sistema, risultati dei test, debug audio, azioni manuali, registri, diagnostica Gemini)</li>
+<li><strong>5 senza produrre affatto</strong> — 0 righe, ma Apps Script dispone di gestori per esse (AI Tasks, ExceptionLog, Config, SanityLog, DataQualityReport)</li>
+<li><strong>1 sta aspettando</strong> — Cronologia dello stato mattutino (distribuzione v20)</li>
+</ul>
+<p>
+          Hanno 5 foglie senza prodotto <strong>2 valore diagnostico</strong> (ExceptionLog, SanityLog), 3 sono inutili (AI Tasks, Config, DataQualityReport).
+        </p>
+<h3>ExceptionLog: l'infrastruttura funziona, solo gli script non falliscono</h3>
+<p>
+          L'elenco ExceptionLog aveva 0 righe, ma ha più di 24 script <code>logException()</code>
+          nei blocchi di cattura.
+Test: POST direttamente tramite API → la riga è stata scritta → infrastruttura OK.
+Lo stato vuoto riflette semplicemente la stabilità della produzione: gli script non falliscono abbastanza spesso da riempire il foglio.
+Rimasti invariati, in attesa della prima vera eccezione.
+        </p>
+<h3>SanityLog: patch di validazione per la registrazione per elemento</h3>
+<p>
+          SanityLog aveva 0 righe e 0 produttori. <code>sh_state_validator_v1</code>
+          l'aggregato sta già registrando <code>validator_issues</code> evento in EventLog, ma i dettagli per elemento (deriva, bloccato, conflitto) non sono scritti da nessuna parte.
+        </p>
+<p>
+          Patch v1.x: dopo il registro di riepilogo EventLog esistente, registra due righe per elemento in SanityLog (warning_type, gravità, zona, dettagli, dettagli_json). Bug E fantasma (<code>priority_active=light</code> senza richiesta) verranno catturati al successivo ciclo sporco.
+        </p>
+<h3>3 fogli cancellati</h3>
+<p>Apps Script v21 rimuove:</p>
+<ul>
+<li><strong>Compiti dell'intelligenza artificiale</strong> - tracker del flusso di lavoro, il dashboard legge 0 righe ma mai.</li>
+<li><strong>Configurazione</strong> - configurazione centralizzata mai utilizzata.</li>
+<li><strong>Rapporto sulla qualità dei dati</strong> — istantanea giornaliera sulla qualità dei dati energetici, non utilizzata.</li>
+</ul>
+<p>
+          Eliminato da Apps Script: <code>SHEETS</code> voci <code>MAX_ROWS</code>,
+          <code>ensureAllSheets_</code> headerMap, costanti delle intestazioni, <code>mode=tasks</code>
+          + <code>mode=config</code> endpoint, <code>event_type='ai_task'</code> Gestore POST.
+Dall'eliminazione manuale di Fogli Google tramite clic con il pulsante destro del mouse.
+Pannello Attività AI su 5 dashboard <code>display:none</code> + <code>loadAITasks()</code> stub di nessuna operazione.
+        </p>
+<h2>6. DeviceInventory: mai inviato dal produttore</h2>
+<p>
+          L'elenco DeviceInventory avrebbe dovuto essere aggiornato ogni 6 ore tramite flusso cron
+          <code>SH – Energy – Device Inventory Cron 6h</code>.
+La sceneggiatura <code>sh_device_
+          inventory_guard_v1</code> è stato eseguito, i Vars sono stati aggiornati, ma il foglio è rimasto in piedi per 5 giorni.
+        </p>
+<p>
+          Motivo: lo script aggiorna semplicemente le variabili interne (<code>sh_device_measurement_registry_json</code>
+          ecc.) ma <strong>non pubblicare mai su Apps Script</strong>.
+Apps Script ha un gestore per <code>mode=device_inventory</code> POST dalla v18 ma nessun produttore lo ha chiamato.
+        </p>
+<p>
+          Correzione v1.1: aggiunto registro POST "fire-and-forget" → Apps Script alla fine dello script <code>handleDeviceInventory_</code> si trasforma in righe batch.
+Dopo la distribuzione, l'elenco ha ricevuto uno snapshot di 82 dispositivi.
+        </p>
+<h2>7. Instradamento del codice morto: una scoperta storica</h2>
+<p>
+          Bug architettonico chiave: <code>logEvent()</code> lib sta spingendo
+          <code>sheet: 'EventLog'</code> nel carico utile.
+Script dell'app <code>routeEvent_</code>
+          controllare <code>p.sheet</code> come PRIMO - se 'EventLog', instrada lì e ritorna. <code>event_type</code> il routing per l'integrità del sistema, le azioni manuali, il debug audio, i risultati dei test e la diagnostica Gemini non verrà MAI raggiunto.
+        </p>
+<p>
+          Cioè questi 6 fogli sono stagnanti per più di 3 settimane non perché i produttori non lavorino, ma perché i dati invece volano nell'EventLog.
+I dati non vanno persi (sono nell'EventLog), solo nel foglio "non ottimale".
+        </p>
+<p>
+          Decisione pragmatica: <strong>lasciare come riserva storica</strong>. Fogli conservati, il dashboard non li legge, verrebbero cancellati solo se facessero confusione. Gestori Apps Script conservati: se mai volessi effettuare il fan-out (scrivere su EventLog E sul foglio dedicato), si tratta di una patch di 3 righe per foglio.
+        </p>
+<h2>Stato finale</h2>
+<p>
+<strong>25 fogli</strong> (da 28 nella v20), <strong>3 cancellato</strong>, 6 commit, distribuzione senza incidenti (un arresto anomalo dell'app HomeyScript + ripristino: aumento della memoria di circa 95 MB/limite di 125, normale entro la latitudine operativa odierna).
+        </p>
+<p>
+          Audit: esistono tutti i fogli previsti, nessuna garanzia.
+SanityLog + ExceptionLog pronti.
+Cronologia dello stato del mattino in attesa della prima transizione di stato.
+I dashboard Lux ​​+ Batteria + Timeline mattutina hanno iniziato a mostrare dati reali dopo la distribuzione della v21.
+        </p>
+<h2>Lezioni</h2>
+<p>
+<strong>1. La componente riservata al solo produttore è un allarme rosso.</strong> Se qualcuno produce "X produce dati, Y li consuma" e Y non viene mai rifornito, il sistema ha una tendenza al fallimento silenzioso a lungo termine. <code>sh_morning_score_v1</code>
+          ha corso per un mese senza consumatore e a nessuno importava finché la routine mattutina non è crollata.
+        </p>
+<p>
+<strong>2. I valori predefiniti nell'API lib sono un bug dell'architettura.</strong>
+<code>sheet: payload.sheet || 'EventLog'</code> sembrava un default sensato. È stato davvero impegnativo <em>tutti loro</em> eventi event_type in un foglio e percorsi morti sono stati creati nell'arco di sei mesi senza essere rilevati.
+        </p>
+<p>
+<strong>3. Elimina solo ciò che sei sicuro che non manchi nessuno.</strong>
+          Su 5 fogli senza produzione, 2 hanno un valore diagnostico (ExceptionLog, SanityLog).
+3 sono inutili.
+6 fogli di codici morti hanno valore di archivio: i dati non vengono persi, ma solo in un'altra posizione.
+Cancellazione conservativa, audit post-distribuzione obbligatorio.
+        </p>
+<p>
+          A proposito, la routine del lunedì mattina della prossima settimana verrà già eseguita con una pipeline completa: punteggio sensibile all'allarme → registro di transizione dello stato → scoreBypass nel cervello → rilevamento automatico del registro + rilevamento fantasma Bug E tramite SanityLog. Se qualcosa fallisce, EventLog + Morning State Timeline + ExceptionLog forniranno una sequenza temporale dettagliata dei motivi.
+        </p>
+</article>
+</div>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME</p><p class="footer-meta"><a href="/it/smart-home/blog.html">Tutte le note</a> · <a href="/it/">Cestovatel69.cz</a></p></div></footer>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

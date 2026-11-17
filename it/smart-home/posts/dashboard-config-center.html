@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content='15 maggio 2026 sera: 8 ondate di stabilizzazione del cruscotto in un giorno.
+Protezione enumerazione canonica, ripristino meteo, Centro di configurazione con scritture convalidate dallo schema (oltre 128 record di schema), otturatore come la verità PURE LUX.
+Dashboard ha smesso di scrivere "casa"/"fuori casa" e ha iniziato a rifiutare 9 valori letterali proibiti nel percorso di scrittura.' name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Centro configurazione dashboard + Ripristino meteo: 8 onde in un giorno |
+CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Centro configurazione dashboard + Ripristino meteo: 8 onde in un giorno |
+CASA INTELLIGENTE" property="og:title"/>
+<meta content='15 maggio 2026 sera: 8 ondate di stabilizzazione del cruscotto in un giorno.
+Protezione enumerazione canonica, ripristino meteo, Centro di configurazione con scritture convalidate dallo schema (oltre 128 record di schema), otturatore come la verità PURE LUX.
+Dashboard ha smesso di scrivere "casa"/"fuori casa" e ha iniziato a rifiutare 9 valori letterali proibiti nel percorso di scrittura.' property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/posts/dashboard-config-center.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/posts/dashboard-config-center.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/dashboard-config-center.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/dashboard-config-center.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/dashboard-config-center.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/posts/dashboard-config-center.html#main">Vai al contenuto</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/it/smart-home/blog.html">← Torniamo al blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Ritorno dall'articolo" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a></div><div class="visitor-links"><a href="/it/smart-home/">Introduzione Casa intelligente</a><a href="/it/smart-home/blog.html">Tutte le note</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/posts/dashboard-config-center.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/posts/dashboard-config-center.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/posts/dashboard-config-center.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/it/smart-home/blog.html">← Tutti i post</a>
+<article class="post-content">
+<p class="post-meta">15 maggio 2026 · Dashboard/Centro configurazione · 6 minuti di lettura</p>
+<h1>Centro configurazione dashboard + Ripristino meteo: 8 ondate in un giorno</h1>
+<p>
+          15 maggio sera.
+Dopo la serie R2-R6A di correzioni di runtime Homey, siamo passati all'altro lato: il dashboard.
+Tre uscite, tre risoluzioni: WaveShare 10.1″ 1024×600 (RPi kiosk), notebook 14″ 1920×1080, master 32″ master 2880×1800.
+L'obiettivo: un rendering stabile, nessun pulsante di errore silenzioso e, cosa più importante <strong>nessuna voce di letterali cechi</strong> piace
+          <code>doma</code>, <code>pryc</code>, <code>ano</code> in variabili logiche.
+        </p>
+<h2>Onda 1: guardia enum canonica</h2>
+<p>
+          Prima dell'ondata 1, il dashboard poteva scrivere <code>sh_rezim_doma</code> valore
+          <code>'doma'</code>, mentre il resto del sistema (sh_morning_brain, sh_audio_brain, sh_light_router) funzionava con <code>'home'</code>.
+Discrepanza silenziosa: nessun errore, solo che l'automazione non ha fatto quello che avrebbe dovuto.
+Lo stesso con <code>'pryc'</code> contro <code>'away'</code>,
+          <code>'ano'</code> contro <code>'yes'</code>, <code>'strong_yes'</code> contro <code>'yes'</code>.
+        </p>
+<p>
+          Onda 1 aggiunta dall'aiutante <code>__CANON_ENUMS</code> direttamente in HTML.
+Davanti a tutti
+          <code>writeVar</code> la dashboard confronterà il valore con l'enum abilitata (token inglesi). Se trova un letterale ceco o <code>true</code>/<code>false</code>, blocca la scrittura e i log.
+9 letterali proibiti in totale.
+        </p>
+<h2>Onda 2A + 2B: ripristino del tempo</h2>
+<p>
+          Dopo la recente migrazione di RPi su SSD, il renderer del chiosco è tornato alla vecchia versione meteo (proxy OpenWeatherMap tramite Homey), che da allora ha smesso di funzionare.
+La diagnostica non era un codice bug: lo era <strong>regressione del canale di distribuzione</strong>.
+La ricostruzione dell'SSD ha sovrascritto il file canonico con patch con un file OWM precedente.
+        </p>
+<p>
+          Wave 2A: renderer cache-first (legge direttamente <code>sh_weather_3d_json</code>
+          da Homey Logic Vars) è stato ridistribuito su RPi tramite SSH.
+Cron rianimato Wave 2B <code>sh_weather_yr_bridge_v1</code>, che scarica yr.no JSON ogni 10 minuti e lo scrive nella stessa var. Nessuna chiave API, nessun OWM, nessun proxy hop: yr.no è gratuito e stabile.
+        </p>
+<h2>Onda 3: cieco = verità PURE LUX</h2>
+<p>
+          La tenda nella sala da pranzo aveva due condizioni contraddittorie: <code>sh_house_state</code>
+          e lusso all'aperto.
+Quando <code>sh_house_state</code> era <code>'home_normal'</code>, cortocircuitato e cieco nella parte superiore indipendentemente dal lux.
+Ma in realtà ha causato una deriva: la tenda è rimasta alzata anche di notte quando il lux era 0. Wave 3 ha eliminato quel cortocircuito.
+Ora l'unica verità è lux + isteresi (la distribuzione dell'acceleratore R3 da 5/13 è rimasta al suo posto).
+        </p>
+<h2>Onda 6: parità desktop</h2>
+<p>
+          v7_1920 (notebook) e v7_2880 (32″ master) hanno ricevuto lo stesso <code>__CANON_ENUMS</code>
+          guardia come RPi. Tre uscite, contratto di scrittura identico.
+        </p>
+<h2>Wave 4A → 4B-6 — Centro di configurazione</h2>
+<p>
+          Ecco il cambiamento più grande. Invece di ogni riquadro di configurazione con la propria logica di scrittura in linea, ha aggiunto Wave 4A <code>DASHBOARD_CONFIG_SCHEMA</code>
+          oggetto + aiutante <code>writeVarValidated(varName, value)</code>.
+Lo schema definisce per ciascuna var logica: tipo, min, max, enum, dipendenze tra campi, avvisi soft.
+        </p>
+<p>
+          Wave 4B ha gradualmente ampliato lo schema da 18 voci (4B-1) a 128+ voci (4B-6). Copre: cfg della routine mattutina (finestra di allarme, kaffe immediato, aumento del punteggio), cfg del riscaldamento (target_temp s <code>min:5</code> per protezione antigelo 7°C,
+          <code>manual_override_temp</code> s <code>min:-99</code> per sentinella), CFG audio, CFG luce, soglie di occupazione, timeout del guardiano di posto vacante, soglie di lux cieco, limiti del budget energetico, modalità del motore di scena (<code>idle, reset, romantika, relax, kino, vareni, work</code>).
+        </p>
+<p>
+<code>writeCfg</code> il dispatcher ha unificato tutti i percorsi di scrittura della configurazione. Attualmente in rodaggio <em>soft-rifiuto</em> modalità: avviso di registro, ma la scrittura viene avviata.
+Dopo un ammollo di 24 ore, passiamo all'hard-reject (true block).
+RPi sha finale:
+          <code>e3216213e4b9f73772c1a555d790cd5e411bac5b2031c290ffaf36e791bd7aec</code>.
+        </p>
+<h2>Quello che ho evitato nel processo</h2>
+<p>
+          Diagnosi errata B11: all'inizio volevo aggiungere un nuovo aiutante
+          <code>setHeatingBoost(30)</code> al cruscotto.
+Ma leggendo il sorgente live, ho scoperto che esiste già ed è cablato correttamente.
+Nessun nuovo codice, RIUTILIZZARE PRIMA, ripristinare.
+Allo stesso modo, il motore della scena: volevano offrire dashboard
+          <code>comfort</code> a <code>night</code> come ID di scena, ma il motore non li riconosce.
+Solo sette documenti d'identità.
+La quinta ondata (enumerazione delle scene domestiche) è prevista ma non stasera.
+        </p>
+<h2>E poi?</h2>
+<p>
+          Immersione notturna.
+Automatico al mattino <code>OVERNIGHT_SOAK_REPORT_2026-05-16_0600.md</code>
+          fuoco-domenica alle 06:00 Praga.
+Successivamente: inversione hard-mode Wave 4B, verifica mattutina R6A (legge EventLog per l'ultima routine mattutina), quindi R6B (cervello Gemini + battito cardiaco punteggio mattutino) e caccia principale R5 SIGABRT (~ 7-8 arresti anomali/h di base, causa principale non risolta).
+        </p>
+<p>
+          La dashboard è ora in uno stato in cui si rifiuta di scrivere sciocchezze.
+Questa è la prima pietra miliare poiché non devo monitorare manualmente i valori enum durante la revisione delle richieste pull.
+        </p>
+<p class="post-meta" style="margin-top:48px;">
+          Articoli correlati:
+          <a href="/it/smart-home/posts/r2-memory-pressure-six-live-patches.html">Pressione della memoria R2: 6 patch live (5/14)</a> ·
+          <a href="/it/smart-home/posts/sandbox-24-7-kiosk-phase-e.html">Sandbox 24 ore su 24, 7 giorni su 7 + chiosco Fase E</a> ·
+          <a href="/it/smart-home/posts/yr-single-source.html">YR: unica fonte di verità per il meteo</a>
+</p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container">
+<p>© 2026 Registro di costruzione Smart Home — Budinský Luděk. Diario tecnico di un progetto personale.</p>
+</div>
+</footer>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

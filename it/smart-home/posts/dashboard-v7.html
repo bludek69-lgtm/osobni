@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Dashboard V7: nuovo layout e controllo visivo.
+Barra laterale 240px, pillole di stato, livello CSS premium." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Dashboard V7: nuovo layout e controllo visivo |
+CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Dashboard V7: nuovo layout e controllo visivo |
+CASA INTELLIGENTE" property="og:title"/>
+<meta content="Dashboard V7: nuovo layout e controllo visivo.
+Barra laterale 240px, pillole di stato, livello CSS premium." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/posts/dashboard-v7.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/posts/dashboard-v7.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/dashboard-v7.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/dashboard-v7.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/dashboard-v7.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/posts/dashboard-v7.html#main">Vai al contenuto</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/it/smart-home/blog.html">← Torniamo al blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Ritorno dall'articolo" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a></div><div class="visitor-links"><a href="/it/smart-home/">Introduzione Casa intelligente</a><a href="/it/smart-home/blog.html">Tutte le note</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/posts/dashboard-v7.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/posts/dashboard-v7.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/posts/dashboard-v7.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/it/smart-home/blog.html">← Tutti i post</a>
+<article class="post-content">
+<p class="post-meta">26 aprile 2026 · Dashboard · 6 minuti di lettura</p>
+<h1>Dashboard V7: nuovo layout e controllo visivo</h1>
+<p>
+          Il ciclo di riprogettazione V3.7 → V4 → V5 → V6 → V7 è completo.
+Il dashboard, che oggi funziona su tre schermi (monitor da 32" 2880x1800, laptop da 14" 1920x1080 e chiosco RPi WaveShare 1024x600), ha subito sei iterazioni complete in due settimane.
+        </p>
+<p>
+          Questo post riassume cosa è cambiato, cosa ha funzionato, cosa no e perché stiamo finalmente sospendendo il lavoro della dashboard.
+        </p>
+<h2>Cambiamenti chiave nella V7</h2>
+<ul>
+<li>
+<strong>Barra laterale 240px</strong> come navigazione principale.
+Sotto i 1280px si comprime a 64px (solo icone), sotto i 768px si nasconde completamente nel menu hamburger.
+          </li>
+<li>
+<strong>5 pillole di stato nella barra in alto</strong>: MODALITÀ, SICUREZZA, ALLARME, AI, METEO.
+Ciascuno con il proprio colore di stato (verde OK / avviso giallo / allarme rosso) e un tooltip con i dettagli.
+          </li>
+<li>
+<strong>Livello CSS premium</strong> (~20KB). Carte di vetro con sfondo sfocato, bordi sfumati sottili, accenti luminosi al passaggio del mouse, tipografia uniforme su tutti e 6 i dashboard.
+          </li>
+<li>
+<strong>Serrature rigide conservate</strong>: 309+ eventi onclick, 200 flussi, 136 script. Nessun gestore JS è stato rinominato, nessun ID è stato modificato: la riprogettazione è puramente visiva.
+          </li>
+</ul>
+<h2>Tre schermi, tre varianti</h2>
+<p>
+          Architettura condivisa (stessa struttura HTML, stessi gestori JS), diverse risoluzioni e ottimizzazione per il contesto fisico:
+        </p>
+<ul>
+<li>
+<strong>2880×1800 (monitor da 32")</strong> - barra laterale completa, tutte le 14 pagine, viste dettagliate delle zone, grafici in tempo reale.
+          </li>
+<li>
+<strong>1920×1080 (computer portatile da 14")</strong> — la barra laterale si comprime a 64px sotto il punto di interruzione, il layout dà priorità alla visualizzazione giornaliera.
+          </li>
+<li>
+<strong>1024×600 (chiosco RPi)</strong> - griglia compatta a 4 colonne, 8 pagine ristrette, touch target più grandi (min 44px), nessuno stato al passaggio del mouse.
+          </li>
+</ul>
+<h2>Cosa ha funzionato</h2>
+<p>
+<strong>Convenzione <code>v5-*</code> Prefisso identificativo.</strong> Dopo la V5, abbiamo introdotto il prefisso dei nuovi componenti in base all'iterazione in cui sono stati creati.
+Con la recensione V7 si vede subito cosa è nuovo e cosa è stabile — ed è chiaro che i vecchi ID (senza prefisso) non si sovrappongono.
+        </p>
+<p>
+<strong>La matematica della shell prima dei dettagli.</strong> Abbiamo iniziato ogni iterazione calcolando il sistema a griglia (quante celle, quali punti di interruzione, come viene ridotto) PRIMA di disegnare i componenti.
+Si risparmia mezza giornata di rilavorazione.
+        </p>
+<p>
+<strong>Foglio per serrature rigide.</strong> Prima di ogni riprogettazione è stato stilato un elenco di ID e handler che NON DEVONO essere modificati.
+Quindi lo script di convalida dopo la riprogettazione passa attraverso l'HTML e confronta.
+Nessuna regressione.
+        </p>
+<h2>Cosa non ha funzionato</h2>
+<p>
+<strong>V3.7 → V4 come colpo singolo.</strong> Primo tentativo di fare un grande salto (barra laterale + barra superiore + nuova griglia + nuova tipografia) tutto in una volta.
+Il risultato non funzionava, abbiamo dovuto tornare indietro e ripetere passaggi più piccoli.
+        </p>
+<p>
+<strong>“Tutto sembra a posto in Figma.</strong> È necessario un test reale del dispositivo.
+L'RPi 1024×600 sembrava 1280×800 ok nella simulazione, ma era schiacciato verticalmente sul vero display WaveShare.
+Solo dopo il test fisico è stata creata la variante <code>smart_home_v3_rpi_1024.html</code>.
+        </p>
+<h2>Perché mettiamo in pausa la dashboard?</h2>
+<p>
+          Il cruscotto è funzionante, ha un bell'aspetto e tiene le serrature rigide.
+Il valore marginale diminuisce con ogni iterazione successiva: ulteriori aggiustamenti sono solo micro-tuning a livello delle singole pagine (onda A/B/C nel backlog).
+        </p>
+<p>
+          Nel frattempo è apparsa una priorità più alta: <strong>Guardiano del cervello V1</strong>. Un meta-livello a livello di sistema che rileva valori fantasma, convalida lo stato previsto e blocca le distribuzioni interrotte.
+Ora ha un vero valore architettonico.
+        </p>
+<blockquote>
+          Il lavoro sul dashboard è stato messo in pausa, non abbandonato.
+L'onda A/B/C rimane nel backlog per micro-iterazioni pagina per pagina se lo spazio lo consente.
+        </blockquote>
+<h2>E poi?</h2>
+<ul>
+<li>Recensione dell'immersione 24 ore di Brain Guardian</li>
+<li>Correzione della causa principale del bug E v <code>sh_priority_engine_v1</code></li>
+<li>Fase C di riscaldamento: livelli AI (preWakeBoost, WeatherAdjust, occupazioneBonus)</li>
+<li>Sostituzione Aqara P2 SNZB-04</li>
+</ul>
+<p>
+          Il registro dettagliato delle modifiche delle specifiche regole CSS e delle strutture HTML è documentazione interna: qui solo una visione di alto livello di ciò che è realmente accaduto quella settimana.
+        </p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME</p>
+<p class="footer-meta">Presentazione pubblica · nessuna chiave API · nessun IP locale.</p>
+</div>
+</footer>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

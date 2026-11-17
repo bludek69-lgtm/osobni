@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Smart sockets help monitor the consumption of specific appliances. Here I distinguish between socket metering, switching and metering in the switchboard and describe how I use their data." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Smart sockets and consumption measurement | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="Smart sockets and consumption measurement | SMART HOME" property="og:title"/>
+<meta content="Smart sockets help monitor the consumption of specific appliances. Here I distinguish between socket metering, switching and metering in the switchboard and describe how I use their data." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/zasuvky.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/zasuvky.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/zasuvky.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/zasuvky.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/zasuvky.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/zasuvky.html#main">Skip to content</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Open the menu</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/en/smart-home/">Home</a></li>
+<li><a href="/en/smart-home/prozivani.html">How it works</a></li>
+<li><a aria-current="page" class="is-active" href="/en/smart-home/zarizeni.html">Equipment</a></li>
+<li><a href="/en/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/en/smart-home/dashboard.html">Dashboard</a></li>
+<li><a href="/en/smart-home/pribeh.html">The story</a></li>
+<li><a href="/en/smart-home/blog.html">Blog</a></li>
+<li><a href="/en/smart-home/kontakt.html">About the project</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Personal website and Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a><a href="/en/smart-home/">Introduction Smart Home</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/zasuvky.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/zasuvky.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/zasuvky.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section section-hero uc-hero" id="zasuvky">
+<div class="container">
+<p class="eyebrow"><span aria-hidden="true" class="status-dot"></span>📦 Devices · Outlets and measurements</p>
+<h1 class="hero-title">Smart sockets and <span class="grad-text">consumption measurement</span></h1>
+<p class="hero-lead">Smart sockets help monitor the consumption of specific appliances. Here I distinguish between socket metering, switching and metering in the switchboard and describe how I use their data.</p><details class="visitor-technical-intro"><summary>Technical details</summary><p class="hero-lead">
+          Thirteen smart plug devices with power metering, one Z-wave dual-switch with native metering as a reserve for the heating circuit, and from May 12, 2026 also
+          <strong>Shelly Pro 3EM</strong> as the final 3-phase meter in the switchboard. Finally, it is known how much the house actually takes, plus granular per-device measurement where a socket is enough.
+        </p><div class="uc-stats">
+<div class="uc-stat"><span class="uc-stat-num">13</span><span class="uc-stat-label">Plug devices</span></div>
+<div class="uc-stat"><span class="uc-stat-num">1</span><span class="uc-stat-label">FGS-223 reserve</span></div>
+<div class="uc-stat"><span class="uc-stat-num">2</span><span class="uc-stat-label">Capabilities (W + kWh)</span></div>
+<div class="uc-stat"><span class="uc-stat-num">5 minutes</span><span class="uc-stat-label">Sample interval</span></div>
+</div></details>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">What does it do?</p>
+<h2 class="section-title">Per-device measurement as a cheap proxy</h2>
+</header>
+<div class="uc-prose">
+<p>
+            Smart plug with power metering = a classic socket that replaces the original one + measures how much the appliance takes after it. Price ~500–800 CZK, advantage: granular data per appliance. Refrigerator, computer, monitor, audio system — each has its own socket, each has its own number.
+          </p>
+<p>
+<strong>Capabilities API</strong> via Homey:
+            <code>onoff</code> (boolean — control),
+            <code>measure_power</code> (W — real-time current),
+            <code>meter_power</code> (kWh — cumulative counter),
+            <code>measure_voltage</code> (V — diagnosis),
+            <code>measure_current</code> (A — diagnosis).
+          </p>
+<p>
+<strong>Measurement is passive</strong> — flow trigger on change, the sampler script iterates devices every 5 minutes and logs the values in the EventLog. From this, the daily integration (∫ W dt) gives kWh per device. Plus cumulative counter <code>meter_power</code>
+            refines through restarts (the driver remembers).
+          </p>
+</div>
+</div>
+</section>
+<!-- ROLE -->
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Use-cases</p>
+<h2 class="section-title">Where measurement comes in handy</h2>
+<p class="section-lead">Not all sockets are just for stats.</p>
+</header>
+<ol class="uc-timeline">
+<li class="uc-stage">
+<span class="uc-stage-time">Continuous</span>
+<h3>Energy tracking</h3>
+<p>
+              Refrigerator, freezer, computer idle — continuous baseline. From the daily integral, you can see if there is any hidden drain (plug on but no one uses it invisibly → free 50 W per day).
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">Auto on/off</span>
+<h3>Schedule-based</h3>
+<p>
+              Some appliances have a schedule — for example, a washing machine "auto-start at 10:00 p.m. (low tariff)". Robot vacuum cleaner "at 14:00 during the week when no one is at home". Toggle over <code>onoff</code>
+              capability + schedule var.
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">Remote</span>
+<h3>Remote control</h3>
+<p>
+              From the dashboard or mobile app — turn off the PC remotely after work, check if you forgot the iron. Combination with motion (iron + 0 motion 1 h → auto-off) in the plan.
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">Anomalies</span>
+<h3>Power spike detection</h3>
+<p>
+              Brain Guardian: if <code>measure_power</code> of one device &gt; 200% of typical average for 5+ min, anomaly alert. Possibilities: failing motor, out-of-tune cooler, or just abnormal usage.
+            </p>
+</li>
+</ol>
+</div>
+</section>
+<!-- HARDWARE -->
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Hardware in operation</p>
+<h2 class="section-title">Specific sockets</h2>
+<p class="section-lead">Mix of Z-wave (Fibaro Wall Plug) and Wi-Fi (Tuya / Shelly Plug S).</p>
+</header>
+<div class="hw-grid">
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-plug"></use></svg></span></div>
+<h3>Fibaro Wall Plug</h3>
+<p class="hw-tag">Z-wave · onoff + measure_power + meter_power</p>
+<p>
+              Flagship. Z-wave (local), full capability set. The LED ring indicates the current consumption in color. The price is ~1,200 CZK, but the reliability and metering quality are worth the premium.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-zap"></use></svg></span></div>
+<h3>Shelly Plug S (×N)</h3>
+<p class="hw-tag">Wi-Fi · onoff + measure_power + voltage</p>
+<p>
+              Cheaper Wi-Fi alternative (~500 CZK). HTTP REST API and MQTT, local (no cloud required). Installed on PC, monitor, lamps in the study.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-plug"></use></svg></span></div>
+<h3>Tuya plugs (×N)</h3>
+<p class="hw-tag">Wi-Fi · onoff + measure_power · cloud-dependent</p>
+<p>
+              The cheapest (~250 CZK). Cloud dependency (sometimes ~1 s latency). Power metering accuracy ±5%. Used on low-priority appliances — chargers, ambient lamps.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-wrench"></use></svg></span></div>
+<h3>Fibaro FGS-223 (reserve)</h3>
+<p class="hw-tag">Double Switch 2 · Z-wave · power metering</p>
+<p>
+              Z-wave double switch with native power metering capability. Currently NOT CONNECTED — in reserve for the heating circulation pump (heating Phase C+) or boiler. Memory:
+              <code>reference_unmapped_devices_intentional.md</code>.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-zap"></use></svg></span></div>
+<h3>Shelly Pro 3EM <span class="hw-badge hw-badge-live">LIVE</span></h3>
+<p class="hw-tag">3 CT clamps · 3-phase · Wi-Fi · 192.168.1.xxx</p>
+<p>
+              Installed on May 12 in the cabinet. Three current coils on 3 phases measure consumption and possible production (export to the grid) in real time. The RPi asks it every 30 seconds with an HTTP request and saves 17 values ​​to Homey (per-phase W/V/A, total sum, consumed and returned kWh, temperature). Finally, a hard source of truth about how much a house really costs.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-plug"></use></svg></span></div>
+<h3>2x Shelly Plus PM Mini Gen3 <span class="hw-badge hw-badge-live">LIVE</span></h3>
+<p class="hw-tag">plug power meter · Wi-Fi · Matter ready</p>
+<p>
+              Two new measuring sockets in the kitchen — coffee machine and stove in line. Small, cheap (~470 CZK/piece), Matter ready. They added 11 original plug-meters to 13 in total. It mainly serves to know exactly how much the kitchen actually takes in individual parts of the day.
+            </p>
+</article>
+<article class="hw-card hw-future">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-waves"></use></svg></span></div>
+<h3>Water valve <span class="hw-badge">Planned</span></h3>
+<p class="hw-tag">Aqara · auto-close on water leak</p>
+<p>
+              It's not a socket, but it shares the same category (force action via capability). Aqara motorized ball valve on the main water supply. Trigger water leak sensor → auto-close + alert.
+            </p>
+</article>
+</div>
+</div>
+</section>
+<!-- TECH DETAIL -->
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">For the tech-savvy</p>
+<h2 class="section-title">What's going on under the hood</h2>
+<p class="section-lead">measure_power vs. meter_power, sample integration, anomaly detection.</p>
+</header>
+<div class="uc-tech">
+<details>
+<summary>measure_power vs. meter_power (difference)</summary>
+<ul>
+<li>
+<strong><code>measure_power</code></strong> (W) — current consumption in watts. Real-time, sample via flow trigger or manual <code>getCapabilityValue</code>. Use: instant view, daily curve, anomaly detection.
+              </li>
+<li>
+<strong><code>meter_power</code></strong> (kWh) — cumulative counter since the last device reset. It is incremented in the device firmware, persists through Homey restart. Usage: cumulative energy per period (difference meter_now − meter_baseline).
+              </li>
+</ul>
+<p>
+              For daily kWh: <code>kwh_today = meter_power_now − meter_power_at_midnight</code>. The midnight snapshot saves the baseline. Independent of the sample interval = invoicing accurate.
+            </p>
+</details>
+<details>
+<summary>Sampler script (sh_plug_sampler_v1)</summary>
+<p>
+              Cron 5 min:
+            </p>
+<pre><code>// sh_plug_sampler_v1
+const plugs = await getDevicesByDriverIds(['fibaro-wall-plug', 'shelly-plug-s', 'tuya-plug']);
+for (const plug of plugs) {
+  const power = await plug.capabilitiesObj.measure_power?.value || 0;
+  const meter = await plug.capabilitiesObj.meter_power?.value || 0;
+  await logEvent({
+    script: 'sh_plug_sampler_v1',
+    event: 'plug_sample',
+    device: plug.name,
+    power_w: power,
+    meter_kwh: meter,
+    timestamp: now()
+  });
+}</code></pre>
+<p>
+              Output to EventLog JSONL on SSD (from 27.5.2026; formerly Google Sheets). From this, per-device daily/weekly/yearly curves for the dashboard tile can be constructed.
+            </p>
+</details>
+<details>
+<summary>Anomaly detection (power spike)</summary>
+<p>
+              Brain Guardian invariant for plugs:
+            </p>
+<ul>
+<li>
+                Rolling 7-day average <code>measure_power</code> per device — baseline
+              </li>
+<li>
+                Current 5min sample &gt; 200% baseline for 3 consecutive samples (= 15 min) → anomaly alert
+              </li>
+<li>
+                Plus typed anomalies: refrigerator baseline ~50 W, above 150 W → compressor non-stop (perhaps broken cooling); PC baseline 80 W idle, over 400 W — gaming session
+              </li>
+</ul>
+<p>
+              Alert is a read-only flag, no auto-actions. The user must verify (push in the plan).
+            </p>
+</details>
+<details>
+<summary>Auto-off on motion = 0 (planned)</summary>
+<p>
+              Planned feature: iron / electric kettle / hot air gun → smart plug + watchdog.
+            </p>
+<pre><code>// pseudocode
+if (plug.power &gt; 100 W &amp;&amp;
+    motion_zone[plug.zone].lastMotion &gt; 60 min ago &amp;&amp;
+    !user_present_zone(plug.zone)) {
+  await plug.setCapabilityValue('onoff', false);
+  await sendAlert('Auto-off ' + plug.name + ' (zapomenutý spotřebič)');
+}</code></pre>
+<p>
+              Threshold per device — not all high-power appliances need auto-off (no refrigerator, of course). Whitelist via <code>sh_cfg_plug_auto_off_devices</code>.
+            </p>
+</details>
+<details>
+<summary>Yearly aggregation (cron + GitHub Actions)</summary>
+<p>
+              Plan for 1.1.: GitHub Actions cron download EventLog annual export, pivot table per device, sum kWh, generate
+              <code>reports/yearly_&lt;rok&gt;.md</code> and auto-push to the smart-home-website rep.
+            </p>
+<ul>
+<li>Per-device kWh totals</li>
+<li>Top 5 biggest appliances</li>
+<li>YoY Trend (only if past reports exist)</li>
+<li>Identification of "dark consumption" (continuous &gt; 0 W but inactively used)</li>
+</ul>
+<p>
+              Output reads the website (Phase D — case studies), not the kiosk dashboard.
+            </p>
+</details>
+</div>
+</div>
+</section>
+<!-- SOUVISEJÍCÍ -->
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Related</p>
+<h2 class="section-title">Context</h2>
+</header>
+<div class="related-grid">
+<a class="related-card" href="/en/smart-home/energie.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-zap"></use></svg></span></span>
+<h3>Energy and consumption</h3>
+<p>Use-case page — boiler runtime estimate, daily/yearly tracking, HA Energy.</p>
+</a>
+<a class="related-card" href="/en/smart-home/hardware.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-package"></use></svg></span></span>
+<h3>Hardware overview</h3>
+<p>General overview — FGS-223 reserve, FGS-214 boiler.</p>
+</a>
+<a class="related-card" href="/en/smart-home/ai-brain.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-brain"></use></svg></span></span>
+<h3>AI Brain</h3>
+<p>Anomaly detection — power spike, dark consumption, sleep guard inconsistency.</p>
+</a>
+<a class="related-card" href="/en/smart-home/bezpecnost-kamery.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-shield"></use></svg></span></span>
+<h3>Security and cameras</h3>
+<p>Auto-off for forgotten appliance, water valve safety bypass.</p>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Enlarged image" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Close zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME project · Made with ❤️ and script-first thinking.</p>
+<p class="footer-meta">Public presentation · no API keys · no local IP · no control from here.</p>
+<p class="footer-meta"><a href="/en/smart-home/technicka-mapa.html">Technical map →</a> · <a href="/en/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

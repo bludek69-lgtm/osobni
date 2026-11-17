@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Mattina, lavoro, sera e sonno necessitano di luci e suoni diversi.
+Qui mostro come cambia il comportamento dell'appartamento a seconda della parte della giornata e come mi assicuro che la quiete serale non venga interrotta da un'automazione inappropriata." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Atmosfera e scene | CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="Atmosfera e scene | CASA INTELLIGENTE" property="og:title"/>
+<meta content="Mattina, lavoro, sera e sonno necessitano di luci e suoni diversi.
+Qui mostro come cambia il comportamento dell'appartamento a seconda della parte della giornata e come mi assicuro che la quiete serale non venga interrotta da un'automazione inappropriata." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/atmosfera.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/atmosfera.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/atmosfera.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/atmosfera.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/atmosfera.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/atmosfera.html#main">Vai al contenuto</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Apri il menù</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/it/smart-home/">Home</a></li>
+<li><a aria-current="page" class="is-active" href="/it/smart-home/prozivani.html">Come funziona</a></li>
+<li><a href="/it/smart-home/zarizeni.html">Attrezzatura</a></li>
+<li><a href="/it/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/it/smart-home/dashboard.html">Cruscotto</a></li>
+<li><a href="/it/smart-home/pribeh.html">La storia</a></li>
+<li><a href="/it/smart-home/blog.html">Blog</a></li>
+<li><a href="/it/smart-home/kontakt.html">Informazioni sul progetto</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Sito web personale e Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a><a href="/it/smart-home/">Introduzione Casa intelligente</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/atmosfera.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/atmosfera.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/atmosfera.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section section-hero uc-hero" id="atmosfera">
+<div class="container">
+<p class="eyebrow"><span aria-hidden="true" class="status-dot"></span>🏠 Esperienza · Atmosfera e scene</p>
+<h1 class="hero-title">La casa che <span class="grad-text">si sente parte della giornata</span></h1>
+<p class="hero-lead">Mattina, lavoro, sera e sonno necessitano di luci e suoni diversi.
+Qui mostro come cambia il comportamento dell'appartamento a seconda della parte della giornata e come mi assicuro che la quiete serale non venga interrotta da un'automazione inappropriata.</p><details class="visitor-technical-intro"><summary>Dettagli tecnici</summary><p class="hero-lead">
+          Tre stati, quattro fasi della giornata, una guardia centrale del sonno.
+Ti sveglia lentamente al mattino, ti permette di lavorare durante il giorno, ti offre pace la sera e ti calma di notte.
+Nessuna "scena" esplicita nell'interfaccia utente di Homey: tutto viene eseguito tramite la logica dell'ora del giorno e dello stato negli script.
+        </p><div class="uc-stats">
+<div class="uc-stat"><span class="uc-stat-num">4</span><span class="uc-stat-label">Fase della giornata</span></div>
+<div class="uc-stat"><span class="uc-stat-num">3</span><span class="uc-stat-label">Script cerebrali</span></div>
+<div class="uc-stat"><span class="uc-stat-num">1</span><span class="uc-stat-label">Porta del sonno</span></div>
+<div class="uc-stat"><span class="uc-stat-num">5</span><span class="uc-stat-label">Sottosistema sottostante</span></div>
+</div></details>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Cosa fa?</p>
+<h2 class="section-title">L'atmosfera non può essere impostata, solo conosciuta</h2>
+</header>
+<div class="uc-prose">
+<p>
+            Invece delle "scene" nell'interfaccia utente di Homey, in cui l'utente fa clic su "Modalità filmato" e succede qualcosa, è qui <strong>livello consapevole dello stato</strong>.
+Il sistema stesso riconosce se è mattina prima della sveglia, se sto dormendo, se sono in modalità relax dopo il lavoro, se è tarda sera.
+Da questo deriva tutto il resto: luci, riscaldamento, audio, notifiche.
+          </p>
+<p>
+            La variabile centrale è <code>sh_spim</code> ("sì" / "no"). Quando è "sì", tutti e 5 i sottosistemi (luci, audio, riscaldamento, robot, avvisi) si attenuano o si spengono completamente automaticamente. Sono disponibili tre punti di attivazione/disattivazione: pulsante Sleep manuale (Aqara Cube), movimento Wake up Kitchen (risveglio), geofence del telefono.
+          </p>
+<p>
+            Funziona al di sopra dello stato di sonno <strong>tre script cerebrali</strong>: Morning_brain (rituale mattutino), sleep_brain (spegnimento serale), coordinatore AI (classificatore della situazione: briefing mattutino, suggerimento di comfort serale).
+Nessuna di esse è "scene": sono gestori che rispondono a tempo + stato + presenza.
+          </p>
+</div>
+<figure class="uc-screenshot">
+<img alt="Home page nel dashboard: una panoramica generale dello stato della casa" class="zoomable" data-full-src="/smart-home/assets/screenshots/after/1920/home.png" decoding="async" height="900" loading="lazy" src="/assets/img/editorial/media/d274526e8aa9afda5e.webp" width="1600"/>
+<figcaption>Home page nel dashboard: una panoramica generale dello stato della casa, barra laterale con pilastri, pillole di stato nella barra superiore</figcaption>
+</figure>
+</div>
+</section>
+<!-- DENNÍ PROVOZ -->
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Operazione quotidiana</p>
+<h2 class="section-title">Quattro fasi della giornata</h2>
+<p class="section-lead">Il contesto cambia continuamente.
+I momenti al contorno hanno il proprio gestore.</p>
+</header>
+<ol class="uc-timeline">
+<li class="uc-stage">
+<span class="uc-stage-time">02:45</span>
+<h3>Pre-veglia</h3>
+<p>
+              Il livello di riscaldamento 1 inizia 30 minuti prima dell'allarme: bagno +2 °C, WC +1 °C.
+Lo stato di sonno è ancora "sì", le luci sono ancora spente.
+Il sistema prepara, ma non interrompe.
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">03:15</span>
+<h3>Sveglia e briefing</h3>
+<p>
+              Orario sveglia → Morning_Brain: verifyHeatingMorningMode (preset=home), disattivazione audio TV, briefing fase 1 in cucina.
+Lo stato di sonno è disabilitato durante il movimento in cucina.
+03:30 briefing fase 2.
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">Giorno</span>
+<h3>Attivo</h3>
+<p>
+              Instradamento della luce in base a lux + presenza, audio inattivo, riscaldamento in base alla programmazione + livello AI.
+Nessuna scena automatica: ciascun sottosistema gestisce il proprio contesto in modo indipendente.
+Il coordinatore AI monitora, ma per la maggior parte del tempo in silenzio.
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">Sera</span>
+<h3>Fase di conforto</h3>
+<p>
+              Il coordinatore AI può valutare "scena serale + inattiva" → comfort_suggest.
+TTS leggerà il suggerimento, non si eseguirà automaticamente (dopo la correzione del percorso errato del bagno).
+Protezione privacy attiva — tapparella alzata = luci dello spazio aperto bloccate.
+            </p>
+</li>
+<li class="uc-stage">
+<span class="uc-stage-time">22:00+</span>
+<h3>preparazione al sonno</h3>
+<p>
+              Ha già rilevato dal programma la fascia oraria notturna del riscaldamento (22:00).
+Conferma Sleep_brain durante il sonno: boost preimpostato→reset home, disattivazione audio, robot bloccato. <code>sh_spim='yes'</code>
+              cancello per tutta la notte.
+            </p>
+</li>
+</ol>
+</div>
+</section>
+<!-- SCÉNY -->
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Scene</p>
+<h2 class="section-title">Cinque rituali del giorno</h2>
+<p class="section-lead">Attivato da ora + stato + presenza.
+Azionamento manuale solo eccezionalmente.</p>
+</header>
+<div class="scene-grid">
+<article class="scene-card">
+<span aria-hidden="true" class="scene-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-sunrise"></use></svg></span></span>
+<h3>Mattina</h3>
+<p>
+              Sveglia → mattina_cervello → riscaldamento preimpostato=casa + potenziamento bagno 23 °C 60 min, disattivazione TV, fase briefing 1+2.
+Obiettivo: introdurre la giornata lentamente, senza shock.
+            </p>
+</article>
+<article class="scene-card">
+<span aria-hidden="true" class="scene-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-sun"></use></svg></span></span>
+<h3>Giorno</h3>
+<p>
+              Stato predefinito: nessuna scena, solo sottosistemi reattivi.
+Lux controlla le luci, il programma controlla il riscaldamento, l'audio è inattivo.
+Brain Guardian viene eseguito una volta ogni 15 minuti.
+            </p>
+</article>
+<article class="scene-card">
+<span aria-hidden="true" class="scene-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-sun-moon"></use></svg></span></span>
+<h3>Sera</h3>
+<p>
+              Il coordinatore AI rileva "sera + inattività" → comfort_suggest TTS.
+Protezione privacy attiva (veneziana &gt; 20% blocca le luci aperte).
+Possibile scena di rilassamento quando l'utente accetta (Cubo/voce).
+            </p>
+</article>
+<article class="scene-card">
+<span aria-hidden="true" class="scene-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-bed"></use></svg></span></span>
+<h3>Dormi</h3>
+<p>
+              Pulsante Sleep (Cubo) o flusso manuale → <code>sh_spim='yes'</code> → pulizia sleep_brain (reimpostazione boost, disattivazione audio, blocco robot).
+La fascia oraria notturna già mantiene le temperature più basse.
+            </p>
+</article>
+<article class="scene-card">
+<span aria-hidden="true" class="scene-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-moon"></use></svg></span></span>
+<h3>Notte</h3>
+<p>
+              Stato di sonno attivo.
+Il movimento in bagno ha una propria modalità di attenuazione (modalità attenuazione del router del bagno).
+Gli allarmi critici (antigelo, gas, acqua) vengono ignorati tramite bypass di sicurezza.
+            </p>
+</article>
+</div>
+</div>
+</section>
+<!-- HARDWARE -->
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Hardware</p>
+<h2 class="section-title">Ciò che determina l'atmosfera</h2>
+<p class="section-lead">Non è hardware nel senso standard: è una composizione di sensori + script.</p>
+</header>
+<div class="hw-grid">
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-box"></use></svg></span></div>
+<h3>Aqara Cube T1 Pro</h3>
+<p class="hw-tag">Intenzione dell'utente · gestuale · Zigbee</p>
+<p>
+              Un cubo a sei facce.
+Ogni lato = modalità diversa.
+Rotazione = variazione di volume.
+Bussare = grilletto.
+Input dell'utente principale per "accetta suggerimento comfort" / "sonno manuale" / ecc. Risolto bug del canale TV v1.11 (channel_up → key_channel_up).
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-radio-tower"></use></svg></span></div>
+<h3>AqaraFP2</h3>
+<p class="hw-tag">Presenza · rilevamento sonno-veglia</p>
+<p>
+              Rileva una persona calma.
+Per la logica dell'atmosfera come il marcatore sleep_wake: quando la camera da letto inizia a muoversi (sveglia) rispetto al riposo (sonno).
+In più presenza open space per la rilevazione del comfort serale.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-brain"></use></svg></span></div>
+<h3>Mattina + Sonno cervello</h3>
+<p class="hw-tag">Script · sh_morning_brain_v1 · sh_sleep_brain_v2</p>
+<p>
+              Due orchestratori: rituale mattutino e pulizia serale.
+Ciascuno mantiene sincronizzati più di 5 sottosistemi.
+Mattina: riscaldamento + audio + TV.
+Sospensione: ripristino riscaldamento + disattivazione audio + blocco robot + impostazione stato sospensione.
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-smartphone"></use></svg></span></div>
+<h3>Geofence del telefono</h3>
+<p class="hw-tag">App mobile · GPS · raggio 100 m</p>
+<p>
+              Rilevamento casa/fuori casa.
+Conferma multi-segnale con movimento in una finestra di 5 minuti.
+Trigger per l'interruttore preimpostato + suggerimento dello stato di sonno (quando si è soli a casa e per più di 22 ore).
+            </p>
+</article>
+<article class="hw-card">
+<div aria-hidden="true" class="hw-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-settings"></use></svg></span></div>
+<h3>Coordinatore dell'IA</h3>
+<p class="hw-tag">sh_ai_coordinator_v1 · cron 5 min</p>
+<p>
+              Classifica la situazione attuale (inattivo, occupato, sera_idle, mattina_prep, comfort_suggest).
+Ingresso per cervello AI e TTS comfort_suggest.
+Livelli 0–5, livello 4 = suggerimento TTS.
+            </p>
+</article>
+</div>
+</div>
+</section>
+<!-- TECH DETAIL -->
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Per gli esperti di tecnologia</p>
+<h2 class="section-title">Cosa sta succedendo sotto il cofano</h2>
+<p class="section-lead">Architettura dello stato del sonno, gestori del cervello, livelli di coordinatore dell'intelligenza artificiale.</p>
+</header>
+<div class="uc-tech">
+<details>
+<summary>Stato di sonno (sh_spim) — cancello centrale</summary>
+<p>
+              L'unica variabile che controlla 5 sottosistemi. <code>sh_spim='yes'</code>:
+            </p>
+<ul>
+<li><strong>Luce</strong>: giorni motore prioritari → buio</li>
+<li><strong>Audio</strong>: TTS negato (eccetto critico), radio bloccata</li>
+<li><strong>Riscaldamento</strong>: fascia notturna già attiva da palinsesto (informativa)</li>
+<li><strong>Robot</strong>: impossibile eseguire, le richieste in coda sono in attesa</li>
+<li><strong>Guardiano del cervello</strong>: maggiore tolleranza al movimento (anti-falso positivo)</li>
+</ul>
+<p>
+              Punti preimpostati: Sonno manuale (pulsante Cubo), Sveglia cucina (il movimento a orari insoliti implica il risveglio), Geofence telefono (solo a casa + tarda ora).
+Sincronizzazione con l'API nativa di presenza Homey <code>set_asleep</code> / <code>set_awake</code> —
+              <strong>non eliminare mai</strong> come duplicato.
+            </p>
+</details>
+<details>
+<summary>Cervello mattutino (garantire le funzioni della *Modalità)</summary>
+<p>
+<code>sh_morning_brain_v1 v3.5+</code> dispone di 4 funzioni di garanzia, ognuna delle quali viene richiamata dal flusso durante allarme/movimento/fallback:
+            </p>
+<ul>
+<li><code>ensureHeatingMorningMode()</code> — preimpostato=casa, bagno potenziato 23 °C 60 min</li>
+<li><code>ensureAudioMorningMode()</code> — Disattivazione dell'audio della TV, attivazione del briefing tramite sh_gemini_mode</li>
+<li><code>ensureLightsMorningMode()</code> — cucina poco luminosa, spazio aperto secondo il FP2</li>
+<li><code>ensureSleepStateUnset()</code> — sh_spim='no' (cancello rilasciato)</li>
+</ul>
+<p>
+              Ogni funzione è idempotente: possono essere richiamate più volte durante il rituale, il risultato è lo stesso.
+Nessuna mutazione dello stato eccetto il writeback dello stato desiderato.
+            </p>
+</details>
+<details>
+<summary>Cervello del sonno (pulizia serale)</summary>
+<p>
+<code>sh_sleep_brain_v2 v3.1+</code> attivato quando viene attivato il pulsante Sleep/rilevamento automatico a tarda sera:
+            </p>
+<ul>
+<li><code>ensureHeatingSleepMode()</code> — ripristino preimpostazione boost (boost→home), prende il sopravvento la fascia oraria notturna programmata</li>
+<li><code>ensureAudioSleepMode()</code> - tutto fermo, prev_playing flag cancellato</li>
+<li><code>ensureLightsSleepMode()</code> — dissolvenza in chiusura per 5 s, quindi disattivazione</li>
+<li><code>ensureRobotSleepMode()</code> — bloccare + annullare la pulizia in coda</li>
+<li><code>ensureSleepStateSet()</code> — sh_spim='yes' (attivazione cancello)</li>
+</ul>
+</details>
+<details>
+<summary>Livelli di coordinatore AI (classificatore di situazioni)</summary>
+<p>
+<code>sh_ai_coordinator_v1</code> cron 5 min valuta 6 situazioni:
+            </p>
+<ul>
+<li><strong>Livello 0: inattivo</strong>: non succede nulla, nessuna azione</li>
+<li><strong>Livello 1: passive_observe</strong>: movimento ma nessun cambiamento di intenti</li>
+<li><strong>Livello 2: contesto_log</strong>: momento di confine (alba/tramonto/allarme)</li>
+<li><strong>Livello 3: passive_notify</strong>: accedi a EventLog, nessun TTS</li>
+<li><strong>Livello 4: comfort_suggest</strong>: suggerimento TTS (sera + scena inattiva)</li>
+<li><strong>Livello 5: azione_proattiva</strong>: esecuzione automatica (solo dopo l'accettazione dell'utente)</li>
+</ul>
+<p>
+              Errore 25.4.
+— il livello 4 ha avviato la radio del bagno da sola senza l'accettazione dell'utente.
+Correzione: prev_playing guard v <code>sh_tts_resume_exec_v1 v1.8</code>.
+            </p>
+</details>
+<details>
+<summary>Fasce orarie (4 fasi)</summary>
+<p>
+              Nessuna "scena" esplicita: solo un bucket TOD che i sottosistemi leggono:
+            </p>
+<ul>
+<li><strong>notte</strong> (22:00–05:00): gate di sonno probabilmente attivo, temperature basse, audio assente</li>
+<li><strong>mattina</strong> (05:00–10:00): finestra briefing, potenziamento bagno, audio attivo</li>
+<li><strong>giorno</strong> (10:00–18:00): reattivo predefinito, lux controlla le luci, audio inattivo</li>
+<li><strong>sera</strong> (18:00–22:00): tutela della privacy attiva, comfort suggerito possibile</li>
+</ul>
+<p>
+              Le concessioni di contesto non sono codificate negli script: vengono lette dalla configurazione
+              <code>sh_cfg_tod_*_start</code>.
+Le regolazioni stagionali (ora invernale/estiva) avvengono tramite l'aggiornamento della configurazione, non tramite il codice.
+            </p>
+</details>
+</div>
+</div>
+</section>
+<!-- SOUVISEJÍCÍ -->
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Relativo</p>
+<h2 class="section-title">Contesto nel contesto del sito</h2>
+</header>
+<div class="related-grid">
+<a class="related-card" href="/it/smart-home/ai-brain.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-brain"></use></svg></span></span>
+<h3>Cervello AI</h3>
+<p>Dettagli del coordinatore AI, livelli 0–5, livello di validazione, autoriparazione.</p>
+</a>
+<a class="related-card" href="/it/smart-home/audio.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-volume-2"></use></svg></span></span>
+<h3>Audio e sintesi vocale</h3>
+<p>Il comfort suggerisce pipeline TTS, prev_playing guard, briefing split.</p>
+</a>
+<a class="related-card" href="/it/smart-home/svetla.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-lightbulb"></use></svg></span></span>
+<h3>Luci e illuminazione</h3>
+<p>Serata di protezione della privacy, notte di protezione del sonno, giornata guidata dal lux.</p>
+</a>
+<a class="related-card" href="/it/smart-home/topeni-klima.html">
+<span aria-hidden="true" class="related-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-flame"></use></svg></span></span>
+<h3>Riscaldamento e aria condizionata</h3>
+<p>Boost pre-veglia, fascia oraria notturna, pianificazione + livelli AI.</p>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Immagine ingrandita" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Chiudi lo zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME · Realizzato con ❤️ e pensando prima alla sceneggiatura.</p>
+<p class="footer-meta">Presentazione pubblica · nessuna chiave API · nessun IP locale · nessun controllo da qui.</p>
+<p class="footer-meta"><a href="/it/smart-home/technicka-mapa.html">Mappa tecnica →</a> · <a href="/it/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

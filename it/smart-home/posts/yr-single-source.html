@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Tre fonti meteorologiche in un unico sistema, un briefing che recita 13°C quando fuori c'erano 6°C e &quot;buongiorno&quot; la sera.
+Come è nato il livello LOCATION_TIME_GUARD e come yr.no è diventato l'unica fonte di verità." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Tre fonti meteorologiche → una |
+CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Tre fonti meteorologiche → una |
+CASA INTELLIGENTE" property="og:title"/>
+<meta content="Tre fonti meteorologiche in un unico sistema, un briefing che recita 13°C quando fuori c'erano 6°C e &quot;buongiorno&quot; la sera.
+Come è nato il livello LOCATION_TIME_GUARD e come yr.no è diventato l'unica fonte di verità." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/posts/yr-single-source.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/posts/yr-single-source.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/yr-single-source.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/yr-single-source.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/yr-single-source.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/posts/yr-single-source.html#main">Vai al contenuto</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/it/smart-home/blog.html">← Torniamo al blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Ritorno dall'articolo" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a></div><div class="visitor-links"><a href="/it/smart-home/">Introduzione Casa intelligente</a><a href="/it/smart-home/blog.html">Tutte le note</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/posts/yr-single-source.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/posts/yr-single-source.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/posts/yr-single-source.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/it/smart-home/blog.html">← Tutti i post</a>
+<article class="post-content">
+<p class="post-meta">12 maggio 2026 · Architettura · 10 minuti di lettura</p>
+<h1>Tre fonti meteorologiche → una.
+LOCATION_TIME_GUARD giorno.</h1>
+<p>
+          Lunedì mattina il briefing mi diceva che fuori c'erano 13°C.
+In realtà c'erano 6°C.
+Alle 3:03 di quella notte, mentre ero ancora profondamente addormentato, il briefing mattutino è iniziato da solo, ha acceso le luci e ha iniziato a trasmettermi le notizie nella cucina vuota.
+E se ciò non bastasse: lo stesso sistema potrebbe dire "buongiorno" alle 3:30 del mattino se qualcosa rilevasse un movimento in camera da letto.
+        </p>
+<p>
+          Tre problemi.
+Due giorni.
+Questo post spiega come un giorno di riparazioni ha prodotto uno strato <code>LOCATION_TIME_GUARD</code> e yr.no è diventato l'unica fonte di verità per la posizione, l'ora e il tempo nell'intero sistema.
+        </p>
+<h2>Sintomo n. 1 – Tredici gradi in una mattina nuvolosa</h2>
+<p>
+          Al mattino ha letto il copione del briefing: "Fuori ci sono 13 gradi, parzialmente nuvoloso".
+Ho guardato fuori dalla finestra.
+Nebbia, pioggia, 6 °C secondo il termometro.
+Lo script non mentiva: leggeva semplicemente una cache vuota (<code>sh_weather_3d_json = []</code>) e cadeva su un valore di fallback che era stato codificato da qualche parte nel codice da molto tempo fa.
+        </p>
+<p>
+          Ciò che mostrava era peggio di "la cache è vuota".
+L'audit ha rivelato
+          <strong>tre fonti meteorologiche parallele in un unico sistema</strong>:
+        </p>
+<ol>
+<li>
+<strong>anno.nessuna domanda</strong> in Homey (Istituto meteorologico norvegese, previsioni gratuite e native).
+Aveva 18 funzionalità e funzionava perfettamente, ma nessuno lo leggeva.
+          </li>
+<li>
+<strong>Recupero OpenWeatherMap</strong> v <code>sh_context_full_v1.js</code>. Chiamata HTTP a <code>api.openweathermap.org</code> con coordinate GPS codificate piatte (LOCATION_REDACTED). Digitare la variabile Homey. Funzionale ma duplicato.
+          </li>
+<li>
+<strong>Apri-Meteo recupero</strong> v <code>sh_weather_fetcher_v1</code>. Il mio fetcher HTTP di inizio settimana, che ho aggiunto prima di sapere che yr.no era già lì. Posizione: <strong>Praga</strong> (predefinito 50.0875, 14.4213).
+          </li>
+</ol>
+<p>
+          Tre fonti.
+Due città diverse.
+Nessuno di loro era chiaramente "quello giusto".
+E il peggio: nel frattempo, la dashboard richiamava direttamente OpenWeatherMap nel browser (terzo recupero HTTP nel livello UI).
+Più un fallback hardcoded nel codice nel caso in cui nulla di tutto ciò funzioni.
+        </p>
+<h2>Sintomo n. 2 – Routine mattutina alle 3:03</h2>
+<p>
+          Martedì mattina, la mia lampada si è accesa e lui ha iniziato il briefing.
+Guardando l'orologio: 3:03.
+La sveglia avrebbe dovuto suonare alle 3:13 (lunedì-venerdì).
+Non mi sono alzato.
+Quello che è successo?
+        </p>
+<p>
+          Diagnostica tramite EventLog:
+        </p>
+<pre tabindex="0"><code>03:03:00  motion bedroom (SNZB-03) — TRUE
+03:03:02  sh_morning_brain_v1  → brain_invoked (motion, briefing2 audit)
+03:03:02  sh_morning_brain_v1  → morning_score_bypass (score=85, bypass 180s debounce)
+03:03:05  sh_audio_brain_v2    → audio_dispatch (radio_kitchen)
+03:03:22  sh_morning_brain_v1  → morning_routine (9 actions executed)
+03:13:01  alarm "Do Prace" fires
+03:13:02  sh_morning_brain_v1  → alarm_late_ignored (already up)</code></pre>
+<p>
+          Il marcatore del punteggio ha assegnato al movimento un punteggio di 85 (su 100). Per iniziare sono bastati 8 punti grezzi. Programma:
+        </p>
+<pre tabindex="0"><code>+2  cas&gt;=03:00 (morning window)
++10 wake_confidence_score=50          ← bedroom motion
++1  jsem_vstal=yes
++3  open_space_dual (FP2+motion)      ← BUG
++1  telefon_doma
+= raw 17 → final 85 (multiplier ×5)</code></pre>
+<p>
+          Chiodo chiave: <strong>open_space_dual (FP2+movimento) +3</strong>.
+FP2 è un sensore di presenza mmWave in sala da pranzo/cucina.
+Il movimento è un Fibaro PIR.
+L'attività della zona ha mostrato qualcosa di spaventoso:
+        </p>
+<pre tabindex="0"><code>00:04 UTC  snzb06p=TRUE  fibaro_motion=TRUE  idle_open_space_s=17161
+00:14 UTC  snzb06p=TRUE  fibaro_motion=TRUE  idle_open_space_s=17761
+00:24 UTC  snzb06p=TRUE  fibaro_motion=TRUE  idle_open_space_s=18361
+...
+01:03 UTC  snzb06p=TRUE  fibaro_motion=TRUE  idle_open_space_s=20760  ← motion bedroom
+01:04 UTC  snzb06p=TRUE  fibaro_motion=TRUE  bedroom_active=TRUE</code></pre>
+<p>
+          Entrambi i sensori sono rimasti <code>TRUE</code> tutta la notte.
+Il contatore inattivo stava aumentando (= nessuno si muoveva), ma il flag era ancora TRUE.
+Stato bloccato dalla sera precedente.
+Poi al mattino, quando SNZB-03 ha rilevato micro-movimenti nella camera da letto (girarsi nel letto? correnti d'aria? gatto?), il classificatore ha cancellato tutti i 17 punti e mi ha dato <strong>punteggio finale 85</strong>.
+        </p>
+<p>
+          Il bug non era nei sensori.
+Il problema era che il marcatore <em>ha considerato il flag bloccato-TRUE come un nuovo segnale</em>.
+        </p>
+<h2>Sintomo n. 3: "Buongiorno" alle tre e mezza</h2>
+<p>
+          L'ultimo nemico tascabile era la funzione di saluto strettamente codificata nello script del briefing:
+        </p>
+<pre tabindex="0"><code>function buildIntro(hour) {
+  if (hour &lt; 6) return 'Dobré ráno, Luďku.';
+  if (hour &lt; 12) return 'Dobré ráno, Luďku.';
+  ...
+}</code></pre>
+<p>
+          "Ora &lt; 6" significava che se qualcosa fosse attivato alle 2:30 (come la scia di falsi positivi sopra descritta), il sistema avrebbe iniziato il briefing mattutino con "Buongiorno". Di notte. Non aveva senso.
+        </p>
+<h2>Correzione: consolidamento con un'unica fonte di verità</h2>
+<h3>Passaggio 1: YR.no come unica fonte meteorologica</h3>
+<p>
+          Nuova sceneggiatura <code>sh_weather_yr_bridge_v1.js</code>: legge direttamente dal dispositivo Homey Weather (yr.no driver), ogni 10 minuti, scrive su 22 variabili:
+          <code>sh_weather_temp_now</code>, <code>sh_weather_temp_feels_like</code>,
+          <code>sh_weather_temp_min_6h</code>, <code>sh_weather_temp_max_6h</code>,
+          <code>sh_weather_humidity</code>, <code>sh_weather_pressure</code>,
+          <code>sh_weather_wind_speed</code>, <code>sh_weather_wind_dir</code>,
+          <code>sh_weather_rain_1h</code>, <code>sh_weather_rain_6h</code>,
+          <code>sh_weather_cloud_pct</code>, <code>sh_weather_uv</code>,
+          <code>sh_weather_now_desc</code> (Inglese), <code>sh_weather_now_desc_cs</code>
+          (Ceco), <code>sh_sunrise_hhmm</code>, <code>sh_sunset_hhmm</code> e altri.
+        </p>
+<p>
+          Traduzione ceca della descrizione del tempo nella scrittura del ponte ("Nuvoloso" → "Nuvoloso", "Pioggia leggera" → "Pioggia leggera", ecc. — 30 valori nella mappa di traduzione).
+La posizione viene ricavata dalle impostazioni del dispositivo yr.no (Homey UI → Meteo → Avanzate → latitudine/lontana/altitudine).
+Quando l'utente corregge la posizione nell'applicazione, il bridge la rileva automaticamente: senza recupero HTTP, senza chiave API.
+        </p>
+<p>
+          Eliminato:
+        </p>
+<ul>
+<li><code>sh_weather_fetcher_v1.js</code> (Open-Meteo) + flusso cron — duplicato</li>
+<li><code>fetchOWMWeather()</code> v <code>sh_context_full_v1</code> (-2.868 caratteri di codice morto)</li>
+<li>Una variabile <code>sh_owm_api_key</code></li>
+<li>Una costante <code>WX_LAT</code>, <code>WX_LON</code> nei cruscotti (GPS legacy hardcoded)</li>
+<li>Chiamata HTTP diretta OpenWeatherMap nella dashboard JS (il browser non utilizza più la chiave API)</li>
+</ul>
+<h3>Fase 2: segnare il punteggio della guardia dal grilletto fresco</h3>
+<p>
+<code>sh_morning_score_v1</code> bumpnut alla v1.6 con nuove protezioni:
+        </p>
+<pre tabindex="0"><code>// Před: value === true OR ageS &lt;= 300
+const recent = (info, windowS) =&gt; info.exists &amp;&amp; (info.value === true || info.ageS &lt;= windowS);
+
+// Po: jen čerstvá detekce (motion fired v posledních 300s)
+const fresh = (info, windowS) =&gt; info.exists &amp;&amp; info.ageS &lt;= windowS;
+
+// Plus stuck-presence detector
+const isStuckPresence = (info) =&gt; info.exists &amp;&amp; info.value === true &amp;&amp; info.ageS &gt; 3600;</code></pre>
+<p>
+          Il bonus spazio aperto viene applicato solo se FP2 e movimento sono stati attivati negli ultimi 5 minuti.
+Se risultano VERI dalla serata (bloccati), il bonus non viene applicato:
+        </p>
+<pre tabindex="0"><code>+0  open_space_stuck_skipped (FP2_age=111315s, kitch_age=337s)</code></pre>
+<p>
+          Inoltre PRE_ALARM_HARD_CAP: se l'ora è 3 e la sveglia più vicina è a più di 5 minuti di distanza, il punteggio è limitato a 6 (stato <code>pre_wakeup</code>, no <code>morning_confirmed</code>). Nessuna routine di corsa.
+        </p>
+<h3>Passaggio 3: livello LOCATION_TIME_GUARD</h3>
+<p>
+          Ecco la svolta decisiva. Script centrale creato al posto della logica tempo/fase per script <code>sh_location_time_context_v1.js</code>, che conta ogni 5 minuti:
+        </p>
+<pre tabindex="0"><code>{
+  "timezone":      "Europe/Prague",
+  "is_dst":        true,
+  "utc_offset":    "+02:00",
+  "local_time_iso": "2026-05-12T07:32:41",
+  "local_hour":    7,
+  "latitude":      …,         ← LOCATION_REDACTED
+  "longitude":     …,
+  "altitude":      489,
+  "city":          "LOCATION_REDACTED",
+  "country":       "CZ",
+  "sunrise_local": "05:14",
+  "sunset_local":  "20:35",
+  "day_phase":     "morning",   ← smart-computed
+  "weather_source":"yr.no",
+  "weather_health":"ok",
+  "location_health":"ok",
+  "time_health":   "ok",
+  "status":        "ok"
+}</code></pre>
+<p>
+          La giornata non è divisa in ore codificate ("mattina = 5-10"), ma in base all'alba e al tramonto effettivi dal n. <code>morning</code> = da (alba − 1h) a (alba + 4h). <code>night</code> = tra (tramonto + 1h) e (alba − 1h).
+Nel nostro Paese, 12 maggio 2026: alba 5:14, tramonto 20:35 — quindi mattina = 4:14–9:14, sera = 18:35–21:35.
+        </p>
+<h3>Fase 4: Briefing di saluto alla guardia</h3>
+<pre tabindex="0"><code>function buildIntroByPhase(phase, hour) {
+  if (phase === 'night')   return 'Vítej, Luďku.';       // NIKDY "dobré ráno" v noci
+  if (phase === 'morning') return 'Dobré ráno, Luďku.';
+  if (phase === 'day')     return 'Dobrý den, Luďku.';
+  if (phase === 'evening') return 'Dobrý večer, Luďku.';
+  // Fallback: hour-based, ale 0–5 = "Vítej"
+  if (hour &lt; 5)  return 'Vítej, Luďku.';
+  ...
+}</code></pre>
+<p>
+          Sta leggendo il briefing adesso <code>sh_day_phase_context</code> dal maestro JSON e di notte dice "Benvenuta, Ludka" invece di "Buongiorno".
+        </p>
+<h3>Passaggio 5: fase cerebrale mattutina_guard</h3>
+<p>
+          Strato difensivo inserito <code>sh_morning_brain_v1</code>.
+Se
+          <code>sh_day_phase_context === 'night'</code> e l'allarme non si è verificato oggi, l'attivazione del movimento viene ignorata:
+        </p>
+<pre tabindex="0"><code>if (event === 'motion_detected' &amp;&amp; alreadyTriggered !== 'yes') {
+  if (dayPhase === 'night' &amp;&amp; !alarmFiredToday) {
+    return 'PHASE_GUARD_BLOCKED';
+    // Log EventLog: event='morning_routine_blocked_wrong_phase'
+  }
+}</code></pre>
+<h2>Prima/Dopo</h2>
+<div aria-label="Tabella – scorri orizzontalmente" class="editorial-table-scroll" role="region" tabindex="0"><table style="width:100%;border-collapse:collapse;margin:20px 0;font-family:var(--mono);font-size:14px;" tabindex="0">
+<thead>
+<tr style="border-bottom:2px solid var(--bd);">
+<th style="text-align:left;padding:8px;">Aspetto</th>
+<th style="text-align:left;padding:8px;color:#ff8080;">Prima delle 12.5.</th>
+<th style="text-align:left;padding:8px;color:#64f4d8;">Dopo le 12.5.</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--bd2);">
+<td style="padding:8px;">Risorse meteorologiche</td>
+<td style="padding:8px;">3 (n.anno + OWM + Open-Meteo)</td>
+<td style="padding:8px;">1 (anno n.)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--bd2);">
+<td style="padding:8px;">Chiamate di recupero HTTP</td>
+<td style="padding:8px;">2 backend + 1 browser</td>
+<td style="padding:8px;">0 (anno non nativo in Homey)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--bd2);">
+<td style="padding:8px;">Chiavi API richieste</td>
+<td style="padding:8px;">1 (OpenWeatherMap)</td>
+<td style="padding:8px;">0</td>
+</tr>
+<tr style="border-bottom:1px solid var(--bd2);">
+<td style="padding:8px;">Vars per il tempo</td>
+<td style="padding:8px;">3 (frammentario)</td>
+<td style="padding:8px;">22 (ricco + alba/tramonto)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--bd2);">
+<td style="padding:8px;">Computer con fase diurna</td>
+<td style="padding:8px;">Oltre 7 script, ciascuno proprio</td>
+<td style="padding:8px;">1 (LOCATION_TIME_GUARD)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--bd2);">
+<td style="padding:8px;">"Buongiorno" di notte</td>
+<td style="padding:8px;">possibile</td>
+<td style="padding:8px;">bloccato (guardia di fase)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--bd2);">
+<td style="padding:8px;">Scia falsa positiva</td>
+<td style="padding:8px;">FP2 bloccato → punteggio 85 → inizia</td>
+<td style="padding:8px;">FP2 bloccato → +0 → punteggio 6 → blocco</td>
+</tr>
+<tr>
+<td style="padding:8px;">Codice morto in context_full</td>
+<td style="padding:8px;">— —</td>
+<td style="padding:8px;">−2.868 caratteri eliminati</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Briefing dal vivo 12.5.
+07:33</h2>
+<p>Output TTS reale dopo la distribuzione:</p>
+<blockquote style="border-left:4px solid var(--cyan);padding:12px 20px;margin:16px 0;background:var(--bg2);font-style:italic;">
+          "Buongiorno, Ludik. Sono le 7:33, la data è il 12 maggio 2026.
+          <strong>Fuori ci sono 5 gradi, sembra 2, nuvoloso.
+Tra i 5 e gli 8 gradi di giorno.
+Il sole tramonta alle 20:35.</strong> Lo stato di salute del sistema è al 92 per cento…"
+        </blockquote>
+<p>
+          Briefing ora legge cinque fonti che comprende. Temperatura corretta. Al tatto (differenza ≥2 °C). Min/max durante il giorno. Alba/tramonto (a seconda dell'ora del giorno: alba al mattino, tramonto alla sera). E di notte diceva "Benvenuta, Ludka", non "Buongiorno".
+        </p>
+<h2>Quello che ho imparato</h2>
+<ol>
+<li>
+<strong>La casa intelligente tende ad acquistare fonti di verità.</strong> Quando aggiungo una funzione, di solito non controllo nella mia testa se esistono già dati simili da qualche parte nel sistema.
+Dopo un po' di tempo, l'audit mostrerà che calcolo gli stessi dati tre volte diverse.
+Il consolidamento è doloroso, ma consente di risparmiare ore di diagnostica.
+          </li>
+<li>
+<strong>Il flag Stuck-TRUE non è un segnale nuovo.</strong> I radar a onde millimetriche e i sensori PIR possono rimanere TRUE per ore. Se li prendo come "il trasloco è appena avvenuto", mentisco a me stesso. La differenza sta nel <code>ageS</code> — quando il valore è cambiato l'ultima volta, non qual è il valore corrente.
+          </li>
+<li>
+<strong>"Buongiorno" di notte è più di un bug UX.</strong> È un sintomo del sistema che non sa che giorno è.
+Funzione di saluto con conteggio delle ore.
+Ma dovrebbero essere le 3 del mattino <em>notte</em>, no <em>mattina</em>.
+Lo strato centrale lo sa bene: secondo Sunrise di yr.no, non hardcoded "&lt; 6".
+          </li>
+<li>
+<strong>Regola di memoria "RIUTILIZZA PRIMA".</strong> L'applicazione yr.no in Homey è stata installata da quando è stato fondato il sistema.
+Aveva 18 capacità e funzionava.
+Non lo sapevo e ho aggiunto il recupero HTTP Open-Meteo dall'inizio della settimana.
+L'audit trova questi duplicati e li elimina.
+          </li>
+</ol>
+<h2>Qual è il prossimo passo?</h2>
+<p>
+          Il livello centrale LOCATION_TIME_GUARD è distribuito.
+Aggiorna ogni 5 minuti tramite cron flow.
+Se lo stato scende a <code>watch</code> o <code>warning</code>, un altro flusso registra un avviso. Se cade <code>critical</code> (ad esempio yr.no offline per più di 2 ore), l'intera routine mattutina non deve essere eseguita senza un controllo aggiuntivo. Guardia di sicurezza.
+        </p>
+<p>
+          L’audit dei consumatori – altri sette script che fino ad ora avevano una propria logica tempo/fase – sta gradualmente migrando verso un’unica fonte. Sincronizzare le variabili <code>sh_cast_dne</code>
+          z <code>sh_day_phase_context</code> oggi risolve già la maggior parte delle letture legacy senza la necessità di una patch per script (NO REGRESSION rule).
+        </p>
+<p>
+          Domani mattina (mercoledì, sveglia alle 3:11 dal lunedì al venerdì) farò un controllo automatico: sephase_guard rileva l'attivazione del movimento nella fase notturna, se la radio suona dopo il secondo briefing (TTS riprende v1.9 — un altro bug, post separato), se il briefing ha di nuovo la temperatura corretta da yr.no.
+        </p>
+<p class="post-footnote">
+<em>Marcatore: <code>LOCATION_TIME_GUARD_2026-05-12</code>.
+Fonte: <code>sh_location_time_context_v1.js</code>,
+          <code>sh_weather_yr_bridge_v1.js</code>,
+          <code>sh_gemini_daily_briefing_v1.js</code> v1.3.
+Memoria: <code>reference_location_time_guard_2026-05-12.md</code> +
+          <code>reference_weather_yr_single_source_2026-05-12.md</code>.</em>
+</p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container"><p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME</p>
+<p>SMART HOME - Homey Pro 2026 + bug personali e registri delle correzioni. <a href="/it/smart-home/blog.html">Blog</a> · <a href="/it/smart-home/">Principale</a></p>
+</div>
+</footer>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

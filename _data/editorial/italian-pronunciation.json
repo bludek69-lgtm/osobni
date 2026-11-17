@@ -1,0 +1,18 @@
+{
+ "en": [
+  ["gg and double consonants", "Double consonants are held longer. Before <strong>e, i</strong>, <strong>gg</strong> sounds like the j in ‘jam’, as in <span lang='it'>oggi</span>. Length can change meaning: <span lang='it'>pala</span> means shovel, while <span lang='it'>palla</span> means ball."],
+  ["gn and gli", "<strong>gn</strong> forms a single sound similar to Czech ‘ň’: <span lang='it'>gnocchi</span>. Before a vowel, <strong>gli</strong> represents the palatal sound <span>/ʎ/</span>, which has no exact Czech equivalent: <span lang='it'>famiglia</span>. Do not pronounce g and l separately."],
+  ["sc and sch", "Before <strong>e, i</strong>, <strong>sc</strong> sounds like English ‘sh’: <span lang='it'>pesce</span>. Before <strong>a, o, u</strong>, it sounds like ‘sk’: <span lang='it'>scala</span>. Before e or i, <strong>sch</strong> keeps the ‘sk’ sound: <span lang='it'>schema</span>."],
+  ["c and ch", "Before <strong>e, i</strong>, <strong>c</strong> sounds like English ‘ch’: <span lang='it'>cena</span>. Adding <strong>h</strong> changes it to ‘k’: <span lang='it'>chi</span>. Before <strong>a, o, u</strong>, c also has a hard ‘k’ sound."],
+  ["g and gh", "Before <strong>e, i</strong>, <strong>g</strong> sounds like the j in ‘jam’: <span lang='it'>gelato</span>. Before e or i, <strong>gh</strong> keeps a hard ‘g’: <span lang='it'>spaghetti</span>. Before <strong>a, o, u</strong>, g also has a hard sound."],
+  ["Stress on the final syllable", "An accent on the final vowel marks stress on the last syllable. Listen to <span lang='it'>città</span> and <span lang='it'>caffè</span>; do not stress their first syllable."]
+ ],
+ "it": [
+  ["gg e consonanti doppie", "Le consonanti doppie si pronunciano più a lungo. Davanti a <strong>e, i</strong>, <strong>gg</strong> ha un suono affricato, come in <span lang='it'>oggi</span>. La durata può cambiare il significato: <span lang='it'>pala</span> indica l’attrezzo, <span lang='it'>palla</span> l’oggetto usato per giocare."],
+  ["gn e gli", "<strong>gn</strong> forma un unico suono simile alla ‘ň’ ceca: <span lang='it'>gnocchi</span>. Davanti a una vocale, <strong>gli</strong> rappresenta il suono palatale <span>/ʎ/</span>, senza un equivalente esatto in ceco: <span lang='it'>famiglia</span>. Non pronunciare g e l separatamente."],
+  ["sc e sch", "Davanti a <strong>e, i</strong>, <strong>sc</strong> ha un suono simile alla ‘š’ ceca, come in <span lang='it'>pesce</span>. Davanti a <strong>a, o, u</strong> si pronuncia ‘sk’, come in <span lang='it'>scala</span>. Davanti a e o i, <strong>sch</strong> conserva il suono ‘sk’: <span lang='it'>schema</span>."],
+  ["c e ch", "Davanti a <strong>e, i</strong>, <strong>c</strong> ha un suono simile alla ‘č’ ceca: <span lang='it'>cena</span>. La lettera <strong>h</strong> lo rende duro: <span lang='it'>chi</span>. Davanti a <strong>a, o, u</strong>, anche la c da sola ha il suono ‘k’."],
+  ["g e gh", "Davanti a <strong>e, i</strong>, <strong>g</strong> ha un suono simile al ‘dž’ ceco: <span lang='it'>gelato</span>. Davanti a e o i, <strong>gh</strong> conserva la g dura: <span lang='it'>spaghetti</span>. Davanti a <strong>a, o, u</strong>, anche la g da sola ha un suono duro."],
+  ["Accento sull’ultima sillaba", "L’accento scritto sull’ultima vocale indica che l’accento cade sull’ultima sillaba. Ascolta <span lang='it'>città</span> e <span lang='it'>caffè</span>: non accentare la prima sillaba."]
+ ]
+}

@@ -13,10 +13,10 @@
   const language = document.documentElement.lang.split('-')[0];
   const words = {
     cs: ['Měření návštěvnosti', 'Se souhlasem používám Google Analytics, abych zjistil, které články a videa vás zajímají. Odmítnutí nijak neomezí používání webu.', 'Povolit měření', 'Odmítnout měření', 'Podrobnosti o soukromí', 'Nastavení soukromí', 'Měření je povolené. Svou volbu můžeš kdykoli změnit.', 'Měření je vypnuté. Svou volbu můžeš kdykoli změnit.', 'Zavřít'],
-    en: ['Visitor statistics', 'With your permission, I use Google Analytics to understand which articles and videos interest you. Declining does not limit this website.', 'Allow analytics', 'Decline analytics', 'Privacy details (Czech)', 'Privacy settings', 'Analytics is enabled. You can change your choice at any time.', 'Analytics is disabled. You can change your choice at any time.', 'Close'],
-    it: ['Statistiche delle visite', 'Con il tuo consenso uso Google Analytics per capire quali articoli e video ti interessano. Il rifiuto non limita il sito.', 'Consenti statistiche', 'Rifiuta statistiche', 'Informazioni sulla privacy (ceco)', 'Impostazioni privacy', 'Statistiche attive. Puoi cambiare la scelta in qualsiasi momento.', 'Statistiche disattivate. Puoi cambiare la scelta in qualsiasi momento.', 'Chiudi']
+    en: ['Visitor statistics', 'With your permission, I use Google Analytics to understand which articles and videos interest you. Declining does not limit this website.', 'Allow analytics', 'Decline analytics', 'Privacy details', 'Privacy settings', 'Analytics is enabled. You can change your choice at any time.', 'Analytics is disabled. You can change your choice at any time.', 'Close'],
+    it: ['Statistiche delle visite', 'Con il tuo consenso uso Google Analytics per capire quali articoli e video ti interessano. Il rifiuto non limita il sito.', 'Consenti statistiche', 'Rifiuta statistiche', 'Informazioni sulla privacy', 'Impostazioni privacy', 'Statistiche attive. Puoi cambiare la scelta in qualsiasi momento.', 'Statistiche disattivate. Puoi cambiare la scelta in qualsiasi momento.', 'Chiudi']
   }[language] || null;
-  const text = words || ['Visitor statistics', 'With your permission, I use Google Analytics to understand which articles and videos interest you. Declining does not limit this website.', 'Allow analytics', 'Decline analytics', 'Privacy details (Czech)', 'Privacy settings', 'Analytics is enabled. You can change your choice at any time.', 'Analytics is disabled. You can change your choice at any time.', 'Close'];
+  const text = words || ['Visitor statistics', 'With your permission, I use Google Analytics to understand which articles and videos interest you. Declining does not limit this website.', 'Allow analytics', 'Decline analytics', 'Privacy details', 'Privacy settings', 'Analytics is enabled. You can change your choice at any time.', 'Analytics is disabled. You can change your choice at any time.', 'Close'];
   let allowed = false;
   let started = false;
   let banner;
@@ -148,6 +148,7 @@
     banner.querySelector('h2').textContent = text[0];
     banner.querySelector('.analytics-consent__explanation').textContent = text[1];
     banner.querySelector('a').textContent = text[4];
+    banner.querySelector('a').href = (['en','it'].includes(language) ? '/'+language : '') + '/soukromi/';
     banner.querySelector('[data-choice="yes"]').textContent = text[2];
     banner.querySelector('[data-choice="no"]').textContent = text[3];
     banner.querySelector('[data-choice="close"]').textContent = text[8];
@@ -160,7 +161,7 @@
     settings.textContent = text[5];
     settings.addEventListener('click', open);
     const policy = document.createElement('a');
-    policy.href = '/soukromi/';
+    policy.href = (['en','it'].includes(language) ? '/'+language : '') + '/soukromi/';
     policy.textContent = text[4];
     controls.append(settings, policy);
     const footer = document.querySelector('.footer-links, .site-footer, footer');

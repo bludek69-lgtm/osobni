@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Cold-start bug in sh_heating_demand_v1 — boiler stuck forever in hold_off_180s_left after fresh installation. Root cause + fix v1.2." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Cold-start anti-cycling bug — boiler stuck forever | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Cold-start anti-cycling bug — boiler stuck forever | SMART HOME" property="og:title"/>
+<meta content="Cold-start bug in sh_heating_demand_v1 — boiler stuck forever in hold_off_180s_left after fresh installation. Root cause + fix v1.2." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/posts/heating-coldstart-bug.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/posts/heating-coldstart-bug.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/heating-coldstart-bug.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/heating-coldstart-bug.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/heating-coldstart-bug.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/posts/heating-coldstart-bug.html#main">Skip to content</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/en/smart-home/blog.html">← Back to the blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Back from the article" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a></div><div class="visitor-links"><a href="/en/smart-home/">Introduction Smart Home</a><a href="/en/smart-home/blog.html">All notes</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/posts/heating-coldstart-bug.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/posts/heating-coldstart-bug.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/posts/heating-coldstart-bug.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/en/smart-home/blog.html">← All posts</a>
+<article class="post-content">
+<p class="post-meta">Apr 21, 2026 · Heating · 7 min read</p>
+<h1>Cold-start anti-cycling bug — boiler stuck forever</h1>
+<p>
+          Heating Phase A went live on the morning of 4/21. The boiler turned on, ran for 5 minutes, turned off. Then he never closed again. EventLog reported every 2 minutes
+          <code>hold_off_180s_left</code>, where <code>180</code> it was counted from time-since-last-on and did not scroll down.
+        </p>
+<p>
+          The anti-cycling guard was insured against rapid switching of the boiler (contactor protection). It basically worked, but had an edge case on cold start — where
+          <code>min_offtime_s</code> never expired. Here are 4 hours of diagnostics.
+        </p>
+<h2>Symptom</h2>
+<p>
+          The boiler switched on once, heated the bathroom to the target temperature (approx. 5 min), then switched off according to hysteresis. Here's the end-of-story — from that point on, it never turned on again, even when the temperature dropped far below the target.
+        </p>
+<p>
+          EventLog from demand cron every 2 min:
+        </p>
+<pre tabindex="0"><code>06:14:00 demand=on  jidelna=21.0/21.0  koupelna=22.1/22.0  → boiler_request=on
+06:16:00 demand=on  ...                                  → boiler_request=on
+06:21:00 demand=off jidelna=21.0/21.0  koupelna=22.0/22.0 → boiler_request=off
+06:23:00 demand=on  jidelna=20.4/21.0                    → hold_off_180s_left=180
+06:25:00 demand=on  jidelna=20.3/21.0                    → hold_off_180s_left=180
+06:27:00 demand=on  jidelna=20.2/21.0                    → hold_off_180s_left=180
+... (forever)</code></pre>
+<p>
+<code>hold_off_180s_left</code> the count down did not continue. The boiler forever held off, the dining room slowly dropped to 21 → 20 → 19 → 18 °C. Without intervention, it would drop to anti-freeze 7 °C (where the safety bypass would force the boiler to shut down).
+        </p>
+<h2>Anti-cycling guard logic</h2>
+<p>
+<code>sh_heating_demand_v1 v1.1</code> had this check:
+        </p>
+<pre tabindex="0"><code>// v1.1
+const sinceTs = parseInt(await getVar('sh_heating_boiler_since_ts'), 10);
+const elapsed = Math.floor((Date.now() - sinceTs) / 1000);
+const minOfftimeS = parseInt(await getVar('sh_cfg_heating_min_offtime_s'), 10);
+
+if (boilerState === 'off' &amp;&amp; elapsed &lt; minOfftimeS) {
+  return {
+    request: 'off',
+    reason: `hold_off_${minOfftimeS - elapsed}s_left`
+  };
+}</code></pre>
+<p>
+          The logic was: if the boiler is off and less than has passed since the last off
+          <code>min_offtime_s</code> (default 180 s = 3 min), keep it off to protect the contactor.
+        </p>
+<h2>Edge case — cold start</h2>
+<p>
+<code>sh_heating_boiler_since_ts</code> was on a fresh install of the script
+          <strong>not registered / undefined</strong>. <code>parseInt(undefined)</code> = NaN.
+          <code>Date.now() - NaN</code> = NaN. <code>Math.floor(NaN / 1000)</code> = NaN.
+        </p>
+<p>
+          And now the key moment: <code>NaN &lt; 180</code> in JavaScript will evaluate
+          <strong>false</strong>. So during the first 5 min of running (when the boiler first switched on) there was an else branch and everything worked.
+        </p>
+<p>
+          But after the first off transition (the boiler turns off according to hysteresis) it registered
+          <code>since_ts = 0</code> some shadow logic (debug log revealed — one execution path did not set since_ts correctly when off transition, and default value was 0 from initialization).
+        </p>
+<pre tabindex="0"><code>// since_ts = 0
+elapsed = Math.floor((1697123456000 - 0) / 1000)
+       = 1697123456
+// 1697123456 &lt; 180 ? FALSE!
+// Wait, that's not the bug...</code></pre>
+<p>
+          Hmm. <code>1697123456 &lt; 180</code> is false, so the guard would NOT FAIL. The script should continue normally.
+        </p>
+<h2>The real root cause</h2>
+<p>
+          After another debug log, I found out that there was no problem <code>elapsed &lt; minOfftimeS</code>, but another piece of code below:
+        </p>
+<pre tabindex="0"><code>// Safety cutoff
+if (sinceTs &gt; 0) {
+  // Validation runtime checks
+  ...
+}
+
+// Anti-cycling check (the actual guard)
+if (boilerState === 'off') {
+  const safeElapsed = sinceTs &gt; 0 ? elapsed : 0;
+  if (safeElapsed &lt; minOfftimeS) {
+    return {request: 'off', reason: `hold_off_${minOfftimeS - safeElapsed}s_left`};
+  }
+}</code></pre>
+<p>
+          Here is defensive coding — if <code>sinceTs</code> was 0 or negative (error in init), use safeElapsed=0 → fall through to guard.
+          <code>0 &lt; 180</code> = true → guard closes → return hold_off.
+        </p>
+<p>
+          The logic should have been: "if sinceTs does not apply, let the boiler close (skip guard)". Instead: "if sinceTs does not apply, treat as right-now (most conservative) → guard always blocks".
+        </p>
+<h2>Fix v1.2</h2>
+<pre tabindex="0"><code>// v1.2 — explicit cold-start escape
+if (boilerState === 'off') {
+  const safeElapsed = sinceTs &gt; 0
+    ? elapsed
+    : Number.MAX_SAFE_INTEGER;  // ← cold start: bypass guard
+  if (safeElapsed &lt; minOfftimeS) {
+    return {request: 'off', reason: `hold_off_${minOfftimeS - safeElapsed}s_left`};
+  }
+}</code></pre>
+<p>
+          Key change: <code>sinceTs &gt; 0 ? elapsed : Number.MAX_SAFE_INTEGER</code>. Cold start = pretend infinite time elapsed → guard never blocks.
+        </p>
+<p>
+          Plus fixed everywhere else in the code (3 more places) where <code>sinceTs &gt; 0</code>
+          check was used as a gate with incorrect default behavior.
+        </p>
+<h2>Test</h2>
+<p>
+          Reset all heating state vars (cold start simulation), run demand cron manually:
+        </p>
+<pre tabindex="0"><code>06:30:00 (cold start) demand=on jidelna=18.0/21.0 → boiler_request=on
+06:30:00 since_ts=&lt;set&gt;
+06:32:00 demand=on  jidelna=18.5/21.0 → boiler_request=on (still cold)
+...
+06:45:00 demand=off jidelna=21.0/21.0 → boiler_request=off (target reached)
+06:45:00 since_ts=&lt;updated to off transition&gt;
+06:47:00 demand=on  jidelna=20.4/21.0 → hold_off_60s_left (legitimately cooling down)
+06:48:00 demand=on  jidelna=20.3/21.0 → boiler_request=on (180s elapsed)</code></pre>
+<p>
+          Test passed. Cold start not recognized as an anti-cycling violation, normal cycling behaves normally after the first off.
+        </p>
+<h2>What was learned</h2>
+<blockquote>
+<strong>"Default safe" is often not default safe.</strong> Defensive coding that assumes the worst-case can add its own bug class — a guard that "prefers to block rather than release" can lead to system paralysis.
+        </blockquote>
+<p>
+          Lessons from this bug:
+        </p>
+<ul>
+<li><strong>Edge case 0 / undefined / NaN</strong>. Always explicit handling, not implicit fallthrough via JS coercion. <code>NaN &lt; 180</code> = false is a gotcha I ran into.</li>
+<li><strong>Cold start = safety bypass</strong>. At a cold start, guards have by definition "lack of data" — the default behavior should be "let through on first run", not "block all".</li>
+<li><strong>Orthogonality safety cap</strong>. Another safety guard (max_runtime_s 4h forced off) would not help here — the boiler was off, not him. Layered safeguards need to cover all paths, not just the on-path.</li>
+<li><strong>EventLog is my best friend</strong>. Without detailed logos, this bug would be invisible — Homey UI shows boiler off, everything looks OK. Insight came from EventLog grep <code>hold_off_*</code>.</li>
+</ul>
+<p>
+          The bug was categorized as "state machine cold start" — which typically appears in software once per project and then never. Here, however, the house, which takes place again every morning, has constant cold-start exposure (after every power outage, after every deploy, after every Homey restart).
+        </p>
+<p>
+          Defense in depth: <code>sh_brain_guardian_v1</code> (V1 LIVE from 26.4.) has the invariant "if the boiler is forever held off + the zone is slowly decreasing → alert". This meta layer would have caught the same bug within 15 min even if the v1.2 fix didn't exist.
+        </p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME project</p>
+<p class="footer-meta">Public presentation · no API keys · no local IP.</p>
+</div>
+</footer>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

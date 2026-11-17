@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quiz quotidiano: viaggi, Italia e vita al volante</title>
+<meta content="Ogni giorno 5 nuove domande sui viaggi, sull'Italia, sull'Europa e sulla vita di un autista di autobus.
+Gioca, mantieni una serie di vittorie consecutive e invia il risultato ai tuoi amici." name="description"/>
+
+<meta content="Quiz quotidiano Cestovatel69" property="og:title"/>
+<meta content="5 domande al giorno: viaggi, Italia e vita al volante di un autobus. quanto darai" property="og:description"/>
+<meta content="https://cestovatel69.cz/it/hry/denni-kviz/" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/assets/css/style.css?v=20261116-navsearch" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+<link href="/assets/css/language-navigation.css?v=20261030-jazyky" rel="stylesheet"/>
+
+
+<style>
+.kviz{max-width:600px;margin:0 auto;padding:1.5rem 1rem 2rem;
+  --k-ok:#16a34a; --k-bad:#dc2626; --k-ok-bg:rgba(22,163,74,.16); --k-bad-bg:rgba(220,38,38,.16);}
+.kviz-head{display:flex;align-items:flex-end;justify-content:space-between;gap:.75rem;margin-bottom:1rem}
+.kviz-head h1{margin:0;font-size:clamp(1.5rem,4vw,2rem)}
+.kviz-head .meta{color:var(--text-mut);font-size:.85rem;text-align:right;white-space:nowrap}
+.kviz-intro{color:var(--text-mut);margin:0 0 1rem}
+.kviz .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-card);padding:1.25rem;margin-bottom:1rem}
+.kviz .progress{display:flex;gap:6px;margin-bottom:1rem}
+.kviz .progress span{flex:1;height:6px;border-radius:3px;background:var(--border)}
+.kviz .progress span.ok{background:var(--k-ok)} .kviz .progress span.bad{background:var(--k-bad)} .kviz .progress span.cur{background:var(--accent)}
+.kviz .cat{display:inline-block;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent-text);font-weight:700;margin-bottom:.4rem}
+.kviz .q{font-size:1.15rem;font-weight:600;margin:0 0 1rem;color:var(--text)}
+.kviz .opts{display:grid;gap:.5rem}
+.kviz .opt{width:100%;text-align:left;padding:.8rem 1rem;border-radius:var(--radius-button);border:1px solid var(--border);background:transparent;color:var(--text);font:inherit;cursor:pointer}
+.kviz .opt:hover:not(:disabled){border-color:var(--accent)}
+.kviz .opt:disabled{cursor:default}
+.kviz .opt.ok{background:var(--k-ok-bg);border-color:var(--k-ok)} .kviz .opt.bad{background:var(--k-bad-bg);border-color:var(--k-bad)}
+.kviz .btn{display:inline-block;padding:.75rem 1.1rem;border-radius:var(--radius-button);border:0;background:var(--accent);color:var(--on-accent);font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
+.kviz .btn.ghost{background:transparent;color:var(--accent-text);border:1px solid var(--accent)}
+.kviz .row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+.kviz .big{font-size:2.4rem;font-weight:800;margin:.25rem 0;color:var(--text)}
+.kviz .grid{font-size:1.6rem;letter-spacing:4px}
+.kviz .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;text-align:center;margin-top:1rem}
+.kviz .stats b{display:block;font-size:1.4rem;color:var(--text)}
+.kviz .stats small,.kviz .muted{color:var(--text-mut)}
+.kviz .muted{font-size:.9rem}
+.kviz-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:.9rem;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50}
+.kviz-toast.show{opacity:1}
+</style>
+<link href="https://cestovatel69.cz/it/hry/denni-kviz/" rel="canonical"/><link href="https://cestovatel69.cz/hry/denni-kviz/" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/hry/denni-kviz/" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/hry/denni-kviz/" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="theme-home editorial-preview editorial-site editorial-tool">
+<header class="site-header">
+<div class="site-header__inner">
+<a class="brand" href="/it/">
+<span class="brand-dot"></span>
+      Luděk
+    </a>
+<nav aria-label="Lingua della pagina" class="lang-switcher"><a href="/hry/denni-kviz/" hreflang="cs" lang="cs">CS</a><a href="/en/hry/denni-kviz/" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/hry/denni-kviz/" hreflang="it" lang="it">IT</a></nav>
+<button aria-expanded="false" aria-label="Apri il menù" class="nav-toggle">☰</button>
+<nav aria-label="Navigazione principale" class="nav">
+<a href="/it/">Home</a>
+<a href="/it/aplikace/">Le mie app</a>
+<a href="/it/finance/">Finanza</a>
+<a href="/it/cestovani/">Viaggi</a>
+<a href="/it/cestovani/italie/">Italia</a>
+<a href="/it/zaliby/rybareni/">Pesca</a>
+<a href="/it/smart-home/">Smart Home</a>
+<a href="/it/ai.html">AI</a>
+<a href="/it/cestovani/uzitecne-odkazy/">Link utili</a>
+</nav>
+</div>
+</header>
+<main id="main">
+<div class="kviz">
+<div class="kviz-head">
+<h1>🚌 Quiz quotidiano</h1>
+<div class="meta" id="meta"></div>
+</div>
+<p class="kviz-intro">Ogni giorno 5 nuove domande sui viaggi, sull'Italia e sulla vita al volante.
+Tutti giocano allo stesso quiz: confrontati con i tuoi amici.</p>
+<div id="app"><noscript><p class="card">Il quiz necessita di JavaScript abilitato.</p></noscript></div>
+<section class="card" hidden="" id="partner">
+<div class="cat">Consiglio di viaggio</div>
+<p style="margin:0 0 .75rem">Stai progettando l'Italia?
+Biglietti e viaggi con conferma rapida possono essere trovati qui.</p>
+<a class="btn ghost" href="https://www.getyourguide.com/?partner_id=C1MGSGB&amp;utm_medium=online_publisher" rel="sponsored noopener noreferrer" target="_blank">Visualizza i viaggi ↗</a>
+</section>
+<p class="muted">Nuovo quiz ogni giorno a mezzanotte.
+I risultati vengono salvati solo nel tuo browser.</p>
+</div>
+</main>
+<div aria-live="polite" class="kviz-toast" id="toast" role="status"></div>
+<footer class="site-footer">
+<div class="site-footer__inner">
+<div>© Budinský Luděk · Sito personale</div>
+<div class="footer-links">
+<a href="https://www.youtube.com/@cestovatel69" rel="noopener" target="_blank">YouTube @Cestovatel69</a>
+<a href="/it/o-mne.html">Chi sono</a>
+<a href="/it/smart-home/">Sito web Casa intelligente</a>
+</div>
+</div>
+</footer>
+<script src="/assets/js/editorial-quiz-it.js?v=20261117-editorial"></script>
+<script src="/hry/denni-kviz/kviz.js?v=20261117-editorial"></script>
+<script src="/assets/js/main.js?v=20261117-editorial"></script>
+</body>
+</html>

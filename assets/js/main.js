@@ -31,12 +31,13 @@
     const header = document.querySelector('.site-header__inner');
     if (!nav || !header || nav.classList.contains('site-nav--organized')) return;
     const lang = (document.documentElement.lang || 'cs').split('-')[0];
-    const blogLabel = {cs: 'Blog z cest', en: 'Travel blog · CS', it: 'Blog di viaggio · CS'}[lang] || 'Blog z cest';
+    const blogLabel = {cs: 'Blog z cest', en: 'Travel blog', it: 'Blog di viaggio'}[lang] || 'Blog z cest';
     const path = a => new URL(a.href, location.href).pathname.replace(/^\/(en|it)(?=\/)/, '').replace(/index\.html$/, '').replace(/\/$/, '') || '/';
     let blog = [...nav.querySelectorAll('a')].find(a => path(a) === '/blog');
-    if (!blog) { blog = document.createElement('a'); blog.href = '/blog/'; nav.appendChild(blog); }
+    if (!blog) { blog = document.createElement('a'); nav.appendChild(blog); }
+    blog.href = (lang === 'cs' ? '' : '/' + lang) + '/blog/';
     blog.textContent = blogLabel;
-    if (lang !== 'cs') blog.hreflang = 'cs';
+    blog.hreflang = lang;
     const links = [...nav.querySelectorAll('a')];
     const order = ['/', '/cestovani', '/cestovani/italie', '/blog', '/aplikace', '/finance', '/zaliby/rybareni', '/smart-home', '/ai.html', '/cestovani/uzitecne-odkazy'];
     const rank = a => { const i = order.indexOf(path(a)); return i < 0 ? order.length : i; };
@@ -60,7 +61,7 @@
   function install() {
     if (!document.querySelector('.site-header__inner')) return;
     const script = document.createElement('script');
-    script.src = '/assets/js/site-search.js?v=20261116-navsearch';
+    script.src = '/assets/js/site-search.js?v=20261117-editorial';
     document.body.appendChild(script);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', install);
@@ -493,7 +494,7 @@
       // target without adding it to the normal Tab order (clicking already
       // opens the lightbox; this only matters for focus restoration on close).
       if (!img.hasAttribute('tabindex')) img.setAttribute('tabindex', '-1');
-      img.addEventListener('click', function (e) { e.stopPropagation(); open(img.src, img.alt, img); });
+      img.addEventListener('click', function (e) { e.stopPropagation(); open(img.dataset.fullSrc || img.src, img.alt, img); });
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

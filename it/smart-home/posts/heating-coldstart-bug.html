@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Bug di avvio a freddo in sh_heating_demand_v1: caldaia bloccata per sempre in hold_off_180s_left dopo una nuova installazione.
+Causa principale + correzione v1.2." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Bug anticiclismo con avviamento a freddo: caldaia bloccata per sempre |
+CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Bug anticiclismo con avviamento a freddo: caldaia bloccata per sempre |
+CASA INTELLIGENTE" property="og:title"/>
+<meta content="Bug di avvio a freddo in sh_heating_demand_v1: caldaia bloccata per sempre in hold_off_180s_left dopo una nuova installazione.
+Causa principale + correzione v1.2." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/posts/heating-coldstart-bug.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/posts/heating-coldstart-bug.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/heating-coldstart-bug.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/heating-coldstart-bug.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/heating-coldstart-bug.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/posts/heating-coldstart-bug.html#main">Vai al contenuto</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/it/smart-home/blog.html">← Torniamo al blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Ritorno dall'articolo" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a></div><div class="visitor-links"><a href="/it/smart-home/">Introduzione Casa intelligente</a><a href="/it/smart-home/blog.html">Tutte le note</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/posts/heating-coldstart-bug.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/posts/heating-coldstart-bug.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/posts/heating-coldstart-bug.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/it/smart-home/blog.html">← Tutti i post</a>
+<article class="post-content">
+<p class="post-meta">21 apr 2026 · Riscaldamento · 7 minuti di lettura</p>
+<h1>Bug anticiclismo con avviamento a freddo: caldaia bloccata per sempre</h1>
+<p>
+          La fase A del riscaldamento è entrata in funzione la mattina del 21/4.
+La caldaia si è accesa, ha funzionato per 5 minuti, si è spenta.
+Poi non ha più chiuso.
+EventLog segnalato ogni 2 minuti
+          <code>hold_off_180s_left</code>, dove <code>180</code> è stato contato dal tempo trascorso dall'ultima volta e non è stato eseguito lo scorrimento verso il basso.
+        </p>
+<p>
+          La protezione anticiclismo era assicurata contro la commutazione rapida della caldaia (protezione contattori).
+Fondamentalmente ha funzionato, ma ha avuto un caso limite sull'avvio a freddo: dove
+          <code>min_offtime_s</code> mai scaduto.
+Ecco 4 ore di diagnostica.
+        </p>
+<h2>Sintomo</h2>
+<p>
+          La caldaia si è accesa una volta, ha riscaldato il bagno alla temperatura nominale (ca. 5 min), quindi si è spenta secondo l'isteresi.
+La storia finisce qui: da quel momento in poi non si è più riacceso, anche quando la temperatura è scesa molto al di sotto del valore target.
+        </p>
+<p>
+          EventLog dal cron della richiesta ogni 2 minuti:
+        </p>
+<pre tabindex="0"><code>06:14:00 demand=on  jidelna=21.0/21.0  koupelna=22.1/22.0  → boiler_request=on
+06:16:00 demand=on  ...                                  → boiler_request=on
+06:21:00 demand=off jidelna=21.0/21.0  koupelna=22.0/22.0 → boiler_request=off
+06:23:00 demand=on  jidelna=20.4/21.0                    → hold_off_180s_left=180
+06:25:00 demand=on  jidelna=20.3/21.0                    → hold_off_180s_left=180
+06:27:00 demand=on  jidelna=20.2/21.0                    → hold_off_180s_left=180
+... (forever)</code></pre>
+<p>
+<code>hold_off_180s_left</code> il conto alla rovescia non è continuato. La caldaia rimase sempre spenta, la sala da pranzo scese lentamente a 21 → 20 → 19 → 18 °C. Senza intervento scenderebbe a 7 °C antigelo (dove il by-pass di sicurezza forzerebbe lo spegnimento della caldaia).
+        </p>
+<h2>Logica di protezione anticiclismo</h2>
+<p>
+<code>sh_heating_demand_v1 v1.1</code> ha fatto questo controllo:
+        </p>
+<pre tabindex="0"><code>// v1.1
+const sinceTs = parseInt(await getVar('sh_heating_boiler_since_ts'), 10);
+const elapsed = Math.floor((Date.now() - sinceTs) / 1000);
+const minOfftimeS = parseInt(await getVar('sh_cfg_heating_min_offtime_s'), 10);
+
+if (boilerState === 'off' &amp;&amp; elapsed &lt; minOfftimeS) {
+  return {
+    request: 'off',
+    reason: `hold_off_${minOfftimeS - elapsed}s_left`
+  };
+}</code></pre>
+<p>
+          La logica era: se la caldaia è spenta ed è passato meno di quanto dall'ultimo spegnimento
+          <code>min_offtime_s</code> (default 180 s = 3 min), mantenerlo spento per proteggere il contattore.
+        </p>
+<h2>Caso limite: avvio a freddo</h2>
+<p>
+<code>sh_heating_boiler_since_ts</code> era su una nuova installazione dello script
+          <strong>non registrato/non definito</strong>. <code>parseInt(undefined)</code> = NaN.
+          <code>Date.now() - NaN</code> = NaN. <code>Math.floor(NaN / 1000)</code> = NaN.
+        </p>
+<p>
+          E ora il momento chiave: <code>NaN &lt; 180</code> in JavaScript valuterà
+          <strong>falso</strong>.
+Quindi durante i primi 5 minuti di funzionamento (quando la caldaia si è accesa per la prima volta) c'era un altro ramo e tutto ha funzionato.
+        </p>
+<p>
+          Ma dopo la prima transizione di spegnimento (la caldaia si spegne secondo l'isteresi) si è verificato
+          <code>since_ts = 0</code> qualche logica ombra (rivelato il log di debug: un percorso di esecuzione non è stato impostato correttamente since_ts al momento della transizione e il valore predefinito era 0 dall'inizializzazione).
+        </p>
+<pre tabindex="0"><code>// since_ts = 0
+elapsed = Math.floor((1697123456000 - 0) / 1000)
+       = 1697123456
+// 1697123456 &lt; 180 ? FALSE!
+// Wait, that's not the bug...</code></pre>
+<p>
+          Hmm. <code>1697123456 &lt; 180</code> è falso, quindi la guardia NON FALLISCE.
+Lo script dovrebbe continuare normalmente.
+        </p>
+<h2>La vera causa principale</h2>
+<p>
+          Dopo un altro registro di debug, ho scoperto che non c'erano problemi <code>elapsed &lt; minOfftimeS</code>, ma un altro pezzo di codice qui sotto:
+        </p>
+<pre tabindex="0"><code>// Safety cutoff
+if (sinceTs &gt; 0) {
+  // Validation runtime checks
+  ...
+}
+
+// Anti-cycling check (the actual guard)
+if (boilerState === 'off') {
+  const safeElapsed = sinceTs &gt; 0 ? elapsed : 0;
+  if (safeElapsed &lt; minOfftimeS) {
+    return {request: 'off', reason: `hold_off_${minOfftimeS - safeElapsed}s_left`};
+  }
+}</code></pre>
+<p>
+          Ecco la codifica difensiva: if <code>sinceTs</code> era 0 o negativo (errore in init), usa safeElapsed=0 → fall through to guard.
+          <code>0 &lt; 180</code> = true → la protezione si chiude → restituisce hold_off.
+        </p>
+<p>
+          La logica avrebbe dovuto essere: "se sinceTs non si applica, lasciare chiudere la caldaia (salta protezione)".
+Invece: "se sinceTs non si applica, trattalo come adesso (più conservatore) → la guardia blocca sempre".
+        </p>
+<h2>Correggi la versione 1.2</h2>
+<pre tabindex="0"><code>// v1.2 — explicit cold-start escape
+if (boilerState === 'off') {
+  const safeElapsed = sinceTs &gt; 0
+    ? elapsed
+    : Number.MAX_SAFE_INTEGER;  // ← cold start: bypass guard
+  if (safeElapsed &lt; minOfftimeS) {
+    return {request: 'off', reason: `hold_off_${minOfftimeS - safeElapsed}s_left`};
+  }
+}</code></pre>
+<p>
+          Modifica chiave: <code>sinceTs &gt; 0 ? elapsed : Number.MAX_SAFE_INTEGER</code>.
+Avvio a freddo = fingi che sia trascorso un tempo infinito → la protezione non si blocca mai.
+        </p>
+<p>
+          Inoltre risolto il problema in qualsiasi altra parte del codice (altri 3 posti) dove <code>sinceTs &gt; 0</code>
+          il controllo è stato utilizzato come cancello con un comportamento predefinito errato.
+        </p>
+<h2>Prova</h2>
+<p>
+          Ripristina tutte le variabili dello stato di riscaldamento (simulazione dell'avvio a freddo), avvia manualmente il cron della richiesta:
+        </p>
+<pre tabindex="0"><code>06:30:00 (cold start) demand=on jidelna=18.0/21.0 → boiler_request=on
+06:30:00 since_ts=&lt;set&gt;
+06:32:00 demand=on  jidelna=18.5/21.0 → boiler_request=on (still cold)
+...
+06:45:00 demand=off jidelna=21.0/21.0 → boiler_request=off (target reached)
+06:45:00 since_ts=&lt;updated to off transition&gt;
+06:47:00 demand=on  jidelna=20.4/21.0 → hold_off_60s_left (legitimately cooling down)
+06:48:00 demand=on  jidelna=20.3/21.0 → boiler_request=on (180s elapsed)</code></pre>
+<p>
+          Prova superata.
+L'avviamento a freddo non viene riconosciuto come violazione dell'anticiclismo, il ciclo normale si comporta normalmente dopo la prima disattivazione.
+        </p>
+<h2>Cosa è stato appreso</h2>
+<blockquote>
+<strong>La "sicurezza predefinita" spesso non è sicura predefinita.</strong> Una codifica difensiva che presuppone il caso peggiore può aggiungere la propria classe di bug: una guardia che "preferisce bloccare anziché rilasciare" può portare alla paralisi del sistema.
+        </blockquote>
+<p>
+          Lezioni da questo bug:
+        </p>
+<ul>
+<li><strong>Caso limite 0/non definito/NaN</strong>. Gestione sempre esplicita, non fallthrough implicito tramite coercizione JS. <code>NaN &lt; 180</code> = false è un trucco in cui mi sono imbattuto.</li>
+<li><strong>Avviamento a freddo = bypass di sicurezza</strong>.
+All'avvio a freddo, le guardie hanno per definizione "mancanza di dati": il comportamento predefinito dovrebbe essere "lasciare passare al primo avvio", non "bloccare tutto".</li>
+<li><strong>Tappo di sicurezza per l'ortogonalità</strong>.
+Un'altra guardia di sicurezza (max_runtime_s 4h forzata) non sarebbe d'aiuto in questo caso: la caldaia era spenta, non lui.
+Le protezioni a più livelli devono coprire tutti i percorsi, non solo quelli sul percorso.</li>
+<li><strong>EventLog è il mio migliore amico</strong>.
+Senza loghi dettagliati, questo bug sarebbe invisibile: l'interfaccia utente Homey mostra la caldaia spenta, tutto sembra a posto.
+L'intuizione è arrivata da EventLog grep <code>hold_off_*</code>.</li>
+</ul>
+<p>
+          Il bug è stato classificato come "avvio a freddo della macchina a stati", che in genere appare nel software una volta per progetto e poi mai.
+Qui, invece, la casa, che si ripete ogni mattina, ha un'esposizione costante alla partenza a freddo (dopo ogni interruzione di corrente, dopo ogni implementazione, dopo ogni riavvio di Homey).
+        </p>
+<p>
+          Difesa in profondità: <code>sh_brain_guardian_v1</code> (V1 LIVE dal 26.4.) ha l'invariante “se la caldaia è spenta per sempre + la zona diminuisce lentamente → allerta”. Questo meta livello avrebbe rilevato lo stesso bug entro 15 minuti anche se la correzione v1.2 non fosse esistita.
+        </p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME</p>
+<p class="footer-meta">Presentazione pubblica · nessuna chiave API · nessun IP locale.</p>
+</div>
+</footer>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

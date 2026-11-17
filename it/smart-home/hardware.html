@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Di cosa è fatta la casa: ufficio centrale, sensori, luci e altre apparecchiature.
+Le singole parti sono state aggiunte gradualmente e ognuna ha il proprio compito.
+Ecco una panoramica dei loro collegamenti." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Ferramenta | CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="Ferramenta | CASA INTELLIGENTE" property="og:title"/>
+<meta content="Di cosa è fatta la casa: ufficio centrale, sensori, luci e altre apparecchiature.
+Le singole parti sono state aggiunte gradualmente e ognuna ha il proprio compito.
+Ecco una panoramica dei loro collegamenti." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/hardware.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/hardware.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/hardware.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/hardware.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/hardware.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/hardware.html#main">Vai al contenuto</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Apri il menù</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/it/smart-home/">Home</a></li>
+<li><a href="/it/smart-home/prozivani.html">Come funziona</a></li>
+<li><a aria-current="page" class="is-active" href="/it/smart-home/zarizeni.html">Attrezzatura</a></li>
+<li><a href="/it/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/it/smart-home/dashboard.html">Cruscotto</a></li>
+<li><a href="/it/smart-home/pribeh.html">La storia</a></li>
+<li><a href="/it/smart-home/blog.html">Blog</a></li>
+<li><a href="/it/smart-home/kontakt.html">Informazioni sul progetto</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Sito web personale e Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a><a href="/it/smart-home/">Introduzione Casa intelligente</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/hardware.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/hardware.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/hardware.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section section-alt" id="hardware">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">📦 Attrezzature · Hardware</p>
+<h1 class="section-title">Cosa c'è fisicamente?</h1>
+<p class="section-lead">Di cosa è fatta la casa: ufficio centrale, sensori, luci e altre apparecchiature.
+Le singole parti sono state aggiunte gradualmente e ognuna ha il proprio compito.
+Ecco una panoramica dei loro collegamenti.</p><details class="visitor-technical-intro"><summary>Dettagli tecnici</summary><p class="section-lead">
+            Hub, rete di sensori tramite 4 protocolli, 84 dispositivi in 10 zone.
+Livelli hardware stratificati successivamente, ciascuno con il proprio ruolo.
+          </p></details>
+</header>
+<div class="hw-evolution">
+<article class="hw-evo-card hw-evo-old">
+<div class="hw-evo-head">
+<span class="hw-evo-badge">Eredità · 2016—2019</span>
+<h3>Homey Pro (inizio 2019)</h3>
+</div>
+<ul class="hw-evo-specs">
+<li>Processore single-core, prestazioni limitate</li>
+<li>Z-Wave + Zigbee + 433 MHz + Wi-Fi + IR</li>
+<li>Runtime basato sul flusso, supporto HomeyScript limitato</li>
+<li>Produttore supportato fino all'EOL</li>
+</ul>
+<p class="hw-evo-issue">
+<strong>Perché ha smesso di essere sufficiente:</strong> Con l'aumento del numero di flussi e dei primi HomeyScript, l'hub ha iniziato ad avere problemi di prestazioni.
+Gli script paralleli sono caduti su SIGABRT, il runtime non è riuscito a tenere il passo con gli eventi in tempo reale, automazioni più grandi hanno bloccato l'interfaccia utente.
+Semplicemente non era dimensionato per alcun approccio basato sulla sceneggiatura.
+            </p>
+<p class="hw-evo-link">
+<a href="https://homey.app/en-us/wiki/homey-pro-2016-2019-changelog/" rel="noopener" target="_blank">
+                Registro delle modifiche ufficiali (2016—2019) →
+              </a>
+</p>
+</article>
+<div aria-hidden="true" class="hw-evo-arrow">→</div>
+<article class="hw-evo-card hw-evo-new">
+<div class="hw-evo-head">
+<span class="hw-evo-badge hw-evo-badge-current">Dal vivo · attuale</span>
+<h3>Homey Pro 2026</h3>
+</div>
+<figure class="hw-evo-photo">
+<img alt="Homey Pro Inizio 2023: foto ufficiale del prodotto" class="zoomable" decoding="async" height="512" loading="lazy" src="/smart-home/assets/photos/homey-pro.png" width="1120"/>
+<figcaption>© Athom B.V. — immagine stampa ufficiale</figcaption>
+</figure>
+<h4 class="hw-evo-spec-title">Specifiche hardware</h4>
+<ul class="hw-evo-specs">
+<li><strong>CPU</strong>: Quad-core ARMv8 da 1,5 GHz</li>
+<li><strong>RAM</strong>: 4GB LPDDR4</li>
+<li><strong>Stoccaggio</strong>: Flash eMMC da 8 GB</li>
+<li><strong>Aggiornamenti garantiti fino a giugno 2031</strong></li>
+</ul>
+<h4 class="hw-evo-spec-title">Protocolli wireless</h4>
+<ul class="hw-evo-specs">
+<li><strong>Wi-Fi</strong> 2,4GHz + 5GHz</li>
+<li><strong>Bluetooth</strong> Basso consumo energetico 5.0</li>
+<li><strong>Matter</strong> v1.3 (controllore)</li>
+<li><strong>Filo</strong> (Funzionalità router di confine)</li>
+<li><strong>Zigbee</strong> 3.0 (coordinatore)</li>
+<li><strong>Z-Wave</strong> Serie 700</li>
+<li><strong>433 MHz</strong> (sensori tradizionali)</li>
+<li><strong>Infrarossi</strong> (Apprendimento remoto TV)</li>
+<li>Facoltativo <strong>Adattatore Ethernet</strong> (USB-C)</li>
+</ul>
+<h4 class="hw-evo-spec-title">Cosa può fare</h4>
+<ul class="hw-evo-specs">
+<li><strong>Elaborazione con priorità locale</strong> — cloud solo come backup, l'automazione viene eseguita localmente</li>
+<li><strong>Flusso avanzato</strong> automazione (gratuita, senza abbonamento)</li>
+<li><strong>HomeyScript</strong> runtime: JavaScript completo per script personalizzati</li>
+<li><strong>API REST</strong> con token Bearer per integrazioni esterne</li>
+<li><strong>Modalità satellitare</strong> - estende la portata su Homey Bridge</li>
+<li><strong>Funzionalità sperimentali</strong>: accesso SSH, dispositivi virtuali, strumenti per utenti esperti</li>
+</ul>
+<p class="hw-evo-issue">
+<strong>Cosa lo ha reso possibile:</strong> Oltre 110 script in parallelo senza SIGABRT, logica centralizzata in JavaScript, pipeline request-first, analisi quotidiana dei log Gemini, dashboard in tempo reale tramite API REST.
+Senza questo salto il sistema attuale non sarebbe possibile.
+            </p>
+<p class="hw-evo-link">
+<a href="https://homey.app/en-us/homey-pro/" rel="noopener" target="_blank">
+                Specifiche ufficiali di Homey Pro →
+              </a>
+</p>
+</article>
+</div>
+<h3 class="hw-section-title">Protocolli wireless</h3>
+<div class="protocol-grid">
+<article class="protocol-card">
+<span aria-hidden="true" class="protocol-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-radio"></use></svg></span></span>
+<h4>Zigbee</h4>
+<p>
+              La spina dorsale della rete di sensori.
+Sonoff SNZB-06P (presenza mmWave), SNZB-03/04 movimento + porta/finestra, Aqara P1, tenda IKEA Fyrtur, Aqara Cube T1 Pro (controller a 6 lati).
+            </p>
+</article>
+<article class="protocol-card">
+<span aria-hidden="true" class="protocol-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-radio-receiver"></use></svg></span></span>
+<h4>Z-Wave</h4>
+<p>
+              Multisensore Fibaro FGMS (movimento + lux + temperatura) in cucina, relè FGS-214 per il circuito di riscaldamento.
+Più lento ma più stabile per le installazioni chiave.
+            </p>
+</article>
+<article class="protocol-card">
+<span aria-hidden="true" class="protocol-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-wifi"></use></svg></span></span>
+<h4>Wi-Fi</h4>
+<p>
+              Xiaomi (robot aspirapolvere Giuseppe, purificatore d'aria, sensori), Shelly Plug S (forno/microonde/frigorifero - monitoraggio energetico), lampadine da cucina Nanoleaf Matter.
+            </p>
+</article>
+<article class="protocol-card">
+<span aria-hidden="true" class="protocol-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-volume-2"></use></svg></span></span>
+<h4>Google Cast</h4>
+<p>
+              Tre altoparlanti: Nest Mini Kitchen (uscita principale), Nest Hub Max Bedroom 2, Nest Mini Bathroom.
+Inoltre pipeline TTS con limitazione della velocità a 200 caratteri.
+            </p>
+</article>
+</div>
+<h3 class="hw-section-title">Dispositivi chiave</h3>
+<div class="hw-key-list">
+<div class="hw-key-item">
+<strong>Tenda a rullo Fyrtur1</strong> (sala da pranzo) — blocco privacy per open space.
+          </div>
+<div class="hw-key-item">
+<strong>Giuseppe</strong> (Robot aspirapolvere Xiaomi) – pulizia autonoma con programmazione Homey.
+          </div>
+<div class="hw-key-item">
+<strong>Purificatore d'aria 4 Lite</strong> — Monitoraggio PM2.5 + modalità automatica + avvisi.
+          </div>
+<div class="hw-key-item">
+<strong>Camera da letto con TV Android</strong> — integrazione completa tramite <code>com.android.tv:remote</code> (oltre 31 funzionalità, telecomando nativo).
+          </div>
+<div class="hw-key-item">
+<strong>Aqara Cube T1 Pro</strong> — Controller a 6 vie per scene audio, luci, telecomando TV.
+          </div>
+<div class="hw-key-item">
+<strong>Raspberry Pi (WaveShare 10.1")</strong> — dashboard chiosco 1024×600 + server proxy dashboard attivato <code>localhost:8080</code>.
+          </div>
+</div>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Immagine ingrandita" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Chiudi lo zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME · Realizzato con ❤️ e pensando prima alla sceneggiatura.</p>
+<p class="footer-meta">Presentazione pubblica · nessuna chiave API · nessun IP locale · nessun controllo da qui.</p>
+<p class="footer-meta"><a href="/it/smart-home/technicka-mapa.html">Mappa tecnica →</a> · <a href="/it/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

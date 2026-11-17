@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="A big cleanup of Google Sheets layers. 28 sheets → 25, fixed dashboard endpoints, sleep_window guard, score consumer. One Monday after a broken morning routine." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Sheets cleanup + dashboard fix — day after broken routine | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Sheets cleanup + dashboard fix — day after broken routine | SMART HOME" property="og:title"/>
+<meta content="A big cleanup of Google Sheets layers. 28 sheets → 25, fixed dashboard endpoints, sleep_window guard, score consumer. One Monday after a broken morning routine." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/posts/sheets-cleanup-v21.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/posts/sheets-cleanup-v21.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/sheets-cleanup-v21.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/sheets-cleanup-v21.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/sheets-cleanup-v21.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/posts/sheets-cleanup-v21.html#main">Skip to content</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/en/smart-home/blog.html">← Back to the blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Back from the article" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a></div><div class="visitor-links"><a href="/en/smart-home/">Introduction Smart Home</a><a href="/en/smart-home/blog.html">All notes</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/posts/sheets-cleanup-v21.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/posts/sheets-cleanup-v21.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/posts/sheets-cleanup-v21.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/en/smart-home/blog.html">← All posts</a>
+<article class="post-content">
+<p class="post-meta">May 5, 2026 · Infrastructure · 10 min read</p>
+<h1>Big Sheets layer cleanup — 28 sheets, 6 commits, one day</h1>
+<p>
+          On Monday, May 5, the morning routine did not start at all. Instead of just fixing that particular bug, I opened up the entire Google Sheets layer and looked at what was actually stored in it. The finding was unpleasant: <strong>half of the sheets were dead code</strong> — either no one filled them in, or the data flew somewhere other than where it was supposed to go.
+        </p>
+<p>
+          The day ended with 8 commits, Apps Script v18 → v21, fixed dashboard graphs and 3 sheets deleted from Sheets. Here's what was revealed and fixed.
+        </p>
+<h2>1. Morning routine: sleep_window blocked everything</h2>
+<p>
+          It started with a simple complaint: <em>"morning routine didn't start at all today"</em>. Alarm clock at 3:12, motion sensor in bedroom at 3:16:23, but morning brain script just logged <code>waiting_2nd_motion</code> and got stuck quietly.
+        </p>
+<p>
+          Root cause: variable <code>sh_sleep_window_until_ts</code> was set to <code>2026-05-05T06:37:51Z</code> (= 08:37 local time) — 8 hours since pressing the sleep button late at night. Morning open-space router saw
+          <code>spim=no, sleep_window=yes</code> and everything was blocked by reason=
+          <code>sleep_window_guard</code>. It was never cleared when the user woke up — no one had the responsibility to clear that flag.
+        </p>
+<p>
+          Second problem: the same lights turned on by themselves at night <em>even though</em>
+          active sleep_window. Investigation: <code>sh_light_router_v1</code> just checked <code>sh_spim === 'yes'</code>, NO <code>sh_sleep_window_until_ts</code>. Open_space_router had this defense since 3.5, but light_router did not. When <code>sh_spim</code> flickered on <code>no</code> (due to time_sync_guard reset), the evening light request passed and Sektorka1 lit up at 22:36.
+        </p>
+<p><strong>Fix:</strong></p>
+<ul>
+<li><code>sh_wake_confirm_v1</code> — when multi-zone wake confirm confirms the wake (<code>sh_jsem_vstal=strong_yes</code>), centrally clear window TS. Single source of truth, not per-router.</li>
+<li><code>sh_light_router_v1</code> v1.15 — parity with open_space router. Block SLEEP_BLOCKED_REQUESTS even if sleep_window active + strong_yes override.</li>
+</ul>
+<h2>2. Score producer existed, but no one read it</h2>
+<p>
+          I delivered yesterday <code>sh_morning_score_v1</code> — an adaptive engine that evaluates 10 sensors every minute and calculates a morning score 0-100 + state machine (night_sleep, pre_wakeup, wakeup_candidate, morning_confirmed, …). Cron 1×/min ran, vars updated, but… <strong>nobody read it</strong>. Brain decided according to his own 180s motion debounce and ignored the score.
+        </p>
+<p>
+          That's why the morning routine didn't start. Score would say <code>morning_confirmed</code>
+          at 03:18 (after wake_confirm strong_yes), but the brain did not receive any signal for re-trigger. Single bedroom motion → wait_2nd_motion → 180s window → no 2nd motion in bedroom (user went to bathroom) → debounce never timed out.
+        </p>
+<p><strong>Fix:</strong></p>
+<ul>
+<li><code>sh_morning_brain_v1</code> — added <code>scoreBypass</code> parallel to the existing one <code>wakeBypass</code>. If
+          <code>sh_morning_state ∈ {morning_confirmed, wakeup_candidate}</code> and heartbeat fresh (&lt;5 min), bypass debounce.</li>
+<li><code>sh_morning_score_v1</code> v1.4 — alarm-aware (probe
+          <code>Homey.alarms.getAlarms()</code>, ±30 min window, +3 score), state transitions logged to EventLog, dual-log to the new Morning State Timeline sheet (16 columns).</li>
+</ul>
+<h2>3. Sensor register — adaptability for future sensors</h2>
+<p>
+          The second shortcoming: the sensors in the score script were hardcoded names. New sensor in the room = code edit. PROMPT for the adaptive routine asked for pattern registers.
+        </p>
+<p><strong>Implemented:</strong></p>
+<ul>
+<li>New variable <code>sh_wakeup_sensor_registry</code> — JSON with 10 sensors, each with metadata: device, capability, room, type, morning_weight, night_weight, use_for_wakeup, reliability, rule, is_legacy, note.</li>
+<li>Populator script <code>_create_morning_sensor_registry_vars_v1.js</code>
+          — idempotent create+update.</li>
+<li>Score iterates registers, non-legacy entries (<code>is_legacy: false</code>) automatically contribute +morning_weight if sensor recently active &lt;300s.</li>
+</ul>
+<p>
+          Workflow for a new sensor: edit registry → add entry s <code>is_legacy:
+          false</code>, weight, <code>use_for_wakeup: 'yes'</code> → re-run populator. Score is automatically used from the next cron tick. No code editing.
+        </p>
+<h2>4. Dashboard fetchy → 404 (silent)</h2>
+<p>
+          The dashboard audit showed that 4 endpoints in Apps Script do not exist at all, but the dashboard calls them:
+        </p>
+<pre tabindex="0"><code>?mode=lux_history       → fall-through na default filter
+?mode=battery_history    → totéž
+?mode=morning_timeline   → totéž
+?mode=diagnose           → jen v tooltip (ne fetch)</code></pre>
+<p>
+          Apps Script didn't return a 404 — it did <code>{rows:[]}</code> (default filter response). He checked the dashboard <code>data.points</code> or <code>data.events</code>
+          (which didn't exist) and showed "No data (run context_full_v1)" message. It looked like a broken producer, but actually a broken endpoint.
+        </p>
+<p><strong>Fix Apps Script v20:</strong> 3 new endpoints:</p>
+<ul>
+<li><code>mode=lux_history&amp;hours=24</code> — Lux Monitor sheet → <code>{points:
+          [{ts, lux_j, lux_k}]}</code></li>
+<li><code>mode=battery_history&amp;days=30</code> — Battery History → <code>{points:
+          [{ts, device, battery}]}</code></li>
+<li><code>mode=morning_timeline&amp;days=3</code> — MERGE Morning State Timeline + Rani routine + TTS Monitor (filtered hour 03-11 Prague) → <code>{events: [...]}</code>
+          sorted DESC, cap 500.</li>
+</ul>
+<h2>5. Leaves without produce</h2>
+<p>
+          Audit Sheets layers: 28 sheets in total, but the reality:
+        </p>
+<ul>
+<li><strong>12 active</strong> — daily log, dashboard reads (EventLog, Zone Activity, TTS Monitor, FlowLog, EnergyLog, …)</li>
+<li><strong>4 periodic</strong> — depend on events (Daily Report, Gemini Briefing, EnergySummary, Ranni_Rutina_Budik)</li>
+<li><strong>6 dead-code routing</strong> — data goes to EventLog instead of a dedicated sheet (System Health, Test Results, Audio Debug, Manual Actions, Logs, Gemini Diagnostics)</li>
+<li><strong>5 without producing at all</strong> — 0 řádků, ale Apps Script má pro ně handlery (AI Tasks, ExceptionLog, Config, SanityLog, DataQualityReport)</li>
+<li><strong>1 is waiting</strong> — Morning State Timeline (deploy v20)</li>
+</ul>
+<p>
+          They have 5 leaves without produce <strong>2 diagnostic value</strong> (ExceptionLog, SanityLog), 3 are useless (AI Tasks, Config, DataQualityReport).
+        </p>
+<h3>ExceptionLog: the infrastructure works, only the scripts do not fail</h3>
+<p>
+          The ExceptionLog list had 0 lines, but it has 24+ scripts <code>logException()</code>
+          in catch blocks. Test: POST directly via API → row was written → infrastructure OK. The empty state simply reflects production stability — the scripts do not fail often enough to fill the sheet. Left unchanged, waiting for the first real exception.
+        </p>
+<h3>SanityLog: validator patch for per-item logging</h3>
+<p>
+          SanityLog had 0 rows and 0 producers. <code>sh_state_validator_v1</code>
+          aggregate is already logging <code>validator_issues</code> event to EventLog, but per-item detail (drift, stuck, conflict) is not written anywhere.
+        </p>
+<p>
+          Patch v1.x: after existing EventLog summary log dual-logs per-item rows to SanityLog (warning_type, severity, zone, details, details_json). Bug E ghost (<code>priority_active=light</code> without request) will be caught on the next dirty cycle.
+        </p>
+<h3>3 leaves deleted</h3>
+<p>Apps Script v21 removes:</p>
+<ul>
+<li><strong>AI Tasks</strong> — workflow tracker, dashboard reads 0 rows but never.</li>
+<li><strong>Config</strong> — centralized config never used.</li>
+<li><strong>DataQualityReport</strong> — energy data quality daily snapshot, unused.</li>
+</ul>
+<p>
+          Deleted from Apps Script: <code>SHEETS</code> entries <code>MAX_ROWS</code>,
+          <code>ensureAllSheets_</code> headerMap, headers constants, <code>mode=tasks</code>
+          + <code>mode=config</code> endpoints, <code>event_type='ai_task'</code> POST handler. From Google Sheets manual delete via right click. Out of 5 dashboards AI Tasks panel <code>display:none</code> + <code>loadAITasks()</code> no-op stub.
+        </p>
+<h2>6. DeviceInventory: never sent by producer</h2>
+<p>
+          The DeviceInventory list should have been refreshed every 6 hours by cron flow
+          <code>SH – Energy – Device Inventory Cron 6h</code>. The script <code>sh_device_
+          inventory_guard_v1</code> ran, the vars updated, but the leaf stood for 5 days.
+        </p>
+<p>
+          Reason: script just updates internal vars (<code>sh_device_measurement_registry_json</code>
+          etc.) but <strong>never POST to Apps Script</strong>. Apps Script has a handler for <code>mode=device_inventory</code> POST from v18 but no producer called him.
+        </p>
+<p>
+          Fix v1.1: added fire-and-forget POST registry → Apps Script at the end of the script <code>handleDeviceInventory_</code> transforms to batch rows. After deployment, the list received 82 devices snapshot.
+        </p>
+<h2>7. Dead-code routing — a historical finding</h2>
+<p>
+          Key architectural bug: <code>logEvent()</code> lib is pushing
+          <code>sheet: 'EventLog'</code> in the payload. Apps Script <code>routeEvent_</code>
+          check <code>p.sheet</code> as FIRST — if 'EventLog', routes there and returns. <code>event_type</code> routing for System Health, Manual Actions, Audio Debug, Test Results, Gemini Diagnostics will NEVER be reached.
+        </p>
+<p>
+          That is these 6 sheets have been stagnant for 3+ weeks not because the producers are not working, but because the data is flying into the EventLog instead. The data is not lost (it is in the EventLog), just in the "non-optimal" sheet.
+        </p>
+<p>
+          Pragmatic decision: <strong>leave as a historical reserve</strong>. Sheets preserved, the dashboard does not read them, they would only be deleted if they made a mess. Apps Script handlers preserved — if I ever wanted to fan-out (write to EventLog AND dedicated sheet), it's a 3-line patch per sheet.
+        </p>
+<h2>Final status</h2>
+<p>
+<strong>25 sheets</strong> (from 28 in v20), <strong>3 deleted</strong>, 6 commits, deploy without incident (one HomeyScript app crash + recovery — memory bloat ~95 MB / 125 limit, normal within today's operational latitude).
+        </p>
+<p>
+          Audit: all expected sheets exist, no collateral. SanityLog + ExceptionLog ready. Morning State Timeline waiting for the first state transition. Lux + Battery + Morning Timeline dashboards started showing real data after deploy v21.
+        </p>
+<h2>Lessons</h2>
+<p>
+<strong>1. The producer-only component is a red alert.</strong> If someone produces "X produces data, Y consumes it", and Y is never replenished — the system has a long-term silent fail tendency. <code>sh_morning_score_v1</code>
+          he ran for a month without a consumer and no one cared until the morning routine collapsed.
+        </p>
+<p>
+<strong>2. Default values in the lib API are an architectural bug.</strong>
+<code>sheet: payload.sheet || 'EventLog'</code> it looked like a sensible default. It was really pushing <em>all of them</em> event_type events into one sheet and dead routes were created over half a year without detection.
+        </p>
+<p>
+<strong>3. Delete only what you are sure no one is missing.</strong>
+          Out of 5 sheets without production, 2 have a diagnostic value (ExceptionLog, SanityLog). 3 are unnecessary. 6 dead-code sheets have archival value — the data is not lost, just in another location. Conservative deletion, mandatory post-deployment audit.
+        </p>
+<p>
+          By the way, next week's Monday morning routine will already run with a full pipeline: alarm-aware score → state transition log → scoreBypass in brain → registry auto-discovery + Bug E ghost detection via SanityLog. If something fails, EventLog + Morning State Timeline + ExceptionLog will give a detailed timeline of reasons.
+        </p>
+</article>
+</div>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><p>© <span id="year"></span> Budinský Luděk · SMART HOME project</p><p class="footer-meta"><a href="/en/smart-home/blog.html">All notes</a> · <a href="/en/">Cestovatel69.cz</a></p></div></footer>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

@@ -1,5 +1,17 @@
 # Osobní web — Luděk
 
+> Aktualizace 17. 11. 2026: web má společný redakční vzhled v CS/EN/IT.
+> Aktuálním zdrojem jsou uložené HTML stránky. Nespouštějte historické
+> `_build_pages.py` ani `_build_aplikace_pages.py`: přepsaly by hotový obsah.
+> Níže uvedený původní popis builderu je archivní a neplatí.
+
+Místní náhled: `python -m http.server 8924 --bind 127.0.0.1` v kořeni repozitáře.
+Kontrola: `python _web_lint.py --all` a `python _build_site_search_index.py --check`.
+Při změně obsahu přegenerujte vyhledávání příkazem `python _build_site_search_index.py`.
+Společný vzhled definují `assets/css/editorial-preview.css` a `editorial-site.css`.
+Jednorázový `_build_editorial_site.py` vyžaduje místní podklady migrace;
+neslouží k běžné údržbě článků. Nahrání na větev `main` spouští GitHub Pages.
+
 Statický web jako rozcestník na osobní sekce: Finance, Cestování, Itálie, Smart Home.
 
 ## Stack

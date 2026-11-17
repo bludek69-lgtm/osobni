@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Oltre alla sede centrale di Homey, utilizzo altri dispositivi e strumenti per registrazioni, backup e controllo del traffico.
+Questa pagina mostra i loro ruoli e come risolvo i problemi." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Background per gestire una famiglia |
+CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="Background per gestire una famiglia |
+CASA INTELLIGENTE" property="og:title"/>
+<meta content="Oltre alla sede centrale di Homey, utilizzo altri dispositivi e strumenti per registrazioni, backup e controllo del traffico.
+Questa pagina mostra i loro ruoli e come risolvo i problemi." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/infra.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/infra.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/infra.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/infra.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/infra.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/infra.html#main">Vai al contenuto</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Apri il menù</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/it/smart-home/">Home</a></li>
+<li><a href="/it/smart-home/prozivani.html">Come funziona</a></li>
+<li><a aria-current="page" class="is-active" href="/it/smart-home/zarizeni.html">Attrezzatura</a></li>
+<li><a href="/it/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/it/smart-home/dashboard.html">Cruscotto</a></li>
+<li><a href="/it/smart-home/pribeh.html">La storia</a></li>
+<li><a href="/it/smart-home/blog.html">Blog</a></li>
+<li><a href="/it/smart-home/kontakt.html">Informazioni sul progetto</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Sito web personale e Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a><a href="/it/smart-home/">Introduzione Casa intelligente</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/infra.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/infra.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/infra.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section section-alt" id="infra">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">📦 Attrezzature · Infrastrutture</p>
+<h1 class="section-title">Strutture per la gestione della famiglia</h1>
+<p class="section-lead">Oltre alla sede centrale di Homey, utilizzo altri dispositivi e strumenti per registrazioni, backup e controllo del traffico.
+Questa pagina mostra i loro ruoli e come risolvo i problemi.</p><details class="visitor-technical-intro"><summary>Dettagli tecnici</summary><p class="section-lead">
+            Homey Pro è l'hub principale, ma non è il solo. Raspberry Pi, Home Assistant, GitHub repo e GitHub Actions formano un livello di backup + osservabilità che rende il sistema affidabile al di fuori della rete locale.
+          </p></details>
+</header>
+<div class="infra-grid">
+<article class="infra-card">
+<div class="infra-head">
+<span aria-hidden="true" class="infra-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-monitor"></use></svg></span></span>
+<h3>Raspberry Pi (chiosco + proxy)</h3>
+</div>
+<p>
+<strong>Lampone Pi4</strong> con WaveShare 10,1" HDMI LCD (1024 × 600). Funziona 24 ore su 24, 7 giorni su 7 nella hall come un chiosco touch sul dashboard sempre attivo. Chromium in modalità chiosco intero a schermo intero, avvio automatico tramite systemd.
+            </p>
+<p>
+              Secondo ruolo: <strong>dashboard proxy</strong>.
+Scrittura Python
+              <code>dashboard_server.py</code> su <code>localhost:8080</code>
+              passa le richieste dalla dashboard all'API REST Homey.
+In questo modo la dashboard funziona anche se il cloud Homey non è disponibile: è sufficiente una rete locale.
+            </p>
+<p>
+              Terzo ruolo: <strong>altri servizi</strong>.
+Tailscale (accesso dal lavoro tramite VPN), proxy Apps Script o altri script.
+            </p>
+</article>
+<article class="infra-card">
+<div class="infra-head">
+<span aria-hidden="true" class="infra-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-house"></use></svg></span></span>
+<h3>Assistente domestico (mirror + osservatore + gateway sandbox 24 ore su 24, 7 giorni su 7)</h3>
+</div>
+<p>
+              Secondo Raspberry Pi <strong>Sistema operativo Home Assistant</strong>. Il ruolo principale non è la gestione primaria (questo è ciò che fa Homey): lo è l'HA <strong>osservatore di sola lettura, destinazione di backup e dal 14 maggio 2026 anche un gateway di test 24 ore su 24, 7 giorni su 7</strong>
+              tramite il corridore sandbox Python.
+            </p>
+<p>
+              Nello specifico:
+            </p>
+<ul class="infra-list">
+<li>HA Energy Dashboard aggrega i dati dalle prese Shelly (frigorifero, forno, microonde).</li>
+<li>Telemetria di archiviazione a lungo termine: Homey ha una memoria breve, l'HA dura per anni.</li>
+<li>Destinazione di backup separata per repository git (estrazione automatica di cron ogni ora).</li>
+<li>Failover: se Homey non funziona, HA conosce lo stato corrente.</li>
+<li><strong>NOVITÀ (14 maggio):</strong> Il runner sandbox Python viene eseguito ogni ora su HA <code>shell_command</code> + automazione. 26 test, 19 scenari di replay, autoregistrazioni di nuove entità. Senza di esso, non è consentita alcuna riparazione su Homey.</li>
+<li><strong>NOVITÀ (14 maggio):</strong> Pipeline della cache del dashboard (Python, cron 1×/min) →
+                  <code>/local/smart-home/dashboard-data.json</code> come livello mirror+enhance tra Homey e il frontend.
+Riduce il carico HTTP di Homey, il chiosco legge la cache invece che direttamente.</li>
+<li><strong>IN DIRETTA dal 27/05/2026:</strong> Intenso SSD Premium 256 GB USB 3.2 installato come <code>/dev/sda1</code> (~234GB esterno4). Configurazione ibrida: la scheda SD rimane del sistema operativo, l'SSD contiene EventLog JSONL (livello di registrazione primario), DB del registratore HA, backup, sandbox e mirror git. L'obiettivo era prolungare la durata della scheda SD (il registratore HA esegue centinaia di scritture al minuto, la scheda SD ha 3-10.000 cicli, l'SSD 1M+): obiettivo raggiunto.</li>
+</ul>
+<p>
+              Comunicazione: HA accede a Homey tramite API REST (token portatore), Homey accede a HA tramite webhook + sensore REST.
+Nessun doppio controllo: solo osservabilità condivisa.
+            </p>
+</article>
+<article class="infra-card">
+<div class="infra-head">
+<span aria-hidden="true" class="infra-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-package"></use></svg></span></span>
+<h3>Repository GitHub (unica fonte di verità)</h3>
+</div>
+<p>
+              Tutto il codice, la documentazione, gli snapshot e la configurazione in
+              <strong>repository GitHub privati</strong>.
+Tre attivi:
+            </p>
+<ul class="infra-list">
+<li><code>smart-home-homey</code> - tutti quanti <code>sh_*</code> script, controlli, piani di distribuzione, istantanee di esportazione giornaliere dall'API REST Homey.</li>
+<li><code>smart-home-dashboards</code> — Dashboard HTML/CSS/JS in tutte le risoluzioni + patcher di fase Python.</li>
+<li><code>lk-finance</code> — finanza privata (crittografato a riposo tramite transcrypt + AES-256-CBC + PBKDF2).
+Stesso modello, dati diversi.</li>
+</ul>
+<p>
+<strong>Pipeline di backup giornaliero</strong>: Scritta HAOS
+              <code>backup_homey.sh</code> viene eseguito ogni giorno alle 02:00, chiama l'API REST Homey, esporta dispositivi/variabili/flussi/script, si impegna a <code>backup_homey/</code> e invialo a GitHub.
+Chiave di distribuzione SSH, nessun token archiviato nel repository.
+            </p>
+</article>
+<article class="infra-card">
+<div class="infra-head">
+<span aria-hidden="true" class="infra-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-settings"></use></svg></span></span>
+<h3>Azioni GitHub (azioni automatizzate)</h3>
+</div>
+<p>
+              Parte delle attività sono in esecuzione <strong>nel cloud su GitHub Actions</strong>, non su Homey.
+Nello specifico:
+            </p>
+<ul class="infra-list">
+<li><code>daily_backup.yml</code> - snapshot giornaliero dello stato Homey, cron sul lato GitHub (failover se HAOS non funziona).</li>
+<li><code>weekly_audit.yml</code> — analisi statica settimanale degli script: cerca nomi codificati, guardie mancanti, modelli deprecati.
+Crea un problema.</li>
+<li><code>memory_watchdog.yml</code> — monitora i file di memoria, se sono presenti informazioni duplicate/obsolete → avviso.</li>
+<li><code>cleanup_phase4_delete.yml</code> - script di ondate di pulizia con eliminazione automatica pianificata.
+Controlli preliminari: punteggio Brain Guardian, eccezioni EventLog.
+Se bandiera rossa → l'azione fallisce, nessuna eliminazione.</li>
+</ul>
+<p>
+              Vantaggio: <strong>l'azione si svolge fuori casa</strong>.
+Anche se Homey non funziona, GitHub Actions monitora comunque il repository ed esegue azioni pianificate.
+I token si trovano in GitHub Secrets, non nel codice.
+            </p>
+</article>
+<article class="infra-card infra-card-finance">
+<div class="infra-head">
+<span aria-hidden="true" class="infra-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-lock"></use></svg></span></span>
+<h3>Finanza (stack privato parallelo)</h3>
+</div>
+<p>
+              Stesso schema della casa intelligente, ma per <strong>finanza personale</strong>: repository GitHub privato + mirror HAOS.
+Differenza chiave:
+              <strong>crittografia a riposo</strong>.
+            </p>
+<p>
+              File di tipo <code>*.pdf, *.xlsx, *.csv, *.docx, *.zip</code>
+              sono crittografati prima del commit
+              <strong>transcriptare + AES-256-CBC + PBKDF2 (iter da 100k)</strong>.
+GitHub può solo vedere <code>U2FsdGVk...</code> BLOB, nessun testo in chiaro. Password principale localmente, fuori dal repository, backup offline su USB + carta nella cassaforte.
+            </p>
+<p>
+              Niente del sito web appartiene a questo: le finanze sono strettamente private.
+Ma l’architettura è condivisa: stesso modello di backup automatico, stessi principi, solo una maggiore protezione dei dati.
+            </p>
+</article>
+</div>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Immagine ingrandita" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Chiudi lo zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME · Realizzato con ❤️ e pensando prima alla sceneggiatura.</p>
+<p class="footer-meta">Presentazione pubblica · nessuna chiave API · nessun IP locale · nessun controllo da qui.</p>
+<p class="footer-meta"><a href="/it/smart-home/technicka-mapa.html">Mappa tecnica →</a> · <a href="/it/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

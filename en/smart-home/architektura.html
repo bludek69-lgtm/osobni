@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Movement, time or coming home will trigger the request. The control rules evaluate the situation before changing the light, heating or other equipment. Below I describe how these steps are separated and why the system is better controlled." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>How the household is managed | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="How the household is managed | SMART HOME" property="og:title"/>
+<meta content="Movement, time or coming home will trigger the request. The control rules evaluate the situation before changing the light, heating or other equipment. Below I describe how these steps are separated and why the system is better controlled." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/architektura.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/architektura.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/architektura.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/architektura.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/architektura.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/architektura.html#main">Skip to content</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Open the menu</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/en/smart-home/">Home</a></li>
+<li><a href="/en/smart-home/prozivani.html">How it works</a></li>
+<li><a href="/en/smart-home/zarizeni.html">Equipment</a></li>
+<li><a href="/en/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/en/smart-home/dashboard.html">Dashboard</a></li>
+<li><a aria-current="page" class="is-active" href="/en/smart-home/pribeh.html">The story</a></li>
+<li><a href="/en/smart-home/blog.html">Blog</a></li>
+<li><a href="/en/smart-home/kontakt.html">About the project</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Personal website and Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a><a href="/en/smart-home/">Introduction Smart Home</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/architektura.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/architektura.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/architektura.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section section-alt" id="architektura">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">📖 Story · Architecture</p>
+<h1 class="section-title">How the household is managed</h1>
+<p class="section-lead">Movement, time or coming home will trigger the request. The control rules evaluate the situation before changing the light, heating or other equipment. Below I describe how these steps are separated and why the system is better controlled.</p><details class="visitor-technical-intro"><summary>Technical details</summary><p class="section-lead">
+            All logic in one place. Flow is the trigger, the script is the brain, the router is the switchboard, the device is the output.
+          </p></details>
+</header>
+<div aria-label="Data flow: Flow via Script, Request, Router, Device" class="arch-flow" role="img">
+<div class="arch-node">
+<div aria-hidden="true" class="arch-node-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-zap"></use></svg></span></div>
+<div class="arch-node-name">Flow</div>
+<div class="arch-node-desc">Trigger (time, sensor, button)</div>
+</div>
+<div aria-hidden="true" class="arch-arrow"></div>
+<div class="arch-node">
+<div aria-hidden="true" class="arch-node-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-scroll-text"></use></svg></span></div>
+<div class="arch-node-name">Script</div>
+<div class="arch-node-desc">Logic + multi-signal eval</div>
+</div>
+<div aria-hidden="true" class="arch-arrow"></div>
+<div class="arch-node">
+<div aria-hidden="true" class="arch-node-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-mail"></use></svg></span></div>
+<div class="arch-node-name">Request</div>
+<div class="arch-node-desc">Structured request</div>
+</div>
+<div aria-hidden="true" class="arch-arrow"></div>
+<div class="arch-node">
+<div aria-hidden="true" class="arch-node-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-shuffle"></use></svg></span></div>
+<div class="arch-node-name">Router</div>
+<div class="arch-node-desc">Priorities + addressing</div>
+</div>
+<div aria-hidden="true" class="arch-arrow"></div>
+<div class="arch-node">
+<div aria-hidden="true" class="arch-node-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-package"></use></svg></span></div>
+<div class="arch-node-name">Device</div>
+<div class="arch-node-desc">Real action (light, TRV, speaker)</div>
+</div>
+</div>
+<h3 class="arch-rules-title">12 rules that I have introduced</h3>
+<p class="arch-rules-lead">
+          Each rule arose from a specific incident, not from a theory. Here are all that hold the system together today.
+        </p>
+<div class="arch-principles">
+<article class="principle">
+<span class="principle-tag">REUSE FIRST</span>
+<p>
+              Before creating a new entity (script, flow, variable), check whether a similar one already exists. Refactor &gt; new code.
+            </p>
+</article>
+<article class="principle">
+<span class="principle-tag">SCRIPT-FIRST</span>
+<p>
+              Flow = trigger + set variable + run script. No logic in Flow cards. The logic in the scripts is versionable, debuggable, testable.
+            </p>
+</article>
+<article class="principle">
+<span class="principle-tag">DEVICE MAP</span>
+<p>
+              No hardcoded device name. All over <code>sh_device_map_v1</code>. Renaming a device = one change, not 20 broken scripts.
+            </p>
+</article>
+<article class="principle">
+<span class="principle-tag">MULTI-SIGNAL</span>
+<p>
+              No critical decision from a single sensor. Always 2+ independent signals (FP2 + Z-Wave motion, button + geofence).
+            </p>
+</article>
+<article class="principle">
+<span class="principle-tag">SLEEP RESPECT</span>
+<p>
+              No TTS, loud actions or lights at <code>sh_spim=yes</code>. Exceptions: morning briefing, critical alarms.
+            </p>
+</article>
+<article class="principle">
+<span class="principle-tag">PRIVACY INTERLOCK</span>
+<p>
+              Blind open → open space lights blocked. Small apartment, passersby can see inside. Aquarium effect.
+            </p>
+</article>
+<article class="principle">
+<span class="principle-tag">IDLE RESET</span>
+<p>
+              Each temporary request must be reset to
+              <code>idle</code>. No reset = stuck pipeline + no radio in the morning.
+            </p>
+</article>
+<article class="principle">
+<span class="principle-tag">WINDOW GUARDS</span>
+<p>
+              Triggers have time windows — morning routine 3am-10am, nighttime 10pm-6am. Outside the window, the script refuses to continue.
+            </p>
+</article>
+<article class="principle">
+<span class="principle-tag">NO THROW</span>
+<p>
+              Never <code>throw new Error()</code>. Always <code>log + return false</code>. Throw crashes before cleanup, leaving variables in an inconsistent state.
+            </p>
+</article>
+<article class="principle">
+<span class="principle-tag">VARIABLE CACHE</span>
+<p>
+              Each script caches variables (<code>_varCache + _loadVars()</code>). No cache = SIGABRT on 200+ variables.
+            </p>
+</article>
+<article class="principle">
+<span class="principle-tag">IDEMPOTENCY</span>
+<p>
+<code>setCapabilityValue</code> only if the value actually changes. Blind set = cascade of Flow triggers and unnecessary load.
+            </p>
+</article>
+<article class="principle">
+<span class="principle-tag">NO REGRESSION</span>
+<p>
+              Before modifying an existing script: read the whole, verify the caller, minimal change. "It's worked before" = don't reach beyond a strong need.
+            </p>
+</article>
+</div>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Enlarged image" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Close zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME project · Made with ❤️ and script-first thinking.</p>
+<p class="footer-meta">Public presentation · no API keys · no local IP · no control from here.</p>
+<p class="footer-meta"><a href="/en/smart-home/technicka-mapa.html">Technical map →</a> · <a href="/en/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

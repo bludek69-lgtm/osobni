@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="14 maggio 2026: il giorno in cui RPi/HAOS si è trasformato in un gateway di test a tutti gli effetti.
+Runner sandbox Python 24 ore su 24, 7 giorni su 7, chiosco di fase E con catena di fallback della cache, correzione dei nuovi tentativi della cache del dashboard v2.1.
+20/20 test PASSATI, 0 Homey scrive." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Sandbox 24 ore su 24, 7 giorni su 7 + chiosco multimediale Fase E + nuovo tentativo di cache: giorno di pulizia |
+CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Sandbox 24 ore su 24, 7 giorni su 7 + chiosco multimediale Fase E + nuovo tentativo di cache: giorno di pulizia |
+CASA INTELLIGENTE" property="og:title"/>
+<meta content="14 maggio 2026: il giorno in cui RPi/HAOS si è trasformato in un gateway di test a tutti gli effetti.
+Runner sandbox Python 24 ore su 24, 7 giorni su 7, chiosco di fase E con catena di fallback della cache, correzione dei nuovi tentativi della cache del dashboard v2.1.
+20/20 test PASSATI, 0 Homey scrive." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/posts/sandbox-24-7-kiosk-phase-e.html#main">Vai al contenuto</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/it/smart-home/blog.html">← Torniamo al blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Ritorno dall'articolo" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a></div><div class="visitor-links"><a href="/it/smart-home/">Introduzione Casa intelligente</a><a href="/it/smart-home/blog.html">Tutte le note</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/it/smart-home/blog.html">← Tutti i post</a>
+<article class="post-content">
+<p class="post-meta">14 maggio 2026 · Infrastrutture · 10 minuti di lettura</p>
+<h1>Sandbox 24 ore su 24, 7 giorni su 7 + chiosco multimediale Fase E + nuovo tentativo di cache: giorno di pulizia</h1>
+<p>
+          Il giorno in cui RPi/HAOS ha smesso di svolgere il ruolo di assistente di servizio ed è diventato un vero e proprio gateway di test tra sviluppo e produzione.
+Tre livelli contemporaneamente: un corridore sandbox Python in esecuzione 24 ore su 24, 7 giorni su 7, un chiosco RPi con una catena di fallback cache-first e una pipeline di cache del dashboard che non tiene più il broncio all'occasionale 417 del relè Athom.
+        </p>
+<p>
+          Nessuna scrittura semplice, nessuna dashboard di modifica su HAOS, nessuna ridenominazione del dispositivo.
+Tre porte contemporaneamente - <code>SANDBOX-FIRST</code>, <code>AUTO-REGISTRY</code>,
+          <code>SAFE_REPAIR_MODE</code> - mantiene l'intero progresso in modalità sandbox finché non viene confermato che non si romperà nulla.
+        </p>
+<h2>Node.js su HAOS senza problemi</h2>
+<p>
+          Prima osservazione della mattina: il componente aggiuntivo HA SSH su RPi non ha Node.
+Sandbox porta Node al livello di persistenza <code>core_ssh apks</code> config: ovvero Supervisor lo reinstalla automaticamente ogni volta che si avvia il componente aggiuntivo, quindi la ricostruzione del componente aggiuntivo non lo rovina.
+        </p>
+<pre tabindex="0"><code># Before
+apks: ["python3"]
+# After (LIVE, persistent přes Supervisor)
+apks: ["python3", "nodejs", "npm"]</code></pre>
+<p>
+          Verifica: <code>node -v → v24.14.1</code>, <code>npm -v → 11.11.0</code>, il test del fumo legge tutti e 6 i dispositivi snapshot (devices/variables/zones/scripts_index/sh_dashboard_data/sh_device_map) senza errori.
+Dopo il riavvio del componente aggiuntivo Il nodo è sopravvissuto → persistenza confermata.
+        </p>
+<h2>Emulatore sandbox: fasi B e C</h2>
+<p>
+          Nodo simulato Strato del mondo domestico: <code>homey_mock.js</code> s <code>Homey.logic</code>,
+          <code>Homey.devices</code>, <code>Homey.flow</code>, inoltre <code>Homey.scripts.runScript()</code>
+          a <code>Homey.apps.restart()</code> come funzionalità di dumping deliberata (rispecchiando le reali restrizioni sandbox in Homey). <code>fetch()</code> disabilitato finché il test non fornisce una simulazione esplicita.
+        </p>
+<p>
+          La Fase B ha creato 6 test e 4 scenari di replay, la Fase C ne ha aggiunti altri 10: T1-T16 copre lo schema del dashboard, il bagno libero, il fuso orario di Praga, le protezioni del router luminoso, il fallback cieco, la convalida dello schema cron, il posto audio, il movimento+presenza disattivata, le varianti dell'allarme mattutino, la regressione anti-UTC, la protezione della finestra di sonno, le scene della cucina, la temperatura dinamica, il fallback della cache del dashboard, il rilevamento cron non valido, la resilienza agli arresti anomali di HomeyScript.
+        </p>
+<pre tabindex="0"><code>[PASS] T1_dashboard_schema           — 26 keys present, 0 missing
+[PASS] T2_bathroom_vacancy           — proposed light_off + audio_stop
+[PASS] T3_morning_prague_date        — 4/4 Prague vs UTC correct
+[PASS] T4_light_router_guards        — 8/8 guards enforced
+[PASS] T5_device_map_roleta_fallback — sh_device_map.BLIND_DINING resolves
+[PASS] T6_cron_schema                — 83 cron cards, all valid
+... 14 more PASS
+PASS 20/20  FAIL 0</code></pre>
+<h2>Fase D: sandbox 24 ore su 24, 7 giorni su 7 nell'automazione HA</h2>
+<p>
+          I test lato sandbox vengono eseguiti una volta.
+Un corridore regolare ci aspettava 24 ore su 24, 7 giorni su 7: shell_command richiamato dall'automazione HA ogni ora intera.
+Il primo tentativo fallì miseramente.
+        </p>
+<pre tabindex="0"><code>2026-05-14 07:00:00.341 ERROR (MainThread)
+  [shell_command] Error running command:
+  `node /config/smart-home/sandbox/runner/sandbox_runner.js`,
+  return code: 127</code></pre>
+<p>
+          Esci 127 = <code>node: command not found</code>. Il contenitore HA Core non ha un nodo: la persistenza del nostro nodo era nel formato <code>core_ssh</code> componente aggiuntivo, non nel core HA principale.
+Due livelli di finestra mobile isolati.
+Pivot: runner riscritto in Python (HA Core ha Python 3.12 in modo nativo), il livello sandbox del nodo rimane in fase di sviluppo.
+        </p>
+<p>
+          F1-A orchestratore Python programmato pure-stdlib, matrice mirror a 16 test + validatore JSON di riproduzione + logica di gate a 8 passaggi (istantanea → test → replay → regressione → rollback → user_go).
+F1-B ha portato HA shell_command dal nodo a python3. <code>ha core check</code> PASS, riavvio, attesa di :00 cron, esecuzione saltata da 4 a 5 alle 06:00:00.956Z proprio al minuto:
+        </p>
+<pre tabindex="0"><code>[runner_py] runs=5 tests=16/16 replay=OK
+            blockers=0 gate=DEPLOY_GATE_OPEN</code></pre>
+<p>
+          Semantica del cancello: <code>DEPLOY_GATE_OPEN</code> significa "tutti i controlli tecnici superati" ma richiede comunque <code>user_go: REQUIRED</code> per cambio. Il corridore non interferisce mai con lo stesso Homey dal vivo. Solo il verdetto nel rapporto di ribasso.
+        </p>
+<h2>Auto-registri: cancello contro nuove entità silenziose</h2>
+<p>
+          Ogni volta che una nuova scena, automazione, Flow, HomeyScript, widget del dashboard, modulo, modalità temporale, pulsante, gesto o trigger viene aggiunta al sistema, il runner lo rileva durante i registri di differenza rispetto alla linea di base e lo contrassegna come
+          <code>BLOCKED_UNTIL_TEST_EXISTS</code> con una proposta per il nome del test e lo scenario di riproduzione.
+        </p>
+<p>
+          I registri di base ora contengono 8 scene + 132 script + 232 advanced_flows = 372 entità.
+Quando viene aggiunto il 133° script, il corridore invia una riga del tipo "<code>scripts: sh_new_thing</code> → proporre <code>tests_py/test_sh_new_thing.py</code>". Distribuzione live senza modifiche del registro bloccate.
+        </p>
+<h2>Nuovo tentativo nella cache del dashboard: risolto nel fine settimana</h2>
+<p>
+          A parte la sandbox stessa, un particolare bug della pipeline: lo script della cache del dashboard <code>homey_dashboard_cache.py</code> occasionalmente restituiva l'uscita 1 in circa il 5% delle attivazioni cron a causa di errori transitori dal relè cloud Athom (<code>vars fetch status=417</code> o interruzione della connessione).
+I fallimenti erano sempre temporanei: la chiamata successiva (entro 60 s) aveva esito positivo.
+Perdita di dati = 0, solo rumore nel registro HA.
+        </p>
+<p>
+          Correzione v2.1: <code>homey_get</code> diviso in <code>_homey_get_once</code>
+          + riprova il wrapper. Nuovo tentativo temporaneo <code>{0, 417, 502, 503, 504}</code>
+          con backoff 0,5 s + 1,5 s, max 3 tentativi. Gli stati permanenti (401, 404, ...) aumentano immediatamente senza riprovare.
+        </p>
+<pre tabindex="0"><code>RETRY_STATUSES = {0, 417, 502, 503, 504}
+RETRY_BACKOFFS = (0.5, 1.5)  # 3 total attempts</code></pre>
+<p>
+          Test sandbox T17 matrice di 5 casi verificata (200 primo tentativo / 417+200 / 0+0+200 / 401 rilancio immediato / 417×3 scarichi) — 5/5 PASS.
+Dopo la distribuzione di questa mattina, il tasso di errore è sceso dal 5% circa al <strong>1.8 %</strong> e il registro HA non mostra più la linea rossa oraria.
+        </p>
+<h2>Kiosk Phase E: ricostruzione solo RPi</h2>
+<p>
+          Il chiosco (RPi 192.168.1.xxx con display WaveShare 1024×600) eseguiva HTML dall'11/5 alle 19:25, una versione che non ha mai conosciuto la cache del dashboard.
+Quando la pipeline della cache lato HAOS ha iniziato a produrre un nuovo JSON, il chiosco non aveva modo di saperlo.
+Ha ancora effettuato sondaggi diretti tramite <code>server.py</code> proxy per Homey REST.
+        </p>
+<p>
+          La regola era severa: <strong>NON LEGGERE NULLA DAL PC</strong>.
+La patch della Fase E deve essere ricreata direttamente dal chiosco HTML stesso, non copiata dalle dashboard del PC.
+Motivo: il PC potrebbe non essere online e avere versioni precedenti.
+        </p>
+<p>
+          Flusso di lavoro:
+        </p>
+<ol>
+<li>SSH al chiosco, tira <code>/home/smart/dashboard/index.html</code> +
+              <code>server.py</code> presso HAOS staging dir.</li>
+<li>Il patcher Python in modalità binaria preserva le terminazioni di riga CRLF (file chiosco nativo CRLF): il primo tentativo con solo LF ha prodotto una falsa differenza di 29.822 righe invece delle vere 112 righe.</li>
+<li>Patch HTML: sostituisci 7 righe <code>fetchDashboardData()</code> dietro la versione a 60 righe con una cache a catena a 3 stadi→Homey REST→localStorage.
+Aggiungi <code>#sourceBadge</code> Elemento CSS + DOM in alto a destra risolto.</li>
+<li>Patch server.py: aggiungi <code>/cache/dashboard-data.json</code> HAOS proxy di percorso <code>/local/smart-home/dashboard-data.json</code>, timeout 2,5 s, fallback 502/504.
+Esistente <code>/api/*</code> Procura familiare intatta, <code>HOMEY_TOKEN</code> contare invariato.</li>
+<li>Test sandbox T18 (fallback del caricatore), T19 (proxy cache), T20 (contratto visivo).
+Esegui tutti e 20 → 20/20 PASS.</li>
+<li>Backup su <code>_backup_before_kiosk_phase_e_&lt;timestamp&gt;/</code>
+              con manifest SHA256 + snapshot della riga di comando di chromium.</li>
+<li>Scambio atomico, riavvio <code>server.py</code> (pkill + nohup), F5 ricarica Chromium tramite xdotool tramite la porta 9222 di DevTools.</li>
+</ol>
+<p>
+          Dopo aver ricaricato il badge è davvero lì.
+Arancione <code>◐ CACHE OLD</code>
+          in alto a destra: perché la cache HAOS ha restituito JSON, ma s <code>_stale: true</code>
+          (età_ponte_s &gt; 300 s). La catena della Fase E è stata conservata correttamente, il cruscotto non è rimasto vuoto, tutti gli elementi di controllo sono stati conservati.
+        </p>
+<p>
+          Stati del badge:
+        </p>
+<ul>
+<li><strong>●CACHE</strong> - verde, dati freschi dalla cache HAOS</li>
+<li><strong>◐ CACHE VECCHIO</strong> — arancione, cache OK ma dati più vecchi di 5 minuti</li>
+<li><strong>○ FAMILIARE</strong> - blu, fallback su Homey REST</li>
+<li><strong>○ LOCALE</strong> - rosso, fallback su localStorage ultimo buono</li>
+<li><strong>✕ERRORE</strong> — tutte e tre le fasi sono fallite</li>
+</ul>
+<h2>Preflight R0: cosa resta adesso</h2>
+<p>
+          La fase R0 era una diagnostica di sola lettura, a cui rivolgersi nel ciclo di riparazione.
+Sandbox PASS 20/20, snapshot 3 ore, kiosk LIVE, cache 1,8%.
+Ma viene visualizzato il registro del watchdog della memoria HomeyScript <strong>1906 riavvii cumulativi</strong> e oscillazione di 110-149 MB ogni 5-10 min.
+Si tratta di una pressione del sistema che la sandbox non risolverà da sola: richiede una patch a livello di runtime di HomeyScript.
+        </p>
+<p>
+          Programma R1-R3:
+        </p>
+<ul>
+<li><strong>R1</strong> — rafforzamento dei posti vacanti nel bagno (problema visibile all'utente, casi limite quando rimane acceso/riprodotto dopo essere uscito)</li>
+<li><strong>R2</strong> — Causa principale della pressione della memoria HomeyScript + riduzione</li>
+<li><strong>R3</strong> — audit deterministico di routine mattutina (allarme/nessun allarme, prima/dopo le 03:00, modello late_motion_ignored)</li>
+</ul>
+<h2>Il controllo di conformità di oggi</h2>
+<div aria-label="Tabella – scorri orizzontalmente" class="editorial-table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr><th>Regole</th><th>Stato</th></tr>
+</thead>
+<tbody>
+<tr><td>SANDBOX-FIRST (ogni modifica tramite sandbox)</td><td>✓</td></tr>
+<tr><td>REGISTRAZIONI AUTOMATICHE (T17-T20 in ALL_TESTS)</td><td>✓</td></tr>
+<tr><td>SAFE_REPAIR_MODE (backup + SHA256 + rollback)</td><td>✓</td></tr>
+<tr><td>Ruolo dell'infrastruttura RPi/HAOS (Homey intatto)</td><td>✓</td></tr>
+<tr><td>Nessuna lettura da PC (chiosco Fase E ricostruito di recente)</td><td>✓</td></tr>
+<tr><td>0 Accogliente REST scrive</td><td>✓</td></tr>
+<tr><td>0 modifiche HomeyScript</td><td>✓</td></tr>
+<tr><td>0 Modifiche avanzate del flusso</td><td>✓</td></tr>
+<tr><td>0 rinominazioni di dispositivi</td><td>✓</td></tr>
+<tr><td>0 token nei report</td><td>✓</td></tr>
+</tbody>
+</table></div>
+<h2>Da asporto</h2>
+<p>
+          Per questo sistema, "lo sistemerò in Homey" non è più la prima scelta.
+Il primo è "Costruirò un test sandbox che lo riproduca, e solo quando passerà preparerò una patch di staging e aspetterò il GO esplicito".
+Non si tratta di burocrazia: è la differenza tra una casa in cui la striscia accanto al letto occasionalmente si illumina da sola di notte, e una casa che può essere testata senza che il residente ne legga il registro di costruzione al mattino.
+        </p>
+<p>
+          Il corridore sandbox continua ogni ora.
+Un'altra analisi alle:00 inserisce T17-T20 nel registro di base.
+Il cancello di distribuzione live rimane APERTO, in attesa del GO esplicito per modifica.
+        </p>
+<p class="post-meta" style="margin-top:48px;">
+          Articoli correlati:
+          <a href="/it/smart-home/posts/dum-pozoruje-sam-sebe.html">Una casa che osserva se stessa</a> ·
+          <a href="/it/smart-home/posts/bathroom-misroute.html">Percorso sbagliato nel bagno: 4 ore di diagnostica</a> ·
+          <a href="/it/smart-home/posts/yr-single-source.html">Tre fonti meteorologiche → una</a>
+</p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container">
+<p>© 2026 Registro di costruzione Smart Home — Budinský Luděk. Diario tecnico di un progetto personale.</p>
+</div>
+</footer>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

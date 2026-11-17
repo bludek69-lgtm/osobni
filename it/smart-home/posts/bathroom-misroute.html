@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Percorso errato del bagno cerebrale audio: 4 ore di diagnostica. Bug il 25.4., quando dopo comfort_suggest TTS la radio del bagno si avviava da sola anche senza l'accettazione dell'utente. Causa principale + correzione v1.8." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Percorso sbagliato del bagno — 4 ore di diagnostica |
+CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Percorso sbagliato del bagno — 4 ore di diagnostica |
+CASA INTELLIGENTE" property="og:title"/>
+<meta content="Percorso errato del bagno cerebrale audio: 4 ore di diagnostica. Bug il 25.4., quando dopo comfort_suggest TTS la radio del bagno si avviava da sola anche senza l'accettazione dell'utente. Causa principale + correzione v1.8." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/posts/bathroom-misroute.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/posts/bathroom-misroute.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/bathroom-misroute.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/bathroom-misroute.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/bathroom-misroute.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/posts/bathroom-misroute.html#main">Vai al contenuto</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/it/smart-home/blog.html">← Torniamo al blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Ritorno dall'articolo" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a></div><div class="visitor-links"><a href="/it/smart-home/">Introduzione Casa intelligente</a><a href="/it/smart-home/blog.html">Tutte le note</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/posts/bathroom-misroute.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/posts/bathroom-misroute.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/posts/bathroom-misroute.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/it/smart-home/blog.html">← Tutti i post</a>
+<article class="post-content">
+<p class="post-meta">25 aprile 2026 · Audio · 8 minuti di lettura</p>
+<h1>Percorso errato del bagno: 4 ore di diagnostica e correzione della versione 1.8</h1>
+<p>
+          Ieri sera alle 20:45 il sistema ha avviato automaticamente la radio del bagno dove non c'era nessuno.
+Nessun comando esplicito, nessuna scena, nessun tocco sul cubo.
+Appena 46 secondi dopo che il coordinatore dell'intelligenza artificiale ha offerto una "scena relax", Italian Classic Hits Sanremo ha iniziato a suonare dal bagno vuoto.
+        </p>
+<p>
+          Il bug è stato registrato come di media gravità (one-shot, può essere interrotto manualmente), ma la chiave era che potesse ripetersi ad ogni comfort_suggest.
+Ecco 4 ore di diagnostica condensate in 8 minuti di lettura.
+        </p>
+<h2>Riproduzione</h2>
+<ol>
+<li>Il coordinatore AI valuta la situazione = <code>comfort_suggest</code> (livello 4, sera + scena inattiva)</li>
+<li>Il TTS recita: <em>"Umano, è sera e non sta succedendo niente. Vuoi iniziare una scena rilassante?"</em></li>
+<li>Utente <strong>non risponde</strong> — né cube, né button, né voice</li>
+<li>~46 s dopo il completamento del TTS: <code>sh_audio_brain_v2 audio_dispatch</code> evento</li>
+<li>L'altoparlante del bagno inizierà a riprodurre la radio (anche se l'utente non è in bagno)</li>
+</ol>
+<h2>Indica quando è presente un bug</h2>
+<pre tabindex="0"><code>sh_audio_current_mode = 'radio_bathroom'
+sh_audio_active_speaker = 'Speaker koupelna'
+sh_audio_playing = 'yes'
+sh_audio_request = 'idle'           ← nikdo nepožádal o radio
+sh_audio_final_request = 'idle'     ← ditto
+sh_scene_active = 'idle'            ← scéna se neaktivovala
+sh_user_intent = 'idle'             ← user neodpověděl
+sh_user_intent_request = 'idle'     ← ditto
+sh_ai_coord_last_action = 'comfort_suggest'  ← byla jen NABÍDKA
+sh_audio_prev_mode = 'idle'         ← žádné prev radio (nebylo co resumovat)
+sh_audio_prev_speaker = ''          ← ditto
+sh_tts_resume_pending = 'idle'      ← resume nečeká
+sh_tts_resume_target = 'idle'       ← ditto</code></pre>
+<p>
+          Avviso rosso chiave: <code>sh_audio_current_mode='radio_bathroom'</code>
+          ma <code>sh_audio_prev_mode='idle'</code>.
+La modalità è rimasta bloccata dalla routine mattutina, nessuno l'ha ripristinata e dopo il completamento del TTS la logica di fallback l'ha utilizzata come "dove ricorrere".
+        </p>
+<h2>Ipotesi che non hanno funzionato</h2>
+<p><strong>H1: audio_brain si esegue automaticamente su comfort_suggest.</strong>
+        Ipotesi: il cervello può attivare automaticamente la "scena di comfort" 30-60 secondi dopo il suggerimento senza attendere la risposta dell'utente. Verificato leggendo <code>sh_audio_brain_v2</code> - non esiste un gestore del genere.
+Falsificato.</p>
+<p><strong>H3 — sh_audio_active_speaker bloccato dalla mattina.</strong>
+        Ipotesi: ha rinunciato alla routine mattutina <code>active_speaker='Speaker koupelna'</code>, audio_brain spedisce i percorsi secondo lui. Parzialmente vero (active_speaker era bloccato), ma il problema non era il dispatch: il problema era nella logica di fallback curriculum_exec.</p>
+<p><strong>H4: ascoltatore di flusso su ai_coord_last_action.</strong>
+        Ipotesi: da qualche parte il flusso ha un grilletto"<code>sh_ai_coord_last_action</code> cambiato + condizione <code>comfort_suggest</code> → action play radio". Grep in tutti i flussi non ha trovato nulla di simile. Falsificato.</p>
+<h2>Causa principale (vincitore H2)</h2>
+<p>
+<code>sh_tts_resume_exec_v1</code> (id <code>009149d9-0e49-4881-b41d-502b52ca652c</code>), che viene chiamato automaticamente dopo ogni completamento di TTS, aveva un gestore di fallback:
+        </p>
+<pre tabindex="0"><code>// BEFORE v1.8
+if (target === 'idle' &amp;&amp; currentMode === 'radio_bathroom') {
+  // Resume bathroom radio
+  await dispatchAudio({mode: 'radio_bathroom', speaker: 'Speaker koupelna'});
+}</code></pre>
+<p>
+          La logica era: "se il TTS terminava, non c'era un obiettivo di ripresa esplicito e la modalità corrente diceva radio in bagno, torna alla radio in bagno".
+Intenzione: dopo una breve notifica TTS durante la doccia per riassumere la radio accesa.
+        </p>
+<p>
+<strong>Quale fallback non è stato controllato</strong>: se la radio del bagno veniva effettivamente riprodotta PRIMA di TTS. <code>sh_audio_current_mode</code> rimasto bloccato
+          <code>'radio_bathroom'</code> dalla routine mattutina alle 03:35 e nessuno l'ha resettato. Alle 20:45 la situazione era ancora valida, anche se l'oratore era rimasto a lungo in silenzio.
+        </p>
+<h2>Correzione v1.8: prev_playing guard</h2>
+<pre tabindex="0"><code>// AFTER v1.8
+if (target === 'idle' &amp;&amp; currentMode === 'radio_bathroom') {
+  if (sh_audio_prev_playing !== 'yes') {
+    logEvent({event: 'tts_resume_skip_no_prev_playing'});
+    return;
+  }
+  // Resume bathroom radio
+  await dispatchAudio({mode: 'radio_bathroom', speaker: 'Speaker koupelna'});
+}</code></pre>
+<p>
+          Condizione aggiuntiva: <code>sh_audio_prev_playing === 'yes'</code>.
+Questa variabile è impostata su <code>'yes'</code> solo se l'orchestratore TTS rileva la riproduzione audio attiva PRIMA che inizi.
+Se non era in riproduzione nulla (solo TTS), rimane prev_playing <code>'no'</code> e il curriculum non viene eseguito.
+        </p>
+<h2>Prova (25.4. notte)</h2>
+<p>
+          Dopo aver distribuito la versione 1.8, ho riprodotto manualmente le condizioni del bug:
+        </p>
+<ul>
+<li>Ripristina tutte le variabili dello stato audio su clean</li>
+<li>Configurazione: <code>sh_audio_current_mode='radio_bathroom'</code>,
+              <code>sh_audio_prev_playing='no'</code> (differenza fondamentale)</li>
+<li>Attiva TTS tramite <code>sh_tts_orchestrator_v1</code></li>
+<li>Attendi 60 secondi</li>
+<li>controlla: <code>sh_audio_request</code> ancora "inattivo", nessun evento di spedizione</li>
+</ul>
+<p>
+          Prova superata.
+Resume_exec è stato saltato correttamente, nessuna radio accesa.
+Voce di registro
+          <code>tts_resume_skip_no_prev_playing</code> registrato.
+        </p>
+<h2>Orologio a lungo termine</h2>
+<p>
+          La correzione v1.8 risolve il sintomo, non la causa del blocco <code>sh_audio_current_mode</code>.
+Se vediamo di nuovo la modalità bloccata, dovremo aggiungere un reset alla logica di arresto della radio del bagno: quando l'altoparlante si ferma, imposta la modalità = 'idle'.
+Attualmente, la modalità mantiene il suo ultimo valore, che è fondamentalmente uno stato sporco.
+        </p>
+<p>
+          Voce arretrato: <code>tools/audit_audio_state_consistency.py</code> — controllo periodico se <code>current_mode</code> corrisponde al reale stato di riproduzione_altoparlante.
+Estensione Guardiano del cervello.
+        </p>
+<h2>Cosa è stato appreso</h2>
+<blockquote>
+          La logica di fallback deve verificare esplicitamente che la condizione a cui risponde il fallback sia <em>corrente</em>, non solo <em>recentemente</em>.
+Le variabili di stato possono rimanere bloccate in valori fantasma che sembrano validi ma non corrispondono al mondo reale.
+        </blockquote>
+<p>
+          Questo non è il primo bug dello stato fantasma.
+Bloccato <code>sh_priority_active='tts'</code>
+          l'incidente è stato simile: la variabile ha trattenuto il valore della pipeline incompleta e ha bloccato le operazioni successive.
+Il livello di validazione di Brain Guardian (V1 LIVE dal 26.4.) è la risposta a tutta questa categoria di bug: controllo incrociato periodico dello stato rispetto alla realtà.
+        </p>
+<p>
+          4 ore di diagnostica → 4 righe di codice.
+Un rapporto tipico per i bug guidati dallo stato.
+La scala delle ipotesi (H1 → H2 → H3 → H4) è necessaria: senza un'eliminazione sistematica, mi ritroverei con una soluzione rapida che maschererebbe solo il sintomo.
+        </p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME</p>
+<p class="footer-meta">Presentazione pubblica · nessuna chiave API · nessun IP locale.</p>
+</div>
+</footer>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

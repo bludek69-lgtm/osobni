@@ -20,12 +20,12 @@
   document.body.appendChild(dialog);
   const input=dialog.querySelector('input'), list=dialog.querySelector('ol'), status=dialog.querySelector('.site-search-status'), close=dialog.querySelector('.site-search-close');
   dialog.querySelector('h2').textContent=strings.title; dialog.querySelector('label').textContent=strings.label; input.placeholder=strings.placeholder; dialog.querySelector('.site-search-hint').textContent=strings.hint; close.setAttribute('aria-label',strings.close); close.title=strings.close;
-  const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’'`´]/g,'').toLowerCase();
   // A small fallback helps with common Czech inflections (Pienza / Pienzy).
   const matchesTerm=(text,term)=>text.includes(term)||(term.length>=5&&text.includes(term.slice(0,-1)));
   let entries=null, promise=null, request=0;
   function load() {
-    if (!promise) promise=fetch('/assets/data/site-search-index.json?v=20261116-navsearch').then(r=>{if(!r.ok) throw new Error('HTTP '+r.status);return r.json();}).then(data=>{entries=data.documents;return entries;}).catch(e=>{promise=null;throw e;});
+    if (!promise) promise=fetch('/assets/data/site-search-index.json?v=20261117-editorial').then(r=>{if(!r.ok) throw new Error('HTTP '+r.status);return r.json();}).then(data=>{entries=data.documents;return entries;}).catch(e=>{promise=null;throw e;});
     return promise;
   }
   function excerpt(text, terms) {

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Il viaggio da una singola lampadina controllata da un'app al controllo dell'appartamento connesso.
+Questa pagina coglie i passaggi successivi e la forma del progetto in quel momento;
+il numero di dispositivi e automazioni appartengono alle fasi descritte." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Come è stato creato il sistema operativo SMART HOME | CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="Come è stato creato il sistema operativo SMART HOME | CASA INTELLIGENTE" property="og:title"/>
+<meta content="Il viaggio da una singola lampadina controllata da un'app al controllo dell'appartamento connesso.
+Questa pagina coglie i passaggi successivi e la forma del progetto in quel momento;
+il numero di dispositivi e automazioni appartengono alle fasi descritte." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/journey.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/journey.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/journey.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/journey.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/journey.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/journey.html#main">Vai al contenuto</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Apri il menù</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/it/smart-home/">Home</a></li>
+<li><a href="/it/smart-home/prozivani.html">Come funziona</a></li>
+<li><a href="/it/smart-home/zarizeni.html">Attrezzatura</a></li>
+<li><a href="/it/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/it/smart-home/dashboard.html">Cruscotto</a></li>
+<li><a aria-current="page" class="is-active" href="/it/smart-home/pribeh.html">La storia</a></li>
+<li><a href="/it/smart-home/blog.html">Blog</a></li>
+<li><a href="/it/smart-home/kontakt.html">Informazioni sul progetto</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Sito web personale e Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a><a href="/it/smart-home/">Introduzione Casa intelligente</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/journey.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/journey.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/journey.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section section-hero hub-hero" id="journey">
+<div class="container">
+<p class="eyebrow"><span aria-hidden="true" class="status-dot"></span>📖 Pilastro · Storia</p>
+<h1 class="hero-title">Come è stato creato <span class="grad-text">Sistema operativo CASA INTELLIGENTE</span></h1>
+<p class="hero-lead">Il viaggio da una singola lampadina controllata da un'app al controllo dell'appartamento connesso.
+Questa pagina coglie i passaggi successivi e la forma del progetto in quel momento;
+il numero di dispositivi e automazioni appartengono alle fasi descritte.</p><details class="visitor-technical-intro"><summary>Dettagli tecnici</summary><p class="hero-lead">Non era un piano.
+Nessun documento di roadmap.
+È iniziato <strong>una lampadina controllata dall'app</strong> e gradualmente è cresciuto fino a raggiungere 116 script, 203 flussi e un'architettura a più livelli in cui Brain Guardian supervisiona altre automazioni.</p></details>
+<p class="hero-lead">Ecco la storia: fase dopo fase, crisi dopo crisi.</p>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Viaggio di ingegneria</p>
+<h2 class="section-title">7 fasi di evoluzione</h2>
+<p class="section-lead">Non è stata pianificata alcuna fase.
+Ciascuno è nato come reazione al limite del precedente.</p>
+</header>
+<ol class="journey-timeline" role="list">
+<li class="journey-item j1">
+<p class="journey-phase">Fase 1 · ~2023</p>
+<h3>Inizio: la prima automazione nell'interfaccia utente</h3>
+<p>Aggiunta manuale di dispositivi nell'interfaccia utente di Homey.
+Flusso classico tramite drag &amp; drop.
+"Quando movimento → accendi la luce."
+Nessuna architettura, nessuno stato.
+Funziona per alcuni minuti, poi smette di ridimensionarsi: più Flow di quanto ricordassi, nessuna supervisione.</p>
+</li>
+<li class="journey-item j2">
+<p class="journey-phase">Fase 2 · transizione prima dello script</p>
+<h3>Logica per gli script, non per Flow</h3>
+<p>Decisioni chiave: <strong>la logica appartiene allo script HomeyScript, non alle schede Flow</strong>.
+I flussi diventano semplicemente trigger: lo script è il "cervello".
+È nata la prima generazione <code>sh_*</code> script: <code>sh_morning_brain</code>, <code>sh_light_router</code>, <code>sh_audio_brain</code>. All'improvviso è versionebile, leggibile, debuggabile.</p>
+</li>
+<li class="journey-item j3">
+<p class="journey-phase">Fase 3 · architettura della richiesta</p>
+<h3>Router e tubazioni di richiesta</h3>
+<p>La casa è diventata più complessa: più zone, più sensori, più luci.
+Approfondimento chiave: <strong>separare "cosa succederà" da "come farlo"</strong>.
+Sono state create le variabili di richiesta (<code>sh_light_request</code>, <code>sh_audio_request</code>) e i router che li interpretano. La routine mattutina non scrive più direttamente sulla lampadina: invia una richiesta, il router decide in base a fase + sonno + presenza + lux.</p>
+</li>
+<li class="journey-item j4">
+<p class="journey-phase">Fase 4 · autoguarigione + diagnosi</p>
+<h3>Quando il sistema riconosce di avere un problema</h3>
+<p>Raccolta di eventi in Fogli Google tramite Apps Script WebApp.
+Sono stati creati gli script diagnostici: <code>sh_diag_analyzer</code>, <code>sh_self_healing_v4</code>, <code>sh_audio_pipeline_watchdog</code>. Il watchdog rileva gli stati bloccati, l'autoriparazione li ripristina.
+Memory_watchdog su GitHub Actions riavvia l'app HomeyScript a ≥125 MB. <strong>Il sistema ha smesso di richiedere assistenza all'utente per malfunzionamenti comuni.</strong></p>
+</li>
+<li class="journey-item j5">
+<p class="journey-phase">Fase 5 · Cruscotto V7</p>
+<h3>Livello UI: un sistema, tre schermi</h3>
+<p>Navigazione nella barra laterale, riquadri multizona, schede KPI V5, chip di stato, editor di layout drag/drop.
+Tre varianti: chiosco RPi 1024x600, notebook 1920x1080, monitor 2880x1800.
+Un file HTML + livello CSS reattivo. <strong>Modalità modifica</strong> consente all'utente di spostare i riquadri e salvare il layout in localStorage.</p>
+</li>
+<li class="journey-item j6">
+<p class="journey-phase">Fase 6 · Integrazione dell'IA</p>
+<h3>Gemini come livello IA runtime</h3>
+<p>Briefing (TTS via Cast), suggerimento comfort, rilevamento anomalie.
+Gemini legge il registro eventi, suggerisce azioni, genera report mattutini. <strong>Dall'automazione reattiva all'assistenza proattiva.</strong> L’intelligenza artificiale non interferisce con la gestione: è un livello consigliere + osservatore.</p>
+</li>
+<li class="journey-item j7">
+<p class="journey-phase">Fase 7 · Guardiano del cervello</p>
+<h3>Supervisore dell'intero sistema</h3>
+<p>Supervisore di livello superiore — <code>sh_expected_state_engine</code> definisce cosa dovrebbe essere <code>sh_state_validator</code> confronta con la realtà <code>sh_brain_guardian</code> orchestra <code>sh_release_guard</code> monitora le distribuzioni. <strong>Punteggio 92/100, validatore 100, rilevamento deriva in tempo reale.</strong> Bug reali rilevati: fantasma del motore prioritario Bug E, camera da letto TRV mancante, movimento della routine mattutina rispetto all'asimmetria dell'allarme.</p>
+</li>
+</ol>
+</div>
+</section>
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Lezioni apprese</p>
+<h2 class="section-title">Cosa mi ha insegnato il sistema</h2>
+<p class="section-lead">Ognuna di queste cose originariamente aveva in mente una soluzione semplice.
+Poi si è scoperto che non funziona così.</p>
+</header>
+<div class="lessons-grid">
+<div class="lesson-card">
+<h4>👻Valori fantasma</h4>
+<p>La variabile rimane bloccata in uno stato non inattivo perché un passaggio della pipeline si è bloccato. <code>sh_priority_active='tts'</code> Luci/audio bloccati per 14 giorni.
+Correzione: timestamp + ripristino automatico sempre &gt; 60 s.</p>
+</div>
+<div class="lesson-card">
+<h4>⚡ Condizioni di gara audio</h4>
+<p>La richiesta TTS arriva prima del termine della traccia precedente. <code>sh_audio_current_mode</code> sovrascritto nell'ordine sbagliato.
+Correzione: watchdog della pipeline che monitora non la modalità, ma il flusso di richieste.</p>
+</div>
+<div class="lesson-card">
+<h4>🔁 Prevenzione dei conflitti</h4>
+<p>Due flussi combattono per la stessa lampadina.
+Senza priorità motore apparirà lampeggiante.
+Correzione: priorità gerarchia (tts=100, luce=60, audio=40) + arbitrato.</p>
+</div>
+<div class="lesson-card">
+<h4>🪝 Arbitri orfani silent fail</h4>
+<p>Dopo aver riassociato il dispositivo riceverà un nuovo UUID. Trigger di flusso delle carte che fanno riferimento al vecchio ID = errore silenzioso, nessun errore nell'interfaccia utente. Correzione: scanner find_orphan_device_refs in blocco dopo ogni coppia.</p>
+</div>
+<div class="lesson-card">
+<h4>🧠 Perché è stato creato Brain Guardian</h4>
+<p>Il watchdog risolve solo una specifica modalità di errore.
+L'autoguarigione è reattiva.
+Brain Guardian = uno strato che sa come dovrebbe apparire il sistema e lo confronta con ciò che fa realmente.
+Rileva la deriva prima dell'utente.</p>
+</div>
+<div class="lesson-card">
+<h4>🎯RIUTILIZZA PRIMA</h4>
+<p>Tendenza a creare nuove entità invece di modificare quelle esistenti.
+Porta a un caos di duplicati.
+La regola: ogni cosa nuova passa davanti al "esiste qualcosa di simile?"
+test. — 9× su 10 sì, refactoring.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Cosa rende il sistema unico?</p>
+<h2 class="section-title">4 caratteristiche che tengono insieme</h2>
+<p class="section-lead">Non è una lista di controllo dei prodotti "casa intelligente".
+E' il modo in cui pensa il sistema.</p>
+</header>
+<div class="feature-grid">
+<article class="feature-card">
+<span aria-hidden="true" class="feature-card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-scroll-text"></use></svg></span></span>
+<h4>Automazione basata innanzitutto sullo script</h4>
+<p>Logica negli script HomeyScript, Flow come semplici trigger.
+Versionabile, debuggabile, refactorable.
+Nessun caos drag-and-drop.</p>
+</article>
+<article class="feature-card">
+<span aria-hidden="true" class="feature-card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-repeat"></use></svg></span></span>
+<h4>Logica di autoguarigione</h4>
+<p>Stati di blocco rilevati dai watchdog, reset automatici, riavvio dell'app in caso di perdita di memoria.
+Il sistema funziona anche se qualcosa si rompe.</p>
+</article>
+<article class="feature-card">
+<span aria-hidden="true" class="feature-card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-stethoscope"></use></svg></span></span>
+<h4>Diagnostica assistita dall'intelligenza artificiale</h4>
+<p>Gemini legge il registro degli eventi e suggerisce cosa potrebbe esserci che non va.
+Brain Guardian convalida le aspettative e le effettive.
+Rilevamento delle anomalie senza modello ML: solo regole e macchina a stati.</p>
+</article>
+<article class="feature-card">
+<span aria-hidden="true" class="feature-card-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-sprout"></use></svg></span></span>
+<h4>Sistema operativo vivente</h4>
+<p>Una casa non è un prodotto finito: è un sistema in continua evoluzione.
+Ogni settimana un commit, ogni mese una nuova versione di qualche sottosistema.
+Non è un'installazione, è una coltivazione.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Cosa succederà dopo?</p>
+<h2 class="section-title">Tabella di marcia</h2>
+</header>
+<ul class="timeline" style="max-width: 760px; margin: 0 auto;">
+<li class="timeline-item">
+<span class="timeline-dot"></span>
+<p class="timeline-date">Fase 8 · Secondo trimestre 2026</p>
+<div class="timeline-content">
+<h3>Espansione hardware</h3>
+<p>Shelly Plug S Gen3 per macchina da caffè (<strong>IN DIRETTA dal 30.4.2026</strong> come 11. dispositivo real-meter);
+Presenza Aqara FP1E ​​in camera da letto, porta della sala da pranzo Aqara P2 (sostituzione SNZB-04), pulsante di riattivazione H1 accanto al letto: questo componente hardware in arrivo.</p>
+</div>
+</li>
+<li class="timeline-item">
+<span class="timeline-dot"></span>
+<p class="timeline-date">Fase 9 · Q3 2026</p>
+<div class="timeline-content">
+<h3>Riscaldamento per zona + occupazione nel riscaldamento</h3>
+<p>Fibaro FGT-001 per la camera da letto, Sonoff SNZB-02P per lo studio. I livelli di riscaldamento AI sono già in esecuzione: mancano solo i dati di input dalla 4a zona.</p>
+</div>
+</li>
+<li class="timeline-item">
+<span class="timeline-dot"></span>
+<p class="timeline-date">Fase 10 · 2026/2027</p>
+<div class="timeline-content">
+<h3>Brain Guardian V2 + manutenzione predittiva</h3>
+<p>Regole → Modelli ML (rilevamento anomalie su sequenze di eventi).
+Prevedere i guasti alle apparecchiature prima che si verifichino.
+Monitoraggio della batteria a lungo termine, statistiche sull'autonomia, stime della durata.</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Immagine ingrandita" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Chiudi lo zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME · Realizzato con ❤️ e pensando prima alla sceneggiatura.</p>
+<p class="footer-meta">Presentazione pubblica · nessuna chiave API · nessun IP locale · nessun controllo da qui.</p>
+<p class="footer-meta"><a href="/it/smart-home/technicka-mapa.html">Mappa tecnica →</a> · <a href="/it/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

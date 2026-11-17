@@ -10,6 +10,11 @@ import json, re, subprocess, sys, xml.etree.ElementTree as ET
 from _build_blog import SERIES, SERIES_PATH
 
 ROOT=Path(__file__).resolve().parent
+TRANSLATION_FILE=ROOT/'_data/editorial/translations.json'
+if not TRANSLATION_FILE.exists():TRANSLATION_FILE=ROOT.parent/'reports/editorial-migration-20261117/translations.json'
+translations=json.loads(TRANSLATION_FILE.read_text(encoding='utf8')) if TRANSLATION_FILE.exists() else {}
+def translated(text,lang):
+ return translations.get(lang,{}).get(re.sub(r'\s+',' ',text).strip(),text)
 records=[]
 for node in ET.parse(ROOT/'sitemap.xml').iter():
  if not node.tag.endswith('loc') or not node.text: continue
@@ -28,16 +33,22 @@ for node in ET.parse(ROOT/'sitemap.xml').iter():
  current={'title':title,'section':'','url':url.path,'lang':lang,'text':''}
  def save():
   text=re.sub(r'\s+',' ',current['text']).strip()
-  if len(text)>=24:
+  # A photo album can consist of a place heading and photographs. Its name is
+  # searchable even when there is no long paragraph beneath that heading.
+  if len(text)<24 and len(current['section'])>=3:text=current['section']+(' — '+text if text else '')
+  if len(text)>=3:
    for offset in range(0,len(text),1000):
     chunk=text[offset:offset+1200].strip()
-    if len(chunk)>=24:records.append({**current,'text':chunk})
- for tag in main.find_all(['h1','h2','h3','p','li','figcaption']):
+    if len(chunk)>=3:records.append({**current,'text':chunk})
+ for tag in main.find_all(['h1','h2','h3','p','li','figcaption','img']):
   if tag.find_parent(['p','li','figcaption']):continue
   if tag.name in ('h1','h2','h3'):
    save(); section=tag.get_text(' ',strip=True)
    anchor=tag.get('id') or next((x.get('id') for x in tag.parents if x is not main and x.name in ('section','article') and x.get('id')),None)
    current={'title':title,'section':section,'url':url.path+('#'+anchor if anchor else ''),'lang':lang,'text':''}
+  elif tag.name=='img':
+   alt=tag.get('alt','').strip()
+   if alt and not re.match(r'^(?:IMG_|DSC_|\d{8}_)',alt):current['text']+=' '+alt
   else:current['text']+=' '+tag.get_text(' ',strip=True)
  save()
 
@@ -46,7 +57,7 @@ posts=json.loads((ROOT/'_data/blog/posts.json').read_text(encoding='utf8'))
 by_url={'/blog/'+p['slug']+'/':p for p in posts}
 series_aliases={'Skryté klenoty':'Hidden Gems Tesori nascosti', 'Místa jako z pohádky':'Places Like a Fairytale Luoghi da fiaba', 'Cesty s příběhem':'Journeys with a Story Viaggi con una storia'}
 for record in records:
- post=by_url.get(record['url'].split('#')[0])
+ post=by_url.get(re.sub(r'^/(?:en|it)/','/',record['url'].split('#')[0]))
  if post:
   record['kind']='article'
   record['keywords']='Blog z cest Příběhy z cest travel blog blog di viaggio '+post['series']+' '+series_aliases.get(post['series'],'')+' '+post['video_title']
@@ -54,6 +65,18 @@ records.append({'title':'Blog z cest — Příběhy z cest','section':'','url':'
 for series in SERIES:
  episodes=[p for p in posts if p['series']==series['title']]
  records.append({'title':series['title'],'section':'Cestovatelské série','url':SERIES_PATH+'#'+series['id'],'lang':'cs','kind':'collection','keywords':series_aliases[series['title']],'text':series['description']+' '+str(len(episodes))+' dílů: '+'; '.join(p['title'] for p in episodes)})
+for language in ('en','it'):
+ for record in list(records):
+  if record.get('lang')!='cs' or record.get('kind')!='collection':continue
+  if record['url']=='/blog/':
+   title={'en':'Travel blog — Stories from the road','it':'Blog di viaggio — Racconti di viaggio'}[language]
+   body={'en':'Travel articles with videos, maps and practical notes. ','it':'Articoli di viaggio con video, mappe e consigli pratici. '}[language]+', '.join(translated(s['title'],language) for s in SERIES)
+  else:
+   series=next(s for s in SERIES if record['url'].endswith('#'+s['id']))
+   episodes=[p for p in posts if p['series']==series['title']]
+   title=translated(series['title'],language)
+   body=translated(series['description'],language)+' '+str(len(episodes))+(' episodes: ' if language=='en' else ' episodi: ')+'; '.join(translated(p['title'],language) for p in episodes)
+  records.append({**record,'title':title,'section':'Travel series' if language=='en' else 'Serie di viaggio','url':'/'+language+record['url'],'lang':language,'text':body})
 
 # Dynamic food content is explicitly public, reviewed structured data.
 for filename,fields,label in [('italian-recipes.json',('title','region','city','ingredients','regionalNote'),'Recept'),('pasta-types.json',('name','type','region','bestWith','exampleDish'),'Druh těstovin'),('italian-food-rules.json',('title','category','text'),'Italská kuchyně')]:
@@ -66,7 +89,17 @@ for filename,fields,label in [('italian-recipes.json',('title','region','city','
    v=item.get(key)
    if isinstance(v,list):v=', '.join(str(x) for x in v if isinstance(x,str))
    if isinstance(v,str) and v.strip():vals.append(v.strip())
-  if vals:records.append({'title':label+' – '+vals[0],'section':'','url':'/cestovani/italie/kuchyne.html','lang':'cs','text':'; '.join(vals)})
+  if vals:
+   records.append({'title':label+' – '+vals[0],'section':'','url':'/cestovani/italie/kuchyne.html','lang':'cs','text':'; '.join(vals)})
+   for language in ('en','it'):
+    local=[]
+    for key in fields:
+     value=item.get(key)
+     if isinstance(value,list):value=', '.join(translated(x,language) for x in value if isinstance(x,str))
+     elif isinstance(value,str):value=translated(value,language)
+     if isinstance(value,str) and value.strip():local.append(value.strip())
+    labels={'en':{'Recept':'Recipe','Druh těstovin':'Pasta shape','Italská kuchyně':'Italian food'},'it':{'Recept':'Ricetta','Druh těstovin':'Formato di pasta','Italská kuchyně':'Cucina italiana'}}
+    records.append({'title':labels[language][label]+' – '+local[0],'section':'','url':'/'+language+'/cestovani/italie/kuchyne.html','lang':language,'text':'; '.join(local)})
 
 # Webcams and language lessons are rendered by JavaScript on public pages.
 cameras=(ROOT/'assets/js/italia-pocasi.js').read_text(encoding='utf8')
@@ -82,7 +115,7 @@ for block in ('CAMS','MORE'):
 try:
  raw=subprocess.run(['node','-e',"process.stdout.write(JSON.stringify(require('./assets/js/italian-data.js').lessons))"],cwd=ROOT,capture_output=True,check=True,timeout=15).stdout
  for lesson in json.loads(raw.decode('utf8')):
-  for language in ('cs','en'):
+  for language in ('cs','en','it'):
    title=lesson.get('title',{}).get(language) or lesson.get('title',{}).get('cs','Italština')
    words=[]
    for word in lesson.get('words',[]):

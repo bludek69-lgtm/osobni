@@ -1,137 +1,91 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Media Hub — My apps — Luděk</title>
-  <meta content="My home film, series and music library on network storage. I use the interface by the TV on a Raspberry Pi." name="description"/>
-  <link rel="canonical" href="https://cestovatel69.cz/en/aplikace/media-hub.html">
-  <meta property="og:title" content="Home Media Hub — My apps — Luděk">
-  <meta content="My home film, series and music library on network storage. I use the interface by the TV on a Raspberry Pi." property="og:description"/>
-  <meta property="og:url" content="https://cestovatel69.cz/en/aplikace/media-hub.html">
-  <meta property="og:type" content="website">
-  <link rel="stylesheet" href="../../assets/css/style.css?v=20261116-navsearch">
-  <link rel="icon" href="/favicon.ico">
-<link rel="stylesheet" href="../../assets/css/language-navigation.css?v=20261030-jazyky">
-<link rel="alternate" hreflang="cs" href="https://cestovatel69.cz/aplikace/media-hub.html">
-<link rel="alternate" hreflang="en" href="https://cestovatel69.cz/en/aplikace/media-hub.html">
-<link rel="alternate" hreflang="it" href="https://cestovatel69.cz/it/aplikace/media-hub.html">
-<link rel="alternate" hreflang="x-default" href="https://cestovatel69.cz/aplikace/media-hub.html">
-<link rel="stylesheet" href="../../assets/css/app-showcase.css?v=20261030-all-apps">
-</head>
-<body class="theme-home app-showcase app-detail">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Home Media Hub — My application — Luděk</title>
+<meta content="A local dashboard over the home movie library and music on the NAS — it runs in my network on a Raspberry Pi kiosk. Secure media import from disk to NAS and metadata from Jellyfin. No cloud." name="description"/>
 
+<meta content="Home Media Hub — My application — Luděk" property="og:title"/>
+<meta content="A local dashboard over the home movie library and music on the NAS — it runs in my network on a Raspberry Pi kiosk. Secure media import from disk to NAS and metadata from Jellyfin. No cloud." property="og:description"/>
+<meta content="https://cestovatel69.cz/en/aplikace/media-hub.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/assets/css/style.css?v=20261116-navsearch" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+<link href="/assets/css/app-showcase.css?v=20261030-all-apps" rel="stylesheet"/>
+<link href="/assets/css/language-navigation.css?v=20261030-jazyky" rel="stylesheet"/>
+
+
+
+
+<link href="https://cestovatel69.cz/en/aplikace/media-hub.html" rel="canonical"/><link href="https://cestovatel69.cz/aplikace/media-hub.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/aplikace/media-hub.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/aplikace/media-hub.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="theme-home app-showcase app-detail editorial-preview editorial-site editorial-app">
 <header class="site-header">
 <div class="site-header__inner">
 <a class="brand" href="/en/">
 <span class="brand-dot"></span>
       Luděk
-    </a><nav aria-label="Page language" class="lang-switcher"><a href="/aplikace/media-hub.html" hreflang="cs" lang="cs" title="Česky">CS</a><a aria-current="page" href="/en/aplikace/media-hub.html" hreflang="en" lang="en" title="English">EN</a><a href="/it/aplikace/media-hub.html" hreflang="it" lang="it" title="Italiano">IT</a></nav><button aria-expanded="false" aria-label="Otevřít menu" class="nav-toggle">☰</button>
-<nav aria-label="Main navigation" class="nav"><a href="/en/">Home</a><a aria-current="page" href="/en/aplikace/">My apps</a><a href="/en/finance/">Finance</a><a href="/en/cestovani/">Travel</a><a href="/en/cestovani/italie/">Italy</a><a href="/en/zaliby/rybareni/">Fishing</a><a href="/en/smart-home/">Smart Home</a><a href="/en/ai.html">AI</a><a href="/cestovani/uzitecne-odkazy/" hreflang="cs" title="Useful links — in Czech">Useful links<span aria-hidden="true" class="lang-tag">CS</span></a></nav>
+    </a><nav aria-label="Page language" class="lang-switcher"><a href="/aplikace/media-hub.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/aplikace/media-hub.html" hreflang="en" lang="en">EN</a><a href="/it/aplikace/media-hub.html" hreflang="it" lang="it">IT</a></nav><button aria-expanded="false" aria-label="Open the menu" class="nav-toggle">☰</button>
+<nav aria-label="Main navigation" class="nav">
+<a href="/en/">Home</a>
+<a aria-current="page" href="/en/aplikace/">My apps</a>
+<a href="/en/finance/">Finance</a>
+<a href="/en/cestovani/">Travel</a>
+<a href="/en/cestovani/italie/">Italy</a>
+<a href="/en/zaliby/rybareni/">Fishing</a>
+<a href="/en/smart-home/">Smart Home</a>
+<a href="/en/ai.html">AI</a>
+<a href="/en/cestovani/uzitecne-odkazy/">Useful links</a>
+</nav>
 </div>
 </header>
-<aside aria-label="Language availability" class="language-note">CS = content in Czech. Some older descriptions remain in Czech.</aside>
-
-<main id="main"><a class="app-back" href="index.html">← My apps</a><section aria-labelledby="app-title" class="hero app-hero"><div><span class="hero-accent">My own project</span><h1 id="app-title">Home Media Hub</h1><p class="hero-sub">My home film, series and music library on network storage. I use the interface by the TV on a Raspberry Pi.</p><p class="app-availability">Private project. Not publicly available for download.</p><div class="app-actions"><a class="app-action" href="#podrobnosti">Features and details ↓</a></div></div><figure class="app-preview"><img alt="🎬 Home Media Hub — interface preview" decoding="async" fetchpriority="high" height="900" src="/aplikace/img/media-hub/01_knihovna.png" width="1280"/><figcaption>Interface preview. Click to enlarge.</figcaption></figure></section><section><h2>What it helps me do</h2><div class="app-benefits"><article class="app-benefit"><h3>One library</h3><p>Browse films, series and music together.</p></article><article class="app-benefit"><h3>TV interface</h3><p>Use the library from a Raspberry Pi by the television.</p></article><article class="app-benefit"><h3>Home storage</h3><p>Keep the media collection on my network storage.</p></article></div><p class="app-note">This page presents the interface. It does not provide public access to my home media library.</p></section><section id="podrobnosti"><h2 class="app-details-heading">Explore the details</h2><details class="app-disclosure"><summary>What it does</summary><div class="app-disclosure__body"><section>
-<h2>What it does</h2>
-<p>My home NAS is full of movies, series, music and home videos — but clicking through network folders to find them is no fun. Media Hub is a light, nice front-end over it: it shows the library as tiles, lets me search and filter by type, mark items as "seen" and "favourite" — and runs right next to the TV on a small Raspberry Pi.</p>
-<p><strong>Read-only, nothing gets broken.</strong> The dashboard treats the media on the NAS strictly <em>read-only</em> — it only browses them (no deleting, moving or overwriting). The "seen/favourite" flags and the index live in its own local database (SQLite), never on the NAS.</p>
-<p><strong>Safe import from disk to NAS.</strong> When I find an old external disk with scattered media, Media Hub first only scans it, sorts files by type (movies, series, music, photos, home videos, documents) and shows a <em>plan preview</em>. Only after I confirm does it copy — and only <strong>new</strong> files: the source is never deleted, nothing on the NAS is overwritten, and every copy is verified. The order is always <em>scan → proposal → preview → confirm → copy → verify</em>.</p>
-<p><strong>Artwork and descriptions from Jellyfin.</strong> Optionally it connects to my home Jellyfin (running on the NAS) and adds posters, genre, length and description to films — still read-only, it writes nothing to Jellyfin or the NAS.</p>
-<p><strong>Tied into the smart home.</strong> On the kiosk by the TV one tap switches between the smart-home dashboard and Media Hub — two interfaces, one screen.</p>
-</section></div></details><details class="app-disclosure"><summary>Key features</summary><div class="app-disclosure__body"><section>
-<h2>Key features</h2>
+<main id="main">
+<a class="app-back" href="/en/aplikace/">← My application</a><section aria-labelledby="app-title" class="hero app-hero"><div><span class="hero-accent">My library by the TV</span><h1 id="app-title">Home Media Hub</h1><p class="hero-sub">I go through films, series and music from the home storage as a well-arranged library. For the TV, I get to it via the Raspberry Pi.</p><p class="app-availability">A private tool on the home network. Not publicly available for download.</p><div class="app-actions"><a class="app-action app-action--primary" href="/en/aplikace/media-hub.html#podrobnosti">View details ↓</a></div></div><figure class="app-preview"><img alt="Library as tiles — movies, series, music and Italian movies with type, year and size, search and filters (sample demo data)" decoding="async" fetchpriority="high" height="900" src="/aplikace/img/media-hub/01_knihovna.png" width="1280"/><figcaption>A preview of the interface from the existing gallery. Click to enlarge.</figcaption></figure></section><section aria-labelledby="prinosy"><h2 id="prinosy">What the app makes easy for me</h2><div class="app-benefits"><article class="app-benefit"><h3>Library instead of folders</h3><p>Search, filter and mark favorite or viewed titles.</p></article><article class="app-benefit"><h3>Import with preview</h3><p>Before copying from the external drive, it will show the plan; does not delete source files.</p></article><article class="app-benefit"><h3>Packaging and descriptions</h3><p>An optional connection with the home Jellyfin will add information to the titles.</p></article></div></section><section aria-labelledby="praxe" class="app-workflow"><h2 id="praxe">How I use it</h2><ol><li><h3>I'll open the library</h3><p>On the panel next to the TV, I switch to the Media Hub.</p></li><li><h3>I will find the title</h3><p>I will use search, filter or favorites list.</p></li><li><h3>I'll keep track</h3><p>I will mark viewed titles or prepare to import new files.</p></li></ol><p class="app-note">The samples represent the interface. The actual library and personal data remain off the public website.</p></section><section id="podrobnosti"><h2 class="app-details-heading">If you want to know more</h2><details class="app-disclosure"><summary>Why was it created and what can it do?</summary><div class="app-disclosure__body"><section>
+<p>I have a NAS at home full of movies, series, music and home videos — but clicking through network folders to them is no joy. Media Hub is a lightweight, pretty signpost above that: it shows the library as tiles, can search and filter by type, mark "seen" and "favorite" — and runs right next to the TV on a tiny Raspberry Pi.</p>
+<p><strong>Just read, won't break anything.</strong> Dashboard treats media on the NAS strictly <em>read-only</em> — just goes through them (no deleting, moving or overwriting). It keeps both the "seen/favorite" flags and the index in its own local database (SQLite), never on the NAS.</p>
+<p><strong>Secure import from disk to NAS.</strong> When I find an old external drive with scattered media, Media Hub first just scans it, sorts the files by type (movies, TV series, music, photos, home videos, documents) and shows <em>plan preview</em>. Only after my confirmation does it copy — and only <strong>new</strong> files: the source is never deleted, nothing is overwritten on the NAS, everything is verified after the copy. There is always an order <em>scan → draft → preview → confirm → copy → verify</em>.</p>
+<p><strong>Covers and descriptions from Jellyfin.</strong> Optionally, it connects to my home Jellyfin (running on a NAS) and adds cover, genre, length and description to movies — but it still only reads, it doesn't write anything to Jellyfin or the NAS.</p>
+<p><strong>Connected to the smart home.</strong> On the TV kiosk, one tap switches between the smart home dashboard and the Media Hub — two interfaces, one screen.</p>
+</section></div></details><details class="app-disclosure"><summary>Detailed list of features</summary><div class="app-disclosure__body"><section>
 <ul style="line-height:1.7">
-<li><strong>Library as tiles</strong> — movies, series, music, home videos and a separate Italian-films section; search by name, filter by type, "seen" and "favourite".</li>
-<li><strong>Read-only over the NAS</strong> — the only operation on the library is reading; flags and index in local SQLite, never on the NAS.</li>
-<li><strong>Safe import from an external disk</strong> — scans the source, sorts by type, shows a preview (dry-run) and copies only after confirmation; new files only, no overwrite, with verification (size + checksum).</li>
-<li><strong>Jellyfin integration</strong> — posters, genre, length and description from the home Jellyfin; display only, read-only.</li>
-<li><strong>Kiosk by the TV</strong> — Raspberry Pi in full-screen mode, touch switching between smart home and media, an automatic library board.</li>
-<li><strong>No cloud, LAN only</strong> — it all runs on my network, no account, the library never leaves home, a light core in pure Python.</li>
+<li><strong>Library as tiles</strong> — movies, series, music, home videos and a separate section of Italian movies; search by name, filter by type, "seen" and "favorites".</li>
+<li><strong>Read-only over NAS</strong> — the only operation on the library is reading; flags and index in local SQLite, never on NAS.</li>
+<li><strong>Secure import from an external drive</strong> — searches the source, sorts by type, shows a preview (dry-run) and copies only after confirmation; only new files, no overwriting, with verification (size + checksum).</li>
+<li><strong>Jellyfin integration</strong> — cover art, genre, length and description from home Jellyfin; purely for display, read-only.</li>
+<li><strong>Kiosk by the TV</strong> — Raspberry Pi in full screen mode, touch switching between smart home and media, automatic library wall.</li>
+<li><strong>No cloud, just LAN</strong> — the whole thing runs on my network, no account, no sending the library out, lightweight core in pure Python.</li>
 </ul>
-</section></div></details><details class="app-disclosure"><summary>Previews</summary><div class="app-disclosure__body"><section>
-<h2>Previews</h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:.6rem">
-<figure style="margin:0"><img alt="Library as tiles — movies, series, music and Italian films with type, year and size, search and filters (sample demo data)" loading="lazy" src="/aplikace/img/media-hub/01_knihovna.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Library — tiles, filter by type, "seen/favourite" (sample demo data)</figcaption></figure>
-<figure style="margin:0"><img alt="Safe import from disk — scan the source, proposal of sorting by category and a plan preview before copying to the NAS (sample demo data)" loading="lazy" src="/aplikace/img/media-hub/02_import.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Import from disk — scan → proposal → preview → confirm → copy → verify (sample demo data)</figcaption></figure>
-<figure style="margin:0"><img alt="Kiosk by the TV — full-screen library board with counts and a running rotation of titles (sample demo data)" loading="lazy" src="/aplikace/img/media-hub/03_kiosk.png" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#0001);display:block"/><figcaption style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.4rem">Kiosk by the TV — full-screen library board (sample demo data)</figcaption></figure>
+</section></div></details><details class="app-disclosure"><summary>Other application screens · 2</summary><div class="app-disclosure__body"><section>
+<p class="app-note">Library — tiles, filters by type, "seen/favorites" (sample demo data)</p><div class="app-gallery">
+<figure><img alt="Secure import from disk — source search, suggested categorization and schedule preview before copying to NAS (sample demo data)" decoding="async" height="1807" loading="lazy" src="/aplikace/img/media-hub/02_import.png" width="1265"/><figcaption>Import from disk — scan → design → preview → confirm → copy → verify (sample demo data)</figcaption></figure>
+<figure><img alt="Kiosk by the TV — full-screen library bulletin board with an overview of numbers and a running rotation of titles (sample demo data)" decoding="async" height="900" loading="lazy" src="/aplikace/img/media-hub/03_kiosk.png" width="1280"/><figcaption>Kiosk at the TV — fullscreen library bulletin board (sample demo data)</figcaption></figure>
 </div>
-<p style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.6rem">Previews use a sample (demo) library — my real movie collection does not belong on the web.</p>
-</section></div></details><details class="app-disclosure"><summary>Status</summary><div class="app-disclosure__body"><section>
-<h2>Status</h2>
-<p>Work version v0.2.3 (June 2026). It runs at home on a Raspberry Pi kiosk by the TV, reading the library from the NAS. <strong>Private, home network (LAN) only, no public hosting and no installer to download</strong> — the real library and personal data never go on the web. Light core in pure Python (no dependencies), vanilla-JS front-end.</p>
-</section></div></details><details class="app-disclosure"><summary>Technical notes</summary><div class="app-disclosure__body"><section style="margin:1.2rem 0"><button class="diary-btn" id="openDeník">📖 Development log</button></section></div></details></section></main>
-<!-- DEVELOPMENT LOG — popup -->
-<div id="diary" class="diary-modal" role="dialog" aria-modal="true" aria-label="Development log" aria-hidden="true">
-  <div class="diary-backdrop"></div>
-  <div class="diary-panel">
-    <div class="diary-head">
-      <h2 style="margin:0">📖 Development log — Home Media Hub</h2>
-      <button class="diary-close" aria-label="Close">✕</button>
-    </div>
-    <div class="diary-body">
-      <ul style="line-height:1.8">
-        <li><strong>v0.2.3 — Italian films (June 2026)</strong> — a dedicated category for Italian films in the library and in the home Jellyfin.</li>
-        <li><strong>v0.2.2 — kiosk without dead ends</strong> — unified switching between smart home and media on one screen.</li>
-        <li><strong>v0.2.1 — Jellyfin integration</strong> — posters, genre, length and description from the home Jellyfin; still read-only.</li>
-        <li><strong>v0.2.0 — safe import from disk</strong> — scan → proposal → preview → confirm → copy → verify; the source is never deleted, nothing on the NAS is overwritten.</li>
-        <li><strong>v0.1.0 — read-only dashboard</strong> — library as tiles over the NAS, search, filters, "seen/favourite" in a local database.</li>
-      </ul>
-      <p style="color:var(--text-mut,#777);font-size:.85rem">Note: the app runs on the home network only; the real library and personal data never go on the web.</p>
-    </div>
-  </div>
-</div>
-
-<style>
-.diary-btn, .diary-link {
-  font: inherit; cursor:pointer; background:#c9a227; color:#1a1405; border:none;
-  padding:.45rem .9rem; border-radius:8px; font-weight:600; font-size:.9rem;
-}
-.diary-btn:hover { background:#e6c75a; }
-.diary-link { background:none; color:#a07d12; text-decoration:underline; padding:0; font-weight:600; }
-.diary-modal { display:none; position:fixed; inset:0; z-index:9998; }
-.diary-modal.open { display:block; }
-.diary-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.6); }
-.diary-panel {
-  position:relative; max-width:760px; margin:5vh auto; max-height:88vh; overflow:auto;
-  background:var(--bg,#fff); color:var(--text,#111); border-radius:14px;
-  box-shadow:0 16px 60px rgba(0,0,0,.4); padding:0;
-}
-.diary-head {
-  display:flex; align-items:center; justify-content:space-between; gap:1rem;
-  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border,#0002);
-  position:sticky; top:0; background:var(--bg,#fff);
-}
-.diary-close { font:inherit; cursor:pointer; background:none; border:none; font-size:1.3rem; line-height:1; color:var(--text-mut,#666); }
-.diary-close:hover { color:var(--text,#111); }
-.diary-body { padding:1.2rem 1.4rem; }
-@media (prefers-color-scheme: dark) { .diary-panel { background:#161b22; color:#e6edf3; } .diary-head { background:#161b22; } }
-</style>
-<script>
-(function(){
-  var modal = document.getElementById('diary');
-  if (!modal) return;
-  function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-  ['openDeník','openDeník2'].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener('click', open); });
-  modal.querySelector('.diary-close').addEventListener('click', close);
-  modal.querySelector('.diary-backdrop').addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
-})();
-</script>
-
-
+<p style="font-size:.85rem;color:var(--txt-muted,#666);margin-top:.6rem">The previews are with a sample (demo) library — my actual film library does not belong on the site.</p>
+</section></div></details><details class="app-disclosure"><summary>Availability and current status</summary><div class="app-disclosure__body"><section>
+<p>Work (work) version v0.2.3 (June 2026). It runs at my home on a Raspberry Pi kiosk next to the TV, reads the library from the NAS. <strong>Private, home network (LAN) only, no public hosting and no installer to download</strong> — the actual library or personal data does not go to the website. Lightweight core in pure Python (no dependencies), frontend in vanilla JS.</p>
+</section></div></details><details class="app-disclosure"><summary>Technical data</summary><div class="app-disclosure__body"><p><span class="pill" data-badge-tone="purple" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #6c5ce740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Python (stdlib)</span> · <span class="pill" data-badge-tone="purple" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #6c5ce740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">SQLite</span> · <span class="pill" data-badge-tone="purple" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #6c5ce740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Raspberry Pi kiosk</span> · <span class="pill" data-badge-tone="purple" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #6c5ce740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">Jellyfish</span> · <span class="pill" data-badge-tone="purple" style="background:var(--badge-bg);color:var(--badge-ink);border:1px solid #6c5ce740;padding:.2rem .6rem;border-radius:6px;font-size:.78rem;margin-right:.3rem">LAN-only (no cloud)</span></p></div></details><details class="app-disclosure" id="vyvojovy-denik"><summary>Development journal</summary><div class="app-disclosure__body">
+<ul style="line-height:1.8">
+<li><strong>v0.2.3 — Italian Movies (June 2026)</strong> — own category for Italian movies in the library and in the home Jellyfin.</li>
+<li><strong>v0.2.2 — kiosk without dead ends</strong> — unified switching between smart home and media on one screen.</li>
+<li><strong>v0.2.1 — Jellyfin integration</strong> — cover art, genre, length and description from home Jellyfin; still just reading.</li>
+<li><strong>v0.2.0 — secure import from disk</strong> — search → draft → preview → confirm → copy → verify; the resource is never deleted, nothing is overwritten on the NAS.</li>
+<li><strong>v0.1.0 — read-only dashboard</strong> — library as a tile over the NAS, search, filters, "seen/favorites" in the local database.</li>
+</ul>
+<p style="color:var(--text-mut,#777);font-size:.85rem">Note: the application only runs on the home network, the actual library and personal data do not go to the web.</p>
+</div></details></section>
+</main>
+<!-- VÝVOJOVÝ DENÍK — popup -->
 <footer class="site-footer">
-  <div class="site-footer__inner">
-    <div>© Budinský Luděk · Osobní web</div>
-    <div class="footer-links">
-      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
-      <a href="/o-mne.html" hreflang="cs" title="In Czech">O mně<span class="lang-tag">CS</span></a>
-      <a href="/en/smart-home/" hreflang="en">Smart Home web</a>
-    </div>
-  </div>
+<div class="site-footer__inner">
+<div>© Budinský Luděk · Personal website</div>
+<div class="footer-links">
+<a href="https://www.youtube.com/@cestovatel69" rel="noopener" target="_blank">YouTube @Cestovatel69</a>
+<a href="/en/o-mne.html">About me</a>
+<a href="/en/smart-home/">Smart Home website</a>
+</div>
+</div>
 </footer>
-
-<script src="../../assets/js/main.js?v=20261116-navsearch"></script>
+<script src="/assets/js/main.js?v=20261117-editorial"></script>
 </body>
 </html>

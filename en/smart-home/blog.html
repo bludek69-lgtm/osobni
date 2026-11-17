@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Home improvement notes: what didn't work, how I looked for the cause, and what changed. This is a dated technical journal. Detailed posts retain the status and names used at the time of entry." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Household Development Notes | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="Household Development Notes | SMART HOME" property="og:title"/>
+<meta content="Home improvement notes: what didn't work, how I looked for the cause, and what changed. This is a dated technical journal. Detailed posts retain the status and names used at the time of entry." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/blog.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/blog.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/blog.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/blog.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/blog.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/blog.html#main">Skip to content</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Open the menu</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/en/smart-home/">Home</a></li>
+<li><a href="/en/smart-home/prozivani.html">How it works</a></li>
+<li><a href="/en/smart-home/zarizeni.html">Equipment</a></li>
+<li><a href="/en/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/en/smart-home/dashboard.html">Dashboard</a></li>
+<li><a href="/en/smart-home/pribeh.html">The story</a></li>
+<li><a aria-current="page" class="is-active" href="/en/smart-home/blog.html">Blog</a></li>
+<li><a href="/en/smart-home/kontakt.html">About the project</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Personal website and Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a><a href="/en/smart-home/">Introduction Smart Home</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/blog.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/blog.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/blog.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section section-hero hub-hero" id="blog">
+<div class="container">
+<p class="eyebrow">Household Development · Technical Journal</p>
+<h1 class="hero-title">Notes from <span class="grad-text">household development</span></h1>
+<p class="hero-lead">Home improvement notes: what didn't work, how I looked for the cause, and what changed. This is a dated technical journal. Detailed posts retain the status and names used at the time of entry.</p><details class="visitor-technical-intro"><summary>Technical details</summary><p class="hero-lead">It's not a blog in the usual sense. It is <strong>engineer's release notes</strong>, who builds a house as a product. Each entry refers to a specific deploy, fix or roadmap milestone.</p></details>
+</div>
+</section>
+<!-- BUILD LOG entries (recent → older) -->
+<section class="section section-alt">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Changes in the project</p>
+<h2 class="section-title">Latest records</h2>
+<p class="section-lead">Fixes, new features and operational notes. Each entry has its own date and captures the state at that time.</p>
+</header>
+<div class="buildlog-list" role="list">
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-11-14</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The morning routine started, but the light didn't — the request got lost along the way</h3>
+<p>I got up at 04:39 on Saturday and the whole morning routine went through: radio, briefing, heating in the bathroom, coffee machine. Only the open space remained dark. The log showed that the routine did indeed request soft morning light, but the light router denied that request <strong>never got</strong>. All light requests go through one shared variable and the router only read it after 6 seconds when the scripts were running. She already had the kitchen turned off. Routine now <strong>after 12 seconds it will verify</strong>, if the open space is really lit, and if not, it repeats the request at most twice. At the same time, a fresh request will not overwrite other automatics. Played that morning 12/12, old version 1/12. The deeper cause (router reading a shared variable) remains and may be related to other lights as well.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-11-10</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The alarm clock lit up the bedroom, even though I hadn't been in bed for half an hour</h3>
+<p>I got up at 02:37, the alarm was set for 03:10. The morning routine at 03:08 still lit the bedroom for the wake-up ramp, even though the sensor in the bed had been reporting empty since 02:41. The wake-up light now only comes on when someone is in the bed: when the bed is empty <strong>at least 10 minutes</strong>, the routine skips the bedroom. When the sensor is missing or offline, it lights up as before so the alarm clock doesn't leave anyone in the dark. The bedroom doesn't have a motion sensor, so when I get dressed in there, I turn on the lights manually.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-11-10</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>AI supervision for the first time: it announced the heating, which was already running, and lit the kitchen</h3>
+<p>The first real AI surveillance hits revealed three flaws. It said "turning on the heating in the dining room" even though the boiler had been running for 13 minutes to preheat the bathroom and the dining room was only supposed to change in 10 minutes. The AI ​​wrote the text of the report according to its plan, not according to reality. Now only the system talks about heating and depending on the condition of the boiler: <em>"The boiler is already heating, but the dining room is dim..."</em>. He turned on the kitchen lights, which are according to my rules <strong>manual only</strong>, now gets the night light of open space. And it was getting the room entry time in UTC, so it described the transition at 02:51 as "since 01:51, over an hour" and canceled the sleep mode after 8 minutes. Now it gets the local time and the number of minutes. Replay of the morning 57/57.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-11-08</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>"Good weekend morning" for the third time — and reporting consumption every hour</h3>
+<p>The AI coordinator runs once an hour and checked the weekend greeting only by the hour, so at 8:34, 9:34 and 10:34 it sounded again (and with the English "weekend"). Now he remembers the day he said hello and speaks Czech. The same bug had a high consumption report: with continuous consumption above 800W, it sounded every hour. Now at most <strong>once every 3 hours</strong>, earlier only if the consumption jumps by half. 7/7 and 5/5 tests; if the greeting really only sounds once, it will be revealed next weekend.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-11-08</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The kiosk reported "old data" — the Homey cloud wobbled</h3>
+<p>A yellow out-of-date data icon was lit on the panel. The data generator for the kiosk on the HA RPi was going to Homey via the cloud, which would occasionally return an error or an empty response, and then held the old data. He's walking now <strong>over the home network</strong> directly to Homey, the panel shows “● CACHE” and the data is being restored.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-11-08</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>AI surveillance: the house itself recognizes that I am not sleeping and sitting after dark and in winter</h3>
+<p>On the night of 8/11 I got up at 02:35 and sat for an hour in the open space after dark at 17°C. The log showed that the system it <strong>already knew at 02:41</strong> (wake score 98, empty bed), but the wake scorer is only observational since April, the sleep guard has blocked the night light, and the only AI module that is allowed to act turns off during sleep. The layer that connects the signals and makes a decision was missing. New <strong>AI surveillance</strong> runs every 5 minutes on HA RPi and talks to Homey over LAN. A cheap non-AI detector looks for inconsistencies (awake but "sleeping"; dark room occupied; cold while awake) and only then asks <strong>Gemini 2.5 Flash</strong>, which will return JSON with whitelist actions. The AI won't break the hard rules: nothing in bed, max 6 actions per hour, I'll return within 10 minutes, it won't repeat for 24 hours, and the heating will only turn on when you turn it on after a notification <strong>within 10 minutes I won't let go by myself</strong>. Play That Night 29/29; <strong>the first real hit is still waiting</strong>. A bug was found on the very first morning: the blocked action still reported in the kitchen, fixed. The mode can be switched in Config Center 1.10.1 and on the kiosk.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-11-08</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>The kiosk got a 🧠 AI page and "⚡ Now" buttons — without turning on the computer</h3>
+<p>Of the 827 variables in Homey, 181 are switches, but most are internal states and commands that cannot be touched manually. They only went to the kiosk <strong>real choices verified in scripts</strong>: five groups (AI, modes, morning and evening, report, automatic 8 rooms), each one fits on the display without scrolling. In July, this option was locked as "Config Center on PC only"; that decision has changed. The record is honest: "saved ✓" is only shown after <strong>reading back from Homey</strong>. The second wave added a section <strong>⚡ Immediately</strong>: Going to bed / Getting up, At home / Leaving, <strong>Silence for 2 hours</strong> (gate <code>sh_tts_gate_v1</code> the report will be discarded, fire, leakage and overheating will pass) and blind with one tap with window control. Underneath the AI toggles is a list of recent AI surveillance hits with a button <strong>↩ Return</strong>. The slider was difficult to control with your finger, it was replaced by large ▲/▼ buttons like on the Media page. Tests 55/55, Regression 42/42; <strong>Nothing has really changed yet</strong>, the house was occupied.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-11-08</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>You are awake, but the heating is still sleeping — a warning instead of automatic</h3>
+<p>Morning 8/11 at 04:40: "it's quite cold here". 17.1 °C in the dining room, −0.6 °C outside, and the schedule holds a night setback of 15 °C until 05:00. I'm heating goals <strong>didn't change</strong>, I want a schedule and manual heating. Only a warning from <code>sh_heating_scheduler_v1</code>, once a day on the mobile phone and now i <strong>voice in the kitchen</strong> through the TTS queue and gate (it is silent when sleeping, reads the numbers in Czech). The conditions are strict so that it does not report a night trip to the toilet: in the morning, at home, not sleeping, <strong>the morning routine has already taken place today</strong> (i.e. confirmed getting up after the third), the dining room is in the night slot and there are at least 20 minutes left until its end, the goal is below the day goal (no longer report manual overheating) and the room is colder than the day goal. Tests 17/17 and 22/22, previous versions fail them; after deploying the first run without error and correctly without reporting. <strong>The first real notification awaits</strong> for the next early rise.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-11-08</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The toilet light went out by itself — and it wasn't Homey</h3>
+<p>At 02:35 a.m. lights came on in the toilet and bathroom <strong>it went out in a second</strong>. The log showed that Homey didn't send any shutdowns: the first proper shutdown didn't come until 90s later, and no flow turns those lights off. Both are <strong>Philips Hue</strong>, the command came from the Hue bridge (switch or automation in the Hue application). In the last ~25 lights, only one case, but with an unpleasant side risk: Homey then "knows" that it is off, and does not send the same command later. It won't remove the cause on Hue Homey's side, she added <strong>fuse</strong>: if the light goes off while the zone is active, the sensor sees motion (now or within 120s) and I'm home, the router will turn it back on to night brightness. The second shutdown within 5 minutes will remain, I take that as an intention. On a normal shutdown, the script won't run at all. Test 25/25, old version 14/25; <strong>the live test is still pending</strong>.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-11-08</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The kiosk flickered all night: two security guards wrestled with the display</h3>
+<p>Message: "kiosk keeps resetting and didn't turn off at night". It wasn't a reset, it was about <strong>ping-pong of two daemons</strong> <code>kiosk_watchdog.py</code>. The Pi doesn't have a real time clock: after booting on 11/5 it booted with a date of 1/1, the cron to watch the daemon started before the first daemon wrote down its PID, and started the second one. Each had its own display state. One went out after the touch window expired, the second lit up the panel while still in the window, the first evaluated it as a touch... <strong>every ~25s around</strong>. Záznamů za den: 11 → 338 → 470 → 752. Oprava: zámek přes <code>flock</code>, which holds the kernel and releases itself after the process crashes. The second daemon immediately ends and the watchdog cron does not start a new one if someone is holding the lock. Test with real lock in two processes 11/11, three minutes after deployment the panel went out. <strong>All-night verification awaits</strong> on the morning log.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-11-05</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>Cloud Probe: Homey said "connected", but the cloud didn't respond</h3>
+<p>When checking the restarts, the cloud relay returned about 2 minutes on all endpoints <code>homey_offline</code>, while Homey reported on its own stateful endpoint <strong>connected</strong>. The symptom lied again. There is no trace of it anywhere because the cloud address in the watchdog is pointing despite the name <strong>to the local network</strong>, so he did not see the cloud outage in principle. A probe was added to the existing runtime watchdog on the HA RPi that does <strong>real cloud calling</strong> to the cheapest system state endpoint. In addition, it returns the boot ID, so it also detects the Homey restart for free. It never heals with a restart (the cloud wouldn't fix it, the invariant guards it) and it sends a push over the LAN only after ~15 minutes of permanent outage. Tests 22/22, regression 32/32, verified from a real tick. Lessons learned from the invariant keeper: <strong>"LIVE_OK" alone proves nothing</strong>, the missing file is silently skipped and the filter <code>--only</code> is ignored in live mode.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-29</span>
+<span class="buildlog-tag">DEPLOY</span>
+</div>
+<h3>Household will repair itself, without AI — Config Center 1.10.0</h3>
+<p>The requirement: to stop depending on AI to do the repair every morning. He expanded <strong>existing supervision in Home Assistant</strong>, which runs every 5 minutes independently of PC and HomeyScript. Bathroom: when the light is on or the radio is playing after a documented departure, it first leaves the time of the original automation and then sends <code>vacancy_off</code> over the existing flow. <strong>Maximum of two attempts</strong>, the attempt is written to the disk before the API call, and only a fresh read is counted as a success, that it is really turned off. It respects sleep, visit, scenes, TTS and manual control, it will send a single notification after running out of attempts. It also monitors HomeyScript crashes and rolling shutters (4 positions per hour = "edit parameters", it does not rewrite them itself). Config Center 1.10.0 before saving <strong>reloads live values</strong>, and if another client has changed them in the meantime, the write will stop. A PC and a laptop thus share one truth from Homey. Tests 13/13, 14/14, 22/22, upgrade 49/49. <strong>Verification of actual faults is pending</strong>; alarm clocks never change sight.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-29</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The error counter read 0, there were actually 30</h3>
+<p>The reliability audit found a number of security guards that were poor security guards. <strong>Cast self-repair was blocked falsely</strong>: 11 postponements with the reason "TSS speaking", while the queue was empty and the deadline in the past, only the name of the speaker remained. <strong>Watchdogs walked through cloud relay</strong>, although the same LAN login responded immediately. The health monitor asked for a non-existent address and <strong>SQL only computed compact JSON</strong> <code>"result":"error"</code> no space, so in 24h it was showing 0 errors against the actual 30. And the light router returned false on shutdown timeout, but continued and eventually reported success; 23 failures in two days. Newly, TTS blocks restart only when it really talks, probe with error must not report "healed", statistics fit 30 = 30, fix for delayed script has phases <code>requested → verified / failed</code> according to the new heartbeat and shutdown of the group runs in parallel with one verified repetition. Target scenarios 55/55, regression 41/41. Fault branches (real zombie, real timeout) remain <strong>WATCH</strong>.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-29</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>Radio silent even though everything said "ok"</h3>
+<p>It happened again in the morning <code>speaker_play=ok</code>, but none of the three speakers were physically playing. He even helped <strong>restart the Chromecast app</strong>, the "running" state did not provide healthy playback. Until now, the audio watchdog only monitored pending requests in variables. New <strong>compares the expected radio with the actual device</strong> and if silence persists, it restarts Cast via a native flow action (a direct call from HomeyScript failed on missing permissions and that failure remained in evidence). That same day, the shutter opened while one bulb did not finish turning off. Therefore, the router before moving up <strong>verify that all four lights are turned off</strong>, otherwise the opening will be postponed. And the consumption report no longer reads "two dot one": <code>2.1 kW</code> it sounds like "two whole one-tenths of a kilowatt" and IP addresses are dropped from the speech. Tests 30/30 and 21/21, radio restoration verified live. The new blind condition is <strong>WATCH</strong> until the first natural opening.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-29</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The bathroom was lit because the sensor "saw" a person who wasn't there</h3>
+<p>The bathroom's mmWave sensor reported presence continuously from 08:57 and the vacant room watcher needed to <strong>both signals were false</strong>. So he never interfered with his constant presence and the light and radio continued to run. However, the length of presence alone is not proof of departure. New insurance is looking for <strong>independent evidence</strong>: fresh real kitchen PIR motion (not polling, not mmWave), newer than the last bathroom entry, and only when there is no visitor, guest, scene or manual mode. The router rechecks everything before shutting down, and cleans up the playback flags only after reading back that the speaker is really silent. Also fixed that turning off the radio didn't clear the state and the cluster looked for the light by zone name. The first test after deployment revealed that the SDK returns the time as a Date object, not a number. 45 tests passed, real path flow verified; the "false presence → movement in the kitchen → shutdown" scenario is <strong>WATCH</strong>. HomeyScript really came to mind that day, but the bathroom was not its consequence.</p>
+</article>
+<article class="buildlog-entry bl-perf" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-29</span>
+<span class="buildlog-tag">PERF</span>
+</div>
+<h3>Roller blind 7x in 100 minutes → 2x in the model</h3>
+<p>On a sunny morning, the blind alternated between shading and opening <strong>seven times in about 100 minutes</strong>, usually right after the 15-minute protection expires. Data from 1,337 router rows showed why: lux varies between adjacent samples by up to <strong>26,000 lx per minute</strong> and the median of the short swing is about 3,600 lx. Thus, the hysteresis of 4000 lx corresponded to normal noise, not state separation. Playing the same day with different parameters: 20,000 lx and 45 minutes will give 2 changes, as well as an hour, but with a shorter limitation of common reactions. The threshold for shielding (30,000 lx) remained. The change has taken place <strong>standard Config Center form</strong> including validation and history, no code intervention. The live router used the new interval immediately (<code>roleta_anticyclo_suppressed</code> with 2,700 s). The long-term reduction in the number of movements is so far <strong>WATCH</strong>, replay is a guess, not a proof.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-28</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>Presence is not getting up — a morning routine requires real movement</h3>
+<p>The mmWave sensor in the open space keeps the state of presence, so that simply "someone is here" could start the morning routine even without actually getting up. Gate in <code>sh_morning_brain_v1</code> newly accepted only <strong>fresh <code>alarm_motion=true</code></strong> with a valid time after the morning hour. The present, invalid or future tense, or read error will not pass. Triggering by alarm remained unchanged. Tests of entire 25/25 scripts including incident reproduction and scheduled run right after deployment already applied the new filtering. The next morning, 29/10, the routine started at 04:47 on the movement of the kitchen PIR 53 s old, i.e. <strong>for the first time documented due to movement, not presence</strong>. It follows the September gate, after which the routine stopped starting by itself at three.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-25</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>Boiler with one tap — and Homey turns it off, not the browser</h3>
+<p>A tab has been added to the kiosk <strong>⚡ Quick</strong>. First action: heating water for 30-120 minutes with a large input in W and the sentence "Heating." or "On but not draining" to show that the water is really heating. Key decisions: <strong>shutdown is monitored by Homey</strong>, not JavaScript on the page, because a closed tab or kiosk restart would leave the boiler running. The page writes down the shutdown time and the block in the existing scheduler (runs every minute) turns off the outlet. It stands very first in the cycle so that it is not skipped by preview lock or window logic. The order of entries is intentional: <strong>first turn off time, then turn on</strong>. The NT/VT tariff is only an estimate based on hours, there is no HDO signal in Homey. Pay attention to the two devices with the word "boiler": the heating boiler is another relay and the test makes sure that the boost never touches it. Live 1563W, water in two minutes from 24.9 to 30.3°C and automatic shutdown in time.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-22</span>
+<span class="buildlog-tag">DEPLOY</span>
+</div>
+<h3>Config Center 1.9.1: security audit and "Save" which overwrote 180 variables</h3>
+<p>A complete architecture audit found the five most critical points. The most serious: <strong>the proxy on the kiosk forwarded any request from the entire home network to Homey</strong> with full token and no authentication. The new API only serves the kiosk itself. In the app <strong>"Save" overwrote about 180 variables without changes</strong> including manual selections from the kiosk (since 1.9.0 this interfered with thermostat settings); now it only saves pending changes, otherwise it says "Nothing to save". Data from Homey was written without escaping in ~40 places and the page had no CSP; testing <code>&lt;img onerror&gt;</code> in the device name now won't start on any of the 21 pages. The updater will only accept a manifest of the exact format and only a higher version. Tests 22/22, install-test 41/41, PC updated with updater. Remains open: <strong>Gemini key</strong> escaped in variable backups in git waiting for rotation.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-20</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The silent log that lied — and three holes in the kiosk Pi</h3>
+<p>Morning check reported 0 errors and that looked suspicious. <strong>The error filter does not see warnings</strong> and there were hidden camera outages by the car, 2-8 times a day. The network was clean, the camera normally responds within 0.2 s, but the engine flipped the status after a single unsuccessful query and discarded the reason. It just reports an outage <strong>longer than 30 s</strong> even with the error type and guarding when blinded, it goes to rest immediately. Searching for a chronic 502 error found worse: the dashboard server was serving the entire directory, so <strong>Both the Homey token and the camera password were readable by anything on the network</strong>. Fixed by allowlisting extensions and banning dot files, the token is out of source and the data must be replaced. Additionally, Car Guard's API accepted enrollment without authentication, so anyone on the network could <strong>silently turn off car monitoring</strong>. Zápis teď projde jen z povolených adres a odmítnutí se loguje; 25. 10. tak zachytilo skenování zranitelností z jiného zařízení v síti.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-20</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>"Blind up = no light": the rule that got lost twice</h3>
+<p>My permanent assignment is: <strong>the lights in the open space must not be turned on when the blind is up</strong>. In ten days, two simultaneous repairs were being fought over it. On the morning of 10/10, I removed the control of the blind (the blind reports only the setpoint), three hours later another session returned it, but <strong>without pushing</strong>, so my version remained in the rep. The invariant watcher then reported a violation for a week because I gave it a rule to prohibit reading the location: <strong>my own invariant protected bad behavior</strong>. On 10/16, the audit returned the live code to the version from the rep, and on 10/20 at 16:31, the open space lit up at the top blind. The regression test existed, just <strong>was not registered in gate</strong> and aimed at the old copy. Now: guard taken verbatim from 10/10 patch (220 checks), light path never moves shutter, three wrong invariants replaced, test plugged in, gate 39/39. Live: blind up, lights request blocked, all 4 lights off.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-20</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>The blind remembers the hand and sends the command twice</h3>
+<p>Two reports in two days. "Roller does not want to close": router <strong>did not have a manual override</strong>, so he returned my closing above 200 lux within seven minutes. It will now recognize that the setpoint has been changed by a person, and will hold it <strong>6 hours</strong>; an unresolved state (window, interrupted motion) is further resolved by repeating the command. On that occasion, a look from the window confirmed that <strong>0 = down</strong>, as the code assumed. The next day: "it said the shutter would open and it didn't." Zigbee command lost: Fyrtur is a sleeping device and the queued command will time out silently. A <strong>the same value again will not be sent to Zigbee at all</strong>, Homey takes it as "no change". Therefore, after the main movement comes a confirmation pair: in 6 s the value is 2% next to it and immediately after the exact target. The test caught that I was calling a non-existent function, so the silent commit would never happen. 38/38 and 16/16 tests, both verified live.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-20</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>Idle mute never worked — log kept saying "ok"</h3>
+<p>Morning check reported <code>light_unknown_request</code>. It was a dead end: <code>sh_occupancy_dimmer_v1</code> every 2 minutes he sent requests like <code>occupancy_dim_20</code> or <code>occupancy_off</code>, but a light router for them <strong>he did not have a single branch</strong> and dropped the request. The dimmer itself does not control any device, so <strong>silent mute never worked</strong>, even though it was in "active" mode. No one noticed because the final router log said "ok" regardless of the outcome. Added four branches and a helper who <strong>it just dims what's already lit and never lights anything up</strong>; otherwise, a trip to the bathroom at night would light up the living room. The bedroom remains intact, the shutdown will always go through and the log will no longer write "ok" for an unprocessed request. Tests 21/21. The first deploy blocked its own anti-cascade guard in a minute window, deployed five minutes later.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-20</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>The panel on the wall turns off at night and wakes up with a touch</h3>
+<p>The kiosk lit up the room all night. The panel is an HDMI monitor <strong>without backlight controller</strong>, the brightness can only be changed in software, and the startup script deliberately turns off the power saving mode so that the panel never turns off. Only the night exception was missing. Night mode is therefore tick v <strong>already running</strong> kiosk watchdog, not a new service. Controls the state of the house from Homey: full brightness in the morning and during the day, 35% in the evening, off at night or when sleeping, <strong>the touch lights up for 120 s</strong> at 12%. When the state of the house is not available, time will tell, and when uncertain, full brightness, because a black panel during the day is a worse mistake than a glowing one at night. The 33/33 tests revealed two bugs prior to deployment, including endless wakeup after touch timeout. It didn't have time to verify itself the first night (deployed only in the morning), a week later the log showed transitions to darkness and back to full brightness.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-19</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>Frozen sensors in the bedroom — scripts now check the age of the value</h3>
+<p>The three sensors in the bedroom silently stopped sending data, but Homey continued to report them as available and held their last reading. Bedside radar stuck at "in bed" for three weeks, thermometer at 61.9% humidity. The scripts only read the value, not its age. Therefore, the wake-up rating deducted points every morning because "I'm still lying down" and the humidifier didn't turn on even once because the air was "humid enough." Diagnosis via Insights history showed the actual date of the last measurement. The "last seen" data from the Zigbee controller is unreliable for battery-powered end sensors, it showed 214 days for the thermometer. Correction: <code>sh_wake_scorer_v1</code> takes a radar reading older than 24 h as neutral and <code>sh_humidifier_router_v1</code> takes moisture older than 6 h as unavailable. The boundaries are chosen so that a legitimate night in bed passes. Sandbox 18 PASS scenarios, verified live on first run. The sensors themselves are waiting for new batteries and a power restart.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-17</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The message came to life when I got home — and it also says the heating and appliances by name</h3>
+<p>When I get home, the speaker is supposed to summarize what happened during my absence. He said nothing for sixteen days. The reporting request remained in the "active" state, but the automation only responds to <em>change</em> variables. Each subsequent arrival thus recorded the same value and nothing was triggered. Briefing now keeps the request quiesced during absence, so arrival always triggers a change. On that occasion, the report can do more: when the heating went into dimming, when the boiler was turned on or off, and which devices were specifically started, such as a camera or a vacuum cleaner, each with a time. The window is calculated exactly from departure to arrival, so that the radio or light switched on upon arrival is not confused with "during absence". It takes data from an existing logging server, nothing new was created on the infrastructure. Sandbox 30 scenarios on real PASS data.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-16</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The notifications said nothing to anyone for ten days — one variable, two names</h3>
+<p>The most insidious type of error: everything seemed to run. The notification router was waking up correctly, but it was reading the variable <code>sh_notif_request</code>, which no one fulfilled. All ten writers, from System Health Check to AI Escalation, wrote to <code>sh_notification_request</code>. The router saw "nothing to deliver" and quit. The critical alert about the system status was thus left unread. The fix is ​​in one line: the router reads the correct variable and takes the text even from the field that the writers actually send. I deleted the unnecessary twin. Live verified by test report, delivery within one second.</p>
+</article>
+<article class="buildlog-entry bl-deploy" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-16</span>
+<span class="buildlog-tag">AUDIT</span>
+</div>
+<h3>System-wide audit — 147 scripts, 249 flows, 84 devices</h3>
+<p>The second large read-only audit after June passed scripts, automation, variables, devices, kiosk and Config Center. Core was healthy: all 64 apps running, no broken automation, Config Center drift free. The findings resulted in repairs deployed the same day. In addition to notifications, it was about <strong>light fuse regression</strong>: the 10/10 patch was overwritten less than three hours later with an uncommitted version that rebuilt the "position" of the blinds. But this is only the last command, not the measured position. The invariant watcher warned about it 109 times in two days, now it reports zero drift. <strong>Health score</strong> it went from 60 to 92: it only penalized long-known things like a consciously turned off heating zone and two dead virtual devices, so it wouldn't detect anything new. Three bogus warnings disappeared on the kiosk: crypto "not connected" due to time format, cleaner "broken mapping" even though it's only off, and an orphaned variable holding an alarm on WARN from spring. Every change went through the same path: staging, sandboxing, pre- and post-deployment fingerprinting, and live verification.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-10-14</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>Heating before the season — window, kiosk and night dimming</h3>
+<p>Before turning on the season, I went through everything related to heating savings. An open window now sends the zone into frost protection and a closed one returns it, verified live with around a second response time. The temperature of the zone can be set directly from the kiosk in half degrees, and manual selection takes precedence in automatic mode. Boost on the kiosk used to add double, now it adds correctly. The thermal head of the consciously switched off zone, where the valve is faulty, no longer reports errors or a low battery. A new morning check tool verifies that nighttime dimming went as planned and subtracts AI corrections as well as morning bathroom heating to avoid false alarms. Two nights in automatic mode passed without a finding, and the first real departure from the apartment brought all zones down to 16 °C.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-06-15</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>Blind as a privacy shield — privacy-light latch + anti-cycling (3 layers)</h3>
+<p>When it's light outside, but it's bright at home and it's dark inside, you can see beautifully into the apartment from the street. The new logic solves it by itself — pulls down the blind and turns on the light. Roller shutter router (<code>sh_jidelna_roleta_router_v2</code>, sha <code>675a427f</code>) has now <strong>three layers</strong>. (1) <strong>pure-lux</strong>: lux&lt;200 close, &gt;300 open, in between deadband 200-300 hold. (2) <strong>privacy-light latch</strong>: it only starts when the lights are off (to measure pure daylight, not the bulbs themselves — anti-feedback), when the blind would otherwise be up, it's dark inside (&lt;18 lux) and I'm home and awake → blind all the way down + the scene lights up. End of latch: lights out (90s grace) / dark outside / exit / sleep / manual intervention / fuse 4 h. (3) <strong>anti-cycling</strong>: after each movement, a 15-minute lock on light movements, so that passing clouds do not sway the blind — privacy, open window, arrival and change of presence will pass immediately. <strong>The first attempt (v1) was rolled back</strong>: I put auto-closing in the light router, but then two regulators were fighting over the blind and oscillation occurred. Returned to <code>81c1d1c3</code> and overwritten as the only controller in the roller shutter router. All sandbox-first (new test scenarios for latch and anti-cycling PASS before live), debuggable in Config Center without code (<code>sh_cfg_lux_room_dark</code>=18, <code>sh_cfg_roleta_min_move_interval_s</code>=900).</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-06-15</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The bathroom light survives even a disconnected sensor — multi-signal</h3>
+<p>The motion sensor in the bathroom has disconnected from the network (battery full, it responds locally, but the report no longer reaches the central office). Normally this would stop the light from working. <code>sh_bathroom_router_v1</code> (sha <code>1a58483e</code>) now switches the light from the layer as well <em>presence</em> (<code>presence_on/off</code> = <code>motion_on/off</code>), so it runs even without a live motion sensor. In the meantime, the sensor is changed to a newer one (Matter). The principle: never rely on a single sensor — if one goes silent, the other will tighten the decision. Sandbox test 8 scenarios PASS, rollback ready.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-06-15</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>A hood that recognizes that it is really cooking — multi-signal</h3>
+<p>The hood does not turn on with a button, but depending on whether it is actually cooking. <code>sh_digestor_router_v1</code> (sha <code>a1fd510d</code>) turns on when: <strong>you cook</strong> (stove socket reports input &gt;100 W or hob switch is on) <strong>or</strong> it's by the hood <strong>local steam</strong> (humidity ≥65% and at the same time ≥18% above the rest of the apartment — this will distinguish cooking from humid weather, when the humidity is the same everywhere). It turns off when the humidity drops below 55%, compares with the rest of the apartment, or after a fuse of 2 h (calculated from the stove's input = active cooking, not from the switch). Cross-checking humidity is key — without it, the hood would run every time it rained. Prague tunable via <code>sh_cfg_digestor_*</code>.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-06-15</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>Speakers heal themselves — Cast watchdog on Raspberry Pi</h3>
+<p>Sometimes all the Cast speakers went offline at once, and the music and voice announcements went silent. Now they'll heal themselves before I know it. New <code>cast_watchdog.py</code> on the Raspberry Pi, the Chromecast restarts the application every 5 minutes (connected as a hook to the already running runtime watchdog). HomeyScript was left untouched — the infrastructure layer handles the recovery, not the automation logic. Optional future prevention: static DHCP addresses + IGMP snooping check on the network.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-06-15</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>Heating: three silent errors at once</h3>
+<p>Three little things, each of which individually could have upset the heating, fixed in one batch. (1) <strong>A battery of thermal heads</strong>: border <code>&lt;15</code> → <code>&lt;=15</code> + empty value handling (<code>sh_heating_zone_sync_v1</code>) — the battery limit state was reported incorrectly. (2) <strong>Renamed variables</strong>: <code>until_ts0</code> → <code>until_ts</code> — heating boils were renamed without "0", but scheduler and morning brain read old name → unified. (3) <strong>Bedroom thermohead</strong> (<code>Fibaro Radiator Loznice</code>) added to the device map (pay attention to the capitalization of the letters) — it was missing from the map before. In addition, 2 stuck references to linked variables (broken references 2 → 0). All sandbox-first with rollback ready.</p>
+</article>
+<article class="buildlog-entry bl-deploy" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-06-11</span>
+<span class="buildlog-tag">AUDIT</span>
+</div>
+<h3>Read-only audit of the entire system — 84 devices, 238 flows, 139 scripts</h3>
+<p>Before I start changing anything, I go through the entire system and look for anything that isn't sitting quietly. Complete read-only audit via cloud-relay API included <strong>84 devices</strong>, <strong>238 automations (flows)</strong>, <strong>139 HomeyScripts</strong> and 700+ variables. Verdict 🟡 WATCH — the system is running, but a few things needed tightening. The audit resulted in corrections deployed in the following days: audio dispatch via stable UUID, thermohead battery limits, device map, unification of heating variables. One interesting find: <strong>14 scripts had code only in Homey</strong> and the backup didn't cover it — added to versioning. The principle of all this work: audit first, sandbox second, live only after the green test and with a ready rollback.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-28</span>
+<span class="buildlog-tag">WEB</span>
+</div>
+<h3>"My Applications" section live — 7 applications, 50 screens, audit drift sweep</h3>
+<p>Two days of intensive work on a personal website <a href="/en/aplikace/" rel="noopener" target="_blank">Cestovatel69.cz/aplikace</a>. The new hub section presents seven custom applications: <strong>Config Center</strong>, <strong>Italia Travel Planner</strong>, <strong>Accounting ledger</strong>, <strong>Finance Analyst</strong>, <strong>Box diet</strong>, <strong>Energy Dashboard</strong> a <strong>Home panel on the wall</strong> (RPi kiosk). A total of 50 screens (14 ITP, 8 UK, 8 Analyst, 8 Meal Planner, 7 CC, 4 RPi, 1 Energy), fully localized CS/EN/IT (21 pages = 7×3). Texts for ordinary people — tech jargon always explained in 1 sentence (DCF, FIFO, AES, ZTL zones, BMR/TDEE). Site-wide vanilla JS lightbox — click any image, fullscreen modal opens, ESC closes. After finishing he ran <strong>audit drift sweep</strong> of both websites (personal + smart-home-website): found 25 drifts in 3 priorities, fixed 13 (P0+P1). Main motives: RPi kiosk placement (kitchen → hall, repair also in EN/IT mirrors), Sheets → SSD framing on 5 pages of the smart-home website (after 27.5. cutover), Shelly Plug S Gen3 status from "on the way" → "LIVE from 30.4", Door/Window Sensor diacritics ("Dining room1" → "Dining room1") unified, Intenso SSD from "planned" → "LIVE from 27.5.2026" (verified <code>/dev/sda1</code>).</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-27</span>
+<span class="buildlog-tag">DEPLOY</span>
+</div>
+<h3>Energy Dashboard one-click launcher — PC web application without flickering monitor</h3>
+<p>Standalone project in <code>C:\.Projekt\.Energy\</code> got a full Windows webapp wrapper. One click desktop shortcut <strong>Energy Dashboard</strong> → hidden pythonw proxy (port 5177) starts → Edge/Chrome v opens <code>--app</code> mode on a clean dashboard (no taskbar, no menu). Proxy is a server-side reverse fetcher for <code>http://192.168.1.xxx:8123/local/smart-home/energy-dashboard.json</code> — solves CORS problem (HA Core does not send ACAO header) and provides on-disk fallback when HA RPi is unavailable (<code>X-Energy-Source: cached-stale</code> header + visible alert). Originally the design was "PC scheduled task every 60s sync" — scrapped because the window flickered. Replaced by on-demand proxy: downloads data when the browser tab is open. RPi data live since 5/28, port moved from 5176 (collision with Meal Planner) to 5177. Custom programmatically generated multi-res ICO icon (16/32/48/64/128/256, cyan flash on nav panel). Repo: <code>bludek69-lgtm/energy-dashboard</code> (private).</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-27</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The shutter was closing over an open window — parallel writer in sh_light_router_v1</h3>
+<p>User report: "blind closes even when window is open". The SSD log from 19:12 accurately diagnosed the problem: <code>sh_jidelna_roleta_router_v2</code> worked correctly (<code>roleta_window_safety skipped</code> at 19:12:48 — window contact = open detected) — but a second later <code>sh_light_router_v1</code> closed the blind DIRECTLY without window control (<code>roleta_auto_close_privacy 100% → 15%</code>, trigger <code>evening_deadlock_fix</code>). Root causes: <code>canAutoClose</code> branch (L1009) only checked <code>phase + mode + sleep</code>, none <code>alarm_contact</code> guard. Sandbox-first patch — 8-case test scenarios v <code>_backup_window_safety_fix/test_roleta_window_safety.js</code> (closed/open/sensor-offline/getDevice-throws/null/day-phase/away/sleep) → 8/8 PASS → live PUT v1.16. <strong>Fail-CLOSED policy</strong>: when the sensor is unavailable / throws an exception → consider the window open, rather do not close it. New log event <code>roleta_auto_close_skip_window_open</code>. Pure-function logic replica, no functional change of other paths. Backup pair pre/post v <code>_backup_window_safety_fix/</code>.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-22</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The blind of the dining room closed over the open window (P1) — silent-fail due to rename device</h3>
+<p>Previous incident of the same type, different root cause. <code>sh_jidelna_roleta_router_v2</code> had in local <code>D</code> constu hardcoded old device name <code>'Door/Window Sensor (SNZB-04)1'</code>, but the device has since been renamed to <code>'Door/Window Sensor Jidelna1'</code>. <code>getDev()</code> returned <code>null</code>, <code>try/catch(_)</code> swallowed it silently <code>windowOpen</code> defaulted to <code>false</code> (unsafe default) → SAFETY skip did not start → blind closed over open window. Fix commit <code>349532d</code>: two string replaces (both sensor name), commit + push. <strong>Rules from the incident</strong>: (1) safety guards must default-to-fail-CLOSED (<code>windowOpen=true</code> during fetch failure), (2) <code>catch</code> blocks must call <code>logEvent</code> to see silent fail, (3) read device names from <code>sh_device_map</code> instead of hardcoded strings. Memory entry <code>feedback_device_rename_silent_fail_2026-05-22.md</code> documents the rules for reuse in other scripts.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-19</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>SIGABRT every 5 minutes — group concurrency, not a faulty script</h3>
+<p>Four days of memory, library and logging audits. Deployed forensic patch on 80 hot-path scripts (removal <code>Promise.race + wait()</code> from inline <code>fetchWithTimeout</code>). The crash cycle continued. Only when the user visually announced <strong>"it falls exactly every 5 minutes"</strong>, the cause began to converge. It wasn't one bad script — it was <strong>group concurrent load</strong>: 17 Advanced Flow with trigger <code>cron:every_nth {n:5, type:minute}</code> started HomeyScript synchronously at the 00s 5min boundary, the runtime could not handle the concurrency. <strong>Emergency 5-min isolation</strong> (turning off the whole /5min HomeyScript group) stopped the crashes — crashedCount +0 in 12 minutes. Then <strong>R1</strong> restored 3 critical flows with 30/60/90s delay (Heating, Presence Failsafe, Brain Guardian). <strong>R1B</strong> spread 8 light flows over delays 5-195s. <strong>R1C</strong> reduced the cadence of the 3 hardest to <code>/10m</code> (Device Availability, Health Monitor, OpenSpace Autoheal) — mem peak dropped from 235 MB to ~145 MB median (−38%). <strong>ENABLE-ALL sequential</strong> returned the remaining 6 heavy flows (Dashboard, Health Alert, Context Full, Diagnostic, Meta, AI Guard) to <code>/15m</code> or <code>/30m</code> with offset 215–320s, 1 PUT per flow + real fire verification + 10 min observation window. Three hours, 6 steps, 0 crashes during deployment. No HomeyScript PUT, no business logic affected, no manual restart. Key Lesson: <strong>before a deeper crash analysis, first calculate the intervals between crashes</strong> — regular interval = trigger-driven cause.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-19</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>Context Full chain — 7-day stale article fixed by Flow bypass</h3>
+<p>The audit after SIGABRT revealed another pre-existing bug: Flow <code>SH – System – Context Full</code> it had a chain <code>trigger /30m → delay 215s → runWithArg sh_context_full_v1("get") → run sh_context_history_v1</code>, but the first article silently failed for a long time. The script <code>sh_context_full_v1</code> was ~12.5. manually deleted from Homey UI (returned <code>false</code> even without exceptions), but the Flow card kept the orphan SID. <code>sh_context_history_v1</code> so he didn't get control over <code>outputSuccess</code> chain — his <code>lastExecuted</code> lingered on <strong>2026-05-12 18:25</strong> (7 days continuously). Restore-with-patch (recreate script with <code>Promise.race+wait</code> by removing v <code>fetchWithTimeout</code>) or defensive try/catch wrap around the ends <code>setValueSafe</code> calls did not change the behavior — debug showed that throw is <strong>before</strong> hypothesized line. Meanwhile <code>sh_context_weather_sync_v1</code> (separate /10m bridge, existing 3 weeks as workaround) holds <code>sh_context_json</code> fresh independently. Final fix: <strong>atomic Flow bypass</strong> — removed card #1 (runWithArg) from 4-card chain, linked delay directly to sh_context_history_v1. First /30m fire @ <strong>11:33:35.979</strong> (exact schedule match, +979 ms latency) — chain restored. <code>sh_context_full_v1</code> left as a legacy artifact (do not erase per hard rule). Slot 215s reserved for no-overlap plan. <strong>A lesson</strong>: If Flow targets a deleted script, Homey does NOT have to mark it as <code>broken=true</code> — verify action-level SID references via <code>GET /script/&lt;sid&gt;</code>.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-18</span>
+<span class="buildlog-tag">INFRASTRUCTURE</span>
+</div>
+<h3>SSD logging cutover — 1 var flip migrated 91+ logEvent callers</h3>
+<p>2026-05-18 at 07:09 CEST a migration moment occurred, which is very difficult to react to retroactively in Homey. Up to this point, all of them <code>logEvent(...)</code> calls across 91+ scripts were directed to the Google Sheets Apps Script web app — slow, rate-limited, and cloud-dependent. Deployed architecture placed <strong>SQLite receiver</strong> on HA RPi (<code>http://192.168.1.xxx:9080/log/sheets-compat</code>) with daily JSONL files + WAL-enabled SQLite (4.2 MB after the first day). Migration without touching a single script: it was enough to change a single Logic variable <code>sh_sheets_url</code> from Apps Script URL to receiver URL. Scripts read the target endpoint per-call via <code>getValue('sh_sheets_url')</code>, so <strong>all callers connected immediately</strong>. The Google Sheets endpoint remains as a backup fallback (revert = swap the original URL back). Schema compatibility 100% (payload format <code>sheets-compat</code>), zero data loss. After the cutover, a series of operations took place to return the Energy Dashboard R1 aggregator + UI and personal website AI page deploye.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-15</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>Dashboard Config Center + Weather restore — 8 waves in one day</h3>
+<p>May 15 evening. After the R2-R6A series of Homey runtime fixes, moving to the dashboard. <strong>Wave 1</strong> he added <code>__CANON_ENUMS</code> guard — dashboard stopped writing Czech literals (<code>doma</code>, <code>pryc</code>, <code>ano</code>, <code>strong_yes</code>) into logical variables, 9 forbidden tokens blocked on write path. <strong>Wave 2A</strong> restored cache-first weather renderer (old OWM version came back after RPi SSD migration — deploy-channel regression, not code bug); <strong>Wave 2B</strong> revived cron <code>sh_weather_yr_bridge_v1</code> from yr.no, no API keys. <strong>Wave 3</strong> made the blind PURE LUX truth (removed short-circuit <code>sh_house_state='home_normal'</code>, who sometimes kept the blind up even at night). <strong>Wave 6</strong> promoted enum guard to desktop v7_1920 + v7_2880. <strong>Wave 4A → 4B-6</strong> Configuration Center: <code>DASHBOARD_CONFIG_SCHEMA</code> + <code>writeVarValidated</code> + <code>writeCfg</code> dispatcher, growing from 18 entries to 128+ (min/max/enum/crossField/softWarnings), covers morning/heating/audio/light/occupancy/rolleta/energy/scenes. Currently soft-reject, hard-mode flip after 24h soak. Final RPi sha <code>e3216213…</code>. <a href="/en/smart-home/posts/dashboard-config-center.html">Read a longer post →</a></p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-14</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>Memory pressure — 1 var + 6 live patches + bathroom audio finally left the bathroom</h3>
+<p>Second half of May 14th: after morning RPi/HAOS cleanup, live hits came to Homey. Diagnostics confirmed <strong>1295 cron fires/h</strong> across 67 cron flows — HomeyScript app cycled at 125 MB threshold, watchdog restarted it 38x per day, and <strong>vacancy guardian actually ran only 5 times in 24 hours instead of the expected 288 times</strong>. This explained a long-standing complaint: the bathroom that stayed on/with the radio after leaving the room. Deployed 6 live changes in one day — all 6 bit-perfect SHA verify, no flow/dashboard/device touch: (1) new variable <code>sh_vacancy_guardian_heartbeat_ts</code>, (2) <code>sh_room_vacancy_guardian_v1</code> v1.1 (heartbeat at start + stuck-audio-reset), (3-7) five throttle patches (TTS skip-empty-queue, Kaffe time-window, Wake/Score sleep-window). Measurable win <strong>within 9 minutes</strong>: guardian completed first run in 40+ min and reset stuck <code>sh_audio_current_mode='radio_bathroom'</code> from morning routine to <code>idle</code>. Five R2-failsafe sandbox tests (T22-T26), staleness pair-logic OK/WARN/CRASH_MID_RUN/CRON_NOT_FIRING classifier. <a href="/en/smart-home/posts/r2-memory-pressure-six-live-patches.html">Read a longer post →</a></p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-14</span>
+<span class="buildlog-tag">INFRASTRUCTURE</span>
+</div>
+<h3>Sandbox 24/7 + kiosk Phase E + dashboard cache retry — cleaning day</h3>
+<p>The day RPi/HAOS stopped playing service assistant and became a full-fledged test gateway. Node.js 24.14 installed to <code>core_ssh</code> addon with persistence over <code>apks</code> config. <strong>Python sandbox runner</strong> deployed 24/7 via HA <code>shell_command</code> + automation every hour — gate <code>DEPLOY_GATE_OPEN</code>, tests <strong>20/20 PASS</strong>, replay 13/13. When the HA Core container did not have Node, the runner was rewritten in Python (F1-B). <strong>Dashboard cache retry fix v2.1</strong> — transient 417/0 errors now retry 3x with backoff instead of crash; error rate dropped from 5% to 1.8%. <strong>Phase E LIVE kiosk</strong> — RPi kiosk (192.168.1.xxx) now has cache→Homey REST→localStorage fallback chain with visible badge (● CACHE / ◐ CACHE OLD / ○ HOMEY / ○ LOCAL). Everything rebuilt fresh from the HTML kiosk itself without a PC reference. 0 Homey writes, 0 dashboard edits, 0 device renames. <a href="/en/smart-home/posts/sandbox-24-7-kiosk-phase-e.html">Read a longer post →</a></p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-12</span>
+<span class="buildlog-tag">ARCHITECTURE</span>
+</div>
+<h3>Three weather sources → one. LOCATION_TIME_GUARD day.</h3>
+<p>Briefing recited 13°C while it was 6°C outside. At 3:03 in the morning, he went off on his own before the alarm went off. And the system could say "good morning" at night. The audit revealed three parallel weather sources (yr.no + OpenWeatherMap + Open-Meteo) in two different cities and a hardcoded fallback temperature. Consolidation: yr.no as a single resource (flat location, LOCATION_REDACTED), new script <code>sh_weather_yr_bridge_v1</code> (cron 10 min → 22 vars), central layer <code>sh_location_time_context_v1</code> (master JSON for location+time+phase, refresh 5 min). Deleted: Open-Meteo fetcher, OWM HTTP fetch in context_full (−2,868 characters of dead code), <code>sh_owm_api_key</code>, hardcoded GPS in dashboards. Greeting guard in the briefing: phase=night → "Welcome, Ludik" instead of "Good morning". Phase guard in morning_brain blocks motion-trigger at night without alarm. <a href="/en/smart-home/posts/yr-single-source.html">Read a longer post →</a></p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-05</span>
+<span class="buildlog-tag">INFRASTRUCTURE</span>
+</div>
+<h3>Sheets cleanup + dashboard fix — the day after the broken routine</h3>
+<p>The morning routine didn't start on Monday. It started with fixing one bug (sleep_window was blocking routing after the alarm clock) and ended with cleaning up the entire Google Sheets layer. 28 sheets → 25, 6 commits, Apps Script v18 → v21. Score producer (existed, no one read it) connected to the brain. Added three missing dashboard endpoints (Lux/Battery/Morning Timeline). Sensor registers for adaptable future sensors. DeviceInventory producer that never shipped. Architectural bug in <code>logEvent</code> lib (default <code>sheet:'EventLog'</code> forced all event_type events into one sheet) exposed. <a href="/en/smart-home/posts/sheets-cleanup-v21.html">Read the full postmortem →</a></p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-02</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>A house that observes itself — a new layer of consciousness</h3>
+<p>Two "observer" layers have been added. The first one evaluates every minute what mode the home is currently in (restful sleep, late-night toilet trip, morning wake-up call, someone leaving…) — and for each estimate it has a certainty score from 0 to 100. The second layer checks every 5 minutes that all key programs are running and fixes them itself for clearly-safe problems. In case of a critical problem, it sends a push notification to the phone. <a href="/en/smart-home/posts/dum-pozoruje-sam-sebe.html">Read a longer explanation →</a></p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-02</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>Emergency switch — a single switch for everything automatic</h3>
+<p>New variable <code>sh_kill_switch</code> with two states. When I switch it to <code>yes</code>, the six key programs (decision brain, night lights, prediction, morning routine, watch, heating) will stop at the beginning and do nothing at the next start. The way to ensure that the human operator always has the last word.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-02</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The morning routine did not start — the user got up before the alarm clock</h3>
+<p>On Saturday morning (alarm 5:15) the user got up at 3:08, walked between rooms, but the routine never ran. Cause: the old logic waited for either an alarm or a double move in one zone within 3 minutes. When moving between zones, the sensors detected movement in each one only once. Meanwhile, the independent wake-up detector was reporting "strong yes" in 4 zones — but the morning routine wasn't listening to that signal. Fix: third trigger path — strong multi-zone signal + 10 minute trade-off filters night trips to the bathroom.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-02</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>The LED strip and table lamp lit up all night</h3>
+<p>The reason: the program, which wakes up every half hour and predicts what the house needs, did not have the condition "if the user is asleep, do not turn on anything". At 11:00 p.m. and at 00:30 a.m., "it's dark + someone at home → a touch of light at night" occurred, and the lamp lit up. Three lines of code — sleep guard added in two places (prediction + rescue logic). The next night, nothing turns on by itself.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-05-02</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>SNZB-06P openspace + sensor bedroom/bathroom integration</h3>
+<p>Three radar presence sensors (open space, bedroom, bathroom) — the radar sees a person even at rest, unlike a motion PIR. The main one renamed to <code>Sensore di Presenza SNZB-06P openspace</code> for the sake of clear distinction. Bedroom + bathroom now added to zone activity log (before that only openspace was logged). Atomic rename: device + map + 7 scripts + backup before/after. Smoke test passed.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-04-29</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>Dashboard V7.5 layout editor</h3>
+<p>Drag-and-drop tile reorder + native CSS resize via corner handle + per-page localStorage persistence. <code>Ctrl+E</code> toggles edit mode. 3 floating buttons (🎨 Edit / 💾 Save / ↻ Reset). MutationObserver protects against bounce-back during render cycles.</p>
+<ul>
+<li>Stable tile identity (id or hash of textContent)</li>
+<li>Multi-parent aware (handles tiles spread across grid containers)</li>
+<li>Auto-save on drop (no need to click Save for reordering)</li>
+</ul>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-04-29</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>Bug E — priority engine ghost auto-cleanup</h3>
+<p><code>sh_priority_active='tts'</code> stuck after HomeyScript app crash during 10s delay in reset flow. Fix: timestamp on claim + stale check &gt; 60s + new cron <code>SH – Priority – Stale Cleaner</code>. Validator score 94 → 100, Brain Guardian 92 → 97.</p>
+</article>
+<article class="buildlog-entry bl-deploy" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-04-29</span>
+<span class="buildlog-tag">DEPLOY</span>
+</div>
+<h3>Brain Guardian deployment</h3>
+<p>5 scripts + 1 flow + 12 vars deployed. Top-level supervisor: <code>sh_state_validator</code> (drift detection), <code>sh_brain_guardian</code> (orchestrator), <code>sh_release_guard</code> (deploy gate). First live finding: detected <code>priority_active=tts</code> ghost (Bug E above).</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-04-29</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>Audio race condition fix — bathroom misroute</h3>
+<p>After the comfort_suggest TTS, the bathroom radio started by itself even without user accept. Root cause v <code>sh_tts_resume_exec_v1</code> fallback without <code>prev_playing</code> guard. Fix v1.8 added an explicit guard. Stuck <code>sh_audio_current_mode='radio_bathroom'</code> reset.</p>
+</article>
+<article class="buildlog-entry bl-feature" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-04-29</span>
+<span class="buildlog-tag">FEATURE</span>
+</div>
+<h3>Dashboard V7 polish — V7.1 → V7.5.1</h3>
+<p>8 micro-sprints: Zones bottom strip, AI grid 2-col, Bedroom tile dedupe, status chips wired, Settings collapse, Exchange 2→6 coins, Heating right rail rebuild, AI 4 system cards, layout editor.</p>
+</article>
+<article class="buildlog-entry bl-perf" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-04-29</span>
+<span class="buildlog-tag">PERF</span>
+</div>
+<h3>Memory leak partial mitigation</h3>
+<p>3 cron flows slowed down 1 → 2 min (Dashboard Refresh, Wake Scorer, Audio Pipeline WD). Saves <strong>2,160 runs/day</strong>. Manual app restart 143 → 99 MB. Watchdog keeps &lt;125 MB threshold.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-04-29</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>Vacuum Giuseppe rename revert</h3>
+<p>Device name was accidentally changed to <code>'ano'</code> (UUID stable). 4 sw consumers silently fail. Revert via API PUT name='Giuseppe'. Reset ghost vars. Live test: router can find device, state stays <code>idle</code>.</p>
+</article>
+<article class="buildlog-entry bl-deploy" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-04-29</span>
+<span class="buildlog-tag">DEPLOY</span>
+</div>
+<h3>Morning routine pipeline rebuild</h3>
+<p>New request type <code>morning_open_space_gentle</code>. ON Sector 1 + Dining room chair 1 (warm dim 0.4) + OFF LED strip bed (sleep nightlight deactivation). Motion branch now symmetrical with alarm/fallback. Live test 7/7 PASS.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-04-26</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>UUID re-pair orphans — silent fail</h3>
+<p>Door/Window Sensor Jidelna1 got a new UUID after replacing the battery. Three flows were orphaned, the cleaner did not turn off when the window was opened. Diagnosis + bulk swap fix. Memory entry for the future.</p>
+</article>
+<article class="buildlog-entry bl-fix" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-04-21</span>
+<span class="buildlog-tag">FIX</span>
+</div>
+<h3>Cold-start anti-cycling bug — heating</h3>
+<p>He turned the boiler on once, turned it off, then never again. Anti-cycling guard held <code>hold_off_180s_left</code> forever due to NaN propagation. Defensive coding gone wrong, fix v1.2.</p>
+</article>
+<article class="buildlog-entry bl-roadmap" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-04-29</span>
+<span class="buildlog-tag">ROADMAP</span>
+</div>
+<h3>Release Governance V2 — planned stage</h3>
+<p>Canary deploys (1 zone for 24h before widespread deployment), auto-rollback when score &lt; 80, sanity checks before PUT (read flow tree, validate DAG, simulate edge cases), drift gates (Brain Guardian must allow). Backlog Q3 2026.</p>
+</article>
+<article class="buildlog-entry bl-roadmap" role="listitem">
+<div class="buildlog-meta">
+<span class="buildlog-date">2026-04-29</span>
+<span class="buildlog-tag">ROADMAP</span>
+</div>
+<h3>Predictive Heating · ML model</h3>
+<p>Plan for 2026/2027: anomaly detection on event sequences, occupancy prediction, integration of electricity tariff (NT/VT) into scheduler decision. Currently rule-based scheduler with 3 AI layers (preWake / weather / occupancy bonus).</p>
+</article>
+</div>
+</div>
+</section>
+<!-- Original post archive (long-form articles) -->
+<section class="section">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">Long-form posts</p>
+<h2 class="section-title">Deeper articles</h2>
+<p class="section-lead">More in-depth stories about home design, troubleshooting and experience in operation.</p>
+</header>
+<div class="post-grid">
+<article class="post-card">
+<a aria-label="Three sources of weather — one" class="post-card-link" href="/en/smart-home/posts/yr-single-source.html">
+<div class="post-card-thumb">
+<span class="post-card-badge">ARCHITECTURE</span>
+</div>
+<div class="post-card-body">
+<p class="post-card-meta">May 12, 2026 · 10 min read</p>
+<h3 class="post-card-title">Three weather sources → one. LOCATION_TIME_GUARD day.</h3>
+<p class="post-card-excerpt">
+                  The briefing recited 13°C, outside it was 6°C. At 3:03 in the morning the routine started itself. And the system could say "good morning" at night. Consolidation day of weather, location and day phase into one layer.
+                </p>
+<span class="post-card-cta">Read post →</span>
+</div>
+</a>
+</article>
+<article class="post-card">
+<a aria-label="The day the house began to observe itself" class="post-card-link" href="/en/smart-home/posts/dum-pozoruje-sam-sebe.html">
+<div class="post-card-thumb">
+<span class="post-card-badge">INTELLIGENCE</span>
+</div>
+<div class="post-card-body">
+<p class="post-card-meta">May 2, 2026 · 8 min read</p>
+<h3 class="post-card-title">The day the house began to observe itself</h3>
+<p class="post-card-excerpt">
+                  Three fixes and one new layer — described without technical abbreviations. A nighttime mystery with light, a morning routine that didn't start, and a conscious layer that understands what's going on.
+                </p>
+<span class="post-card-cta">Read post →</span>
+</div>
+</a>
+</article>
+<article class="post-card">
+<a aria-label="Dashboard V7 – new layout and visual control" class="post-card-link" href="/en/smart-home/posts/dashboard-v7.html">
+<div class="post-card-thumb">
+<span class="post-card-badge">DASHBOARD</span>
+</div>
+<div class="post-card-body">
+<p class="post-card-meta">Apr 26, 2026 · 6 min read</p>
+<h3 class="post-card-title">Dashboard V7 — new layout and visual control</h3>
+<p class="post-card-excerpt">
+                  Sidebar 240px, status pills in the topbar, premium CSS layer applied to all 6 dashboards. V3.7 → V7 cycle complete, focus shifts to Brain Guardian.
+                </p>
+<span class="post-card-cta">Read post →</span>
+</div>
+</a>
+</article>
+<article class="post-card">
+<a aria-label="UUID re-pair orphans – silent fail after battery replacement" class="post-card-link" href="/en/smart-home/posts/uuid-repair-orphans.html">
+<div class="post-card-thumb">
+<span class="post-card-badge">SENSORS</span>
+</div>
+<div class="post-card-body">
+<p class="post-card-meta">Apr 26, 2026 · 6 min read</p>
+<h3 class="post-card-title">UUID re-pair orphans — silent fail after battery replacement</h3>
+<p class="post-card-excerpt">
+                  Door/Window Sensor Jidelna1 got a new UUID after replacing the battery. Three flows were orphaned, the cleaner did not turn off when the window was opened. Diagnosis + bulk swap fix.
+                </p>
+<span class="post-card-cta">Read post →</span>
+</div>
+</a>
+</article>
+<article class="post-card">
+<a aria-label="Bathroom misroute – 4 hours of diagnostics" class="post-card-link" href="/en/smart-home/posts/bathroom-misroute.html">
+<div class="post-card-thumb">
+<span class="post-card-badge">AUDIO</span>
+</div>
+<div class="post-card-body">
+<p class="post-card-meta">Apr 25, 2026 · 8 min read</p>
+<h3 class="post-card-title">Bathroom misroute — 4 hours of diagnostics and fix v1.8</h3>
+<p class="post-card-excerpt">
+                  After the comfort_suggest TTS, the bathroom radio started by itself even without user accept. Root cause in sh_tts_resume_exec_v1 fallback without prev_playing guard. Hypothesis ladder and fix.
+                </p>
+<span class="post-card-cta">Read post →</span>
+</div>
+</a>
+</article>
+<article class="post-card">
+<a aria-label="Cold-start anti-cycling bug" class="post-card-link" href="/en/smart-home/posts/heating-coldstart-bug.html">
+<div class="post-card-thumb">
+<span class="post-card-badge">HEATING</span>
+</div>
+<div class="post-card-body">
+<p class="post-card-meta">Apr 21, 2026 · 7 min read</p>
+<h3 class="post-card-title">Cold-start anti-cycling bug — boiler stuck forever</h3>
+<p class="post-card-excerpt">
+                  Heating Phase A live, the boiler turned on once, turned off, then never again. Anti-cycling guard held hold_off_180s_left forever. NaN, defensive coding gone wrong, fix v1.2.
+                </p>
+<span class="post-card-cta">Read post →</span>
+</div>
+</a>
+</article>
+<article class="post-card post-card-placeholder">
+<div class="post-card-thumb post-card-thumb-soon">
+<span class="post-card-badge">SOON</span>
+</div>
+<div class="post-card-body">
+<p class="post-card-meta">It's getting ready</p>
+<h3 class="post-card-title">Brain Guardian V1 — supervisor in sharp operation</h3>
+<p class="post-card-excerpt">
+                How the meta-layer above the entire smart home system was created and what the first week of operation revealed.
+              </p>
+</div>
+</article>
+<article class="post-card post-card-placeholder">
+<div class="post-card-thumb post-card-thumb-soon">
+<span class="post-card-badge">SOON</span>
+</div>
+<div class="post-card-body">
+<p class="post-card-meta">It's getting ready</p>
+<h3 class="post-card-title">Heating Phase C — AI layers above heating</h3>
+<p class="post-card-excerpt">
+                preWakeBoost, weatherAdjust, occupancyBonus. Heating that predicts and saves according to room occupancy.
+              </p>
+</div>
+</article>
+</div>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Enlarged image" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Close zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME project · Made with ❤️ and script-first thinking.</p>
+<p class="footer-meta">Public presentation · no API keys · no local IP · no control from here.</p>
+<p class="footer-meta"><a href="/en/smart-home/technicka-mapa.html">Technical map →</a> · <a href="/en/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

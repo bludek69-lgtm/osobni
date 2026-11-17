@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="14 maggio 2026: 6 patch live per Homey in un giorno.
+1 nuova variabile, guardian v1.1 con rilevamento del battito cardiaco, 5 patch di accelerazione.
+Motivo: cron storm 1295 incendi/ora, watchdog 38 riavvii/24 ore, il guardiano dei posti vacanti è stato eseguito solo 5 volte al giorno.
+Vinci in 9 minuti: l'audio del bagno bloccato su radio_bathroom è finalmente sparito." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Pressione della memoria: 6 patch live e ripristino dell'audio del bagno |
+CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Pressione della memoria: 6 patch live e ripristino dell'audio del bagno |
+CASA INTELLIGENTE" property="og:title"/>
+<meta content="14 maggio 2026: 6 patch live per Homey in un giorno.
+1 nuova variabile, guardian v1.1 con rilevamento del battito cardiaco, 5 patch di accelerazione.
+Motivo: cron storm 1295 incendi/ora, watchdog 38 riavvii/24 ore, il guardiano dei posti vacanti è stato eseguito solo 5 volte al giorno.
+Vinci in 9 minuti: l'audio del bagno bloccato su radio_bathroom è finalmente sparito." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/posts/r2-memory-pressure-six-live-patches.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/posts/r2-memory-pressure-six-live-patches.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/r2-memory-pressure-six-live-patches.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/r2-memory-pressure-six-live-patches.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/r2-memory-pressure-six-live-patches.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/posts/r2-memory-pressure-six-live-patches.html#main">Vai al contenuto</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/it/smart-home/blog.html">← Torniamo al blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Ritorno dall'articolo" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a></div><div class="visitor-links"><a href="/it/smart-home/">Introduzione Casa intelligente</a><a href="/it/smart-home/blog.html">Tutte le note</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/posts/r2-memory-pressure-six-live-patches.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/posts/r2-memory-pressure-six-live-patches.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/posts/r2-memory-pressure-six-live-patches.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/it/smart-home/blog.html">← Tutti i post</a>
+<article class="post-content">
+<p class="post-meta">14 maggio 2026 · Pressione della memoria / Patch live · 12 minuti di lettura</p>
+<h1>Pressione della memoria: 6 patch live e ripristino dell'audio del bagno</h1>
+<p>
+          La seconda metà del 14 maggio.
+Al mattino, l'infrastruttura RPi/HAOS è stata pulita (sandbox 24 ore su 24, 7 giorni su 7, chiosco Fase E, nuovo tentativo di cache del dashboard — <a href="/it/smart-home/posts/sandbox-24-7-kiosk-phase-e.html">posta separata</a>). Nel pomeriggio, però, cominciò ad approfondire un sintomo specifico:
+          <strong>a volte il bagno lasciava le luci accese e la radio accesa molto tempo dopo la nostra partenza.</strong> Un problema visto realisticamente, ricorrente, non un caso limite.
+        </p>
+<p>
+          Ecco come si sono trasformati in 6 patch live per Homey in un giorno.
+Nessun caos.
+Sandbox-first, controllo della deriva, rollback pronto, verifica SHA bit-perfect su ogni PUT.
+        </p>
+<h2>Fase R0: cosa fa veramente male</h2>
+<p>
+          Preflight di sola lettura tramite sandbox runner + Homey REST + registro watchdog + EventLog.
+Tre risultati numerici hanno immediatamente fornito il contesto:
+        </p>
+<ul>
+<li>Stato dell'app HomeyScript <code>running</code>, ma la memoria ha oscillato tra 99 e 154 MB in 24 ore, soglia 125 MB</li>
+<li><strong>38 riavvio_triggered</strong> nel registro del watchdog in 24 ore. In media un riavvio ogni 38 minuti, ma in cluster ogni 5-10 minuti durante le fasi con memoria elevata</li>
+<li>Contatore di arresti anomali cumulativi di HomeyScript <strong>1906</strong></li>
+</ul>
+<p>
+          Ma il cancello del corridore della sandbox si vedeva <code>DEPLOY_GATE_OPEN</code>, 20/20 test SUPERATI.
+Sandbox a infrarossi OK.
+Il problema era altrove: nella reale stabilità di runtime di Homey.
+        </p>
+<h2>Fase R1: classificazione delle cause principali, non ipotesi</h2>
+<p>
+          Il prompt R1 aveva un'enumerazione esplicita di 11 possibili tag di causa principale (<code>FLOW_MISSING</code>, <code>WRONG_FLOW_CARD</code>,
+          <code>STATE_NOT_WRITTEN</code>, <code>SCRIPT_CRASH_INTERRUPTED</code>,
+          <code>VACANCY_GUARDIAN_NOT_ENFORCING</code>, ecc.). L'obiettivo: rientrare in una o più categorie, non avere una diagnosi futile.
+        </p>
+<p>
+          La diagnostica ha mostrato:
+        </p>
+<ul>
+<li><code>sh_vacancy_guardian_last_run_ts</code> = <code>'2026-05-14T06:25:02Z'</code>
+              — Guardian terminato l'ultima volta 67 minuti fa</li>
+<li><code>sh_audio_current_mode</code> bloccato <code>'radio_bathroom'</code>
+              dalla routine mattutina (~03:30Z)</li>
+<li><code>sh_audio_active_speaker</code> bloccato <code>'Speaker koupelna'</code></li>
+<li><strong>5 decisioni di posti vacanti / 24 ore</strong> nel registro eventi (previsto ~288 = 5 minuti × 24 ore)</li>
+<li>Il movimento invecchia nelle decisioni sui posti vacanti: <strong>13.686 s, 9.456 s, 4.685 s, 4.056 s, 2.286 s</strong>
+              — la luce/l'audio sono rimasti in funzione fino a 3,8 ore dopo aver lasciato il bagno</li>
+</ul>
+<p>
+          Classificazione: <strong><code>VACANCY_GUARDIAN_NOT_ENFORCING</code></strong> primarie + <code>STATE_NOT_RESET</code> secondario (la modalità audio non si ripristina automaticamente).
+        </p>
+<h2>Fase R1 VERIFICA DEL FLUSSO: eliminazione delle ipotesi errate</h2>
+<p>
+          L'ipotesi n. 1 era: cron Flow è interrotto. Intuizione classica, spesso corretta. Ma il sandbox-first richiede prove empiriche, non intuizione. Estrai tutti i 233 flussi avanzati tramite REST, trova il flusso che richiama lo script guardian, ispeziona le carte:
+        </p>
+<pre tabindex="0"><code>Flow a996ffa1 — "SH – Vacancy – Guardian Cron 5min"
+  enabled: true
+  broken:  false
+  trigger card:
+    id:   homey:manager:cron:every_nth         ✅ správný cron format
+    args: { n: 5, type: "minute" }              ✅ správné argumenty (T6+T15 valid)
+  action card:
+    id:   homey:app:com.athom.homeyscript:run
+    args.script.id: 718292bb-...                 ✅ matches sh_room_vacancy_guardian_v1</code></pre>
+<p>
+          Il flusso è <strong>strutturalmente corretto al 100%.</strong>.
+Ipotesi eliminate:
+          <code>FLOW_MISSING</code>, <code>FLOW_DISABLED</code>,
+          <code>FLOW_BROKEN_CARD</code>, <code>FLOW_WRONG_SCRIPT_TARGET</code>.
+        </p>
+<p>
+          Nessun flusso è interrotto ma <strong>runtime kill durante il volo</strong>.
+Il registro del watchdog lo ha confermato: un gruppo di riavvii esattamente attorno all'ultima esecuzione del guardiano (06:20, 06:25, 06:30 — guardiano completato alle 06:25, gruppo terminato alle 06:30).
+        </p>
+<h2>Patch Heartbeat: prova CRASH_MID_RUN senza indovinare</h2>
+<p>
+          Un problema chiave prima dell'implementazione: avevamo solo <strong>un timestamp</strong>
+          (<code>sh_vacancy_guardian_last_run_ts</code> scritto alla fine <code>run()</code>). Quando era fermo, era impossibile distinguere:
+        </p>
+<ol>
+<li>"cron Flow è rotto e non licenzierà affatto il guardiano"</li>
+<li>"cron Flow spara, ma il guardiano uccide durante il volo"</li>
+</ol>
+<p>
+          Patch: aggiungi <strong>il secondo timestamp</strong> all'inizio <code>run()</code> —
+          <code>sh_vacancy_guardian_heartbeat_ts</code>.
+Quando cron si attiva e lo script chiama almeno una volta <code>setValue</code>, il battito cardiaco verrà registrato.
+Se lo script poi si esaurisce, viene scritto anche last_run.
+Logica di coppia:
+        </p>
+<pre tabindex="0"><code>both fresh        → OK_completing
+heartbeat fresh,
+last_run stale    → CRASH_MID_RUN  ← runtime kill během exekuce
+both stale        → CRON_NOT_FIRING ← cron flow / app dead
+mixed             → WARN</code></pre>
+<p>
+          Test sandbox T26 5/5 PASSATO.
+Scenario ripetuto <code>guardian_heartbeat_crash_mid_run.json</code>
+          simulato l'esatta situazione di produzione.
+        </p>
+<h2>Due piccole modifiche in tempo reale: var e guardian v1.1</h2>
+<p>
+          Necessario prima della distribuzione di Guardian v1.1 <strong>nuova variabile logica</strong>:
+        </p>
+<pre tabindex="0"><code>POST /api/manager/logic/variable
+body: { "name": "sh_vacancy_guardian_heartbeat_ts",
+        "type": "string", "value": "" }
+→ HTTP 200
+→ id: 1514bec1-7a87-4d22-b3c7-16ce185a2e79</code></pre>
+<p>
+          Il controllo preliminare della guardia idempotente ha confermato che var non esiste. INVIARE. Verifica post-GET. Controlla JSON su <code>rollback/var_create_sh_vacancy_guardian_heartbeat_ts.json</code>. Nessuno script lo ha ancora utilizzato: aggiunta isolata e sicura.
+        </p>
+<p>
+          Quindi guardian v1.0 → v1.1: 273 righe → 309 righe, due piccole modifiche: battito cardiaco scritto in cima <code>run()</code> + Ripristino dello stato bloccato specifico del bagno quando viene confermato il posto vacante. Backup pre-implementazione dell'origine live estratta, SHA rispetto al backup pre-staging (controllo della deriva), PUT, re-GET, verifica bit-perfect SHA.
+        </p>
+<h2>Primo cron dopo la distribuzione: prima conferma sandbox</h2>
+<p>
+          PUT ha avuto luogo alle 08:01:13Z.
+Cronologia successiva di 5 minuti alle 08:05:00Z.
+Esempio alle 08:05:29Z:
+        </p>
+<pre tabindex="0"><code>sh_vacancy_guardian_heartbeat_ts = '2026-05-14T08:05:00.138Z'  ← ✅ fresh
+sh_vacancy_guardian_last_run_ts  = '2026-05-14T07:55:02.351Z'  ← ❌ stuck 10 min</code></pre>
+<p>
+<strong>Diagnosi CRASH_MID_RUN immediatamente provata.</strong> Heartbeat fire-d (cron OK, script avviato), last_run NON scritto (script interrotto durante il volo).
+Lo stesso schema osservato alle 08:10 e alle 08:15.
+        </p>
+<p>
+          Ciò conferma l'ipotesi R1 FLOW VERIFY: non flusso, ma runtime.
+Ruotare su R2.
+        </p>
+<h2>Fase R2: verifica della pressione della memoria</h2>
+<p>
+          Pull di controllo di sola lettura R2 di tutti i 132 script di risorse + inventario cron.
+Il numero che si ferma: <strong>1.295,7 cron incendi all'ora</strong> attraverso 67 flussi cron.
+21 fuochi al minuto in media.
+I peggiori delinquenti:
+        </p>
+<ul>
+<li><code>sh_tts_orchestrator_v1</code>: 240/h = ogni 15 s (processore coda TTS, si attiva indipendentemente dallo stato della coda)</li>
+<li><code>sh_shelly3em_poller_v1</code>: 120/h = ogni 30 s</li>
+<li><code>sh_pracka_done_detector_v1</code>: 60/h</li>
+<li><code>sh_morning_kaffe_check_v1</code>: 60/h</li>
+<li><code>sh_wake_confirm_v1</code>: 60/h</li>
+<li><code>sh_time_sync_guard_v1</code>: 60/h</li>
+<li><code>sh_intent_engine_v1</code>: 60/h</li>
+<li>… 60 flussi cron aggiuntivi alle frequenze di 30/h-1/h</li>
+</ul>
+<p>
+          Ogni incendio = nuovo sandbox V8 generato nell'app HomeyScript.
+Anche se lo script del carico di lavoro non era operativo, lib eval + var load + JSON parse richiede allocazioni di 50-300 KB.
+1295 incendi/h x 200 KB di media = ~260 MB/h Variazione heap V8.
+GC ne recupera alcuni, ma la memoria di rete cresce in modo monotono fino alla soglia di 125 MB → uccisione del watchdog.
+        </p>
+<h2>Quick Win Throttle: 5 patch con una regola chiara</h2>
+<p>
+          Strategia: il minimo possibile di guardia di ritorno anticipato in cima all'entrata principale di ogni copione del peggiore delinquente.
+Nessuna riprogettazione, nessuna funzionalità riscritta.
+Singolo
+          <code>if (...) return;</code> blocco per script:
+        </p>
+<ul>
+<li><strong>Orchestratore TTS</strong>: salta se <code>sh_tts_queue</code> vuoto E <code>sh_tts_queue_trigger</code> inattivo.
+Risparmia ~180/h.</li>
+<li><strong>Controllo del caffè</strong>: salta fuori dalla finestra di Praga dalle 04:00 alle 11:00.
+Risparmia circa 1.020 incendi al giorno (70% del giorno).</li>
+<li><strong>Conferma sveglia</strong>: salta se l'utente non dorme E l'ora ≥ 12. Risparmia ~45/h.</li>
+<li><strong>Marcatore del risveglio</strong>: stessa logica.
+Risparmia circa 20/h.</li>
+<li><strong>Punteggio mattutino</strong>: stessa logica.
+Risparmia circa 45/h.</li>
+</ul>
+<p>
+          Per patch: pull del sorgente live, controllo della deriva rispetto al backup pre-staging (rileva il caso in cui qualcuno modifica lo script tramite l'interfaccia utente nel frattempo), applica una patch minima tramite modalità binaria Python (preserva CRLF), file di staging con manifest + SHA256.
+Regressione sandbox 26/26 PASS prima di ogni PUT.
+Verifica SHA re-GET bit-perfect dopo PUT.
+Controllo JSON.
+5 minuti di lavoro per patch.
+        </p>
+<h2>Distribuzione sequenziale: 21 minuti, 5 PUT, nessun riavvio</h2>
+<p>
+          Per SAFE_REPAIR_MODE: una modifica, verifica, prossima modifica.
+Cronologia (UTC):
+        </p>
+<pre tabindex="0"><code>08:26:46  PUT sh_tts_orchestrator_v1 v1.1     ✅ SHA bit-perfect
+08:43:58  PUT sh_morning_kaffe_check_v1 v1.1   ✅ SHA bit-perfect
+08:47:16  PUT sh_wake_confirm_v1 v1.1          ✅ SHA bit-perfect
+08:47:27  PUT sh_wake_scorer_v1 v1.1           ✅ SHA bit-perfect
+08:47:34  PUT sh_morning_score_v1 v1.1         ✅ SHA bit-perfect</code></pre>
+<p>
+          Lo stato dell'app è rimasto durante tutti e 5 i PUT <code>running</code>. Nessun nuovo arresto anomalo (crashedCount stable 1920 in 21 minuti). Verifica SHA bit-perfect al re-GET di ogni patch. Backup intatto per il rollback per script (~10 secondi PUT singolo).
+        </p>
+<h2>9 minuti dopo la prima implementazione: l'audio del bagno è finalmente inattivo</h2>
+<p>
+          La vittoria principale non prevedeva un ammollo di 24 ore.
+Esempio 12 minuti dopo la distribuzione di TTS:
+        </p>
+<pre tabindex="0"><code>Pre-deploy 08:26Z:
+  sh_vacancy_guardian_heartbeat_ts = 08:25:00Z
+  sh_vacancy_guardian_last_run_ts  = 07:55:02Z  ← stuck 31 min
+
+Post-deploy 08:40Z (12 min after deploy):
+  sh_vacancy_guardian_heartbeat_ts = 08:35:00.156Z
+  sh_vacancy_guardian_last_run_ts  = 08:35:08.417Z  ← ✅ +8s = COMPLETED
+  sh_audio_current_mode             = 'idle'         ← ✅ reset from 'radio_bathroom'</code></pre>
+<p>
+          Prima corsa guardiana riuscita in più di 40 minuti.
+La patch di ripristino audio bloccato v1.1 è arrivata al codice in quell'iterazione e lo ha ripristinato <code>sh_audio_current_mode</code>
+          su <code>'idle'</code>.
+Una soluzione reale e visibile al problema principale segnalato dall'utente: la radio in bagno non riprenderà più dopo una notifica TTS perché la modalità non è più bloccata <code>radio_bathroom</code>.
+        </p>
+<h2>Cosa NON è stato questo giorno</h2>
+<ul>
+<li>Non era una modifica del flusso.
+L'eliminazione del problema del flusso tramite sandbox ha liberato le mani per una soluzione adeguata (acceleratore a livello di script + battito cardiaco).</li>
+<li>Non era il caos.
+Sei cambi in tempo reale durante il giorno, ma ognuno era un singolo PUT con pre-volo + controllo della deriva + audit + verifica.</li>
+<li>Non era un'esportazione da PC.
+Il chiosco di fase E è stato ricostruito di fresco da RPi/SSH senza alcuna lettura <code>C:\</code>. Heartbeat var + guardian v1.1 + 5 patch di accelerazione sono tutte originate dalla directory di staging di HAOS, non dal PC.</li>
+<li>Non è finito.
+La frequenza di riavvio del watchdog non è ancora completamente diminuita durante il monitoraggio di base (+ segno di 30 minuti).
+I risparmi sull'acceleratore si accumulano lentamente.
+Si consiglia di attendere 2-6 ore prima della decisione successiva (offload del poller Shelly, buffer di registro, ecc.).</li>
+</ul>
+<h2>Cinque regole ferree che tengono insieme tutto questo</h2>
+<div aria-label="Tabella – scorri orizzontalmente" class="editorial-table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr><th>Regole</th><th>Come si è manifestato in R2</th></tr>
+</thead>
+<tbody>
+<tr><td>SANDBOX-PRIMA</td>
+<td>26 test sandbox + 19 scenari replay PASS prima di ogni PUT</td></tr>
+<tr><td>REGISTRAZIONI AUTOMATICHE</td>
+<td>Nuova var <code>sh_vacancy_guardian_heartbeat_ts</code> aggiunto con controllo JSON;
+Baseline del registro del corridore sandbox conservata</td></tr>
+<tr><td>SAFE_REPAIR_MODE</td>
+<td>Pre-PUT backup in tempo reale per script, controllo della deriva SHA, verifica bit-perfect, rollback documentato come PUT singolo ~ 10 secondi</td></tr>
+<tr><td>RIUTILIZZARE PRIMA</td>
+<td>Nessun nuovo HomeyScript.
+6 patch = aggiorna gli script esistenti.
+I test sandbox T22-T26 sono stati creati nel framework esistente.</td></tr>
+<tr><td>Regole a infrarossi RPi/HAOS</td>
+<td>Tutto estratto tramite la directory di staging sandbox Homey REST + HAOS.
+Nessun PC letto in R2.</td></tr>
+</tbody>
+</table></div>
+<h2>Cosa mostrerà l'ammollo?</h2>
+<p>
+          Il corridore sandbox funziona ogni ora come gateway 24 ore su 24, 7 giorni su 7. Diagnosi logica di coppia
+          <code>sh_vacancy_guardian_heartbeat_ts</code> contro <code>sh_vacancy_guardian_last_run_ts</code>
+          fornirà un contatore continuo:
+        </p>
+<ul>
+<li>OK_tasso di completamento (quanti dei 288 incendi al giorno vengono effettivamente completati)</li>
+<li>Tasso di CRASH_MID_RUN (numero di avviamenti uccisi)</li>
+<li>Andamento del riavvio del watchdog all'ora</li>
+<li>Frequenza di ripristino della modalità audio_del bagno (quante volte il guardiano esegue la patch B)</li>
+</ul>
+<p>
+          Se dopo 2-6 ore la velocità di riavvio scende al di sotto di 20/h, R2 Quick Win viene considerato un successo.
+Se rimangono 20-30/h, un altro candidato è l'offload del poller Shelly su RPi Python (elimina gli incendi a 120/h).
+Se ancora &gt;30/h, problema più grave: offload del buffer di registro, patch della cache, forse aggiornamento della versione dell'app HomeyScript.
+        </p>
+<h2>Da asporto</h2>
+<p>
+          Sei successi dal vivo per una produzione Homey in un giorno sono tanti.
+Sarebbe rischioso senza prima il sandbox.
+Con 26 test sandbox + 19 scenari di replay + verifica SHA per script + audit JSON per ogni PUT, ma velocità non significa caos.
+        </p>
+<p>
+          E il vero vantaggio per gli utenti (la radio in bagno non riprenderà più da un bagno vuoto) è stato misurabile 9 minuti dopo la prima implementazione.
+Non tra una settimana.
+Non con "andrà meglio col tempo".
+Timestamp misurabile, correzione dimostrabile, scenario di riproduzione sandbox che riproduceva la situazione in anticipo.
+        </p>
+<p class="post-meta" style="margin-top:48px;">
+          Articoli correlati:
+          <a href="/it/smart-home/posts/sandbox-24-7-kiosk-phase-e.html">Sandbox 24 ore su 24, 7 giorni su 7 + chiosco Fase E (parte mattutina della giornata)</a> ·
+          <a href="/it/smart-home/posts/bathroom-misroute.html">Percorso sbagliato del bagno – 4 ore di diagnostica (25 aprile)</a> ·
+          <a href="/it/smart-home/posts/dum-pozoruje-sam-sebe.html">Una casa che osserva se stessa</a>
+</p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container">
+<p>© 2026 Registro di costruzione Smart Home — Budinský Luděk. Diario tecnico di un progetto personale.</p>
+</div>
+</footer>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

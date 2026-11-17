@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="The day the house began to observe itself. Three fixes and one new layer — described without technical abbreviations." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>The day the house began to observe itself | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="The day the house began to observe itself | SMART HOME" property="og:title"/>
+<meta content="The day the house began to observe itself. Three fixes and one new layer — described without technical abbreviations." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/posts/dum-pozoruje-sam-sebe.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/posts/dum-pozoruje-sam-sebe.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/dum-pozoruje-sam-sebe.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/dum-pozoruje-sam-sebe.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/dum-pozoruje-sam-sebe.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/posts/dum-pozoruje-sam-sebe.html#main">Skip to content</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/en/smart-home/blog.html">← Back to the blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Back from the article" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a></div><div class="visitor-links"><a href="/en/smart-home/">Introduction Smart Home</a><a href="/en/smart-home/blog.html">All notes</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/posts/dum-pozoruje-sam-sebe.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/posts/dum-pozoruje-sam-sebe.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/posts/dum-pozoruje-sam-sebe.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/en/smart-home/blog.html">← All posts</a>
+<article class="post-content">
+<p class="post-meta">May 2, 2026 · System Intelligence · 8 min read</p>
+<h1>The day the house began to observe itself</h1>
+<p>
+          This post intentionally does not use technical abbreviations. It describes the day we fixed two old bugs in the system and added a third layer that allows the house to understand what's going on and watch over itself.
+        </p>
+<p>
+          If you're a smart-home layman and want to know what a typical "day in the life" of a smart home looks like — this is it.
+        </p>
+<h2>1. The mystery of night lights</h2>
+<p>
+          It started this morning with a report: <em>"The LED strip and desk lamp stayed on all night even though I hit the sleep button."</em>
+</p>
+<p>
+          There is a small program running in the house that wakes up every half hour and tries to predict what the house will need. For example <em>"it will be dark in 20 minutes, close the external blinds to ¾"</em>. But this program had one hidden flaw: when it thought it had <em>dim the light to night level</em>, never asked if the user was asleep.
+        </p>
+<p>
+          So the script looked like this:
+        </p>
+<ul>
+<li>21:14 — user presses sleep, lights go out.</li>
+<li>23:00 — the automatic cycle wakes up. Decides: "it's dark + someone at home → turn on the night light touch." The lamp lights up.</li>
+<li>00:30 — the same. The lamp continues to shine.</li>
+<li>In the morning — the user looks at why it was lit all night.</li>
+</ul>
+<p>
+<strong>Correction:</strong> we added a single condition to the program — <em>"if the user is asleep, don't turn anything on, come back to it in the morning."</em> Three lines of code, but preventing a regression failure. We applied the same principle to one more place where similar decision-making took place (rescue logic for situations when sensors report movement in a dark room).
+        </p>
+<p>
+          The next night, nothing lights up by itself. We'll check the log in the morning.
+        </p>
+<h2>2. A morning routine that didn't start</h2>
+<p>
+          This morning (Saturday, alarm set for 5:15), the user got up around 3:08 — before the alarm went off. He walked between the bedroom, the bathroom and the kitchen. <strong>No light, no radio, no briefing.</strong>
+          It only reactively lit up where the user came from — and that's not enough. The morning routine was to turn on the audio in the bathroom, open the blinds, play the weather briefing, add the news. None of that happened.
+        </p>
+<p>
+          Why? The program responsible for the morning routine has two ways to start it:
+        </p>
+<ol>
+<li><strong>Alarm clock</strong> — phone rings, Homey picks it up, routine goes.</li>
+<li><strong>Double movement in one zone within 3 minutes</strong> — anti-mistake protection so that a trip to the toilet at night does not trigger the routine as a false alarm.</li>
+</ol>
+<p>
+          Both failed this morning:
+        </p>
+<ul>
+<li>The alarm wasn't supposed to ring until 5:15, the user was up 2 hours earlier.</li>
+<li>While passing between zones, the sensors picked up <em>one</em> movement in the bedroom, <em>one</em> in the bathroom <em>one</em> in the kitchen — but never <em>two</em> in the same one. Therefore, the anti-error gate did not clear the path.</li>
+</ul>
+<p>
+          Meanwhile, however, there was another program in the system that knew exactly this. Monitors 4 zones at the same time and evaluates that the user is "probably awake, multi-zone, high confidence". <strong>But the morning routine did not listen to that signal.</strong>
+</p>
+<p>
+<strong>Correction:</strong> we added a third launch path:
+        </p>
+<blockquote>
+<p>
+<em>If the independent wake-up detector reports "strong yes" in two or more zones and at least 10 minutes have passed since the first recorded movement — run the routine even without an alarm clock, even without double movement in one zone.</em>
+</p>
+</blockquote>
+<p>
+          The 10 minutes is an intentional break. Filters out short trips to the toilet at night (where the user passes 2 zones but is back in bed in 30 seconds). Real awakening takes longer — a person drinks, urinates, turns on the kettle, goes to the bathroom. After 10 minutes of multi-zone movement, certainty is sufficient.
+        </p>
+<h2>3. A house that observes itself</h2>
+<p>
+          This is the biggest change of the day. We added two new "observer" layers to the system, which themselves <strong>they don't control anything</strong> — they just watch what's going on and show it in a simple format.
+        </p>
+<h3>3.1 Layer One — What's Happening?</h3>
+<p>
+          Until now, the system had a lot of separate indicators: <em>sleeping, at home, in the morning, audio playing, scene active...</em>. But none of them said in one sentence, <strong>what mode the home is currently in</strong>.
+        </p>
+<p>
+          The new layer reads these seven pointers and evaluates one of these situations every minute:
+        </p>
+<ul>
+<li><strong>away_confirmed</strong> — nobody is home</li>
+<li><strong>sleeping</strong> — the user sleeps peacefully</li>
+<li><strong>night_movement</strong> — sleeping, but currently someone is going (toilet, kitchen for water)</li>
+<li><strong>alarm_wakeup</strong> — the alarm clock just rang</li>
+<li><strong>morning_wakeup</strong> — the user has actually woken up and is walking between rooms</li>
+<li><strong>soft_morning_start</strong> — probably waking up, but not yet with complete certainty</li>
+<li><strong>leaving_home</strong> — the front door opened, someone is leaving</li>
+<li><strong>arriving_home</strong> — someone has just returned</li>
+<li><strong>idle_home</strong> — at home, but take it easy, nothing is happening</li>
+</ul>
+<p>
+          Each estimate has its own <strong>certainty score from 0 to 100</strong>. If the score does not reach 85, the layer does not say "it's morning, do routines" to anyone. She just writes to herself "I think it's morning, 75 out of 100 sure" — and waits until she's more sure.
+        </p>
+<p>
+          In addition, the layer stores the history of the last 20 changes. When I open my phone in the morning, I can see: <em>"at 23:30 he slept, at 3:08 he started night_movement, at 3:14 he switched to soft_morning_start, at 3:42 morning_wakeup."</em> So I have a timeline of a real day — no cameras, no recording, just what the sensors see anyway.
+        </p>
+<h3>3.2 Layer Two — A patrol that controls itself</h3>
+<p>
+          The second new layer is <strong>system health guardian</strong>. It runs every 5 minutes and checks 5 things:
+        </p>
+<ol>
+<li><strong>Are all key programs running?</strong> If something is supposed to run every minute and the last run was 8 minutes ago — there is a mistake somewhere.</li>
+<li><strong>Are there old values stuck somewhere?</strong> Sometimes it happens that some indicator hangs in a stuck state (the so-called value ghost). The guard knows how to find such ghosts and, in clearly safe cases, deletes them himself.</li>
+<li><strong>How many errors occurred in the last 60 minutes?</strong>
+            More than 5 = warning, more than 20 = critical.</li>
+<li><strong>Does connecting to Google Sheets work?</strong> Where the system writes all history.</li>
+<li><strong>Updating what's happening layer?</strong></li>
+</ol>
+<p>
+          If the guard finds a critical error twice in a row, it will send a push notification to my phone (via an existing bridge — see earlier posts). But it must be before the first alarm message <strong>two sureties in a row</strong>
+          — one false detection won't wake me up at night.
+        </p>
+<p>
+          Current Guardian Status: <code>ok</code>. No problems.
+        </p>
+<h3>3.3 Layer Three — Emergency Switch</h3>
+<p>
+          This is a novelty that should exist in every autonomous system:
+          <strong>a single switch that immediately stops everything automatic</strong>.
+        </p>
+<p>
+          We call him <em>kill switch</em> and is an ordinary variable
+          <code>sh_kill_switch</code> with two states: <code>no</code> (default, the system works normally) or <code>yes</code> (pause). When you switch it to <code>yes</code>, the six key programs will stop at the very beginning at the next start, return <code>HALTED</code>
+          and they do nothing.
+        </p>
+<p>
+          What is it for?
+        </p>
+<ul>
+<li>I'm about to change something and I don't want the system to tell me about it.</li>
+<li>Someone comes to visit and wants to try the controls manually, no surprises.</li>
+<li>Something unexpected happened and I want to pause everything automatic until I investigate.</li>
+<li>Regular "breathing" of the system — a 10-minute pause once a month to make sure that the physical drivers still work without software.</li>
+</ul>
+<p>
+          No control should ever continue when I, as a human operator, say "stop". The kill switch gives that ability, at the level of a single switch in the Homey app.
+        </p>
+<h2>What it means for everyday life</h2>
+<p>
+          For users, real life in the house does not change much — <em>mostly</em>. Změnily se ale tři věci, které ucítíš v hraničních situacích:
+        </p>
+<ol>
+<li><strong>Nothing lights up by itself at night.</strong> That little old bug was nasty, it's gone.</li>
+<li><strong>If you get up before the alarm clock, the house will know.</strong> After 10 minutes of multi-zone operation, it starts the morning routine even without an alarm signal.</li>
+<li><strong>When something stops working, you'll know.</strong> Either in the record (trackable) or directly by notification (critical).</li>
+</ol>
+<p>
+          And fourth — you have an emergency switch in your hand. You can turn any of these off with one variable toggle. No restarting the house, no rolling up your sleeves.
+        </p>
+<h2>What else is planned</h2>
+<ul>
+<li><strong>Patrol expansion</strong> also for other programs (heating, prediction, status validator are already connected, it will gradually expand).</li>
+<li><strong>Approval queue</strong> — if I, as an AI, suggest a setting change, for now I have to do it straight away. The goal is for the proposals to go to the queue, you looked at them on your phone, clicked
+            <em>approve</em> or <em>reject</em>, and only then would it be executed.</li>
+<li><strong>Dry-run mode</strong> — a mode where the system writes what it would do, but doesn't actually do it. Useful when testing new routines.</li>
+</ul>
+<h2>Three short questions and answers</h2>
+<p>
+<strong>What is a "certainty score of 85 out of 100"?</strong><br/>
+          One sensor = low certainty. More sensors from the same zone = more security. Sensors from three zones + elapsed time = even higher. When the sum is ≥ 85, the system declares the situation confirmed. Under 85 is waiting.
+        </p>
+<p>
+<strong>Why wait 10 minutes before starting your morning routine without an alarm clock?</strong><br/>
+          Filter for night trips. A short trip to the toilet takes 1-3 minutes. Real waking up (getting up, bathroom, kitchen, tea) takes longer. 10 minutes is a compromise: long enough to filter out night trips, short enough to make the morning routine useful.
+        </p>
+<p>
+<strong>Will the system send me an SMS if something fails?</strong><br/>
+          No SMS — push notification to the Homey app on your phone. It works just as fast and costs nothing.
+        </p>
+<h2>Conclusion</h2>
+<p>
+          A smart home isn't just about the lights turning on when you arrive. It's about that house <strong>he knows what's going on right now</strong> and he has a way of telling you. And even more important — that he knows it <em>from the evidence</em>, not from assumptions, and that you as a human operator have the last word.
+        </p>
+<p>
+          If this post was more understandable for you than the previous pages, let me know. Future blog posts will be in a similar vein — technical stuff, but told normally.
+        </p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME project · Made with ❤️ and script-first thinking.</p>
+</div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

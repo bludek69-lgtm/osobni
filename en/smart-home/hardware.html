@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="What the household is made of: central office, sensors, lights and other equipment. Individual parts were added gradually and each has its own task. Here is an overview of their connections." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Hardware | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="Hardware | SMART HOME" property="og:title"/>
+<meta content="What the household is made of: central office, sensors, lights and other equipment. Individual parts were added gradually and each has its own task. Here is an overview of their connections." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/hardware.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/hardware.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/hardware.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/hardware.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/hardware.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/hardware.html#main">Skip to content</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Open the menu</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/en/smart-home/">Home</a></li>
+<li><a href="/en/smart-home/prozivani.html">How it works</a></li>
+<li><a aria-current="page" class="is-active" href="/en/smart-home/zarizeni.html">Equipment</a></li>
+<li><a href="/en/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/en/smart-home/dashboard.html">Dashboard</a></li>
+<li><a href="/en/smart-home/pribeh.html">The story</a></li>
+<li><a href="/en/smart-home/blog.html">Blog</a></li>
+<li><a href="/en/smart-home/kontakt.html">About the project</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Personal website and Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a><a href="/en/smart-home/">Introduction Smart Home</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/hardware.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/hardware.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/hardware.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section section-alt" id="hardware">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">📦 Equipment · Hardware</p>
+<h1 class="section-title">What is there physically?</h1>
+<p class="section-lead">What the household is made of: central office, sensors, lights and other equipment. Individual parts were added gradually and each has its own task. Here is an overview of their connections.</p><details class="visitor-technical-intro"><summary>Technical details</summary><p class="section-lead">
+            Hub, sensor network via 4 protocols, 84 devices in 10 zones. Successively layered hardware layers, each with its own role.
+          </p></details>
+</header>
+<div class="hw-evolution">
+<article class="hw-evo-card hw-evo-old">
+<div class="hw-evo-head">
+<span class="hw-evo-badge">Legacy · 2016—2019</span>
+<h3>Homey Pro (Early 2019)</h3>
+</div>
+<ul class="hw-evo-specs">
+<li>Single-core processor, limited performance</li>
+<li>Z-Wave + Zigbee + 433 MHz + Wi-Fi + IR</li>
+<li>Flow-based runtime, limited HomeyScript support</li>
+<li>Manufacturer supported until EOL</li>
+</ul>
+<p class="hw-evo-issue">
+<strong>Why it stopped being enough:</strong> With the increasing number of flows and the first HomeyScripts, the hub started to have performance problems. Parallel scripts fell on SIGABRT, the runtime could not keep up with real-time events, larger automations blocked the UI. It just wasn't sized for any script-first approach.
+            </p>
+<p class="hw-evo-link">
+<a href="https://homey.app/en-us/wiki/homey-pro-2016-2019-changelog/" rel="noopener" target="_blank">
+                Official changelog (2016—2019) →
+              </a>
+</p>
+</article>
+<div aria-hidden="true" class="hw-evo-arrow">→</div>
+<article class="hw-evo-card hw-evo-new">
+<div class="hw-evo-head">
+<span class="hw-evo-badge hw-evo-badge-current">Live · current</span>
+<h3>Homey Pro 2026</h3>
+</div>
+<figure class="hw-evo-photo">
+<img alt="Homey Pro Early 2023 — official product photo" class="zoomable" decoding="async" height="512" loading="lazy" src="/smart-home/assets/photos/homey-pro.png" width="1120"/>
+<figcaption>© Athom B.V. — official press image</figcaption>
+</figure>
+<h4 class="hw-evo-spec-title">Hardware specs</h4>
+<ul class="hw-evo-specs">
+<li><strong>CPU</strong>: 1.5 GHz Quad-core ARMv8</li>
+<li><strong>RAM</strong>: 4 GB LPDDR4</li>
+<li><strong>Storage</strong>: 8 GB eMMC Flash</li>
+<li><strong>Updates guaranteed until June 2031</strong></li>
+</ul>
+<h4 class="hw-evo-spec-title">Wireless protocols</h4>
+<ul class="hw-evo-specs">
+<li><strong>Wi-Fi</strong> 2.4 GHz + 5 GHz</li>
+<li><strong>Bluetooth</strong> Low Energy 5.0</li>
+<li><strong>Matter</strong> v1.3 (controller)</li>
+<li><strong>Thread</strong> (Border Router capability)</li>
+<li><strong>Zigbee</strong> 3.0 (coordinator)</li>
+<li><strong>Z-Wave</strong> 700 Series</li>
+<li><strong>433 MHz</strong> (legacy sensors)</li>
+<li><strong>Infrared</strong> (TV remote learning)</li>
+<li>Optional <strong>Ethernet adapter</strong> (USB-C)</li>
+</ul>
+<h4 class="hw-evo-spec-title">What he can do</h4>
+<ul class="hw-evo-specs">
+<li><strong>Local-first processing</strong> — cloud only as a backup, automation runs locally</li>
+<li><strong>Advanced Flow</strong> automation (free, no subscription)</li>
+<li><strong>HomeyScript</strong> runtime — full JavaScript for custom scripts</li>
+<li><strong>REST API</strong> with Bearer token for external integrations</li>
+<li><strong>Satellite Mode</strong> — extends range over Homey Bridge</li>
+<li><strong>Experimental features</strong>: SSH access, virtual devices, power user tools</li>
+</ul>
+<p class="hw-evo-issue">
+<strong>What made it possible:</strong> 110+ scripts in parallel without SIGABRT, centralized logic in JavaScript, request-first pipeline, daily Gemini log analysis, real-time dashboards via REST API. Without this leap, the current system would not be possible.
+            </p>
+<p class="hw-evo-link">
+<a href="https://homey.app/en-us/homey-pro/" rel="noopener" target="_blank">
+                Homey Pro official specs →
+              </a>
+</p>
+</article>
+</div>
+<h3 class="hw-section-title">Wireless protocols</h3>
+<div class="protocol-grid">
+<article class="protocol-card">
+<span aria-hidden="true" class="protocol-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-radio"></use></svg></span></span>
+<h4>Zigbee</h4>
+<p>
+              The backbone of the sensor network. Sonoff SNZB-06P (mmWave presence), SNZB-03/04 motion + door/window, Aqara P1, IKEA Fyrtur blind, Aqara Cube T1 Pro (6-sided controller).
+            </p>
+</article>
+<article class="protocol-card">
+<span aria-hidden="true" class="protocol-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-radio-receiver"></use></svg></span></span>
+<h4>Z-Wave</h4>
+<p>
+              Fibaro FGMS multisensor (motion + lux + temperature) in the kitchen, FGS-214 relay for the heating circuit. Slower but more stable for key installations.
+            </p>
+</article>
+<article class="protocol-card">
+<span aria-hidden="true" class="protocol-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-wifi"></use></svg></span></span>
+<h4>Wi-Fi</h4>
+<p>
+              Xiaomi (Giuseppe robot vacuum cleaner, air purifier, sensors), Shelly Plug S (oven/microwave/refrigerator — power monitoring), Nanoleaf Matter kitchen light bulbs.
+            </p>
+</article>
+<article class="protocol-card">
+<span aria-hidden="true" class="protocol-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-volume-2"></use></svg></span></span>
+<h4>Google Cast</h4>
+<p>
+              Three speakers: Nest Mini Kitchen (primary output), Nest Hub Max Bedroom 2, Nest Mini Bathroom. Plus TTS pipeline with rate limiting to 200 characters.
+            </p>
+</article>
+</div>
+<h3 class="hw-section-title">Key devices</h3>
+<div class="hw-key-list">
+<div class="hw-key-item">
+<strong>Fyrtur1 roller blind</strong> (dining room) — privacy interlock for open space.
+          </div>
+<div class="hw-key-item">
+<strong>Giuseppe</strong> (Xiaomi robot vacuum cleaner) — autonomous cleaning with Homey scheduling.
+          </div>
+<div class="hw-key-item">
+<strong>Air Purifier 4 Lite</strong> — PM2.5 monitoring + auto mode + alerts.
+          </div>
+<div class="hw-key-item">
+<strong>Android TV bedroom</strong> — full integration via <code>com.android.tv:remote</code> (31+ capabilities, native remote).
+          </div>
+<div class="hw-key-item">
+<strong>Aqara Cube T1 Pro</strong> — 6-way controller for audio scenes, lights, TV remote.
+          </div>
+<div class="hw-key-item">
+<strong>Raspberry Pi (WaveShare 10.1")</strong> — kiosk dashboard 1024×600 + dashboard proxy server on <code>localhost:8080</code>.
+          </div>
+</div>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Enlarged image" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Close zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME project · Made with ❤️ and script-first thinking.</p>
+<p class="footer-meta">Public presentation · no API keys · no local IP · no control from here.</p>
+<p class="footer-meta"><a href="/en/smart-home/technicka-mapa.html">Technical map →</a> · <a href="/en/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

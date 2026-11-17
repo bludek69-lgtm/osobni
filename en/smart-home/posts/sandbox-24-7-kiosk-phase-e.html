@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="May 14, 2026 — the day RPi/HAOS turned into a full-fledged test gateway. Python sandbox runner 24/7, Phase E kiosk with cache fallback chain, dashboard cache retry fix v2.1. 20/20 PASS tests, 0 Homey writes." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Sandbox 24/7 + kiosk Phase E + cache retry — cleaning day | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="Sandbox 24/7 + kiosk Phase E + cache retry — cleaning day | SMART HOME" property="og:title"/>
+<meta content="May 14, 2026 — the day RPi/HAOS turned into a full-fledged test gateway. Python sandbox runner 24/7, Phase E kiosk with cache fallback chain, dashboard cache retry fix v2.1. 20/20 PASS tests, 0 Homey writes." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/posts/sandbox-24-7-kiosk-phase-e.html#main">Skip to content</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/en/smart-home/blog.html">← Back to the blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Back from the article" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a></div><div class="visitor-links"><a href="/en/smart-home/">Introduction Smart Home</a><a href="/en/smart-home/blog.html">All notes</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/posts/sandbox-24-7-kiosk-phase-e.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/en/smart-home/blog.html">← All posts</a>
+<article class="post-content">
+<p class="post-meta">May 14, 2026 · Infrastructure · 10 min read</p>
+<h1>Sandbox 24/7 + kiosk Phase E + cache retry — cleaning day</h1>
+<p>
+          The day RPi/HAOS stopped playing service assistant and became a full-fledged test gateway between development and production. Three layers at the same time: a Python sandbox runner running 24/7, an RPi kiosk with a cache-first fallback chain and a dashboard cache pipeline that no longer sulks at the occasional 417 from Athom relay.
+        </p>
+<p>
+          No Homey write, no edit dashboards on HAOS, no device renames. Three gates simultaneously — <code>SANDBOX-FIRST</code>, <code>AUTO-REGISTRY</code>,
+          <code>SAFE_REPAIR_MODE</code> — keeps the entire progress sandboxed until it's confirmed that it won't break anything.
+        </p>
+<h2>Node.js to HAOS without pain</h2>
+<p>
+          First observation of the morning: HA SSH addon on RPi does not have Node. Sandbox gets Node up to the persistence layer <code>core_ssh apks</code> config — i.e. Supervisor automatically reinstalls it every time the addon starts, so addon rebuild doesn't blow it.
+        </p>
+<pre tabindex="0"><code># Before
+apks: ["python3"]
+# After (LIVE, persistent přes Supervisor)
+apks: ["python3", "nodejs", "npm"]</code></pre>
+<p>
+          Verification: <code>node -v → v24.14.1</code>, <code>npm -v → 11.11.0</code>, the smoke test reads all 6 snapshot fixtures (devices/variables/zones/scripts_index/sh_dashboard_data/sh_device_map) without error. After addon restart Node survived → persistence confirmed.
+        </p>
+<h2>Sandbox emulator — Phase B and C</h2>
+<p>
+          Node mock Homey world layer: <code>homey_mock.js</code> s <code>Homey.logic</code>,
+          <code>Homey.devices</code>, <code>Homey.flow</code>, plus <code>Homey.scripts.runScript()</code>
+          a <code>Homey.apps.restart()</code> as a deliberate dumping function (mirroring the real sandbox restrictions in Homey). <code>fetch()</code> disabled until the test provides an explicit mock.
+        </p>
+<p>
+          Phase B built 6 tests and 4 replay scenarios, Phase C added 10 more: T1-T16 covers dashboard schema, bathroom vacancy, Prague timezone, light router guards, blind fallback, cron schema validation, audio vacancy, motion+presence off, morning alarm variants, anti-UTC regression, sleep window guard, kitchen scenes, dynamic temperature, dashboard cache fallback, cron invalid detection, HomeyScript crash resilience.
+        </p>
+<pre tabindex="0"><code>[PASS] T1_dashboard_schema           — 26 keys present, 0 missing
+[PASS] T2_bathroom_vacancy           — proposed light_off + audio_stop
+[PASS] T3_morning_prague_date        — 4/4 Prague vs UTC correct
+[PASS] T4_light_router_guards        — 8/8 guards enforced
+[PASS] T5_device_map_roleta_fallback — sh_device_map.BLIND_DINING resolves
+[PASS] T6_cron_schema                — 83 cron cards, all valid
+... 14 more PASS
+PASS 20/20  FAIL 0</code></pre>
+<h2>Phase D — sandbox 24/7 in HA automation</h2>
+<p>
+          Sandbox-side tests run once. A regular runner was waiting for us 24/7 — shell_command called by HA automation every full hour. The first attempt failed miserably.
+        </p>
+<pre tabindex="0"><code>2026-05-14 07:00:00.341 ERROR (MainThread)
+  [shell_command] Error running command:
+  `node /config/smart-home/sandbox/runner/sandbox_runner.js`,
+  return code: 127</code></pre>
+<p>
+          Exit 127 = <code>node: command not found</code>. The HA Core container does not have a Node — our Node persistence was in the <code>core_ssh</code> addon, not in the main HA Core. Two isolated docker layers. Pivot: runner rewritten in Python (HA Core has Python 3.12 natively), Node sandbox layer remains as development.
+        </p>
+<p>
+          F1-A programmed Python orchestrator pure-stdlib, mirror 16-test matrix + replay JSON validator + 8-step gate logic (snapshot → tests → replay → regression → rollback → user_go). F1-B ported HA shell_command from node to python3. <code>ha core check</code> PASS, reboot, waiting for :00 cron, runs jumped from 4 to 5 at 06:00:00.956Z right on the minute mark:
+        </p>
+<pre tabindex="0"><code>[runner_py] runs=5 tests=16/16 replay=OK
+            blockers=0 gate=DEPLOY_GATE_OPEN</code></pre>
+<p>
+          Gate semantics: <code>DEPLOY_GATE_OPEN</code> means "all technical checks passed" but still requires <code>user_go: REQUIRED</code> per change. Runner never interferes with live Homey himself. Just the verdict in the markdown report.
+        </p>
+<h2>Auto-registries — gate against silent new entities</h2>
+<p>
+          Whenever a new scene, automation, Flow, HomeyScript, dashboard widget, module, time mode, button, gesture or trigger is added to the system, the runner detects it during diff vs. baseline registers and marks as
+          <code>BLOCKED_UNTIL_TEST_EXISTS</code> with a proposal for the name of the test and replay scenario.
+        </p>
+<p>
+          Baseline registries now hold 8 scenes + 132 scripts + 232 advanced_flows = 372 entities. When the 133rd script is added, the runner sends a line of the type "<code>scripts: sh_new_thing</code> → propose <code>tests_py/test_sh_new_thing.py</code>". Live deploy without registry changes blocked.
+        </p>
+<h2>Dashboard cache retry — fix over the weekend</h2>
+<p>
+          Aside from the sandbox itself, one particular pipeline bug: dashboard cache script <code>homey_dashboard_cache.py</code> occasionally returned exit 1 in about 5% of cron firings due to transient errors from Athom cloud relay (<code>vars fetch status=417</code> or connection drop). Failures were always transient — the next call (within 60 seconds) succeeded. Data loss = 0, just noise in the HA log.
+        </p>
+<p>
+          Fix v2.1: <code>homey_get</code> divided into <code>_homey_get_once</code>
+          + retry wrapper. Transient retry on <code>{0, 417, 502, 503, 504}</code>
+          with backoff 0.5 s + 1.5 s, max 3 attempts. Permanent statuses (401, 404, ...) raise immediately without retry.
+        </p>
+<pre tabindex="0"><code>RETRY_STATUSES = {0, 417, 502, 503, 504}
+RETRY_BACKOFFS = (0.5, 1.5)  # 3 total attempts</code></pre>
+<p>
+          Sandbox test T17 verified 5 case matrix (200 first try / 417+200 / 0+0+200 / 401 immediate raise / 417×3 exhausts) — 5/5 PASS. After deploying this morning the error rate dropped from ~5% to <strong>1.8 %</strong> and the HA log no longer shows the hourly red line.
+        </p>
+<h2>Kiosk Phase E — RPi-only rebuild</h2>
+<p>
+          The kiosk (RPi 192.168.1.xxx with 1024×600 WaveShare display) was running HTML from 5/11 at 7:25 PM — a version that never knew the dashboard cache. When the HAOS-side cache pipeline started producing fresh JSON, the kiosk had no way of knowing about it. He still polled direct via <code>server.py</code> proxy to Homey REST.
+        </p>
+<p>
+          The rule was strict: <strong>DO NOT READ ANYTHING FROM THE PC</strong>. The Phase E patch must be recreated directly from the HTML kiosk itself, not copied from PC dashboards/. Reason: PC may not be online and have old versions.
+        </p>
+<p>
+          Workflow:
+        </p>
+<ol>
+<li>SSH to the kiosk, pull <code>/home/smart/dashboard/index.html</code> +
+              <code>server.py</code> at HAOS staging dir.</li>
+<li>Binary-mode Python patcher preserves CRLF line endings (kiosk file natively CRLF) — first attempt with LF-only produced a false 29,822-line diff instead of the real 112 lines.</li>
+<li>Patch HTML: replace 7-line <code>fetchDashboardData()</code> behind the 60-line version with a 3-stage chain cache→Homey REST→localStorage. Add <code>#sourceBadge</code> CSS + DOM element top-right fixed.</li>
+<li>Patch server.py: add <code>/cache/dashboard-data.json</code> route proxying HAOS <code>/local/smart-home/dashboard-data.json</code>, timeout 2.5 s, 502/504 fallback. Existing <code>/api/*</code> Homey proxy intact, <code>HOMEY_TOKEN</code> count unchanged.</li>
+<li>Sandbox tests T18 (loader fallback), T19 (cache proxy), T20 (visual contract). Run all 20 → 20/20 PASS.</li>
+<li>Backup to <code>_backup_before_kiosk_phase_e_&lt;timestamp&gt;/</code>
+              with SHA256 manifest + chromium command line snapshot.</li>
+<li>Atomic swap, reboot <code>server.py</code> (pkill + nohup), F5 reload Chromium via xdotool via DevTools port 9222.</li>
+</ol>
+<p>
+          After reloading the badge is really there. Orange <code>◐ CACHE OLD</code>
+          top-right — because HAOS cache returned JSON, but s <code>_stale: true</code>
+          (bridge_age_s &gt; 300 s). The Phase E chain has been preserved correctly, the dashboard has not remained blank, all control elements have been preserved.
+        </p>
+<p>
+          Badge statuses:
+        </p>
+<ul>
+<li><strong>● CACHE</strong> — green, data fresh from HAOS cache</li>
+<li><strong>◐ CACHE OLD</strong> — orange, cache OK but data older than 5 min</li>
+<li><strong>○ HOMEY</strong> — blue, fallback to Homey REST</li>
+<li><strong>○ LOCAL</strong> — red, fallback to localStorage last-good</li>
+<li><strong>✕ ERR</strong> — all three stages failed</li>
+</ul>
+<h2>R0 preflight — what's left now</h2>
+<p>
+          Phase R0 was a read-only diagnostic, where to go in the repair loop. Sandbox PASS 20/20, snapshot 3 h, kiosk LIVE, cache 1.8%. But the HomeyScript memory watchdog log shows <strong>1906 cumulative restarts</strong> and oscillation of 110-149 MB every 5-10 min. That's a system pressure that the sandbox won't fix on its own — it requires a patch at the HomeyScript runtime level.
+        </p>
+<p>
+          R1-R3 schedule:
+        </p>
+<ul>
+<li><strong>R1</strong> — bathroom vacancy hardening (user-visible problem, edge cases when it stays on/plays after leaving)</li>
+<li><strong>R2</strong> — HomeyScript memory pressure root cause + reduction</li>
+<li><strong>R3</strong> — morning routine deterministic audit (alarm/no-alarm, before/after 03:00, late_motion_ignored pattern)</li>
+</ul>
+<h2>Today's compliance audit</h2>
+<div aria-label="Table – scroll horizontally" class="editorial-table-scroll" role="region" tabindex="0"><table>
+<thead>
+<tr><th>Rules</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr><td>SANDBOX-FIRST (every change via sandbox)</td><td>✓</td></tr>
+<tr><td>AUTO-REGISTERS (T17-T20 in ALL_TESTS)</td><td>✓</td></tr>
+<tr><td>SAFE_REPAIR_MODE (backup + SHA256 + rollback)</td><td>✓</td></tr>
+<tr><td>RPi/HAOS infrastructure role (Homey untouched)</td><td>✓</td></tr>
+<tr><td>No PC reads (kiosk Phase E rebuilt fresh)</td><td>✓</td></tr>
+<tr><td>0 Homey REST writes</td><td>✓</td></tr>
+<tr><td>0 HomeyScript edits</td><td>✓</td></tr>
+<tr><td>0 Advanced Flow edits</td><td>✓</td></tr>
+<tr><td>0 device renames</td><td>✓</td></tr>
+<tr><td>0 tokens in reports</td><td>✓</td></tr>
+</tbody>
+</table></div>
+<h2>Takeaway</h2>
+<p>
+          For this system, "I'll fix it in Homey" is no longer the first choice. The first is "I'll build a sandbox test that reproduces it, and only when it passes will I prepare a staging patch and wait for explicit GO". That's not red tape — that's the difference between a house where the bedside strip occasionally lights up by itself at night, and a house that can be tested without the resident reading about it in the build log in the morning.
+        </p>
+<p>
+          Sandbox runner continues hourly. Another run at :00 places T17-T20 in the baseline registry. Live deploy gate remains OPEN — pending explicit per-change GO.
+        </p>
+<p class="post-meta" style="margin-top:48px;">
+          Related Posts:
+          <a href="/en/smart-home/posts/dum-pozoruje-sam-sebe.html">A house that observes itself</a> ·
+          <a href="/en/smart-home/posts/bathroom-misroute.html">Bathroom misroute — 4 hours of diagnostics</a> ·
+          <a href="/en/smart-home/posts/yr-single-source.html">Three weather sources → one</a>
+</p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container">
+<p>© 2026 Smart Home build log — Budinský Luděk. Technical diary of a personal project.</p>
+</div>
+</footer>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

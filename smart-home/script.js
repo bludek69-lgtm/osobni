@@ -146,7 +146,7 @@
       img.addEventListener('click', () => {
         const fig = img.closest('figure');
         const cap = fig ? (fig.querySelector('figcaption')?.textContent || '') : '';
-        openLightbox(img.src, img.alt, cap);
+        openLightbox(img.dataset.fullSrc || img.src, img.alt, cap);
       });
     });
     // also click on .gallery-thumb (for the .zoom-hint overlay)
@@ -155,7 +155,7 @@
         const img = thumb.querySelector('img.zoomable');
         const fig = thumb.closest('figure');
         const cap = fig ? (fig.querySelector('figcaption h3')?.textContent || '') : '';
-        if (img) openLightbox(img.src, img.alt, cap);
+        if (img) openLightbox(img.dataset.fullSrc || img.src, img.alt, cap);
       });
     });
 

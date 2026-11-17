@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Modifica UUID dopo la riassociazione: errore silenzioso in 3 schede di attivazione del flusso. Sensore porta/finestra Sala da pranzo1 incidente 26.4. e correzione dello scambio in blocco." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>UUID riassociazione orfani: errore silenzioso dopo la sostituzione della batteria | CASA INTELLIGENTE</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+
+<link href="/favicon.ico" rel="icon"/>
+<meta content="UUID riassociazione orfani: errore silenzioso dopo la sostituzione della batteria | CASA INTELLIGENTE" property="og:title"/>
+<meta content="Modifica UUID dopo la riassociazione: errore silenzioso in 3 schede di attivazione del flusso. Sensore porta/finestra Sala da pranzo1 incidente 26.4. e correzione dello scambio in blocco." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/it/smart-home/posts/uuid-repair-orphans.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/it/smart-home/posts/uuid-repair-orphans.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/posts/uuid-repair-orphans.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/posts/uuid-repair-orphans.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/posts/uuid-repair-orphans.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/it/smart-home/posts/uuid-repair-orphans.html#main">Vai al contenuto</a>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="CASA INTELLIGENTE – casa" class="brand" href="/it/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">INTELLIGENTE<span class="brand-name-accent">CASA</span></span>
+</a>
+<nav aria-label="Navigazione principale" class="primary-nav">
+<ul class="nav-list">
+<li><a href="/it/smart-home/blog.html">← Torniamo al blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Ritorno dall'articolo" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/it/">← Torna a Cestovatel69.cz</a><a href="/it/o-mne.html">Chi sono</a></div><div class="visitor-links"><a href="/it/smart-home/">Introduzione Casa intelligente</a><a href="/it/smart-home/blog.html">Tutte le note</a></div><nav aria-label="Lingua della pagina" class="lang-switcher editorial-language"><a href="/smart-home/posts/uuid-repair-orphans.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/posts/uuid-repair-orphans.html" hreflang="en" lang="en">EN</a><a aria-current="page" href="/it/smart-home/posts/uuid-repair-orphans.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main class="post-page" id="main">
+<div class="container">
+<a class="post-page-back" href="/it/smart-home/blog.html">← Tutti i post</a>
+<article class="post-content">
+<p class="post-meta">26 aprile 2026 · Sensori · 6 minuti di lettura</p>
+<h1>Riassociazione UUID orfani: errore silenzioso dopo la sostituzione della batteria</h1>
+<p>
+          Apro la finestra della sala da pranzo, il purificatore dell'aria continua a funzionare.
+Dovrebbe spegnersi: il trigger del flusso è attivo <code>alarm_contact</code> open funziona senza problemi da un anno.
+Ma non oggi.
+Nessun errore nell'interfaccia utente, nessun avviso, solo errore silenzioso.
+        </p>
+<p>
+          Dopo aver sostituito la torcia nel sensore porta/finestra Jidelna1 una settimana fa, il dispositivo Homey ha ricevuto un nuovo UUID.
+Tre flussi che fanno riferimento all'UUID originale sono orfani.
+Questa è la storia della diagnostica e della correzione collettiva.
+        </p>
+<h2>Sintomo</h2>
+<p>
+          Il sensore porta/finestra Dindelna1 funziona normalmente dal punto di vista delle capacità: posso vederlo nell'interfaccia utente di Homey <code>alarm_contact</code> valore, modifiche in tempo reale durante l'apertura/chiusura.
+Il riquadro sulla dashboard è reattivo.
+Il sensore non è morto, sta comunicando, inviando dati.
+        </p>
+<p>
+          Ma i flussi che avrebbero dovuto reagire al cambiamento degli eventi – <strong>non rispondono</strong>. Nessun registro di esecuzione del flusso, nessun errore. La scheda Trigger nell'interfaccia utente sembra normale, nessun avviso rosso. Esiste il sensore, esiste il flusso, manca solo la connessione tra loro.
+        </p>
+<h2>Flussi interessati</h2>
+<ol>
+<li>
+<strong>SH - Cistic - Finestra aperta</strong> — spegne il purificatore quando la finestra è aperta (non è necessario filtrare l'aria esterna)
+          </li>
+<li>
+<strong>SH - Riscaldamento - Finestra aperta</strong> — ridurrà l'obiettivo bagno + sala da pranzo di 2 °C quando la finestra è aperta (compensazione della perdita di calore)
+          </li>
+<li>
+<strong>SH – Luci – Esclusione Privacy</strong> — rilascia temporaneamente la protezione privacy quando la finestra è aperta (presuppone l'attività dell'utente)
+          </li>
+</ol>
+<h2>Diagnosi</h2>
+<p>
+          Ho provato diversi controlli:
+        </p>
+<pre tabindex="0"><code># Senzor existuje?
+GET /api/manager/devices/device/&lt;jidelna1_uuid_in_flow&gt;
+→ 404 Not Found
+
+# Senzor v device list?
+GET /api/manager/devices/device
+→ vidím "Door/Window Sensor Jidelna1" ale s JINÝM UUID
+
+# Compare:
+flow_uuid: 5c3a8e21-b4f2-4a91-9d1c-7e8f6a2b3c4d
+real_uuid: 9f4c2e88-3a7d-4f5b-b2e6-1c8a9d5e7f3b</code></pre>
+<p>
+          Il vecchio UUID (nella scheda di attivazione del flusso) rispetto all'UUID reale (dispositivo corrente) è diverso.
+Dopo aver sostituito la batteria il 19.4.
+(istantanea della memoria) Homey ha generato un nuovo UUID.
+Il vecchio UUID in 3 flussi è rimasto come riferimento orfano, un dispositivo che "non esiste" (404), quindi l'attivatore non si attiva mai.
+        </p>
+<h2>Perchè non è un errore?</h2>
+<p>
+          Il semplice sistema di attivazione del flusso prevede un gradevole degrado per i dispositivi mancanti, anziché solo errori <strong>non si accende mai</strong>.
+Ciò ha senso per la robustezza (un sensore offline non dovrebbe interrompere l'intero sistema di flusso), ma significa guasto silenzioso.
+        </p>
+<p>
+          Nessuna indicazione nell'interfaccia utente "questo flusso si riferisce a un dispositivo inesistente".
+Nessun avviso.
+Nessuna voce nel registro dell'esecuzione del flusso.
+Un bug è visibile solo quando ti aspetti che accada qualcosa e non succede nulla.
+        </p>
+<h2>Correzione: scambio in blocco</h2>
+<p>
+          Una correzione manuale per flusso tramite l'interfaccia utente comporterebbe l'apertura di ciascun flusso, la ricerca di una scheda di attivazione e la rimappatura su un nuovo dispositivo.
+Tre flussi = tre minuti manualmente.
+Vuole l'automazione per incidenti futuri (e futuri cambi di batteria).
+        </p>
+<pre tabindex="0"><code># 1. Najdi všechny flows referencující old UUID
+flows = GET /api/manager/flow/advancedflow
+broken = [f for f in flows if old_uuid in str(f.cards)]
+
+# 2. Per broken flow: PUT s nahrazeným UUID
+for flow in broken:
+  for card in flow.cards:
+    if card.deviceId == old_uuid:
+      card.deviceId = new_uuid
+  PUT /api/manager/flow/advancedflow/&lt;flow_id&gt; flow</code></pre>
+<p>
+          Ha avuto luogo uno scambio di massa, 3 flussi fissi.
+Test: apro la finestra, l'aspirapolvere si spegne.
+Funzione ripristinata.
+        </p>
+<h2>Arretrato: scanner preventivo</h2>
+<p>
+          Si tratta di un incidente previsto: la sostituzione della batteria avviene ogni anno o più e ogni riassociazione genera un nuovo UUID.
+La correzione reattiva per incidente non è scalabile.
+        </p>
+<p>
+          Arretrato: <code>tools/find_orphan_device_refs.py</code> — scanner di prevenzione che viene eseguito prima di ogni commit (o cron giornaliero).
+Itera i flussi, confronta gli ID dispositivo con l'elenco dei dispositivi corrente, segnala i riferimenti orfani.
+        </p>
+<pre tabindex="0"><code># tools/find_orphan_device_refs.py (návrh)
+from homey_api import get_devices, get_flows
+
+def main():
+  devices = {d.id for d in get_devices()}
+  flows = get_flows()
+  for flow in flows:
+    for card in flow.cards:
+      if card.deviceId and card.deviceId not in devices:
+        print(f'ORPHAN: flow={flow.name} card={card.id} '
+              f'orphan_id={card.deviceId}')</code></pre>
+<h2>Cosa è stato appreso</h2>
+<blockquote>
+          Il fallimento silenzioso è la peggiore categoria di bug.
+Vedi il risultato (il pulitore non funziona), non hai idea della causa (nessun errore).
+La diagnosi richiede l'ispezione dello stato del sistema, non la lettura dei registri.
+        </blockquote>
+<p>
+          Lezioni:
+        </p>
+<ul>
+<li><strong>Riassociazione = nuovo UUID</strong>.
+Aspettatevi riferimenti al trigger del flusso orfano dopo ogni cambio/reinstallazione della batteria.
+Non è un bug familiare, è una scelta di design (stabilità dell'UUID rispetto a tabula rasa).</li>
+<li><strong>Eseguire il test dopo ogni cambio di batteria</strong>.
+Un semplice test del fumo: apri la finestra, l'aspirapolvere si spegne?
+No?
+Diagnosi.</li>
+<li><strong>Scansioni preventive &gt; correzioni reattive</strong>. È meglio dedicare un minuto al giorno alla verifica di un invariante piuttosto che un'ora alla correzione di un incidente.</li>
+<li><strong>Estensione Guardiano del cervello</strong>.
+Questa invariante appartiene al tutore: controllata periodicamente, nessun ID dispositivo orfano nei flussi.
+Nel piano.</li>
+</ul>
+<p>
+          La stabilità dell'UUID nel mondo della casa intelligente è un problema che aumenterà con ogni nuovo dispositivo. La sostituzione di Aqara P2 (Matter/Thread) per SNZB-04 aggiunge un'altra permutazione in cui la riassociazione dopo la modifica della rete Thread genera un nuovo ID.
+        </p>
+<p>
+          Principio generale: <strong>non fare mai riferimento al dispositivo direttamente tramite UUID nel codice rivolto all'utente</strong>.
+Invece tramite ricerca del nome (risolvibile in fase di esecuzione) o astrazione della mappa del dispositivo (un posto da aggiornare).
+L'architettura attuale fa questo per gli script (<code>sh_device_map_v1</code>), ma non per le carte con attivazione del flusso: una limitazione dell'interfaccia utente Homey.
+        </p>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · Progetto SMART HOME</p>
+<p class="footer-meta">Presentazione pubblica · nessuna chiave API · nessun IP locale.</p>
+</div>
+</footer>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<script src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

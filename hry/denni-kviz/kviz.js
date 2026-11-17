@@ -1,9 +1,11 @@
 // Denní kvíz Cestovatel69 – logika hry.
 // Potřebuje: questions.js (pole QUESTIONS) a v HTML prvky #app, #meta, #partner, #toast.
 (function(){
+  var LANG=(document.documentElement.lang||'cs').split('-')[0];
+  function t(cs,en,it){return LANG==='en'?en:LANG==='it'?it:cs;}
   var PER_DAY = 5;
   var START = "2026-11-13";          // den č. 1
-  var KEY = "kviz69_v1";
+  var KEY = "kviz69_v1"+(LANG==='cs'?'':'_'+LANG);
 
   // ---- datum v Praze, aby měli všichni stejný kvíz ----
   function pragueDate(d){
@@ -39,7 +41,7 @@
   var mine = state.days[today] || (state.days[today] = {answers:[]});
 
   var app = document.getElementById("app");
-  document.getElementById("meta").innerHTML = "Kvíz č. "+dayNo+"<br>"+today.split("-").reverse().join(". ").replace(/^0/,"");
+  document.getElementById("meta").innerHTML = t("Kvíz č. ","Quiz no. ","Quiz n. ")+dayNo+"<br>"+today.split("-").reverse().join(". ").replace(/^0/,"");
 
   function el(tag,cls,txt){ var e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e; }
 
@@ -73,7 +75,7 @@
           if(x.textContent===q.correct) x.classList.add("ok");
           else if(x===b) x.classList.add("bad");
         });
-        var next=el("button","btn", i+1<PER_DAY ? "Další otázka →" : "Zobrazit výsledek");
+        var next=el("button","btn", i+1<PER_DAY ? t("Další otázka →","Next question →","Prossima domanda →") : t("Zobrazit výsledek","Show results","Mostra il risultato"));
         next.type="button";
         next.onclick=function(){ if(i+1>=PER_DAY) finish(); else renderQuestion(); };
         var r=el("div","row"); r.appendChild(next); c.appendChild(r);
@@ -105,7 +107,7 @@
   function grid(){ return mine.answers.map(function(a,i){return a===todays[i].correct?"🟩":"🟥";}).join(""); }
 
   function shareText(){
-    return "🚌 Denní kvíz Cestovatel69 #"+dayNo+"\n"+grid()+" "+score()+"/"+PER_DAY+"\n"+location.href.split("#")[0];
+    return t("🚌 Denní kvíz Cestovatel69 #","🚌 Cestovatel69 daily quiz #","🚌 Quiz quotidiano Cestovatel69 #")+dayNo+"\n"+grid()+" "+score()+"/"+PER_DAY+"\n"+location.href.split("#")[0];
   }
 
   function toast(t){ var e=document.getElementById("toast"); e.textContent=t; e.classList.add("show"); setTimeout(function(){e.classList.remove("show");},1800); }
@@ -116,25 +118,25 @@
     app.innerHTML="";
     var c=el("div","card");
     c.appendChild(progress(-1));
-    var msg = s===5?"Perfektní! Jsi profík 🏆": s>=3?"Dobrá práce! 👍":"Zítra to dáš líp 💪";
-    c.appendChild(el("div","cat","Dnešní výsledek"));
+    var msg = s===5?t("Perfektní! Jsi profík 🏆","Perfect! You know your stuff 🏆","Perfetto! Sei un esperto 🏆"): s>=3?t("Dobrá práce! 👍","Well done! 👍","Bravo! 👍"):t("Zítra to dáš líp 💪","Try again tomorrow 💪","Riprova domani 💪");
+    c.appendChild(el("div","cat",t("Dnešní výsledek","Today’s result","Il risultato di oggi")));
     c.appendChild(el("div","big",s+" / "+PER_DAY));
     c.appendChild(el("p",null,msg));
     c.appendChild(el("div","grid",grid()));
 
     var st=el("div","stats");
-    [["Série dní",state.streak||0],["Nejdelší série",state.best||0],["Odehráno",state.played||0]].forEach(function(x){
+    [[t("Série dní","Day streak","Giorni consecutivi"),state.streak||0],[t("Nejdelší série","Longest streak","Serie più lunga"),state.best||0],[t("Odehráno","Quizzes played","Quiz completati"),state.played||0]].forEach(function(x){
       var d=el("div"); d.appendChild(el("b",null,String(x[1]))); d.appendChild(el("small",null,x[0])); st.appendChild(d);
     });
     c.appendChild(st);
 
     var r=el("div","row");
-    var sh=el("button","btn","Sdílet výsledek");
+    var sh=el("button","btn",t("Sdílet výsledek","Share result","Condividi il risultato"));
     sh.type="button";
     sh.onclick=function(){
       var t=shareText();
       if(navigator.share){ navigator.share({text:t}).catch(function(){}); }
-      else if(navigator.clipboard){ navigator.clipboard.writeText(t).then(function(){toast("Zkopírováno – vlož kamarádům");},function(){toast("Kopírování se nepovedlo");}); }
+      else if(navigator.clipboard){ navigator.clipboard.writeText(t).then(function(){toast(LANG==='en'?"Copied – share with friends":LANG==='it'?"Copiato – condividilo con gli amici":"Zkopírováno – vlož kamarádům");},function(){toast(LANG==='en'?"Could not copy":LANG==='it'?"Copia non riuscita":"Kopírování se nepovedlo");}); }
     };
     r.appendChild(sh);
     c.appendChild(r);
@@ -144,7 +146,7 @@
       var parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Prague",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).format(new Date()).split(":").map(Number);
       var left=86400-(parts[0]*3600+parts[1]*60+parts[2]);
       var h=Math.floor(left/3600), m=Math.floor(left%3600/60), sec=left%60;
-      cd.textContent="Další kvíz za "+h+" h "+String(m).padStart(2,"0")+" min "+String(sec).padStart(2,"0")+" s";
+      cd.textContent=t("Další kvíz za ","Next quiz in ","Prossimo quiz fra ")+h+" h "+String(m).padStart(2,"0")+" min "+String(sec).padStart(2,"0")+" s";
       if(left<=1){ setTimeout(function(){location.reload();},1500); return; }
       setTimeout(tick,1000);
     })();

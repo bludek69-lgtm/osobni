@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="What went wrong when building a household and how I looked for a solution. From device limitations to automation error states. These are experiences from my system, not a ready-made guide for every apartment." name="description"/>
+<meta content="#0a0e14" name="theme-color"/>
+<title>Challenges | SMART HOME</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/favicon.ico" rel="icon"/>
+
+<meta content="Challenges | SMART HOME" property="og:title"/>
+<meta content="What went wrong when building a household and how I looked for a solution. From device limitations to automation error states. These are experiences from my system, not a ready-made guide for every apartment." property="og:description"/>
+<meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
+<meta content="https://cestovatel69.cz/en/smart-home/vyzvy.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/en/smart-home/vyzvy.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/vyzvy.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/vyzvy.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/vyzvy.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script><script defer="" src="/assets/js/editorial-language.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/en/smart-home/vyzvy.html#main">Skip to content</a>
+<header class="site-header" id="site-header">
+<div class="container header-inner">
+<a aria-label="SMART HOME – home" class="brand" href="/en/smart-home/">
+<span aria-hidden="true" class="brand-mark"></span>
+<span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
+</a>
+<nav aria-label="Main navigation" class="primary-nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav-toggle">
+<span class="sr-only">Open the menu</span>
+<span aria-hidden="true" class="nav-toggle-bars"></span>
+</button>
+<ul class="nav-list" id="nav-list">
+<li><a href="/en/smart-home/">Home</a></li>
+<li><a href="/en/smart-home/prozivani.html">How it works</a></li>
+<li><a href="/en/smart-home/zarizeni.html">Equipment</a></li>
+<li><a href="/en/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/en/smart-home/dashboard.html">Dashboard</a></li>
+<li><a aria-current="page" class="is-active" href="/en/smart-home/pribeh.html">The story</a></li>
+<li><a href="/en/smart-home/blog.html">Blog</a></li>
+<li><a href="/en/smart-home/kontakt.html">About the project</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside aria-label="Personal website and Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/en/">← Back to Cestovatel69.cz</a><a href="/en/o-mne.html">About me</a><a href="/en/smart-home/">Introduction Smart Home</a></div><nav aria-label="Page language" class="lang-switcher editorial-language"><a href="/smart-home/vyzvy.html" hreflang="cs" lang="cs">CS</a><a aria-current="page" href="/en/smart-home/vyzvy.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/vyzvy.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
+<section class="section" id="vyzvy">
+<div class="container">
+<header class="section-header">
+<p class="section-eyebrow">📖 Story · Challenges</p>
+<h1 class="section-title">What the system has to contend with</h1>
+<p class="section-lead">What went wrong when building a household and how I looked for a solution. From device limitations to automation error states. These are experiences from my system, not a ready-made guide for every apartment.</p><details class="visitor-technical-intro"><summary>Technical details</summary><p class="section-lead">
+            Smart home in the real world is not "set and forget". Here's a list of real-world problems I've solved — and that you'll have to solve too, once you get past the "few smart lightbulbs" level.
+          </p></details>
+</header>
+<div class="challenge-grid">
+<article class="challenge-card challenge-hw">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-battery"></use></svg></span></span>
+<h3>Zigbee battery devices &amp; deep sleep</h3>
+</div>
+<p>
+              Battery-powered Zigbee sensors (door/window, motion) go to sleep to save energy. If you wake them up and ask them right away, they will often respond after a few seconds — or not at all. Some older pieces fall into <strong>deep sleep, from which the fungi lose their presence</strong> (the device looks offline even with a full battery).
+            </p>
+<p>
+<strong>A specific incident</strong>: Door/Window Sensor SNZB-04 in the dining room. Known firmware bug — periodically falls into an unreachable state even 2 meters from the hub, full battery. Caused a 20 minute delay in arrival response on April 23rd (cleaner did not turn off when window was opened). Solution: <strong>replacement for Aqara P2</strong>
+              (Matter/Thread, more stable firmware). In the meantime — multi-signal fallback (motion in the kitchen as a backup signal).
+            </p>
+</article>
+<article class="challenge-card challenge-hw">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-id-card"></use></svg></span></span>
+<h3>Re-pair = new UUID = silent fail</h3>
+</div>
+<p>
+              When you change the battery or re-install the Zigbee device, Homey will generate <strong>new UUID</strong>. Flow cards + scripts + device map referencing OLD UUID <strong>silently fail</strong>
+              — no error in the UI, the automation simply does not respond.
+            </p>
+<p>
+<strong>Real case 26.4.</strong>: Door/Window Sensor Dining room1 re-pair → 3 flows broken, the cleaner did not turn off when the window was opened. Diagnosis: <code>GET /devices/device/&lt;old_id&gt;</code> → 404. Fix: bulk OLD→NEW swap via PUT of each affected flow. Preventive scanner <code>find_orphan_device_refs.py</code>
+              in the backlog.
+            </p>
+</article>
+<article class="challenge-card challenge-runtime">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-bomb"></use></svg></span></span>
+<h3>SIGABRT — Homey kills the script without explanation</h3>
+</div>
+<p>
+              Homey runtime kills processes when problems are detected (infinite loop, too many parallel scripts, memory leak). <strong>He never writes why</strong> — the script simply disappears from the exec log. Debugging SIGABRT is pure detective work: isolation, binary search, test.
+            </p>
+<p>
+              Classic Trap: <code>setValue()</code> he calls <code>logEvent()</code>,
+              <code>logEvent()</code> he calls <code>setValue()</code> to write to
+              <code>sh_log_payload</code> → <strong>infinite recursion → SIGABRT</strong>. Rule: <code>setValue()</code> can only call <code>getVar +
+              updateVariable + log</code>. Never <code>logEvent()</code>.
+            </p>
+</article>
+<article class="challenge-card challenge-runtime">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-timer"></use></svg></span></span>
+<h3>setTimeout does not exist (and crashes)</h3>
+</div>
+<p>
+              The natural JS reflex for async delay is <code>setTimeout</code>. In the HomeyScript runtime <strong>is not available</strong> and the call leads to a mysterious crash with no error message — the script simply ceases to exist.
+            </p>
+<p>
+              Solution: own <code>wait()</code> function in combination with
+              <code>Promise.race()</code> for HTTP call timeouts. I had to fix this in dozens of scripts — it was systematic, not one-off.
+            </p>
+</article>
+<article class="challenge-card challenge-runtime">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-trash-2"></use></svg></span></span>
+<h3>Deleting script = new UUID = broken flows</h3>
+</div>
+<p>
+              In Homey <strong>I must never delete HomeyScript</strong>. Deleting will generate a new UUID, which will break any Flow tabs referencing the script. The only safe editing is
+              <strong>in-place</strong>: open script, Ctrl+A, paste, Save.
+            </p>
+<p>
+              This rule caused one big outage before I figured it out. Cleanup wave scripts (20× DELETE_CANDIDATE) therefore has its own workflow with 48h soak monitoring + canary testing before the actual delete via GitHub Actions.
+            </p>
+</article>
+<article class="challenge-card challenge-runtime">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-volume-x"></use></svg></span></span>
+<h3>Audio pipeline race conditions</h3>
+</div>
+<p>
+              Audio was the hardest technical nut. Lots of moving parts — priority engine, audio brain, speaker router, TTS orchestrator, Cast Flow, resume logic. Each part had race conditions, each combination of conditions added an edge case.
+            </p>
+<p>
+<strong>An example</strong>: briefing at 3:20 in the morning. Pipeline: Gemini API (15s timeout) → TTS text → priority 55 &gt; radio 50 → audio brain interrupt radio → Cast TTS → resume radio. Every step could fail. Crashes: <code>setTimeout</code>, Google Cast 200 char limit, priority conflict, resume race condition. Watchdog
+              <code>sh_audio_pipeline_watchdog_v1</code> monitors stuck status every minute.
+            </p>
+</article>
+<article class="challenge-card challenge-data">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-ghost"></use></svg></span></span>
+<h3>Ghost values — variables that lie</h3>
+</div>
+<p>
+<code>sh_audio_request</code> remained at value
+              <code>tts_kitchen_alert</code> overnight. In the morning the radio did not start because the audio brain saw a pending request — variable
+              <strong>she claimed a status that no longer held</strong>.
+            </p>
+<p>
+              The solution resulted in <code>sh_state_validator_v1</code>, which compares the expected and real state. First production detection:
+              <code>priority_active=tts</code> ghost that blocked the audio pipeline from 00:40 until morning. Without a validator, this would repeat indefinitely.
+            </p>
+</article>
+<article class="challenge-card challenge-data">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-tornado"></use></svg></span></span>
+<h3>Args[] from Flow are not reliable</h3>
+</div>
+<p>
+              Homey Flow can pass an argument to a script via "<em>con l'argomento</em>". But <code>args[]</code> is unreliable — value is sometimes missing, race condition between trigger and script.
+            </p>
+<p>
+              Today all mods go through dedicated Homey Logic variables (<code>sh_kitchen_mode</code>, <code>sh_energy_mode</code>), not via args. Flow always: <em>set variable → run script</em>. The script reads from a variable, not from an argument.
+            </p>
+</article>
+<article class="challenge-card challenge-data">
+<div class="challenge-head">
+<span aria-hidden="true" class="challenge-icon"><span class="medal"><svg class="medal-i" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><use href="/assets/img/icons.svg#i-ban"></use></svg></span></span>
+<h3>Some APIs are simply unavailable</h3>
+</div>
+<p>
+<code>Homey.notifications.createNotification</code> it exists in the documentation, looks functional, but in a HomeyScript context
+              <strong>is not available</strong>. Result: <code>is not a function</code>. 19 silent errors in a single day in the log before I found this.
+            </p>
+<p>
+              Same pattern: <code>castRadio</code> (flow-only), some
+              <code>Homey.scripts</code> calling. Rule: API must
+              <strong>empirically verify</strong> in the sandbox, don't trust the documentation. Silent failures are the worst category.
+            </p>
+</article>
+</div>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Enlarged image" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Close zoom" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> Budinský Luděk · SMART HOME project · Made with ❤️ and script-first thinking.</p>
+<p class="footer-meta">Public presentation · no API keys · no local IP · no control from here.</p>
+<p class="footer-meta"><a href="/en/smart-home/technicka-mapa.html">Technical map →</a> · <a href="/en/smart-home/">Home</a></p>
+</div>
+</footer>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
+</body>
+</html>

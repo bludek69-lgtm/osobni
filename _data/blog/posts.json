@@ -24,12 +24,16 @@
     "credits_url": "/zdroje/val-d-orcia-crete-senesi-zdroje.html",
     "project_url": "/cestovani/italie/",
     "published": "2026-11-16",
-    "updated": "2026-11-16",
+    "updated": "2026-11-17",
     "category": "Cestování",
     "series": "Cesty po Itálii",
     "reading_minutes": 3,
     "title": "Val d’Orcia a Crete Senesi: krajina za toskánskou pohlednicí",
-    "description": "Cypřišová alej u Poggio Covili a kopce Crete Senesi. Letecké video, mapa a příběh krajiny utvářené přírodou i hospodařením."
+    "description": "Cypřišová alej u Poggio Covili a kopce Crete Senesi. Letecké video, mapa a příběh krajiny utvářené přírodou i hospodařením.",
+    "layout": "photo-essay",
+    "hero_image": "/assets/img/editorial/valdorcia-alej.webp",
+    "hero_alt": "Statek a cypřišová alej ve Val d’Orcia na fotografii z 8. července 2023",
+    "hero_caption": "Val d’Orcia — fotografie z mého archivu, 8. července 2023."
   },
   {
     "slug": "rozhledna-u-borovice",

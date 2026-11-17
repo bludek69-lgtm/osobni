@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="cs">
 <head>
 <meta charset="utf-8"/>
@@ -9,22 +10,21 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
-<link href="style.css?v=20261028-readable-final" rel="stylesheet"/>
+<link href="/smart-home/style.css?v=20261028-readable-final" rel="stylesheet"/>
 <link href="/favicon.ico" rel="icon"/>
-<link href="https://cestovatel69.cz/smart-home/blog.html" rel="canonical"/>
+
 <meta content="Zápisky z vývoje domácnosti | SMART HOME" property="og:title"/>
 <meta content="Zápisky o úpravách domácnosti: co nefungovalo, jak jsem hledal příčinu a co se změnilo. Jde o datovaný technický deník. Podrobné příspěvky zachovávají stav a názvy používané v době zápisu." property="og:description"/>
 <meta content="https://cestovatel69.cz/assets/og-default.jpg" property="og:image"/>
 <meta content="https://cestovatel69.cz/smart-home/blog.html" property="og:url"/>
 <meta content="website" property="og:type"/>
-<link href="visitor.css?v=20261030-redakce" rel="stylesheet"/>
-</head>
-<body class="sh-visitor-page">
-  <a href="#main" class="skip-link">Přeskočit na obsah</a>
-
-  <header class="site-header" id="site-header">
+<link href="/smart-home/visitor.css?v=20261030-redakce" rel="stylesheet"/>
+<link href="https://cestovatel69.cz/smart-home/blog.html" rel="canonical"/><link href="https://cestovatel69.cz/smart-home/blog.html" hreflang="cs" rel="alternate"/><link href="https://cestovatel69.cz/en/smart-home/blog.html" hreflang="en" rel="alternate"/><link href="https://cestovatel69.cz/it/smart-home/blog.html" hreflang="it" rel="alternate"/><link href="/assets/css/editorial-preview.css?v=20261117-editorial" rel="stylesheet"/><link href="/assets/css/editorial-site.css?v=20261117-editorial" rel="stylesheet"/><script defer="" src="/assets/js/editorial-ui.js?v=20261117-editorial"></script></head>
+<body class="sh-visitor-page editorial-preview editorial-site editorial-technical">
+<a class="skip-link" href="/smart-home/blog.html#main">Přeskočit na obsah</a>
+<header class="site-header" id="site-header">
 <div class="container header-inner">
-<a aria-label="SMART HOME – home" class="brand" href="index.html">
+<a aria-label="SMART HOME – home" class="brand" href="/smart-home/">
 <span aria-hidden="true" class="brand-mark"></span>
 <span class="brand-name">SMART<span class="brand-name-accent">HOME</span></span>
 </a>
@@ -34,22 +34,20 @@
 <span aria-hidden="true" class="nav-toggle-bars"></span>
 </button>
 <ul class="nav-list" id="nav-list">
-
-<li><a href="index.html">Domů</a></li>
-<li><a href="prozivani.html">Jak to funguje</a></li>
-<li><a href="zarizeni.html">Zařízení</a></li>
-<li><a href="hardware-komplet.html">Hardware</a></li>
-<li><a href="dashboard.html">Dashboard</a></li>
-<li><a href="pribeh.html">Příběh</a></li>
-<li><a aria-current="page" class="is-active" href="blog.html">Blog</a></li>
-<li><a href="kontakt.html">O projektu</a></li>
+<li><a href="/smart-home/">Domů</a></li>
+<li><a href="/smart-home/prozivani.html">Jak to funguje</a></li>
+<li><a href="/smart-home/zarizeni.html">Zařízení</a></li>
+<li><a href="/smart-home/hardware-komplet.html">Hardware</a></li>
+<li><a href="/smart-home/dashboard.html">Dashboard</a></li>
+<li><a href="/smart-home/pribeh.html">Příběh</a></li>
+<li><a aria-current="page" class="is-active" href="/smart-home/blog.html">Blog</a></li>
+<li><a href="/smart-home/kontakt.html">O projektu</a></li>
 </ul>
 </nav>
 </div>
 </header>
-<aside class="visitor-bar" aria-label="Osobní web a Smart Home"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/">← Zpět na cestovatel69.cz</a><a href="/o-mne.html">O mně</a></div><div class="visitor-links"><a href="/smart-home/">Úvod Smart Home</a><span class="visitor-overviews">Stručný úvod:</span><a href="/en/smart-home/" hreflang="en" lang="en">English</a><a href="/it/smart-home/" hreflang="it" lang="it">Italiano</a></div></div></aside>
-
-  <main id="main">
+<aside aria-label="Osobní web a Smart Home" class="visitor-bar"><div class="container"><div class="visitor-links"><a class="visitor-back" href="/">← Zpět na cestovatel69.cz</a><a href="/o-mne.html">O mně</a><a href="/smart-home/">Úvod Smart Home</a></div><nav aria-label="Jazyk stránky" class="lang-switcher editorial-language"><a aria-current="page" href="/smart-home/blog.html" hreflang="cs" lang="cs">CS</a><a href="/en/smart-home/blog.html" hreflang="en" lang="en">EN</a><a href="/it/smart-home/blog.html" hreflang="it" lang="it">IT</a></nav></div></aside>
+<main id="main">
 <section class="section section-hero hub-hero" id="blog">
 <div class="container">
 <p class="eyebrow">Vývoj domácnosti · Technický deník</p>
@@ -352,7 +350,7 @@
 <span class="buildlog-tag">WEB</span>
 </div>
 <h3>Sekce „Moje aplikace" živá — 7 aplikací, 50 screenů, audit drift sweep</h3>
-<p>Dvoudenní intenzivní práce na osobním webu <a href="https://cestovatel69.cz/aplikace/" rel="noopener" target="_blank">cestovatel69.cz/aplikace</a>. Nová hub sekce prezentuje sedm vlastních aplikací: <strong>Config Center</strong>, <strong>Italia Travel Planner</strong>, <strong>Účetní kniha</strong>, <strong>Finance Analytik</strong>, <strong>Krabičková dieta</strong>, <strong>Energy Dashboard</strong> a <strong>Domácí panel na zdi</strong> (RPi kiosk). Celkem 50 screenů (14 ITP, 8 UK, 8 Analytik, 8 Meal Planner, 7 CC, 4 RPi, 1 Energy), plně lokalizováno CS/EN/IT (21 stránek = 7×3). Texty pro běžné lidi — tech jargon vždy vysvětlený v 1 větě (DCF, FIFO, AES, ZTL zóny, BMR/TDEE). Site-wide vanilla JS lightbox — klikni na kterýkoli obrázek, otevře se fullscreen modal, ESC zavře. Po finišování proběhl <strong>audit drift sweep</strong> obou webů (osobni + smart-home-website): nalezeno 25 driftů ve 3 prioritách, opraveno 13 (P0+P1). Hlavní motivy: RPi kiosk umístění (kuchyně → předsíň, oprava i v EN/IT mirrorech), Sheets → SSD framing na 5 stránkách smart-home webu (po 27.5. cutover), Shelly Plug S Gen3 status z „na cestě" → „LIVE od 30.4.", Door/Window Sensor diakritika („Jídelna1" → „Jidelna1") sjednocena, Intenso SSD z „plánováno" → „LIVE od 27.5.2026" (verified <code>/dev/sda1</code>).</p>
+<p>Dvoudenní intenzivní práce na osobním webu <a href="/aplikace/" rel="noopener" target="_blank">cestovatel69.cz/aplikace</a>. Nová hub sekce prezentuje sedm vlastních aplikací: <strong>Config Center</strong>, <strong>Italia Travel Planner</strong>, <strong>Účetní kniha</strong>, <strong>Finance Analytik</strong>, <strong>Krabičková dieta</strong>, <strong>Energy Dashboard</strong> a <strong>Domácí panel na zdi</strong> (RPi kiosk). Celkem 50 screenů (14 ITP, 8 UK, 8 Analytik, 8 Meal Planner, 7 CC, 4 RPi, 1 Energy), plně lokalizováno CS/EN/IT (21 stránek = 7×3). Texty pro běžné lidi — tech jargon vždy vysvětlený v 1 větě (DCF, FIFO, AES, ZTL zóny, BMR/TDEE). Site-wide vanilla JS lightbox — klikni na kterýkoli obrázek, otevře se fullscreen modal, ESC zavře. Po finišování proběhl <strong>audit drift sweep</strong> obou webů (osobni + smart-home-website): nalezeno 25 driftů ve 3 prioritách, opraveno 13 (P0+P1). Hlavní motivy: RPi kiosk umístění (kuchyně → předsíň, oprava i v EN/IT mirrorech), Sheets → SSD framing na 5 stránkách smart-home webu (po 27.5. cutover), Shelly Plug S Gen3 status z „na cestě" → „LIVE od 30.4.", Door/Window Sensor diakritika („Jídelna1" → „Jidelna1") sjednocena, Intenso SSD z „plánováno" → „LIVE od 27.5.2026" (verified <code>/dev/sda1</code>).</p>
 </article>
 <article class="buildlog-entry bl-feature" role="listitem">
 <div class="buildlog-meta">
@@ -408,7 +406,7 @@
 <span class="buildlog-tag">FEATURE</span>
 </div>
 <h3>Dashboard Config Center + Weather restore — 8 vln v jeden den</h3>
-<p>15. května večer. Po sérii R2-R6A oprav Homey runtime se přesun na dashboard. <strong>Wave 1</strong> přidal <code>__CANON_ENUMS</code> guard — dashboard přestal psát czech literály (<code>doma</code>, <code>pryc</code>, <code>ano</code>, <code>strong_yes</code>) do logických proměnných, 9 zakázaných tokenů blokováno na write path. <strong>Wave 2A</strong> obnovil cache-first weather renderer (po SSD migraci RPi se vrátila stará OWM verze — deploy-channel regression, ne code bug); <strong>Wave 2B</strong> oživil cron <code>sh_weather_yr_bridge_v1</code> z yr.no, žádné API klíče. <strong>Wave 3</strong> udělal z rolety PURE LUX truth (odstraněný short-circuit <code>sh_house_state='home_normal'</code>, který občas držel roletu nahoře i v noci). <strong>Wave 6</strong> propagoval enum guard na desktop v7_1920 + v7_2880. <strong>Wave 4A → 4B-6</strong> Config Center: <code>DASHBOARD_CONFIG_SCHEMA</code> + <code>writeVarValidated</code> + <code>writeCfg</code> dispatcher, růst z 18 entries na 128+ (min/max/enum/crossField/softWarnings), pokrývá morning/heating/audio/light/occupancy/roleta/energy/scenes. Aktuálně soft-reject, po 24h soaku hard-mode flip. Final RPi sha <code>e3216213…</code>. <a href="posts/dashboard-config-center.html">Číst delší post →</a></p>
+<p>15. května večer. Po sérii R2-R6A oprav Homey runtime se přesun na dashboard. <strong>Wave 1</strong> přidal <code>__CANON_ENUMS</code> guard — dashboard přestal psát czech literály (<code>doma</code>, <code>pryc</code>, <code>ano</code>, <code>strong_yes</code>) do logických proměnných, 9 zakázaných tokenů blokováno na write path. <strong>Wave 2A</strong> obnovil cache-first weather renderer (po SSD migraci RPi se vrátila stará OWM verze — deploy-channel regression, ne code bug); <strong>Wave 2B</strong> oživil cron <code>sh_weather_yr_bridge_v1</code> z yr.no, žádné API klíče. <strong>Wave 3</strong> udělal z rolety PURE LUX truth (odstraněný short-circuit <code>sh_house_state='home_normal'</code>, který občas držel roletu nahoře i v noci). <strong>Wave 6</strong> propagoval enum guard na desktop v7_1920 + v7_2880. <strong>Wave 4A → 4B-6</strong> Config Center: <code>DASHBOARD_CONFIG_SCHEMA</code> + <code>writeVarValidated</code> + <code>writeCfg</code> dispatcher, růst z 18 entries na 128+ (min/max/enum/crossField/softWarnings), pokrývá morning/heating/audio/light/occupancy/roleta/energy/scenes. Aktuálně soft-reject, po 24h soaku hard-mode flip. Final RPi sha <code>e3216213…</code>. <a href="/smart-home/posts/dashboard-config-center.html">Číst delší post →</a></p>
 </article>
 <article class="buildlog-entry bl-fix" role="listitem">
 <div class="buildlog-meta">
@@ -416,7 +414,7 @@
 <span class="buildlog-tag">FIX</span>
 </div>
 <h3>Memory pressure — 1 var + 6 live patchů + bathroom audio konečně odjelo z koupelny</h3>
-<p>Druhá půle dne 14. května: po dopoledním úklidu RPi/HAOS přišly živé zásahy do Homey. Diagnostika potvrdila <strong>1 295 cron fires/h</strong> napříč 67 cron flows — HomeyScript app cyklovala na 125 MB threshold, watchdog ji restartoval 38× za den, a <strong>vacancy guardian běžel reálně jen 5× za 24h místo očekávaných 288×</strong>. To vysvětlilo dlouhotrvající stížnost: koupelna která zůstala svítit / s rádiem po opuštění místnosti. Nasazeno 6 live změn v jednom dni — všech 6 bit-perfect SHA verify, žádný flow/dashboard/device touch: (1) nová proměnná <code>sh_vacancy_guardian_heartbeat_ts</code>, (2) <code>sh_room_vacancy_guardian_v1</code> v1.1 (heartbeat at start + stuck-audio-reset), (3-7) pět throttle patchů (TTS skip-empty-queue, Kaffe time-window, Wake/Score sleep-window). Měřitelný win <strong>do 9 minut</strong>: guardian dokončil první run za 40+ min a vyresetoval stuck <code>sh_audio_current_mode='radio_bathroom'</code> z ranní rutiny na <code>idle</code>. Pět R2-failsafe sandbox testů (T22-T26), staleness pair-logic OK/WARN/CRASH_MID_RUN/CRON_NOT_FIRING klasifikátor. <a href="posts/r2-memory-pressure-six-live-patches.html">Číst delší post →</a></p>
+<p>Druhá půle dne 14. května: po dopoledním úklidu RPi/HAOS přišly živé zásahy do Homey. Diagnostika potvrdila <strong>1 295 cron fires/h</strong> napříč 67 cron flows — HomeyScript app cyklovala na 125 MB threshold, watchdog ji restartoval 38× za den, a <strong>vacancy guardian běžel reálně jen 5× za 24h místo očekávaných 288×</strong>. To vysvětlilo dlouhotrvající stížnost: koupelna která zůstala svítit / s rádiem po opuštění místnosti. Nasazeno 6 live změn v jednom dni — všech 6 bit-perfect SHA verify, žádný flow/dashboard/device touch: (1) nová proměnná <code>sh_vacancy_guardian_heartbeat_ts</code>, (2) <code>sh_room_vacancy_guardian_v1</code> v1.1 (heartbeat at start + stuck-audio-reset), (3-7) pět throttle patchů (TTS skip-empty-queue, Kaffe time-window, Wake/Score sleep-window). Měřitelný win <strong>do 9 minut</strong>: guardian dokončil první run za 40+ min a vyresetoval stuck <code>sh_audio_current_mode='radio_bathroom'</code> z ranní rutiny na <code>idle</code>. Pět R2-failsafe sandbox testů (T22-T26), staleness pair-logic OK/WARN/CRASH_MID_RUN/CRON_NOT_FIRING klasifikátor. <a href="/smart-home/posts/r2-memory-pressure-six-live-patches.html">Číst delší post →</a></p>
 </article>
 <article class="buildlog-entry bl-feature" role="listitem">
 <div class="buildlog-meta">
@@ -424,7 +422,7 @@
 <span class="buildlog-tag">INFRASTRUCTURE</span>
 </div>
 <h3>Sandbox 24/7 + kiosk Phase E + dashboard cache retry — den úklidu</h3>
-<p>Den, kdy se RPi/HAOS přestal hrát na servisního pomocníka a stal se z něj plnohodnotná testovací brána. Node.js 24.14 nainstalován do <code>core_ssh</code> addonu s persistencí přes <code>apks</code> config. <strong>Python sandbox runner</strong> nasazen 24/7 přes HA <code>shell_command</code> + automation každou hodinu — gate <code>DEPLOY_GATE_OPEN</code>, testy <strong>20/20 PASS</strong>, replay 13/13. Když HA Core container Node neměl, runner přepsán do Pythonu (F1-B). <strong>Dashboard cache retry fix v2.1</strong> — transient 417/0 errory teď retry 3× s backoffem místo crashe; error rate spadl z 5 % na 1.8 %. <strong>Kiosk Phase E LIVE</strong> — RPi kiosek (192.168.1.xxx) má teď cache→Homey REST→localStorage fallback chain s viditelným badge (● CACHE / ◐ CACHE OLD / ○ HOMEY / ○ LOCAL). Vše rebuilt fresh ze samotného kiosk HTML bez PC reference. 0 Homey writes, 0 dashboard edits, 0 device renames. <a href="posts/sandbox-24-7-kiosk-phase-e.html">Číst delší post →</a></p>
+<p>Den, kdy se RPi/HAOS přestal hrát na servisního pomocníka a stal se z něj plnohodnotná testovací brána. Node.js 24.14 nainstalován do <code>core_ssh</code> addonu s persistencí přes <code>apks</code> config. <strong>Python sandbox runner</strong> nasazen 24/7 přes HA <code>shell_command</code> + automation každou hodinu — gate <code>DEPLOY_GATE_OPEN</code>, testy <strong>20/20 PASS</strong>, replay 13/13. Když HA Core container Node neměl, runner přepsán do Pythonu (F1-B). <strong>Dashboard cache retry fix v2.1</strong> — transient 417/0 errory teď retry 3× s backoffem místo crashe; error rate spadl z 5 % na 1.8 %. <strong>Kiosk Phase E LIVE</strong> — RPi kiosek (192.168.1.xxx) má teď cache→Homey REST→localStorage fallback chain s viditelným badge (● CACHE / ◐ CACHE OLD / ○ HOMEY / ○ LOCAL). Vše rebuilt fresh ze samotného kiosk HTML bez PC reference. 0 Homey writes, 0 dashboard edits, 0 device renames. <a href="/smart-home/posts/sandbox-24-7-kiosk-phase-e.html">Číst delší post →</a></p>
 </article>
 <article class="buildlog-entry bl-feature" role="listitem">
 <div class="buildlog-meta">
@@ -432,7 +430,7 @@
 <span class="buildlog-tag">ARCHITEKTURA</span>
 </div>
 <h3>Tři zdroje počasí → jeden. LOCATION_TIME_GUARD den.</h3>
-<p>Briefing recitoval 13 °C zatímco venku bylo 6 °C. V 3:03 ráno se sám spustil než zazvonil budík. A systém uměl říct „dobré ráno" v noci. Audit odhalil tři paralelní zdroje počasí (yr.no + OpenWeatherMap + Open-Meteo) ve dvou různých městech a hardcoded fallback teplotu. Konsolidace: yr.no jako jediný zdroj (lokalita bytu, LOCATION_REDACTED), nový skript <code>sh_weather_yr_bridge_v1</code> (cron 10 min → 22 vars), centrální vrstva <code>sh_location_time_context_v1</code> (master JSON pro lokaci+čas+phase, refresh 5 min). Smazáno: Open-Meteo fetcher, OWM HTTP fetch v context_full (−2 868 znaků dead code), <code>sh_owm_api_key</code>, hardcoded GPS v dashboards. Greeting guard v briefingu: phase=night → „Vítej, Luďku" místo „Dobré ráno". Phase guard v morning_brain blokuje motion-trigger v noci bez alarmu. <a href="posts/yr-single-source.html">Číst delší post →</a></p>
+<p>Briefing recitoval 13 °C zatímco venku bylo 6 °C. V 3:03 ráno se sám spustil než zazvonil budík. A systém uměl říct „dobré ráno" v noci. Audit odhalil tři paralelní zdroje počasí (yr.no + OpenWeatherMap + Open-Meteo) ve dvou různých městech a hardcoded fallback teplotu. Konsolidace: yr.no jako jediný zdroj (lokalita bytu, LOCATION_REDACTED), nový skript <code>sh_weather_yr_bridge_v1</code> (cron 10 min → 22 vars), centrální vrstva <code>sh_location_time_context_v1</code> (master JSON pro lokaci+čas+phase, refresh 5 min). Smazáno: Open-Meteo fetcher, OWM HTTP fetch v context_full (−2 868 znaků dead code), <code>sh_owm_api_key</code>, hardcoded GPS v dashboards. Greeting guard v briefingu: phase=night → „Vítej, Luďku" místo „Dobré ráno". Phase guard v morning_brain blokuje motion-trigger v noci bez alarmu. <a href="/smart-home/posts/yr-single-source.html">Číst delší post →</a></p>
 </article>
 <article class="buildlog-entry bl-fix" role="listitem">
 <div class="buildlog-meta">
@@ -440,7 +438,7 @@
 <span class="buildlog-tag">INFRASTRUCTURE</span>
 </div>
 <h3>Sheets cleanup + dashboard fix — den po rozbité rutině</h3>
-<p>Ranní rutina v pondělí nezačala. Začalo to fixem jednoho bugu (sleep_window blokoval routing po budíku) a skončilo úklidem celé Google Sheets vrstvy. 28 listů → 25, 6 commitů, Apps Script v18 → v21. Score producer (existoval, nikdo ho nečetl) napojený na brain. Tři chybějící dashboard endpointy přidané (Lux/Battery/Morning Timeline). Sensor registry pro adaptabilní budoucí čidla. DeviceInventory producer který nikdy neposílal. Architektonický bug v <code>logEvent</code> lib (default <code>sheet:'EventLog'</code> forsoval všechny event_type events do jednoho listu) odhalený. <a href="posts/sheets-cleanup-v21.html">Číst celý postmortem →</a></p>
+<p>Ranní rutina v pondělí nezačala. Začalo to fixem jednoho bugu (sleep_window blokoval routing po budíku) a skončilo úklidem celé Google Sheets vrstvy. 28 listů → 25, 6 commitů, Apps Script v18 → v21. Score producer (existoval, nikdo ho nečetl) napojený na brain. Tři chybějící dashboard endpointy přidané (Lux/Battery/Morning Timeline). Sensor registry pro adaptabilní budoucí čidla. DeviceInventory producer který nikdy neposílal. Architektonický bug v <code>logEvent</code> lib (default <code>sheet:'EventLog'</code> forsoval všechny event_type events do jednoho listu) odhalený. <a href="/smart-home/posts/sheets-cleanup-v21.html">Číst celý postmortem →</a></p>
 </article>
 <article class="buildlog-entry bl-feature" role="listitem">
 <div class="buildlog-meta">
@@ -448,7 +446,7 @@
 <span class="buildlog-tag">FEATURE</span>
 </div>
 <h3>Dům, který sám sebe pozoruje — nová vrstva vědomí</h3>
-<p>Přibyly dvě „pozorovatelské" vrstvy. První každou minutu vyhodnocuje, v jakém režimu se domov právě nachází (klidný spánek, noční výlet na záchod, ranní probouzení, někdo odchází…) — a u každého odhadu má skóre jistoty od 0 do 100. Druhá vrstva každých 5 minut kontroluje, že všechny klíčové programy běží, a u jednoznačně-bezpečných problémů je sama opraví. Při kritickém problému pošle push notifikaci na telefon. <a href="posts/dum-pozoruje-sam-sebe.html">Číst delší vysvětlení →</a></p>
+<p>Přibyly dvě „pozorovatelské" vrstvy. První každou minutu vyhodnocuje, v jakém režimu se domov právě nachází (klidný spánek, noční výlet na záchod, ranní probouzení, někdo odchází…) — a u každého odhadu má skóre jistoty od 0 do 100. Druhá vrstva každých 5 minut kontroluje, že všechny klíčové programy běží, a u jednoznačně-bezpečných problémů je sama opraví. Při kritickém problému pošle push notifikaci na telefon. <a href="/smart-home/posts/dum-pozoruje-sam-sebe.html">Číst delší vysvětlení →</a></p>
 </article>
 <article class="buildlog-entry bl-feature" role="listitem">
 <div class="buildlog-meta">
@@ -596,7 +594,7 @@
 </header>
 <div class="post-grid">
 <article class="post-card">
-<a aria-label="Tři zdroje počasí — jeden" class="post-card-link" href="posts/yr-single-source.html">
+<a aria-label="Tři zdroje počasí — jeden" class="post-card-link" href="/smart-home/posts/yr-single-source.html">
 <div class="post-card-thumb">
 <span class="post-card-badge">ARCHITEKTURA</span>
 </div>
@@ -613,7 +611,7 @@
 </a>
 </article>
 <article class="post-card">
-<a aria-label="Den, kdy dům začal sám sebe pozorovat" class="post-card-link" href="posts/dum-pozoruje-sam-sebe.html">
+<a aria-label="Den, kdy dům začal sám sebe pozorovat" class="post-card-link" href="/smart-home/posts/dum-pozoruje-sam-sebe.html">
 <div class="post-card-thumb">
 <span class="post-card-badge">INTELIGENCE</span>
 </div>
@@ -630,7 +628,7 @@
 </a>
 </article>
 <article class="post-card">
-<a aria-label="Dashboard V7 – nový layout a vizuální kontrola" class="post-card-link" href="posts/dashboard-v7.html">
+<a aria-label="Dashboard V7 – nový layout a vizuální kontrola" class="post-card-link" href="/smart-home/posts/dashboard-v7.html">
 <div class="post-card-thumb">
 <span class="post-card-badge">DASHBOARD</span>
 </div>
@@ -647,7 +645,7 @@
 </a>
 </article>
 <article class="post-card">
-<a aria-label="UUID re-pair orphans – silent fail po výměně baterky" class="post-card-link" href="posts/uuid-repair-orphans.html">
+<a aria-label="UUID re-pair orphans – silent fail po výměně baterky" class="post-card-link" href="/smart-home/posts/uuid-repair-orphans.html">
 <div class="post-card-thumb">
 <span class="post-card-badge">SENZORY</span>
 </div>
@@ -664,7 +662,7 @@
 </a>
 </article>
 <article class="post-card">
-<a aria-label="Bathroom misroute – 4 hodiny diagnostiky" class="post-card-link" href="posts/bathroom-misroute.html">
+<a aria-label="Bathroom misroute – 4 hodiny diagnostiky" class="post-card-link" href="/smart-home/posts/bathroom-misroute.html">
 <div class="post-card-thumb">
 <span class="post-card-badge">AUDIO</span>
 </div>
@@ -681,7 +679,7 @@
 </a>
 </article>
 <article class="post-card">
-<a aria-label="Cold-start anti-cycling bug" class="post-card-link" href="posts/heating-coldstart-bug.html">
+<a aria-label="Cold-start anti-cycling bug" class="post-card-link" href="/smart-home/posts/heating-coldstart-bug.html">
 <div class="post-card-thumb">
 <span class="post-card-badge">TOPENÍ</span>
 </div>
@@ -727,22 +725,19 @@
 </div>
 </section>
 </main>
-
-  <!-- LIGHTBOX -->
-  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Zvětšený obrázek">
-    <button class="lightbox-close" aria-label="Zavřít zvětšení">&times;</button>
-    <img class="lightbox-img" src="" alt="" />
-    <p class="lightbox-cap"></p>
-  </div>
-
-  <footer class="site-footer">
+<!-- LIGHTBOX -->
+<div aria-hidden="true" aria-label="Zvětšený obrázek" class="lightbox" id="lightbox" role="dialog">
+<button aria-label="Zavřít zvětšení" class="lightbox-close">×</button>
+<img alt="" class="lightbox-img" src=""/>
+<p class="lightbox-cap"></p>
+</div>
+<footer class="site-footer">
 <div class="container footer-inner">
 <p>© <span id="year"></span> Budinský Luděk · SMART HOME projekt · Vyrobeno s ❤️ a script-first myšlením.</p>
 <p class="footer-meta">Veřejná prezentace · žádné API klíče · žádné lokální IP · žádné ovládání odtud.</p>
-<p class="footer-meta"><a href="technicka-mapa.html">Technická mapa →</a> · <a href="index.html">Domů</a></p>
+<p class="footer-meta"><a href="/smart-home/technicka-mapa.html">Technická mapa →</a> · <a href="/smart-home/">Domů</a></p>
 </div>
 </footer>
-
-  <script src="script.js?v=20261030-navrh" defer></script>
+<script defer="" src="/smart-home/script.js?v=20261117-editorial"></script>
 </body>
 </html>
