@@ -10,7 +10,7 @@ import json, re, subprocess, sys, xml.etree.ElementTree as ET
 from _build_blog import SERIES, SERIES_PATH
 
 ROOT=Path(__file__).resolve().parent
-TRANSLATION_FILE=ROOT/'_data/editorial/translations.json'
+TRANSLATION_FILE=ROOT/'_editorial/translations.json'
 if not TRANSLATION_FILE.exists():TRANSLATION_FILE=ROOT.parent/'reports/editorial-migration-20261117/translations.json'
 translations=json.loads(TRANSLATION_FILE.read_text(encoding='utf8')) if TRANSLATION_FILE.exists() else {}
 def translated(text,lang):

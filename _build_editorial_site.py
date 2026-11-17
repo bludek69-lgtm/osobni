@@ -88,8 +88,8 @@ for _lang in ('en','it'):
 
 def prepare_cache(cache):
  """Keep personal names and region names out of generic machine translations."""
- identities=json.loads((ROOT/'_data/editorial/credit-identities.json').read_text(encoding='utf8'))
- overrides=json.loads((ROOT/'_data/editorial/translation-overrides.json').read_text(encoding='utf8'))
+ identities=json.loads((ROOT/'_editorial/credit-identities.json').read_text(encoding='utf8'))
+ overrides=json.loads((ROOT/'_editorial/translation-overrides.json').read_text(encoding='utf8'))
  for lang in ('en','it'):
   # A photographer's name or Commons username is an attribution, not prose.
   aliases={name:cache[lang].get(name,name) for name in identities}
@@ -372,7 +372,7 @@ def localize_url(value,file,lang,available):
 def render(file,lang,p,cache):
  s=edit_copy(removed_news(BeautifulSoup((ORIGINAL/file).read_text(encoding='utf8'),'html.parser')))
  if file.startswith('zdroje/'):
-  identities=set(json.loads((ROOT/'_data/editorial/credit-identities.json').read_text(encoding='utf8')))
+  identities=set(json.loads((ROOT/'_editorial/credit-identities.json').read_text(encoding='utf8')))
   for tag in s.find_all(['dd','b','strong','a']):
    if normalize(tag.get_text()) in identities:tag['translate']='no'
   if file=='zdroje/jizni-morava-fotografie.html':
@@ -547,7 +547,7 @@ def render(file,lang,p,cache):
    img['data-full-src']=img['src'];img['src']=record['preview'];img['width']=str(record['width']);img['height']=str(record['height'])
  if lang!='cs':
   if file=='cestovani/italie/italstina/index.html':
-   pronunciation=read_json(ROOT/'_data/editorial/italian-pronunciation.json')[lang]
+   pronunciation=read_json(ROOT/'_editorial/italian-pronunciation.json')[lang]
    for card,(heading,body) in zip(s.select('.it-pronunciation__card'),pronunciation):
     card.h3.string=heading;card.h3['lang']=lang
     paragraph=card.find('p');paragraph.clear();paragraph['lang']=lang
@@ -628,8 +628,8 @@ def build():
  p=read_json(STATE/'plan.json');cache=prepare_cache(read_json(STATE/'translations.json',{}))
  missing={l:sum(t not in cache.get(l,{}) for t in p['strings']) for l in ('en','it')}
  if any(missing.values()):raise RuntimeError(f'Translations incomplete: {missing}')
- write_json(ROOT/'_data/editorial/translations.json',cache)
- (ROOT/'assets/js/editorial-italian-ui.js').write_text('/* Local Italian UI and situation descriptions; no translation service at runtime. */\nwindow.ItalianEditorialCopy = '+json.dumps(read_json(ROOT/'_data/editorial/italian-ui.json'),ensure_ascii=False)+';\n',encoding='utf8')
+ write_json(ROOT/'_editorial/translations.json',cache)
+ (ROOT/'assets/js/editorial-italian-ui.js').write_text('/* Local Italian UI and situation descriptions; no translation service at runtime. */\nwindow.ItalianEditorialCopy = '+json.dumps(read_json(ROOT/'_editorial/italian-ui.json'),ensure_ascii=False)+';\n',encoding='utf8')
  for item in p['pages']:
   for lang in LANGS:
    dest=ROOT/('' if lang=='cs' else lang)/item['file'];dest.parent.mkdir(parents=True,exist_ok=True)
