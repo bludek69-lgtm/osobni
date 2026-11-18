@@ -28,7 +28,9 @@ Povolení ani odvolání Analytics nemění reklamní účely. Nastavení GA4 na
 zakazuje Google Signals a reklamní personalizaci analytických dat.
 
 V patičce je „Nastavení reklam“ / „Advertising settings“ / „Impostazioni
-pubblicitarie“. Zpřístupní se po CONSENT_API_READY. Volá podporované
+pubblicitarie“. Od opravy z 18. 11. 2026 se zpřístupní až po úspěšné odpovědi
+TCF API s cmpStatus=loaded a gdprApplies=true. CONSENT_API_READY samo nestačí:
+Google může načíst API i bez aktivní souhlasové zprávy. Volá podporované
 googlefc.showRevocationMessage přes googlefc.callbackQueue. Při blokování
 Google CMP rozšířením může být toto tlačítko nedostupné. Informace jsou také
 na stránkách soukromí ve třech jazycích.
@@ -37,7 +39,7 @@ Na localhostu, jiných hostitelích a uvnitř /demo/ se integrace nespouští.
 Souhlas s reklamami sám nespouští Google Analytics. Nepřipojovat Analytics k
 souhlasu pro účel 1 v AdSense bez změny této logiky a informací pro návštěvníka.
 
-URL tří vstupních skriptů mají verzi 20261117-adsense, včetně přímých značek
+URL tří vstupních skriptů mají verzi 20261118-cmpfix, včetně přímých značek
 v HTML. `_refresh_consent_assets.py` je obnoví bez přeformátování obsahu.
 Generátory blogu, šablon a jazykových stránek zachovávají tuto verzi.
 
@@ -52,6 +54,24 @@ a vyloučit chybové, navigační, pomocné či demonstrační obrazovky.
 - Syntaxe tří změněných JS souborů a `git diff --check`.
 - Živá zpráva se ověřuje po nasazení; Google uvádí možnost prodlevy až jednu
   hodinu po publikování. Testovací URL: /?fc=alwaysshow&fctype=gdpr.
+
+## Diagnostika z 18. 11. 2026
+
+Značka AdSense i přímá značka Google Privacy & messaging vracely inicializaci
+bez viditelného souhlasového okna. V DOM vznikal rámec googlefcInactive,
+přesto již běžel callback CONSENT_API_READY. To odhalilo chybu původní
+kontroly dostupnosti tlačítka. Oprava sleduje podporovaný TCF addEventListener;
+nevytváří vlastní řetězec souhlasu ani nepředstírá certifikovanou CMP.
+
+Stavy pro ověření jsou v data-advertising-consent-ui,
+data-advertising-cmp-status a data-advertising-gdpr-applies na html elementu.
+Neobsahují TC řetězec ani osobní identifikátory. Při neúspěšné nebo neplatné
+odpovědi zůstává tlačítko skryté a oprava neuděluje reklamní souhlasy.
+
+V AdSense bylo ověřeno správné přiřazení domény a zásad soukromí i standardní
+seznam reklamních partnerů; konfigurace téže zprávy byla znovu publikována.
+Žádost o nové posouzení webu tím nebyla odeslána. Úplné ověření zobrazení
+a změny reklamního souhlasu je nutné dokončit na skutečně doručeném okně.
 
 Dokumentace:
 - https://support.google.com/adsense/answer/10924669?hl=cs

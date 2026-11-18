@@ -160,8 +160,19 @@
     });
     controls.appendChild(settings);
     googlefc.callbackQueue.push({CONSENT_API_READY: function () {
-      settings.hidden = false;
-      document.documentElement.dataset.advertisingConsentUi = 'ready';
+      // API readiness does not mean Google has an applicable consent message.
+      // Observe the supported TCF API rather than offering a dead revocation button.
+      const state = document.documentElement.dataset;
+      state.advertisingConsentUi = 'loading';
+      if (typeof window.__tcfapi !== 'function') return;
+      window.__tcfapi('addEventListener', 2, function (data, success) {
+        const status = data && ['stub', 'loading', 'loaded', 'error'].includes(data.cmpStatus) ? data.cmpStatus : 'unknown';
+        state.advertisingCmpStatus = status;
+        state.advertisingGdprApplies = data?.gdprApplies === true ? 'true' : data?.gdprApplies === false ? 'false' : 'unknown';
+        const ready = success === true && status === 'loaded' && data.gdprApplies === true;
+        settings.hidden = !ready;
+        state.advertisingConsentUi = ready ? 'ready' : data?.gdprApplies === false ? 'not-applicable' : 'unavailable';
+      });
     }});
     if (!document.getElementById('cestovatel-adsense')) {
       const script = document.createElement('script');
@@ -178,7 +189,7 @@
     if (location.pathname.includes('/demo/')) return;
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = '/assets/css/analytics-consent.css?v=20261117-adsense';
+    css.href = '/assets/css/analytics-consent.css?v=20261118-cmpfix';
     document.head.appendChild(css);
     banner = document.createElement('section');
     banner.className = 'analytics-consent';

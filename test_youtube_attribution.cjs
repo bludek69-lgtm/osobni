@@ -55,7 +55,21 @@ for (const purpose of ['analytics_storage', 'ad_storage', 'ad_user_data', 'ad_pe
 const button = controls.children[0];
 assert.equal(button.hidden, true);
 const queue = ads.window.googlefc.callbackQueue;
+let tcfListener;
+ads.window.__tcfapi = (command, version, listener) => {
+  assert.equal(command, 'addEventListener');
+  assert.equal(version, 2);
+  tcfListener = listener;
+};
 queue[0].CONSENT_API_READY();
+assert.equal(button.hidden, true, 'API readiness alone must not expose an unusable button');
+tcfListener({cmpStatus: 'loaded', gdprApplies: false}, true);
+assert.equal(button.hidden, true, 'no revocation button without applicable Google message');
+tcfListener({cmpStatus: 'loading', gdprApplies: true}, true);
+assert.equal(button.hidden, true, 'no revocation button while the CMP is loading');
+tcfListener({cmpStatus: 'loaded', gdprApplies: true}, false);
+assert.equal(button.hidden, true, 'failed CMP response cannot enable the button');
+tcfListener({cmpStatus: 'loaded', gdprApplies: true}, true);
 assert.equal(button.hidden, false);
 let revocations = 0;
 ads.window.googlefc.showRevocationMessage = () => { revocations++; };

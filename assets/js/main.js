@@ -6,7 +6,7 @@
   if (document.getElementById('cestovatel-analytics-consent')) return;
   const privacy = document.createElement('script');
   privacy.id = 'cestovatel-analytics-consent';
-  privacy.src = '/assets/js/analytics-consent.js?v=20261117-adsense';
+  privacy.src = '/assets/js/analytics-consent.js?v=20261118-cmpfix';
   document.head.appendChild(privacy);
 })();
 
