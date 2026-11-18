@@ -293,7 +293,7 @@ def render_template(page: dict, main_html: str, header_extra: str = '\n    ',
     pfx = build_prefix(page['depth'])
     nav_html = render_nav(page['depth'], page['rel'])
     css_href = pfx + 'assets/css/style.css'
-    js_src = pfx + 'assets/js/main.js?v=20261118-cmpfix2'
+    js_src = pfx + 'assets/js/main.js?v=20261118-quality1'
     lang = page_lang(page['rel'])
     kontakt_label = {'en': 'Contact', 'it': 'Contatti'}.get(lang, 'Kontakt')
 

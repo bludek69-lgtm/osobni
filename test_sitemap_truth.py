@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -68,8 +69,12 @@ def main():
         print("RESULT: FAIL (sitemap.xml not found)")
         return 1
 
-    xml = SITEMAP.read_text(encoding="utf-8")
-    url_blocks = re.findall(r"<url>\s*<loc>([^<]+)</loc>\s*<lastmod>([^<]*)</lastmod>", xml, re.DOTALL)
+    # lastmod is optional, and namespace prefixes are not semantically significant.
+    # A regex previously skipped valid translated URLs without a lastmod.
+    root = ET.parse(SITEMAP).getroot()
+    ns = '{http://www.sitemaps.org/schemas/sitemap/0.9}'
+    url_blocks = [(entry.findtext(ns+'loc', ''), entry.findtext(ns+'lastmod', ''))
+                  for entry in root.findall(ns+'url')]
 
     if not url_blocks:
         print("RESULT: FAIL (no <url> entries parsed from sitemap.xml)")
@@ -106,7 +111,7 @@ def main():
         print("[PASS] every sitemap URL corresponds to a real file on disk")
 
     # --- Check 3: lastmod values show real variance, not one hardcoded date ---
-    distinct_dates = sorted(set(d for _, d in url_blocks))
+    distinct_dates = sorted(set(d for _, d in url_blocks if d))
     if len(distinct_dates) < MIN_DISTINCT_LASTMOD:
         failures.append(
             f"lastmod values show no real variance ({len(distinct_dates)} distinct value(s): {distinct_dates}) "

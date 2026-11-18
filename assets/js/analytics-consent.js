@@ -136,6 +136,16 @@
 
   function installAdvertising(controls) {
     if (!production) return;
+    // Keep ads/CMP off utility screens and brief destination/region gateways.
+    // This does not disable Analytics: its separate explicit opt-in still applies.
+    const page = location.pathname.replace(/^\/(?:en|it)(?=\/)/, '');
+    const utility = /^\/(?:zdroje|novinky|soukromi)(?:\/|$)/.test(page) ||
+      /\/demo\//.test(page) || /^\/(?:404|o-mne)\.html$/.test(page) ||
+      /^\/(?:blog|aplikace|cestovani)\/(?:index\.html)?$/.test(page) ||
+      /^\/hry\/denni-kviz\/(?:index\.html)?$/.test(page) ||
+      /^\/cestovani\/italie\/(?:mista|regiony)\/[^/]+\/(?:index\.html)?$/.test(page);
+    document.documentElement.dataset.advertisingScope = utility ? 'excluded' : 'content';
+    if (utility) return;
     // The AdSense tag delivers the published Google CMP. It is not an Analytics opt-in.
     // Set defaults before loading it; the CMP updates advertising purposes only.
     window.dataLayer = window.dataLayer || [];
@@ -191,7 +201,7 @@
     if (location.pathname.includes('/demo/')) return;
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = '/assets/css/analytics-consent.css?v=20261118-cmpfix2';
+    css.href = '/assets/css/analytics-consent.css?v=20261118-quality1';
     document.head.appendChild(css);
     banner = document.createElement('section');
     banner.className = 'analytics-consent';
@@ -216,7 +226,8 @@
     const policy = document.createElement('a');
     policy.href = (['en','it'].includes(language) ? '/'+language : '') + '/soukromi/';
     policy.textContent = text[4];
-    controls.append(settings, policy);
+    controls.appendChild(settings);
+    if (!document.querySelector('footer a[href$="/soukromi/"]')) controls.appendChild(policy);
     const footer = document.querySelector('.footer-links, .site-footer, footer');
     if (footer) footer.appendChild(controls);
     else { controls.classList.add('analytics-privacy-links--floating'); document.body.appendChild(controls); }

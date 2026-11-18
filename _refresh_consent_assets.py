@@ -5,7 +5,7 @@ import re
 import subprocess
 
 ROOT = Path(__file__).resolve().parent
-VERSION = '20261118-cmpfix2'
+VERSION = '20261118-quality1'
 ASSETS = {'/assets/js/analytics-consent.js', '/assets/js/main.js', '/smart-home/script.js'}
 SCRIPT = re.compile(r'''(?P<prefix><script\b[^>]*?\bsrc\s*=\s*)(?P<quote>["'])(?P<src>[^"']+)(?P=quote)''', re.I)
 

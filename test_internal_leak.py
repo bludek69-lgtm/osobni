@@ -37,7 +37,7 @@ PATTERNS = [
     # raw.githubusercontent.com -- that URL is the silent-update manifest the
     # version badges read, and it stays. The owner/repo part is captured as
     # well, so the allowlist can name one concrete URL instead of the whole file.
-    (re.compile(r"github\.com/(?:[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)?)?"
+    (re.compile(r"(?<![A-Za-z0-9.-])github\.com/(?:[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)?)?"
                 r"|[A-Za-z0-9-]+\.github\.io(?:/[A-Za-z0-9._-]+)?", re.I),
      "public GitHub account/repo URL"),
 ]
@@ -45,6 +45,23 @@ PATTERNS = [
 # file -> pattern description -> exact matched strings that are known-OK there
 # (compared case-insensitively, and they must equal what the pattern captures).
 ALLOWLIST = {
+    # Localised copies retain the same upstream library attribution.
+    "en/finance/demo/Ucetni_kniha_v4.html": {
+        "public GitHub account/repo URL": {"github.com/kurkle/color"},
+    },
+    "it/finance/demo/Ucetni_kniha_v4.html": {
+        "public GitHub account/repo URL": {"github.com/kurkle/color"},
+    },
+    # Required attribution for the public map geometry, not the owner's account.
+    "cestovani/italie/index.html": {
+        "public GitHub account/repo URL": {"github.com/guglielmo/geojson-italy"},
+    },
+    "en/cestovani/italie/index.html": {
+        "public GitHub account/repo URL": {"github.com/guglielmo/geojson-italy"},
+    },
+    "it/cestovani/italie/index.html": {
+        "public GitHub account/repo URL": {"github.com/guglielmo/geojson-italy"},
+    },
     # Bundled third-party chart library keeps its upstream attribution comment
     # (https://github.com/kurkle/color#readme) -- it points at the library's
     # author, not at this site's own account. If the bundle is ever rebuilt and

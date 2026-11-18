@@ -51,3 +51,9 @@
 .blog-home .blog-card a:focus-visible,.blog-page a:focus-visible,.blog-page button:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 @media(max-width:650px) { .blog-featured { grid-template-columns: 1fr; } .blog-featured img { min-height: 0; height: auto; } .blog-card__body { padding: 1.2rem; } .blog-content { font-size: 1rem; } .blog-article__header { padding-top: 1.3rem; } }
 @media(prefers-reduced-motion:reduce) { .blog-page { scroll-behavior: auto; } }
+/* Original archive photographs and practical notes complement the film. */
+.blog-archive-photo { margin: 2rem 0; }
+.blog-archive-photo img { display: block; width: 100%; max-width: 100%; max-height: 34rem; height: auto; object-fit: contain; border-radius: 12px; }
+.blog-archive-photo figcaption { margin-top: .65rem; font-size: .92rem; line-height: 1.6; }
+.blog-visit-notes { margin-block: 2rem; }
+.blog-author { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }

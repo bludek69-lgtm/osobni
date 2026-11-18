@@ -6,11 +6,11 @@ const original = fs.readFileSync('assets/js/analytics-consent.js', 'utf8');
 const registry = JSON.parse(fs.readFileSync('_data/youtube-campaigns.json', 'utf8'));
 const source = original.replace(/if \(document\.readyState === 'loading'\) document\.addEventListener\('DOMContentLoaded', install\);\r?\n  else install\(\);/, 'window.testConsent = {apply, disable, installAdvertising};');
 assert.notEqual(source, original);
-function run(search, hostname = 'cestovatel69.cz') {
+function run(search, hostname = 'cestovatel69.cz', pathname = '/blog/hoslovicky-mlyn/') {
   const scripts = [];
   const document = {documentElement: {lang: 'cs', dataset: {}}, referrer: 'https://www.youtube.com/watch?v=private&email=secret@example.com', title: 'Článek', cookie: '', createElement: () => ({addEventListener(event, fn) { this[event] = fn; }}), getElementById: id => scripts.find(x => x.id === id), head: {appendChild: x => scripts.push(x)}};
   const window = {};
-  vm.runInNewContext(source, {window, document, URL, URLSearchParams, location: {hostname, search, origin: 'https://' + hostname, pathname: '/blog/hoslovicky-mlyn/', protocol: 'https:'}, localStorage: {getItem: () => null}, Date, Number});
+  vm.runInNewContext(source, {window, document, URL, URLSearchParams, location: {hostname, search, origin: 'https://' + hostname, pathname, protocol: 'https:'}, localStorage: {getItem: () => null}, Date, Number});
   return {window, document, scripts, commands: () => Array.from(window.dataLayer || [], x => Array.from(x))};
 }
 for (const video of registry) {
@@ -89,4 +89,20 @@ for (const command of analyticsConsentCommands) {
 assert.equal(ads.window['ga-disable-G-BM11EHQG00'], true);
 local.window.testConsent.installAdvertising(controls);
 assert.equal(local.scripts.length, 0, 'CMP and advertising excluded from local previews');
+for (const pathname of ['/zdroje/pisa-mapy.html', '/en/zdroje/pisa-mapy.html', '/it/soukromi/', '/404.html', '/o-mne.html', '/blog/', '/cestovani/index.html', '/finance/demo/view.html', '/cestovani/italie/mista/pisa/', '/en/cestovani/italie/regiony/molise/', '/hry/denni-kviz/']) {
+  const test = run('', 'cestovatel69.cz', pathname);
+  test.window.testConsent.installAdvertising(controls);
+  assert.equal(test.scripts.length, 0, 'No AdSense on utility screen: ' + pathname);
+  assert.equal(test.document.documentElement.dataset.advertisingScope, 'excluded');
+  if (!pathname.includes('/demo/')) {
+    test.window.testConsent.apply(true);
+    assert.equal(test.scripts.length, 1, 'Analytics opt-in remains independent: ' + pathname);
+  }
+}
+for (const pathname of ['/blog/pisa/', '/en/blog/pisa/', '/it/blog/pompeje/', '/cestovani/italie/regiony/molise/podrobne.html', '/smart-home/hardware.html']) {
+  const test = run('', 'cestovatel69.cz', pathname);
+  test.window.testConsent.installAdvertising(controls);
+  assert.equal(test.scripts.length, 1, 'Content keeps the existing CMP: ' + pathname);
+  assert.equal(test.document.documentElement.dataset.advertisingScope, 'content');
+}
 console.log(`PASS: ${registry.length} issued video links; attribution, privacy, independent advertising consent, revocation, denied defaults, localhost exclusion.`);

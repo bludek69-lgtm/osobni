@@ -17,7 +17,7 @@ ORIGINAL = STATE / 'original'
 LANGS = ('cs', 'en', 'it')
 SITE = 'https://cestovatel69.cz'
 VERSION = '20261117-editorial'
-CONSENT_VERSION = '20261118-cmpfix2'
+CONSENT_VERSION = '20261118-quality1'
 SKIP = {'script', 'style', 'code', 'pre', 'kbd', 'samp', 'math', 'template'}
 ATTRS = ('alt', 'title', 'aria-label', 'placeholder', 'data-title')
 COPY_EDITS={
@@ -641,6 +641,9 @@ def build():
    if item['redirect']:
     source=(ORIGINAL/item['file']).read_text(encoding='utf8')
     s=BeautifulSoup(source,'html.parser')
+    for script in s.select('script[src]'):
+     if re.search(r'(?:^|/)assets/js/main\.js(?:\?|$)',script['src']):
+      script['src']='/assets/js/main.js?v=20261118-quality1'
     refresh=s.select_one('meta[http-equiv="refresh" i]')
     if refresh:
      match=re.search(r'url\s*=\s*(.*)',refresh.get('content',''),re.I)
@@ -689,3 +692,6 @@ def build():
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('command',choices=['plan','translate','build','preview_cs','preview_en','recover_translations','images']);args=parser.parse_args()
  globals()[args.command]()
+ if args.command == 'build':
+  from _content_quality import main as apply_content_quality
+  apply_content_quality()

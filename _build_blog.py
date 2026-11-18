@@ -10,6 +10,7 @@ import re
 import xml.etree.ElementTree as ET
 from email.utils import formatdate
 from datetime import datetime, timezone
+from _content_quality import enrich_article_body, static_footer
 
 ROOT = Path(__file__).resolve().parent
 ORIGIN = 'https://cestovatel69.cz'
@@ -45,7 +46,7 @@ def photo_essay(post):
     """An opt-in layout using the same article, video and source catalogue."""
     return f'''<article class="editorial-article"><header class="editorial-article-header"><a href="/blog/">← Všechny články</a><p class="editorial-eyebrow">Itálie / Toskánsko</p><h1>{esc(post['title'])}</h1><p class="editorial-deck">Fotografie z mého archivu, pohled z výšky a souvislosti pro vlastní cestu.</p><div class="editorial-meta"><span>Budinský Luděk</span><time datetime="{post['published']}">{date_label(post['published'])}</time><span>{reading_label(post['reading_minutes'])}</span></div></header>
 <figure class="editorial-panorama"><img src="{esc(post['hero_image'])}" alt="{esc(post['hero_alt'])}" width="1600" height="738" fetchpriority="high" decoding="async"><figcaption><span>{esc(post['hero_caption'])}</span><a href="/cestovani/italie/toskansko/#valdorcia">Celá galerie Val d’Orcia →</a></figcaption></figure>
-<div class="editorial-article-content">{(DATA / (post['slug'] + '.html')).read_text(encoding='utf-8')}</div>
+<div class="editorial-article-content">{enrich_article_body(post['slug'], 'cs', (DATA / (post['slug'] + '.html')).read_text(encoding='utf-8'))}</div>
 <section class="editorial-film" id="film" aria-labelledby="film-title"><p class="editorial-eyebrow">Krajina ve videu</p><h2 id="film-title">Val d’Orcia a Crete Senesi z výšky</h2><p>Krátký film doplňuje fotografie. Video se načte z YouTube po spuštění.</p><div class="featured-video" data-video-id="{post['video_id']}" data-title="{esc(post['video_title'])}"><button class="thumb-cover" type="button" aria-label="Přehrát video: {esc(post['video_title'])}" style="background-image:url('https://img.youtube.com/vi/{post['video_id']}/maxresdefault.jpg')"></button></div><div class="editorial-meta"><span>Délka videa {esc(post['video_duration'])}</span><a href="https://www.youtube.com/watch?v={post['video_id']}" target="_blank" rel="noopener noreferrer">Otevřít na YouTube ↗</a></div><nav class="editorial-actions" aria-label="Podklady k videu"><a href="{esc(post['map_url'])}">Místa na mapě →</a><a href="{esc(post['credits_url'])}">Zdroje fotografií a podklady →</a></nav></section>
 <section class="editorial-sources" aria-labelledby="sources-title"><h2 id="sources-title">Podklady k článku</h2><p>Fotografie na této stránce pocházejí z mého archivu. Souvislosti ke krajině vycházejí z následujících zdrojů; podklady k filmu jsou uvedené samostatně nad touto částí.</p><ul><li><a href="https://whc.unesco.org/en/list/1026/" target="_blank" rel="noopener noreferrer">UNESCO: kulturní krajina Val d’Orcia ↗</a></li><li><a href="https://www.visittuscany.com/en/attractions/crete-senesi-life-park/" target="_blank" rel="noopener noreferrer">Visit Tuscany: Crete Senesi Life Park ↗</a></li></ul></section>
 <nav class="editorial-next" aria-label="Pokračovat ve čtení"><h2>Ještě chvíli v Toskánsku</h2><div class="editorial-actions"><a href="/blog/montepulciano/">Montepulciano →</a><a href="/blog/toskansko-vsemi-smysly/">Toskánsko všemi smysly →</a><a href="{esc(post['project_url'])}">Další cesty po Itálii →</a><a href="https://www.youtube.com/@cestovatel69?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Odebírat kanál Cestovatel69 ↗</a></div></nav></article>'''
@@ -78,6 +79,7 @@ def video_block(videos, limit=None):
 
 
 def wrapper(title, description, path, body, header, footer, image=None, schema=None):
+    footer = static_footer(footer, 'cs')
     image = image or ORIGIN + '/assets/og-default.jpg'
     canonical = ORIGIN + path
     schema_tag = '' if schema is None else '<script type="application/ld+json">' + json.dumps(schema, ensure_ascii=False).replace('<', '\\u003c') + '</script>'
@@ -88,10 +90,10 @@ def wrapper(title, description, path, body, header, footer, image=None, schema=N
 <meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="/assets/css/style.css?v=20261116-navsearch"><link rel="stylesheet" href="/assets/css/language-navigation.css?v=20261030-jazyky"><link rel="stylesheet" href="/assets/css/blog.css?v=20261116-travel">
 <link rel="stylesheet" href="/assets/css/editorial-preview.css?v=20261117-editorial"><link rel="stylesheet" href="/assets/css/editorial-site.css?v=20261117-spacing-1">
-<script id="cestovatel-analytics-consent" src="/assets/js/analytics-consent.js?v=20261118-cmpfix2"></script>
+<script id="cestovatel-analytics-consent" src="/assets/js/analytics-consent.js?v=20261118-quality1"></script>
 <link rel="alternate" type="application/rss+xml" title="Cestovatel69 – Blog z cest" href="/blog/feed.xml">{schema_tag}</head>
 <body class="theme-home blog-page editorial-preview editorial-site {'editorial-hub' if path == '/blog/' else 'editorial-reading'}">{header}<main id="main">{body}</main>{footer}
-<script src="/assets/js/main.js?v=20261118-cmpfix2"></script><script defer src="/assets/js/blog.js?v=20261117-editorial"></script></body></html>'''
+<script src="/assets/js/main.js?v=20261118-quality1"></script><script defer src="/assets/js/blog.js?v=20261117-editorial"></script></body></html>'''
 
 
 def build_series(posts):
@@ -195,7 +197,7 @@ def main():
 <div class="featured-video" data-video-id="{video}" data-title="{esc(post['video_title'])}"><button class="thumb-cover" type="button" aria-label="Přehrát video: {esc(post['video_title'])}" style="background-image:url('https://img.youtube.com/vi/{video}/maxresdefault.jpg')"></button></div>
 <div class="blog-video-caption"><span>Video · {esc(post['video_duration'])} · YouTube se načte po spuštění</span><a href="https://www.youtube.com/watch?v={video}" target="_blank" rel="noopener noreferrer">Otevřít video na YouTube ↗</a></div>
 <nav class="blog-resource-links" aria-label="Podklady k videu"><a href="{esc(post['map_url'])}">Místa na mapě →</a>{credits_link}{short_link}</nav>
-<div class="blog-content">{(DATA / (post['slug'] + '.html')).read_text(encoding='utf-8')}</div>
+<div class="blog-content">{enrich_article_body(post['slug'], 'cs', (DATA / (post['slug'] + '.html')).read_text(encoding='utf-8'))}</div>
 <aside class="blog-related"><h2>Pokračuj v cestování</h2>{series_link}<p><a href="{esc(post['project_url'])}">Prohlédnout další cesty →</a></p><p><a href="https://www.youtube.com/@cestovatel69?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Odebírat Cestovatel69 na YouTube ↗</a></p><a href="/blog/">Zpět na blog →</a></aside></article>'''
         body = body.replace('</article>', video_block([v for v in videos if v['video_id'] != video], limit=3) + '</article>')
         schema = {'@context': 'https://schema.org', '@type': 'BlogPosting', 'headline': post['title'], 'description': post['description'], 'datePublished': post['published'], 'dateModified': post['updated'], 'inLanguage': 'cs', 'author': {'@type': 'Person', 'name': 'Budinský Luděk', 'url': ORIGIN + '/o-mne.html'}, 'mainEntityOfPage': ORIGIN + url(post), 'image': f'https://img.youtube.com/vi/{video}/maxresdefault.jpg'}
@@ -222,7 +224,7 @@ def main():
         home = home.replace("document.querySelectorAll('main img').forEach(function(img){", "document.querySelectorAll('main img').forEach(function(img){\n    if (img.closest('.blog-card')) return;")
     home = home.replace('main.js?v=20261116-blog', 'main.js?v=20261116-analytics')
     if 'id="cestovatel-analytics-consent"' not in home:
-        home = home.replace('</head>', '<script id="cestovatel-analytics-consent" src="/assets/js/analytics-consent.js?v=20261118-cmpfix2"></script>\n</head>')
+        home = home.replace('</head>', '<script id="cestovatel-analytics-consent" src="/assets/js/analytics-consent.js?v=20261118-quality1"></script>\n</head>')
     home_file.write_text(home, encoding='utf-8')
     # RSS gives readers a subscription option without introducing another account.
     rss = ET.Element('rss', version='2.0')
