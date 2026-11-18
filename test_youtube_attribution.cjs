@@ -70,6 +70,8 @@ assert.equal(button.hidden, true, 'no revocation button while the CMP is loading
 tcfListener({cmpStatus: 'loaded', gdprApplies: true}, false);
 assert.equal(button.hidden, true, 'failed CMP response cannot enable the button');
 tcfListener({cmpStatus: 'loaded', gdprApplies: true}, true);
+assert.equal(button.hidden, true, 'inactive Google API can report loaded without an actual TCF event');
+tcfListener({cmpStatus: 'loaded', gdprApplies: true, eventStatus: 'cmpuishown'}, true);
 assert.equal(button.hidden, false);
 let revocations = 0;
 ads.window.googlefc.showRevocationMessage = () => { revocations++; };

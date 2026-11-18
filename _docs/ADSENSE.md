@@ -29,7 +29,8 @@ zakazuje Google Signals a reklamní personalizaci analytických dat.
 
 V patičce je „Nastavení reklam“ / „Advertising settings“ / „Impostazioni
 pubblicitarie“. Od opravy z 18. 11. 2026 se zpřístupní až po úspěšné odpovědi
-TCF API s cmpStatus=loaded a gdprApplies=true. CONSENT_API_READY samo nestačí:
+TCF API s cmpStatus=loaded, gdprApplies=true a platným eventStatus (tcloaded,
+cmpuishown nebo useractioncomplete). CONSENT_API_READY samo nestačí:
 Google může načíst API i bez aktivní souhlasové zprávy. Volá podporované
 googlefc.showRevocationMessage přes googlefc.callbackQueue. Při blokování
 Google CMP rozšířením může být toto tlačítko nedostupné. Informace jsou také
@@ -39,7 +40,7 @@ Na localhostu, jiných hostitelích a uvnitř /demo/ se integrace nespouští.
 Souhlas s reklamami sám nespouští Google Analytics. Nepřipojovat Analytics k
 souhlasu pro účel 1 v AdSense bez změny této logiky a informací pro návštěvníka.
 
-URL tří vstupních skriptů mají verzi 20261118-cmpfix, včetně přímých značek
+URL tří vstupních skriptů mají verzi 20261118-cmpfix2, včetně přímých značek
 v HTML. `_refresh_consent_assets.py` je obnoví bez přeformátování obsahu.
 Generátory blogu, šablon a jazykových stránek zachovávají tuto verzi.
 
@@ -64,7 +65,8 @@ kontroly dostupnosti tlačítka. Oprava sleduje podporovaný TCF addEventListene
 nevytváří vlastní řetězec souhlasu ani nepředstírá certifikovanou CMP.
 
 Stavy pro ověření jsou v data-advertising-consent-ui,
-data-advertising-cmp-status a data-advertising-gdpr-applies na html elementu.
+data-advertising-cmp-status, data-advertising-event-status a
+data-advertising-gdpr-applies na html elementu.
 Neobsahují TC řetězec ani osobní identifikátory. Při neúspěšné nebo neplatné
 odpovědi zůstává tlačítko skryté a oprava neuděluje reklamní souhlasy.
 
@@ -72,6 +74,18 @@ V AdSense bylo ověřeno správné přiřazení domény a zásad soukromí i sta
 seznam reklamních partnerů; konfigurace téže zprávy byla znovu publikována.
 Žádost o nové posouzení webu tím nebyla odeslána. Úplné ověření zobrazení
 a změny reklamního souhlasu je nutné dokončit na skutečně doručeném okně.
+
+Izolovaný test se standardní značkou AdSense, bez Analytics, společných JS i
+CSS, vracel success=true, cmpStatus=loaded, gdprApplies=true, ale bez eventStatus
+a bez TC řetězce; ani test fc=alwaysshow&fctype=gdpr neukázal dialog. To
+odděluje nedoručení zprávy Googlem od chyby společného kódu či stylů webu.
+Dočasná testovací stránka byla po ověření odstraněna.
+
+Google dokumentuje automatický odkaz pro odvolání souhlasu pouze pro schválené
+weby s kódem AdSense: https://support.google.com/adsense/answer/10959060?hl=cs.
+Zobrazení nelze označit za otestované jen podle dostupného API nebo zveřejněné
+konfigurace. Bez aktivního dialogu neprohlašovat test přijetí ani odmítnutí za
+úspěšný. Googlem řízenou aktivaci neobcházet vlastní náhradou TCF.
 
 Dokumentace:
 - https://support.google.com/adsense/answer/10924669?hl=cs

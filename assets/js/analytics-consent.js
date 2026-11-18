@@ -169,7 +169,9 @@
         const status = data && ['stub', 'loading', 'loaded', 'error'].includes(data.cmpStatus) ? data.cmpStatus : 'unknown';
         state.advertisingCmpStatus = status;
         state.advertisingGdprApplies = data?.gdprApplies === true ? 'true' : data?.gdprApplies === false ? 'false' : 'unknown';
-        const ready = success === true && status === 'loaded' && data.gdprApplies === true;
+        const eventStatus = data && ['tcloaded', 'cmpuishown', 'useractioncomplete'].includes(data.eventStatus) ? data.eventStatus : 'unknown';
+        state.advertisingEventStatus = eventStatus;
+        const ready = success === true && status === 'loaded' && data.gdprApplies === true && eventStatus !== 'unknown';
         settings.hidden = !ready;
         state.advertisingConsentUi = ready ? 'ready' : data?.gdprApplies === false ? 'not-applicable' : 'unavailable';
       });
@@ -189,7 +191,7 @@
     if (location.pathname.includes('/demo/')) return;
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = '/assets/css/analytics-consent.css?v=20261118-cmpfix';
+    css.href = '/assets/css/analytics-consent.css?v=20261118-cmpfix2';
     document.head.appendChild(css);
     banner = document.createElement('section');
     banner.className = 'analytics-consent';

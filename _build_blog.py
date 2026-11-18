@@ -88,10 +88,10 @@ def wrapper(title, description, path, body, header, footer, image=None, schema=N
 <meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="/assets/css/style.css?v=20261116-navsearch"><link rel="stylesheet" href="/assets/css/language-navigation.css?v=20261030-jazyky"><link rel="stylesheet" href="/assets/css/blog.css?v=20261116-travel">
 <link rel="stylesheet" href="/assets/css/editorial-preview.css?v=20261117-editorial"><link rel="stylesheet" href="/assets/css/editorial-site.css?v=20261117-spacing-1">
-<script id="cestovatel-analytics-consent" src="/assets/js/analytics-consent.js?v=20261118-cmpfix"></script>
+<script id="cestovatel-analytics-consent" src="/assets/js/analytics-consent.js?v=20261118-cmpfix2"></script>
 <link rel="alternate" type="application/rss+xml" title="Cestovatel69 – Blog z cest" href="/blog/feed.xml">{schema_tag}</head>
 <body class="theme-home blog-page editorial-preview editorial-site {'editorial-hub' if path == '/blog/' else 'editorial-reading'}">{header}<main id="main">{body}</main>{footer}
-<script src="/assets/js/main.js?v=20261118-cmpfix"></script><script defer src="/assets/js/blog.js?v=20261117-editorial"></script></body></html>'''
+<script src="/assets/js/main.js?v=20261118-cmpfix2"></script><script defer src="/assets/js/blog.js?v=20261117-editorial"></script></body></html>'''
 
 
 def build_series(posts):
@@ -222,7 +222,7 @@ def main():
         home = home.replace("document.querySelectorAll('main img').forEach(function(img){", "document.querySelectorAll('main img').forEach(function(img){\n    if (img.closest('.blog-card')) return;")
     home = home.replace('main.js?v=20261116-blog', 'main.js?v=20261116-analytics')
     if 'id="cestovatel-analytics-consent"' not in home:
-        home = home.replace('</head>', '<script id="cestovatel-analytics-consent" src="/assets/js/analytics-consent.js?v=20261118-cmpfix"></script>\n</head>')
+        home = home.replace('</head>', '<script id="cestovatel-analytics-consent" src="/assets/js/analytics-consent.js?v=20261118-cmpfix2"></script>\n</head>')
     home_file.write_text(home, encoding='utf-8')
     # RSS gives readers a subscription option without introducing another account.
     rss = ET.Element('rss', version='2.0')
