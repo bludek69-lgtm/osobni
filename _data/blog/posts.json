@@ -1,5 +1,37 @@
 [
   {
+    "slug": "krkonosske-boudy",
+    "video_id": "R14zv70M-uE",
+    "video_title": "Krkonošské boudy: život v horách, zaniklé domovy a lidské osudy",
+    "video_duration": "12:07",
+    "credits_url": "/zdroje/krkonosske-boudy-fotografie.html",
+    "project_url": "/cestovani/cesko/",
+    "published": "2026-11-20",
+    "updated": "2026-11-20",
+    "category": "Cestování",
+    "series": "Cesty s příběhem",
+    "reading_minutes": 3,
+    "title": "Krkonošské boudy: domovy, práce a lidské osudy",
+    "description": "Luční, Labská, Dvoračky i zaniklé boudy. Film o každodenním životě v horách a příběhu Hanče, Vrbaty a Emericha Ratha.",
+    "map_url": "https://www.google.com/maps/search/?api=1&query=Krkonose"
+  },
+  {
+    "slug": "sopky-neapolskeho-zalivu",
+    "video_id": "hv1H7qL-JJ0",
+    "video_title": "Za sopkami Neapolského zálivu: Vesuv, Flegrejská pole a ostrovy",
+    "video_duration": "16:28",
+    "credits_url": "/zdroje/sopky-neapolskeho-zalivu-fotografie.html",
+    "project_url": "/cestovani/italie/",
+    "published": "2026-11-20",
+    "updated": "2026-11-20",
+    "category": "Cestování",
+    "series": "Cesty po Itálii",
+    "reading_minutes": 3,
+    "title": "Za sopkami Neapolského zálivu: od Vesuvu k ostrovům",
+    "description": "Vesuv, Pompeje, Herculaneum, Flegrejská pole a ostrovy. Dokument o sopečné krajině, paměti měst a životě kolem Neapolského zálivu.",
+    "map_url": "https://www.google.com/maps/search/?api=1&query=Golfo+di+Napoli"
+  },
+  {
     "slug": "vesuv",
     "video_id": "GzZ4oiIPhBI",
     "video_title": "Vesuv | U kráteru nad Neapolským zálivem",

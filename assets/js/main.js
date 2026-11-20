@@ -61,7 +61,7 @@
   function install() {
     if (!document.querySelector('.site-header__inner')) return;
     const script = document.createElement('script');
-    script.src = '/assets/js/site-search.js?v=20261117-editorial';
+    script.src = '/assets/js/site-search.js?v=20261120-youtube';
     document.body.appendChild(script);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', install);
