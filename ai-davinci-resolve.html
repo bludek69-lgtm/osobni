@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Střih videa s Claude a DaVinci Resolve přes MCP | Luděk Budinský</title>
+  <meta name="description" content="Jak propojit Claude Code s DaVinci Resolve přes MCP server, jak to nastavit ve verzi zdarma i Studio a jak tímto způsobem vyrábím cestovatelská videa Itálie všemi smysly.">
+  <link rel="canonical" href="https://cestovatel69.cz/ai-davinci-resolve.html">
+  <meta property="og:title" content="Střih videa s Claude a DaVinci Resolve přes MCP">
+  <meta property="og:description" content="Nastavení MCP serveru pro DaVinci Resolve krok za krokem a můj skutečný postup výroby videa s českým komentářem.">
+  <meta property="og:image" content="https://cestovatel69.cz/assets/img/ai/resolve/toskansko-miniatura.jpg">
+  <meta property="og:url" content="https://cestovatel69.cz/ai-davinci-resolve.html">
+  <meta property="og:type" content="article">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261116-navsearch">
+  <link rel="stylesheet" href="assets/css/ai.css?v=20261027-learning">
+  <link rel="stylesheet" href="assets/css/language-navigation.css?v=20261030-jazyky">
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    .ai-code { background:var(--ai-paper, rgba(127,127,127,.08)); border:1px solid var(--ai-line, rgba(127,127,127,.25)); border-radius:10px; padding:1rem 1.1rem; overflow-x:auto; font:.86rem/1.55 ui-monospace, SFMono-Regular, Consolas, monospace; white-space:pre; margin:1rem 0; }
+    .ai-case-photos--single { grid-template-columns:1fr; }
+    .ai-video { position:relative; aspect-ratio:16/9; margin:1.2rem 0; border-radius:14px; overflow:hidden; border:1px solid var(--ai-line, rgba(127,127,127,.25)); background:#000; }
+    .ai-video iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .ai-table-wrap { overflow-x:auto; margin:1.2rem 0; }
+    .ai-table { width:100%; border-collapse:collapse; font-size:.92rem; }
+    .ai-table th, .ai-table td { text-align:left; vertical-align:top; padding:.6rem .7rem; border-bottom:1px solid var(--ai-line, rgba(127,127,127,.25)); }
+    .ai-table th { font-weight:700; }
+  </style>
+</head>
+<body class="theme-home">
+
+<header class="site-header">
+<div class="site-header__inner">
+<a class="brand" href="/">
+<span class="brand-dot"></span>
+      Luděk
+    </a>
+<button aria-expanded="false" aria-label="Otevřít menu" class="nav-toggle">☰</button>
+<nav aria-label="Hlavní navigace" class="nav">
+<a href="/">Domů</a>
+<a href="/aplikace/">Moje aplikace</a>
+<a href="/finance/">Finance</a>
+<a href="/cestovani/">Cestování</a>
+<a href="/cestovani/italie/">Itálie</a>
+<a href="/zaliby/rybareni/">Rybaření</a>
+<a href="/smart-home/">Smart Home</a>
+<a aria-current="page" href="/ai.html">AI</a>
+<a href="/cestovani/uzitecne-odkazy/">Užitečné odkazy</a>
+</nav>
+</div>
+</header>
+
+<main id="main"><div class="ai-page ai-page--learning">
+  <section class="ai-hero" aria-labelledby="ai-title">
+    <div class="ai-hero-copy"><p class="ai-eyebrow">AI v praxi · střih videa</p>
+      <h1 id="ai-title">Stříhám s Claude.<br><span>DaVinci Resolve přes MCP.</span></h1>
+      <p class="ai-lead">Jak jsem propojil Claude Code s programem DaVinci Resolve, co všechno se dá nastavit i ve verzi zdarma a jak takhle vzniká moje cestovatelská série „Itálie všemi smysly“ — od fotek a scénáře přes český komentář až po hotové video.</p>
+      <div class="ai-cta-row"><a class="ai-button" href="#nastaveni">Nastavení krok za krokem ↗</a><a class="ai-button ai-button-secondary" href="#video">Přehrát video</a></div>
+      <p class="ai-updated">Zpracoval Budinský Luděk · Aktualizováno 20. listopadu 2026</p>
+    </div>
+    <aside class="ai-workbench" aria-label="Co se na stránce dozvíš"><p class="ai-workbench-heading">Co v článku najdeš</p><ol>
+      <li><span class="ai-step-index">01</span><div><strong>Co je MCP a k čemu je</strong><p>Proč AI najednou umí ovládat střihový program.</p></div></li>
+      <li><span class="ai-step-index">02</span><div><strong>Instalace a první spojení</strong><p>Verze Studio i zdarma, ověření bez rizika.</p></div></li>
+      <li><span class="ai-step-index">03</span><div><strong>Můj výrobní postup</strong><p>Scénář, hlas, sestavení, render a kontroly.</p></div></li>
+    </ol></aside>
+  </section>
+  <nav class="ai-jump" aria-label="Kapitoly článku"><a href="#video">Video</a><a href="#co-je-mcp">Co je MCP</a><a href="#co-potrebujes">Co potřebuješ</a><a href="#nastaveni">Nastavení</a><a href="#prvni-test">První test</a><a href="#muj-postup">Můj postup</a><a href="#limity">Limity a pasti</a><a href="#jini-tvurci">Jak to dělají jiní</a><a href="#zadani">Vzorová zadání</a></nav>
+
+  <section id="video" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">▶ /</span><h2>Video: celý postup za dvě minuty</h2></div>
+    <p class="ai-section-intro">Video jsem nestříhal myší — časovou osu v DaVinci Resolve poskládal Claude přes MCP. Uvidíš most ve verzi zdarma, první kontrolní dotaz i živé skládání osy s Fusion a renderem.</p>
+    <div class="ai-video"><iframe src="https://www.youtube-nocookie.com/embed/L_fLogo7EJI" title="Stříhám video s Claude v DaVinci Resolve – nastavení MCP krok za krokem" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+    <p class="ai-data-note">České titulky lze zapnout v přehrávači. Krátká verze je jako Short na kanálu <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>.</p>
+  </section>
+
+  <section id="co-je-mcp" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">01 /</span><h2>Co je MCP a proč to funguje</h2></div>
+    <p class="ai-section-intro">Claude sám o sobě umí psát a radit, ale na tvém počítači nic neovládá. <strong>MCP (Model Context Protocol)</strong> je společný „konektor“, přes který mu zpřístupníš konkrétní nástroje. MCP server pro DaVinci Resolve překládá požadavky typu „vlož tyhle klipy na osu“ na příkazy oficiálního skriptovacího rozhraní Resolve.</p>
+    <div class="ai-projects">
+      <article class="ai-project"><h3>Ty</h3><p>Píšeš běžnou češtinou, co má vzniknout: „Udělej novou časovou osu, dej na začátek intro a pod něj hudbu.“</p></article>
+      <article class="ai-project"><h3>Claude Code</h3><p>Rozloží úkol na kroky, volí nástroje MCP serveru, čte jejich výsledky a průběžně kontroluje, co se povedlo.</p></article>
+      <article class="ai-project"><h3>DaVinci Resolve</h3><p>Dělá skutečnou práci: import, časová osa, Fusion efekty, barvy, render. Projekt zůstává normálně otevřený a vidíš každou změnu.</p></article>
+    </div>
+    <p class="ai-data-note">Já používám open-source projekt <a href="https://github.com/samuelgursky/davinci-resolve-mcp" target="_blank" rel="noopener">davinci-resolve-mcp</a> (licence MIT, v listopadu 2026 verze 4.19). Obecné vysvětlení MCP, skills a konektorů je v mém <a href="ai.html#skills-mcp">průvodci AI v praxi</a>.</p>
+  </section>
+
+  <section id="co-potrebujes" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">02 /</span><h2>Co budeš potřebovat</h2></div>
+    <p class="ai-section-intro">Rozhodující je, jakou verzi Resolve máš. Blackmagic omezuje <em>externí</em> skriptování na placenou verzi Studio — ale verze zdarma se dá ovládat přes malý „most“ spuštěný přímo uvnitř Resolve.</p>
+    <div class="ai-table-wrap"><table class="ai-table">
+      <thead><tr><th>Verze Resolve</th><th>Jak se Claude připojí</th><th>Poznámka</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Studio</strong> (placená)</td><td>Přímo — v Předvolbách zapneš externí skriptování „Local“.</td><td>Nejjednodušší cesta. Od verze 21.1 má Studio navíc vlastního AI asistenta s napojením na Claude Code.</td></tr>
+        <tr><td><strong>Zdarma 21.0.x</strong></td><td>Přes most <code>resolve_bridge</code> spuštěný z menu Workspace → Scripts.</td><td>Tohle používám já (21.0.3). Funguje spolehlivě, ale je potřeba ho po každém startu Resolve zapnout.</td></tr>
+        <tr><td><strong>Zdarma 21.1 a novější</strong></td><td>Pravděpodobně vůbec.</td><td>Verze 21.1 přesunula Python skripty do Studia. <strong>Pokud stříháš zdarma, neaktualizuj</strong>.</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><strong>Claude Code</strong> s předplatným Claude (aplikace pro počítač, terminál nebo editor). Na delší střih se mi osvědčil nejsilnější model — s dlouhým plánem a desítkami kroků se slabší model snáz ztratí.</li>
+      <li><strong>Python 3.10–3.12</strong> (nejméně problémů; novější funguje jen na novějších sestaveních Resolve).</li>
+      <li><strong>FFmpeg</strong> — nepovinné, ale v mém postupu dělá spoustu práce kolem zvuku a příprav klipů.</li>
+      <li>Volné místo na disku. Render a mezisoubory umí zabrat desítky GB.</li>
+    </ul>
+  </section>
+
+  <section id="nastaveni" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">03 /</span><h2>Nastavení krok za krokem</h2></div>
+    <p class="ai-section-intro">Instalace trvá kolem patnácti minut. Instalátor sám najde cesty k Resolve, vytvoří virtuální prostředí Pythonu a umí zapsat konfiguraci do Claude Code i dalších aplikací.</p>
+    <ol class="ai-process">
+      <li><span class="ai-process-index">01</span><h3>Stáhni MCP server</h3><p>Buď jedním příkazem přes npm, nebo naklonuj repozitář z GitHubu a spusť instalátor.</p></li>
+      <li><span class="ai-process-index">02</span><h3>Nastav Resolve</h3><p>Studio: Preferences → General → External scripting using → <strong>Local</strong>. Zdarma: nainstaluj most.</p></li>
+      <li><span class="ai-process-index">03</span><h3>Připoj Claude</h3><p>Instalátor zapíše server do konfigurace. Případně ho doplníš ručně (viz níže).</p></li>
+      <li><span class="ai-process-index">04</span><h3>Spusť most</h3><p>Jen verze zdarma: otevři projekt a v menu Workspace → Scripts klikni na <code>resolve_bridge</code>.</p></li>
+      <li><span class="ai-process-index">05</span><h3>Ověř spojení</h3><p>Zeptej se na něco, co nic nemění — třeba jaký projekt je otevřený.</p></li>
+    </ol>
+    <h3>Instalace jedním příkazem</h3>
+    <pre class="ai-code">npx davinci-resolve-mcp setup</pre>
+    <h3>Nebo ze zdrojového kódu (tak to mám já)</h3>
+    <pre class="ai-code">git clone https://github.com/samuelgursky/davinci-resolve-mcp.git
+cd davinci-resolve-mcp
+python install.py</pre>
+    <h3>Most pro verzi zdarma</h3>
+    <pre class="ai-code">python scripts/install_resolve_bridge.py
+# restartuj Resolve, otevři projekt a pak:
+# Workspace → Scripts → resolve_bridge</pre>
+    <p>Most poslouchá jen na tomto počítači (loopback) a každý požadavek je podepsaný, takže se k Resolve nepřipojí nikdo zvenku. Když most běží, MCP server ho použije automaticky.</p>
+    <details class="ai-details"><summary>Ruční zápis do konfigurace Claude Code (Windows)</summary>
+      <p>Pokud instalátor konfiguraci nezapíše, přidej server do sekce <code>mcpServers</code>. Cesty uprav podle svého počítače — tady jsou výchozí umístění Resolve na Windows:</p>
+      <pre class="ai-code">"davinci-resolve": {
+  "type": "stdio",
+  "command": "C:\\cesta\\k\\davinci-resolve-mcp\\venv\\Scripts\\python.exe",
+  "args": ["C:\\cesta\\k\\davinci-resolve-mcp\\src\\server.py"],
+  "env": {
+    "RESOLVE_SCRIPT_API": "C:\\ProgramData\\Blackmagic Design\\DaVinci Resolve\\Support\\Developer\\Scripting",
+    "RESOLVE_SCRIPT_LIB": "C:\\Program Files\\Blackmagic Design\\DaVinci Resolve\\fusionscript.dll",
+    "PYTHONPATH": "C:\\ProgramData\\Blackmagic Design\\DaVinci Resolve\\Support\\Developer\\Scripting\\Modules"
+  }
+}</pre>
+      <p>Když se nic nepřipojí, spusť <code>python scripts/doctor.py</code> — zkontroluje verzi Pythonu, 32/64 bit a další typické chyby a vypíše konkrétní opravu.</p>
+    </details>
+    <details class="ai-details"><summary>macOS: skript se v menu Scripts neobjeví</summary><p>Resolve na Macu hledá Python jen na dvou místech. Pokud máš Python z Homebrew nebo condy, nastav <code>PYTHON3HOME</code> přes <code>launchctl setenv</code> a Resolve restartuj. Podrobnosti jsou v README projektu v kapitole „Free edition“.</p></details>
+  </section>
+
+  <section id="prvni-test" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">04 /</span><h2>První test: nejdřív jen číst</h2></div>
+    <p class="ai-section-intro">První zadání by nemělo nic měnit. Ověříš spojení a zároveň uvidíš, jak Claude „vidí“ tvůj projekt.</p>
+    <div class="ai-brief"><div><h3>Bezpečné první zadání</h3><p>Zkopíruj do Claude Code, když máš v Resolve otevřený projekt.</p><button type="button" class="ai-button ai-copy" data-copy="ai-prompt">Zkopírovat zadání</button><p id="ai-copy-status" class="ai-data-note" role="status" aria-live="polite"></p></div>
+    <blockquote id="ai-prompt">Připoj se k DaVinci Resolve a jen popiš, co vidíš: název otevřeného projektu, seznam časových os, počet stop a klipů na aktuální ose, rozlišení a snímkovou frekvenci. Nic neměň, nic nemaž a nic nerenderuj.</blockquote></div>
+    <details class="ai-details"><summary>Proč na tom tolik trvám</summary><p>Ve střihu se dá snadno přijít o hodiny práce. MCP server má pojistky — destruktivní akce chtějí potvrzení a zdrojová média nikdy nemění — ale zvyk „nejdřív přečti, pak plánuj, pak teprve měň“ se vyplatí. Já navíc nechávám Claude <strong>uložit projekt po každém větším kroku</strong>.</p></details>
+  </section>
+
+  <section id="muj-postup" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">05 /</span><h2>Jak takhle vyrábím svá videa</h2></div>
+    <p class="ai-section-intro">Moje série <strong>Itálie všemi smysly</strong> skládá region z vlastních záběrů z cest, fotografií a klidného českého komentáře. Nejde o stříhání mluveného videa, ale spíš o dokument: stovky záběrů, každý s pohybem kamery, prolínačkou a větou, která mluví právě o tom, co je v obraze. Celý díl Toskánsko má přes 30 minut a víc než 300 záběrů.</p>
+    <div class="ai-case-photos">
+      <figure><img src="assets/img/ai/resolve/toskansko-miniatura.jpg" alt="Miniatura dílu Itálie všemi smysly – Toskánsko: zlatý nápis nad krajinou s cypřišovou alejí" loading="lazy" width="1280" height="720"><figcaption>Miniatura dílu Toskánsko — z vlastní fotografie, nápis vygenerovaný skriptem.</figcaption></figure>
+      <figure><img src="assets/img/ai/resolve/intro-kontaktni-list.jpg" alt="Kontaktní list snímků z úvodní animace: zlatá mapa Itálie, nápis série a název regionu" loading="lazy" width="1600" height="900"><figcaption>Kontaktní list intra — takhle Claude kontroluje obraz bez přehrávání videa.</figcaption></figure>
+    </div>
+    <div class="ai-case-grid">
+      <div class="ai-case-step"><h3>1. Podklady a licence</h3><p>Přednostně vlastní záběry a fotky. Cizí fotky jen s licencí, která dovoluje použití (CC0, CC BY, CC BY-SA, Pexels, Unsplash), nikdy NC/ND. Ke každé si zapíšu autora a odkaz — z toho pak vznikne stránka zdrojů na webu. Lidi v popředí rozmazávám, náhodné kolemjdoucí v davu nechávám.</p></div>
+      <div class="ai-case-step"><h3>2. Scénář po záběrech</h3><p>Každá scéna má jeden hlavní objekt (katedrála, náměstí, krajina) a jednu větu přesně o něm. Claude objekt pozná z obrazu, GPS v metadatech a názvu složky — a když si není jistý, nehádá a ptá se. Věta nesmí přetéct do dalšího záběru. Text vždy nejdřív schvaluji já.</p></div>
+      <div class="ai-case-step"><h3>3. Český komentář</h3><p>Hlas generuji v ElevenLabs. Pro hlas existuje zvláštní fonetický přepis italských jmen (Palazzo Pubblico → „Palatso Publiko“), titulky mají normální pravopis. Než se cokoliv vygeneruje, Claude spočítá cenu v kreditech i s rezervou — díl se nikdy nenamluví jen napůl.</p></div>
+      <div class="ai-case-step"><h3>4. Příprava materiálu</h3><p>Skript podle délky nahrávek spočítá časovou osu. FFmpeg připraví klipy: zpomalení vlastních záběrů, stabilizaci chůze, lehký barevný grade, hlasitost hlasu a hudbu, která se pod hlasem sama ztiší. Velké díly převádím do ProRes, protože Resolve zdarma neunese stovky 4K H.264 klipů.</p></div>
+      <div class="ai-case-step"><h3>5. Sestavení v Resolve</h3><p>Teprve tady přichází na řadu MCP: import médií, nová časová osa, stopy V1–V3 a A1–A2, rozmístění scén na přesné snímky, intro, outro a názvy míst. Pohyb kamery a prolínačky vkládám jako Fusion kompozice, které Claude vygeneruje jako text a naimportuje ke každému záběru.</p></div>
+      <div class="ai-case-step"><h3>6. Render a kontrola</h3><p>Render jde na síťový disk. Pak přichází kontrola: rozlišení a kodek, hlasitost podle normy EBU R128 (−18 LUFS), kontaktní listy snímků na začátku a konci každé věty. Místní Whisper přepíše komentář a upozorní na italská jména, která neslyšel správně — ta si pak pustím sám.</p></div>
+      <div class="ai-case-step"><h3>7. Titulky, Short a web</h3><p>Ze scénáře vzniknou české titulky (SRT), z vybraných scén svislý Short 9:16 a miniatury. Na web jde mapa míst a seznam autorů fotek, do popisu videa jen krátký odkaz. Video nahrávám na YouTube nejdřív jako soukromé.</p></div>
+      <div class="ai-case-step"><h3>8. Co dělám pořád já</h3><p>Výběr míst, schválení textu, poslech výslovnosti a konečný verdikt „je to dobré“. Claude video neslyší a nepřehrává — kontroluje snímky, čísla a měření. Vkus a rozhodnutí o příběhu zůstávají na člověku.</p></div>
+    </div>
+    <p class="ai-data-note">Výsledek můžeš vidět na mém kanálu <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>; mapa míst dílu Toskánsko je na stránce <a href="zdroje/toskansko-mapy.html">Toskánsko — místa na mapě</a>.</p>
+  </section>
+
+  <section id="limity" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">06 /</span><h2>Limity a pasti, na které jsem narazil</h2></div>
+    <p class="ai-section-intro">Tohle jsou věci ověřené na vlastní kůži s Resolve zdarma 21.0.3 — ušetří ti několik večerů.</p>
+    <div class="ai-callout"><h3>Co přes skriptování nejde (verze zdarma)</h3><ul>
+      <li><strong>Klíčové snímky v Inspectoru, nativní přechody a hlasitost klipů.</strong> Obcházím to Fusion kompozicemi napsanými jako text (pohyb a prolínání počítá výraz z času) a hlasitost „zapeču“ do zvukových souborů ve FFmpeg.</li>
+      <li><strong>Fotka z Media Poolu jde na osu nejvýš na 5 sekund.</strong> Delší statické pozadí proto převádím na krátký videoklip.</li>
+      <li><strong>Uzly na stránce Color</strong> MCP nepřidá — zvládne skupiny klipů a LUT, jemné efekty je potřeba doklikat ručně.</li>
+    </ul></div>
+    <details class="ai-details"><summary>Pády a zamrznutí Resolve</summary><ul>
+      <li>Stovky 4K H.264 klipů na jedné ose = pád. Řešení: převod do ProRes LT ve 2560×1440.</li>
+      <li>Plný systémový disk při renderu = pád. Render posílám na síťový disk.</li>
+      <li>Hromadné mazání na velké ose s Fusion efekty spustí archivaci celé osy a Resolve přestane odpovídat. Když se mění jen zvuk, do Resolve vůbec nesahám a vyměním zvukovou stopu v hotovém MP4.</li>
+      <li>Velké dávky přidávání klipů přes jeden příkaz MCP padaly; skládám proto skriptem po dávkách deseti klipů s uložením mezi nimi.</li>
+    </ul></details>
+    <details class="ai-details"><summary>Drobnosti, které zdrží</summary><ul>
+      <li>Resolve drží importované soubory otevřené — nejdou přepsat ani přesunout. Pro novou verzi zakládám nový projekt.</li>
+      <li>Časová osa začíná na 01:00:00:00. Každé umístění klipu se počítá od tohoto začátku, jinak intro „zmizí“ hodinu před osu.</li>
+      <li>Export Fusion kompozice do neexistující složky tiše selže.</li>
+      <li>Když Resolve přestane reagovat, pomůže restart a nové spuštění mostu.</li>
+    </ul></details>
+  </section>
+
+  <section id="jini-tvurci" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">07 /</span><h2>Jak to dělají jiní tvůrci</h2></div>
+    <p class="ai-section-intro">Než jsem článek dopsal, prošel jsem videa, která k tématu na YouTube vycházejí. Každý ho používá trochu jinak — a stojí za to vidět rozdíly.</p>
+    <div class="ai-projects">
+      <article class="ai-project"><h3>Hrubý střih mluveného videa</h3><p>Jason Cooperson ukazuje stejný MCP server na videu, kde mluví do kamery: hrubý střih za pár minut, barevné sjednocení skupinou klipů a LUT za dvě minuty, grafiku přes open-source HyperFrames. Zároveň poctivě ukazuje, co musel doklikat ručně.</p><p class="ai-data-note"><a href="https://www.youtube.com/watch?v=fSJh8etPngU" target="_blank" rel="noopener">Video na YouTube (anglicky)</a></p></article>
+      <article class="ai-project"><h3>Vestavěný asistent v Resolve 21.1</h3><p>Matúš Takáč ve slovenském návodu připojuje Claude Code k novému AI asistentovi ve Studiu 21.1: střih podle voiceoveru, vyhození hluchých míst, převod barev ze S-Log3 a titulky. Upozorňuje, že ve verzi zdarma to nejde a že s nejsilnějším modelem to fungovalo výrazně lépe.</p><p class="ai-data-note"><a href="https://www.youtube.com/watch?v=f3UF3DNy2-o" target="_blank" rel="noopener">Video na YouTube (slovensky)</a></p></article>
+      <article class="ai-project"><h3>Upravitelná grafika ve Fusion</h3><p>Luke Byrne se soustředí na motion grafiku, která zůstane upravitelná: text a masky jako uzly ve Fusion, nejdřív kontrola projektu bez změn, pak jedna přesná úprava místo přestavby celé kompozice.</p><p class="ai-data-note"><a href="https://www.youtube.com/watch?v=iQJQJT8IYEo" target="_blank" rel="noopener">Video na YouTube (anglicky)</a></p></article>
+    </div>
+    <p>Můj postup se liší hlavně v tom, že Claude u mě <strong>nestříhá hotový materiál, ale skládá celý dokument podle scénáře</strong> — a že běží na verzi zdarma. Většinu „inteligence“ proto nesou moje skripty a pravidla (co smí být v záběru, jak dlouhá smí být věta, jak hlasité musí být video), MCP je ruka, která to v Resolve provede.</p>
+  </section>
+
+  <section id="zadani" class="ai-section"><div class="ai-section-heading"><span class="ai-section-number" aria-hidden="true">08 /</span><h2>Vzorová zadání, která používám</h2></div>
+    <p class="ai-section-intro">Funguje mi zadávat výsledek a hranice, ne jednotlivá kliknutí. Claude si kroky rozmyslí sám, já kontroluji plán a výstup.</p>
+    <div class="ai-projects">
+      <article class="ai-project"><h3>Sestavení osy z plánu</h3><p class="ai-mini-example">„Vytvoř v Resolve nový projekt a časovou osu 1920×1080 / 25 fps. Naimportuj soubory ze složky klipy a audio. Rozmísti scény podle plan.json na přesné snímky, hlasy na A1, hudbu na A2. Po každých deseti klipech projekt ulož. Nic nemaž.“</p></article>
+      <article class="ai-project"><h3>Kontrola bez přehrávání</h3><p class="ai-mini-example">„Z hotového renderu udělej kontaktní list: snímek 1 s po začátku a 0,5 s před koncem každé věty. U každé scény napiš, jestli je v obraze objekt, o kterém věta mluví. Změř hlasitost podle EBU R128.“</p></article>
+      <article class="ai-project"><h3>Oprava jedné věty</h3><p class="ai-mini-example">„Ve scéně 14 je špatně výslovnost. Přegeneruj jen tuto větu, zkontroluj, že se vejde do stejného času, a vyměň zvuk v hotovém MP4 bez nového renderu.“</p></article>
+    </div>
+    <details class="ai-details"><summary>Rada nakonec: z opakované práce udělej skill</summary><p>Celý můj postup mám sepsaný jako <em>skill</em> — návod, který si Claude načte na začátku práce: kde jsou podklady, jaká jsou pravidla, co nejde a jak to obejít. Každá nová past, na kterou narazíme, se do něj dopíše. Díky tomu se stejná chyba neopakuje a další díl začíná tam, kde předchozí skončil.</p></details>
+  </section>
+
+  <section class="ai-closing"><h2>Začni jednou krátkou osou.</h2><p>Nainstaluj MCP server, ověř spojení zadáním, které nic nemění, a zkus složit pár klipů s hudbou. Na velké projekty můžeš navázat, až budeš vědět, kde má tvůj Resolve hranice.</p><a class="ai-button" href="#nastaveni">Zpět na nastavení ↗</a><p class="ai-data-note">Ověřeno 20. 11. 2026 na DaVinci Resolve 21.0.3 (zdarma) s Claude Code. Zdroje: <a href="https://github.com/samuelgursky/davinci-resolve-mcp" target="_blank" rel="noopener">davinci-resolve-mcp na GitHubu</a> · <a href="https://modelcontextprotocol.io/docs/learn/architecture" target="_blank" rel="noopener">Architektura MCP</a> · <a href="https://www.blackmagicdesign.com/products/davinciresolve" target="_blank" rel="noopener">DaVinci Resolve</a>. Další AI témata: <a href="ai.html">AI v praxi</a>.</p></section>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© Budinský Luděk · Osobní web</div>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@cestovatel69" target="_blank" rel="noopener">YouTube @cestovatel69</a>
+      <a href="/o-mne.html">O mně</a>
+      <a href="smart-home/">Smart Home web</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js?v=20261118-quality1"></script>
+<script>
+(function () {
+  var button = document.querySelector('[data-copy="ai-prompt"]');
+  if (!button) return;
+  button.addEventListener('click', async function () {
+    var text = document.getElementById('ai-prompt').innerText;
+    var status = document.getElementById('ai-copy-status');
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = 'Zadání je zkopírované. Vlož ho do Claude Code s otevřeným projektem v Resolve.';
+    } catch (error) {
+      var range = document.createRange();
+      range.selectNodeContents(document.getElementById('ai-prompt'));
+      var selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+      status.textContent = 'Automatické kopírování není dostupné. Označené zadání zkopíruj ručně.';
+    }
+  });
+})();
+</script>
+</body>
+</html>
