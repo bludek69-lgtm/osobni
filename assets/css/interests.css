@@ -102,3 +102,14 @@
 
 .interests-page .interests-library-links { display: flex; flex-wrap: wrap; gap: .25rem 1rem; margin-top: .65rem; }
 .interests-page .interests-library-links .interests-source { white-space: normal; }
+
+/* Film actions lead only to reviewed public previews, never subscriptions. */
+.interests-page .interests-preview-note { color: var(--text-mut); font-size: .9rem; margin: 0 0 1.5rem; }
+.interests-page .interests-film-links .interests-source { white-space: normal; }
+.interests-page .interests-preview-status, .interests-page .interests-preview-meta { color: var(--text-mut); font-size: .8rem; line-height: 1.6; }
+.interests-page .interests-library-links { flex-direction: column; align-items: flex-start; }
+.interests-page .interests-preview-meta { margin: .2rem 0 0; max-width: 100%; overflow-wrap: anywhere; }
+.interests-page .interests-series-layout .interests-preview-status { margin-top: 1rem; }
+
+.interests-page .interests-tv-preview { margin-top: 2rem; }
+.interests-page .interests-tv-preview .interests-source { white-space: normal; }

@@ -25,7 +25,7 @@
   const matchesTerm=(text,term)=>text.includes(term)||(term.length>=5&&text.includes(term.slice(0,-1)));
   let entries=null, promise=null, request=0;
   function load() {
-    if (!promise) promise=fetch('/assets/data/site-search-index.json?v=20261127-zajmy-poveri').then(r=>{if(!r.ok) throw new Error('HTTP '+r.status);return r.json();}).then(data=>{entries=data.documents;return entries;}).catch(e=>{promise=null;throw e;});
+    if (!promise) promise=fetch('/assets/data/site-search-index.json?v=20261127-zajmy-it-preview').then(r=>{if(!r.ok) throw new Error('HTTP '+r.status);return r.json();}).then(data=>{entries=data.documents;return entries;}).catch(e=>{promise=null;throw e;});
     return promise;
   }
   function excerpt(text, terms) {
