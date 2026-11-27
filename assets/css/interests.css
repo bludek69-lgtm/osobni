@@ -1,0 +1,104 @@
+/* Personal interests reuse the site's editorial typography, themes and navigation. */
+.interests-page .interests-breadcrumbs { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; color: var(--text-mut); font-size: .9rem; margin-bottom: 2rem; }
+.interests-page .interests-breadcrumbs a { display: inline-flex; align-items: center; min-height: 44px; }
+.interests-page .interests-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; }
+.interests-page .interests-hero h1 { max-width: 13ch; margin-bottom: 1.5rem; }
+.interests-page .interests-lead { font-size: 1.15rem; max-width: 48ch; }
+.interests-page .interests-poster { margin: 0; background: #202628; border-radius: 4px; overflow: hidden; }
+.interests-page .interests-poster svg { width: 100%; height: auto; display: block; }
+.interests-page .interests-toc { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: 1.75rem; }
+.interests-page .interests-toc a { min-height: 44px; display: inline-flex; align-items: center; color: var(--accent-text); font-weight: 600; }
+.interests-page .interests-section { border-top: 1px solid var(--border); padding-top: 3rem; }
+.interests-page .interests-section-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; margin-bottom: 2rem; }
+.interests-page .interests-section-heading h2 { margin-bottom: 0; }
+.interests-page .interests-section-heading > p { margin-bottom: 0; color: var(--text-mut); }
+.interests-page .interests-film { display: grid; grid-template-columns: 3rem 1fr 1.05fr auto; align-items: center; gap: 1.5rem; padding: 1.75rem 0; border-bottom: 1px solid var(--border); }
+.interests-page .interests-film h3 { font-size: 1.9rem; margin: 0 0 .3rem; }
+.interests-page .interests-film p { margin: 0; }
+.interests-page .interests-film .interests-film-original { font-size: .85rem; color: var(--text-mut); }
+.interests-page .interests-number { font: 1.1rem var(--editorial-serif); color: var(--accent-text); }
+.interests-page .interests-film-description { font-size: .95rem; color: var(--text-mut); }
+.interests-page .interests-source { color: var(--accent-text); display: inline-flex; align-items: center; min-height: 44px; font-size: .85rem; white-space: nowrap; }
+.interests-page .interests-original { border-left: 3px solid var(--accent); padding: .5rem 0 .5rem 1.25rem; margin: 2rem 0; font-size: 1.1rem; }
+.interests-page .interests-actors { display: flex; flex-wrap: wrap; gap: .4rem 1.25rem; color: var(--text-mut); margin-bottom: 2rem; }
+.interests-page .interests-film-library { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 3rem; }
+.interests-page .interests-library-item { padding: 1.5rem 0; border-top: 1px solid var(--border); }
+.interests-page .interests-library-item h3 { font-size: 1.5rem; margin-bottom: .4rem; }
+.interests-page .interests-library-item h3 a { display: inline-block; padding-block: .2rem; }
+.interests-page .interests-library-item p { font-size: .9rem; color: var(--text-mut); margin: 0; }
+.interests-page .interests-music { background: var(--panel); border: 1px solid var(--border); padding: 2.5rem; border-radius: 4px; }
+.interests-page .interests-music-columns { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4rem; }
+.interests-page .interests-music-columns h3 { font: 600 .85rem var(--font-main); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); margin: 0 0 1.2rem; }
+.interests-page .interests-artist { display: block; border-top: 1px solid var(--border); padding: 1rem 0; }
+.interests-page .interests-artist a { font: 1.6rem/1.3 var(--editorial-serif); color: var(--text); display: block; min-height: 44px; }
+.interests-page .interests-artist a span { color: var(--accent-text); padding-left: .3rem; }
+.interests-page .interests-music-note { font-size: .85rem; color: var(--text-mut); margin: 1.5rem 0 0; }
+.interests-page .interests-documentary { display: grid; grid-template-columns: .8fr 1.2fr; gap: 3rem; padding: 2rem 0 2rem 2rem; border-left: 3px solid var(--accent); }
+.interests-page .interests-documentary h2 { font-size: 2rem; margin-bottom: 0; }
+.interests-page .interests-documentary p:last-child { margin-bottom: 0; }
+.interests-page .interests-more { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; }
+.interests-page .interests-more h3 { font-size: 1.6rem; margin-bottom: .75rem; }
+.interests-page .interests-more p { color: var(--text-mut); }
+.interests-page main [id] { scroll-margin-top: 160px; }
+.interests-page .interests-colombo-actor { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.interests-page .interests-colombo-actor strong { font: 2rem var(--editorial-serif); }
+.interests-page .interests-colombo-actor span { font-size: .9rem; color: var(--text-mut); }
+.interests-page .interests-series-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
+.interests-page .interests-series-layout h3 { font-size: 1.7rem; }
+.interests-page .interests-series-main { padding: 2rem; border: 1px solid var(--border); background: var(--panel); border-radius: 4px; }
+.interests-page .interests-series-related > article + article { border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 1.5rem; }
+.interests-page .interests-series-related .editorial-eyebrow { font-size: .75rem; }
+.interests-page .interests-episodes { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .5rem 1.5rem; list-style: none; padding: 0; margin: 1.25rem 0 0; }
+.interests-page .interests-episodes a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-text); font-weight: 600; }
+.interests-page .interests-series-details summary { cursor: pointer; min-height: 44px; padding: .5rem 0; color: var(--accent-text); }
+@media (max-width: 640px) {
+  .interests-page .interests-series-layout { grid-template-columns: minmax(0,1fr); gap: 2rem; }
+  .interests-page .interests-series-main { padding: 1.25rem; }
+  .interests-page .interests-episodes { gap: .5rem 1rem; }
+}
+@media (max-width: 900px) {
+  .interests-page .interests-hero { gap: 2rem; }
+  .interests-page .interests-film { grid-template-columns: 2rem 1fr auto; gap: 1rem; }
+  .interests-page .interests-film-description { grid-column: 2 / -1; grid-row: 2; }
+  .interests-page .interests-music { padding: 1.5rem; }
+  .interests-page .interests-music-columns { gap: 2rem; }
+}
+@media (max-width: 640px) {
+  .interests-page .interests-hero, .interests-page .interests-section-heading, .interests-page .interests-documentary { grid-template-columns: minmax(0,1fr); gap: 1.5rem; }
+  .interests-page .interests-poster { max-width: 440px; }
+  .interests-page .interests-section-heading h2 { margin-bottom: 0; }
+  .interests-page .interests-film-library, .interests-page .interests-music-columns, .interests-page .interests-more { grid-template-columns: minmax(0,1fr); gap: 1.5rem; }
+  .interests-page .interests-film-library { gap: 0; }
+  .interests-page .interests-film { grid-template-columns: 1.5rem 1fr; }
+  .interests-page .interests-film h3 { font-size: 1.65rem; }
+  .interests-page .interests-film .interests-source { grid-column: 2; }
+  .interests-page .interests-film-description { grid-column: 2; }
+  .interests-page .interests-documentary { padding-left: 1.25rem; }
+  .interests-page .interests-artist a { font-size: 1.5rem; }
+  .interests-page .interests-section { padding-top: 2rem; }
+}
+
+/* Official links, actor profiles and the public Corleone episode. */
+.interests-page .interests-actors a { color: inherit; text-underline-offset: .2em; }
+.interests-page .interests-film-links { display: flex; flex-direction: column; align-items: flex-start; gap: .7rem; }
+.interests-page .interests-film-links a { max-width: 17rem; }
+.interests-page .interests-song { margin: .6rem 0 1.2rem; }
+.interests-page .interests-song a { font-family: inherit; font-size: .95rem; color: var(--accent-text); }
+.interests-page .interests-song small { display: block; margin-top: .3rem; font-size: .75rem; color: var(--text-mut); }
+.interests-page .interests-biographies { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 3rem; }
+.interests-page .interests-biography { border-bottom: 1px solid var(--border); padding: 1rem 0; }
+.interests-page .interests-biography summary { cursor: pointer; min-height: 44px; padding: .5rem 0; font-family: var(--editorial-serif); font-size: 1.5rem; }
+.interests-page .interests-biography p { color: var(--text-mut); margin: .75rem 0; }
+.interests-page .interests-biography .interests-source { display: inline-flex; min-height: 44px; align-items: center; }
+.interests-page .interests-documentary-video .featured-video { max-width: 100%; margin: 2rem 0 1rem; padding: 0; height: auto; max-height: none; aspect-ratio: 16 / 9; }
+.interests-page .interests-documentary-video .thumb-cover { position: absolute; display: block; width: 100%; height: 100%; padding: 0; border: 0; cursor: pointer; background-color: var(--panel); background-size: cover; background-position: center; }
+.interests-page .interests-documentary-video .thumb-cover span { position: absolute; left: 1rem; bottom: 1rem; padding: .7rem 1rem; color: #fff; background: #15191b; border-radius: 3px; }
+.interests-page .interests-documentary-video .thumb-cover::after { content: none; }
+@media (max-width: 640px) {
+ .interests-page .interests-biographies { grid-template-columns: minmax(0,1fr); }
+ .interests-page .interests-film-links { grid-column: 2; }
+ .interests-page .interests-documentary-video .thumb-cover span { left: .5rem; bottom: .5rem; font-size: .85rem; }
+}
+
+.interests-page .interests-library-links { display: flex; flex-wrap: wrap; gap: .25rem 1rem; margin-top: .65rem; }
+.interests-page .interests-library-links .interests-source { white-space: normal; }
